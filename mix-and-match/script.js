@@ -4,13 +4,13 @@ const riceMenu = [
     id: 1,
     name: 'Classic Rice',
     price: 10,
-    img: 'pictures_of_foods/classic_rice.jpg',
+    img: 'classic_rice.jpg',
   },
   {
     id: 2,
     name: 'Java Rice',
     price: 15,
-    img: 'pictures_of_foods/java_rice.jpg',
+    img: 'java_rice.jpg',
   },
 ];
 
@@ -19,38 +19,38 @@ const ulamMenu = [
     id: 4,
     name: 'Lumpia (3pcs)',
     price: 10,
-    img: 'pictures_of_foods/lumpia.jpg',
+    img: 'lumpia.jpg',
   },
   {
     id: 5,
     name: 'Sunny Side Egg',
     price: 12,
-    img: 'pictures_of_foods/sunny_side_egg.jpg',
+    img: 'sunny_side_egg.jpg',
   },
   {
     id: 6,
     name: 'Siomai (4pcs)',
     price: 8,
-    img: 'pictures_of_foods/siomai.jpg',
+    img: 'siomai.jpg',
   },
   {
     id: 8,
     name: 'Longganisa',
     price: 8,
-    img: 'pictures_of_foods/longganisa.jpg',
+    img: 'longganisa.jpg',
   },
   {
     id: 7,
     name: 'Hotdog',
     price: 12,
-    img: 'pictures_of_foods/hotdog.jpg',
+    img: 'hotdog.jpg',
   },
-  { id: 9, name: 'Skinless', price: 8, img: 'pictures_of_foods/skinless.jpg' },
+  { id: 9, name: 'Skinless', price: 8, img: 'skinless.jpg' },
 ];
 
 const drinksMenu = [
-  { id: 10, name: 'Coke', price: 20, img: 'pictures_of_foods/coke.jpg' },
-  { id: 12, name: 'Water', price: 15, img: 'pictures_of_foods/water.jpg' },
+  { id: 10, name: 'Coke', price: 20, img: 'coke.jpg' },
+  { id: 12, name: 'Water', price: 15, img: 'water.jpg' },
 ];
 
 let cart = [];
