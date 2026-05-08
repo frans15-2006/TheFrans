@@ -901,14 +901,7 @@
 
     /* ====== GRADIENT BORDER ON HOVER ====== */
     .project-card { position: relative; }
-    .project-card::before {
-      content: ''; position: absolute; inset: -1px; border-radius: 17px;
-      background: linear-gradient(135deg, transparent, transparent);
-      transition: background 0.4s ease; z-index: -1;
-    }
-    .project-card:hover::before {
-      background: linear-gradient(135deg, rgba(240,165,0,0.4), rgba(255,184,32,0.1), transparent);
-    }
+    .project-card::before { display: none; }
 
     /* ====== FOOTER REVEAL ====== */
     footer { position: relative; overflow: hidden; }
@@ -1140,7 +1133,7 @@
             </div>
             <div class="project-status">
               <span class="status-badge">Completed</span>
-              <a href="https://mixmatchkain.netlify.app" target="_blank" class="btn btn-primary" style="margin-top:12px; font-size:13px; padding:9px 18px;">View Live ↗</a>
+              <a href="https://frans15-2006.github.io/TheFrans/mix-and-match/index.html" target="_blank" class="btn btn-primary" style="margin-top:12px; font-size:13px; padding:9px 18px;">View Live ↗</a>
             </div>
 
             <div class="project-card reveal">
