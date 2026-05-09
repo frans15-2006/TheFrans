@@ -261,10 +261,10 @@
         <main>
           <!-- Search Bar -->
           <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search" title="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->

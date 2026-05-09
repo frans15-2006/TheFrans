@@ -176,6 +176,12 @@ button,
   opacity: 0;
   transform: translateY(30px);
   position: relative;
+  text-align: inherit;
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+  display: block;
+  padding: 0;
 }
 
 .card.reveal {

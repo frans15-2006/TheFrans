@@ -208,13 +208,15 @@ function renderGrid(items, containerId) {
   container.innerHTML = '';
 
   items.forEach((item, index) => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
     card.className = 'card';
+    card.type = 'button';
+    card.setAttribute('aria-label', `Add ${item.name} to cart`);
     card.onclick = (e) => addToCart(item, e);
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
 
     card.innerHTML = `
-            <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:140px;">
+            <img src="${item.img}" onerror="this.src='${fallback}'" alt="" aria-hidden="true" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:140px;">
             <div class="card-description">
                 <div class="card-name">${item.name}</div>
                 <div class="card-price">₱${item.price}</div>
