@@ -3,11 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=1.0" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#0c0c0e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Francis Tarectican — Code. Build. Ship.</title>
   <meta name="description"
     content="Francis Tarectican is a backend developer from Palawan, Philippines specializing in Node.js, REST APIs, and full-stack web applications." />
@@ -954,41 +950,6 @@
     .hero-tag { opacity: 0; animation: heroSubIn 1s 0.3s ease forwards; }
     @keyframes heroSubIn { to { opacity: 1; transform: translateY(0); } }
 
-
-    /* ====== HIDE CURSOR ON TOUCH/MOBILE ====== */
-    @media (hover: none), (pointer: coarse) {
-      * { cursor: auto !important; }
-      .cursor-dot, .cursor-ring, #cursorDot, #cursorRing { display: none !important; }
-    }
-
-    /* ====== SKILLS MOBILE FIX ====== */
-    @media (max-width: 768px) {
-      .skills-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        width: 100% !important;
-        overflow: hidden !important;
-      }
-      .skill-item {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        box-sizing: border-box !important;
-      }
-      .skills-categories > div {
-        overflow: hidden !important;
-        width: 100% !important;
-      }
-    }
-
-    /* ====== HERO MOBILE FULLSCREEN FEEL ====== */
-    @media (max-width: 768px) {
-      #hero {
-        min-height: 100svh !important;
-      }
-    }
-
   </style>
 </head>
 
@@ -1072,69 +1033,66 @@
       <p class="section-desc">A focused set of tools I use regularly — not a laundry list, just what I actually know and
         use.</p>
       <div class="skills-categories">
+
         <div class="reveal">
-          <div class="skill-group-label">Backend & Core</div>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-info">
-                <div class="skill-name">Node.js</div>
-                <div class="skill-cat">Runtime</div>
-                <div class="skill-level">90%</div>
-                <div class="skill-item">
-                  <div class="skill-info">
-                    <div class="skill-name">JavaScript</div>
-                    <div class="skill-cat">Language</div>
-                    <div class="skill-level">85%</div>
-                    <div class="skill-item">
-                      <div class="skill-info">
-                        <div class="skill-name">Express.js</div>
-                        <div class="skill-cat">Framework</div>
-                        <div class="skill-level">85%</div>
-                        <div class="skill-item">
-                          <div class="skill-info">
-                            <div class="skill-name">MongoDB</div>
-                            <div class="skill-cat">Database</div>
-                            <div class="skill-level">80%</div>
-                            <div class="skill-item">
-                              <div class="skill-info">
-                                <div class="skill-name">REST API Design</div>
-                                <div class="skill-cat">Architecture</div>
-                                <div class="skill-level">85%</div>
-                              </div>
-                              <div class="reveal">
-                                <div class="skill-group-label">Frontend</div>
-                                <div class="skills-grid">
-                                  <div class="skill-item">
-                                    <div class="skill-info">
-                                      <div class="skill-name">React</div>
-                                      <div class="skill-cat">UI Library</div>
-                                      <div class="skill-level">75%</div>
-                                      <div class="skill-item">
-                                        <div class="skill-info">
-                                          <div class="skill-name">Tailwind CSS</div>
-                                          <div class="skill-cat">Styling</div>
-                                          <div class="skill-level">85%</div>
-                                          <div class="skill-item">
-                                            <div class="skill-info">
-                                              <div class="skill-name">HTML / CSS</div>
-                                              <div class="skill-cat">Markup & Styles</div>
-                                              <div class="skill-level">90%</div>
-                                            </div>
-                                            <div class="reveal">
-                                              <div class="skill-group-label">Tools & Other</div>
-                                              <div class="skills-grid">
-                                                <div class="skill-item">
-                                                  <div class="skill-info">
-                                                    <div class="skill-name">Local AI Deployment</div>
-                                                    <div class="skill-cat">Ollama / LLM Infra</div>
-                                                    <div class="skill-level">70%</div>
-                                                    <div class="skill-item">
-                                                      <div class="skill-info">
-                                                        <div class="skill-name">Hardware Configuration</div>
-                                                        <div class="skill-cat">RAM / SSD / Tuning</div>
-                                                        <div class="skill-level">90%</div>
-                                                      </div>
-                                                    </div>
+          <div class="skill-group-label">Backend &amp; Core</div>
+          <div class="skills-grid" style="display:flex;flex-direction:column;gap:0;">
+            <div class="skill-item" style="margin-left:0;">
+              <div class="skill-info"><div class="skill-name">Node.js</div><div class="skill-cat">Runtime</div></div>
+              <div class="skill-level">90%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">JavaScript</div><div class="skill-cat">Language</div></div>
+              <div class="skill-level">85%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,8vw,40px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">Express.js</div><div class="skill-cat">Framework</div></div>
+              <div class="skill-level">85%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,12vw,60px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">MongoDB</div><div class="skill-cat">Database</div></div>
+              <div class="skill-level">80%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,16vw,80px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">REST API Design</div><div class="skill-cat">Architecture</div></div>
+              <div class="skill-level">85%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="skill-group-label">Frontend</div>
+          <div class="skills-grid" style="display:flex;flex-direction:column;gap:0;">
+            <div class="skill-item" style="margin-left:0;">
+              <div class="skill-info"><div class="skill-name">React</div><div class="skill-cat">UI Library</div></div>
+              <div class="skill-level">75%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">Tailwind CSS</div><div class="skill-cat">Styling</div></div>
+              <div class="skill-level">85%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,8vw,40px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">HTML / CSS</div><div class="skill-cat">Markup &amp; Styles</div></div>
+              <div class="skill-level">90%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="skill-group-label">Tools &amp; Other</div>
+          <div class="skills-grid" style="display:flex;flex-direction:column;gap:0;">
+            <div class="skill-item" style="margin-left:0;">
+              <div class="skill-info"><div class="skill-name">Local AI Deployment</div><div class="skill-cat">Ollama / LLM Infra</div></div>
+              <div class="skill-level">70%</div>
+            </div>
+            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
+              <div class="skill-info"><div class="skill-name">Hardware Configuration</div><div class="skill-cat">RAM / SSD / Tuning</div></div>
+              <div class="skill-level">90%</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
   </section>
 
   <div class="divider"></div>
