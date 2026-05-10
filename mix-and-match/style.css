@@ -176,6 +176,19 @@ button,
   opacity: 0;
   transform: translateY(30px);
   position: relative;
+  /* Reset button styles */
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
 }
 
 .card.reveal {

@@ -1,0 +1,3 @@
+## 2025-03-01 - [Semantic Buttons for Interactive Grid Items]
+**Learning:** Using semantic `<button>` elements instead of `<div>`s for interactive grid items (like food menu cards) ensures they are natively keyboard-focusable and correctly identified by assistive technologies. Coupled with descriptive `aria-label` attributes, this significantly improves the accessibility of custom-rendered components.
+**Action:** Always prefer semantic interactive elements (button, a) for clickable components and provide clear `aria-label`s when the visual text might be ambiguous or insufficient for screen readers.
