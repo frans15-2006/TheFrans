@@ -950,6 +950,13 @@
     .hero-tag { opacity: 0; animation: heroSubIn 1s 0.3s ease forwards; }
     @keyframes heroSubIn { to { opacity: 1; transform: translateY(0); } }
 
+
+    /* ====== HIDE CURSOR ON TOUCH/MOBILE ====== */
+    @media (hover: none), (pointer: coarse) {
+      * { cursor: auto !important; }
+      #cursorDot, #cursorRing, .cursor-dot, .cursor-ring, .cursor-glow { display: none !important; }
+    }
+
   </style>
 </head>
 
@@ -1072,7 +1079,7 @@
               <div class="skill-level">85%</div>
             </div>
             <div class="skill-item" style="margin-left:clamp(0px,8vw,40px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">HTML / CSS</div><div class="skill-cat">Markup &amp; Styles</div></div>
+              <div class="skill-info"><div class="skill-name">HTML CSS</div><div class="skill-cat">Markup &amp; Styles</div></div>
               <div class="skill-level">90%</div>
             </div>
           </div>
