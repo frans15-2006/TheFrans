@@ -25,7 +25,16 @@
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
 }
 
 html {
@@ -189,10 +198,17 @@ button,
   }
 }
 
-.card:hover {
+.card:hover,
+.card:focus-visible {
   border-color: var(--primary);
   transform: translateY(-18px) scale(1.05) rotate(1deg);
   box-shadow: 0 30px 60px rgba(255, 94, 0, 0.4);
+  outline: none;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
 }
 
 .card:hover img {
@@ -489,8 +505,9 @@ button,
   border-radius: 10px;
 }
 
-.cart-input:focus {
-  outline: none;
+.cart-input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
   border-color: var(--primary);
   box-shadow: 0 0 10px rgba(255, 94, 0, 0.3);
 }
@@ -1172,9 +1189,16 @@ header {
   justify-content: center;
 }
 
-.qty-btn:hover {
+.qty-btn:hover,
+.qty-btn:focus-visible {
   background: var(--primary);
   transform: scale(1.1);
+  outline: none;
+}
+
+.qty-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .qty-btn:active {

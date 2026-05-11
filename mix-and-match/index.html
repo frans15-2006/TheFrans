@@ -263,8 +263,8 @@
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
@@ -302,17 +302,17 @@
           </div>
         </main>
 
-        <aside class="cart-area" id="cart-sidebar">
+        <aside class="cart-area" id="cart-sidebar" aria-label="Shopping Cart">
           <div class="cart-toggle" onclick="toggleCart()">
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
           <div class="cart-total-row">
             <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+            <span id="total-price" class="cart-total-price price-counter" aria-live="polite">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
