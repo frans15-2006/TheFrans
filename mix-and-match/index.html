@@ -335,7 +335,12 @@
     <div class="modal-box">
       <h2 class="scan-title">SCAN TO PAY</h2>
       <div id="qrcode" class="qrcode-box"></div>
-      <div id="summary" class="summary-box"></div>
+      <div id="summary" class="summary-box">
+        <strong>CUSTOMER:</strong> <span id="summary-cust-name"></span><br>
+        <strong>TOTAL:</strong> <span id="summary-total"></span>
+        <hr class="summary-label">
+        <div id="summary-items"></div>
+      </div>
       <button class="confirm-btn done-btn btn" onclick="closeModal()">
         DONE / NEW ORDER
       </button>

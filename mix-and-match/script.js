@@ -388,12 +388,21 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
-        <strong>TOTAL:</strong> ₱${total}
-        <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-    `;
+  // Safe rendering of summary data
+  document.getElementById('summary-cust-name').textContent = name.toUpperCase();
+  document.getElementById('summary-total').textContent = `₱${total}`;
+  const summaryItems = document.getElementById('summary-items');
+  summaryItems.innerHTML = '';
+  cart.forEach((c) => {
+    const itemRow = document.createElement('div');
+    itemRow.style.marginBottom = '4px';
+    itemRow.textContent = `• ${c.name} `;
+    const qtySpan = document.createElement('span');
+    qtySpan.className = 'summary-item';
+    qtySpan.textContent = `x${c.qty}`;
+    itemRow.appendChild(qtySpan);
+    summaryItems.appendChild(itemRow);
+  });
 
   // Blur the QR code for demo/portfolio purposes
   const qrWrapper = document.getElementById('qrcode');
