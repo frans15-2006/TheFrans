@@ -831,11 +831,13 @@
 
     /* ====== CURSOR GLOW ====== */
     .cursor-glow {
-      position: fixed; width: 380px; height: 380px;
+      position: fixed; top: 0; left: 0;
+      width: 380px; height: 380px;
       border-radius: 50%; pointer-events: none; z-index: 0;
       background: radial-gradient(circle, rgba(240,165,0,0.04) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
+      transform: translate3d(-50%, -50%, 0);
       transition: opacity 0.3s ease;
+      will-change: transform;
     }
 
     /* ====== CUSTOM CURSOR ====== */
@@ -847,7 +849,7 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-50%, -50%);
+      transform: translate3d(-50%, -50%, 0);
       transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
       will-change: transform;
     }
@@ -858,7 +860,7 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
-      transform: translate(-50%, -50%);
+      transform: translate3d(-50%, -50%, 0);
       transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
       will-change: transform;
     }
@@ -1346,9 +1348,16 @@
 
     // ====== SCROLL PROGRESS ======
     const progressBar = document.getElementById('scrollProgress');
+    let totalScrollHeight = 0;
+    const updateScrollHeight = () => {
+      totalScrollHeight = document.body.scrollHeight - window.innerHeight;
+    };
+    window.addEventListener('resize', updateScrollHeight);
+    window.addEventListener('load', updateScrollHeight);
+    updateScrollHeight();
+
     window.addEventListener('scroll', () => {
-      const total = document.body.scrollHeight - window.innerHeight;
-      const pct = (window.scrollY / total) * 100;
+      const pct = (window.scrollY / (totalScrollHeight || 1)) * 100;
       if (progressBar) progressBar.style.width = pct + '%';
     }, { passive: true });
 
@@ -1365,10 +1374,6 @@
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      if (glow) {
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-      }
     });
 
     function animateCursor() {
@@ -1376,16 +1381,19 @@
       dotX += (mouseX - dotX) * 0.9;
       dotY += (mouseY - dotY) * 0.9;
       if (dot) {
-        dot.style.left = dotX + 'px';
-        dot.style.top = dotY + 'px';
+        dot.style.transform = `translate3d(calc(${dotX}px - 50%), calc(${dotY}px - 50%), 0)`;
       }
 
       // Ring lags behind smoothly
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
       if (ring) {
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
+        ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`;
+      }
+
+      // Glow follows mouse smoothly or exactly
+      if (glow) {
+        glow.style.transform = `translate3d(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%), 0)`;
       }
 
       animFrame = requestAnimationFrame(animateCursor);
@@ -1493,14 +1501,19 @@
 
     // ====== 3D TILT ON PROJECT CARDS ======
     document.querySelectorAll('.project-card').forEach(card => {
+      let rect;
+      card.addEventListener('mouseenter', () => {
+        rect = card.getBoundingClientRect();
+      });
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
         const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
         card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
       });
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
+        rect = null;
       });
     });
 
