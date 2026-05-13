@@ -42,6 +42,7 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      font-family: inherit;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
@@ -212,7 +213,7 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Floating Action Button -->
-  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
+  <button class="fab" id="fab-btn" type="button" title="Scroll to top" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -262,25 +263,25 @@
           <!-- Search Bar -->
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
+            <input type="text" id="search-input" class="search-bar" aria-label="Search food items" placeholder="🔍 Search food items..."
               oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+            <button type="button" class="search-clear" aria-label="Clear search" onclick="clearSearch()">✕</button>
           </div>
 
           <!-- Category Tabs -->
           <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+            <button type="button" class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -307,10 +308,10 @@
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
-          <div class="cart-total-row">
+          <div class="cart-total-row" aria-live="polite">
             <span>TOTAL</span>
             <span id="total-price" class="cart-total-price price-counter">₱0</span>
           </div>

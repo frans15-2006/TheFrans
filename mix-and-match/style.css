@@ -44,6 +44,21 @@ button,
   cursor: pointer;
 }
 
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+
 /* ====== BACKGROUND EFFECTS ====== */
 .particle {
   position: absolute;
@@ -165,6 +180,9 @@ button,
 
 /* ====== CARD STYLES WITH GLASSMORPHISM ====== */
 .card {
+  display: block;
+  width: 100%;
+  text-align: inherit;
   background: rgba(17, 17, 17, 0.8);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
