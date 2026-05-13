@@ -388,12 +388,32 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
-        <strong>TOTAL:</strong> ₱${total}
-        <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-    `;
+  const summaryEl = document.getElementById('summary');
+  summaryEl.textContent = ''; // Clear previous content safely
+
+  const custStrong = document.createElement('strong');
+  custStrong.textContent = 'CUSTOMER: ';
+  summaryEl.appendChild(custStrong);
+  summaryEl.appendChild(document.createTextNode(name.toUpperCase()));
+  summaryEl.appendChild(document.createElement('br'));
+
+  const totalStrong = document.createElement('strong');
+  totalStrong.textContent = 'TOTAL: ';
+  summaryEl.appendChild(totalStrong);
+  summaryEl.appendChild(document.createTextNode(`₱${total}`));
+
+  const hr = document.createElement('hr');
+  hr.className = 'summary-label';
+  summaryEl.appendChild(hr);
+
+  cart.forEach((c, idx) => {
+    summaryEl.appendChild(document.createTextNode(`• ${c.name} `));
+    const qtySpan = document.createElement('span');
+    qtySpan.className = 'summary-item';
+    qtySpan.textContent = `x${c.qty}`;
+    summaryEl.appendChild(qtySpan);
+    if (idx < cart.length - 1) summaryEl.appendChild(document.createElement('br'));
+  });
 
   // Blur the QR code for demo/portfolio purposes
   const qrWrapper = document.getElementById('qrcode');
