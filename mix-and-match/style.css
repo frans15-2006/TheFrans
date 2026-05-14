@@ -24,8 +24,29 @@
   padding: 0;
 }
 
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
 ::-webkit-scrollbar {
-  display: none;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 2px;
 }
 
 html {
