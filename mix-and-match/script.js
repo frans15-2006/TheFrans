@@ -389,11 +389,12 @@ function generateQR() {
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
   document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
+        <strong>CUSTOMER:</strong> <span id="summary-name"></span><br>
         <strong>TOTAL:</strong> ₱${total}
         <hr class="summary-label">
         ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
     `;
+  document.getElementById('summary-name').textContent = name.toUpperCase();
 
   // Blur the QR code for demo/portfolio purposes
   const qrWrapper = document.getElementById('qrcode');
