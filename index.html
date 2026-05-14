@@ -924,15 +924,18 @@
       bObs.observe(item);
     });
 
-    // 3D tilt on project cards
+    // 3D tilt on project cards - Optimized with rect caching to prevent layout thrashing
     document.querySelectorAll('.project-card').forEach(card => {
+      let rect;
+      card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); });
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
         const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
         card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
       });
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      window.addEventListener('resize', () => { rect = null; });
     });
 
     // Section labels
