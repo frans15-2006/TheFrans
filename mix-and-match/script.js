@@ -388,12 +388,14 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
+  const summaryEl = document.getElementById('summary');
+  summaryEl.innerHTML = `
+        <strong>CUSTOMER:</strong> <span id="summary-cust-name"></span><br>
         <strong>TOTAL:</strong> ₱${total}
         <hr class="summary-label">
         ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
     `;
+  document.getElementById('summary-cust-name').textContent = name.toUpperCase();
 
   // Blur the QR code for demo/portfolio purposes
   const qrWrapper = document.getElementById('qrcode');
