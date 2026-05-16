@@ -398,21 +398,25 @@
     /* CURSOR */
     *, *::before, *::after { cursor: none !important; }
     .cursor-glow {
-      position: fixed; width: 380px; height: 380px; border-radius: 50%;
+      position: fixed; top: 0; left: 0; width: 380px; height: 380px; border-radius: 50%;
       pointer-events: none; z-index: 0;
       background: radial-gradient(circle, rgba(240,165,0,0.04) 0%, transparent 70%);
-      transform: translate(-50%, -50%); transition: opacity 0.3s ease;
+      /* Use translate3d for GPU acceleration */
+      transform: translate3d(-50%, -50%, 0); transition: opacity 0.3s ease;
     }
     .cursor-dot {
       position: fixed; top: 0; left: 0; width: 6px; height: 6px;
       background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+      /* Use translate3d for GPU acceleration */
+      transform: translate3d(-50%, -50%, 0); transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
       will-change: transform;
     }
     .cursor-ring {
       position: fixed; top: 0; left: 0; width: 36px; height: 36px;
       border: 1.5px solid rgba(240,165,0,0.5); border-radius: 50%;
-      pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 9998;
+      /* Use translate3d for GPU acceleration */
+      transform: translate3d(-50%, -50%, 0);
       transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
       will-change: transform;
     }
@@ -432,7 +436,8 @@
     .hero-tag { opacity: 0; animation: heroSubIn 1s 0.3s ease forwards; }
     @keyframes heroSubIn { to { opacity: 1; transform: translateY(0); } }
 
-    .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #ffb820); z-index: 999; width: 0%; transition: width 0.1s linear; }
+    /* Optimized scroll progress using scaleX for GPU acceleration */
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #ffb820); z-index: 999; width: 100%; transform: scaleX(0); transform-origin: left; will-change: transform; }
 
     .nav-logo { position: relative; }
     .nav-logo:hover { animation: logoGlitch 0.4s steps(2) forwards; }
@@ -727,7 +732,7 @@
       <div class="gallery-grid reveal">
         <div class="gallery-item" data-index="0">
           <!-- Replace with your actual image path, e.g. src="./assets/photo-1.jpg" -->
-          <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
+          <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" loading="lazy" decoding="async" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">01</div>
             <div class="overlay-cat">Editorial</div>
@@ -735,7 +740,7 @@
           </div>
         </div>
         <div class="gallery-item" data-index="1">
-          <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" />
+          <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" loading="lazy" decoding="async" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">02</div>
             <div class="overlay-cat">Portrait</div>
@@ -743,7 +748,7 @@
           </div>
         </div>
         <div class="gallery-item" data-index="2">
-          <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" />
+          <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" loading="lazy" decoding="async" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">03</div>
             <div class="overlay-cat">Editorial</div>
@@ -855,11 +860,17 @@
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
 
-    // Scroll progress
+    // Scroll progress with cached dimensions to avoid layout triggers on scroll
     const progressBar = document.getElementById('scrollProgress');
+    let totalScrollHeight = document.body.scrollHeight - window.innerHeight;
+    window.addEventListener('resize', () => {
+      totalScrollHeight = document.body.scrollHeight - window.innerHeight;
+    }, { passive: true });
+
     window.addEventListener('scroll', () => {
-      const total = document.body.scrollHeight - window.innerHeight;
-      progressBar.style.width = ((window.scrollY / total) * 100) + '%';
+      const progress = totalScrollHeight > 0 ? window.scrollY / totalScrollHeight : 0;
+      // Use scaleX for GPU acceleration
+      progressBar.style.transform = `scaleX(${progress})`;
     }, { passive: true });
 
     // Scroll reveal
@@ -924,15 +935,19 @@
       bObs.observe(item);
     });
 
-    // 3D tilt on project cards
+    // 3D tilt on project cards with cached rect to prevent layout thrashing during mousemove
     document.querySelectorAll('.project-card').forEach(card => {
+      let rect = null;
+      const updateRect = () => { rect = card.getBoundingClientRect(); };
+      card.addEventListener('mouseenter', updateRect);
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) updateRect();
         const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
         const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
         card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
       });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; rect = null; });
+      window.addEventListener('resize', () => { rect = null; }, { passive: true });
     });
 
     // Section labels
@@ -978,20 +993,20 @@
     const heroTag = document.querySelector('.hero-tag');
     if (heroTag) { const c = document.createElement('span'); c.className = 'typing-cursor'; heroTag.appendChild(c); }
 
-    // Custom cursor
+    // Custom cursor with GPU-accelerated translate3d
     const glow = document.getElementById('cursorGlow');
     const dot = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
     let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, dotX = 0, dotY = 0;
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX; mouseY = e.clientY;
-      if (glow) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; }
+      if (glow) { glow.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`; }
     });
     (function animateCursor() {
       dotX += (mouseX - dotX) * 0.9; dotY += (mouseY - dotY) * 0.9;
-      if (dot) { dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px'; }
+      if (dot) { dot.style.transform = `translate3d(calc(${dotX}px - 50%), calc(${dotY}px - 50%), 0)`; }
       ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12;
-      if (ring) { ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px'; }
+      if (ring) { ring.style.transform = `translate3d(calc(${ringX}px - 50%), calc(${ringY}px - 50%), 0)`; }
       requestAnimationFrame(animateCursor);
     })();
     document.querySelectorAll('a, button, .skill-item, .project-card, .stat-card, input, textarea, .gallery-item').forEach(el => {

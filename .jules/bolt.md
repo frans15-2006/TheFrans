@@ -1,0 +1,3 @@
+## 2026-05-16 - GPU-Accelerated Animations & Layout Thrashing Prevention
+**Learning:** High-frequency events like `scroll` and `mousemove` cause significant performance degradation when triggering layout-dependent properties (e.g., `width`, `top`, `left`). Switching to `transform` (`translate3d`, `scaleX`) offloads these to the GPU. Additionally, repeated calls to `getBoundingClientRect()` or `scrollHeight` during these events cause "layout thrashing."
+**Action:** Always prefer `transform` for animations and cache element dimensions during `mouseenter` or `resize` to avoid expensive layout recalculations in high-frequency event handlers.
