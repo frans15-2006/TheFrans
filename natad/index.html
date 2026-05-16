@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natad Bar and Grill — Borongan City, Eastern Samar</title>
   <meta name="description" content="Natad Bar and Grill — Authentic Filipino ihaw-ihaw, silog meals, and cold drinks in Borongan City, Eastern Samar." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -110,11 +111,50 @@
       /* REPLACE: background-image: url('./imgs/hero.jpg'); */
       background: radial-gradient(ellipse at 50% 80%, #3A1800 0%, #1A0A00 40%, #080604 100%);
       background-size: cover; background-position: center;
+      will-change: transform;
     }
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,6,4,1) 0%, rgba(8,6,4,0.4) 40%, rgba(8,6,4,0.2) 100%);
+    }
+
+    /* ── PARALLAX STRIP ── */
+    .parallax-strip {
+      position: relative;
+      height: 340px;
+      overflow: hidden;
+    }
+    .parallax-strip-bg {
+      position: absolute;
+      inset: -80px 0;
+      background-image: url('./imgs/g2.jpg');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+    .parallax-strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right,
+        rgba(8,6,4,0.85) 0%,
+        rgba(8,6,4,0.5) 50%,
+        rgba(8,6,4,0.85) 100%
+      );
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 0.8rem;
+    }
+    .strip-text {
+      font-family: var(--ff-brand);
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(232,160,32,0.4);
+    }
+    .strip-sub {
+      font-family: var(--ff-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--bamboo);
     }
 
     /* ember particles */
@@ -838,6 +878,15 @@
     </div>
   </section>
 
+  <!-- PARALLAX STRIP -->
+  <div class="parallax-strip">
+    <div class="parallax-strip-bg" id="strip-bg"></div>
+    <div class="parallax-strip-overlay">
+      <p class="strip-text">Grill. Chill. Repeat.</p>
+      <p class="strip-sub">Borongan City · Eastern Samar</p>
+    </div>
+  </div>
+
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
@@ -957,6 +1006,37 @@
     const links  = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
     function closeMenu() { links.classList.remove('open'); }
+
+    // ── Parallax ──
+    const heroBg   = document.querySelector('.hero-bg');
+    const stripBg  = document.getElementById('strip-bg');
+    const aboutImg = document.querySelector('.about-img-wrap');
+
+    function onScroll() {
+      const sy = window.scrollY;
+
+      // Hero bg moves slower than scroll (depth illusion)
+      if (heroBg) {
+        heroBg.style.transform = `translateY(${sy * 0.45}px)`;
+      }
+
+      // Parallax strip
+      if (stripBg) {
+        const rect = stripBg.parentElement.getBoundingClientRect();
+        const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * 0.25;
+        stripBg.style.transform = `translateY(${offset}px)`;
+      }
+
+      // About image subtle drift
+      if (aboutImg) {
+        const rect = aboutImg.getBoundingClientRect();
+        const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * 0.08;
+        aboutImg.style.transform = `translateY(${offset}px)`;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // ── Ember particles ──
     const container = document.getElementById('embers');
