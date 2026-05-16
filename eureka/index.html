@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23D4281E'/%3E%3Ctext x='3' y='22' font-family='Georgia,serif' font-weight='700' font-size='15' fill='%23f5ead6'%3EEB%3C/text%3E%3C/svg%3E">
+<title>Eureka! Bistro x Café — Puerto Princesa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*::-webkit-scrollbar{display:none;}
+*{-ms-overflow-style:none;scrollbar-width:none;}
+:root{
+  --red:#D4281E;--red2:#b82018;--red3:rgba(212,40,30,0.12);
+  --bg:#0e0a06;--bg2:#161009;--bg3:#1e1610;
+  --warm:#f5ead6;--warm2:rgba(245,234,214,0.72);--warm3:rgba(245,234,214,0.12);
+  --gold:#c9963a;--gold2:rgba(201,150,58,0.2);
+  --border:rgba(245,234,214,0.07);--border-red:rgba(212,40,30,0.2);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--warm);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ── PROGRESS BAR ── */
+#prog{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--red);z-index:9999;transition:width .05s linear;pointer-events:none;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(14,10,6,0);backdrop-filter:blur(0px);border-bottom:0.5px solid transparent;transition:all .4s;}
+nav.scrolled{background:rgba(14,10,6,0.95);backdrop-filter:blur(20px);border-bottom-color:var(--border);}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:1.35rem;color:var(--warm);text-decoration:none;}
+.logo em{color:var(--red);font-style:normal;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--warm2);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-cta{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--red);padding:.55rem 1.6rem;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--red2);}
+
+/* ── PARALLAX HERO ── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-parallax{position:absolute;inset:-20%;background:url('imgs/hero.jpg') center/cover no-repeat;will-change:transform;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,10,6,0.55) 0%,rgba(14,10,6,0.3) 40%,rgba(14,10,6,0.75) 80%,rgba(14,10,6,1) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem;}
+.hero-eyebrow{font-size:.65rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:.8rem;animation:fadeUp .8s .2s both;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:2rem;height:.5px;background:var(--gold);opacity:.6;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4.5rem,10vw,10rem);font-weight:900;line-height:.88;color:var(--warm);margin-bottom:1rem;animation:fadeUp .9s .3s both;}
+.hero-title .red{color:var(--red);}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--warm2);margin-bottom:3rem;animation:fadeUp .9s .45s both;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .9s .6s both;}
+.btn-red{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--red);padding:.9rem 2.5rem;text-decoration:none;display:inline-block;transition:background .2s,transform .2s;}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);}
+.btn-ghost{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--warm2);border:.5px solid rgba(245,234,214,.25);padding:.9rem 2.5rem;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-ghost:hover{color:var(--warm);border-color:rgba(245,234,214,.5);transform:translateY(-2px);}
+.hero-scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;animation:fadeUp .9s .9s both;}
+.scroll-line{width:.5px;height:3rem;background:linear-gradient(to bottom,rgba(245,234,214,.5),transparent);animation:scrollPulse 2.5s infinite;}
+.scroll-txt{font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(245,234,214,.35);}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--red);overflow:hidden;padding:.75rem 0;}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;}
+.marquee-item{font-family:'Playfair Display',serif;font-size:.82rem;font-style:italic;letter-spacing:.1em;color:rgba(255,255,255,.88);padding:0 2.2rem;flex-shrink:0;}
+.marquee-sep{opacity:.3;padding:0;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* ── SECTION BASE ── */
+section{padding:8rem 3rem;}
+.sec-tag{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem;}
+.sec-tag::before{content:'';display:block;width:1.8rem;height:.5px;background:var(--gold);opacity:.6;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:700;line-height:.95;color:var(--warm);margin-bottom:1rem;}
+.sec-title em{color:var(--red);font-style:italic;}
+
+/* ── PARALLAX STRIP ── */
+.parallax-strip{height:60vh;position:relative;overflow:hidden;}
+.parallax-strip-img{position:absolute;inset:-20%;background-size:cover;background-position:center;background-attachment:fixed;will-change:transform;}
+.parallax-strip-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.parallax-strip-label{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,7rem);font-weight:900;font-style:italic;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.5);text-align:center;line-height:1;}
+.parallax-strip-label span{color:var(--red);}
+
+/* ── STORY ── */
+.story{background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.story-img-wrap{position:relative;height:580px;overflow:hidden;}
+.story-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+.story-img-wrap:hover .story-img{transform:scale(1.04);}
+.story-badge{position:absolute;top:2rem;left:2rem;background:var(--red);padding:.5rem 1.2rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;z-index:2;}
+.story-corner{position:absolute;bottom:-1rem;right:-1rem;width:4rem;height:4rem;background:var(--gold);opacity:.18;z-index:0;}
+.story-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-red);position:absolute;bottom:0;left:0;right:0;z-index:2;}
+.story-stat{background:rgba(14,10,6,.85);backdrop-filter:blur(8px);padding:1.2rem 1.5rem;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--warm);line-height:1;}
+.stat-n span{color:var(--red);font-size:1.1rem;}
+.stat-l{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,234,214,.3);margin-top:.25rem;}
+.story-text p{font-size:.95rem;line-height:1.85;color:var(--warm2);margin-bottom:1.1rem;}
+.story-text p strong{color:var(--warm);font-weight:500;}
+.story-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.story-tag{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.35rem .9rem;border:.5px solid var(--border-red);color:rgba(201,150,58,.7);}
+
+/* ── GALLERY GRID ── */
+.gallery{background:var(--bg);padding:6rem 3rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:4px;}
+.g-item{overflow:hidden;position:relative;cursor:default;}
+.g-item.tall{grid-row:span 2;}
+.g-item.wide{grid-column:span 2;}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.46,.45,.94);}
+.g-item:hover img{transform:scale(1.06);}
+.g-item-overlay{position:absolute;inset:0;background:rgba(14,10,6,0);transition:background .4s;}
+.g-item:hover .g-item-overlay{background:rgba(212,40,30,0.08);}
+
+/* ── MENU SECTION ── */
+.menu-sec{background:var(--bg2);padding:8rem 3rem;}
+.menu-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;}
+.menu-tabs{display:flex;gap:0;border-bottom:.5px solid var(--border);margin-bottom:3rem;}
+.m-tab{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;padding:.85rem 1.5rem;color:var(--warm2);background:none;border:none;cursor:pointer;position:relative;transition:color .2s;}
+.m-tab:hover{color:var(--warm);}
+.m-tab.active{color:var(--red);}
+.m-tab.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);}
+.menu-panel{display:none;}
+.menu-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);}
+.menu-item{background:var(--bg2);padding:1.8rem 2rem;transition:background .25s;position:relative;overflow:hidden;}
+.menu-item:hover{background:var(--bg3);}
+.menu-item::after{content:'';position:absolute;left:0;top:0;width:2px;height:0%;background:var(--red);transition:height .4s;}
+.menu-item:hover::after{height:100%;}
+.mi-cat{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.mi-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--warm);margin-bottom:.4rem;line-height:1.2;}
+.mi-desc{font-size:.8rem;line-height:1.6;color:var(--warm2);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:.7rem;}
+.mi-price{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--red);}
+.mi-fave{display:inline-block;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;background:var(--red);color:#fff;padding:.2rem .6rem;margin-bottom:.5rem;}
+
+/* ── AMBIANCE PARALLAX ── */
+.ambiance{background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.ambiance-img{height:700px;position:relative;overflow:hidden;}
+.ambiance-img img{width:100%;height:120%;object-fit:cover;object-position:center;}
+.ambiance-content{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center;background:var(--bg2);}
+.ambiance-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.pill{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border:.5px solid var(--border-red);color:rgba(201,150,58,.7);}
+.ambiance-content p{font-size:.95rem;line-height:1.85;color:var(--warm2);margin-bottom:1rem;}
+
+/* ── ORDER ── */
+.order-sec{background:var(--bg);padding:7rem 3rem;}
+.order-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.order-tagline{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--warm2);line-height:1.7;margin-bottom:2rem;}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;}
+.chip-a{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;background:var(--red);color:#fff;}
+.chip-p{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1rem;border:.5px solid var(--border);color:var(--warm2);}
+.contact-card{background:var(--bg3);border:.5px solid var(--border-red);position:relative;}
+.contact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),var(--gold));}
+.ci{display:flex;align-items:flex-start;gap:1.2rem;padding:1.3rem 1.8rem;border-bottom:.5px solid var(--border);transition:background .2s,padding-left .25s;}
+.ci:last-child{border-bottom:none;}
+.ci:hover{background:rgba(212,40,30,.03);padding-left:2.2rem;}
+.ci-label{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);min-width:5.5rem;padding-top:.15rem;flex-shrink:0;}
+.ci-val{font-size:.88rem;color:var(--warm);line-height:1.5;}
+.ci-val a{color:var(--warm);text-decoration:none;transition:color .2s;}
+.ci-val a:hover{color:var(--gold);}
+.ci-sub{font-size:.72rem;color:rgba(245,234,214,.28);margin-top:.15rem;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:.5px solid var(--border);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;overflow:hidden;}
+.foot-bg{position:absolute;inset:0;display:flex;align-items:center;overflow:hidden;pointer-events:none;}
+.foot-bg-text{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;font-style:italic;color:rgba(212,40,30,.03);white-space:nowrap;animation:marquee 18s linear infinite;}
+.foot-logo{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:1.2rem;color:var(--warm);position:relative;z-index:1;}
+.foot-logo em{color:var(--red);font-style:normal;}
+.foot-copy{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,234,214,.2);position:relative;z-index:1;}
+.foot-links{display:flex;gap:2rem;position:relative;z-index:1;}
+.foot-links a{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,234,214,.25);text-decoration:none;transition:color .2s;}
+.foot-links a:hover{color:var(--red);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  section{padding:5rem 1.5rem;}
+  .story{grid-template-columns:1fr;}.story-img-wrap{height:320px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}.g-item.tall{grid-row:auto;}.g-item.wide{grid-column:auto;}
+  .ambiance{grid-template-columns:1fr;}.ambiance-img{height:360px;}.ambiance-content{padding:4rem 2rem;}
+  .order-inner{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;}
+  .parallax-strip-img{background-attachment:scroll;}
+  .hero-parallax{background-attachment:scroll;}
+}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:1fr;}
+  .menu-tabs{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="main-nav">
+  <a href="#" class="logo"><em>Eureka!</em> Bistro x Café</a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#menu-sec">Menu</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <a href="tel:09765413115" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO WITH PARALLAX -->
+<div class="hero" id="hero">
+  <div class="hero-parallax" id="hero-parallax"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Puerto Princesa · Palawan · Open Daily</div>
+    <h1 class="hero-title"><em class="red">Eureka!</em><br>Bistro x Café</h1>
+    <p class="hero-sub">Puerto Princesa's Best California Sushi Bake</p>
+    <div class="hero-actions">
+      <a href="#menu-sec" class="btn-red">See Full Menu</a>
+      <a href="#order" class="btn-ghost">Order Delivery</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-txt">Scroll</span></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">California Sushi Bake</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Buldak Omelette</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Okonomiyaki</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Creamy Udon</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Kani Salad</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Cloud Series</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Musubi Supreme</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Hainanese Chicken</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Waffles</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Student Meals</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">California Sushi Bake</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Buldak Omelette</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Okonomiyaki</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Creamy Udon</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Kani Salad</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Cloud Series</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Musubi Supreme</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Hainanese Chicken</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Waffles</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Student Meals</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-img-wrap reveal">
+    <img src="imgs/food-spread.jpg" alt="Eureka food spread" class="story-img">
+    <div class="story-badge">Est. December 2023</div>
+    <div class="story-stats">
+      <div class="story-stat"><div class="stat-n">2.6<span>K</span></div><div class="stat-l">Followers</div></div>
+      <div class="story-stat"><div class="stat-n">100<span>%</span></div><div class="stat-l">Recommend</div></div>
+      <div class="story-stat"><div class="stat-n">10<span>AM</span></div><div class="stat-l">Opens Daily</div></div>
+      <div class="story-stat"><div class="stat-n">9<span>PM</span></div><div class="stat-l">Closes Daily</div></div>
+    </div>
+    <div class="story-corner"></div>
+  </div>
+  <div class="reveal d2">
+    <div class="sec-tag">Our Story</div>
+    <h2 class="sec-title">Good Food.<br><em>Good Mood.</em></h2>
+    <div class="story-text">
+      <p>Eureka started with one obsession — the <strong>California Sushi Bake</strong>. Warm, golden, loaded with flavor, and baked to perfection. Puerto Princesa hadn't tasted anything quite like it.</p>
+      <p>Now we've built a full menu around that same spirit: <strong>Buldak Omelettes, Creamy Udon, Okonomiyaki, Cloud Series drinks, Waffles</strong> — every item earned its place. No filler. No compromise.</p>
+      <p>Located at <strong>V Building, Malvar Street corner H. Mendoza</strong>, Puerto Princesa City.</p>
+    </div>
+    <div class="story-tags">
+      <span class="story-tag">Dine In</span>
+      <span class="story-tag">Takeout</span>
+      <span class="story-tag">GrabFood</span>
+      <span class="story-tag">Curbside</span>
+      <span class="story-tag">Student-Friendly</span>
+      <span class="story-tag">All Day</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX STRIP 1 -->
+<div class="parallax-strip">
+  <div class="parallax-strip-img" id="strip1" style="background-image:url('imgs/interior.jpg');"></div>
+  <div class="parallax-strip-overlay" style="background:rgba(14,10,6,0.55);">
+    <div class="parallax-strip-label">Golden Arches.<br><span>Good Vibes.</span></div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="reveal" style="margin-bottom:3rem;">
+    <div class="sec-tag">Inside Eureka</div>
+    <h2 class="sec-title">The Space.<br><em>The Food.</em></h2>
+  </div>
+  <div class="gallery-grid reveal d1">
+    <div class="g-item tall"><img src="imgs/hero.jpg" alt="Eureka storefront"><div class="g-item-overlay"></div></div>
+    <div class="g-item"><img src="imgs/waffles.jpg" alt="Waffles"><div class="g-item-overlay"></div></div>
+    <div class="g-item"><img src="imgs/musubi.jpg" alt="Musubi"><div class="g-item-overlay"></div></div>
+    <div class="g-item wide"><img src="imgs/kani.jpg" alt="Food table" style="object-position:center 40%;"><div class="g-item-overlay"></div></div>
+    <div class="g-item"><img src="imgs/drinks.jpg" alt="Drinks"><div class="g-item-overlay"></div></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec" id="menu-sec">
+  <div class="menu-header reveal">
+    <div>
+      <div class="sec-tag">Full Menu · Updated Feb 2026</div>
+      <h2 class="sec-title">Everything<br><em>We Make.</em></h2>
+    </div>
+    <a href="https://facebook.com/eurekabistrocafe" target="_blank" rel="noopener" class="btn-ghost">Order via Facebook →</a>
+  </div>
+
+  <div class="menu-tabs">
+    <button class="m-tab active" onclick="switchTab('sushi')">Sushi Bake</button>
+    <button class="m-tab" onclick="switchTab('japanese')">Japanese</button>
+    <button class="m-tab" onclick="switchTab('mains')">Mains</button>
+    <button class="m-tab" onclick="switchTab('drinks')">Drinks</button>
+    <button class="m-tab" onclick="switchTab('students')">Students</button>
+  </div>
+
+  <div id="tab-sushi" class="menu-panel active">
+    <div class="menu-item"><div class="mi-fave">Best Seller</div><div class="mi-cat">California Sushi Bake</div><div class="mi-name">Classic</div><div class="mi-desc">Layers of baked rice, mango, and kani with Nori.</div><div class="mi-price">Market Price</div></div>
+    <div class="menu-item"><div class="mi-fave">Fan Fave</div><div class="mi-cat">California Sushi Bake</div><div class="mi-name">Umami Floss</div><div class="mi-desc">With furikake and chicken floss on crispy Nori.</div><div class="mi-price">₱249</div></div>
+    <div class="menu-item"><div class="mi-fave">Fan Fave</div><div class="mi-cat">California Sushi Bake</div><div class="mi-name">Cheesy Bacon</div><div class="mi-desc">Topped with cheese and bacon on Nori.</div><div class="mi-price">₱259</div></div>
+    <div class="menu-item"><div class="mi-cat">Add-on</div><div class="mi-name">Extra Nori</div><div class="mi-desc">Add more Nori sheets to your sushi bake.</div><div class="mi-price">₱40</div></div>
+  </div>
+
+  <div id="tab-japanese" class="menu-panel">
+    <div class="menu-item"><div class="mi-cat">Onigiri / Musubi</div><div class="mi-name">Onigiri Supreme</div><div class="mi-desc">Flavorful rice ball with tuna mayo, furikake, and pork floss.</div><div class="mi-price">₱70</div></div>
+    <div class="menu-item"><div class="mi-cat">Onigiri / Musubi</div><div class="mi-name">Musubi Supreme</div><div class="mi-desc">Savory Spam on seasoned rice, furikake, and chicken floss wrapped in seaweed.</div><div class="mi-price">₱99</div></div>
+    <div class="menu-item"><div class="mi-cat">Japanese</div><div class="mi-name">Okonomiyaki</div><div class="mi-desc">Savory Japanese pancake with crisp veggies and crab sticks, finished with bonito flakes.</div><div class="mi-price">₱179</div></div>
+    <div class="menu-item"><div class="mi-fave">Spicy</div><div class="mi-cat">Korean-Filipino</div><div class="mi-name">Buldak Omelette</div><div class="mi-desc">Spicy Samyang noodles folded into fluffy eggs with melty cheese.</div><div class="mi-price">₱180 / ₱270</div></div>
+  </div>
+
+  <div id="tab-mains" class="menu-panel">
+    <div class="menu-item"><div class="mi-cat">Rice Meals</div><div class="mi-name">Hainanese Chicken Rice</div><div class="mi-desc">Tender slow-poached chicken with fragrant rice, soup, and sauces.</div><div class="mi-price">₱239</div></div>
+    <div class="menu-item"><div class="mi-cat">Rice Meals</div><div class="mi-name">Burger Steak Supreme</div><div class="mi-desc">Juicy burger patty in mushroom sauce with buttered vegetables.</div><div class="mi-price">₱249</div></div>
+    <div class="menu-item"><div class="mi-cat">Salad</div><div class="mi-name">Kani Salad</div><div class="mi-desc">Crabstick, cucumber, carrots, mango in creamy sesame-mayo with udon noodles.</div><div class="mi-price">₱229</div></div>
+    <div class="menu-item"><div class="mi-fave">Signature</div><div class="mi-cat">Noodles</div><div class="mi-name">Eureka's Creamy Udon</div><div class="mi-desc">Signature Cajun cream udon balanced with smoky sausage.</div><div class="mi-price">₱239</div></div>
+    <div class="menu-item"><div class="mi-cat">All Day Breakfast</div><div class="mi-name">Longganisa Silog</div><div class="mi-desc">Sweet & savory longganisa with garlic rice and fried egg.</div><div class="mi-price">₱229</div></div>
+    <div class="menu-item"><div class="mi-cat">All Day Breakfast</div><div class="mi-name">Tocino Silog</div><div class="mi-desc">Marinated chicken tocino with garlic rice and fried egg.</div><div class="mi-price">₱239</div></div>
+  </div>
+
+  <div id="tab-drinks" class="menu-panel">
+    <div class="menu-item"><div class="mi-cat">Coffee · Hot or Iced</div><div class="mi-name">Americano</div><div class="mi-desc">Espresso diluted with water.</div><div class="mi-price">₱119 / ₱129</div></div>
+    <div class="menu-item"><div class="mi-cat">Coffee · Hot or Iced</div><div class="mi-name">Caffè Latte</div><div class="mi-desc">Espresso with milk.</div><div class="mi-price">₱119 / ₱129</div></div>
+    <div class="menu-item"><div class="mi-cat">Coffee · Hot or Iced</div><div class="mi-name">Biscoff Latte</div><div class="mi-desc">Espresso with milk and biscoff twist.</div><div class="mi-price">₱199 / ₱229</div></div>
+    <div class="menu-item"><div class="mi-fave">Fan Fave</div><div class="mi-cat">Cloud Series</div><div class="mi-name">Matcha / Ube / Choco Cloud</div><div class="mi-desc">Creamy non-coffee cloud drinks in three flavors.</div><div class="mi-price">₱129</div></div>
+    <div class="menu-item"><div class="mi-cat">Ice Shaken</div><div class="mi-name">Pink Guava Fizz</div><div class="mi-desc">Refreshing pink guava with soda and coconut jelly.</div><div class="mi-price">₱119</div></div>
+    <div class="menu-item"><div class="mi-cat">Ice Shaken</div><div class="mi-name">Honey Citron & Ginger</div><div class="mi-desc">Sweet honey citron and zesty ginger, shaken over ice with coconut jelly.</div><div class="mi-price">₱119</div></div>
+  </div>
+
+  <div id="tab-students" class="menu-panel">
+    <div class="menu-item"><div class="mi-fave">Budget</div><div class="mi-cat">Student Meals</div><div class="mi-name">Ham & Egg</div><div class="mi-desc">3pcs savory ham, egg, and steamed rice.</div><div class="mi-price">₱89</div></div>
+    <div class="menu-item"><div class="mi-fave">Budget</div><div class="mi-cat">Student Meals</div><div class="mi-name">Burger Steak</div><div class="mi-desc">Burger patty with mushroom sauce and steamed rice.</div><div class="mi-price">₱99</div></div>
+    <div class="menu-item"><div class="mi-cat">Student Meals</div><div class="mi-name">Spam Silog</div><div class="mi-desc">Savory Spam slices with garlic rice and fried egg.</div><div class="mi-price">₱249</div></div>
+  </div>
+  <p style="font-size:.68rem;color:rgba(245,234,214,.2);margin-top:1.5rem;letter-spacing:.08em;text-align:right;">* Prices approximate. Check Facebook for latest promos.</p>
+</section>
+
+<!-- PARALLAX STRIP 2 -->
+<div class="parallax-strip">
+  <div class="parallax-strip-img" id="strip2" style="background-image:url('imgs/kani.jpg');"></div>
+  <div class="parallax-strip-overlay" style="background:rgba(14,10,6,0.6);">
+    <div class="parallax-strip-label">Come Hungry.<br><span>Leave Happy.</span></div>
+  </div>
+</div>
+
+<!-- AMBIANCE -->
+<div class="ambiance" id="ambiance">
+  <div class="ambiance-img">
+    <img src="imgs/interior.jpg" alt="Eureka interior" id="ambiance-img">
+  </div>
+  <div class="ambiance-content">
+    <div class="reveal">
+      <div class="sec-tag">The Space</div>
+      <h2 class="sec-title">Aesthetic.<br><em>Cozy. Yours.</em></h2>
+      <p>Golden arched walls, rattan chairs, warm ambient light. Eureka isn't just about the food — it's the whole experience. Every corner is built to make you want to stay longer.</p>
+      <p>Bring your laptop, bring your friends, bring your appetite. We've got GrabFood for when you can't make it, and a space worth coming to when you can.</p>
+      <div class="ambiance-pills">
+        <span class="pill">Free WiFi</span>
+        <span class="pill">Indoor Seating</span>
+        <span class="pill">GrabFood</span>
+        <span class="pill">Curbside Pickup</span>
+        <span class="pill">Date Spot</span>
+        <span class="pill">Group Friendly</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER -->
+<section class="order-sec" id="order">
+  <div class="order-inner">
+    <div class="reveal">
+      <div class="sec-tag">Order</div>
+      <h2 class="sec-title">Get It<br><em>Now.</em></h2>
+      <p class="order-tagline">Hot, fresh, and ready when you are — delivered to your door or waiting for you at the counter.</p>
+      <div class="chips">
+        <span class="chip-a">Direct Delivery</span>
+        <span class="chip-a">GrabFood</span>
+        <span class="chip-p">Curbside Pickup</span>
+        <span class="chip-p">Dine In</span>
+      </div>
+      <a href="https://facebook.com/eurekabistrocafe" target="_blank" rel="noopener" class="btn-red">Order on Facebook</a>
+    </div>
+    <div class="contact-card reveal d2">
+      <div class="ci"><div class="ci-label">Call</div><div><div class="ci-val"><a href="tel:09765413115">0976 541 3115</a></div><div class="ci-sub">Call or text for orders</div></div></div>
+      <div class="ci"><div class="ci-label">Email</div><div><div class="ci-val"><a href="mailto:csbbyeureka@gmail.com">csbbyeureka@gmail.com</a></div><div class="ci-sub">For inquiries</div></div></div>
+      <div class="ci"><div class="ci-label">Facebook</div><div><div class="ci-val"><a href="https://facebook.com/eurekabistrocafe" target="_blank" rel="noopener">@eurekabistrocafe</a></div><div class="ci-sub">Primary order channel</div></div></div>
+      <div class="ci"><div class="ci-label">Address</div><div><div class="ci-val">V Building, Malvar St cor. H. Mendoza</div><div class="ci-sub">Puerto Princesa City, Palawan</div></div></div>
+      <div class="ci"><div class="ci-label">Hours</div><div><div class="ci-val">10:00 AM — 9:00 PM</div><div class="ci-sub">Open Daily</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-bg"><div class="foot-bg-text">Eureka! Bistro x Café &nbsp;·&nbsp; Puerto Princesa's Best &nbsp;·&nbsp; California Sushi Bake &nbsp;·&nbsp; Eureka! Bistro x Café &nbsp;·&nbsp; Puerto Princesa's Best &nbsp;·&nbsp; California Sushi Bake &nbsp;</div></div>
+  <div class="foot-logo"><em>Eureka!</em> Bistro x Café</div>
+  <div class="foot-copy">© 2026 · Puerto Princesa City · Palawan · Philippines</div>
+  <div class="foot-links">
+    <a href="https://facebook.com/eurekabistrocafe" target="_blank" rel="noopener">Facebook</a>
+    <a href="#menu-sec">Menu</a>
+    <a href="#order">Order</a>
+  </div>
+</footer>
+
+<script>
+/* SCROLL PROGRESS */
+const prog=document.getElementById('prog');
+const nav=document.getElementById('main-nav');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  prog.style.width=pct+'%';
+  nav.classList.toggle('scrolled',window.scrollY>60);
+},{ passive:true });
+
+/* PARALLAX */
+const heroPx=document.getElementById('hero-parallax');
+const strip1=document.getElementById('strip1');
+const strip2=document.getElementById('strip2');
+const amImg=document.getElementById('ambiance-img');
+function onScroll(){
+  const sy=window.scrollY;
+  if(heroPx) heroPx.style.transform=`translateY(${sy*0.4}px)`;
+  if(strip1){
+    const r=strip1.parentElement.getBoundingClientRect();
+    strip1.style.transform=`translateY(${-r.top*0.3}px)`;
+  }
+  if(strip2){
+    const r=strip2.parentElement.getBoundingClientRect();
+    strip2.style.transform=`translateY(${-r.top*0.3}px)`;
+  }
+  if(amImg){
+    const r=amImg.closest('.ambiance-img').getBoundingClientRect();
+    amImg.style.transform=`translateY(${-r.top*0.12}px)`;
+  }
+}
+window.addEventListener('scroll',onScroll,{ passive:true });
+onScroll();
+
+/* REVEAL */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target);}});
+},{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* MENU TABS */
+function switchTab(id){
+  document.querySelectorAll('.m-tab').forEach((t,i)=>{
+    t.classList.toggle('active',['sushi','japanese','mains','drinks','students'][i]===id);
+  });
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+}
+</script>
+</body>
+</html>
