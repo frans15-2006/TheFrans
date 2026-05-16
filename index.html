@@ -217,9 +217,67 @@
     .status-badge { font-family: var(--mono); font-size: 11px; padding: 5px 12px; border-radius: 999px; background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); white-space: nowrap; }
     .status-badge.dev { background: rgba(240,165,0,0.1); color: var(--accent); border-color: rgba(240,165,0,0.2); }
 
-    /* ====== GALLERY ====== */
-    #gallery { padding: 100px 0; }
+    /* CLIENT WORK */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .client-card {
+      position: relative; background: var(--bg-2);
+      padding: 1.8rem 1.5rem; text-decoration: none;
+      color: var(--text); overflow: hidden;
+      transition: background 0.25s; display: block;
+    }
+    .client-card:hover { background: var(--bg-3); }
+    .client-hover-bar {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--accent); transform: scaleX(0);
+      transform-origin: left; transition: transform 0.3s ease;
+    }
+    .client-card:hover .client-hover-bar { transform: scaleX(1); }
+    .client-card-inner { display: flex; flex-direction: column; gap: 0.5rem; height: 100%; }
+    .client-top { display: flex; flex-direction: column; gap: 0.2rem; }
+    .client-type {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .client-location {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--text-3); letter-spacing: 0.04em;
+    }
+    .client-name {
+      font-size: 14px; font-weight: 700; letter-spacing: -0.01em;
+      line-height: 1.25; margin-top: 0.5rem; flex: 1;
+      color: var(--text); transition: color 0.2s;
+    }
+    .client-card:hover .client-name { color: var(--accent); }
+    .client-bottom { margin-top: 1rem; }
+    .client-live {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--text-3); letter-spacing: 0.08em; transition: color 0.2s;
+    }
+    .client-card:hover .client-live { color: var(--accent); }
+    .clients-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .clients-count { font-family: var(--mono); font-size: 12px; color: var(--text-3); letter-spacing: 0.08em; }
+    .clients-more {
+      font-family: var(--mono); font-size: 11px; color: var(--text-3);
+      background: var(--bg-2); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 999px;
+    }
+    @media (max-width: 768px) { .clients-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .clients-grid { grid-template-columns: 1fr; } }
 
+    /* GALLERY */
+    #gallery { padding: 100px 0; }
     .gallery-header {
       display: flex; align-items: flex-end; justify-content: space-between;
       margin-bottom: 48px; padding-bottom: 28px; border-bottom: 1px solid var(--border);
@@ -238,7 +296,6 @@
     .gallery-heading em { font-style: italic; color: var(--accent); }
     .gallery-meta-right { text-align: right; }
     .gallery-meta-right p { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; line-height: 2; }
-
     .gallery-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.72fr 0.98fr;
@@ -253,10 +310,7 @@
       filter: grayscale(100%) contrast(1.06) brightness(0.92);
       transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease;
     }
-    .gallery-item:hover img {
-      transform: scale(1.05);
-      filter: grayscale(60%) contrast(1.1) brightness(1);
-    }
+    .gallery-item:hover img { transform: scale(1.05); filter: grayscale(60%) contrast(1.1) brightness(1); }
     .gallery-item-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(12,12,14,0.85) 0%, rgba(12,12,14,0.1) 45%, transparent 100%);
@@ -265,51 +319,29 @@
       padding: 1.5rem 1.25rem;
     }
     .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-    .overlay-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 3rem;
-      font-weight: 300; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 6px;
-    }
-    .overlay-cat {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 3px;
-    }
-    .overlay-title {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.35rem;
-      font-weight: 300; color: var(--text); line-height: 1.2;
-    }
-
+    .overlay-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 6px; }
+    .overlay-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+    .overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; color: var(--text); line-height: 1.2; }
     .gallery-strip {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 0; border-top: 1px solid var(--border); margin-top: 2px;
     }
     .strip-text { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; }
     .strip-dots { display: flex; gap: 6px; align-items: center; }
-    .strip-dot {
-      width: 4px; height: 4px; border-radius: 50%;
-      background: var(--accent); opacity: 0.25; transition: opacity 0.3s;
-    }
+    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.25; transition: opacity 0.3s; }
     .strip-dot.active { opacity: 1; }
 
-    /* Lightbox */
+    /* LIGHTBOX */
     .lb-backdrop {
       position: fixed; inset: 0; background: rgba(12,12,14,0.97);
       z-index: 200; display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
     }
     .lb-backdrop.open { opacity: 1; pointer-events: all; }
-    .lb-wrap {
-      position: relative; max-width: 480px; width: 88vw;
-      transform: translateY(24px); transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
+    .lb-wrap { position: relative; max-width: 480px; width: 88vw; transform: translateY(24px); transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
     .lb-backdrop.open .lb-wrap { transform: translateY(0); }
-    .lb-wrap img {
-      width: 100%; display: block;
-      filter: grayscale(100%) contrast(1.06);
-    }
-    .lb-bar {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      padding: 14px 0 0;
-    }
+    .lb-wrap img { width: 100%; display: block; filter: grayscale(100%) contrast(1.06); }
+    .lb-bar { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0 0; }
     .lb-info .lb-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
     .lb-info .lb-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--text); }
     .lb-controls { display: flex; gap: 6px; }
@@ -317,8 +349,7 @@
       width: 34px; height: 34px; background: transparent;
       border: 1px solid var(--border); color: var(--text-2);
       font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-      font-family: var(--sans);
+      transition: border-color 0.2s, color 0.2s, background 0.2s; font-family: var(--sans);
     }
     .lb-btn:hover { border-color: rgba(240,165,0,0.4); color: var(--accent); background: var(--accent-dim); }
     .lb-close {
@@ -479,6 +510,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#clients">Clients</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -517,8 +549,8 @@
         <div>
           <div class="about-stats">
             <div class="stat-card reveal reveal-delay-1">
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Projects Shipped</div>
+              <div class="stat-num">8+</div>
+              <div class="stat-label">Sites Shipped</div>
             </div>
             <div class="stat-card reveal reveal-delay-2">
               <div class="stat-num">2+</div>
@@ -709,6 +741,123 @@
 
   <div class="divider"></div>
 
+  <!-- CLIENT WORK -->
+  <section id="clients">
+    <div class="container">
+      <div class="section-label">Client Work</div>
+      <h2 class="section-title">Sites I've Shipped</h2>
+      <p class="section-desc">Production websites built and deployed for local businesses across the Philippines — each one live on GitHub Pages.</p>
+
+      <div class="clients-grid">
+
+        <a href="./mix-match-kain/" target="_blank" rel="noopener" class="client-card reveal">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Restaurant</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">Mix &amp; Match Kain</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./summer-days/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-1">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Café</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">Summer Days Cafe</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./bnb/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-2">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Bed &amp; Breakfast</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">Nonoy Matt B&amp;B</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./ptci/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-3">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Institution</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">PTCI</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./divine-truffles/" target="_blank" rel="noopener" class="client-card reveal">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Confectionery</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">Divine Truffles</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./eureka/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-1">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Bistro &amp; Café</span>
+              <span class="client-location">Philippines</span>
+            </div>
+            <div class="client-name">Eureka Bistro x Café</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./natad/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-2">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">Bar &amp; Grill</span>
+              <span class="client-location">Borongan City, Eastern Samar</span>
+            </div>
+            <div class="client-name">Natad Bar and Grill</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+        <a href="./igo-bikes/" target="_blank" rel="noopener" class="client-card reveal reveal-delay-3">
+          <div class="client-card-inner">
+            <div class="client-top">
+              <span class="client-type">E-Bike Shop</span>
+              <span class="client-location">Puerto Princesa, Palawan</span>
+            </div>
+            <div class="client-name">iGo Bikes</div>
+            <div class="client-bottom"><span class="client-live">Live ↗</span></div>
+          </div>
+          <div class="client-hover-bar"></div>
+        </a>
+
+      </div>
+
+      <div class="clients-footer reveal">
+        <span class="clients-count"><span style="color:var(--accent)">8</span> sites live</span>
+        <span class="clients-more">+9 in queue</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
@@ -726,7 +875,6 @@
 
       <div class="gallery-grid reveal">
         <div class="gallery-item" data-index="0">
-          <!-- Replace with your actual image path, e.g. src="./assets/photo-1.jpg" -->
           <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">01</div>
@@ -994,7 +1142,7 @@
       if (ring) { ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px'; }
       requestAnimationFrame(animateCursor);
     })();
-    document.querySelectorAll('a, button, .skill-item, .project-card, .stat-card, input, textarea, .gallery-item').forEach(el => {
+    document.querySelectorAll('a, button, .skill-item, .project-card, .stat-card, input, textarea, .gallery-item, .client-card').forEach(el => {
       el.addEventListener('mouseenter', () => { dot && dot.classList.add('hovering'); ring && ring.classList.add('hovering'); });
       el.addEventListener('mouseleave', () => { dot && dot.classList.remove('hovering'); ring && ring.classList.remove('hovering'); });
     });
@@ -1020,7 +1168,7 @@
       btn.innerHTML = 'Send Message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
     });
 
-    // ====== GALLERY ======
+    // Gallery
     const galleryData = [
       { cat: 'Editorial', title: 'The Chair' },
       { cat: 'Portrait',  title: 'The Tie'   },
