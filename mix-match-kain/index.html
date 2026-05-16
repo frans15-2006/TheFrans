@@ -215,9 +215,9 @@
           <span class="syntax-highlight">'main_logic.js'</span>
         </p>
         <p class="error-text error-text-faded">
-          > SyntaxError: Unexpected token 'bro' at line 420
+          &gt; SyntaxError: Unexpected token 'bro' at line 420
         </p>
-        <p class="error-text">> Attempting server-side hotfix...</p>
+        <p class="error-text">&gt; Attempting server-side hotfix...</p>
       </div>
       <p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
     </div>
@@ -247,24 +247,24 @@
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              oninput="handleSearch(this.value)" aria-label="Search food items" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
           <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+            <button type="button" class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
