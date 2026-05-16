@@ -357,6 +357,22 @@ function generateQR() {
 
   playSound(600, 0.3, 'triangle');
 
+  const qrBox = document.getElementById('qrcode');
+  qrBox.innerHTML = '';
+  new QRCode(qrBox, { text: '09618866276', width: 180, height: 180 });
+  // Blur QR and show unavailable overlay
+  setTimeout(() => {
+    const qrImg = qrBox.querySelector('img');
+    const qrCanvas = qrBox.querySelector('canvas');
+    if (qrImg) qrImg.style.cssText = 'filter:blur(12px);pointer-events:none;';
+    if (qrCanvas) qrCanvas.style.cssText = 'filter:blur(12px);pointer-events:none;';
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:10;';
+    overlay.innerHTML = '<span style="font-family:Anton,sans-serif;font-size:1rem;letter-spacing:.12em;color:#ff5e00;text-align:center;padding:.5rem;line-height:1.3;text-transform:uppercase;">QR<br>UNAVAILABLE</span>';
+    qrBox.style.position = 'relative';
+    qrBox.appendChild(overlay);
+  }, 100);
+
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
@@ -365,9 +381,21 @@ function generateQR() {
         <strong>TOTAL:</strong> ₱${total}
         <hr class="summary-label">
         ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
+        <hr class="summary-label">
+
     `;
 
+  // Celebration effects
   createConfetti();
+  setTimeout(() => createSparkles(document.getElementById('qrcode'), 30), 500);
+
+  // Send order to server
+  const orderData = {
+    customer: name,
+    total: total,
+    items: cart.map((c) => ({ name: c.name, qty: c.qty, price: c.price })),
+  };
+  sendOrderToServer(orderData);
 }
 
 // ====== CLOSE MODAL ======
