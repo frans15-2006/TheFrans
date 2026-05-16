@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mix & Match Kain | Pro Edition</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;700&family=Source+Code+Pro&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* ====== SEARCH BAR STYLES ====== */
+    .search-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      background: #1a1a1a;
+      border: 2px solid #333;
+      border-radius: 50px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: none;
+    }
+
+    .search-clear.show {
+      display: block;
+    }
+
+    /* ====== CATEGORY TABS ====== */
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .category-tab {
+      padding: 12px 25px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 25px;
+      color: #888;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .category-tab:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .category-tab.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
+    }
+
+    /* ====== MOBILE LAYOUT IMPROVEMENTS ====== */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr !important;
+        padding: 0 15px !important;
+        gap: 20px !important;
+      }
+
+      .cart-area {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 20px 20px 0 0 !important;
+        z-index: 100;
+        max-height: 50vh;
+        overflow-y: auto;
+      }
+
+      .cart-area.collapsed {
+        max-height: 60px;
+        overflow: hidden;
+      }
+
+      .cart-area.collapsed #cart-list {
+        display: none;
+      }
+
+      .cart-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #333;
+        margin-bottom: 10px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+
+      .card img {
+        height: 100px !important;
+      }
+
+      .card-name {
+        font-size: 0.85rem !important;
+      }
+
+      .card-price {
+        font-size: 1rem !important;
+      }
+
+      .anton-title {
+        font-size: 1.8rem !important;
+      }
+
+      .anton-section-title {
+        font-size: 1.3rem !important;
+      }
+
+      header {
+        padding: 15px !important;
+      }
+
+      .search-bar {
+        padding: 12px 20px 12px 45px;
+        font-size: 0.9rem;
+      }
+
+      .category-tab {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Hide cart toggle on desktop */
+    @media (min-width: 769px) {
+      .cart-toggle {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body onload="startPrank()">
+  <!-- Aurora Background -->
+  <div class="aurora-bg">
+    <div class="aurora"></div>
+    <div class="aurora"></div>
+    <div class="aurora"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Floating Action Button -->
+  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div id="page-wrapper">
+    <!-- Prank Screen -->
+    <div id="error-screen">
+      <div class="terminal-box glitch-box">
+        <p class="error-text glitch-text">
+          [SYSTEM_FAILURE] Critical Dependency Missing.
+        </p>
+        <p class="error-text glitch-text">
+          Failed to load:
+          <span class="syntax-highlight">'main_logic.js'</span>
+        </p>
+        <p class="error-text error-text-faded">
+          > SyntaxError: Unexpected token 'bro' at line 420
+        </p>
+        <p class="error-text">> Attempting server-side hotfix...</p>
+      </div>
+      <p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing-page">
+      <h2 class="hero-title neon-text">MIX & <span>MATCH</span> KAIN</h2>
+      <div class="scroller-container">
+        <div class="scroller-track" id="hero-scroller"></div>
+      </div>
+      <button class="order-now-btn btn ripple" onclick="goToMenu()">
+        ORDER NOW
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+      <header>
+        <h1 class="anton-title neon-text">
+          MIX & MATCH <span class="anton-title-highlight">KAIN</span>
+        </h1>
+      </header>
+
+      <div class="container">
+        <main>
+          <!-- Search Bar -->
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
+              oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()">✕</button>
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+              🍽️ All
+            </div>
+            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+              🍚 Rice
+            </div>
+            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+              🍖 Ulam
+            </div>
+            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+              🥤 Drinks
+            </div>
+          </div>
+
+          <!-- Rice Section -->
+          <div id="rice-section">
+            <h2 class="anton-section-title">🍚 1. SELECT RICE</h2>
+            <div class="grid" id="rice-grid"></div>
+          </div>
+
+          <!-- Ulam Section -->
+          <div id="ulam-section">
+            <h2 class="anton-section-title ulam">🍖 2. SELECT ULAM</h2>
+            <div class="grid" id="ulam-grid"></div>
+          </div>
+
+          <!-- Drinks Section -->
+          <div id="drinks-section">
+            <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
+            <div class="grid" id="drinks-grid"></div>
+          </div>
+        </main>
+
+        <aside class="cart-area" id="cart-sidebar">
+          <div class="cart-toggle" onclick="toggleCart()">
+            <h3 class="cart-header">🛒 YOUR ORDER</h3>
+            <span id="cart-toggle-icon">▼</span>
+          </div>
+          <div id="cart-list">
+            <p class="empty-cart-message">Empty bowl...</p>
+          </div>
+          <div class="cart-total-row">
+            <span>TOTAL</span>
+            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+          </div>
+          <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
+          <button class="confirm-btn btn" onclick="generateQR()">
+            GENERATE QR CODE
+          </button>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-box">
+      <h2 class="scan-title">SCAN TO PAY</h2>
+      <div id="qrcode" class="qrcode-box"></div>
+      <div id="summary" class="summary-box"></div>
+      <button class="confirm-btn done-btn btn" onclick="closeModal()">
+        DONE / NEW ORDER
+      </button>
+    </div>
+  </div>
+
+  <!-- Preload key images for above-fold rendering -->
+  <link rel="preload" href="pictures_of_foods/classic_rice.jpg" as="image">
+  <link rel="preload" href="pictures_of_foods/java_rice.jpg" as="image">
+  <link rel="preload" href="pictures_of_foods/lumpia.jpg" as="image">
+  <link rel="preload" href="pictures_of_foods/sunny_side_egg.jpg" as="image">
+
+  <!-- Basic favicon to silence 404 -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍚</text></svg>">
+
+  <script src="script.js"></script>
+
+  <script>
+    // ====== SEARCH FUNCTIONALITY ======
+    let currentCategory = 'all';
+
+    function handleSearch(query) {
+      const clearBtn = document.querySelector('.search-clear');
+      clearBtn.classList.toggle('show', query.length > 0);
+
+      filterAndShowItems(query.toLowerCase(), currentCategory);
+    }
+
+    function clearSearch() {
+      const searchInput = document.getElementById('search-input');
+      searchInput.value = '';
+      document.querySelector('.search-clear').classList.remove('show');
+      filterAndShowItems('', currentCategory);
+    }
+
+    function filterCategory(category) {
+      currentCategory = category;
+
+      // Update tab active state
+      document.querySelectorAll('.category-tab').forEach((tab) => {
+        tab.classList.toggle('active', tab.dataset.category === category);
+      });
+
+      const query = document
+        .getElementById('search-input')
+        .value.toLowerCase();
+      filterAndShowItems(query, category);
+    }
+
+    function filterAndShowItems(searchQuery, category) {
+      // Filter and show/hide sections based on category and search
+      const riceSection = document.getElementById('rice-section');
+      const ulamSection = document.getElementById('ulam-section');
+      const drinksSection = document.getElementById('drinks-section');
+
+      // Show/hide sections based on category
+      const showRice = category === 'all' || category === 'rice';
+      const showUlam = category === 'all' || category === 'ulam';
+      const showDrinks = category === 'all' || category === 'drinks';
+
+      riceSection.style.display = showRice ? 'block' : 'none';
+      ulamSection.style.display = showUlam ? 'block' : 'none';
+      drinksSection.style.display = showDrinks ? 'block' : 'none';
+
+      // Filter items within each category
+      filterGridItems('rice-grid', riceMenu, searchQuery);
+      filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+    }
+
+    function filterGridItems(gridId, menuItems, searchQuery) {
+      const container = document.getElementById(gridId);
+      const cards = container.querySelectorAll('.card');
+
+      cards.forEach((card, index) => {
+        const itemName = menuItems[index]?.name.toLowerCase() || '';
+        const matchesSearch = !searchQuery || itemName.includes(searchQuery);
+
+        if (matchesSearch) {
+          card.style.display = '';
+          card.classList.add('reveal');
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('reveal');
+        }
+      });
+    }
+
+    // ====== MOBILE CART TOGGLE ======
+    function toggleCart() {
+      const cart = document.getElementById('cart-sidebar');
+      const icon = document.getElementById('cart-toggle-icon');
+      cart.classList.toggle('collapsed');
+      icon.textContent = cart.classList.contains('collapsed') ? '▲' : '▼';
+    }
+  </script>
+</body>
+
+</html>
