@@ -332,7 +332,9 @@ function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
-  toast.innerHTML = `<span>${message}</span>`;
+  const span = document.createElement('span');
+  span.textContent = message;
+  toast.appendChild(span);
   container.appendChild(toast);
 
   setTimeout(() => {
@@ -376,13 +378,25 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
+  const summaryEl = document.getElementById('summary');
+  summaryEl.innerHTML = `
+        <strong>CUSTOMER:</strong> <span id="summary-cust-name"></span><br>
         <strong>TOTAL:</strong> ₱${total}
         <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
+        <div id="summary-items"></div>
         <hr class="summary-label">
     `;
+  document.getElementById('summary-cust-name').textContent = name.toUpperCase();
+  const itemsContainer = document.getElementById('summary-items');
+  cart.forEach((c) => {
+    const itemRow = document.createElement('div');
+    itemRow.textContent = `• ${c.name} `;
+    const qtySpan = document.createElement('span');
+    qtySpan.className = 'summary-item';
+    qtySpan.textContent = `x${c.qty}`;
+    itemRow.appendChild(qtySpan);
+    itemsContainer.appendChild(itemRow);
+  });
 
   // Celebration effects
   createConfetti();
