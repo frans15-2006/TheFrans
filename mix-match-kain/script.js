@@ -359,20 +359,18 @@ function generateQR() {
 
   const qrBox = document.getElementById('qrcode');
   qrBox.innerHTML = '';
+  qrBox.style.position = 'relative';
   new QRCode(qrBox, { text: '09618866276', width: 180, height: 180 });
   setTimeout(() => {
     const qrImg = qrBox.querySelector('img');
     const qrCanvas = qrBox.querySelector('canvas');
     if (qrImg) qrImg.style.cssText = 'filter:blur(14px);pointer-events:none;display:block;';
     if (qrCanvas) qrCanvas.style.cssText = 'filter:blur(14px);pointer-events:none;display:block;';
-    if (!qrBox.querySelector('.qr-unavailable')) {
-      const overlay = document.createElement('div');
-      overlay.className = 'qr-unavailable';
-      overlay.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);z-index:10;gap:6px;';
-      overlay.innerHTML = '<span style="font-family:Anton,sans-serif;font-size:1.1rem;letter-spacing:.15em;color:#ff5e00;text-transform:uppercase;line-height:1.2;text-align:center;">QR<br>UNAVAILABLE</span>';
-      qrBox.style.position = 'relative';
-      qrBox.appendChild(overlay);
-    }
+    const overlay = document.createElement('div');
+    overlay.className = 'qr-unavailable';
+    overlay.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);z-index:10;';
+    overlay.innerHTML = '<span style="font-family:Anton,sans-serif;font-size:1.1rem;letter-spacing:.15em;color:#ff5e00;text-transform:uppercase;line-height:1.2;text-align:center;">QR<br>UNAVAILABLE</span>';
+    qrBox.appendChild(overlay);
   }, 120);
 
   document.getElementById('modal').style.display = 'flex';
@@ -384,7 +382,6 @@ function generateQR() {
         <hr class="summary-label">
         ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
         <hr class="summary-label">
-
     `;
 
   // Celebration effects
