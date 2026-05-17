@@ -39,6 +39,8 @@
 
     html { scroll-behavior: smooth; }
 
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -304,13 +306,14 @@
     .gallery-item {
       position: relative; overflow: hidden; cursor: pointer;
       background: var(--bg-3); aspect-ratio: 3/4;
+      display: block; width: 100%; padding: 0; border: none; font-family: inherit; text-align: left;
     }
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       filter: grayscale(100%) contrast(1.06) brightness(0.92);
       transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease;
     }
-    .gallery-item:hover img { transform: scale(1.05); filter: grayscale(60%) contrast(1.1) brightness(1); }
+    .gallery-item:hover img, .gallery-item:focus img, .gallery-item:focus-visible img { transform: scale(1.05); filter: grayscale(60%) contrast(1.1) brightness(1); }
     .gallery-item-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(12,12,14,0.85) 0%, rgba(12,12,14,0.1) 45%, transparent 100%);
@@ -318,7 +321,7 @@
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 1.5rem 1.25rem;
     }
-    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+    .gallery-item:hover .gallery-item-overlay, .gallery-item:focus .gallery-item-overlay, .gallery-item:focus-visible .gallery-item-overlay { opacity: 1; }
     .overlay-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 6px; }
     .overlay-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
     .overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; color: var(--text); line-height: 1.2; }
@@ -873,30 +876,30 @@
       </div>
 
       <div class="gallery-grid reveal">
-        <div class="gallery-item" data-index="0">
+        <button type="button" class="gallery-item" data-index="0" aria-label="View Editorial: The Chair">
           <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">01</div>
             <div class="overlay-cat">Editorial</div>
             <div class="overlay-title">The Chair</div>
           </div>
-        </div>
-        <div class="gallery-item" data-index="1">
+        </button>
+        <button type="button" class="gallery-item" data-index="1" aria-label="View Portrait: The Tie">
           <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">02</div>
             <div class="overlay-cat">Portrait</div>
             <div class="overlay-title">The Tie</div>
           </div>
-        </div>
-        <div class="gallery-item" data-index="2">
+        </button>
+        <button type="button" class="gallery-item" data-index="2" aria-label="View Editorial: The Wall">
           <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" />
           <div class="gallery-item-overlay">
             <div class="overlay-num">03</div>
             <div class="overlay-cat">Editorial</div>
             <div class="overlay-title">The Wall</div>
           </div>
-        </div>
+        </button>
       </div>
 
       <div class="gallery-strip">
@@ -1144,6 +1147,12 @@
     document.querySelectorAll('a, button, .skill-item, .project-card, .stat-card, input, textarea, .gallery-item, .client-card').forEach(el => {
       el.addEventListener('mouseenter', () => { dot && dot.classList.add('hovering'); ring && ring.classList.add('hovering'); });
       el.addEventListener('mouseleave', () => { dot && dot.classList.remove('hovering'); ring && ring.classList.remove('hovering'); });
+      el.addEventListener('focus', () => {
+        dot && dot.classList.add('hovering'); ring && ring.classList.add('hovering');
+        const rect = el.getBoundingClientRect();
+        mouseX = rect.left + rect.width / 2; mouseY = rect.top + rect.height / 2;
+      });
+      el.addEventListener('blur', () => { dot && dot.classList.remove('hovering'); ring && ring.classList.remove('hovering'); });
     });
     document.addEventListener('mousedown', () => { dot && dot.classList.add('clicking'); ring && ring.classList.add('clicking'); });
     document.addEventListener('mouseup', () => { dot && dot.classList.remove('clicking'); ring && ring.classList.remove('clicking'); });
