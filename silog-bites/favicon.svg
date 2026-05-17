@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="#FFD235"/>
+  <circle cx="50" cy="50" r="46" fill="#FFD235"/>
+  <!-- Salakot hat brim -->
+  <ellipse cx="50" cy="40" rx="34" ry="10" fill="#8B4513"/>
+  <ellipse cx="50" cy="40" rx="30" ry="8" fill="#A0522D"/>
+  <!-- Hat cone -->
+  <path d="M24,40 Q37,16 50,12 Q63,16 76,40 Z" fill="#8B4513"/>
+  <path d="M28,40 Q40,20 50,16 Q60,20 72,40 Z" fill="#A0522D"/>
+  <!-- Fried egg on top of hat -->
+  <ellipse cx="50" cy="22" rx="11" ry="8" fill="white"/>
+  <ellipse cx="50" cy="22" rx="5" ry="4" fill="#FFB800"/>
+  <!-- Longganisa sausages flanking egg -->
+  <ellipse cx="36" cy="30" rx="7" ry="4" fill="#C0392B" transform="rotate(-25,36,30)"/>
+  <ellipse cx="64" cy="30" rx="7" ry="4" fill="#C0392B" transform="rotate(25,64,30)"/>
+  <!-- Face -->
+  <circle cx="50" cy="65" r="24" fill="#FDBCB4"/>
+  <!-- Cheeks -->
+  <ellipse cx="34" cy="70" rx="8" ry="6" fill="rgba(255,140,100,0.4)"/>
+  <ellipse cx="66" cy="70" rx="8" ry="6" fill="rgba(255,140,100,0.4)"/>
+  <!-- Eyes -->
+  <ellipse cx="43" cy="61" rx="5" ry="6" fill="white"/>
+  <ellipse cx="57" cy="61" rx="5" ry="6" fill="white"/>
+  <circle cx="44" cy="63" r="3.5" fill="#3D2B1F"/>
+  <circle cx="58" cy="63" r="3.5" fill="#3D2B1F"/>
+  <circle cx="45" cy="61" r="1.5" fill="white"/>
+  <circle cx="59" cy="61" r="1.5" fill="white"/>
+  <!-- Eyebrows -->
+  <path d="M38,55 Q43,51 48,55" stroke="#7B3F00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M52,55 Q57,51 62,55" stroke="#7B3F00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Nose -->
+  <ellipse cx="50" cy="68" rx="3" ry="2.5" fill="rgba(160,80,60,0.25)"/>
+  <!-- Mouth / tongue -->
+  <path d="M40,75 Q50,82 60,75" stroke="#C0392B" stroke-width="2" fill="rgba(255,255,255,0.8)" stroke-linecap="round"/>
+  <ellipse cx="50" cy="78" rx="6" ry="5" fill="#E74C3C"/>
+  <!-- Ears -->
+  <circle cx="27" cy="65" r="7" fill="#FDBCB4"/>
+  <circle cx="27" cy="65" r="4" fill="#FEC8C0"/>
+  <circle cx="73" cy="65" r="7" fill="#FDBCB4"/>
+  <circle cx="73" cy="65" r="4" fill="#FEC8C0"/>
+</svg>
