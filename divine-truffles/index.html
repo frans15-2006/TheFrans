@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Divine Truffles — Supremely Divine Chocolate Truffles</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Jost:wght@200;300;400;500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -34,8 +35,6 @@ body{
   cursor:none;
 }
 *{cursor:none!important;}
-
-/* ── CURSOR ── */
 body::before{
   content:'';
   position:fixed;
@@ -48,8 +47,6 @@ body::before{
   transition:transform .1s;
   display:none;
 }
-
-/* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
@@ -79,8 +76,6 @@ nav{
   transition:background .3s;
 }
 .nav-cta:hover{background:var(--gold2);}
-
-/* ── HERO ── */
 .hero{
   min-height:100vh;
   display:flex;flex-direction:column;
@@ -183,8 +178,6 @@ nav{
   line-height:1;user-select:none;
   animation:fadeIn 1.5s .5s both;
 }
-
-/* ── MARQUEE ── */
 .marquee-wrap{
   background:var(--gold);overflow:hidden;
   padding:.75rem 0;
@@ -200,8 +193,6 @@ nav{
 }
 .marquee-sep{color:rgba(26,14,10,.35);padding:0;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ── SECTION BASE ── */
 section{padding:8rem 3.5rem;}
 .sec-tag{
   font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;
@@ -219,8 +210,6 @@ section{padding:8rem 3.5rem;}
   color:var(--cream);margin-bottom:1rem;
 }
 .sec-title em{color:var(--gold);font-style:italic;}
-
-/* ── STORY ── */
 .story{
   background:var(--cocoa2);
   display:grid;grid-template-columns:1fr 1fr;
@@ -281,8 +270,6 @@ section{padding:8rem 3.5rem;}
   color:var(--cream2);margin-bottom:1.2rem;
 }
 .story-text p strong{color:var(--cream);font-weight:500;}
-
-/* ── PRODUCTS ── */
 .products{background:var(--cocoa);}
 .products-header{
   display:flex;align-items:flex-end;justify-content:space-between;
@@ -334,10 +321,10 @@ section{padding:8rem 3.5rem;}
 }
 .product-name em{font-style:italic;color:var(--gold);}
 .product-desc{
-  font-size:.85rem;line-height:1.7;
-  color:var(--cream2);
   font-family:'Cormorant',serif;font-style:italic;
   font-size:1rem;
+  line-height:1.7;
+  color:var(--cream2);
 }
 .product-tag{
   display:inline-block;margin-top:1.2rem;
@@ -361,8 +348,6 @@ section{padding:8rem 3.5rem;}
   color:rgba(245,234,214,.04);
   position:relative;z-index:1;text-align:center;line-height:1.2;
 }
-
-/* ── KATAIFI STRIP ── */
 .kataifi{
   background:var(--cocoa2);
   padding:6rem 3.5rem;
@@ -403,8 +388,6 @@ section{padding:8rem 3.5rem;}
   font-size:.95rem;line-height:1.85;
   color:var(--cream2);margin-bottom:1rem;
 }
-
-/* ── DUBAI COOKIE ── */
 .dubai{
   background:var(--cocoa);
   padding:8rem 3.5rem;
@@ -448,8 +431,6 @@ section{padding:8rem 3.5rem;}
   font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;
   color:rgba(201,150,58,.6);
 }
-
-/* ── ORDER ── */
 .order{
   background:var(--cocoa2);padding:7rem 3.5rem;
 }
@@ -488,8 +469,6 @@ section{padding:8rem 3.5rem;}
 .cr-val a{color:var(--cream);text-decoration:none;transition:color .2s;}
 .cr-val a:hover{color:var(--gold);}
 .cr-sub{font-size:.72rem;color:rgba(245,234,214,.3);margin-top:.15rem;}
-
-/* ── FOOTER ── */
 footer{
   background:var(--cocoa);
   border-top:0.5px solid var(--border);
@@ -513,17 +492,11 @@ footer{
   color:rgba(245,234,214,.25);text-decoration:none;transition:color .2s;
 }
 .foot-links a:hover{color:var(--gold);}
-
-/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
-
-/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-
-/* ── RESPONSIVE ── */
 @media(max-width:960px){
   nav{padding:1.2rem 1.5rem;}.nav-links{display:none;}
   section{padding:5rem 1.5rem;}
@@ -554,7 +527,6 @@ footer{
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Divine <span>Truffles</span></a>
   <ul class="nav-links">
@@ -566,7 +538,6 @@ footer{
   <a href="https://facebook.com/divinetrufflesph" target="_blank" rel="noopener" class="nav-cta">Order Now</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-noise"></div>
@@ -587,7 +558,6 @@ footer{
   </div>
 </div>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Classic Chocolate Truffles</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
@@ -607,7 +577,6 @@ footer{
   </div>
 </div>
 
-<!-- STORY -->
 <section class="story" id="story">
   <div class="story-visual reveal">
     <div class="story-frame">
@@ -643,7 +612,6 @@ footer{
   </div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="products-header reveal">
     <div>
@@ -653,8 +621,6 @@ footer{
     <a href="https://facebook.com/divinetrufflesph" target="_blank" rel="noopener" class="btn-ghost">Order on Facebook →</a>
   </div>
   <div class="products-grid">
-
-    <!-- Hero Product -->
     <div class="product-card hero-card reveal">
       <div class="product-glow"></div>
       <div>
@@ -677,7 +643,6 @@ footer{
         </div>
       </div>
     </div>
-
     <div class="product-card reveal">
       <div class="product-glow"></div>
       <div class="product-num">02</div>
@@ -686,7 +651,6 @@ footer{
       <div class="product-desc">The internet's most talked-about cookie — done the Divine way. Chewy, golden, and loaded with kataifi and pistachio cream.</div>
       <span class="product-tag">Now Available</span>
     </div>
-
     <div class="product-card reveal d1">
       <div class="product-glow"></div>
       <div class="product-num">03</div>
@@ -694,7 +658,6 @@ footer{
       <div class="product-name">Nutella<br><em>Kataifi</em></div>
       <div class="product-desc">Shredded phyllo pastry, toasted to gold, filled with rich Nutella. A textural masterpiece — crisp outside, indulgent within.</div>
     </div>
-
     <div class="product-card reveal d2">
       <div class="product-glow"></div>
       <div class="product-num">04</div>
@@ -702,7 +665,6 @@ footer{
       <div class="product-name">Pistachio<br><em>Kataifi</em></div>
       <div class="product-desc">Buttery kataifi wrapped around a heart of pistachio cream. Every bite is a balance of crunch, richness, and pure satisfaction.</div>
     </div>
-
     <div class="product-card reveal">
       <div class="product-glow"></div>
       <div class="product-num">05</div>
@@ -710,7 +672,6 @@ footer{
       <div class="product-name">Strawberry<br><em>Kataifi</em></div>
       <div class="product-desc">Delicate kataifi meets bright strawberry — a lighter, fruit-forward variation that still delivers the same golden crunch.</div>
     </div>
-
     <div class="product-card reveal d1">
       <div class="product-glow"></div>
       <div class="product-num">06</div>
@@ -719,7 +680,6 @@ footer{
       <div class="product-desc">Japanese matcha meets Middle Eastern pistachio inside a perfectly crisped kataifi shell. Complex, elegant, unforgettable.</div>
       <span class="product-tag">Limited</span>
     </div>
-
     <div class="product-card reveal d2">
       <div class="product-glow"></div>
       <div class="product-num">07</div>
@@ -728,11 +688,9 @@ footer{
       <div class="product-desc">Golden kataifi filled with Biscoff cream — warm, spiced, and impossibly addictive. The one people order twice in one sitting.</div>
       <span class="product-tag">Limited</span>
     </div>
-
   </div>
 </section>
 
-<!-- KATAIFI -->
 <section class="kataifi" id="kataifi">
   <div class="kataifi-inner">
     <div class="kataifi-cards reveal">
@@ -766,7 +724,6 @@ footer{
   </div>
 </section>
 
-<!-- DUBAI COOKIE -->
 <section class="dubai" id="dubai">
   <div class="dubai-inner">
     <div class="reveal">
@@ -797,7 +754,6 @@ footer{
   </div>
 </section>
 
-<!-- ORDER -->
 <section class="order" id="order">
   <div class="order-inner">
     <div class="reveal">
@@ -839,7 +795,6 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-logo">Divine <span>Truffles</span></div>
   <div class="foot-copy">© 2026 · Supremely Divine Chocolate Truffles · Philippines</div>
@@ -851,7 +806,6 @@ footer{
 </footer>
 
 <script>
-/* ── SCROLL PROGRESS BAR ── */
 const bar = document.createElement('div');
 bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,#c9963a,#e8b84b);z-index:9999;width:0%;transition:width .1s linear;pointer-events:none;';
 document.body.appendChild(bar);
@@ -859,8 +813,6 @@ window.addEventListener('scroll', () => {
   const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
   bar.style.width = pct + '%';
 });
-
-/* ── CUSTOM GOLD CURSOR ── */
 const cursor = document.createElement('div');
 const cursorDot = document.createElement('div');
 cursor.style.cssText = 'position:fixed;width:36px;height:36px;border:1px solid rgba(201,150,58,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s ease,width .3s,height .3s,border-color .3s;mix-blend-mode:difference;';
@@ -878,8 +830,6 @@ document.querySelectorAll('a,button,.product-card,.k-card,.flavor,.story-stat').
   el.addEventListener('mouseenter',()=>{cursor.style.width='56px';cursor.style.height='56px';cursor.style.borderColor='rgba(201,150,58,0.9)';});
   el.addEventListener('mouseleave',()=>{cursor.style.width='36px';cursor.style.height='36px';cursor.style.borderColor='rgba(201,150,58,0.5)';});
 });
-
-/* ── MAGNETIC BUTTONS ── */
 document.querySelectorAll('.btn-gold,.btn-ghost,.nav-cta').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{
     const r=btn.getBoundingClientRect();
@@ -893,8 +843,6 @@ document.querySelectorAll('.btn-gold,.btn-ghost,.nav-cta').forEach(btn=>{
     btn.style.transition='transform .4s cubic-bezier(.23,1,.32,1)';
   });
 });
-
-/* ── SPLIT TEXT HERO TITLE ANIMATION ── */
 function splitAndAnimate(el) {
   const text = el.innerHTML;
   const words = text.split(/(<em>[\s\S]*?<\/em>|<br>)/g);
@@ -920,16 +868,12 @@ function splitAndAnimate(el) {
 }
 const heroTitle = document.querySelector('.hero-title');
 if(heroTitle) splitAndAnimate(heroTitle);
-
-/* ── CLIP-PATH REVEAL ── */
 const style = document.createElement('style');
 style.textContent = `
 @keyframes charIn{to{opacity:1;transform:translateY(0) rotateX(0);}}
 @keyframes clipReveal{from{clip-path:inset(0 100% 0 0);}to{clip-path:inset(0 0% 0 0);}}
 @keyframes riseIn{from{opacity:0;transform:translateY(60px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 @keyframes goldLine{from{width:0;}to{width:100%;}}
-@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-@keyframes pulseGold{0%,100%{box-shadow:0 0 0 0 rgba(201,150,58,0);}50%{box-shadow:0 0 24px 4px rgba(201,150,58,0.15);}}
 .sec-tag.animated::before{animation:goldLine .8s cubic-bezier(.23,1,.32,1) forwards;}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.23,1,.32,1),transform .9s cubic-bezier(.23,1,.32,1);}
 .reveal.in{opacity:1;transform:translateY(0);}
@@ -944,26 +888,17 @@ style.textContent = `
 .story-stat:hover{background:var(--cocoa4);}
 `;
 document.head.appendChild(style);
-
-/* ── INTERSECTION OBSERVER WITH STAGGER ── */
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      obs.unobserve(e.target);
-    }
+    if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
   });
 },{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-/* ── STAGGERED GRID CHILDREN ── */
 document.querySelectorAll('.products-grid .product-card,.kataifi-cards .k-card,.dubai-flavors .flavor').forEach((el,i)=>{
   el.style.transitionDelay = (i*0.08)+'s';
   el.classList.add('reveal');
   obs.observe(el);
 });
-
-/* ── COUNTER ANIMATION ── */
 function animateCounter(el, target, suffix='', duration=1800) {
   let start=0;const step=timestamp=>{
     if(!start) start=timestamp;
@@ -981,7 +916,6 @@ const statObs = new IntersectionObserver(entries=>{
       const nums = e.target.querySelectorAll('.story-stat-n');
       nums.forEach(n=>{
         const txt = n.textContent.trim();
-        const em = n.querySelector('em');
         if(txt.startsWith('85')){
           n.innerHTML='<span class="cnum">0</span><em>K</em>';
           animateCounter(n.querySelector('.cnum'),85,'',1600);
@@ -996,8 +930,6 @@ const statObs = new IntersectionObserver(entries=>{
 },{threshold:0.4});
 const statGrid = document.querySelector('.story-stat-row');
 if(statGrid) statObs.observe(statGrid);
-
-/* ── NAV SCROLL EFFECT ── */
 const nav = document.querySelector('nav');
 window.addEventListener('scroll',()=>{
   if(window.scrollY>80){
@@ -1008,8 +940,6 @@ window.addEventListener('scroll',()=>{
     nav.style.borderBottomColor='rgba(201,150,58,0.15)';
   }
 });
-
-/* ── PARALLAX HERO ── */
 window.addEventListener('scroll',()=>{
   const y = window.scrollY;
   const heroBg = document.querySelector('.hero-bg');
@@ -1017,15 +947,11 @@ window.addEventListener('scroll',()=>{
   if(heroBg) heroBg.style.transform=`translateY(${y*0.3}px)`;
   if(heroNoise) heroNoise.style.transform=`translateY(${y*0.15}px)`;
 });
-
-/* ── MARQUEE PAUSE ON HOVER ── */
 const marqueeTrack = document.querySelector('.marquee-track');
 if(marqueeTrack){
   marqueeTrack.addEventListener('mouseenter',()=>marqueeTrack.style.animationPlayState='paused');
   marqueeTrack.addEventListener('mouseleave',()=>marqueeTrack.style.animationPlayState='running');
 }
-
-/* ── GOLD PARTICLE ON CLICK ── */
 document.addEventListener('click',e=>{
   for(let i=0;i<8;i++){
     const p=document.createElement('div');
@@ -1042,8 +968,6 @@ document.addEventListener('click',e=>{
     ],{duration:600+Math.random()*400,easing:'cubic-bezier(.23,1,.32,1)',fill:'forwards'}).onfinish=()=>p.remove();
   }
 });
-
-/* ── SECTION TAG LINE ANIMATION ── */
 document.querySelectorAll('.sec-tag').forEach(tag=>{
   const tagObs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
