@@ -150,7 +150,10 @@ function startPrank() {
 
   messages.forEach((msg) => {
     setTimeout(() => {
-      terminalBox.innerHTML += `<p class="error-text">${msg.text}</p>`;
+      const p = document.createElement('p');
+      p.className = 'error-text';
+      p.textContent = msg.text;
+      terminalBox.appendChild(p);
     }, msg.time);
   });
 
@@ -180,17 +183,36 @@ function revealSite() {
 function initHero() {
   const track = document.getElementById('hero-scroller');
   const allItems = [...riceMenu, ...ulamMenu, ...drinksMenu];
+  track.innerHTML = '';
 
-  const html = allItems
-    .map((item) => {
-      const cleanName = item.name.replace(/\s*\(.*?\)/, '');
-      const fallback = `https://placehold.co/500x300/222/white?text=${cleanName}`;
-      return `<div class="scroll-item"><img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}"><div class="scroll-label">${cleanName}</div></div>`;
-    })
-    .join('');
+  const itemsToAppend = [];
+  allItems.forEach((item) => {
+    const cleanName = item.name.replace(/\s*\(.*?\)/, '');
+    const fallback = `https://placehold.co/500x300/222/white?text=${cleanName}`;
+
+    const scrollItem = document.createElement('div');
+    scrollItem.className = 'scroll-item';
+
+    const img = document.createElement('img');
+    img.src = item.img;
+    img.onerror = () => { img.src = fallback; };
+    img.alt = item.name;
+
+    const label = document.createElement('div');
+    label.className = 'scroll-label';
+    label.textContent = cleanName;
+
+    scrollItem.appendChild(img);
+    scrollItem.appendChild(label);
+    itemsToAppend.push(scrollItem);
+  });
 
   // Quadruple for seamless loop
-  track.innerHTML = html.repeat(4);
+  for (let i = 0; i < 4; i++) {
+    itemsToAppend.forEach(item => {
+      track.appendChild(item.cloneNode(true));
+    });
+  }
 }
 
 // ====== MENU NAVIGATION ======
@@ -212,13 +234,26 @@ function renderGrid(items, containerId) {
     card.onclick = (e) => addToCart(item, e);
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
 
-    card.innerHTML = `
-            <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}">
-            <div class="card-description">
-                <div class="card-name">${item.name}</div>
-                <div class="card-price">₱${item.price}</div>
-            </div>
-        `;
+    const img = document.createElement('img');
+    img.src = item.img;
+    img.onerror = () => { img.src = fallback; };
+    img.alt = item.name;
+
+    const desc = document.createElement('div');
+    desc.className = 'card-description';
+
+    const name = document.createElement('div');
+    name.className = 'card-name';
+    name.textContent = item.name;
+
+    const price = document.createElement('div');
+    price.className = 'card-price';
+    price.textContent = `₱${item.price}`;
+
+    desc.appendChild(name);
+    desc.appendChild(price);
+    card.appendChild(img);
+    card.appendChild(desc);
 
     container.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
@@ -278,8 +313,11 @@ function updateCart() {
   const totalEl = document.getElementById('total-price');
 
   if (cart.length === 0) {
-    list.innerHTML =
-      '<p style="color:#555; text-align:center;">Empty bowl...</p>';
+    list.innerHTML = '';
+    const emptyMsg = document.createElement('p');
+    emptyMsg.style.cssText = 'color:#555; text-align:center;';
+    emptyMsg.textContent = 'Empty bowl...';
+    list.appendChild(emptyMsg);
     totalEl.textContent = '₱0';
     return;
   }
@@ -289,19 +327,42 @@ function updateCart() {
 
   cart.forEach((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
-            <div class="cart-item">
-                <div>
-                    <div class="cart-item-details">${c.name}</div>
-                    <div class="cart-item-price">₱${c.price} ea</div>
-                </div>
-                <div class="cart-item-controls">
-                    <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
-                    <span>${c.qty}</span>
-                    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
-                </div>
-            </div>
-        `;
+    const item = document.createElement('div');
+    item.className = 'cart-item';
+
+    const info = document.createElement('div');
+    const details = document.createElement('div');
+    details.className = 'cart-item-details';
+    details.textContent = c.name;
+    const price = document.createElement('div');
+    price.className = 'cart-item-price';
+    price.textContent = `₱${c.price} ea`;
+    info.appendChild(details);
+    info.appendChild(price);
+
+    const controls = document.createElement('div');
+    controls.className = 'cart-item-controls';
+
+    const minusBtn = document.createElement('button');
+    minusBtn.className = 'qty-btn';
+    minusBtn.textContent = '-';
+    minusBtn.onclick = () => changeQty(i, -1);
+
+    const qtySpan = document.createElement('span');
+    qtySpan.textContent = c.qty;
+
+    const plusBtn = document.createElement('button');
+    plusBtn.className = 'qty-btn';
+    plusBtn.textContent = '+';
+    plusBtn.onclick = () => changeQty(i, 1);
+
+    controls.appendChild(minusBtn);
+    controls.appendChild(qtySpan);
+    controls.appendChild(plusBtn);
+
+    item.appendChild(info);
+    item.appendChild(controls);
+    list.appendChild(item);
   });
 
   // Animated price update
@@ -332,7 +393,9 @@ function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
-  toast.innerHTML = `<span>${message}</span>`;
+  const span = document.createElement('span');
+  span.textContent = message;
+  toast.appendChild(span);
   container.appendChild(toast);
 
   setTimeout(() => {
@@ -369,20 +432,46 @@ function generateQR() {
     const overlay = document.createElement('div');
     overlay.className = 'qr-unavailable';
     overlay.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);z-index:10;';
-    overlay.innerHTML = '<span style="font-family:Anton,sans-serif;font-size:1.1rem;letter-spacing:.15em;color:#ff5e00;text-transform:uppercase;line-height:1.2;text-align:center;">QR<br>UNAVAILABLE</span>';
+
+    const unavailableText = document.createElement('span');
+    unavailableText.style.cssText = 'font-family:Anton,sans-serif;font-size:1.1rem;letter-spacing:.15em;color:#ff5e00;text-transform:uppercase;line-height:1.2;text-align:center;';
+    unavailableText.appendChild(document.createTextNode('QR'));
+    unavailableText.appendChild(document.createElement('br'));
+    unavailableText.appendChild(document.createTextNode('UNAVAILABLE'));
+
+    overlay.appendChild(unavailableText);
     qrBox.appendChild(overlay);
   }, 120);
 
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
-        <strong>TOTAL:</strong> ₱${total}
-        <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-        <hr class="summary-label">
-    `;
+  const summary = document.getElementById('summary');
+  summary.innerHTML = '';
+
+  const customerStrong = document.createElement('strong');
+  customerStrong.textContent = 'CUSTOMER: ';
+  summary.appendChild(customerStrong);
+  summary.appendChild(document.createTextNode(name.toUpperCase()));
+  summary.appendChild(document.createElement('br'));
+
+  const totalStrong = document.createElement('strong');
+  totalStrong.textContent = 'TOTAL: ';
+  summary.appendChild(totalStrong);
+  summary.appendChild(document.createTextNode(`₱${total}`));
+
+  summary.appendChild(document.createElement('hr')).className = 'summary-label';
+
+  cart.forEach((c, index) => {
+    summary.appendChild(document.createTextNode(`• ${c.name} `));
+    const itemSpan = document.createElement('span');
+    itemSpan.className = 'summary-item';
+    itemSpan.textContent = `x${c.qty}`;
+    summary.appendChild(itemSpan);
+    summary.appendChild(document.createElement('br'));
+  });
+
+  summary.appendChild(document.createElement('hr')).className = 'summary-label';
 
   // Celebration effects
   createConfetti();
