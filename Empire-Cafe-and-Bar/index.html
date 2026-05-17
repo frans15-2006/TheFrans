@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empire Cafe and Bar — Tanauan, Batangas</title>
+<link rel="icon" type="image/svg+xml" href="./empire-favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#8B6914;--gold-glow:rgba(201,168,76,0.12);
+  --ink:#0A0806;--ink2:#141009;--ink3:#1E1812;
+  --smoke:#2A221A;--smoke2:#362D22;
+  --ash:#F0E8DC;--ash2:#DDD4C6;--ash3:#C4BAB0;
+  --border:rgba(201,168,76,0.15);--border2:rgba(201,168,76,0.30);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--ash);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* PROGRESS */
+#progress{position:fixed;top:0;left:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:9999;width:0%;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;transition:all .4s;}
+nav.scrolled{background:rgba(10,8,6,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 4rem;}
+.nav-wordmark{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:3rem;list-style:none;}
+.nav-links a{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ash3);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-reserve{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border2);padding:.55rem 1.6rem;text-decoration:none;transition:all .3s;}
+.nav-reserve:hover{background:var(--gold);color:var(--ink);}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--ink);}
+/* Multi-layer parallax */
+.prl-layer{position:absolute;inset:0;pointer-events:none;will-change:transform;}
+.prl-grain{position:absolute;inset:-60px;will-change:transform;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E");
+  background-size:256px;opacity:.4;}
+.prl-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 30%,rgba(10,8,6,.85) 100%);pointer-events:none;z-index:2;}
+.prl-gold-orb1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);top:-200px;left:-100px;will-change:transform;}
+.prl-gold-orb2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.08),transparent 70%);bottom:-100px;right:-80px;will-change:transform;}
+.prl-lines{position:absolute;inset:0;will-change:transform;
+  background-image:repeating-linear-gradient(0deg,rgba(201,168,76,.025) 0,rgba(201,168,76,.025) 1px,transparent 0,transparent 80px);pointer-events:none;}
+/* Floating glyphs */
+.prl-glyph{position:absolute;font-family:'Cormorant Garamond',serif;color:rgba(201,168,76,.06);pointer-events:none;will-change:transform;line-height:1;}
+.g1{font-size:22rem;top:-5%;left:-5%;font-style:italic;}
+.g2{font-size:14rem;bottom:5%;right:0%;font-style:normal;letter-spacing:-.02em;}
+
+.hero-inner{position:relative;z-index:10;text-align:center;padding:0 2rem;max-width:800px;}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:riseIn .8s .2s both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,9vw,8rem);font-weight:300;line-height:.92;color:var(--ash);margin-bottom:1.5rem;opacity:0;animation:riseIn .9s .35s both;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-rule{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 1.5rem;opacity:0;animation:riseIn .7s .5s both;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;font-weight:300;color:var(--ash3);letter-spacing:.04em;margin-bottom:3rem;line-height:1.6;opacity:0;animation:riseIn .8s .6s both;}
+.hero-actions{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:riseIn .8s .75s both;}
+.btn-gold{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:.9rem 2.8rem;text-decoration:none;transition:all .3s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-ghost{font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border2);padding:.9rem 2.8rem;text-decoration:none;transition:all .3s;}
+.btn-ghost:hover{background:var(--gold-glow);border-color:var(--gold);}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:riseIn .8s 1s both;}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease-in-out infinite;}
+.scroll-txt{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ash3);}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.6);}50%{opacity:1;transform:scaleY(1);}}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.65rem 0;overflow:hidden;}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.m-item{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-style:italic;letter-spacing:.08em;color:var(--ash3);padding:0 2.5rem;flex-shrink:0;}
+.m-dot{color:var(--gold);padding:0 .5rem;font-style:normal;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTIONS */
+section{padding:8rem 4rem;}
+.sec-eyebrow{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.05;color:var(--ash);}
+.sec-title em{font-style:italic;color:var(--gold);}
+.gold-rule{width:60px;height:1px;background:var(--gold);margin:1.5rem 0;}
+
+/* ─── ABOUT ─── */
+.about{background:var(--ink2);position:relative;overflow:hidden;}
+.about-prl-bg{position:absolute;inset:-80px;will-change:transform;
+  background-image:repeating-linear-gradient(135deg,rgba(201,168,76,.03) 0,rgba(201,168,76,.03) 1px,transparent 0,transparent 60px);pointer-events:none;}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;}
+.about-img-wrap{position:relative;}
+.about-frame{width:100%;aspect-ratio:3/4;border:1px solid var(--border2);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.about-frame-fill{width:100%;height:100%;background:linear-gradient(160deg,var(--smoke) 0%,var(--ink3) 60%,var(--smoke2) 100%);display:flex;align-items:center;justify-content:center;}
+.about-frame-glyph{font-family:'Cinzel',serif;font-size:8rem;color:rgba(201,168,76,.08);line-height:1;}
+.about-frame::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1px solid var(--border);pointer-events:none;z-index:1;}
+.about-stat-row{display:flex;gap:2rem;margin-top:2.5rem;}
+.about-stat{flex:1;border-left:1px solid var(--border2);padding-left:1.2rem;}
+.about-stat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;}
+.about-stat-l{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ash3);margin-top:.3rem;}
+.about-text p{font-size:.98rem;font-weight:300;color:var(--ash2);line-height:1.9;margin-bottom:1.4rem;}
+.about-text p strong{color:var(--ash);font-weight:500;}
+
+/* ─── PARALLAX STRIP ─── */
+.prl-strip{height:440px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.ps-layer{position:absolute;pointer-events:none;will-change:transform;}
+.ps-base{inset:-100px;background:linear-gradient(160deg,var(--smoke2) 0%,var(--ink2) 50%,var(--smoke) 100%);}
+.ps-lines{inset:-60px;background-image:repeating-linear-gradient(90deg,rgba(201,168,76,.04) 0,rgba(201,168,76,.04) 1px,transparent 0,transparent 120px);}
+.ps-ghost{inset:0;display:flex;align-items:center;justify-content:center;opacity:.04;}
+.ps-ghost-txt{font-family:'Cinzel',serif;font-size:12rem;color:var(--gold);white-space:nowrap;letter-spacing:.1em;}
+.ps-orb{width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+.prl-strip-content{position:relative;z-index:10;text-align:center;padding:2rem;}
+.prl-strip-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;font-style:italic;color:var(--ash);line-height:1.05;margin-bottom:1rem;}
+.prl-strip-sub{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);}
+
+/* ─── MENU ─── */
+.menu-sec{background:var(--ink);}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:4rem;border:1px solid var(--border);}
+.menu-card{background:var(--ink);padding:2.5rem;transition:background .3s;position:relative;overflow:hidden;}
+.menu-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .4s cubic-bezier(.23,1,.32,1);}
+.menu-card:hover::before{height:100%;}
+.menu-card:hover{background:var(--ink2);}
+.menu-card-ico{font-size:1.8rem;margin-bottom:1.2rem;opacity:.7;}
+.menu-card-cat{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.menu-card-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--ash);margin-bottom:.8rem;line-height:1.2;}
+.menu-card-desc{font-size:.82rem;font-weight:300;color:var(--ash3);line-height:1.7;}
+.menu-feature{grid-column:span 2;background:var(--smoke);}
+.menu-feature .menu-card-name{font-size:2.2rem;}
+
+/* ─── PARALLAX STRIP 2 ─── */
+.prl-strip-2{height:380px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.ps2-base{position:absolute;inset:-100px;will-change:transform;background:var(--gold3);}
+.ps2-overlay{position:absolute;inset:0;will-change:transform;background:linear-gradient(160deg,rgba(10,8,6,.75),rgba(10,8,6,.5),rgba(10,8,6,.75));}
+.ps2-lines{position:absolute;inset:-60px;will-change:transform;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 40px);}
+.ps2-ghost{position:absolute;inset:0;will-change:transform;opacity:.07;display:flex;align-items:center;justify-content:center;}
+.ps2-ghost-txt{font-family:'Cormorant Garamond',serif;font-size:10rem;font-style:italic;color:var(--ink);white-space:nowrap;}
+.prl-strip-2-content{position:relative;z-index:10;text-align:center;padding:2rem;}
+.prl-strip-2-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4rem);font-weight:300;color:var(--ink);margin-bottom:.8rem;line-height:1.1;}
+.prl-strip-2-sub{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink2);}
+
+/* ─── HOURS ─── */
+.hours-sec{background:var(--ink2);}
+.hours-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.hours-table{display:flex;flex-direction:column;gap:0;margin-top:2rem;}
+.hour-row{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);}
+.hour-row:last-child{border-bottom:none;}
+.hour-day{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ash2);}
+.hour-time{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--gold);}
+.hours-right p{font-size:.95rem;font-weight:300;color:var(--ash2);line-height:1.85;margin-bottom:1.2rem;}
+
+/* ─── CONTACT ─── */
+.contact-sec{background:var(--ink);}
+.contact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.contact-info-row{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.contact-info-row:last-child{border-bottom:none;}
+.ci-label{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.ci-val{font-size:.95rem;font-weight:300;color:var(--ash);line-height:1.5;}
+.ci-val a{color:var(--ash);text-decoration:none;transition:color .2s;}
+.ci-val a:hover{color:var(--gold);}
+.ci-sub{font-size:.72rem;color:var(--ash3);margin-top:.2rem;}
+.ci-icon{font-size:1.1rem;opacity:.5;flex-shrink:0;margin-top:.15rem;}
+.contact-right .sec-title{margin-bottom:1.5rem;}
+.contact-right p{font-size:.92rem;font-weight:300;color:var(--ash2);line-height:1.85;margin-bottom:1.8rem;}
+.delivery-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border2);padding:.6rem 1.4rem;margin-top:.5rem;}
+.delivery-badge-txt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash3);}
+
+/* FOOTER */
+footer{background:var(--ink2);border-top:1px solid var(--border);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.foot-wordmark{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.foot-copy{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash3);}
+.foot-links{display:flex;gap:2.5rem;}
+.foot-links a{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash3);text-decoration:none;transition:color .2s;}
+.foot-links a:hover{color:var(--gold);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.23,1,.32,1),transform .9s cubic-bezier(.23,1,.32,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  section{padding:5rem 1.5rem;}
+  .about-inner{grid-template-columns:1fr;}
+  .menu-grid{grid-template-columns:1fr;}.menu-feature{grid-column:span 1;}
+  .hours-inner{grid-template-columns:1fr;}
+  .contact-inner{grid-template-columns:1fr;}
+  footer{flex-direction:column;}
+  .prl-strip{height:300px;}.prl-strip-2{height:260px;}
+  nav{padding:1rem 1.5rem;}nav.scrolled{padding:.8rem 1.5rem;}
+  .g1,.g2{display:none;}
+}
+@media(max-width:600px){
+  .hero-title{font-size:3.5rem;}
+  .hero-actions{flex-direction:column;align-items:center;}
+  .about-stat-row{flex-direction:column;gap:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-wordmark">Empire</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://www.facebook.com/empirecafeandbar" target="_blank" rel="noopener" class="nav-reserve">Visit Us</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <!-- Parallax layers -->
+  <div class="prl-grain" id="prl-grain"></div>
+  <div class="prl-gold-orb1" id="prl-orb1"></div>
+  <div class="prl-gold-orb2" id="prl-orb2"></div>
+  <div class="prl-lines" id="prl-lines"></div>
+  <div class="prl-vignette"></div>
+  <!-- Floating glyphs -->
+  <div class="prl-glyph g1" id="prl-g1">E</div>
+  <div class="prl-glyph g2" id="prl-g2">Bar</div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Est. · Tanauan, Batangas · Since Day One</div>
+    <h1 class="hero-title"><em>Empire</em><br>Cafe &amp;<br>Bar</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">Where mornings start with comfort<br>&amp; nights end with cheers.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-gold">Explore Menu</a>
+      <a href="https://www.facebook.com/empirecafeandbar" target="_blank" rel="noopener" class="btn-ghost">Find Us on Facebook</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-txt">Scroll</div>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item">All-Day Breakfast</span><span class="m-dot">·</span>
+    <span class="m-item">Artisan Coffee</span><span class="m-dot">·</span>
+    <span class="m-item">Craft Cocktails</span><span class="m-dot">·</span>
+    <span class="m-item">Fruit Sodas</span><span class="m-dot">·</span>
+    <span class="m-item">Snackables</span><span class="m-dot">·</span>
+    <span class="m-item">Foodpanda Delivery</span><span class="m-dot">·</span>
+    <span class="m-item">Dine-In · Takeout</span><span class="m-dot">·</span>
+    <span class="m-item">All-Day Breakfast</span><span class="m-dot">·</span>
+    <span class="m-item">Artisan Coffee</span><span class="m-dot">·</span>
+    <span class="m-item">Craft Cocktails</span><span class="m-dot">·</span>
+    <span class="m-item">Fruit Sodas</span><span class="m-dot">·</span>
+    <span class="m-item">Snackables</span><span class="m-dot">·</span>
+    <span class="m-item">Foodpanda Delivery</span><span class="m-dot">·</span>
+    <span class="m-item">Dine-In · Takeout</span><span class="m-dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-prl-bg" id="about-bg"></div>
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="about-img-wrap">
+        <div class="about-frame">
+          <div class="about-frame-fill">
+            <div class="about-frame-glyph">E</div>
+          </div>
+        </div>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-n">4.5K</div>
+            <div class="about-stat-l">Followers</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">2×</div>
+            <div class="about-stat-l">Experiences</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">AM–PM</div>
+            <div class="about-stat-l">Open Daily</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal d2">
+      <span class="sec-eyebrow">About the Place</span>
+      <h2 class="sec-title">One Space.<br><em>Two Worlds.</em></h2>
+      <div class="gold-rule"></div>
+      <p>Empire Cafe and Bar is where <strong>Tanauan, Batangas</strong> comes to begin and end the day. By morning, it's a serene cafe where coffee and all-day breakfast set the tone. By night, it transforms into a bar where craft cocktails and good company take over.</p>
+      <p>Located along <strong>President Laurel Highway</strong>, Empire is built for everyone — those who need a quiet corner to work, a table to catch up over breakfast, and a seat at the bar when the day finally winds down.</p>
+      <a href="https://www.instagram.com/empirecafeandbar" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-block;margin-top:.5rem;">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX STRIP 1 -->
+<div class="prl-strip" id="prl-strip-1">
+  <div class="ps-layer ps-base" id="ps1-base"></div>
+  <div class="ps-layer ps-lines" id="ps1-lines"></div>
+  <div class="ps-layer ps-ghost" id="ps1-ghost"><div class="ps-ghost-txt">EMPIRE</div></div>
+  <div class="ps-layer ps-orb" id="ps1-orb" style="position:absolute;"></div>
+  <div class="prl-strip-content">
+    <div class="prl-strip-title">Coffee at dawn.<br>Cocktails by dark.</div>
+    <div class="prl-strip-sub">60 President Laurel Highway · Tanauan, Batangas</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-sec" id="menu">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal">
+      <span class="sec-eyebrow">What We Serve</span>
+      <h2 class="sec-title">The <em>Menu</em></h2>
+    </div>
+    <div class="menu-grid reveal d1">
+      <div class="menu-card menu-feature">
+        <div class="menu-card-ico">☕</div>
+        <div class="menu-card-cat">Signature · All Day</div>
+        <div class="menu-card-name">Artisan Coffee</div>
+        <div class="menu-card-desc">From espresso to cold brews — each cup is brewed to order. Our coffee menu anchors every visit, morning through evening.</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-ico">🍳</div>
+        <div class="menu-card-cat">Morning & Beyond</div>
+        <div class="menu-card-name">All-Day Breakfast</div>
+        <div class="menu-card-desc">Classic comfort plates served any time. Eggs, toast, and everything in between — no cutoff, no rush.</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-ico">🍹</div>
+        <div class="menu-card-cat">Bar Menu</div>
+        <div class="menu-card-name">Craft Cocktails</div>
+        <div class="menu-card-desc">Curated cocktail selections for when the day is done. Approachable pours in a lounge that knows how to unwind.</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-ico">🫧</div>
+        <div class="menu-card-cat">Refreshers</div>
+        <div class="menu-card-name">Fruit Sodas</div>
+        <div class="menu-card-desc">House-made fruit sodas — bright, fizzy, and made with real fruit. The non-alcohol crowd's best order.</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-ico">🍽️</div>
+        <div class="menu-card-cat">Light Bites</div>
+        <div class="menu-card-name">Snackables</div>
+        <div class="menu-card-desc">Shareable bites and light plates. Good for pairing with coffee, better with cocktails.</div>
+      </div>
+    </div>
+    <div style="margin-top:3rem;" class="reveal">
+      <a href="https://www.facebook.com/empirecafeandbar" target="_blank" rel="noopener" class="btn-ghost">Full Menu on Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX STRIP 2 -->
+<div class="prl-strip-2" id="prl-strip-2">
+  <div class="ps2-base" id="ps2-base"></div>
+  <div class="ps2-overlay" id="ps2-overlay"></div>
+  <div class="ps2-lines" id="ps2-lines"></div>
+  <div class="ps2-ghost" id="ps2-ghost"><div class="ps2-ghost-txt">Cafe &amp; Bar</div></div>
+  <div class="prl-strip-2-content">
+    <div class="prl-strip-2-title">Delivered via<br><em>Foodpanda</em></div>
+    <div class="prl-strip-2-sub">Order from wherever you are</div>
+  </div>
+</div>
+
+<!-- HOURS -->
+<section class="hours-sec" id="hours">
+  <div class="hours-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">When to Find Us</span>
+      <h2 class="sec-title">Hours &amp;<br><em>Location</em></h2>
+      <div class="gold-rule"></div>
+      <div class="hours-table">
+        <div class="hour-row">
+          <span class="hour-day">Monday – Friday</span>
+          <span class="hour-time">Morning until close</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Saturday</span>
+          <span class="hour-time">Morning until close</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Sunday</span>
+          <span class="hour-time">Morning until close</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Bar Service</span>
+          <span class="hour-time">Evenings onwards</span>
+        </div>
+      </div>
+    </div>
+    <div class="hours-right reveal d2">
+      <span class="sec-eyebrow">Getting Here</span>
+      <h2 class="sec-title" style="font-size:2rem;margin-bottom:1.5rem;"><em>60</em> President<br>Laurel Hwy</h2>
+      <p>Empire sits along <strong>President Laurel Highway</strong> in Tanauan, Batangas — easy to find, impossible to miss once you're inside.</p>
+      <p>Whether you're passing through or coming in from around the province, the address puts you right on the main road.</p>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem;">
+        <div class="delivery-badge">
+          <span style="font-size:1rem;">📱</span>
+          <span class="delivery-badge-txt">Foodpanda — Order for Delivery</span>
+        </div>
+        <div class="delivery-badge">
+          <span style="font-size:1rem;">📸</span>
+          <span class="delivery-badge-txt">@empirecafeandbar on Instagram</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">Reach Us</span>
+      <h2 class="sec-title">Get in<br><em>Touch</em></h2>
+      <div class="gold-rule"></div>
+      <div>
+        <div class="contact-info-row">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val"><a href="tel:+433328971">+43 3328 971</a></div>
+            <div class="ci-sub">Call for reservations or inquiries</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="ci-icon">📘</div>
+          <div>
+            <div class="ci-label">Facebook</div>
+            <div class="ci-val"><a href="https://www.facebook.com/empirecafeandbar" target="_blank" rel="noopener">facebook.com/empirecafeandbar</a></div>
+            <div class="ci-sub">Updates, promos, and full menu</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="ci-icon">📸</div>
+          <div>
+            <div class="ci-label">Instagram</div>
+            <div class="ci-val"><a href="https://www.instagram.com/empirecafeandbar" target="_blank" rel="noopener">@empirecafeandbar</a></div>
+            <div class="ci-sub">Photos, ambiance, and daily specials</div>
+          </div>
+        </div>
+        <div class="contact-info-row">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-val">60 President Laurel Highway</div>
+            <div class="ci-sub">Tanauan, Batangas, Philippines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right reveal d2">
+      <span class="sec-eyebrow">The Short Version</span>
+      <h2 class="sec-title">Come in.<br><em>Stay a while.</em></h2>
+      <p>Empire is the kind of place that fits every hour. Come in early for coffee and breakfast. Come back at night for cocktails and good conversation.</p>
+      <p>Walk in, message us on Facebook, or order delivery on Foodpanda — however you arrive, you're welcome at Empire.</p>
+      <a href="https://www.facebook.com/empirecafeandbar" target="_blank" rel="noopener" class="btn-gold" style="margin-top:.5rem;display:inline-block;">Message on Facebook</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-wordmark">Empire Cafe &amp; Bar</div>
+  <div class="foot-copy">© 2026 · Tanauan, Batangas</div>
+  <div class="foot-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#hours">Hours</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+/* ─── PARALLAX ENGINE ─── */
+const bar = document.getElementById('progress');
+const nav = document.getElementById('navbar');
+
+const prlItems = [
+  // Hero
+  { el: document.getElementById('prl-grain'),  speed: 0.06 },
+  { el: document.getElementById('prl-orb1'),   speed: 0.13 },
+  { el: document.getElementById('prl-orb2'),   speed: 0.09 },
+  { el: document.getElementById('prl-lines'),  speed: 0.04 },
+  { el: document.getElementById('prl-g1'),     speed: 0.22 },
+  { el: document.getElementById('prl-g2'),     speed: 0.17 },
+  // About bg
+  { el: document.getElementById('about-bg'),   speed: 0.08, anchor: document.getElementById('about') },
+  // Strip 1
+  { el: document.getElementById('ps1-base'),   speed: 0.07, anchor: document.getElementById('prl-strip-1') },
+  { el: document.getElementById('ps1-lines'),  speed: 0.15, anchor: document.getElementById('prl-strip-1') },
+  { el: document.getElementById('ps1-ghost'),  speed: 0.26, anchor: document.getElementById('prl-strip-1') },
+  { el: document.getElementById('ps1-orb'),    speed: 0.18, anchor: document.getElementById('prl-strip-1') },
+  // Strip 2
+  { el: document.getElementById('ps2-base'),   speed: 0.07, anchor: document.getElementById('prl-strip-2') },
+  { el: document.getElementById('ps2-overlay'),speed: 0.11, anchor: document.getElementById('prl-strip-2') },
+  { el: document.getElementById('ps2-lines'),  speed: 0.18, anchor: document.getElementById('prl-strip-2') },
+  { el: document.getElementById('ps2-ghost'),  speed: 0.30, anchor: document.getElementById('prl-strip-2') },
+];
+
+function onScroll() {
+  const sy = window.scrollY;
+  const dh = document.body.scrollHeight - window.innerHeight;
+  bar.style.width = (sy / dh * 100) + '%';
+  nav.classList.toggle('scrolled', sy > 60);
+
+  prlItems.forEach(({ el, speed, anchor }) => {
+    if (!el) return;
+    let offset;
+    if (anchor) {
+      const r = anchor.getBoundingClientRect();
+      offset = (r.top + r.height / 2) * speed;
+    } else {
+      offset = sy * speed;
+    }
+    el.style.transform = `translateY(${offset}px)`;
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ─── REVEAL ─── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ─── CLICK PARTICLES ─── */
+document.addEventListener('click', e => {
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement('div');
+    const angle = (Math.PI * 2 / 8) * i + Math.random() * .3;
+    const dist = 24 + Math.random() * 40;
+    const size = 2 + Math.random() * 3;
+    p.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:${i%2?'#C9A84C':'#E8C97A'};border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);`;
+    document.body.appendChild(p);
+    const dx = Math.cos(angle)*dist, dy = Math.sin(angle)*dist;
+    p.animate([
+      { transform: 'translate(-50%,-50%)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px))`, opacity: 0 }
+    ], { duration: 600 + Math.random()*200, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'forwards' }).onfinish = () => p.remove();
+  }
+});
+</script>
+</body>
+</html>
