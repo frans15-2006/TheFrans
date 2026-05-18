@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK Sushi Bar — Antipolo City</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Zen+Kaku+Gothic+New:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0D0D0D;
+  --ink2:#161616;
+  --ink3:#222;
+  --rice:#F5F0E8;
+  --rice2:#EDE8DD;
+  --red:#C0392B;
+  --red2:#E74C3C;
+  --gold:#B8860B;
+  --gold2:#D4A017;
+  --muted:rgba(245,240,232,0.45);
+  --border:rgba(245,240,232,0.12);
+  --border2:rgba(192,57,43,0.3);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--rice);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
+*{cursor:none!important;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{display:none;}
+html{-ms-overflow-style:none;scrollbar-width:none;}
+
+/* CURSOR */
+#cur-dot{position:fixed;width:5px;height:5px;background:var(--red2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+#cur-ring{position:fixed;width:32px;height:32px;border:1.5px solid var(--rice);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,opacity .3s;}
+@media(hover:none),(pointer:coarse){#cur-dot,#cur-ring{display:none;}*{cursor:auto!important;}}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--red),var(--gold2));z-index:9999;width:0%;pointer-events:none;}
+
+/* GRAIN */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 3.5rem;
+  background:rgba(13,13,13,0.94);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:padding .4s;
+}
+nav.scrolled{padding:.65rem 3.5rem;}
+.nav-brand{display:flex;flex-direction:column;line-height:1;}
+.nav-brand-en{font-family:'Shippori Mincho',serif;font-size:1.1rem;font-weight:700;letter-spacing:.12em;color:var(--rice);text-decoration:none;}
+.nav-brand-jp{font-family:'Zen Kaku Gothic New',sans-serif;font-size:.55rem;font-weight:300;letter-spacing:.3em;color:var(--red2);text-transform:uppercase;margin-top:.15rem;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--red2);transition:width .3s;}
+.nav-links a:hover{color:var(--rice);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--red);color:var(--rice)!important;padding:.45rem 1.2rem;font-size:.7rem!important;letter-spacing:.18em!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--red2)!important;}
+.nav-cta::after{display:none!important;}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.3rem;}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--rice);}
+@media(max-width:768px){
+  nav{padding:.9rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+}
+
+/* HERO */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 3.5rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(192,57,43,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 20% 70%, rgba(184,134,11,0.06) 0%, transparent 50%),
+    var(--ink);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(245,240,232,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,240,232,0.03) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-tag{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.65rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--red2);margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+  opacity:0;animation:fadeUp .8s .3s ease forwards;
+}
+.hero-tag::before{content:'';display:block;width:40px;height:1px;background:var(--red2);}
+.hero-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(3.5rem,9vw,8rem);
+  font-weight:800;line-height:.92;
+  letter-spacing:-.01em;
+  position:relative;z-index:1;
+  overflow:hidden;
+}
+.hero-title-line{display:block;overflow:hidden;}
+.hero-title-line span{display:inline-block;transform:translateY(110%);opacity:0;}
+.hero-title-en{color:var(--rice);}
+.hero-title-jp{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(245,240,232,0.25);
+  font-size:clamp(2rem,5vw,4.5rem);
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-weight:900;letter-spacing:.1em;
+  display:block;margin-top:.5rem;
+}
+.hero-sub{
+  margin-top:2.5rem;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  opacity:0;animation:fadeUp .8s 1.2s ease forwards;
+}
+.hero-desc{
+  max-width:380px;
+  font-size:.9rem;line-height:1.7;color:var(--muted);font-weight:300;
+}
+.hero-meta{
+  display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;text-align:right;
+}
+.hero-rating{font-family:'Shippori Mincho',serif;font-size:2rem;font-weight:700;color:var(--rice);}
+.hero-rating-sub{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.hero-scroll{
+  position:absolute;right:3.5rem;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  opacity:0;animation:fadeIn .8s 1.8s ease forwards;
+}
+.hero-scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--red2));animation:scrollLine 2s 2s ease infinite;}
+.hero-scroll-text{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(1);}50%{opacity:1;transform:scaleY(1.3);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@media(max-width:768px){
+  .hero{padding:0 1.5rem 4rem;}
+  .hero-sub{flex-direction:column;align-items:flex-start;gap:1.5rem;}
+  .hero-meta{align-items:flex-start;text-align:left;}
+  .hero-scroll{display:none;}
+}
+
+/* MARQUEE */
+.marquee-strip{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:.7rem 0;overflow:hidden;background:var(--ink2);
+  position:relative;z-index:10;
+}
+.marquee-inner{display:flex;gap:0;animation:marquee 28s linear infinite;width:max-content;}
+.marquee-strip:hover .marquee-inner{animation-play-state:paused;}
+.marquee-item{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.65rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;padding:0 2rem;
+}
+.marquee-item.accent{color:var(--red2);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%)}}
+
+/* SECTIONS SHARED */
+section{padding:7rem 3.5rem;}
+.sec-label{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.6rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--red2);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.sec-label::before{content:'';display:block;width:24px;height:1px;background:var(--red2);}
+.sec-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:clamp(2.2rem,5vw,4rem);font-weight:700;line-height:1.1;
+  color:var(--rice);margin-bottom:1.5rem;
+}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){section{padding:5rem 1.5rem;}}
+
+/* ABOUT */
+.about{background:var(--ink2);position:relative;overflow:hidden;}
+.about::before{
+  content:'MK';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
+  font-family:'Shippori Mincho',serif;font-size:22vw;font-weight:800;
+  color:transparent;-webkit-text-stroke:1px rgba(245,240,232,0.04);
+  pointer-events:none;line-height:1;
+}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-text p{font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:1.2rem;}
+.about-text p:last-child{margin-bottom:0;}
+.about-text strong{color:var(--rice);font-weight:500;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.stat-box{
+  background:var(--ink3);padding:2rem 1.5rem;
+  border:1px solid var(--border);
+  transition:border-color .3s,background .3s;
+}
+.stat-box:hover{border-color:var(--border2);background:rgba(192,57,43,0.06);}
+.stat-num{
+  font-family:'Shippori Mincho',serif;font-size:2.8rem;font-weight:700;
+  color:var(--rice);line-height:1;margin-bottom:.4rem;
+  display:flex;align-items:baseline;gap:.1rem;
+}
+.stat-num sup{font-size:1rem;color:var(--red2);}
+.stat-desc{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:3rem;}
+  .about::before{font-size:40vw;}
+}
+
+/* EXPERIENCE STRIP */
+.exp-strip{
+  padding:4rem 3.5rem;
+  background:var(--red);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  position:relative;overflow:hidden;
+}
+.exp-strip::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,0.05) 10px,rgba(0,0,0,0.05) 11px);
+}
+.exp-item{padding:2rem;text-align:center;position:relative;z-index:1;}
+.exp-item+.exp-item{border-left:1px solid rgba(255,255,255,0.15);}
+.exp-icon{font-size:1.8rem;margin-bottom:.8rem;opacity:.9;}
+.exp-title{font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
+.exp-desc{font-size:.75rem;color:rgba(255,255,255,0.7);line-height:1.6;}
+@media(max-width:768px){
+  .exp-strip{grid-template-columns:1fr;padding:3rem 1.5rem;}
+  .exp-item+.exp-item{border-left:none;border-top:1px solid rgba(255,255,255,0.15);}
+}
+
+/* MENU */
+.menu{background:var(--ink);}
+.menu-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:3.5rem;overflow-x:auto;}
+.menu-tab{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);background:none;border:none;
+  padding:.9rem 1.8rem;white-space:nowrap;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .25s,border-color .25s;
+}
+.menu-tab:hover{color:var(--rice);}
+.menu-tab.active{color:var(--red2);border-bottom-color:var(--red2);}
+.menu-panel{display:none;}
+.menu-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+@media(max-width:1024px){.menu-panel.active{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.menu-panel.active{grid-template-columns:1fr;}}
+
+.menu-item{
+  background:var(--ink2);padding:2rem;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.menu-item:hover{background:var(--ink3);}
+.menu-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--red);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.menu-item:hover::before{transform:scaleY(1);}
+.item-num{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.55rem;letter-spacing:.3em;color:var(--muted);margin-bottom:.8rem;
+}
+.item-name{
+  font-family:'Shippori Mincho',serif;
+  font-size:1.15rem;font-weight:600;color:var(--rice);
+  margin-bottom:.4rem;line-height:1.3;
+}
+.item-desc{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;font-weight:300;}
+.item-price{
+  font-family:'Shippori Mincho',serif;font-size:1.3rem;font-weight:700;
+  color:var(--gold2);
+}
+.item-price small{font-size:.75rem;color:var(--muted);margin-left:.2rem;font-family:'DM Sans',sans-serif;font-weight:300;}
+.item-tag{
+  display:inline-block;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:.2rem .6rem;background:var(--red);color:#fff;
+  margin-bottom:.8rem;font-family:'Zen Kaku Gothic New',sans-serif;
+}
+
+/* TATAMI FEATURE */
+.tatami{
+  padding:6rem 3.5rem;
+  background:var(--ink2);
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+  position:relative;overflow:hidden;
+}
+.tatami::after{
+  content:'畳';position:absolute;right:-1rem;bottom:-3rem;
+  font-family:'Zen Kaku Gothic New',sans-serif;font-size:30vw;
+  color:transparent;-webkit-text-stroke:1px rgba(245,240,232,0.03);
+  pointer-events:none;line-height:1;
+}
+.tatami-text .sec-title{font-size:clamp(2rem,4vw,3.2rem);}
+.tatami-text p{font-size:.95rem;line-height:1.9;color:var(--muted);font-weight:300;margin-bottom:1rem;}
+.tatami-features{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.tatami-feat{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.2rem;
+  border:1px solid var(--border);
+  transition:border-color .3s,background .3s;
+}
+.tatami-feat:hover{border-color:var(--border2);background:rgba(192,57,43,0.04);}
+.tatami-feat-icon{font-size:1.3rem;flex-shrink:0;}
+.tatami-feat-text{font-size:.82rem;color:var(--muted);line-height:1.5;}
+.tatami-feat-text strong{display:block;font-size:.85rem;color:var(--rice);margin-bottom:.1rem;font-weight:500;}
+.tatami-visual{
+  aspect-ratio:4/5;background:var(--ink3);
+  border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+  position:relative;overflow:hidden;
+}
+.tatami-visual::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(135deg,rgba(192,57,43,0.1) 0%,transparent 50%),
+    repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(245,240,232,0.02) 40px,rgba(245,240,232,0.02) 41px),
+    repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(245,240,232,0.02) 40px,rgba(245,240,232,0.02) 41px);
+}
+.tatami-visual-jp{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:5rem;font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(245,240,232,0.15);
+  position:relative;z-index:1;line-height:1;
+}
+.tatami-visual-label{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);position:relative;z-index:1;}
+@media(max-width:768px){
+  .tatami{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem;}
+  .tatami::after{font-size:50vw;}
+  .tatami-visual{aspect-ratio:16/9;}
+}
+
+/* CONTACT */
+.contact{background:var(--ink);position:relative;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:1.8rem;}
+.contact-block{}
+.contact-block-label{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--red2);margin-bottom:.5rem;
+}
+.contact-block-val{font-size:.95rem;color:var(--rice);line-height:1.6;}
+.contact-block-val a{color:var(--rice);text-decoration:none;transition:color .2s;}
+.contact-block-val a:hover{color:var(--red2);}
+.contact-cta{display:flex;flex-direction:column;gap:1rem;margin-top:1rem;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.9rem 2rem;font-size:.72rem;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;border:none;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:all .25s;
+}
+.btn-primary{background:var(--red);color:#fff;}
+.btn-primary:hover{background:var(--red2);}
+.btn-secondary{background:transparent;color:var(--rice);border:1px solid var(--border);}
+.btn-secondary:hover{border-color:var(--rice);}
+.contact-map{
+  background:var(--ink3);border:1px solid var(--border);
+  padding:2.5rem;height:100%;min-height:320px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.map-label{font-family:'Zen Kaku Gothic New',sans-serif;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red2);margin-bottom:1rem;}
+.map-address{font-family:'Shippori Mincho',serif;font-size:1.4rem;font-weight:600;line-height:1.4;color:var(--rice);margin-bottom:2rem;}
+.map-details{display:flex;flex-direction:column;gap:.6rem;}
+.map-row{display:flex;align-items:center;gap:.8rem;font-size:.82rem;color:var(--muted);}
+.map-row span:first-child{color:var(--red2);font-size:.9rem;}
+.map-btn{
+  margin-top:2rem;display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--rice);text-decoration:none;font-family:'Zen Kaku Gothic New',sans-serif;
+  transition:color .2s;
+}
+.map-btn:hover{color:var(--red2);}
+.map-btn::after{content:'→';transition:transform .2s;}
+.map-btn:hover::after{transform:translateX(4px);}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:3rem;}}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:3rem 3.5rem;
+  background:var(--ink2);
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.footer-brand{font-family:'Shippori Mincho',serif;font-size:1.3rem;font-weight:700;color:var(--rice);}
+.footer-brand span{color:var(--red2);}
+.footer-copy{font-size:.72rem;color:var(--muted);letter-spacing:.08em;}
+.footer-marquee{
+  position:absolute;bottom:-1rem;left:0;right:0;
+  font-family:'Shippori Mincho',serif;font-size:5rem;font-weight:800;
+  color:transparent;-webkit-text-stroke:1px rgba(245,240,232,0.04);
+  white-space:nowrap;pointer-events:none;
+  animation:marquee 20s linear infinite;
+}
+@media(max-width:768px){footer{padding:2rem 1.5rem;flex-direction:column;gap:1rem;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div id="prog"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-en">MK Sushi Bar</span>
+    <span class="nav-brand-jp">鮨バー · アンティポロ</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#tatami">Experience</a></li>
+    <li><a href="#contact">Visit</a></li>
+    <li><a href="https://www.foodpanda.ph" target="_blank" class="nav-cta btn">Order Now</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-tag">Antipolo City, Rizal · Est. 2020</div>
+  <h1 class="hero-title">
+    <span class="hero-title-line hero-title-en" id="title-line-1"><span>MK</span></span>
+    <span class="hero-title-line hero-title-en" id="title-line-2"><span>Sushi</span></span>
+    <span class="hero-title-line hero-title-en" id="title-line-3"><span>Bar.</span></span>
+    <span class="hero-title-jp">鮨バー · アンティポロ</span>
+  </h1>
+  <div class="hero-sub">
+    <p class="hero-desc">Japanese–Korean–Asian fusion dining in the heart of Antipolo. From silky ramen to pristine sashimi — crafted with care, served with soul.</p>
+    <div class="hero-meta">
+      <div class="hero-rating" id="hero-rating">0</div>
+      <div class="hero-rating-sub">Reviews on FoodPanda</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner" id="mq">
+    <span class="marquee-item accent">MK Sushi Bar</span>
+    <span class="marquee-item">Ramen · Tantanmen · Sashimi</span>
+    <span class="marquee-item accent">アンティポロ</span>
+    <span class="marquee-item">Korean · Japanese · Asian Fusion</span>
+    <span class="marquee-item accent">9.2K Followers</span>
+    <span class="marquee-item">Japanese Tatami Tables</span>
+    <span class="marquee-item accent">FoodPanda Delivery</span>
+    <span class="marquee-item">Lot 3-A&B · M.L. Quezon Ext · Brgy. Dalig</span>
+    <span class="marquee-item accent">Open Bar Available</span>
+    <span class="marquee-item">+63 917 185 6387</span>
+    <span class="marquee-item accent">MK Sushi Bar</span>
+    <span class="marquee-item">Ramen · Tantanmen · Sashimi</span>
+    <span class="marquee-item accent">アンティポロ</span>
+    <span class="marquee-item">Korean · Japanese · Asian Fusion</span>
+    <span class="marquee-item accent">9.2K Followers</span>
+    <span class="marquee-item">Japanese Tatami Tables</span>
+    <span class="marquee-item accent">FoodPanda Delivery</span>
+    <span class="marquee-item">Lot 3-A&B · M.L. Quezon Ext · Brgy. Dalig</span>
+    <span class="marquee-item accent">Open Bar Available</span>
+    <span class="marquee-item">+63 917 185 6387</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="sec-label">Our Story</div>
+      <h2 class="sec-title">Where East<br>Meets Taste</h2>
+      <p>MK Sushi Bar brings together the finest traditions of Japanese, Korean, and Asian fusion cuisine in a setting designed for those who appreciate both flavor and atmosphere. Located in Brgy. Dalig, Antipolo City — we've built a loyal community of <strong>9,200+ followers</strong> who keep coming back.</p>
+      <p>Step into our fully air-conditioned dining space or settle into one of our authentic <strong>Japanese Tatami tables</strong> — a rare dining experience in Antipolo. Every dish is crafted with precision, every bowl of ramen is simmered with patience.</p>
+      <p>Available on <strong>FoodPanda</strong> for delivery, in-store pickup, and dine-in. We bring the experience to you, wherever you are.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-box">
+        <div class="stat-num"><span class="count-up" data-target="9200" data-suffix="">0</span><sup>+</sup></div>
+        <div class="stat-desc">Followers &amp; Counting</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num"><span class="count-up" data-target="930" data-suffix="">0</span><sup>+</sup></div>
+        <div class="stat-desc">Posts &amp; Updates</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num"><span class="count-up" data-target="52" data-suffix="">0</span><sup>%</sup></div>
+        <div class="stat-desc">Recommend Rate</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num"><span class="count-up" data-target="3" data-suffix="">0</span></div>
+        <div class="stat-desc">Cuisine Styles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXP STRIP -->
+<div class="exp-strip">
+  <div class="exp-item reveal">
+    <div class="exp-icon">🍜</div>
+    <div class="exp-title">Dine In</div>
+    <div class="exp-desc">Full AC dining room with authentic Japanese Tatami seating available</div>
+  </div>
+  <div class="exp-item reveal">
+    <div class="exp-icon">🛵</div>
+    <div class="exp-title">Delivery</div>
+    <div class="exp-desc">Order via FoodPanda or direct pickup — fresh to your doorstep</div>
+  </div>
+  <div class="exp-item reveal">
+    <div class="exp-icon">🍶</div>
+    <div class="exp-title">Open Bar</div>
+    <div class="exp-desc">Full bar service available — the perfect pairing for your meal</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="reveal">
+    <div class="sec-label">What We Serve</div>
+    <h2 class="sec-title">The Menu</h2>
+  </div>
+  <div class="menu-tabs">
+    <button class="menu-tab active" data-tab="ramen">Ramen</button>
+    <button class="menu-tab" data-tab="sashimi">Sashimi & Sushi</button>
+    <button class="menu-tab" data-tab="korean">Korean</button>
+    <button class="menu-tab" data-tab="salads">Salads</button>
+    <button class="menu-tab" data-tab="drinks">Drinks & Bar</button>
+  </div>
+
+  <!-- RAMEN -->
+  <div class="menu-panel active" id="tab-ramen">
+    <div class="menu-item">
+      <div class="item-num">01</div>
+      <div class="item-tag">Bestseller</div>
+      <div class="item-name">Tonkotsu Ramen</div>
+      <div class="item-desc">Rich pork bone broth, chashu pork belly, soft-boiled egg, nori, bamboo shoots</div>
+      <div class="item-price">₱280 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">02</div>
+      <div class="item-name">Tantanmen</div>
+      <div class="item-desc">Spicy sesame broth, ground pork, bok choy, chili oil, toasted sesame</div>
+      <div class="item-price">₱290 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">03</div>
+      <div class="item-name">Shoyu Ramen</div>
+      <div class="item-desc">Soy-based clear broth, chicken chashu, menma, green onion, nori</div>
+      <div class="item-price">₱265 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">04</div>
+      <div class="item-tag">Spicy</div>
+      <div class="item-name">Kimchi Ramen</div>
+      <div class="item-desc">Kimchi-infused broth, pork, tofu, sesame seeds — Korean-Japanese fusion</div>
+      <div class="item-price">₱295 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">05</div>
+      <div class="item-name">Miso Ramen</div>
+      <div class="item-desc">White miso broth, corn, butter, chashu, soft egg, bean sprouts</div>
+      <div class="item-price">₱275 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">06</div>
+      <div class="item-name">Vegan Shio Ramen</div>
+      <div class="item-desc">Light salt broth, seasonal vegetables, tofu, mushrooms, yuzu zest</div>
+      <div class="item-price">₱255 <small>/ bowl</small></div>
+    </div>
+  </div>
+
+  <!-- SASHIMI -->
+  <div class="menu-panel" id="tab-sashimi">
+    <div class="menu-item">
+      <div class="item-num">01</div>
+      <div class="item-tag">Fresh Daily</div>
+      <div class="item-name">Salmon Sashimi</div>
+      <div class="item-desc">5 slices of premium Atlantic salmon, wasabi, pickled ginger, soy</div>
+      <div class="item-price">₱320 <small>/ order</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">02</div>
+      <div class="item-name">Tuna Sashimi</div>
+      <div class="item-desc">5 slices of bluefin tuna, traditional Japanese plating</div>
+      <div class="item-price">₱340 <small>/ order</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">03</div>
+      <div class="item-tag">Bestseller</div>
+      <div class="item-name">California Maki</div>
+      <div class="item-desc">Crab stick, avocado, cucumber, tobiko, sesame — 8 pieces</div>
+      <div class="item-price">₱220 <small>/ roll</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">04</div>
+      <div class="item-name">Spicy Tuna Roll</div>
+      <div class="item-desc">Tuna, spicy mayo, cucumber, sesame — 8 pieces</div>
+      <div class="item-price">₱260 <small>/ roll</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">05</div>
+      <div class="item-name">MK Special Platter</div>
+      <div class="item-desc">Chef's selection of 12 pieces — salmon, tuna, prawn, and chef's choice</div>
+      <div class="item-price">₱580 <small>/ platter</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">06</div>
+      <div class="item-name">Ebi Tempura Roll</div>
+      <div class="item-desc">Crispy prawn tempura, avocado, spicy mayo drizzle — 6 pieces</div>
+      <div class="item-price">₱280 <small>/ roll</small></div>
+    </div>
+  </div>
+
+  <!-- KOREAN -->
+  <div class="menu-panel" id="tab-korean">
+    <div class="menu-item">
+      <div class="item-num">01</div>
+      <div class="item-tag">Most Ordered</div>
+      <div class="item-name">Korean BBQ Beef</div>
+      <div class="item-desc">Marinated galbi short ribs, ssam lettuce wraps, doenjang, banchan</div>
+      <div class="item-price">₱420 <small>/ serving</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">02</div>
+      <div class="item-name">Bibimbap</div>
+      <div class="item-desc">Warm rice bowl, assorted namul, gochujang, fried egg, sesame oil</div>
+      <div class="item-price">₱265 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">03</div>
+      <div class="item-tag">Spicy</div>
+      <div class="item-name">Tteokbokki</div>
+      <div class="item-desc">Chewy rice cakes, fish cake, spicy gochujang sauce, boiled egg</div>
+      <div class="item-price">₱195 <small>/ plate</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">04</div>
+      <div class="item-name">Korean Fried Chicken</div>
+      <div class="item-desc">Double-fried crispy chicken, sweet-soy glaze, pickled radish</div>
+      <div class="item-price">₱320 <small>/ serving</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">05</div>
+      <div class="item-name">Japchae</div>
+      <div class="item-desc">Glass noodles, stir-fried vegetables, beef, sesame oil, soy</div>
+      <div class="item-price">₱240 <small>/ plate</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">06</div>
+      <div class="item-name">Sundubu Jjigae</div>
+      <div class="item-desc">Soft tofu stew, clams, pork, egg — fiery and warming</div>
+      <div class="item-price">₱255 <small>/ bowl</small></div>
+    </div>
+  </div>
+
+  <!-- SALADS -->
+  <div class="menu-panel" id="tab-salads">
+    <div class="menu-item">
+      <div class="item-num">01</div>
+      <div class="item-tag">Signature</div>
+      <div class="item-name">Kani Salad</div>
+      <div class="item-desc">Crab stick, cucumber, mango, mayo dressing, masago, sesame</div>
+      <div class="item-price">₱195 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">02</div>
+      <div class="item-name">Wakame Salad</div>
+      <div class="item-desc">Japanese seaweed, sesame dressing, toasted sesame seeds, cucumber</div>
+      <div class="item-price">₱165 <small>/ bowl</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">03</div>
+      <div class="item-name">Goma-ae</div>
+      <div class="item-desc">Blanched spinach, sweet sesame paste dressing, toasted sesame</div>
+      <div class="item-price">₱145 <small>/ serving</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">04</div>
+      <div class="item-name">Agedashi Tofu</div>
+      <div class="item-desc">Lightly fried silken tofu, dashi broth, grated daikon, green onion</div>
+      <div class="item-price">₱155 <small>/ serving</small></div>
+    </div>
+  </div>
+
+  <!-- DRINKS -->
+  <div class="menu-panel" id="tab-drinks">
+    <div class="menu-item">
+      <div class="item-num">01</div>
+      <div class="item-tag">Bar Special</div>
+      <div class="item-name">Sake Flight</div>
+      <div class="item-desc">Three curated sakes — junmai, ginjo, and daiginjo</div>
+      <div class="item-price">₱380 <small>/ flight</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">02</div>
+      <div class="item-name">Soju Cocktail</div>
+      <div class="item-desc">Korean soju with fruit mixers — peach, watermelon, or yakult</div>
+      <div class="item-price">₱180 <small>/ glass</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">03</div>
+      <div class="item-name">Matcha Latte</div>
+      <div class="item-desc">Ceremonial grade matcha, oat milk, light sweetener</div>
+      <div class="item-price">₱145 <small>/ cup</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">04</div>
+      <div class="item-name">Yuzu Lemonade</div>
+      <div class="item-desc">Fresh yuzu concentrate, sparkling water, honey, shiso leaf</div>
+      <div class="item-price">₱120 <small>/ glass</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">05</div>
+      <div class="item-name">Japanese Whisky Highball</div>
+      <div class="item-desc">Suntory Toki, soda water, lemon peel</div>
+      <div class="item-price">₱280 <small>/ glass</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="item-num">06</div>
+      <div class="item-name">Hot Green Tea</div>
+      <div class="item-desc">Loose-leaf sencha, traditional Japanese brew</div>
+      <div class="item-price">₱65 <small>/ pot</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- TATAMI EXPERIENCE -->
+<section class="tatami" id="tatami">
+  <div class="tatami-text reveal">
+    <div class="sec-label">The Experience</div>
+    <h2 class="sec-title">Japanese Tatami<br>Dining</h2>
+    <p>One of the few restaurants in Antipolo to offer authentic Japanese tatami-style seating. Remove your shoes, settle onto the cushions, and let the low table bring you closer to the heart of Japanese dining culture.</p>
+    <p>Paired with our full air-conditioned interior and open bar — it's a complete escape within the city.</p>
+    <div class="tatami-features">
+      <div class="tatami-feat">
+        <div class="tatami-feat-icon">❄️</div>
+        <div class="tatami-feat-text">
+          <strong>Full Air-Conditioning</strong>
+          Stay cool while you dine — every corner of the room is temperature-controlled
+        </div>
+      </div>
+      <div class="tatami-feat">
+        <div class="tatami-feat-icon">🎎</div>
+        <div class="tatami-feat-text">
+          <strong>Tatami Seating</strong>
+          Traditional Japanese floor seating with low tables — an authentic experience
+        </div>
+      </div>
+      <div class="tatami-feat">
+        <div class="tatami-feat-icon">🍶</div>
+        <div class="tatami-feat-text">
+          <strong>Open Bar</strong>
+          Full bar service — sake, soju cocktails, whisky highballs, and more
+        </div>
+      </div>
+      <div class="tatami-feat">
+        <div class="tatami-feat-icon">🛵</div>
+        <div class="tatami-feat-text">
+          <strong>FoodPanda Delivery</strong>
+          Can't make it in? Order through FoodPanda and we bring it to you
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tatami-visual reveal">
+    <div class="tatami-visual-jp">畳</div>
+    <div class="tatami-visual-label">Tatami · Japanese Floor Dining</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="sec-label">Find Us</div>
+      <h2 class="sec-title">Come<br>Visit Us</h2>
+      <div class="contact-info">
+        <div class="contact-block">
+          <div class="contact-block-label">Address</div>
+          <div class="contact-block-val">Lot 3-A&B Pobel Bldg.<br>M.L. Quezon Extension, Brgy. Dalig<br>Antipolo City, Rizal</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Phone</div>
+          <div class="contact-block-val"><a href="tel:+639171856387">+63 917 185 6387</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Delivery</div>
+          <div class="contact-block-val"><a href="https://www.foodpanda.ph" target="_blank">FoodPanda · In-store Pickup · Dine-in</a></div>
+        </div>
+        <div class="contact-cta">
+          <a href="https://www.foodpanda.ph" target="_blank" class="btn btn-primary">Order on FoodPanda</a>
+          <a href="https://www.facebook.com/profile.php?id=100063567854241" target="_blank" class="btn btn-secondary">Follow on Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map reveal">
+      <div class="map-label">Location</div>
+      <div class="map-address">Brgy. Dalig,<br>Antipolo City, Rizal</div>
+      <div class="map-details">
+        <div class="map-row"><span>🕐</span><span>Open for dine-in &amp; delivery</span></div>
+        <div class="map-row"><span>📍</span><span>M.L. Quezon Extension, Antipolo</span></div>
+        <div class="map-row"><span>📞</span><span>+63 917 185 6387</span></div>
+        <div class="map-row"><span>🛵</span><span>FoodPanda · Takeaway · Dine-in</span></div>
+      </div>
+      <a href="https://maps.google.com/?q=Lot+3-A%26B+Pobel+Bldg+ML+Quezon+Ext+Brgy+Dalig+Antipolo+City+Rizal" target="_blank" class="map-btn">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">MK <span>Sushi</span> Bar</div>
+  <div class="footer-copy">© 2026 MK Sushi Bar Antipolo · Brgy. Dalig, Antipolo City, Rizal</div>
+  <div class="footer-marquee" aria-hidden="true">MK SUSHI BAR · 鮨バー · ANTIPOLO CITY · RAMEN · SASHIMI · KOREAN FUSION · MK SUSHI BAR · 鮨バー · ANTIPOLO CITY · RAMEN · SASHIMI · KOREAN FUSION ·&nbsp;</div>
+</footer>
+
+<script>
+// CURSOR
+const dot = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.menu-tab').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='var(--red2)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='32px';ring.style.height='32px';ring.style.borderColor='var(--rice)';});
+});
+
+// PROGRESS
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',s>60);
+});
+
+// HERO TITLE ANIMATION
+window.addEventListener('load',()=>{
+  ['title-line-1','title-line-2','title-line-3'].forEach((id,i)=>{
+    const span=document.querySelector('#'+id+' span');
+    if(span){setTimeout(()=>{span.style.transition='transform .9s cubic-bezier(.16,1,.3,1), opacity .7s ease';span.style.transform='translateY(0)';span.style.opacity='1';},400+i*180);}
+  });
+  // Rating count
+  const el=document.getElementById('hero-rating');
+  let n=0,target=52;
+  const step=()=>{n+=2;if(n>=target){el.textContent=target+'%';return;}el.textContent=n+'%';setTimeout(step,30);};
+  setTimeout(step,800);
+});
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// COUNT-UP
+const countObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    const target=+el.dataset.target;
+    const suffix=el.dataset.suffix||'';
+    let current=0;
+    const duration=1600;
+    const start=performance.now();
+    const step=now=>{
+      const progress=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-progress,3);
+      current=Math.round(ease*target);
+      el.textContent=current.toLocaleString()+suffix;
+      if(progress<1)requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    countObs.unobserve(el);
+  });
+},{threshold:.3});
+document.querySelectorAll('.count-up').forEach(el=>countObs.observe(el));
+
+// MENU TABS
+document.querySelectorAll('.menu-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
+  });
+});
+
+// CLICK PARTICLES
+document.addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    const angle=Math.random()*Math.PI*2;
+    const vel=2+Math.random()*4;
+    const size=2+Math.random()*3;
+    p.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:var(--red2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);`;
+    document.body.appendChild(p);
+    let x=0,y=0,op=1;
+    const vx=Math.cos(angle)*vel,vy=Math.sin(angle)*vel;
+    const anim=()=>{x+=vx;y+=vy;op-=.04;p.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px))`;p.style.opacity=op;if(op>0)requestAnimationFrame(anim);else p.remove();};
+    requestAnimationFrame(anim);
+  }
+});
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const cx=r.left+r.width/2,cy=r.top+r.height/2;
+    const dx=(e.clientX-cx)*.18,dy=(e.clientY-cy)*.18;
+    btn.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+});
+</script>
+</body>
+</html>
