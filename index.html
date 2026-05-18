@@ -1071,15 +1071,29 @@
       bObs.observe(item);
     });
 
-    // 3D tilt on project cards
-    document.querySelectorAll('.project-card').forEach(card => {
+    // 3D tilt on project cards (Optimized: cache rect to avoid layout thrashing)
+    const projectCards = document.querySelectorAll('.project-card');
+    const cardRects = new Map();
+    const clearRects = () => cardRects.clear();
+    window.addEventListener('resize', clearRects);
+    window.addEventListener('scroll', clearRects, { passive: true });
+
+    projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => { cardRects.set(card, card.getBoundingClientRect()); });
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        let rect = cardRects.get(card);
+        if (!rect) {
+          rect = card.getBoundingClientRect();
+          cardRects.set(card, rect);
+        }
         const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
         const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
         card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
       });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        cardRects.delete(card);
+      });
     });
 
     // Section labels

@@ -1,0 +1,3 @@
+## 2026-05-18 - Caching getBoundingClientRect for High-Frequency Events
+**Learning:** Calling `getBoundingClientRect()` inside a `mousemove` handler triggers synchronous layout reflow (layout thrashing) on every mouse move. This can block the main thread and cause noticeable jank during interactions. Caching the result and invalidating it only when necessary (e.g., on `scroll` or `resize`) maintains performance without sacrificing accuracy.
+**Action:** Always cache geometry calculations in high-frequency event listeners. Use a `Map` for multiple elements or a single variable, and clear it on `window` `resize` or `scroll` events.
