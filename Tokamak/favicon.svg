@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#060606"/>
+  <circle cx="50" cy="50" r="47" fill="none" stroke="#C1392B" stroke-width="1.2"/>
+  <!-- Horizontal bar of T -->
+  <rect x="22" y="28" width="56" height="8" fill="#F4F4F4"/>
+  <!-- Vertical stem of T -->
+  <rect x="43" y="36" width="14" height="36" fill="#F4F4F4"/>
+  <!-- Red accent dot -->
+  <circle cx="50" cy="80" r="3" fill="#C1392B"/>
+</svg>
