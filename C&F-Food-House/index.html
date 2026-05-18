@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C&F Food House — Silog Cravings? We Got Them All</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Barlow:ital,wght@0,400;0,600;0,700;0,900;1,400;1,900&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --y:#FFD600;--y2:#FFC200;--y3:rgba(255,214,0,0.12);
+  --b:#0A0A0A;--b2:#141414;--b3:#1E1E1E;
+  --white:#FFFFFF;--muted:rgba(255,255,255,0.45);
+  --border:rgba(255,214,0,0.15);
+  --red:#E63946;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--b);color:var(--white);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;cursor:none;}
+*{cursor:none!important;}
+
+/* CURSOR */
+#cur-ring{position:fixed;width:38px;height:38px;border:2px solid var(--y);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;mix-blend-mode:exclusion;}
+#cur-dot{position:fixed;width:6px;height:6px;background:var(--y);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--y);z-index:9999;width:0%;pointer-events:none;transition:width .1s linear;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(10,10,10,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--border);
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:1.5rem;letter-spacing:.04em;
+  color:var(--y);text-decoration:none;
+}
+.nav-logo span{color:var(--white);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--y);}
+.nav-cta{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.8rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--b);background:var(--y);
+  padding:.6rem 1.8rem;text-decoration:none;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--y2);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:8rem 3rem 4rem;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;opacity:.025;pointer-events:none;
+}
+.hero-glow{
+  position:absolute;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(255,214,0,.12) 0%,transparent 65%);
+  top:-150px;right:-100px;
+  pointer-events:none;
+  animation:glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{opacity:.8;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,214,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,214,0,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1200px;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--y);
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-bottom:1.5rem;
+  animation:fadeUp .6s .1s both;
+}
+.hero-tag::before{content:'';display:block;width:2rem;height:2px;background:var(--y);}
+.hero-title{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:clamp(3.5rem,7vw,7rem);
+  line-height:.92;letter-spacing:.01em;
+  color:var(--white);
+  margin-bottom:1rem;
+  animation:fadeUp .7s .2s both;
+}
+.hero-title .y{color:var(--y);}
+.hero-title .stroke{
+  -webkit-text-stroke:2px var(--white);
+  color:transparent;
+}
+.hero-sub{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:2.5rem;
+  animation:fadeUp .7s .3s both;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s .4s both;}
+.btn-y{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--b);background:var(--y);
+  padding:1rem 2.8rem;text-decoration:none;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  display:inline-block;transition:all .2s;
+}
+.btn-y:hover{background:var(--y2);transform:translateY(-2px);}
+.btn-ghost{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.85rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--y);
+  border:2px solid var(--y);
+  padding:1rem 2.8rem;text-decoration:none;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  display:inline-block;transition:all .2s;
+}
+.btn-ghost:hover{background:var(--y);color:var(--b);}
+
+/* HERO VISUAL */
+.hero-visual{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  animation:fadeUp .8s .3s both;
+}
+.price-hero{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:clamp(6rem,12vw,12rem);
+  color:transparent;
+  -webkit-text-stroke:2px rgba(255,214,0,.2);
+  line-height:1;
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  white-space:nowrap;
+  user-select:none;
+}
+.badge-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1rem;position:relative;z-index:1;
+}
+.badge{
+  background:var(--b2);
+  border:1px solid var(--border);
+  padding:1.5rem;
+  clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+  transition:all .3s;
+}
+.badge:hover{background:var(--y3);border-color:var(--y);transform:translateY(-4px);}
+.badge-icon{font-size:2rem;margin-bottom:.6rem;}
+.badge-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.95rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--white);margin-bottom:.3rem;
+}
+.badge-price{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:1.4rem;color:var(--y);
+}
+.badge.featured{
+  grid-column:span 2;
+  background:var(--y);
+  clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+}
+.badge.featured .badge-name{color:var(--b);}
+.badge.featured .badge-price{color:var(--b);font-size:2rem;}
+.badge.featured:hover{background:var(--y2);}
+
+/* MARQUEE */
+.marquee-wrap{
+  background:var(--y);overflow:hidden;
+  padding:.65rem 0;
+  border-top:2px solid rgba(0,0,0,.2);
+  border-bottom:2px solid rgba(0,0,0,.2);
+}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 22s linear infinite;}
+.marquee-item{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.9rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--b);padding:0 2rem;flex-shrink:0;
+}
+.marquee-sep{color:rgba(0,0,0,.3);padding:0;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTION */
+section{padding:8rem 3rem;}
+.sec-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--y);
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-bottom:.8rem;
+}
+.sec-tag::before{content:'';display:block;width:1.5rem;height:2px;background:var(--y);}
+.sec-title{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:clamp(2.5rem,5vw,5rem);
+  line-height:.95;letter-spacing:.01em;
+  color:var(--white);margin-bottom:1rem;
+}
+.sec-title .y{color:var(--y);}
+
+/* BESTSELLERS */
+.bests{background:var(--b2);}
+.bests-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;}
+.bests-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.best-card{
+  background:var(--b2);
+  padding:2.5rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .3s,transform .3s;
+}
+.best-card:hover{background:var(--b3);transform:translateY(-4px);}
+.best-card::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:var(--y);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s cubic-bezier(.23,1,.32,1);
+}
+.best-card:hover::before{transform:scaleX(1);}
+.best-num{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:5rem;
+  color:rgba(255,214,0,.04);
+  position:absolute;top:1rem;right:1rem;
+  line-height:1;
+  transition:color .3s;
+}
+.best-card:hover .best-num{color:rgba(255,214,0,.08);}
+.best-icon{font-size:2.2rem;margin-bottom:1rem;}
+.best-badge{
+  display:inline-block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:.25rem .7rem;background:var(--red);color:var(--white);
+  margin-bottom:.8rem;
+}
+.best-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.3rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--white);margin-bottom:.5rem;line-height:1.1;
+}
+.best-desc{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
+.best-price{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:1.8rem;color:var(--y);
+}
+.best-price span{font-size:.9rem;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:600;}
+
+/* UNLI STRIP */
+.unli{
+  background:var(--y);
+  padding:5rem 3rem;
+  position:relative;overflow:hidden;
+}
+.unli::before{
+  content:'UNLI SILOG';
+  position:absolute;
+  font-family:'Black Han Sans',sans-serif;
+  font-size:12rem;
+  color:rgba(0,0,0,.06);
+  white-space:nowrap;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  line-height:1;
+}
+.unli-inner{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.unli-title{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:clamp(3rem,6vw,6rem);
+  color:var(--b);line-height:.9;
+  margin-bottom:1rem;
+}
+.unli-sub{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(0,0,0,.6);margin-bottom:.5rem;
+}
+.unli-desc{font-size:.95rem;font-weight:600;color:rgba(0,0,0,.6);line-height:1.7;}
+.unli-cards{display:flex;flex-direction:column;gap:1rem;}
+.unli-card{
+  background:var(--b);
+  padding:1.8rem 2rem;
+  clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  position:relative;overflow:hidden;
+}
+.unli-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--y);
+}
+.unli-card-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--white);margin-bottom:.3rem;
+}
+.unli-card-price{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:1.8rem;color:var(--y);
+}
+.unli-card-note{font-size:.72rem;color:var(--muted);margin-top:.3rem;letter-spacing:.05em;text-transform:uppercase;}
+
+/* ABOUT */
+.about{background:var(--b);}
+.about-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+}
+.about-stat{
+  background:var(--b2);
+  padding:2rem;
+  transition:background .3s;
+}
+.about-stat:hover{background:var(--b3);}
+.about-stat-n{
+  font-family:'Black Han Sans',sans-serif;
+  font-size:2.5rem;color:var(--y);line-height:1;
+}
+.about-stat-l{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-top:.4rem;
+}
+.about-text p{
+  font-size:.95rem;font-weight:400;
+  color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:1.2rem;
+}
+.about-text p strong{color:var(--white);font-weight:700;}
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.about-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:.35rem 1rem;
+  border:1px solid var(--border);
+  color:var(--muted);
+  clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+}
+
+/* ORDER */
+.order{background:var(--b2);padding:7rem 3rem;}
+.order-inner{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.order-tagline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;font-weight:700;letter-spacing:.04em;
+  color:var(--muted);line-height:1.7;margin-bottom:2rem;
+}
+.order-card{
+  background:var(--b3);
+  border:1px solid var(--border);
+  position:relative;
+}
+.order-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--y);
+}
+.contact-row{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1.4rem 1.8rem;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  transition:background .2s;
+}
+.contact-row:last-child{border-bottom:none;}
+.contact-row:hover{background:rgba(255,214,0,.03);}
+.cr-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem;}
+.cr-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--y);margin-bottom:.2rem;
+}
+.cr-val{font-size:.88rem;font-weight:600;color:var(--white);line-height:1.5;}
+.cr-val a{color:var(--white);text-decoration:none;transition:color .2s;}
+.cr-val a:hover{color:var(--y);}
+.cr-sub{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
+
+/* FOOTER */
+footer{
+  background:var(--b);
+  border-top:2px solid var(--border);
+  padding:2.5rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.5rem;
+  position:relative;overflow:hidden;
+}
+.foot-ghost{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Black Han Sans',sans-serif;
+  font-size:6rem;color:rgba(255,214,0,.025);
+  white-space:nowrap;pointer-events:none;
+  animation:ghostScroll 20s linear infinite;
+}
+@keyframes ghostScroll{from{transform:translate(-50%,-50%) translateX(0);}to{transform:translate(-50%,-50%) translateX(-30%);}}
+.foot-logo{font-family:'Black Han Sans',sans-serif;font-size:1.2rem;color:var(--y);position:relative;z-index:1;}
+.foot-logo span{color:var(--muted);}
+.foot-copy{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.15);position:relative;z-index:1;}
+.foot-links{display:flex;gap:2rem;position:relative;z-index:1;}
+.foot-links a{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.foot-links a:hover{color:var(--y);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  .hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}
+  section{padding:5rem 1.5rem;}
+  .bests-grid{grid-template-columns:1fr 1fr;}
+  .unli-inner{grid-template-columns:1fr;}
+  .about-inner{grid-template-columns:1fr;}
+  .order-inner{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:600px){
+  .bests-grid{grid-template-columns:1fr;}
+  .badge-grid{grid-template-columns:1fr;}
+  .badge.featured{grid-column:auto;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="cur-ring"></div>
+<div id="cur-dot"></div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">C<span>&</span>F <span>Food House</span></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#unli">Unli Silog</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+  <a href="tel:09685613931" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Palanan, Makati · Open 10AM–8PM Daily</div>
+      <h1 class="hero-title">
+        SILOG<br>
+        <span class="y">CRAVINGS?</span><br>
+        <span class="stroke">WE GOT</span><br>
+        THEM ALL.
+      </h1>
+      <p class="hero-sub">Silog Meals · Food Trays · Unli Weekends</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-y">See the Menu</a>
+        <a href="#unli" class="btn-ghost">Unli Silog</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="price-hero">₱99</div>
+      <div class="badge-grid">
+        <div class="badge featured">
+          <div class="badge-icon">🍳</div>
+          <div class="badge-name">All Silog Meals</div>
+          <div class="badge-price">₱99 <span style="font-size:.7rem;font-family:'Barlow',sans-serif;font-weight:600;color:rgba(0,0,0,.5);">each</span></div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🥩</div>
+          <div class="badge-name">Beef Samgyup</div>
+          <div class="badge-price">₱99</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🌭</div>
+          <div class="badge-name">Skinless Longga</div>
+          <div class="badge-price">₱99</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🥟</div>
+          <div class="badge-name">Pork Lumpia</div>
+          <div class="badge-price">₱99</div>
+        </div>
+        <div class="badge">
+          <div class="badge-icon">🥩</div>
+          <div class="badge-name">Beef Tapa</div>
+          <div class="badge-price">₱99</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Beef Samgyup Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Skinless Longga Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Pork Lumpia Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Beef Tapa Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Unli Silog Weekends</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">All Meals ₱99</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Dine In · Takeout · Delivery</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Beef Samgyup Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Skinless Longga Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Pork Lumpia Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Beef Tapa Silog</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Unli Silog Weekends</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">All Meals ₱99</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Dine In · Takeout · Delivery</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<!-- BESTSELLERS -->
+<section class="bests" id="menu">
+  <div class="bests-header reveal">
+    <div>
+      <div class="sec-tag">🔥 Best Sellers</div>
+      <h2 class="sec-title">THE <span class="y">HITS.</span></h2>
+    </div>
+    <a href="https://www.facebook.com/C&FFoodHouseMain" target="_blank" rel="noopener" class="btn-ghost">Full Menu on Facebook →</a>
+  </div>
+  <div class="bests-grid">
+    <div class="best-card reveal">
+      <div class="best-num">01</div>
+      <div class="best-icon">🥩</div>
+      <div class="best-badge">🏆 #1 Best Seller</div>
+      <div class="best-name">Beef Samgyup Silog</div>
+      <div class="best-desc">Tender beef samgyup with egg and fried rice. The one that keeps the line moving all day.</div>
+      <div class="best-price">₱99 <span>silog</span></div>
+    </div>
+    <div class="best-card reveal d1">
+      <div class="best-num">02</div>
+      <div class="best-icon">🌭</div>
+      <div class="best-badge">⭐ Crowd Fave</div>
+      <div class="best-name">Skinless Longga Silog</div>
+      <div class="best-desc">Tender skinless longganisa — sweet, juicy, and paired perfectly with garlic rice and egg.</div>
+      <div class="best-price">₱99 <span>silog</span></div>
+    </div>
+    <div class="best-card reveal d2">
+      <div class="best-num">03</div>
+      <div class="best-icon">🥟</div>
+      <div class="best-badge">🔥 Must Try</div>
+      <div class="best-name">Pork Lumpia Silog</div>
+      <div class="best-desc">Crispy lumpiang Shanghai with egg and fried rice. Crunchy, satisfying, and worth every bite.</div>
+      <div class="best-price">₱99 <span>silog</span></div>
+    </div>
+    <div class="best-card reveal d3">
+      <div class="best-num">04</div>
+      <div class="best-icon">🥩</div>
+      <div class="best-badge">💛 Classic</div>
+      <div class="best-name">Beef Tapa Silog</div>
+      <div class="best-desc">Tender sirloin beef tapa with egg and fried rice. The OG silog experience done right.</div>
+      <div class="best-price">₱99 <span>silog</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- UNLI SILOG -->
+<section class="unli" id="unli">
+  <div class="unli-inner">
+    <div class="reveal">
+      <div class="sec-tag" style="background:rgba(0,0,0,.15);border:none;color:rgba(0,0,0,.7);">🍚 Weekend Special</div>
+      <h2 class="unli-title">UNLI<br>SILOG.</h2>
+      <p class="unli-sub">Every Saturday & Sunday</p>
+      <p class="unli-desc">All you can eat silog — every weekend. Choose your cuts, eat as much as you want. One free pitcher of drinks included with every order.</p>
+    </div>
+    <div class="unli-cards reveal d2">
+      <div class="unli-card">
+        <div class="unli-card-name">Regular Unli Silog</div>
+        <div class="unli-card-price">₱299</div>
+        <div class="unli-card-note">+ 1 Free Pitcher of Drinks · Dine-In Only</div>
+      </div>
+      <div class="unli-card">
+        <div class="unli-card-name">Large Unli Silog</div>
+        <div class="unli-card-price">₱499</div>
+        <div class="unli-card-note">+ 1 Free Pitcher of Drinks · Dine-In Only</div>
+      </div>
+      <div style="background:rgba(0,0,0,.15);padding:1.2rem 1.5rem;margin-top:.5rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.6);margin-bottom:.5rem;">Available Cuts</div>
+        <div style="font-size:.82rem;font-weight:600;color:rgba(0,0,0,.65);line-height:1.8;">
+          Skinless Longga · Shanghai · Somai (Regular) · Pork Tocino · Gourmet Tuyo · Chicken Pasta · Bacon · Jumbo Hotdog · Chicken Silog · Beef Tapa · Beef Samgyup · Pork Silog · Ham · Spam · Skinless Longga · Jumbo Hotdog · Spicy Tuna · Hungarian Sausage
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-n">₱99</div>
+          <div class="about-stat-l">Per Silog Meal</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n">1.3K+</div>
+          <div class="about-stat-l">Followers</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n">10AM</div>
+          <div class="about-stat-l">Opens Daily</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-n">3-in-1</div>
+          <div class="about-stat-l">Dine · Takeout · Delivery</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal d2">
+      <div class="sec-tag">🏠 About</div>
+      <h2 class="sec-title">REAL FOOD.<br><span class="y">REAL PRICE.</span></h2>
+      <p>C&F Food House started with one promise — <strong>great silog meals at a price everyone can afford</strong>. Every plate is ₱99. No hidden charges, no complicated orders. Just good Filipino breakfast food done right.</p>
+      <p>Located in Palanan, Makati, we're open daily from <strong>10AM to 8PM</strong>. Whether you dine in, takeout, or order delivery — the food hits the same. Hot, filling, and worth it every time.</p>
+      <p>Weekends are when it gets serious — our <strong>Unli Silog</strong> deal keeps the tables full from open to close.</p>
+      <div class="about-tags">
+        <span class="about-tag">Dine In</span>
+        <span class="about-tag">Takeout</span>
+        <span class="about-tag">Delivery</span>
+        <span class="about-tag">Budget-Friendly</span>
+        <span class="about-tag">Unli Weekends</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="order" id="order">
+  <div class="order-inner">
+    <div class="reveal">
+      <div class="sec-tag">📦 Order</div>
+      <h2 class="sec-title">GET YOUR<br><span class="y">SILOG IN.</span></h2>
+      <p class="order-tagline">Hot silog meals at ₱99 each — dine in, takeout, or delivered straight to you.</p>
+      <a href="https://www.facebook.com/C&FFoodHouseMain" target="_blank" rel="noopener" class="btn-y">Message on Facebook</a>
+    </div>
+    <div class="order-card reveal d2">
+      <div class="contact-row">
+        <div class="cr-icon">📞</div>
+        <div>
+          <div class="cr-label">Phone</div>
+          <div class="cr-val"><a href="tel:09685613931">0968-561-3931</a></div>
+          <div class="cr-sub">Also: (02) 8296-5457</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">💬</div>
+        <div>
+          <div class="cr-label">Facebook</div>
+          <div class="cr-val"><a href="https://www.facebook.com/C&FFoodHouseMain" target="_blank" rel="noopener">C&F Food House Main</a></div>
+          <div class="cr-sub">Message to order</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">📍</div>
+        <div>
+          <div class="cr-label">Location</div>
+          <div class="cr-val">U101 GFlr San Pascual De Baylon Bldg</div>
+          <div class="cr-sub">Filmore St. cor. Fahrenheit St., Palanan, Makati</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">🕐</div>
+        <div>
+          <div class="cr-label">Hours</div>
+          <div class="cr-val">Open Daily 10AM – 8PM</div>
+          <div class="cr-sub">Unli Silog every Sat & Sun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-ghost">C&F FOOD HOUSE · SILOG CRAVINGS · WE GOT THEM ALL · </div>
+  <div class="foot-logo">C<span>&</span>F <span>Food House</span></div>
+  <div class="foot-copy">© 2026 · Palanan, Makati · All Silog Meals ₱99</div>
+  <div class="foot-links">
+    <a href="#menu">Menu</a>
+    <a href="#unli">Unli</a>
+    <a href="#order">Order</a>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const ring=document.getElementById('cur-ring'),dot=document.getElementById('cur-dot');
+let mx=0,my=0,cx=0,cy=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;ring.style.left=cx+'px';ring.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.best-card,.badge,.unli-card,.about-stat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(255,214,0,.9)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='var(--y)';});
+});
+
+/* SCROLL PROGRESS */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+
+/* NAV SCROLL */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.style.boxShadow=window.scrollY>80?'0 4px 30px rgba(0,0,0,.5)':'none';
+});
+
+/* MARQUEE PAUSE */
+const mt=document.querySelector('.marquee-track');
+if(mt){mt.addEventListener('mouseenter',()=>mt.style.animationPlayState='paused');mt.addEventListener('mouseleave',()=>mt.style.animationPlayState='running');}
+
+/* MAGNETIC BUTTONS */
+document.querySelectorAll('.btn-y,.btn-ghost,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.25;
+    const y=(e.clientY-r.top-r.height/2)*.25;
+    btn.style.transform=`translate(${x}px,${y}px)`;
+    btn.style.transition='transform .1s ease';
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';btn.style.transition='transform .5s cubic-bezier(.23,1,.32,1)';});
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* CARD STAGGER */
+document.querySelectorAll('.best-card').forEach((el,i)=>{
+  el.style.transitionDelay=(i*.08)+'s';el.classList.add('reveal');obs.observe(el);
+});
+
+/* COUNT-UP */
+function countUp(el,target,suffix='',dur=1600){
+  let s=0;const step=ts=>{
+    if(!s)s=ts;
+    const p=Math.min((ts-s)/dur,1);
+    const ease=1-Math.pow(1-p,4);
+    el.textContent=Math.floor(ease*target)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  };requestAnimationFrame(step);
+}
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.about-stat-n').forEach(n=>{
+        const t=n.textContent.trim();
+        if(t.includes('1.3')){n.textContent='0K';setTimeout(()=>{n.textContent='0';countUp(n,1300,'',1400);setTimeout(()=>n.textContent='1.3K+',1500);},0);}
+      });
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+const sg=document.querySelector('.about-stats');if(sg)statObs.observe(sg);
+
+/* CLICK PARTICLES */
+document.addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    const angle=Math.random()*Math.PI*2;
+    const dist=35+Math.random()*55;
+    const size=2+Math.random()*4;
+    p.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:#FFD600;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);`;
+    document.body.appendChild(p);
+    const dx=Math.cos(angle)*dist,dy=Math.sin(angle)*dist;
+    p.animate([{transform:'translate(-50%,-50%)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px))`,opacity:0}],{duration:500+Math.random()*300,easing:'cubic-bezier(.23,1,.32,1)',fill:'forwards'}).onfinish=()=>p.remove();
+  }
+});
+
+/* HIDE SCROLLBAR */
+document.head.insertAdjacentHTML('beforeend','<style>*::-webkit-scrollbar{display:none;}*{-ms-overflow-style:none;scrollbar-width:none;}</style>');
+</script>
+</body>
+</html>
