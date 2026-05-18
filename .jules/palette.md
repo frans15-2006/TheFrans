@@ -1,0 +1,3 @@
+## 2026-05-18 - Keyboard-Accessible Interactive Overlays and Custom Cursor Synchronization
+**Learning:** Interactive overlays triggered solely on hover exclude keyboard-only users from accessing the content. Additionally, custom cursors that only follow mouse movements create a disjointed experience when navigating via the Tab key, as the visual indicator does not align with the focus ring.
+**Action:** Always map hover-triggered animations to the `:focus` pseudo-class and synchronize custom cursor coordinates with the center of focused elements using `getBoundingClientRect()` to maintain a cohesive visual experience for all input methods.
