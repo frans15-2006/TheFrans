@@ -207,8 +207,10 @@ function renderGrid(items, containerId) {
   container.innerHTML = '';
 
   items.forEach((item, index) => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
     card.className = 'card';
+    card.type = 'button';
+    card.setAttribute('aria-label', `Add ${item.name} for ${item.price} pesos to cart`);
     card.onclick = (e) => addToCart(item, e);
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
 

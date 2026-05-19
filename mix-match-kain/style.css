@@ -44,6 +44,32 @@ button,
   cursor: pointer;
 }
 
+/* Button Reset for Accessibility */
+button.category-tab,
+button.card {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  display: block;
+  width: 100%;
+}
+
+button.category-tab {
+  width: auto;
+}
+
+/* Focus Indicator for Keyboard Users */
+.category-tab:focus-visible,
+.card:focus-visible,
+.btn:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
 /* ====== BACKGROUND EFFECTS ====== */
 .particle {
   position: absolute;
