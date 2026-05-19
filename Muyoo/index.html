@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muyoo Philippines — A Celebration of Nature</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232D5A40'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C8E6C0' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23C8E6C0' opacity='.9'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --forest:#2D5A40;
+  --forest2:#1E3D2B;
+  --forest3:#142B1E;
+  --moss:#4A7A5C;
+  --sage:#8AB89A;
+  --sage2:rgba(138,184,154,0.15);
+  --leaf:#C8E6C0;
+  --leaf2:rgba(200,230,192,0.12);
+  --parchment:#F7F3EC;
+  --parchment2:#EDE8DF;
+  --parchment3:rgba(247,243,236,0.07);
+  --gold:#C9A55A;
+  --gold2:rgba(201,165,90,0.18);
+  --rose:#E07080;
+  --border:rgba(247,243,236,0.08);
+  --border-l:rgba(45,90,64,0.1);
+}
+body{background:var(--forest3);color:var(--parchment);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+*::-webkit-scrollbar{width:4px;}
+*::-webkit-scrollbar-track{background:var(--forest2);}
+*::-webkit-scrollbar-thumb{background:var(--sage);border-radius:2px;}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--leaf),var(--gold));z-index:9999;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;transition:all .5s;}
+nav.scrolled{background:rgba(20,43,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Gilda Display',serif;font-size:1.3rem;color:var(--parchment);text-decoration:none;letter-spacing:.04em;}
+.nav-logo span{color:var(--leaf);}
+.nav-links{display:flex;gap:2.8rem;list-style:none;}
+.nav-links a{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.45);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--leaf);}
+.nav-cta{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--forest3);background:var(--leaf);padding:.62rem 1.8rem;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--sage);transform:translateY(-1px);}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+/* Parallax layers */
+.hero-px{position:absolute;inset:-20%;pointer-events:none;will-change:transform;
+  background:radial-gradient(ellipse 70% 60% at 70% 35%,rgba(200,230,192,.07) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 40% at 20% 75%,rgba(201,165,90,.05) 0%,transparent 50%),
+             var(--forest3);}
+/* Large decorative mochi ring */
+.hero-ring{position:absolute;right:-8%;top:50%;transform:translateY(-50%);pointer-events:none;will-change:transform;}
+.hero-ring svg{opacity:.06;}
+/* Grid */
+.hero-grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(247,243,236,.03) 1px,transparent 1px),
+                  linear-gradient(90deg,rgba(247,243,236,.03) 1px,transparent 1px);
+  background-size:70px 70px;}
+/* Grain */
+.hero-grain{position:absolute;inset:0;opacity:.025;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px;animation:grain 8s steps(2) infinite;}
+@keyframes grain{0%{background-position:0 0}25%{background-position:20px -14px}50%{background-position:-10px 8px}75%{background-position:14px 6px}100%{background-position:0 0}}
+
+/* Floating bun art */
+.bun-art{position:absolute;right:6%;top:50%;transform:translateY(-50%);pointer-events:none;will-change:transform;}
+.bun-main{width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(200,230,192,.18),rgba(45,90,64,.6) 60%,rgba(20,43,30,.9));border:1px solid rgba(200,230,192,.15);box-shadow:0 24px 80px rgba(0,0,0,.4);animation:bunFloat 8s ease-in-out infinite;}
+.bun-mid{position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(200,230,192,.1),rgba(45,90,64,.4) 70%,transparent);border:1px solid rgba(200,230,192,.1);top:-60px;right:-40px;animation:bunFloat 10s ease-in-out infinite .8s;}
+.bun-sm{position:absolute;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(201,165,90,.1),rgba(45,90,64,.3) 70%,transparent);border:1px solid rgba(201,165,90,.18);bottom:-30px;left:-20px;animation:bunFloat 7s ease-in-out infinite 1.5s;}
+.bun-xs{position:absolute;width:60px;height:60px;border-radius:50%;border:1px solid rgba(200,230,192,.12);top:30px;left:-50px;animation:bunFloat 9s ease-in-out infinite .4s;}
+@keyframes bunFloat{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-18px) rotate(2deg);}}
+
+/* Content */
+.hero-content{position:relative;z-index:2;padding:9rem 4rem 6rem;max-width:720px;}
+.hero-eyebrow{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--leaf);margin-bottom:1.8rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s .1s both;}
+.hero-eyebrow::before{content:'';display:block;width:2.5rem;height:.5px;background:var(--leaf);}
+h1.hero-title{font-family:'Gilda Display',serif;font-size:clamp(3.8rem,9vw,10rem);line-height:.9;letter-spacing:-.01em;color:var(--parchment);margin-bottom:2.2rem;}
+h1.hero-title em{font-style:italic;color:var(--leaf);}
+h1.hero-title .line{display:block;overflow:hidden;}
+h1.hero-title .line span{display:block;opacity:0;transform:translateY(100%);animation:slideUp 1s cubic-bezier(.22,1,.36,1) both;}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(247,243,236,.5);line-height:1.72;max-width:460px;margin-bottom:3rem;opacity:0;animation:fadeUp .9s .85s both;}
+.hero-actions{display:flex;gap:1.2rem;align-items:center;opacity:0;animation:fadeUp .9s 1s both;}
+.btn-leaf{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--forest3);background:var(--leaf);padding:1.1rem 3rem;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-leaf:hover{background:var(--sage);transform:translateY(-2px);}
+.btn-ghost{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.6);border:.5px solid rgba(247,243,236,.18);padding:1.1rem 2.4rem;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-ghost:hover{color:var(--parchment);border-color:rgba(247,243,236,.4);}
+.hero-scroll{position:absolute;right:4rem;bottom:3.5rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fadeUp .9s 1.3s both;}
+.scroll-track{width:.5px;height:3.5rem;background:var(--border);overflow:hidden;position:relative;}
+.scroll-fill{position:absolute;top:-100%;width:100%;height:100%;background:var(--leaf);animation:sFill 2.2s ease-in-out infinite;}
+@keyframes sFill{0%{top:-100%;}100%{top:100%;}}
+.scroll-label{font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,243,236,.3);writing-mode:vertical-rl;}
+.hero-ghost{position:absolute;left:-1rem;bottom:-2rem;font-family:'Gilda Display',serif;font-size:20vw;color:rgba(247,243,236,.018);line-height:1;user-select:none;pointer-events:none;will-change:transform;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
+
+/* TICKER */
+.ticker{background:var(--forest2);overflow:hidden;padding:.78rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.ticker-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;}
+.ticker:hover .ticker-track{animation-play-state:paused;}
+.ticker-item{font-family:'Gilda Display',serif;font-style:italic;font-size:.9rem;color:rgba(247,243,236,.5);padding:0 2.5rem;flex-shrink:0;}
+.ticker-leaf{color:var(--leaf);padding:0 .5rem;font-style:normal;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+.rl{opacity:0;transform:translateX(-28px);transition:opacity .85s ease,transform .85s ease;}
+.rl.in{opacity:1;transform:translateX(0);}
+.rr{opacity:0;transform:translateX(28px);transition:opacity .85s ease,transform .85s ease;}
+.rr.in{opacity:1;transform:translateX(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* SECTION BASE */
+section{padding:8rem 4rem;}
+.sec-label{font-size:.56rem;letter-spacing:.36em;text-transform:uppercase;color:var(--leaf);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;font-weight:500;}
+.sec-label::before{content:'';display:block;width:2rem;height:.5px;background:var(--leaf);}
+.sec-title{font-family:'Gilda Display',serif;font-size:clamp(2.5rem,5vw,5.5rem);line-height:.96;letter-spacing:-.01em;color:var(--parchment);}
+.sec-title em{font-style:italic;color:var(--leaf);}
+.divider{width:100%;height:1px;background:var(--border);}
+
+/* FLAVORS */
+.flavors-section{background:var(--forest2);}
+.flavors-header{margin-bottom:4.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;}
+.flavors-note{font-size:.8rem;font-weight:300;color:rgba(247,243,236,.4);max-width:260px;line-height:1.6;}
+.flavors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.flavor-tile{background:var(--forest2);padding:2.5rem 2rem;cursor:default;transition:background .3s;position:relative;overflow:hidden;}
+.flavor-tile::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--leaf);transition:width .4s ease;}
+.flavor-tile:hover{background:var(--forest);}
+.flavor-tile:hover::after{width:100%;}
+.flavor-num{font-size:.5rem;letter-spacing:.2em;color:rgba(247,243,236,.2);margin-bottom:1.2rem;font-weight:500;}
+.flavor-name{font-family:'Gilda Display',serif;font-size:1.45rem;color:var(--parchment);margin-bottom:.5rem;line-height:1.1;}
+.flavor-origin{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--leaf);opacity:.7;}
+.flavor-swatch{position:absolute;top:2rem;right:2rem;width:14px;height:14px;border-radius:50%;border:1px solid rgba(247,243,236,.15);}
+
+/* STORY PARALLAX */
+.story-section{position:relative;overflow:hidden;padding:0;background:var(--forest3);}
+.story-px{position:absolute;inset:-25%;will-change:transform;
+  background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(200,230,192,.06) 0%,transparent 60%),
+             var(--forest3);}
+.story-grain{position:absolute;inset:0;opacity:.02;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px;}
+.story-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:80vh;align-items:center;}
+.story-left{padding:8rem 5rem 8rem 4rem;border-right:1px solid var(--border);}
+.story-right{padding:8rem 4rem 8rem 5rem;}
+.story-quote{font-family:'Gilda Display',serif;font-size:clamp(2rem,3.5vw,3.8rem);line-height:1.18;letter-spacing:-.01em;color:var(--parchment);margin-bottom:2rem;}
+.story-quote em{font-style:italic;color:var(--leaf);}
+.story-attr{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.35);}
+.story-attr span{color:var(--sage);}
+.story-body{font-size:.96rem;font-weight:300;color:rgba(247,243,236,.5);line-height:1.78;margin-bottom:2.5rem;max-width:430px;}
+.story-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.stat-n{font-family:'Gilda Display',serif;font-size:3.2rem;line-height:1;letter-spacing:-.02em;color:var(--parchment);}
+.stat-n em{font-size:1.6rem;color:var(--leaf);}
+.stat-lbl{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.35);margin-top:.25rem;}
+/* Popup / find us box */
+.find-box{background:rgba(200,230,192,.04);border:1px solid rgba(200,230,192,.1);padding:2.8rem;}
+.find-title{font-family:'Gilda Display',serif;font-size:1.8rem;color:var(--parchment);margin-bottom:.6rem;}
+.find-sub{font-size:.75rem;font-weight:300;color:rgba(247,243,236,.4);margin-bottom:2rem;line-height:1.6;}
+.find-items{list-style:none;display:flex;flex-direction:column;gap:1.2rem;}
+.find-items li{display:flex;align-items:flex-start;gap:1rem;font-size:.85rem;font-weight:300;color:rgba(247,243,236,.55);line-height:1.5;}
+.find-icon{width:6px;height:6px;border-radius:50%;background:var(--leaf);flex-shrink:0;margin-top:.4rem;}
+.find-link{display:inline-flex;align-items:center;gap:.7rem;margin-top:2.2rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(200,230,192,.2);padding-bottom:.3rem;transition:gap .2s,border-color .2s;}
+.find-link:hover{gap:1.1rem;border-color:var(--leaf);}
+
+/* HOW */
+.how-section{background:var(--forest);padding:8rem 4rem;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:5rem;}
+.how-step{border-top:1px solid rgba(247,243,236,.1);padding-top:2rem;}
+.how-num{font-family:'Gilda Display',serif;font-size:4rem;line-height:1;color:rgba(247,243,236,.08);letter-spacing:-.02em;margin-bottom:1.5rem;}
+.how-title{font-family:'Gilda Display',serif;font-size:1.5rem;color:var(--parchment);margin-bottom:.8rem;}
+.how-body{font-size:.88rem;font-weight:300;color:rgba(247,243,236,.45);line-height:1.72;}
+.how-detail{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--leaf);margin-top:1.4rem;}
+
+/* CTA */
+.cta-section{position:relative;overflow:hidden;padding:10rem 4rem;text-align:center;background:var(--forest3);}
+.cta-px{position:absolute;inset:-20%;will-change:transform;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,230,192,.06) 0%,transparent 60%),
+             var(--forest3);}
+.cta-inner{position:relative;z-index:2;}
+.cta-ey{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--leaf);margin-bottom:1.5rem;}
+.cta-title{font-family:'Gilda Display',serif;font-size:clamp(3rem,7.5vw,8.5rem);line-height:.9;letter-spacing:-.01em;color:var(--parchment);margin-bottom:1rem;}
+.cta-title em{font-style:italic;color:var(--leaf);}
+.cta-sub{font-size:.9rem;font-weight:300;color:rgba(247,243,236,.4);margin-bottom:3rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.65;}
+.cta-note{margin-top:2rem;font-size:.62rem;font-weight:300;color:rgba(247,243,236,.25);letter-spacing:.06em;}
+
+/* FOOTER */
+footer{background:var(--forest2);padding:5rem 4rem 3rem;border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border);}
+.footer-brand{font-family:'Gilda Display',serif;font-size:1.4rem;color:var(--parchment);text-decoration:none;letter-spacing:.04em;display:block;margin-bottom:.8rem;}
+.footer-brand span{color:var(--leaf);}
+.footer-tagline{font-size:.78rem;font-weight:300;color:rgba(247,243,236,.3);line-height:1.6;max-width:220px;}
+.footer-col-title{font-size:.53rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:rgba(247,243,236,.2);margin-bottom:1.5rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-links a{font-size:.8rem;font-weight:300;color:rgba(247,243,236,.4);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--leaf);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.62rem;font-weight:300;color:rgba(247,243,236,.18);letter-spacing:.04em;}
+.footer-sg{font-family:'Gilda Display',serif;font-size:.82rem;font-style:italic;color:rgba(247,243,236,.25);}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero-content{padding:6rem 1.5rem 5rem;}
+  .hero-scroll,.bun-art,.hero-ring{display:none;}
+  section{padding:5rem 1.5rem;}
+  .flavors-grid{grid-template-columns:repeat(2,1fr);}
+  .flavors-header{flex-direction:column;align-items:flex-start;}
+  .story-inner{grid-template-columns:1fr;}
+  .story-left{border-right:none;border-bottom:1px solid var(--border);padding:5rem 1.5rem;}
+  .story-right{padding:4rem 1.5rem;}
+  .how-grid{grid-template-columns:1fr;}
+  .cta-section{padding:7rem 1.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:560px){
+  .flavors-grid{grid-template-columns:1fr 1fr;}
+  .footer-top > *:nth-child(n+2){display:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">muyoo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#flavors">Flavors</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#how">Order</a></li>
+  </ul>
+  <a href="https://muyooph.cococart.co" target="_blank" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-px" id="hpx"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-ghost" id="hghost">mochi.</div>
+  <div class="hero-ring" id="hring">
+    <svg width="700" height="700" viewBox="0 0 700 700"><circle cx="350" cy="350" r="345" fill="none" stroke="white" stroke-width="1"/><circle cx="350" cy="350" r="270" fill="none" stroke="white" stroke-width="1"/><circle cx="350" cy="350" r="180" fill="none" stroke="white" stroke-width="1"/></svg>
+  </div>
+  <div class="bun-art" id="bunart">
+    <div class="bun-main"></div>
+    <div class="bun-mid"></div>
+    <div class="bun-sm"></div>
+    <div class="bun-xs"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Singaporean Bakeshop · Philippines</div>
+    <h1 class="hero-title">
+      <div class="line"><span style="animation-delay:.3s">A Celebration</span></div>
+      <div class="line"><span style="animation-delay:.48s">of <em>Nature.</em></span></div>
+    </h1>
+    <p class="hero-sub">Signature mochi buns crafted with Taiwanese high-protein flour and naturally sourced ingredients. Freshly baked daily. Limited stock — order before they sell out.</p>
+    <div class="hero-actions">
+      <a href="https://muyooph.cococart.co" target="_blank" class="btn-leaf">Order Now</a>
+      <a href="#flavors" class="btn-ghost">Explore Flavors</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-label">scroll</div>
+    <div class="scroll-track"><div class="scroll-fill"></div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Black Sesame</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Matcha Cream Cheese</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Biscoff</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Choco Banana</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Strawberry</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Peanut</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Earl Grey Custard</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Purple Sweet Potato</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Injeolmi</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Black Sesame</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Matcha Cream Cheese</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Biscoff</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Choco Banana</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Strawberry</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Peanut</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Earl Grey Custard</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Purple Sweet Potato</span><span class="ticker-leaf">·</span>
+    <span class="ticker-item">Injeolmi</span><span class="ticker-leaf">·</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- FLAVORS -->
+<section class="flavors-section" id="flavors">
+  <div class="flavors-header">
+    <div class="rv">
+      <div class="sec-label">The Collection</div>
+      <h2 class="sec-title">Eight <em>Signatures</em></h2>
+    </div>
+    <p class="flavors-note rv d2">Each bun made fresh daily using Taiwanese high-protein flour and naturally sourced ingredients.</p>
+  </div>
+  <div class="flavors-grid">
+    <div class="flavor-tile rv">
+      <div class="flavor-swatch" style="background:#2A2218;border-color:rgba(247,243,236,.3);"></div>
+      <div class="flavor-num">01</div>
+      <div class="flavor-name">Black Sesame</div>
+      <div class="flavor-origin">OG Classic</div>
+    </div>
+    <div class="flavor-tile rv d1">
+      <div class="flavor-swatch" style="background:#5A8A5C;"></div>
+      <div class="flavor-num">02</div>
+      <div class="flavor-name">Matcha Cream Cheese</div>
+      <div class="flavor-origin">Fan Favourite</div>
+    </div>
+    <div class="flavor-tile rv d2">
+      <div class="flavor-swatch" style="background:#C49A50;"></div>
+      <div class="flavor-num">03</div>
+      <div class="flavor-name">Biscoff</div>
+      <div class="flavor-origin">Caramelised</div>
+    </div>
+    <div class="flavor-tile rv d3">
+      <div class="flavor-swatch" style="background:#6B3A20;"></div>
+      <div class="flavor-num">04</div>
+      <div class="flavor-name">Choco Banana</div>
+      <div class="flavor-origin">QQ Mochi</div>
+    </div>
+    <div class="flavor-tile rv d1">
+      <div class="flavor-swatch" style="background:#D46070;"></div>
+      <div class="flavor-num">05</div>
+      <div class="flavor-name">Strawberry</div>
+      <div class="flavor-origin">Real Fruit</div>
+    </div>
+    <div class="flavor-tile rv d2">
+      <div class="flavor-swatch" style="background:#B08040;"></div>
+      <div class="flavor-num">06</div>
+      <div class="flavor-name">Peanut</div>
+      <div class="flavor-origin">Nutty</div>
+    </div>
+    <div class="flavor-tile rv d3">
+      <div class="flavor-swatch" style="background:#8078A8;"></div>
+      <div class="flavor-num">07</div>
+      <div class="flavor-name">Earl Grey Custard</div>
+      <div class="flavor-origin">Delicate Tea</div>
+    </div>
+    <div class="flavor-tile rv d4">
+      <div class="flavor-swatch" style="background:#6A5090;"></div>
+      <div class="flavor-num">08</div>
+      <div class="flavor-name">Purple Sweet Potato</div>
+      <div class="flavor-origin">Naturally Hued</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="story-px" id="spx"></div>
+  <div class="story-grain"></div>
+  <div class="story-inner">
+    <div class="story-left">
+      <div class="sec-label rv">The Story</div>
+      <blockquote class="story-quote rv d1">"Muyoo is a celebration of <em>nature</em> — and so we treasure its gifts."</blockquote>
+      <p class="story-attr rv d2">— <span>Muyoo · Singapore Origin</span></p>
+      <div class="story-stat-row rv d3">
+        <div>
+          <div class="stat-n">50<em>K+</em></div>
+          <div class="stat-lbl">PH Followers</div>
+        </div>
+        <div>
+          <div class="stat-n">8<em>+</em></div>
+          <div class="stat-lbl">Flavors</div>
+        </div>
+        <div>
+          <div class="stat-n"><em>Daily</em></div>
+          <div class="stat-lbl">Freshly Baked</div>
+        </div>
+        <div>
+          <div class="stat-n"><em>SG</em></div>
+          <div class="stat-lbl">Born in Singapore</div>
+        </div>
+      </div>
+    </div>
+    <div class="story-right">
+      <p class="story-body rv">Born in Singapore, Muyoo built its name on one promise: mochi buns that honour nature. Taiwanese high-protein flour, real fruit toppings, naturally sourced ingredients — no shortcuts, no compromise.</p>
+      <p class="story-body rv d1">The Philippines branch operates as a popup, baking fresh every day with limited stock. If you've been following, you know — they sell out.</p>
+      <div class="find-box rv d2">
+        <div class="find-title">Find Us</div>
+        <div class="find-sub">Popup locations updated via social media. Check the latest post for today's location.</div>
+        <ul class="find-items">
+          <li><span class="find-icon"></span>Popup locations across Metro Manila — updated regularly</li>
+          <li><span class="find-icon"></span>Order online via Cococart for delivery</li>
+          <li><span class="find-icon"></span>Also available on Pickaroo</li>
+        </ul>
+        <a href="https://www.facebook.com/muyooph" target="_blank" class="find-link">Check Latest Location →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOW -->
+<section class="how-section" id="how">
+  <div class="sec-label rv">How to Order</div>
+  <h2 class="sec-title rv d1">Fresh Today.<br><em>Gone Tomorrow.</em></h2>
+  <div class="how-grid">
+    <div class="how-step rv d1">
+      <div class="how-num">01</div>
+      <div class="how-title">Order Online</div>
+      <p class="how-body">Head to muyooph.cococart.co and place your order. We also take orders through Pickaroo for same-day delivery.</p>
+      <div class="how-detail">muyooph.cococart.co</div>
+    </div>
+    <div class="how-step rv d2">
+      <div class="how-num">02</div>
+      <div class="how-title">Catch a Popup</div>
+      <p class="how-body">Follow @muyooph on Facebook and Instagram for daily popup location updates across Metro Manila.</p>
+      <div class="how-detail">Check latest post for location</div>
+    </div>
+    <div class="how-step rv d3">
+      <div class="how-num">03</div>
+      <div class="how-title">Don't Wait</div>
+      <p class="how-body">Stock is limited. Baked fresh daily. Once they're gone, they're gone until the next day's batch comes out.</p>
+      <div class="how-detail">Limited stock · Sells out fast</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="order">
+  <div class="cta-px" id="ctapx"></div>
+  <div class="cta-inner">
+    <div class="cta-ey rv">Order Before They Sell Out</div>
+    <h2 class="cta-title rv d1">Freshly Baked.<br><em>Daily.</em></h2>
+    <p class="cta-sub rv d2">Singapore-style mochi buns. Natural ingredients. Limited stock every single day.</p>
+    <div class="rv d3">
+      <a href="https://muyooph.cococart.co" target="_blank" class="btn-leaf">Order on Cococart</a>
+    </div>
+    <p class="cta-note rv d4">Also on Pickaroo · Popup locations via @muyooph</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="#" class="footer-brand">muyoo<span>.</span></a>
+      <p class="footer-tagline">Singaporean Bakeshop. A celebration of nature. Home of the Signature Mochi Buns.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Order</div>
+      <ul class="footer-links">
+        <li><a href="https://muyooph.cococart.co" target="_blank">Cococart</a></li>
+        <li><a href="#">Pickaroo</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Follow</div>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/muyooph" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/muyooph" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Muyoo Philippines. All rights reserved.</div>
+    <div class="footer-sg">Born in Singapore</div>
+  </div>
+</footer>
+
+<script>
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+}, { passive: true });
+
+document.getElementById('nav').addEventListener('scroll', () => {}, { passive: true });
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const pxEls = [
+  { el: document.getElementById('hpx'), speed: .15 },
+  { el: document.getElementById('hghost'), speed: .25 },
+  { el: document.getElementById('hring'), speed: .1 },
+  { el: document.getElementById('bunart'), speed: .18 },
+  { el: document.getElementById('spx'), speed: .14 },
+  { el: document.getElementById('ctapx'), speed: .16 },
+];
+let t = false;
+window.addEventListener('scroll', () => {
+  if (!t) {
+    requestAnimationFrame(() => {
+      const sy = window.scrollY;
+      pxEls.forEach(({ el, speed }) => { if (el) el.style.transform = `translateY(${sy * speed}px)`; });
+      t = false;
+    });
+    t = true;
+  }
+}, { passive: true });
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv, .rl, .rr').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
