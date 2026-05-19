@@ -3,513 +3,745 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muyoo Philippines — A Celebration of Nature</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232D5A40'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C8E6C0' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23C8E6C0' opacity='.9'/%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<title>Muyoo Philippines — The Best Mochi Buns Are Here</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
 :root{
-  --forest:#2D5A40;
-  --forest2:#1E3D2B;
-  --forest3:#142B1E;
-  --moss:#4A7A5C;
-  --sage:#8AB89A;
-  --sage2:rgba(138,184,154,0.15);
-  --leaf:#C8E6C0;
-  --leaf2:rgba(200,230,192,0.12);
-  --parchment:#F7F3EC;
-  --parchment2:#EDE8DF;
-  --parchment3:rgba(247,243,236,0.07);
-  --gold:#C9A55A;
-  --gold2:rgba(201,165,90,0.18);
-  --rose:#E07080;
-  --border:rgba(247,243,236,0.08);
-  --border-l:rgba(45,90,64,0.1);
+  --cream:#FAF6EF;--cream2:#F2EBE0;--cream3:#E8DDD0;
+  --brown:#2C1A0E;--brown2:#3D2510;--brown3:#5C3820;
+  --gold:#C9963A;--gold2:#E8B84B;--gold3:rgba(201,150,58,0.12);
+  --pink:#E8B4A0;--pink2:rgba(232,180,160,0.15);
+  --sage:#8A9E8C;--sage2:rgba(138,158,140,0.12);
+  --white:#FFFFFF;
+  --border:rgba(44,26,14,0.1);--border2:rgba(201,150,58,0.15);
 }
-body{background:var(--forest3);color:var(--parchment);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
-*::-webkit-scrollbar{width:4px;}
-*::-webkit-scrollbar-track{background:var(--forest2);}
-*::-webkit-scrollbar-thumb{background:var(--sage);border-radius:2px;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--brown);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+*{cursor:none!important;}
+*::-webkit-scrollbar{display:none;}*{-ms-overflow-style:none;scrollbar-width:none;}
+
+/* CURSOR */
+#cur-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--brown);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s,background .3s;}
+#cur-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .05s;}
 
 /* PROGRESS */
-#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--leaf),var(--gold));z-index:9999;pointer-events:none;}
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--gold),var(--pink));z-index:9999;width:0%;pointer-events:none;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;transition:all .5s;}
-nav.scrolled{background:rgba(20,43,30,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Gilda Display',serif;font-size:1.3rem;color:var(--parchment);text-decoration:none;letter-spacing:.04em;}
-.nav-logo span{color:var(--leaf);}
-.nav-links{display:flex;gap:2.8rem;list-style:none;}
-.nav-links a{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.45);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--leaf);}
-.nav-cta{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--forest3);background:var(--leaf);padding:.62rem 1.8rem;text-decoration:none;transition:all .2s;}
-.nav-cta:hover{background:var(--sage);transform:translateY(-1px);}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3.5rem;
+  background:rgba(250,246,239,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:0.5px solid var(--border);
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;font-style:italic;
+  color:var(--brown);text-decoration:none;letter-spacing:.04em;
+}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:3rem;list-style:none;}
+.nav-links a{
+  font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(44,26,14,.5);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--brown);}
+.nav-cta{
+  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--white);background:var(--brown);
+  padding:.6rem 1.8rem;text-decoration:none;
+  border-radius:50px;transition:all .3s;
+}
+.nav-cta:hover{background:var(--brown2);transform:translateY(-2px);}
 
 /* HERO */
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
-/* Parallax layers */
-.hero-px{position:absolute;inset:-20%;pointer-events:none;will-change:transform;
-  background:radial-gradient(ellipse 70% 60% at 70% 35%,rgba(200,230,192,.07) 0%,transparent 55%),
-             radial-gradient(ellipse 50% 40% at 20% 75%,rgba(201,165,90,.05) 0%,transparent 50%),
-             var(--forest3);}
-/* Large decorative mochi ring */
-.hero-ring{position:absolute;right:-8%;top:50%;transform:translateY(-50%);pointer-events:none;will-change:transform;}
-.hero-ring svg{opacity:.06;}
-/* Grid */
-.hero-grid{position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(247,243,236,.03) 1px,transparent 1px),
-                  linear-gradient(90deg,rgba(247,243,236,.03) 1px,transparent 1px);
-  background-size:70px 70px;}
-/* Grain */
-.hero-grain{position:absolute;inset:0;opacity:.025;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:256px;animation:grain 8s steps(2) infinite;}
-@keyframes grain{0%{background-position:0 0}25%{background-position:20px -14px}50%{background-position:-10px 8px}75%{background-position:14px 6px}100%{background-position:0 0}}
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  padding:9rem 3rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%,rgba(232,180,160,.2) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 70% 60%,rgba(138,158,140,.12) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 90%,rgba(201,150,58,.08) 0%,transparent 50%);
+}
+.hero-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(44,26,14,.06) 1px,transparent 1px);
+  background-size:28px 28px;pointer-events:none;
+}
+.hero-eyebrow{
+  font-size:.65rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);
+  display:inline-flex;align-items:center;gap:.8rem;
+  margin-bottom:2rem;
+  animation:fadeUp .7s .1s both;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:2rem;height:1px;background:var(--gold);}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,10vw,10rem);
+  font-weight:900;line-height:.88;
+  color:var(--brown);
+  margin-bottom:1rem;
+  animation:fadeUp .8s .2s both;
+}
+.hero-title em{font-style:italic;color:var(--gold);display:block;}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  font-weight:300;font-style:italic;
+  color:rgba(44,26,14,.6);
+  margin-bottom:3.5rem;
+  animation:fadeUp .8s .35s both;
+  max-width:600px;margin-left:auto;margin-right:auto;
+}
+.hero-actions{
+  display:flex;gap:1rem;align-items:center;justify-content:center;
+  flex-wrap:wrap;
+  animation:fadeUp .8s .5s both;
+  margin-bottom:3.5rem;
+}
+.btn-brown{
+  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--white);background:var(--brown);
+  padding:.9rem 2.5rem;text-decoration:none;
+  border-radius:50px;display:inline-block;transition:all .3s;
+}
+.btn-brown:hover{background:var(--brown2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(44,26,14,.15);}
+.btn-outline{
+  font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brown);border:1.5px solid var(--brown);
+  padding:.9rem 2.5rem;text-decoration:none;
+  border-radius:50px;display:inline-block;transition:all .3s;
+}
+.btn-outline:hover{background:var(--brown);color:var(--white);transform:translateY(-3px);}
+.hero-pills{
+  display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .8s .65s both;
+}
+.hero-pill{
+  font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  padding:.4rem 1.2rem;
+  border:1px solid var(--border);
+  border-radius:50px;color:rgba(44,26,14,.5);
+  background:rgba(255,255,255,.6);
+}
+.hero-scroll{
+  position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  animation:fadeUp .8s .8s both;
+}
+.scroll-line{width:1px;height:3rem;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.5s ease-in-out infinite;}
+.scroll-text{font-size:.55rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(44,26,14,.3);}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
 
-/* Floating bun art */
-.bun-art{position:absolute;right:6%;top:50%;transform:translateY(-50%);pointer-events:none;will-change:transform;}
-.bun-main{width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(200,230,192,.18),rgba(45,90,64,.6) 60%,rgba(20,43,30,.9));border:1px solid rgba(200,230,192,.15);box-shadow:0 24px 80px rgba(0,0,0,.4);animation:bunFloat 8s ease-in-out infinite;}
-.bun-mid{position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(200,230,192,.1),rgba(45,90,64,.4) 70%,transparent);border:1px solid rgba(200,230,192,.1);top:-60px;right:-40px;animation:bunFloat 10s ease-in-out infinite .8s;}
-.bun-sm{position:absolute;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(201,165,90,.1),rgba(45,90,64,.3) 70%,transparent);border:1px solid rgba(201,165,90,.18);bottom:-30px;left:-20px;animation:bunFloat 7s ease-in-out infinite 1.5s;}
-.bun-xs{position:absolute;width:60px;height:60px;border-radius:50%;border:1px solid rgba(200,230,192,.12);top:30px;left:-50px;animation:bunFloat 9s ease-in-out infinite .4s;}
-@keyframes bunFloat{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-18px) rotate(2deg);}}
-
-/* Content */
-.hero-content{position:relative;z-index:2;padding:9rem 4rem 6rem;max-width:720px;}
-.hero-eyebrow{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--leaf);margin-bottom:1.8rem;display:flex;align-items:center;gap:.8rem;opacity:0;animation:fadeUp .8s .1s both;}
-.hero-eyebrow::before{content:'';display:block;width:2.5rem;height:.5px;background:var(--leaf);}
-h1.hero-title{font-family:'Gilda Display',serif;font-size:clamp(3.8rem,9vw,10rem);line-height:.9;letter-spacing:-.01em;color:var(--parchment);margin-bottom:2.2rem;}
-h1.hero-title em{font-style:italic;color:var(--leaf);}
-h1.hero-title .line{display:block;overflow:hidden;}
-h1.hero-title .line span{display:block;opacity:0;transform:translateY(100%);animation:slideUp 1s cubic-bezier(.22,1,.36,1) both;}
-.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(247,243,236,.5);line-height:1.72;max-width:460px;margin-bottom:3rem;opacity:0;animation:fadeUp .9s .85s both;}
-.hero-actions{display:flex;gap:1.2rem;align-items:center;opacity:0;animation:fadeUp .9s 1s both;}
-.btn-leaf{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--forest3);background:var(--leaf);padding:1.1rem 3rem;text-decoration:none;display:inline-block;transition:all .2s;}
-.btn-leaf:hover{background:var(--sage);transform:translateY(-2px);}
-.btn-ghost{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.6);border:.5px solid rgba(247,243,236,.18);padding:1.1rem 2.4rem;text-decoration:none;display:inline-block;transition:all .2s;}
-.btn-ghost:hover{color:var(--parchment);border-color:rgba(247,243,236,.4);}
-.hero-scroll{position:absolute;right:4rem;bottom:3.5rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fadeUp .9s 1.3s both;}
-.scroll-track{width:.5px;height:3.5rem;background:var(--border);overflow:hidden;position:relative;}
-.scroll-fill{position:absolute;top:-100%;width:100%;height:100%;background:var(--leaf);animation:sFill 2.2s ease-in-out infinite;}
-@keyframes sFill{0%{top:-100%;}100%{top:100%;}}
-.scroll-label{font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,243,236,.3);writing-mode:vertical-rl;}
-.hero-ghost{position:absolute;left:-1rem;bottom:-2rem;font-family:'Gilda Display',serif;font-size:20vw;color:rgba(247,243,236,.018);line-height:1;user-select:none;pointer-events:none;will-change:transform;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-@keyframes slideUp{to{opacity:1;transform:translateY(0);}}
-
-/* TICKER */
-.ticker{background:var(--forest2);overflow:hidden;padding:.78rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.ticker-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;}
-.ticker:hover .ticker-track{animation-play-state:paused;}
-.ticker-item{font-family:'Gilda Display',serif;font-style:italic;font-size:.9rem;color:rgba(247,243,236,.5);padding:0 2.5rem;flex-shrink:0;}
-.ticker-leaf{color:var(--leaf);padding:0 .5rem;font-style:normal;}
+/* MARQUEE */
+.marquee-wrap{
+  background:var(--brown);overflow:hidden;padding:.75rem 0;
+}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite;}
+.marquee-item{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.9rem;font-style:italic;letter-spacing:.1em;
+  color:rgba(250,246,239,.75);padding:0 2.5rem;flex-shrink:0;
+}
+.marquee-sep{color:rgba(250,246,239,.2);padding:0;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* REVEAL */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
-.rv.in{opacity:1;transform:translateY(0);}
-.rl{opacity:0;transform:translateX(-28px);transition:opacity .85s ease,transform .85s ease;}
-.rl.in{opacity:1;transform:translateX(0);}
-.rr{opacity:0;transform:translateX(28px);transition:opacity .85s ease,transform .85s ease;}
-.rr.in{opacity:1;transform:translateX(0);}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+/* SECTION */
+section{padding:8rem 3.5rem;}
+.sec-tag{
+  font-size:.6rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.sec-tag::before{content:'';display:block;width:1.5rem;height:1px;background:var(--gold);}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:700;line-height:1.0;
+  color:var(--brown);margin-bottom:1rem;
+}
+.sec-title em{font-style:italic;color:var(--gold);}
 
-/* SECTION BASE */
-section{padding:8rem 4rem;}
-.sec-label{font-size:.56rem;letter-spacing:.36em;text-transform:uppercase;color:var(--leaf);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;font-weight:500;}
-.sec-label::before{content:'';display:block;width:2rem;height:.5px;background:var(--leaf);}
-.sec-title{font-family:'Gilda Display',serif;font-size:clamp(2.5rem,5vw,5.5rem);line-height:.96;letter-spacing:-.01em;color:var(--parchment);}
-.sec-title em{font-style:italic;color:var(--leaf);}
-.divider{width:100%;height:1px;background:var(--border);}
+/* STORY / ABOUT */
+.story{
+  background:var(--cream2);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;align-items:center;
+}
+.story-visual{position:relative;height:540px;}
+.story-frame{
+  position:absolute;inset:0;
+  background:var(--cream3);
+  border:0.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.story-frame::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 40% 30%,rgba(232,180,160,.3) 0%,transparent 55%);
+}
+.story-bg-text{
+  font-family:'Playfair Display',serif;
+  font-size:9rem;font-weight:900;font-style:italic;
+  color:rgba(44,26,14,.04);line-height:1;
+  user-select:none;position:relative;z-index:1;
+  text-align:center;
+}
+.story-badge{
+  position:absolute;top:2rem;left:2rem;
+  font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--white);background:var(--gold);
+  padding:.4rem 1rem;border-radius:50px;z-index:2;
+}
+.story-stat-grid{
+  position:absolute;bottom:0;left:0;right:0;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0.5px;background:var(--border);z-index:2;
+}
+.story-stat{background:var(--cream2);padding:1.3rem 1.5rem;}
+.story-stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:var(--brown);line-height:1;
+}
+.story-stat-n em{color:var(--gold);font-style:normal;font-size:1.1rem;}
+.story-stat-l{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(44,26,14,.4);margin-top:.3rem;}
+.story-corner{position:absolute;top:-1.5rem;right:-1.5rem;width:4.5rem;height:4.5rem;background:var(--gold);opacity:.15;}
+.story-text p{font-size:.97rem;line-height:1.9;color:rgba(44,26,14,.65);margin-bottom:1.2rem;}
+.story-text p strong{color:var(--brown);font-weight:600;}
 
-/* FLAVORS */
-.flavors-section{background:var(--forest2);}
-.flavors-header{margin-bottom:4.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;}
-.flavors-note{font-size:.8rem;font-weight:300;color:rgba(247,243,236,.4);max-width:260px;line-height:1.6;}
-.flavors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
-.flavor-tile{background:var(--forest2);padding:2.5rem 2rem;cursor:default;transition:background .3s;position:relative;overflow:hidden;}
-.flavor-tile::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--leaf);transition:width .4s ease;}
-.flavor-tile:hover{background:var(--forest);}
-.flavor-tile:hover::after{width:100%;}
-.flavor-num{font-size:.5rem;letter-spacing:.2em;color:rgba(247,243,236,.2);margin-bottom:1.2rem;font-weight:500;}
-.flavor-name{font-family:'Gilda Display',serif;font-size:1.45rem;color:var(--parchment);margin-bottom:.5rem;line-height:1.1;}
-.flavor-origin{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--leaf);opacity:.7;}
-.flavor-swatch{position:absolute;top:2rem;right:2rem;width:14px;height:14px;border-radius:50%;border:1px solid rgba(247,243,236,.15);}
+/* PRODUCT SHOWCASE */
+.products{background:var(--cream);}
+.products-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.product-card{
+  background:var(--white);
+  border:0.5px solid var(--border);
+  border-radius:24px;
+  overflow:hidden;
+  transition:all .4s cubic-bezier(.23,1,.32,1);
+  position:relative;
+}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(44,26,14,.1);border-color:var(--border2);}
+.product-card.large{
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;
+  border-radius:24px;
+}
+.product-card-visual{
+  height:220px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+  position:relative;overflow:hidden;
+}
+.product-card-visual.pink{background:linear-gradient(135deg,var(--pink) 0%,rgba(232,180,160,.5) 100%);}
+.product-card-visual.sage{background:linear-gradient(135deg,rgba(138,158,140,.4) 0%,rgba(138,158,140,.15) 100%);}
+.product-card-visual.gold{background:linear-gradient(135deg,rgba(201,150,58,.3) 0%,rgba(201,150,58,.1) 100%);}
+.product-card-visual.cream{background:linear-gradient(135deg,var(--cream3) 0%,var(--cream2) 100%);}
+.product-card-body{padding:2rem 1.8rem;}
+.product-card-tag{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.product-card-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;font-style:italic;
+  color:var(--brown);margin-bottom:.6rem;line-height:1.2;
+}
+.product-card-desc{font-size:.83rem;line-height:1.7;color:rgba(44,26,14,.55);}
+.product-card-label{
+  display:inline-block;margin-top:1rem;
+  font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  padding:.3rem .9rem;background:var(--brown);color:var(--white);border-radius:50px;
+}
 
-/* STORY PARALLAX */
-.story-section{position:relative;overflow:hidden;padding:0;background:var(--forest3);}
-.story-px{position:absolute;inset:-25%;will-change:transform;
-  background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(200,230,192,.06) 0%,transparent 60%),
-             var(--forest3);}
-.story-grain{position:absolute;inset:0;opacity:.02;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:256px;}
-.story-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:80vh;align-items:center;}
-.story-left{padding:8rem 5rem 8rem 4rem;border-right:1px solid var(--border);}
-.story-right{padding:8rem 4rem 8rem 5rem;}
-.story-quote{font-family:'Gilda Display',serif;font-size:clamp(2rem,3.5vw,3.8rem);line-height:1.18;letter-spacing:-.01em;color:var(--parchment);margin-bottom:2rem;}
-.story-quote em{font-style:italic;color:var(--leaf);}
-.story-attr{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.35);}
-.story-attr span{color:var(--sage);}
-.story-body{font-size:.96rem;font-weight:300;color:rgba(247,243,236,.5);line-height:1.78;margin-bottom:2.5rem;max-width:430px;}
-.story-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-top:2.5rem;border-top:1px solid var(--border);}
-.stat-n{font-family:'Gilda Display',serif;font-size:3.2rem;line-height:1;letter-spacing:-.02em;color:var(--parchment);}
-.stat-n em{font-size:1.6rem;color:var(--leaf);}
-.stat-lbl{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:rgba(247,243,236,.35);margin-top:.25rem;}
-/* Popup / find us box */
-.find-box{background:rgba(200,230,192,.04);border:1px solid rgba(200,230,192,.1);padding:2.8rem;}
-.find-title{font-family:'Gilda Display',serif;font-size:1.8rem;color:var(--parchment);margin-bottom:.6rem;}
-.find-sub{font-size:.75rem;font-weight:300;color:rgba(247,243,236,.4);margin-bottom:2rem;line-height:1.6;}
-.find-items{list-style:none;display:flex;flex-direction:column;gap:1.2rem;}
-.find-items li{display:flex;align-items:flex-start;gap:1rem;font-size:.85rem;font-weight:300;color:rgba(247,243,236,.55);line-height:1.5;}
-.find-icon{width:6px;height:6px;border-radius:50%;background:var(--leaf);flex-shrink:0;margin-top:.4rem;}
-.find-link{display:inline-flex;align-items:center;gap:.7rem;margin-top:2.2rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--leaf);text-decoration:none;border-bottom:1px solid rgba(200,230,192,.2);padding-bottom:.3rem;transition:gap .2s,border-color .2s;}
-.find-link:hover{gap:1.1rem;border-color:var(--leaf);}
+/* PARALLAX STRIP */
+.parallax-strip{
+  height:420px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.parallax-bg{
+  position:absolute;inset:-80px;
+  background:linear-gradient(135deg,var(--brown) 0%,var(--brown2) 50%,var(--brown3) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.parallax-pattern{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(201,150,58,.08) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.parallax-content{position:relative;z-index:1;text-align:center;padding:2rem;}
+.parallax-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,7vw,7rem);
+  font-weight:900;font-style:italic;
+  color:var(--cream);line-height:.95;margin-bottom:1rem;
+}
+.parallax-title em{color:var(--gold);}
+.parallax-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-style:italic;
+  color:rgba(250,246,239,.6);
+}
 
-/* HOW */
-.how-section{background:var(--forest);padding:8rem 4rem;}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:5rem;}
-.how-step{border-top:1px solid rgba(247,243,236,.1);padding-top:2rem;}
-.how-num{font-family:'Gilda Display',serif;font-size:4rem;line-height:1;color:rgba(247,243,236,.08);letter-spacing:-.02em;margin-bottom:1.5rem;}
-.how-title{font-family:'Gilda Display',serif;font-size:1.5rem;color:var(--parchment);margin-bottom:.8rem;}
-.how-body{font-size:.88rem;font-weight:300;color:rgba(247,243,236,.45);line-height:1.72;}
-.how-detail{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--leaf);margin-top:1.4rem;}
+/* POPUP SECTION */
+.popup{background:var(--cream2);}
+.popup-inner{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.popup-cards{display:flex;flex-direction:column;gap:1rem;}
+.popup-card{
+  background:var(--white);
+  border:0.5px solid var(--border);
+  border-radius:20px;padding:1.8rem 2rem;
+  display:flex;align-items:center;gap:1.5rem;
+  transition:all .3s;
+}
+.popup-card:hover{border-color:var(--border2);transform:translateX(6px);}
+.popup-card-icon{font-size:2rem;flex-shrink:0;}
+.popup-card-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;font-style:italic;
+  color:var(--brown);margin-bottom:.3rem;
+}
+.popup-card-sub{font-size:.78rem;font-weight:500;color:rgba(44,26,14,.45);letter-spacing:.08em;}
+.popup-text p{font-size:.97rem;line-height:1.9;color:rgba(44,26,14,.65);margin-bottom:1.2rem;}
+.popup-text p strong{color:var(--brown);font-weight:600;}
 
-/* CTA */
-.cta-section{position:relative;overflow:hidden;padding:10rem 4rem;text-align:center;background:var(--forest3);}
-.cta-px{position:absolute;inset:-20%;will-change:transform;
-  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(200,230,192,.06) 0%,transparent 60%),
-             var(--forest3);}
-.cta-inner{position:relative;z-index:2;}
-.cta-ey{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--leaf);margin-bottom:1.5rem;}
-.cta-title{font-family:'Gilda Display',serif;font-size:clamp(3rem,7.5vw,8.5rem);line-height:.9;letter-spacing:-.01em;color:var(--parchment);margin-bottom:1rem;}
-.cta-title em{font-style:italic;color:var(--leaf);}
-.cta-sub{font-size:.9rem;font-weight:300;color:rgba(247,243,236,.4);margin-bottom:3rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.65;}
-.cta-note{margin-top:2rem;font-size:.62rem;font-weight:300;color:rgba(247,243,236,.25);letter-spacing:.06em;}
+/* ORDER */
+.order{background:var(--brown);}
+.order-inner{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.order .sec-tag{color:var(--gold);}
+.order .sec-tag::before{background:var(--gold);}
+.order .sec-title{color:var(--cream);}
+.order .sec-title em{color:var(--gold);}
+.order-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-style:italic;
+  color:rgba(250,246,239,.5);line-height:1.7;margin-bottom:2rem;
+}
+.order-card{
+  background:rgba(255,255,255,.05);
+  border:0.5px solid rgba(201,150,58,.2);
+  border-radius:20px;overflow:hidden;position:relative;
+}
+.order-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--gold),var(--pink));
+}
+.contact-row{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1.4rem 2rem;
+  border-bottom:0.5px solid rgba(255,255,255,.06);
+  transition:background .2s;
+}
+.contact-row:last-child{border-bottom:none;}
+.contact-row:hover{background:rgba(255,255,255,.04);}
+.cr-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem;}
+.cr-label{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
+.cr-val{font-size:.88rem;font-weight:500;color:var(--cream);line-height:1.5;}
+.cr-val a{color:var(--cream);text-decoration:none;transition:color .2s;}
+.cr-val a:hover{color:var(--gold);}
+.cr-sub{font-size:.72rem;color:rgba(250,246,239,.3);margin-top:.1rem;}
 
 /* FOOTER */
-footer{background:var(--forest2);padding:5rem 4rem 3rem;border-top:1px solid var(--border);}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--border);}
-.footer-brand{font-family:'Gilda Display',serif;font-size:1.4rem;color:var(--parchment);text-decoration:none;letter-spacing:.04em;display:block;margin-bottom:.8rem;}
-.footer-brand span{color:var(--leaf);}
-.footer-tagline{font-size:.78rem;font-weight:300;color:rgba(247,243,236,.3);line-height:1.6;max-width:220px;}
-.footer-col-title{font-size:.53rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:rgba(247,243,236,.2);margin-bottom:1.5rem;}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
-.footer-links a{font-size:.8rem;font-weight:300;color:rgba(247,243,236,.4);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--leaf);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-copy{font-size:.62rem;font-weight:300;color:rgba(247,243,236,.18);letter-spacing:.04em;}
-.footer-sg{font-family:'Gilda Display',serif;font-size:.82rem;font-style:italic;color:rgba(247,243,236,.25);}
-
-/* MOBILE */
-@media(max-width:900px){
-  nav{padding:1.2rem 1.5rem;}
-  .nav-links{display:none;}
-  .hero-content{padding:6rem 1.5rem 5rem;}
-  .hero-scroll,.bun-art,.hero-ring{display:none;}
-  section{padding:5rem 1.5rem;}
-  .flavors-grid{grid-template-columns:repeat(2,1fr);}
-  .flavors-header{flex-direction:column;align-items:flex-start;}
-  .story-inner{grid-template-columns:1fr;}
-  .story-left{border-right:none;border-bottom:1px solid var(--border);padding:5rem 1.5rem;}
-  .story-right{padding:4rem 1.5rem;}
-  .how-grid{grid-template-columns:1fr;}
-  .cta-section{padding:7rem 1.5rem;}
-  .footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
+footer{
+  background:var(--cream);
+  border-top:0.5px solid var(--border);
+  padding:2.5rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.5rem;
+  position:relative;overflow:hidden;
 }
-@media(max-width:560px){
-  .flavors-grid{grid-template-columns:1fr 1fr;}
-  .footer-top > *:nth-child(n+2){display:none;}
+.foot-ghost{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;
+  font-size:7rem;font-weight:900;font-style:italic;
+  color:rgba(44,26,14,.025);white-space:nowrap;pointer-events:none;
+  animation:ghostSlide 25s linear infinite;
+}
+@keyframes ghostSlide{from{transform:translate(-50%,-50%) translateX(0);}to{transform:translate(-50%,-50%) translateX(-25%);}}
+.foot-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:600;font-style:italic;
+  color:var(--brown);position:relative;z-index:1;
+}
+.foot-logo span{color:var(--gold);}
+.foot-copy{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(44,26,14,.25);position:relative;z-index:1;}
+.foot-links{display:flex;gap:2rem;position:relative;z-index:1;}
+.foot-links a{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(44,26,14,.25);text-decoration:none;transition:color .2s;}
+.foot-links a:hover{color:var(--brown);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.23,1,.32,1),transform .9s cubic-bezier(.23,1,.32,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.12s;}.d2{transition-delay:.24s;}.d3{transition-delay:.36s;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:1.2rem 1.5rem;}.nav-links{display:none;}
+  section{padding:5rem 1.5rem;}
+  .story{grid-template-columns:1fr;}.story-visual{height:300px;}
+  .products-grid{grid-template-columns:1fr;}.product-card.large{grid-column:auto;grid-template-columns:1fr;}
+  .popup-inner{grid-template-columns:1fr;}
+  .order-inner{grid-template-columns:1fr;}
+  footer{flex-direction:column;align-items:flex-start;}
+  .hero-scroll{display:none;}
+  .foot-ghost{display:none;}
+}
+@media(max-width:600px){
+  .hero-pills{display:none;}
 }
 </style>
 </head>
 <body>
 
 <div id="prog"></div>
+<div id="cur-ring"></div>
+<div id="cur-dot"></div>
 
 <nav id="nav">
-  <a href="#" class="nav-logo">muyoo<span>.</span></a>
+  <a href="#" class="nav-logo"><span>Muyoo</span> Philippines</a>
   <ul class="nav-links">
-    <li><a href="#flavors">Flavors</a></li>
     <li><a href="#story">Story</a></li>
-    <li><a href="#how">Order</a></li>
+    <li><a href="#products">Buns</a></li>
+    <li><a href="#popup">Find Us</a></li>
+    <li><a href="#order">Order</a></li>
   </ul>
-  <a href="https://muyooph.cococart.co" target="_blank" class="nav-cta">Order Now</a>
+  <a href="https://muyooph.cococart.co" target="_blank" rel="noopener" class="nav-cta">Order Now</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-px" id="hpx"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-ghost" id="hghost">mochi.</div>
-  <div class="hero-ring" id="hring">
-    <svg width="700" height="700" viewBox="0 0 700 700"><circle cx="350" cy="350" r="345" fill="none" stroke="white" stroke-width="1"/><circle cx="350" cy="350" r="270" fill="none" stroke="white" stroke-width="1"/><circle cx="350" cy="350" r="180" fill="none" stroke="white" stroke-width="1"/></svg>
-  </div>
-  <div class="bun-art" id="bunart">
-    <div class="bun-main"></div>
-    <div class="bun-mid"></div>
-    <div class="bun-sm"></div>
-    <div class="bun-xs"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Singaporean Bakeshop · Philippines</div>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">Singaporean Bakeshop · Manila, Philippines</div>
     <h1 class="hero-title">
-      <div class="line"><span style="animation-delay:.3s">A Celebration</span></div>
-      <div class="line"><span style="animation-delay:.48s">of <em>Nature.</em></span></div>
+      The Best<br>
+      <em>Mochi Buns</em><br>
+      Are Here.
     </h1>
-    <p class="hero-sub">Signature mochi buns crafted with Taiwanese high-protein flour and naturally sourced ingredients. Freshly baked daily. Limited stock — order before they sell out.</p>
+    <p class="hero-sub">Freshly baked daily. Nurtured by nature. Singaporean-style mochi buns that sell out every single time.</p>
     <div class="hero-actions">
-      <a href="https://muyooph.cococart.co" target="_blank" class="btn-leaf">Order Now</a>
-      <a href="#flavors" class="btn-ghost">Explore Flavors</a>
+      <a href="https://muyooph.cococart.co" target="_blank" rel="noopener" class="btn-brown">Order Now</a>
+      <a href="#products" class="btn-outline">See the Buns</a>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill">Freshly Baked Daily</span>
+      <span class="hero-pill">50K+ Followers</span>
+      <span class="hero-pill">Pop-Up · Manila</span>
+      <span class="hero-pill">Singaporean Recipe</span>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-label">scroll</div>
-    <div class="scroll-track"><div class="scroll-fill"></div></div>
-  </div>
-</section>
+  <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-text">Scroll</span></div>
+</div>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Black Sesame</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Matcha Cream Cheese</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Biscoff</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Choco Banana</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Strawberry</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Peanut</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Earl Grey Custard</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Purple Sweet Potato</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Injeolmi</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Black Sesame</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Matcha Cream Cheese</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Biscoff</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Choco Banana</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Strawberry</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Peanut</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Earl Grey Custard</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Purple Sweet Potato</span><span class="ticker-leaf">·</span>
-    <span class="ticker-item">Injeolmi</span><span class="ticker-leaf">·</span>
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Signature Mochi Buns</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Freshly Baked Daily</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Singaporean Bakeshop</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Nurtured by Nature</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Pop-Up Locations · Metro Manila</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">50,000+ Followers</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Order via Cococart</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Signature Mochi Buns</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Freshly Baked Daily</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Singaporean Bakeshop</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Nurtured by Nature</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Pop-Up Locations · Metro Manila</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">50,000+ Followers</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
+    <span class="marquee-item">Order via Cococart</span><span class="marquee-sep">&nbsp;·&nbsp;</span>
   </div>
 </div>
 
-<hr class="divider">
-
-<!-- FLAVORS -->
-<section class="flavors-section" id="flavors">
-  <div class="flavors-header">
-    <div class="rv">
-      <div class="sec-label">The Collection</div>
-      <h2 class="sec-title">Eight <em>Signatures</em></h2>
-    </div>
-    <p class="flavors-note rv d2">Each bun made fresh daily using Taiwanese high-protein flour and naturally sourced ingredients.</p>
-  </div>
-  <div class="flavors-grid">
-    <div class="flavor-tile rv">
-      <div class="flavor-swatch" style="background:#2A2218;border-color:rgba(247,243,236,.3);"></div>
-      <div class="flavor-num">01</div>
-      <div class="flavor-name">Black Sesame</div>
-      <div class="flavor-origin">OG Classic</div>
-    </div>
-    <div class="flavor-tile rv d1">
-      <div class="flavor-swatch" style="background:#5A8A5C;"></div>
-      <div class="flavor-num">02</div>
-      <div class="flavor-name">Matcha Cream Cheese</div>
-      <div class="flavor-origin">Fan Favourite</div>
-    </div>
-    <div class="flavor-tile rv d2">
-      <div class="flavor-swatch" style="background:#C49A50;"></div>
-      <div class="flavor-num">03</div>
-      <div class="flavor-name">Biscoff</div>
-      <div class="flavor-origin">Caramelised</div>
-    </div>
-    <div class="flavor-tile rv d3">
-      <div class="flavor-swatch" style="background:#6B3A20;"></div>
-      <div class="flavor-num">04</div>
-      <div class="flavor-name">Choco Banana</div>
-      <div class="flavor-origin">QQ Mochi</div>
-    </div>
-    <div class="flavor-tile rv d1">
-      <div class="flavor-swatch" style="background:#D46070;"></div>
-      <div class="flavor-num">05</div>
-      <div class="flavor-name">Strawberry</div>
-      <div class="flavor-origin">Real Fruit</div>
-    </div>
-    <div class="flavor-tile rv d2">
-      <div class="flavor-swatch" style="background:#B08040;"></div>
-      <div class="flavor-num">06</div>
-      <div class="flavor-name">Peanut</div>
-      <div class="flavor-origin">Nutty</div>
-    </div>
-    <div class="flavor-tile rv d3">
-      <div class="flavor-swatch" style="background:#8078A8;"></div>
-      <div class="flavor-num">07</div>
-      <div class="flavor-name">Earl Grey Custard</div>
-      <div class="flavor-origin">Delicate Tea</div>
-    </div>
-    <div class="flavor-tile rv d4">
-      <div class="flavor-swatch" style="background:#6A5090;"></div>
-      <div class="flavor-num">08</div>
-      <div class="flavor-name">Purple Sweet Potato</div>
-      <div class="flavor-origin">Naturally Hued</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
 <!-- STORY -->
-<section class="story-section" id="story">
-  <div class="story-px" id="spx"></div>
-  <div class="story-grain"></div>
-  <div class="story-inner">
-    <div class="story-left">
-      <div class="sec-label rv">The Story</div>
-      <blockquote class="story-quote rv d1">"Muyoo is a celebration of <em>nature</em> — and so we treasure its gifts."</blockquote>
-      <p class="story-attr rv d2">— <span>Muyoo · Singapore Origin</span></p>
-      <div class="story-stat-row rv d3">
+<section class="story" id="story">
+  <div class="story-visual reveal">
+    <div class="story-frame">
+      <div class="story-badge">Est. Singapore-inspired</div>
+      <div class="story-bg-text">Muyoo</div>
+      <div class="story-stat-grid">
+        <div class="story-stat"><div class="story-stat-n">50<em>K+</em></div><div class="story-stat-l">Followers</div></div>
+        <div class="story-stat"><div class="story-stat-n">2.1<em>K+</em></div><div class="story-stat-l">Posts</div></div>
+        <div class="story-stat"><div class="story-stat-n">Daily</div><div class="story-stat-l">Freshly Baked</div></div>
+        <div class="story-stat"><div class="story-stat-n">SG</div><div class="story-stat-l">Inspired Recipe</div></div>
+      </div>
+    </div>
+    <div class="story-corner"></div>
+  </div>
+  <div class="reveal d2">
+    <div class="sec-tag">Our Story</div>
+    <h2 class="sec-title">Nurtured<br><em>by Nature.</em></h2>
+    <p>Muyoo Philippines was born from a simple belief — that <strong>exceptional baked goods deserve to be shared</strong>. Inspired by Singapore's legendary mochi bun culture, we brought the recipe to Manila and made it our own.</p>
+    <p>Every bun is <strong>freshly baked daily</strong>. No day-old stock, no compromise. When they're gone, they're gone — and they always go fast. Over <strong>50,000 people</strong> have found their way to our booths, and every single one of them comes back.</p>
+    <p>We operate as pop-ups across Metro Manila — find us at events, markets, and booths. Check our latest post for current locations.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header reveal">
+    <div>
+      <div class="sec-tag">The Buns</div>
+      <h2 class="sec-title">Signature<br><em>Collection.</em></h2>
+    </div>
+    <a href="https://muyooph.cococart.co" target="_blank" rel="noopener" class="btn-outline">Order Online →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card large reveal">
+      <div class="product-card-visual pink" style="height:auto;min-height:280px;">
+        <span style="font-size:6rem;">🍡</span>
+      </div>
+      <div class="product-card-body" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="product-card-tag">Signature · Best Seller</div>
+        <div class="product-card-name">Signature Mochi Buns</div>
+        <div class="product-card-desc">The one that started it all. Soft, chewy, pillowy mochi buns freshly baked every single day. The texture is unlike anything else — a light crisp outside giving way to a perfectly chewy interior.</div>
+        <span class="product-card-label">Always Sells Out</span>
+      </div>
+    </div>
+    <div class="product-card reveal d1">
+      <div class="product-card-visual sage"><span style="font-size:4rem;">🌿</span></div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Seasonal</div>
+        <div class="product-card-name">Matcha Mochi</div>
+        <div class="product-card-desc">Japanese matcha folded into our signature mochi base. Earthy, fragrant, and beautifully balanced.</div>
+      </div>
+    </div>
+    <div class="product-card reveal d2">
+      <div class="product-card-visual gold"><span style="font-size:4rem;">🧀</span></div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Fan Favorite</div>
+        <div class="product-card-name">Cheese Mochi</div>
+        <div class="product-card-desc">Savory meets soft. Melted cheese in every bite — a crowd-pleaser that always runs out first.</div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-card-visual cream"><span style="font-size:4rem;">🍫</span></div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Indulgent</div>
+        <div class="product-card-name">Chocolate Mochi</div>
+        <div class="product-card-desc">Rich chocolate at the center of our classic mochi. Warm, gooey, and dangerously good.</div>
+      </div>
+    </div>
+    <div class="product-card reveal d1">
+      <div class="product-card-visual pink"><span style="font-size:4rem;">🍓</span></div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Light · Fresh</div>
+        <div class="product-card-name">Strawberry Mochi</div>
+        <div class="product-card-desc">Bright strawberry flavor in a pillowy mochi shell. The lighter choice that still hits just as hard.</div>
+      </div>
+    </div>
+    <div class="product-card reveal d2">
+      <div class="product-card-visual sage"><span style="font-size:4rem;">🥜</span></div>
+      <div class="product-card-body">
+        <div class="product-card-tag">Classic</div>
+        <div class="product-card-name">Peanut Butter Mochi</div>
+        <div class="product-card-desc">Creamy peanut butter folded inside chewy mochi. Comfort in every bite — simple and perfect.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX STRIP -->
+<div class="parallax-strip">
+  <div class="parallax-bg" id="parallax1">
+    <div class="parallax-pattern"></div>
+  </div>
+  <div class="parallax-content">
+    <div class="parallax-title">Freshly Baked.<br><em>Daily.</em></div>
+    <div class="parallax-sub">No day-old stock. Ever.</div>
+  </div>
+</div>
+
+<!-- POPUP / FIND US -->
+<section class="popup" id="popup">
+  <div class="popup-inner">
+    <div class="reveal">
+      <div class="sec-tag">Find Us</div>
+      <h2 class="sec-title">We're<br><em>Pop-Up.</em></h2>
+      <p class="popup-text"><p>Muyoo operates as a <strong>pop-up bakeshop</strong> across Metro Manila. No fixed address — we move to where the people are. Check our latest Facebook post for current booth locations and schedules.</p>
+      <p>When you spot the Muyoo booth, don't wait. The buns sell out fast — every single time.</p></p>
+    </div>
+    <div class="popup-cards reveal d2">
+      <div class="popup-card">
+        <div class="popup-card-icon">📍</div>
         <div>
-          <div class="stat-n">50<em>K+</em></div>
-          <div class="stat-lbl">PH Followers</div>
+          <div class="popup-card-name">Metro Manila · Pop-Up Booths</div>
+          <div class="popup-card-sub">Check latest post for current location</div>
         </div>
+      </div>
+      <div class="popup-card">
+        <div class="popup-card-icon">🛒</div>
         <div>
-          <div class="stat-n">8<em>+</em></div>
-          <div class="stat-lbl">Flavors</div>
+          <div class="popup-card-name">Order Online via Cococart</div>
+          <div class="popup-card-sub">muyooph.cococart.co</div>
         </div>
+      </div>
+      <div class="popup-card">
+        <div class="popup-card-icon">🏪</div>
         <div>
-          <div class="stat-n"><em>Daily</em></div>
-          <div class="stat-lbl">Freshly Baked</div>
+          <div class="popup-card-name">In-Store Pickup Available</div>
+          <div class="popup-card-sub">At selected pop-up locations</div>
         </div>
+      </div>
+      <div class="popup-card">
+        <div class="popup-card-icon">📢</div>
         <div>
-          <div class="stat-n"><em>SG</em></div>
-          <div class="stat-lbl">Born in Singapore</div>
+          <div class="popup-card-name">Follow for Location Updates</div>
+          <div class="popup-card-sub">Facebook & Messenger channel</div>
         </div>
       </div>
     </div>
-    <div class="story-right">
-      <p class="story-body rv">Born in Singapore, Muyoo built its name on one promise: mochi buns that honour nature. Taiwanese high-protein flour, real fruit toppings, naturally sourced ingredients — no shortcuts, no compromise.</p>
-      <p class="story-body rv d1">The Philippines branch operates as a popup, baking fresh every day with limited stock. If you've been following, you know — they sell out.</p>
-      <div class="find-box rv d2">
-        <div class="find-title">Find Us</div>
-        <div class="find-sub">Popup locations updated via social media. Check the latest post for today's location.</div>
-        <ul class="find-items">
-          <li><span class="find-icon"></span>Popup locations across Metro Manila — updated regularly</li>
-          <li><span class="find-icon"></span>Order online via Cococart for delivery</li>
-          <li><span class="find-icon"></span>Also available on Pickaroo</li>
-        </ul>
-        <a href="https://www.facebook.com/muyooph" target="_blank" class="find-link">Check Latest Location →</a>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="order" id="order">
+  <div class="order-inner">
+    <div class="reveal">
+      <div class="sec-tag">Order</div>
+      <h2 class="sec-title">Get Your<br><em>Buns.</em></h2>
+      <p class="order-tagline">Freshly baked, always limited. Order online or catch us at our next pop-up.</p>
+      <a href="https://muyooph.cococart.co" target="_blank" rel="noopener" class="btn-brown" style="display:inline-block;">Order on Cococart</a>
+    </div>
+    <div class="order-card reveal d2">
+      <div class="contact-row">
+        <div class="cr-icon">🛒</div>
+        <div>
+          <div class="cr-label">Order Online</div>
+          <div class="cr-val"><a href="https://muyooph.cococart.co" target="_blank" rel="noopener">muyooph.cococart.co</a></div>
+          <div class="cr-sub">Primary ordering platform</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">📞</div>
+        <div>
+          <div class="cr-label">Phone</div>
+          <div class="cr-val"><a href="tel:+639178265368">+63 917 826 5368</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">📧</div>
+        <div>
+          <div class="cr-label">Email</div>
+          <div class="cr-val"><a href="mailto:contact@muyoo.com.ph">contact@muyoo.com.ph</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">💬</div>
+        <div>
+          <div class="cr-label">Facebook</div>
+          <div class="cr-val"><a href="https://facebook.com/MuyooPhilippines" target="_blank" rel="noopener">Muyoo Philippines</a></div>
+          <div class="cr-sub">Follow for pop-up schedules</div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="cr-icon">📍</div>
+        <div>
+          <div class="cr-label">Location</div>
+          <div class="cr-val">Metro Manila, Philippines</div>
+          <div class="cr-sub">Pop-up booths — check latest post</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- HOW -->
-<section class="how-section" id="how">
-  <div class="sec-label rv">How to Order</div>
-  <h2 class="sec-title rv d1">Fresh Today.<br><em>Gone Tomorrow.</em></h2>
-  <div class="how-grid">
-    <div class="how-step rv d1">
-      <div class="how-num">01</div>
-      <div class="how-title">Order Online</div>
-      <p class="how-body">Head to muyooph.cococart.co and place your order. We also take orders through Pickaroo for same-day delivery.</p>
-      <div class="how-detail">muyooph.cococart.co</div>
-    </div>
-    <div class="how-step rv d2">
-      <div class="how-num">02</div>
-      <div class="how-title">Catch a Popup</div>
-      <p class="how-body">Follow @muyooph on Facebook and Instagram for daily popup location updates across Metro Manila.</p>
-      <div class="how-detail">Check latest post for location</div>
-    </div>
-    <div class="how-step rv d3">
-      <div class="how-num">03</div>
-      <div class="how-title">Don't Wait</div>
-      <p class="how-body">Stock is limited. Baked fresh daily. Once they're gone, they're gone until the next day's batch comes out.</p>
-      <div class="how-detail">Limited stock · Sells out fast</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="order">
-  <div class="cta-px" id="ctapx"></div>
-  <div class="cta-inner">
-    <div class="cta-ey rv">Order Before They Sell Out</div>
-    <h2 class="cta-title rv d1">Freshly Baked.<br><em>Daily.</em></h2>
-    <p class="cta-sub rv d2">Singapore-style mochi buns. Natural ingredients. Limited stock every single day.</p>
-    <div class="rv d3">
-      <a href="https://muyooph.cococart.co" target="_blank" class="btn-leaf">Order on Cococart</a>
-    </div>
-    <p class="cta-note rv d4">Also on Pickaroo · Popup locations via @muyooph</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <a href="#" class="footer-brand">muyoo<span>.</span></a>
-      <p class="footer-tagline">Singaporean Bakeshop. A celebration of nature. Home of the Signature Mochi Buns.</p>
-    </div>
-    <div>
-      <div class="footer-col-title">Order</div>
-      <ul class="footer-links">
-        <li><a href="https://muyooph.cococart.co" target="_blank">Cococart</a></li>
-        <li><a href="#">Pickaroo</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Follow</div>
-      <ul class="footer-links">
-        <li><a href="https://www.facebook.com/muyooph" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com/muyooph" target="_blank">Instagram</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Muyoo Philippines. All rights reserved.</div>
-    <div class="footer-sg">Born in Singapore</div>
+  <div class="foot-ghost">Muyoo Philippines · The Best Mochi Buns Are Here · Freshly Baked Daily · </div>
+  <div class="foot-logo"><span>Muyoo</span> Philippines</div>
+  <div class="foot-copy">© 2026 · Singaporean Bakeshop · Metro Manila</div>
+  <div class="foot-links">
+    <a href="#products">Buns</a>
+    <a href="#popup">Find Us</a>
+    <a href="#order">Order</a>
   </div>
 </footer>
 
 <script>
-const prog = document.getElementById('prog');
-window.addEventListener('scroll', () => {
-  prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-}, { passive: true });
+/* CURSOR */
+const ring=document.getElementById('cur-ring'),dot=document.getElementById('cur-dot');
+let mx=0,my=0,cx=0,cy=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*.1;cy+=(my-cy)*.1;ring.style.left=cx+'px';ring.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.product-card,.popup-card,.story-stat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='var(--gold)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='var(--brown)';});
+});
 
-document.getElementById('nav').addEventListener('scroll', () => {}, { passive: true });
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+/* PROGRESS */
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{prog.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
 
-const pxEls = [
-  { el: document.getElementById('hpx'), speed: .15 },
-  { el: document.getElementById('hghost'), speed: .25 },
-  { el: document.getElementById('hring'), speed: .1 },
-  { el: document.getElementById('bunart'), speed: .18 },
-  { el: document.getElementById('spx'), speed: .14 },
-  { el: document.getElementById('ctapx'), speed: .16 },
-];
-let t = false;
-window.addEventListener('scroll', () => {
-  if (!t) {
-    requestAnimationFrame(() => {
-      const sy = window.scrollY;
-      pxEls.forEach(({ el, speed }) => { if (el) el.style.transform = `translateY(${sy * speed}px)`; });
-      t = false;
-    });
-    t = true;
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.style.boxShadow=window.scrollY>80?'0 4px 30px rgba(44,26,14,.08)':'none';});
+
+/* PARALLAX */
+window.addEventListener('scroll',()=>{
+  const p1=document.getElementById('parallax1');
+  if(p1){const r=p1.parentElement.getBoundingClientRect();p1.style.transform=`translateY(${(r.top+r.height/2)*0.2}px)`;}
+});
+
+/* MARQUEE */
+const mt=document.querySelector('.marquee-track');
+if(mt){mt.addEventListener('mouseenter',()=>mt.style.animationPlayState='paused');mt.addEventListener('mouseleave',()=>mt.style.animationPlayState='running');}
+
+/* MAGNETIC BUTTONS */
+document.querySelectorAll('.btn-brown,.btn-outline,.nav-cta').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.2}px)`;
+    btn.style.transition='transform .1s ease';
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';btn.style.transition='transform .5s cubic-bezier(.23,1,.32,1)';});
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* CARD STAGGER */
+document.querySelectorAll('.product-card,.popup-card').forEach((el,i)=>{
+  el.style.transitionDelay=(i*.07)+'s';el.classList.add('reveal');obs.observe(el);
+});
+
+/* CLICK PARTICLES */
+document.addEventListener('click',e=>{
+  for(let i=0;i<8;i++){
+    const p=document.createElement('div');
+    const angle=Math.random()*Math.PI*2;
+    const dist=30+Math.random()*50;
+    const size=2+Math.random()*3;
+    const colors=['#C9963A','#E8B4A0','#8A9E8C'];
+    p.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;background:${colors[Math.floor(Math.random()*3)]};border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);`;
+    document.body.appendChild(p);
+    const dx=Math.cos(angle)*dist,dy=Math.sin(angle)*dist;
+    p.animate([{transform:'translate(-50%,-50%)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px))`,opacity:0}],{duration:500+Math.random()*300,easing:'cubic-bezier(.23,1,.32,1)',fill:'forwards'}).onfinish=()=>p.remove();
   }
-}, { passive: true });
-
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.rv, .rl, .rr').forEach(el => obs.observe(el));
+});
 </script>
 </body>
 </html>
