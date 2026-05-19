@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <circle cx="50" cy="50" r="50" fill="#1A0F0A"/>
+  <!-- Coffee cup -->
+  <rect x="28" y="38" width="44" height="32" rx="6" fill="#3D2010"/>
+  <rect x="28" y="38" width="44" height="12" rx="6" fill="#4A2A18"/>
+  <!-- Cup handle -->
+  <path d="M72,46 Q84,46 84,56 Q84,66 72,66" stroke="#3D2010" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Steam lines -->
+  <path d="M40,32 Q37,24 40,16" stroke="#C9963A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M50,30 Q47,22 50,14" stroke="#C9963A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M60,32 Q57,24 60,16" stroke="#C9963A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- JO text -->
+  <text x="50" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#C9963A" letter-spacing="1">JO</text>
+  <!-- Saucer -->
+  <ellipse cx="50" cy="72" rx="26" ry="5" fill="#2E1508"/>
+</svg>

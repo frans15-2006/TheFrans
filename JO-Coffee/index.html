@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JO Coffee — Malita, Davao Occidental</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F7F2E8;--cream2:#EDE5D4;--cream3:#E0D5C0;
+  --espresso:#1C1208;--espresso2:#2A1C0E;--espresso3:#3A2818;
+  --terra:#C4622D;--terra2:#D97840;--terra3:rgba(196,98,45,0.12);
+  --sand:#C8A878;--sand2:#B8946A;--muted:rgba(28,18,8,0.5);
+  --muted2:rgba(28,18,8,0.3);--border:rgba(28,18,8,0.1);--border2:rgba(196,98,45,0.35);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--espresso);font-family:'Syne',sans-serif;overflow-x:hidden;cursor:none;}
+*{cursor:none!important;}
+::-webkit-scrollbar{display:none;}
+html{-ms-overflow-style:none;scrollbar-width:none;}
+
+/* CURSOR */
+#cur-dot{position:fixed;width:5px;height:5px;background:var(--terra);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cur-ring{position:fixed;width:26px;height:26px;border:1.5px solid rgba(28,18,8,0.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
+@media(hover:none),(pointer:coarse){#cur-dot,#cur-ring{display:none;}*{cursor:auto!important;}}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--terra),var(--terra2));z-index:9999;width:0%;}
+
+/* GRAIN */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size:300px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5rem;transition:background .4s,padding .4s,box-shadow .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(247,242,232,0.96);backdrop-filter:blur(20px);padding:.9rem 5rem;border-bottom-color:var(--border);box-shadow:0 1px 0 var(--border);}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1.1;}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--espresso);letter-spacing:-.01em;}
+.nav-logo-main span{color:var(--terra);}
+.nav-logo-sub{font-family:'Syne',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-top:.15rem;}
+.nav-links{display:flex;align-items:center;gap:3rem;list-style:none;}
+.nav-links a{font-size:.62rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--espresso);}
+.nav-cta{background:var(--espresso);color:var(--cream)!important;padding:.45rem 1.3rem;font-size:.6rem!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--terra)!important;}
+.nav-burger{display:none;flex-direction:column;gap:4px;background:none;border:none;padding:.3rem;}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--espresso);}
+@media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.nav-burger{display:flex;}}
+
+/* HERO */
+.hero{min-height:100svh;display:grid;grid-template-columns:5fr 4fr;position:relative;overflow:hidden;background:var(--cream);}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 6rem 5rem;position:relative;z-index:2;}
+.hero-tag{font-size:.58rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:.7rem;margin-bottom:2rem;opacity:0;animation:fadeUp .7s .3s ease forwards;}
+.hero-tag::before{content:'';width:28px;height:1.5px;background:var(--terra);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,7rem);font-weight:900;line-height:.9;color:var(--espresso);margin-bottom:1rem;opacity:0;animation:fadeUp .8s .5s ease forwards;}
+.hero-title em{display:block;font-style:italic;color:var(--terra);font-weight:400;font-size:clamp(2.5rem,5.5vw,5.5rem);}
+.hero-divider{width:0;height:1.5px;background:var(--border2);margin:2.2rem 0;animation:expandW .8s .9s ease forwards;}
+@keyframes expandW{to{width:80px;}}
+.hero-desc{font-family:'Lora',serif;font-size:1rem;line-height:1.9;color:var(--muted);max-width:420px;font-style:italic;opacity:0;animation:fadeUp .8s 1s ease forwards;}
+.hero-actions{display:flex;gap:.8rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s 1.2s ease forwards;}
+.hero-badge{
+  display:flex;align-items:center;gap:1.5rem;margin-top:3rem;
+  opacity:0;animation:fadeUp .8s 1.4s ease forwards;
+}
+.hero-badge-item{display:flex;flex-direction:column;align-items:flex-start;}
+.hero-badge-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--espresso);line-height:1;}
+.hero-badge-label{font-size:.52rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;}
+.hero-badge-sep{width:1px;height:2.5rem;background:var(--border);}
+.hero-right{position:relative;background:var(--espresso2);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 75% at 50% 35%, rgba(196,98,45,0.18) 0%, transparent 65%);}
+.hero-cup-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+.hero-cup{width:180px;height:220px;position:relative;}
+.cup-body{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:130px;height:140px;
+  background:linear-gradient(160deg,#3A2818 0%,#1C1208 100%);
+  border-radius:8px 8px 30px 30px;
+  border:2px solid rgba(200,168,120,0.2);
+}
+.cup-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(196,98,45,0.15),transparent);border-radius:0 0 28px 28px;}
+.cup-rim{position:absolute;bottom:135px;left:50%;transform:translateX(-50%);width:140px;height:12px;background:linear-gradient(to bottom,#3A2818,#2A1C0E);border-radius:4px;border:2px solid rgba(200,168,120,0.2);}
+.cup-saucer{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:160px;height:10px;background:linear-gradient(to bottom,#3A2818,#2A1C0E);border-radius:50%;border:1px solid rgba(200,168,120,0.15);}
+.cup-handle{position:absolute;bottom:45px;right:2px;width:28px;height:45px;border:3px solid rgba(200,168,120,0.25);border-left:none;border-radius:0 20px 20px 0;}
+.cup-liquid{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:100px;height:100px;background:radial-gradient(ellipse at 35% 35%,#6B3D1E,#3D1A08);border-radius:50%;overflow:hidden;}
+.cup-liquid::after{content:'';position:absolute;top:15%;left:20%;width:25%;height:12%;background:rgba(255,255,255,0.08);border-radius:50%;transform:rotate(-20deg);}
+.steam{position:absolute;bottom:210px;left:50%;display:flex;gap:12px;transform:translateX(-50%);}
+.steam-line{width:2px;border-radius:2px;background:linear-gradient(to top,rgba(200,168,120,0.6),transparent);animation:steamRise 2s ease-in-out infinite;}
+.steam-line:nth-child(1){height:35px;animation-delay:0s;}
+.steam-line:nth-child(2){height:50px;animation-delay:.4s;}
+.steam-line:nth-child(3){height:30px;animation-delay:.8s;}
+@keyframes steamRise{0%,100%{opacity:0;transform:scaleX(1) translateY(0);}30%{opacity:.8;}70%{opacity:.4;}100%{opacity:0;transform:scaleX(1.5) translateY(-20px);}}
+.hero-right-text{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap;}
+.hero-right-label{font-size:.5rem;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:rgba(200,168,120,0.5);}
+@media(max-width:900px){.hero{grid-template-columns:1fr;}.hero-left{padding:7rem 1.5rem 4rem;}.hero-right{min-height:50svh;}}
+
+/* MARQUEE */
+.marquee-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.6rem 0;overflow:hidden;background:var(--espresso);}
+.marquee-inner{display:flex;animation:marquee 28s linear infinite;width:max-content;}
+.marquee-strip:hover .marquee-inner{animation-play-state:paused;}
+.mq-item{font-size:.55rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,232,0.4);white-space:nowrap;padding:0 2rem;font-family:'Syne',sans-serif;}
+.mq-item.a{color:var(--terra2);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SHARED */
+section{padding:7rem 5rem;}
+@media(max-width:768px){section{padding:5rem 1.5rem;}}
+.sec-label{font-size:.55rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;}
+.sec-label::before{content:'';width:18px;height:1.5px;background:var(--terra);}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:700;line-height:1.05;color:var(--espresso);margin-bottom:1.5rem;}
+.sec-title em{font-style:italic;color:var(--terra);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ABOUT */
+.about{background:var(--cream2);position:relative;overflow:hidden;}
+.about::before{content:'JO';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:30vw;font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(28,18,8,0.04);pointer-events:none;line-height:1;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-text p{font-family:'Lora',serif;font-size:.98rem;line-height:2;color:var(--muted);margin-bottom:1.3rem;font-style:italic;}
+.about-text p strong{color:var(--espresso);font-style:normal;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;}
+.about-text p:last-child{margin-bottom:0;}
+.about-stats{display:flex;flex-direction:column;gap:1px;}
+.a-stat{background:var(--cream);padding:1.8rem 2rem;border:1px solid var(--border);display:flex;align-items:center;gap:1.5rem;transition:border-color .3s,transform .3s;}
+.a-stat:hover{border-color:var(--border2);transform:translateX(4px);}
+.a-stat-icon{font-size:1.4rem;flex-shrink:0;}
+.a-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--terra);line-height:1;min-width:3rem;}
+.a-stat-info{}
+.a-stat-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--espresso);margin-bottom:.15rem;}
+.a-stat-desc{font-size:.75rem;color:var(--muted);line-height:1.4;}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:3rem;}.about::before{font-size:50vw;}}
+
+/* TERRA STRIP */
+.terra-strip{background:var(--terra);padding:4rem 5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
+.ts-item{padding:2rem;text-align:center;background:rgba(0,0,0,0.08);}
+.ts-item+.ts-item{border-left:1px solid rgba(255,255,255,0.15);}
+.ts-icon{font-size:1.5rem;margin-bottom:.7rem;}
+.ts-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;}
+.ts-desc{font-size:.72rem;color:rgba(247,242,232,0.7);line-height:1.65;font-family:'Lora',serif;font-style:italic;}
+@media(max-width:768px){.terra-strip{grid-template-columns:1fr;padding:3rem 1.5rem;}.ts-item+.ts-item{border-left:none;border-top:1px solid rgba(255,255,255,0.15);}}
+
+/* MENU */
+.menu{background:var(--cream);}
+.menu-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--border);margin-bottom:3.5rem;overflow-x:auto;}
+.menu-tab{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);background:none;border:none;padding:.9rem 1.6rem;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1.5px;transition:color .2s,border-color .2s;font-family:'Syne',sans-serif;}
+.menu-tab:hover{color:var(--espresso);}
+.menu-tab.active{color:var(--terra);border-bottom-color:var(--terra);}
+.menu-panel{display:none;}
+.menu-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+@media(max-width:1024px){.menu-panel.active{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.menu-panel.active{grid-template-columns:1fr;}}
+.menu-item{background:var(--cream);padding:2rem;position:relative;overflow:hidden;transition:background .25s;}
+.menu-item:hover{background:var(--cream2);}
+.menu-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--terra);transition:height .4s ease;}
+.menu-item:hover::before{height:100%;}
+.item-num{font-size:.5rem;letter-spacing:.3em;color:var(--muted2);margin-bottom:.5rem;font-family:'Syne',sans-serif;}
+.item-tag{display:inline-block;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;padding:.15rem .5rem;background:var(--terra3);color:var(--terra);border:1px solid var(--border2);margin-bottom:.6rem;font-family:'Syne',sans-serif;}
+.item-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--espresso);margin-bottom:.3rem;line-height:1.2;}
+.item-desc{font-size:.76rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem;font-family:'Lora',serif;font-style:italic;}
+.item-price{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--terra);}
+.item-price small{font-size:.68rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:500;font-style:normal;}
+
+/* AMBIANCE */
+.ambiance{background:var(--espresso);display:grid;grid-template-columns:1fr 1fr;min-height:65svh;overflow:hidden;}
+.amb-left{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center;}
+.amb-left .sec-label{color:var(--terra2);}
+.amb-left .sec-label::before{background:var(--terra2);}
+.amb-left .sec-title{color:var(--cream);}
+.amb-left .sec-title em{color:var(--terra2);}
+.amb-features{display:flex;flex-direction:column;gap:1px;margin-top:2rem;}
+.amb-feat{display:flex;align-items:flex-start;gap:1.2rem;padding:1.1rem 1.4rem;border:1px solid rgba(247,242,232,0.07);transition:border-color .3s,background .3s;}
+.amb-feat:hover{border-color:rgba(196,98,45,0.3);background:rgba(196,98,45,0.05);}
+.amb-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.amb-feat-text strong{display:block;font-size:.8rem;font-weight:600;color:var(--cream);margin-bottom:.15rem;font-family:'Syne',sans-serif;letter-spacing:.05em;}
+.amb-feat-text span{font-size:.73rem;color:rgba(247,242,232,0.45);line-height:1.55;font-family:'Lora',serif;font-style:italic;}
+.amb-right{position:relative;background:var(--espresso2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.amb-visual{position:relative;z-index:2;text-align:center;}
+.amb-big-text{font-family:'Playfair Display',serif;font-size:clamp(5rem,11vw,10rem);font-weight:900;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(196,98,45,0.25);line-height:1;letter-spacing:-.03em;}
+.amb-sub{font-size:.5rem;font-weight:700;letter-spacing:.5em;text-transform:uppercase;color:rgba(196,98,45,0.5);margin-top:.8rem;font-family:'Syne',sans-serif;}
+.amb-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(196,98,45,0.06) 0%,transparent 70%);}
+@media(max-width:768px){.ambiance{grid-template-columns:1fr;}.amb-left{padding:4rem 1.5rem;}.amb-right{min-height:250px;}.amb-big-text{font-size:5rem;}}
+
+/* CONTACT */
+.contact{background:var(--cream2);position:relative;}
+.contact-grid{display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:2rem;}
+.c-label{font-size:.54rem;letter-spacing:.38em;text-transform:uppercase;color:var(--terra);margin-bottom:.4rem;font-family:'Syne',sans-serif;font-weight:700;}
+.c-val{font-size:.93rem;color:var(--espresso);line-height:1.7;font-family:'Lora',serif;}
+.c-val a{color:var(--espresso);text-decoration:none;transition:color .2s;}
+.c-val a:hover{color:var(--terra);}
+.c-actions{display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2rem;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;font-family:'Syne',sans-serif;transition:all .25s;}
+.btn-espresso{background:var(--espresso);color:var(--cream);}
+.btn-espresso:hover{background:var(--terra);}
+.btn-outline{background:transparent;color:var(--espresso);border:1.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--espresso);}
+.contact-card{background:var(--espresso);padding:2.5rem;display:flex;flex-direction:column;gap:1.5rem;}
+.cc-head{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;font-style:italic;color:var(--cream);border-bottom:1px solid rgba(247,242,232,0.08);padding-bottom:1.5rem;line-height:1.2;}
+.cc-head span{display:block;font-family:'Syne',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--terra2);font-style:normal;margin-bottom:.4rem;}
+.c-row{display:flex;gap:.8rem;font-size:.8rem;color:rgba(247,242,232,0.55);font-family:'Lora',serif;}
+.c-row-icon{color:var(--terra2);flex-shrink:0;width:1rem;}
+.map-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cream);text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;transition:color .2s;margin-top:.5rem;}
+.map-link:hover{color:var(--terra2);}
+.map-link::after{content:'→';transition:transform .2s;}
+.map-link:hover::after{transform:translateX(4px);}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:3rem;}}
+
+/* FOOTER */
+footer{background:var(--espresso);padding:2.8rem 5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(247,242,232,0.06);position:relative;overflow:hidden;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;font-style:italic;color:var(--cream);}
+.footer-logo span{color:var(--terra2);}
+.footer-copy{font-size:.62rem;color:rgba(247,242,232,0.3);letter-spacing:.1em;font-family:'Syne',sans-serif;}
+.footer-ghost{position:absolute;bottom:-2rem;left:0;right:0;font-family:'Playfair Display',serif;font-size:8rem;font-weight:900;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(247,242,232,0.02);white-space:nowrap;pointer-events:none;animation:marquee 30s linear infinite;}
+@media(max-width:768px){footer{padding:2rem 1.5rem;flex-direction:column;gap:1rem;text-align:center;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div id="prog"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-main"><span>JO</span> Coffee</span>
+    <span class="nav-logo-sub">Malita · Davao Occidental</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#ambiance">Space</a></li>
+    <li><a href="#contact">Visit</a></li>
+    <li><a href="#contact" class="nav-cta">Find Us</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Malita, Davao Occidental</div>
+    <h1 class="hero-title">Your Cup<br><em>of Calm.</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">A coffee sanctuary in the heart of Malita — where every pour is intentional, every corner is yours, and every visit feels like home.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-espresso">See the Menu</a>
+      <a href="#contact" class="btn btn-outline">Get Directions</a>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-item">
+        <div class="hero-badge-num"><span class="count-up" data-target="100">0</span>+</div>
+        <div class="hero-badge-label">Menu Items</div>
+      </div>
+      <div class="hero-badge-sep"></div>
+      <div class="hero-badge-item">
+        <div class="hero-badge-num">All</div>
+        <div class="hero-badge-label">Day Brews</div>
+      </div>
+      <div class="hero-badge-sep"></div>
+      <div class="hero-badge-item">
+        <div class="hero-badge-num"><span class="count-up" data-target="1">0</span></div>
+        <div class="hero-badge-label">Great Spot</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cup-wrap">
+      <div class="hero-cup">
+        <div class="steam">
+          <div class="steam-line"></div>
+          <div class="steam-line"></div>
+          <div class="steam-line"></div>
+        </div>
+        <div class="cup-rim"></div>
+        <div class="cup-body">
+          <div class="cup-liquid"></div>
+        </div>
+        <div class="cup-handle"></div>
+        <div class="cup-saucer"></div>
+      </div>
+    </div>
+    <div class="hero-right-text">
+      <div class="hero-right-label">Specialty Coffee · Malita · Davao Occidental</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="mq-item a">JO Coffee</span><span class="mq-item">Espresso · Cold Brew · Frappe</span>
+    <span class="mq-item a">Malita, Davao Occidental</span><span class="mq-item">Coffee · Milk Tea · Pastries</span>
+    <span class="mq-item a">Your Daily Brew</span><span class="mq-item">Dine In · Takeout</span>
+    <span class="mq-item a">JO Coffee</span><span class="mq-item">Espresso · Cold Brew · Frappe</span>
+    <span class="mq-item a">Malita, Davao Occidental</span><span class="mq-item">Coffee · Milk Tea · Pastries</span>
+    <span class="mq-item a">Your Daily Brew</span><span class="mq-item">Dine In · Takeout</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="sec-label">Our Story</div>
+      <h2 class="sec-title">More Than<br><em>Coffee.</em></h2>
+      <p>JO Coffee was born out of a simple belief: <strong>everyone deserves a great cup.</strong> In the quiet municipality of Malita, we set out to build a space where the craft of coffee meets the warmth of community.</p>
+      <p>From the first espresso pull to the last sip of cold brew, every drink is made with <strong>intention and care.</strong> We source quality beans, train with purpose, and pour every cup as if it's the only one that matters.</p>
+      <p>Whether you're here to work, rest, or catch up with someone — <strong>JO Coffee is your place.</strong></p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="a-stat"><div class="a-stat-icon">☕</div><div class="a-stat-num"><span class="count-up" data-target="6">0</span>AM</div><div class="a-stat-info"><div class="a-stat-label">Opens Early</div><div class="a-stat-desc">First brew ready before the rest of Malita wakes up</div></div></div>
+      <div class="a-stat"><div class="a-stat-icon">🌿</div><div class="a-stat-num">Fresh</div><div class="a-stat-info"><div class="a-stat-label">Quality Beans</div><div class="a-stat-desc">Carefully selected coffee, brewed to order every time</div></div></div>
+      <div class="a-stat"><div class="a-stat-icon">📍</div><div class="a-stat-num">Local</div><div class="a-stat-info"><div class="a-stat-label">Malita's Own</div><div class="a-stat-desc">Proudly serving the people of Davao Occidental</div></div></div>
+      <div class="a-stat"><div class="a-stat-icon">💛</div><div class="a-stat-num">Warm</div><div class="a-stat-info"><div class="a-stat-label">Always Welcoming</div><div class="a-stat-desc">Good vibes, great coffee, and genuinely friendly service</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TERRA STRIP -->
+<div class="terra-strip">
+  <div class="ts-item reveal"><div class="ts-icon">☕</div><div class="ts-title">Dine In</div><div class="ts-desc">A cozy spot to sit, stay, and savour</div></div>
+  <div class="ts-item reveal"><div class="ts-icon">🧃</div><div class="ts-title">Takeout</div><div class="ts-desc">Grab your cup and take the vibe with you</div></div>
+  <div class="ts-item reveal"><div class="ts-icon">🌤️</div><div class="ts-title">Open Daily</div><div class="ts-desc">We're here whenever you need that caffeine fix</div></div>
+</div>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="reveal"><div class="sec-label">What We Brew</div><h2 class="sec-title">The <em>Menu</em></h2></div>
+  <div class="menu-tabs">
+    <button class="menu-tab active" data-tab="espresso">Espresso</button>
+    <button class="menu-tab" data-tab="cold">Cold Brew</button>
+    <button class="menu-tab" data-tab="nonc">Non-Coffee</button>
+    <button class="menu-tab" data-tab="frappe">Frappe</button>
+    <button class="menu-tab" data-tab="food">Food</button>
+  </div>
+
+  <div class="menu-panel active" id="tab-espresso">
+    <div class="menu-item"><div class="item-num">01</div><div class="item-tag">Classic</div><div class="item-name">Americano</div><div class="item-desc">Double espresso pulled fresh, topped with hot water — clean, bold, and satisfying</div><div class="item-price">₱95 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">02</div><div class="item-tag">Bestseller</div><div class="item-name">Café Latte</div><div class="item-desc">Smooth double shot espresso with steamed whole milk and a thin layer of microfoam</div><div class="item-price">₱110 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">03</div><div class="item-name">Cappuccino</div><div class="item-desc">Equal parts espresso, steamed milk, and thick velvety foam — the Italian classic</div><div class="item-price">₱110 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">04</div><div class="item-name">Flat White</div><div class="item-desc">Concentrated ristretto shots with silky steamed milk — stronger than a latte</div><div class="item-price">₱120 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">05</div><div class="item-tag">Signature</div><div class="item-name">JO Signature Brew</div><div class="item-desc">House blend espresso, house syrup, oat milk — our craft take on everyday coffee</div><div class="item-price">₱135 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">06</div><div class="item-name">Cortado</div><div class="item-desc">Equal parts espresso and warm milk — for when you want coffee, not a drink</div><div class="item-price">₱100 <small>/ cup</small></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-cold">
+    <div class="menu-item"><div class="item-num">01</div><div class="item-tag">Bestseller</div><div class="item-name">Classic Cold Brew</div><div class="item-desc">Slow-steeped 12-hour cold brew, smooth and low-acid — served over ice</div><div class="item-price">₱120 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">02</div><div class="item-name">Salted Caramel Cold Brew</div><div class="item-desc">Cold brew, salted caramel syrup, cream float — sweet and deeply satisfying</div><div class="item-price">₱145 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">03</div><div class="item-name">Iced Americano</div><div class="item-desc">Espresso over ice, cold water, dash of syrup — sharp and refreshing</div><div class="item-price">₱100 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">04</div><div class="item-name">Brown Sugar Iced Latte</div><div class="item-desc">Espresso, brown sugar syrup, cold milk, cinnamon — the crowd pleaser</div><div class="item-price">₱140 <small>/ cup</small></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-nonc">
+    <div class="menu-item"><div class="item-num">01</div><div class="item-tag">Popular</div><div class="item-name">Matcha Latte</div><div class="item-desc">Ceremonial grade matcha, steamed milk, honey — earthy and energizing</div><div class="item-price">₱125 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">02</div><div class="item-name">Taro Milk Tea</div><div class="item-desc">Creamy taro with milk tea base, brown sugar pearls optional</div><div class="item-price">₱110 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">03</div><div class="item-name">Strawberry Lemonade</div><div class="item-desc">Fresh lemon juice, strawberry purée, sparkling water — bright and fizzy</div><div class="item-price">₱105 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">04</div><div class="item-name">Chocolate Milk</div><div class="item-desc">House chocolate sauce, whole milk, light froth — rich and comforting</div><div class="item-price">₱95 <small>/ cup</small></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-frappe">
+    <div class="menu-item"><div class="item-num">01</div><div class="item-tag">Signature</div><div class="item-name">JO Mocha Frappe</div><div class="item-desc">Espresso, dark chocolate, blended ice, whipped cream — indulgent and cold</div><div class="item-price">₱145 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">02</div><div class="item-name">Caramel Frappe</div><div class="item-desc">House caramel, espresso, blended ice, caramel drizzle on top</div><div class="item-price">₱140 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">03</div><div class="item-name">Matcha Frappe</div><div class="item-desc">Matcha powder, milk, ice, whipped cream — for the matcha lovers</div><div class="item-price">₱135 <small>/ cup</small></div></div>
+    <div class="menu-item"><div class="item-num">04</div><div class="item-name">Cookies & Cream Frappe</div><div class="item-desc">Oreo blend, milk, blended ice, whipped cream — crowd favourite, always</div><div class="item-price">₱140 <small>/ cup</small></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-food">
+    <div class="menu-item"><div class="item-num">01</div><div class="item-tag">All-Day</div><div class="item-name">Toasted Sandwich</div><div class="item-desc">Sourdough, cheese, choice of ham or tuna — toasted golden and served warm</div><div class="item-price">₱110 <small>/ plate</small></div></div>
+    <div class="menu-item"><div class="item-num">02</div><div class="item-name">Croissant</div><div class="item-desc">Buttery, flaky, freshly baked — best with any morning espresso</div><div class="item-price">₱75 <small>/ piece</small></div></div>
+    <div class="menu-item"><div class="item-num">03</div><div class="item-name">Cheesecake Slice</div><div class="item-desc">New York style, graham crust, served chilled — a classic for good reason</div><div class="item-price">₱120 <small>/ slice</small></div></div>
+    <div class="menu-item"><div class="item-num">04</div><div class="item-name">Banana Bread</div><div class="item-desc">House-baked, moist and lightly sweet — a reliable companion to your brew</div><div class="item-price">₱65 <small>/ slice</small></div></div>
+  </div>
+</section>
+
+<!-- AMBIANCE -->
+<section class="ambiance" id="ambiance">
+  <div class="amb-left">
+    <div class="sec-label reveal">The Space</div>
+    <h2 class="sec-title reveal">A Place to<br><em>Belong.</em></h2>
+    <div class="amb-features">
+      <div class="amb-feat reveal"><div class="amb-icon">🪑</div><div class="amb-feat-text"><strong>Comfortable Seating</strong><span>Cozy corners and open tables — sit for a few minutes or a few hours</span></div></div>
+      <div class="amb-feat reveal"><div class="amb-icon">📶</div><div class="amb-feat-text"><strong>Free WiFi</strong><span>Fast and stable — whether you're working or just scrolling through feeds</span></div></div>
+      <div class="amb-feat reveal"><div class="amb-icon">🎵</div><div class="amb-feat-text"><strong>Curated Playlist</strong><span>Good music, low volume — the background your coffee deserves</span></div></div>
+      <div class="amb-feat reveal"><div class="amb-icon">🌤️</div><div class="amb-feat-text"><strong>Open Daily</strong><span>Rain or shine, JO Coffee is open and your cup is ready</span></div></div>
+    </div>
+  </div>
+  <div class="amb-right">
+    <div class="amb-visual">
+      <div class="amb-big-text">JO</div>
+      <div class="amb-sub">Coffee · Community · Malita</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="sec-label">Find Us</div>
+      <h2 class="sec-title">Come In,<br><em>Stay a While.</em></h2>
+      <div class="contact-info">
+        <div><div class="c-label">Location</div><div class="c-val">Malita, Davao Occidental<br>Mindanao, Philippines</div></div>
+        <div><div class="c-label">Hours</div><div class="c-val">Open Daily — Morning to Evening<br>Your coffee is always ready</div></div>
+        <div><div class="c-label">Services</div><div class="c-val">Dine In · Takeout</div></div>
+        <div class="c-actions">
+          <a href="https://maps.google.com/?q=Malita+Davao+Occidental" target="_blank" class="btn btn-espresso">Get Directions</a>
+          <a href="#menu" class="btn btn-outline">View Full Menu</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <div class="cc-head"><span>JO Coffee · Malita</span>Your local café.</div>
+      <div class="c-row"><span class="c-row-icon">📍</span><span>Malita, Davao Occidental, Mindanao</span></div>
+      <div class="c-row"><span class="c-row-icon">☕</span><span>Espresso · Cold Brew · Frappe · Milk Tea</span></div>
+      <div class="c-row"><span class="c-row-icon">🌤️</span><span>Open Daily</span></div>
+      <a href="https://maps.google.com/?q=Malita+Davao+Occidental" target="_blank" class="map-link">Open in Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>JO</span> Coffee</div>
+  <div class="footer-copy">© 2026 JO Coffee · Malita, Davao Occidental</div>
+  <div class="footer-ghost" aria-hidden="true">JO COFFEE · MALITA · DAVAO OCCIDENTAL · ESPRESSO · COLD BREW · JO COFFEE · MALITA · DAVAO OCCIDENTAL · ESPRESSO · COLD BREW ·&nbsp;</div>
+</footer>
+
+<script>
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function anim(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='44px';ring.style.height='44px';ring.style.borderColor='var(--terra)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='26px';ring.style.height='26px';ring.style.borderColor='rgba(28,18,8,0.35)';});
+});
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(s/h*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',s>80);
+});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=+el.dataset.target;
+    let curr=0;const start=performance.now(),dur=1600;
+    const step=now=>{const p=Math.min((now-start)/dur,1);curr=Math.round((1-Math.pow(1-p,3))*target);el.textContent=curr;if(p<1)requestAnimationFrame(step);};
+    requestAnimationFrame(step);cobs.unobserve(el);
+  });
+},{threshold:.3});
+document.querySelectorAll('.count-up').forEach(el=>cobs.observe(el));
+document.querySelectorAll('.menu-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-'+tab.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.12}px)`;});
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+});
+document.addEventListener('click',e=>{
+  for(let i=0;i<5;i++){const p=document.createElement('div');const a=Math.random()*Math.PI*2,v=1.5+Math.random()*2.5,sz=2+Math.random()*2;p.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:${sz}px;height:${sz}px;background:var(--terra);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);`;document.body.appendChild(p);let x=0,y=0,op=1;const vx=Math.cos(a)*v,vy=Math.sin(a)*v;const anim=()=>{x+=vx;y+=vy;op-=.06;p.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px))`;p.style.opacity=op;if(op>0)requestAnimationFrame(anim);else p.remove();};requestAnimationFrame(anim);}
+});
+</script>
+</body>
+</html>
