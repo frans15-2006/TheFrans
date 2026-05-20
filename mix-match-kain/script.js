@@ -207,9 +207,11 @@ function renderGrid(items, containerId) {
   container.innerHTML = '';
 
   items.forEach((item, index) => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
+    card.type = 'button';
     card.className = 'card';
     card.onclick = (e) => addToCart(item, e);
+    card.setAttribute('aria-label', `Add ${item.name} for ${item.price} pesos to cart`);
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
 
     card.innerHTML = `
@@ -296,9 +298,9 @@ function updateCart() {
                     <div class="cart-item-price">₱${c.price} ea</div>
                 </div>
                 <div class="cart-item-controls">
-                    <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+                    <button class="qty-btn" onclick="changeQty(${i}, -1)" aria-label="Decrease quantity of ${c.name}">-</button>
                     <span>${c.qty}</span>
-                    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+                    <button class="qty-btn" onclick="changeQty(${i}, 1)" aria-label="Increase quantity of ${c.name}">+</button>
                 </div>
             </div>
         `;
