@@ -252,19 +252,19 @@
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <div class="category-tabs" role="tablist">
+            <button class="category-tab active" data-category="all" role="tab" type="button" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button class="category-tab" data-category="rice" role="tab" type="button" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button class="category-tab" data-category="ulam" role="tab" type="button" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button class="category-tab" data-category="drinks" role="tab" type="button" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -291,12 +291,12 @@
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
           <div class="cart-total-row">
             <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+            <span id="total-price" class="cart-total-price price-counter" aria-live="polite">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
