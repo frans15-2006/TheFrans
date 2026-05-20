@@ -332,7 +332,9 @@ function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
-  toast.innerHTML = `<span>${message}</span>`;
+  const span = document.createElement('span');
+  span.textContent = message;
+  toast.appendChild(span);
   container.appendChild(toast);
 
   setTimeout(() => {
@@ -376,13 +378,36 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
-        <strong>TOTAL:</strong> ₱${total}
-        <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-        <hr class="summary-label">
-    `;
+  const summary = document.getElementById('summary');
+  summary.innerHTML = '';
+
+  const custStrong = document.createElement('strong');
+  custStrong.textContent = 'CUSTOMER:';
+  summary.appendChild(custStrong);
+  summary.appendChild(document.createTextNode(` ${name.toUpperCase()}`));
+  summary.appendChild(document.createElement('br'));
+
+  const totalStrong = document.createElement('strong');
+  totalStrong.textContent = 'TOTAL:';
+  summary.appendChild(totalStrong);
+  summary.appendChild(document.createTextNode(` ₱${total}`));
+
+  const hr1 = document.createElement('hr');
+  hr1.className = 'summary-label';
+  summary.appendChild(hr1);
+
+  cart.forEach(c => {
+    summary.appendChild(document.createTextNode(`• ${c.name} `));
+    const span = document.createElement('span');
+    span.className = 'summary-item';
+    span.textContent = `x${c.qty}`;
+    summary.appendChild(span);
+    summary.appendChild(document.createElement('br'));
+  });
+
+  const hr2 = document.createElement('hr');
+  hr2.className = 'summary-label';
+  summary.appendChild(hr2);
 
   // Celebration effects
   createConfetti();
