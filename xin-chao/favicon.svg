@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#160E0A"/>
+
+  <!-- Phin filter top rim -->
+  <rect x="28" y="22" width="44" height="5" rx="2.5" fill="#A5382D"/>
+
+  <!-- Phin filter body -->
+  <rect x="32" y="27" width="36" height="24" rx="3" fill="#7A4D35"/>
+  <!-- Phin body highlight -->
+  <rect x="34" y="29" width="32" height="20" rx="2" fill="#8B5A40"/>
+
+  <!-- Phin holes (dots) -->
+  <circle cx="40" cy="36" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="46" cy="36" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="52" cy="36" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="58" cy="36" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="40" cy="42" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="46" cy="42" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="52" cy="42" r="1.2" fill="#160E0A" opacity="0.6"/>
+  <circle cx="58" cy="42" r="1.2" fill="#160E0A" opacity="0.6"/>
+
+  <!-- Coffee drip -->
+  <line x1="50" y1="51" x2="50" y2="60" stroke="#B57A52" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="50" cy="61.5" rx="2" ry="2.5" fill="#B57A52"/>
+
+  <!-- Cup body -->
+  <path d="M30 65 Q30 78 50 78 Q70 78 70 65 Z" fill="#1E1208"/>
+  <path d="M30 65 L34 65 Q34 75 50 75 Q66 75 66 65 L70 65 Q70 80 50 80 Q30 80 30 65Z" fill="#261608"/>
+
+  <!-- Cup rim -->
+  <rect x="28" y="62" width="44" height="4" rx="2" fill="#A5382D"/>
+
+  <!-- Saucer -->
+  <ellipse cx="50" cy="82" rx="26" ry="4" fill="#7A4D35"/>
+  <ellipse cx="50" cy="82" rx="22" ry="2.5" fill="#8B5A40"/>
+
+  <!-- Steam wisps -->
+  <path d="M40 20 Q38 15 40 10 Q42 5 40 2" stroke="#F0D6C3" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35"/>
+  <path d="M50 18 Q48 13 50 8 Q52 3 50 0" stroke="#F0D6C3" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35"/>
+  <path d="M60 20 Q58 15 60 10 Q62 5 60 2" stroke="#F0D6C3" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35"/>
+</svg>
