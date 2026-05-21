@@ -1,0 +1,3 @@
+## 2026-05-21 - Optimizing High-Frequency UI Updates
+**Learning:** High-frequency event listeners (like `mousemove`) that directly trigger layout-forcing properties (like `left`, `top`, or `getBoundingClientRect`) cause layout thrashing and drop frames. Decoupling these updates into a `requestAnimationFrame` loop and using GPU-accelerated properties like `transform: translate3d` significantly improves performance and smoothness.
+**Action:** Always prefer `translate3d` over `top/left` for animations. Cache layout values like `getBoundingClientRect` when they aren't expected to change during a sequence of high-frequency events.
