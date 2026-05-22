@@ -246,9 +246,15 @@
           <!-- Search Bar -->
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+            <input type="text" id="search-input" class="search-bar" placeholder="Search food items..."
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
+          </div>
+
+          <!-- No Results Message -->
+          <div id="no-results" class="empty-message" style="display: none;">
+            <i class="fas fa-search-minus" style="font-size: 3rem; color: #333; margin-bottom: 15px; display: block;"></i>
+            <p>No delicious items match your search...</p>
           </div>
 
           <!-- Category Tabs -->
@@ -362,29 +368,34 @@
     }
 
     function filterAndShowItems(searchQuery, category) {
-      // Filter and show/hide sections based on category and search
+      // Filter items within each category and get counts
+      const riceCount = filterGridItems('rice-grid', riceMenu, searchQuery);
+      const ulamCount = filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      const drinksCount = filterGridItems('drinks-grid', drinksMenu, searchQuery);
+
+      // Show/hide sections based on category and if they have items
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
 
-      // Show/hide sections based on category
-      const showRice = category === 'all' || category === 'rice';
-      const showUlam = category === 'all' || category === 'ulam';
-      const showDrinks = category === 'all' || category === 'drinks';
+      const showRice = (category === 'all' || category === 'rice') && riceCount > 0;
+      const showUlam = (category === 'all' || category === 'ulam') && ulamCount > 0;
+      const showDrinks = (category === 'all' || category === 'drinks') && drinksCount > 0;
 
       riceSection.style.display = showRice ? 'block' : 'none';
       ulamSection.style.display = showUlam ? 'block' : 'none';
       drinksSection.style.display = showDrinks ? 'block' : 'none';
 
-      // Filter items within each category
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      // Show/hide no results message
+      const noResults = document.getElementById('no-results');
+      const totalVisible = (showRice ? riceCount : 0) + (showUlam ? ulamCount : 0) + (showDrinks ? drinksCount : 0);
+      noResults.style.display = totalVisible === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let visibleCount = 0;
 
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
@@ -393,11 +404,13 @@
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          visibleCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return visibleCount;
     }
 
     // ====== MOBILE CART TOGGLE ======
