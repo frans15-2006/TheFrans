@@ -542,6 +542,15 @@
       }
     }, { passive: true });
 
+    // Pause timer while user is typing their name, resume on blur
+    const _nameInput = document.getElementById('cust-name');
+    _nameInput.addEventListener('focus', _stopAutoClose);
+    _nameInput.addEventListener('blur', () => {
+      if (document.getElementById('cart-sidebar').classList.contains('drawer-open')) {
+        _startAutoClose();
+      }
+    });
+
     // Swipe right to close, swipe left from edge to open
     (function () {
       let startX = 0, startY = 0;
