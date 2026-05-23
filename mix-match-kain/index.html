@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="./mix-match-favicon.svg" type="image/svg+xml">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
   <title>Mix & Match Kain</title>
 
   <link
@@ -17,179 +17,157 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    /* ====== SEARCH BAR STYLES ====== */
-    .search-container {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
+    /* ====== SEARCH BAR ====== */
+    .search-container { position: relative; margin-bottom: 18px; }
     .search-bar {
-      width: 100%;
-      padding: 15px 20px 15px 50px;
-      background: #1a1a1a;
-      border: 2px solid #333;
-      border-radius: 50px;
-      color: white;
-      font-size: 1rem;
+      width: 100%; padding: 14px 20px 14px 50px;
+      background: #1a1a1a; border: 2px solid #333;
+      border-radius: 50px; color: white; font-size: 1rem;
       transition: all 0.3s ease;
     }
-
-    .search-bar:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #666;
-    }
-
+    .search-bar:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 20px rgba(255,94,0,0.2); }
+    .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #666; }
     .search-clear {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: #666;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: none;
+      position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #666; cursor: pointer; font-size: 1.2rem; display: none;
     }
-
-    .search-clear.show {
-      display: block;
-    }
+    .search-clear.show { display: block; }
 
     /* ====== CATEGORY TABS ====== */
     .category-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
+      display: flex; gap: 10px; margin-bottom: 22px;
+      overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch;
     }
-
     .category-tab {
-      padding: 12px 25px;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 25px;
-      color: #888;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-      font-weight: bold;
+      padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
+      border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
+      transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
     }
-
-    .category-tab:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
+    .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-      box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
+      background: var(--primary); border-color: var(--primary);
+      color: white; box-shadow: 0 0 15px rgba(255,94,0,0.4);
     }
 
-    /* ====== DESKTOP LAYOUT (unchanged) ====== */
+    /* ====== CART OVERLAY — NO BLUR (blur was the bug) ====== */
+    #cart-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.70);
+      z-index: 150;
+    }
+    #cart-overlay.active {
+      display: block;
+      animation: overlayIn 0.3s ease;
+    }
+    @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ====== MOBILE CART FAB (hidden on desktop) ====== */
+    #mobile-cart-fab { display: none; }
+
+    /* ====== DESKTOP: hide toggle ====== */
     @media (min-width: 769px) {
       .cart-toggle { display: none; }
-      .cart-fab    { display: none !important; }
-      .cart-backdrop { display: none !important; }
     }
 
-    /* ====== MOBILE LAYOUT ====== */
+    /* ====== MOBILE STYLES ====== */
     @media (max-width: 768px) {
-      /* --- Grid & Typography --- */
+
+      /* Layout */
       .container {
-        grid-template-columns: 1fr !important;
-        padding: 0 15px !important;
-        gap: 20px !important;
+        display: block !important;
+        padding: 0 12px !important;
+        margin: 16px auto !important;
+        gap: 0 !important;
       }
 
+      main { padding-bottom: 100px !important; }
+
+      /* Grid */
       .grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
       }
 
-      .card img       { height: 100px !important; }
-      .card-name      { font-size: 0.85rem !important; }
-      .card-price     { font-size: 1rem !important; }
-      .anton-title    { font-size: 1.8rem !important; }
-      .anton-section-title { font-size: 1.3rem !important; }
-      header          { padding: 15px !important; }
-      .search-bar     { padding: 12px 20px 12px 45px; font-size: 0.9rem; }
-      .category-tab   { padding: 10px 18px; font-size: 0.85rem; }
+      /* Cards */
+      .card { border-radius: 12px; }
+      .card img { height: 100px !important; object-fit: cover; }
+      .card-description { padding: 9px 11px !important; }
+      .card-name { font-size: 0.8rem !important; line-height: 1.2; }
+      .card-price { font-size: 0.95rem !important; }
+      .card:hover { transform: translateY(-4px) scale(1.02) !important; }
 
-      /* --- Cart: right-side drawer --- */
+      /* Header */
+      header { padding: 11px 12px !important; border-bottom-width: 3px; }
+      .anton-title { font-size: 1.45rem !important; letter-spacing: 0.5px; }
+
+      /* Section titles */
+      .anton-section-title { font-size: 1.05rem !important; margin-bottom: 10px !important; gap: 8px !important; }
+      .anton-section-title::before { width: 28px !important; height: 3px !important; }
+      .anton-section-title.ulam { margin: 22px 0 10px !important; }
+
+      /* Search */
+      .search-bar { padding: 11px 16px 11px 42px !important; font-size: 0.87rem; }
+      .search-icon { left: 15px !important; }
+
+      /* Category tabs */
+      .category-tabs { gap: 7px; margin-bottom: 16px; }
+      .category-tab { padding: 8px 13px !important; font-size: 0.78rem !important; }
+
+      /* Toasts */
+      .toast-container { top: 10px !important; right: 10px; left: 10px; }
+      .toast { min-width: unset !important; width: 100%; font-size: 0.83rem; padding: 11px 14px; }
+
+      /* Scroll-to-top FAB */
+      .fab { bottom: 88px !important; right: 14px !important; width: 44px !important; height: 44px !important; font-size: 1rem !important; }
+
+      /* Modal */
+      .modal-box { width: 93vw !important; padding: 20px !important; border-radius: 18px !important; max-height: 90vh; overflow-y: auto; }
+      .scan-title { font-size: 1.3rem !important; }
+
+      /* ====== CART RIGHT SIDEBAR ====== */
       .cart-area {
+        /* Position: slides in from the right */
         position: fixed !important;
         top: 0 !important;
-        right: -105% !important;
-        bottom: auto !important;
+        right: 0 !important;
+        bottom: 0 !important;
         left: auto !important;
         width: 88% !important;
         max-width: 340px !important;
         height: 100dvh !important;
-        max-height: 100dvh !important;
-        border-radius: 0 !important;
-        z-index: 1000 !important;
-        overflow-y: auto !important;
-        padding: 24px 18px !important;
-        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        max-height: none !important;
 
-        /* Solid background — no bleed-through */
-        background: #0d0d0d !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
+        /* Solid background — completely opaque, no bleed */
+        background: #111 !important;
 
         /* Orange left border = the vertical divider line */
-        border-left: 2px solid var(--primary, #ff5e00) !important;
+        border-left: 2px solid var(--primary) !important;
         border-top: none !important;
         border-right: none !important;
         border-bottom: none !important;
+        border-radius: 0 !important;
 
-        /* Crisp shadow so it lifts off the menu */
-        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.7) !important;
+        /* Stacking */
+        z-index: 200 !important;
+        overflow-y: auto !important;
+        padding: 20px 18px 30px !important;
+
+        /* Slide right to hide */
+        transform: translateX(106%) !important;
+        transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1) !important;
+        will-change: transform;
+
+        /* Shadow to lift it off */
+        box-shadow: -6px 0 40px rgba(0, 0, 0, 0.8) !important;
       }
 
-      .cart-area.cart-open {
-        right: 0 !important;
+      /* Slide in */
+      .cart-area.drawer-open {
+        transform: translateX(0) !important;
       }
 
-      /* hide old bottom-sheet toggle */
-      .cart-toggle { display: none !important; }
-
-      /* Close button inside drawer */
-      .cart-close-btn {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        margin-bottom: 14px;
-      }
-      .cart-close-btn button {
-        background: none;
-        border: 1px solid #444;
-        color: #aaa;
-        border-radius: 50%;
-        width: 34px;
-        height: 34px;
-        font-size: 1rem;
-        cursor: pointer;
-        line-height: 1;
-        transition: border-color 0.2s, color 0.2s;
-      }
-      .cart-close-btn button:hover { border-color: var(--primary); color: var(--primary); }
-
-      /* Auto-close progress bar */
+      /* Auto-close timer bar */
       .cart-timer-bar {
         height: 3px;
         background: #222;
@@ -208,89 +186,119 @@
       }
       .cart-timer-fill.drain { width: 0%; }
 
-      /* --- Backdrop --- */
-      .cart-backdrop {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.65);
-        z-index: 999;
-        backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
+      /* Drag handle (visual only) */
+      .cart-drag-handle {
+        width: 4px;
+        height: 40px;
+        background: #333;
+        border-radius: 2px;
+        position: absolute;
+        left: -3px;
+        top: 50%;
+        transform: translateY(-50%);
       }
-      .cart-backdrop.show { display: block; }
 
-      /* --- Cart FAB --- */
-      .cart-fab {
-        position: fixed !important;
-        bottom: 24px;
-        right: 20px;
-        width: 60px;
-        height: 60px;
+      /* Close button */
+      .cart-close-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      .cart-close-btn {
+        background: none;
+        border: 1px solid #333;
+        color: #888;
         border-radius: 50%;
-        background: var(--primary, #ff5e00);
-        border: none;
+        width: 32px; height: 32px;
+        font-size: 0.9rem;
         cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: border-color 0.2s, color 0.2s;
+        flex-shrink: 0;
+      }
+      .cart-close-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+      /* Hide the old toggle */
+      .cart-toggle { display: none !important; }
+
+      /* Cart typography */
+      .cart-header { font-size: 1.2rem !important; margin-bottom: 0; }
+      .cart-total-row { font-size: 1.6rem !important; padding-top: 14px; margin-top: 14px; }
+      .cart-input { padding: 13px !important; margin-top: 14px !important; font-size: 0.92rem; }
+      .confirm-btn { font-size: 1.15rem !important; padding: 15px !important; margin-top: 12px !important; }
+      .cart-item { padding: 10px 0; }
+
+      /* ====== MOBILE CART FAB — circle bottom-right ====== */
+      #mobile-cart-fab {
         display: flex !important;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        padding: 0;
         align-items: center;
         justify-content: center;
+        background: var(--primary);
+        color: white;
+        border: none;
         font-size: 1.6rem;
-        box-shadow: 0 4px 24px rgba(255, 94, 0, 0.55);
-        z-index: 998;
-        transition: transform 0.2s ease, box-shadow 0.2s;
+        z-index: 180;
+        box-shadow: 0 6px 28px rgba(255, 94, 0, 0.55);
+        cursor: pointer;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
       }
-      .cart-fab:active { transform: scale(0.9); }
-      .cart-fab.pulse  {
-        animation: fabPulse 0.4s ease;
-      }
-      @keyframes fabPulse {
-        0%   { transform: scale(1); }
-        40%  { transform: scale(1.28); }
-        70%  { transform: scale(0.92); }
-        100% { transform: scale(1); }
+      #mobile-cart-fab:active { transform: scale(0.91); }
+      #mobile-cart-fab.fab-added { animation: fabBounce 0.38s ease; }
+      @keyframes fabBounce {
+        0%, 100% { transform: scale(1); }
+        50%       { transform: scale(1.22); }
       }
 
-      /* Badge on FAB */
-      .cart-fab-badge {
+      /* Hide the "VIEW CART" text — circle has no room */
+      #mobile-cart-fab .fab-text { display: none; }
+
+      /* Badge */
+      #cart-badge {
         position: absolute;
-        top: -3px;
-        right: -3px;
-        background: #fff;
+        top: -4px;
+        right: -4px;
+        background: white;
         color: var(--primary, #ff5e00);
-        font-family: 'Open Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 800;
+        border-radius: 999px;
         min-width: 20px;
         height: 20px;
         padding: 0 4px;
-        border-radius: 999px;
-        display: none;
+        display: flex;
         align-items: center;
         justify-content: center;
-        line-height: 1;
+        font-size: 0.7rem;
+        font-weight: 900;
+        flex-shrink: 0;
+        font-family: 'Open Sans', sans-serif;
+        transition: transform 0.2s ease;
+        box-sizing: border-box;
       }
-      .cart-fab-badge.show { display: flex; }
+      #mobile-cart-fab.has-items #cart-badge { transform: scale(1.15); }
 
-      /* --- Flying food animation --- */
-      .fly-food {
-        position: fixed;
-        border-radius: 8px;
-        object-fit: cover;
-        pointer-events: none;
-        z-index: 9999;
-        will-change: transform, opacity, border-radius;
-        transition:
-          top    0.55s cubic-bezier(0.4, 0, 0.2, 1),
-          left   0.55s cubic-bezier(0.4, 0, 0.2, 1),
-          width  0.55s cubic-bezier(0.4, 0, 0.2, 1),
-          height 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-          opacity 0.45s ease 0.1s,
-          border-radius 0.55s ease;
-      }
+      /* Scroll-to-top FAB — move up above cart FAB */
+      .fab { bottom: 96px !important; right: 18px !important; }
     }
-  </style>
 
-  <script src="script.js"></script>
+    /* ====== CARD IMAGE BASE ====== */
+    .card img { object-fit: cover; width: 100%; height: 140px; display: block; }
+    .scroll-item img { object-fit: cover; width: 100%; height: 100%; }
+
+    /* ====== PERFORMANCE: disable heavy GPU hints on mobile ====== */
+    @media (max-width: 768px) {
+      .aurora { will-change: auto !important; animation-duration: 40s !important; }
+      .scroller-track { will-change: auto; }
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
+  </style>
 </head>
 
 <body onload="startPrank()">
@@ -304,34 +312,18 @@
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Scroll-to-top FAB (original) -->
+  <!-- Scroll-to-top FAB -->
   <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-  <!-- ====== MOBILE CART FAB ====== -->
-  <button class="cart-fab" id="cart-fab" type="button" title="View your order" onclick="openCartSidebar()">
-    🛒
-    <span class="cart-fab-badge" id="cart-fab-badge">0</span>
-  </button>
-
-  <!-- ====== CART BACKDROP ====== -->
-  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCartSidebar()"></div>
 
   <div id="page-wrapper">
     <!-- Prank Screen -->
     <div id="error-screen">
       <div class="terminal-box glitch-box">
-        <p class="error-text glitch-text">
-          [SYSTEM_FAILURE] Critical Dependency Missing.
-        </p>
-        <p class="error-text glitch-text">
-          Failed to load:
-          <span class="syntax-highlight">'main_logic.js'</span>
-        </p>
-        <p class="error-text error-text-faded">
-          > SyntaxError: Unexpected token 'bro' at line 420
-        </p>
+        <p class="error-text glitch-text">[SYSTEM_FAILURE] Critical Dependency Missing.</p>
+        <p class="error-text glitch-text">Failed to load: <span class="syntax-highlight">'main_logic.js'</span></p>
+        <p class="error-text error-text-faded">> SyntaxError: Unexpected token 'bro' at line 420</p>
         <p class="error-text">> Attempting server-side hotfix...</p>
       </div>
       <p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
@@ -343,13 +335,14 @@
       <div class="scroller-container">
         <div class="scroller-track" id="hero-scroller"></div>
       </div>
-      <button class="order-now-btn btn ripple" onclick="goToMenu()">
-        ORDER NOW
-      </button>
+      <button class="order-now-btn btn ripple" onclick="goToMenu()">ORDER NOW</button>
     </div>
 
     <!-- Main Content -->
     <div id="main-content">
+      <!-- Cart backdrop overlay (no blur) -->
+      <div id="cart-overlay" onclick="closeCartDrawer()"></div>
+
       <header>
         <h1 class="anton-title neon-text">
           MIX & MATCH <span class="anton-title-highlight">KAIN</span>
@@ -368,18 +361,10 @@
 
           <!-- Category Tabs -->
           <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
-              🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
-              🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
-              🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
-              🥤 Drinks
-            </div>
+            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">🍽️ All</div>
+            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">🍚 Rice</div>
+            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">🍖 Ulam</div>
+            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">🥤 Drinks</div>
           </div>
 
           <!-- Rice Section -->
@@ -402,20 +387,26 @@
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
-          <!-- Mobile close button -->
-          <div class="cart-close-btn">
-            <button onclick="closeCartSidebar()" title="Close">✕</button>
-          </div>
-          <!-- Auto-close timer bar -->
+          <!-- Left edge drag handle (visual) -->
+          <div class="cart-drag-handle"></div>
+
+          <!-- Timer bar (drains over 5s then closes) -->
           <div class="cart-timer-bar" id="cart-timer-bar">
             <div class="cart-timer-fill" id="cart-timer-fill"></div>
           </div>
 
+          <!-- Header row with close button -->
+          <div class="cart-close-row">
+            <h3 class="cart-header">🛒 YOUR ORDER</h3>
+            <button class="cart-close-btn" onclick="closeCartDrawer()" title="Close">✕</button>
+          </div>
+
+          <!-- Old toggle (kept for compat, hidden on mobile) -->
           <div class="cart-toggle" onclick="toggleCart()">
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <h3 class="cart-header" style="margin-bottom:12px">🛒 YOUR ORDER</h3>
+
           <div id="cart-list">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
@@ -424,12 +415,18 @@
             <span id="total-price" class="cart-total-price price-counter">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
-          <button class="confirm-btn btn" onclick="generateQR()">
-            GENERATE QR CODE
-          </button>
+          <button class="confirm-btn btn" onclick="generateQR()">GENERATE QR CODE</button>
         </aside>
-      </div>
-    </div>
+      </div><!-- end .container -->
+
+      <!-- Mobile Floating Cart Button -->
+      <button id="mobile-cart-fab" type="button" onclick="openCartDrawer()">
+        🛒
+        <span class="fab-text">VIEW CART</span>
+        <span id="cart-badge">0</span>
+      </button>
+
+    </div><!-- end #main-content -->
   </div>
 
   <!-- QR Modal -->
@@ -438,242 +435,143 @@
       <h2 class="scan-title">SCAN TO PAY</h2>
       <div id="qrcode" class="qrcode-box"></div>
       <div id="summary" class="summary-box"></div>
-      <button class="confirm-btn done-btn btn" onclick="closeModal()">
-        DONE / NEW ORDER
-      </button>
+      <button class="confirm-btn done-btn btn" onclick="closeModal()">DONE / NEW ORDER</button>
     </div>
   </div>
 
-  <!-- Preload key images for above-fold rendering -->
+  <!-- Preload key images -->
   <link rel="preload" href="pictures_of_foods/classic_rice.jpg" as="image">
   <link rel="preload" href="pictures_of_foods/java_rice.jpg" as="image">
   <link rel="preload" href="pictures_of_foods/lumpia.jpg" as="image">
   <link rel="preload" href="pictures_of_foods/sunny_side_egg.jpg" as="image">
 
-  <!-- Basic favicon to silence 404 -->
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍚</text></svg>">
 
+  <script src="script.js"></script>
+
   <script>
-    // ====== SEARCH FUNCTIONALITY ======
+    // ====== SEARCH ======
     let currentCategory = 'all';
 
     function handleSearch(query) {
-      const clearBtn = document.querySelector('.search-clear');
-      clearBtn.classList.toggle('show', query.length > 0);
+      document.querySelector('.search-clear').classList.toggle('show', query.length > 0);
       filterAndShowItems(query.toLowerCase(), currentCategory);
     }
 
     function clearSearch() {
-      const searchInput = document.getElementById('search-input');
-      searchInput.value = '';
+      document.getElementById('search-input').value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
     }
 
     function filterCategory(category) {
       currentCategory = category;
-      document.querySelectorAll('.category-tab').forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === category);
-      });
-      const query = document.getElementById('search-input').value.toLowerCase();
-      filterAndShowItems(query, category);
+      document.querySelectorAll('.category-tab').forEach(tab =>
+        tab.classList.toggle('active', tab.dataset.category === category)
+      );
+      filterAndShowItems(document.getElementById('search-input').value.toLowerCase(), category);
     }
 
     function filterAndShowItems(searchQuery, category) {
-      const riceSection   = document.getElementById('rice-section');
-      const ulamSection   = document.getElementById('ulam-section');
-      const drinksSection = document.getElementById('drinks-section');
-
-      riceSection.style.display   = (category === 'all' || category === 'rice')   ? 'block' : 'none';
-      ulamSection.style.display   = (category === 'all' || category === 'ulam')   ? 'block' : 'none';
-      drinksSection.style.display = (category === 'all' || category === 'drinks') ? 'block' : 'none';
-
+      document.getElementById('rice-section').style.display   = (category === 'all' || category === 'rice')   ? 'block' : 'none';
+      document.getElementById('ulam-section').style.display   = (category === 'all' || category === 'ulam')   ? 'block' : 'none';
+      document.getElementById('drinks-section').style.display = (category === 'all' || category === 'drinks') ? 'block' : 'none';
       filterGridItems('rice-grid',   riceMenu,   searchQuery);
       filterGridItems('ulam-grid',   ulamMenu,   searchQuery);
       filterGridItems('drinks-grid', drinksMenu, searchQuery);
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
-      const container = document.getElementById(gridId);
-      const cards = container.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        const itemName = menuItems[index]?.name.toLowerCase() || '';
-        const matchesSearch = !searchQuery || itemName.includes(searchQuery);
-        if (matchesSearch) {
-          card.style.display = '';
-          card.classList.add('reveal');
-        } else {
-          card.style.display = 'none';
-          card.classList.remove('reveal');
-        }
+      document.getElementById(gridId).querySelectorAll('.card').forEach((card, i) => {
+        const match = !searchQuery || (menuItems[i]?.name.toLowerCase() || '').includes(searchQuery);
+        card.style.display = match ? '' : 'none';
+        card.classList.toggle('reveal', match);
       });
     }
 
-    // ====== OLD MOBILE CART TOGGLE (kept for compat, no-op on mobile now) ======
-    function toggleCart() {
-      const cart = document.getElementById('cart-sidebar');
-      const icon = document.getElementById('cart-toggle-icon');
-      cart.classList.toggle('collapsed');
-      icon.textContent = cart.classList.contains('collapsed') ? '▲' : '▼';
-    }
+    // ====== MOBILE CART DRAWER ======
+    let _autoCloseTimer = null;
 
-    // ====== MOBILE SIDEBAR CART ======
-    let _cartAutoCloseTimer = null;
-
-    function openCartSidebar() {
+    function openCartDrawer() {
       if (window.innerWidth > 768) return;
-      const cart     = document.getElementById('cart-sidebar');
-      const backdrop = document.getElementById('cart-backdrop');
-      cart.classList.add('cart-open');
-      backdrop.classList.add('show');
-      _startCartAutoClose();
+      const cart    = document.getElementById('cart-sidebar');
+      const overlay = document.getElementById('cart-overlay');
+      cart.classList.add('drawer-open');
+      overlay.classList.add('active');
+      document.getElementById('main-content').style.overflow = 'hidden';
+      _startAutoClose();
     }
 
-    function closeCartSidebar() {
-      const cart     = document.getElementById('cart-sidebar');
-      const backdrop = document.getElementById('cart-backdrop');
-      cart.classList.remove('cart-open');
-      backdrop.classList.remove('show');
-      _stopCartAutoClose();
+    function closeCartDrawer() {
+      const cart    = document.getElementById('cart-sidebar');
+      const overlay = document.getElementById('cart-overlay');
+      cart.classList.remove('drawer-open');
+      overlay.classList.remove('active');
+      document.getElementById('main-content').style.overflow = '';
+      _stopAutoClose();
     }
 
-    function _startCartAutoClose() {
-      _stopCartAutoClose();
-      // Show and animate the timer bar
+    function _startAutoClose() {
+      _stopAutoClose();
       const bar  = document.getElementById('cart-timer-bar');
       const fill = document.getElementById('cart-timer-fill');
       bar.classList.add('running');
-      fill.classList.remove('drain');         // reset to full width
-      // Force reflow so the transition fires from 100% → 0%
-      void fill.offsetWidth;
-      fill.classList.add('drain');
-
-      _cartAutoCloseTimer = setTimeout(closeCartSidebar, 5000);
-    }
-
-    function _stopCartAutoClose() {
-      clearTimeout(_cartAutoCloseTimer);
-      _cartAutoCloseTimer = null;
-      const bar  = document.getElementById('cart-timer-bar');
-      const fill = document.getElementById('cart-timer-fill');
-      bar.classList.remove('running');
       fill.classList.remove('drain');
+      void fill.offsetWidth;            // force reflow so transition fires
+      fill.classList.add('drain');
+      _autoCloseTimer = setTimeout(closeCartDrawer, 5000);
     }
 
-    function _resetCartAutoClose() {
-      if (document.getElementById('cart-sidebar').classList.contains('cart-open')) {
-        _startCartAutoClose();
+    function _stopAutoClose() {
+      clearTimeout(_autoCloseTimer);
+      _autoCloseTimer = null;
+      document.getElementById('cart-timer-bar').classList.remove('running');
+      document.getElementById('cart-timer-fill').classList.remove('drain');
+    }
+
+    // Any tap inside cart resets the timer
+    document.getElementById('cart-sidebar').addEventListener('click', () => {
+      if (document.getElementById('cart-sidebar').classList.contains('drawer-open')) {
+        _startAutoClose();
       }
-    }
-
-    // ====== FLY-TO-CART ANIMATION ======
-    function _flyFoodToCart(card) {
-      const fab = document.getElementById('cart-fab');
-      const img = card.querySelector('img');
-      if (!img || !fab) return;
-
-      const imgRect = img.getBoundingClientRect();
-      const fabRect = fab.getBoundingClientRect();
-
-      const clone = document.createElement('img');
-      clone.src = img.src;
-      clone.className = 'fly-food';
-      clone.style.cssText = `
-        top: ${imgRect.top}px;
-        left: ${imgRect.left}px;
-        width: ${imgRect.width}px;
-        height: ${imgRect.height}px;
-        opacity: 1;
-      `;
-      document.body.appendChild(clone);
-
-      // Trigger transition in next frame
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const destX = fabRect.left + fabRect.width  / 2 - 24;
-          const destY = fabRect.top  + fabRect.height / 2 - 24;
-          clone.style.top          = destY + 'px';
-          clone.style.left         = destX + 'px';
-          clone.style.width        = '48px';
-          clone.style.height       = '48px';
-          clone.style.opacity      = '0';
-          clone.style.borderRadius = '50%';
-        });
-      });
-
-      // Pulse the FAB when item lands
-      setTimeout(() => {
-        clone.remove();
-        fab.classList.add('pulse');
-        setTimeout(() => fab.classList.remove('pulse'), 400);
-        // Brief peek of cart sidebar, then auto-close
-        openCartSidebar();
-      }, 560);
-    }
-
-    // ====== BADGE UPDATE VIA MUTATIONOBSERVER ======
-    function _updateCartBadge() {
-      if (window.innerWidth > 768) return;
-      const cartList = document.getElementById('cart-list');
-      const badge    = document.getElementById('cart-fab-badge');
-      const emptyMsg = cartList.querySelector('.empty-cart-message');
-      const total    = cartList.children.length;
-      const count    = emptyMsg ? total - 1 : total;
-
-      if (count > 0) {
-        badge.textContent = count;
-        badge.classList.add('show');
-      } else {
-        badge.classList.remove('show');
+    });
+    document.getElementById('cart-sidebar').addEventListener('touchstart', () => {
+      if (document.getElementById('cart-sidebar').classList.contains('drawer-open')) {
+        _startAutoClose();
       }
-    }
+    }, { passive: true });
 
-    // ====== SWIPE-TO-OPEN DETECTION ======
-    (function initSwipe() {
+    // Swipe right to close, swipe left from edge to open
+    (function () {
       let startX = 0, startY = 0;
+      const cartEl = document.getElementById('cart-sidebar');
 
-      document.addEventListener('touchstart', (e) => {
+      // Swipe right inside cart → close
+      cartEl.addEventListener('touchstart', e => {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
       }, { passive: true });
+      cartEl.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        const dy = Math.abs(e.changedTouches[0].clientY - startY);
+        if (dy > 60) return;
+        if (dx > 60 && cartEl.scrollTop <= 0) closeCartDrawer();
+      }, { passive: true });
 
-      document.addEventListener('touchend', (e) => {
+      // Swipe left from right 35% of screen → open
+      document.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+      document.addEventListener('touchend', e => {
+        if (cartEl.classList.contains('drawer-open')) return;
         const dx = startX - e.changedTouches[0].clientX;
-        const dy = Math.abs(startY - e.changedTouches[0].clientY);
-        if (dy > 70) return; // mostly vertical — ignore
-
-        const cart = document.getElementById('cart-sidebar');
-        // Swipe LEFT from right 40% of screen → open
-        if (dx > 55 && startX > window.innerWidth * 0.6) {
-          openCartSidebar();
-        }
-        // Swipe RIGHT while cart is open → close
-        if (dx < -55 && cart.classList.contains('cart-open')) {
-          closeCartSidebar();
-        }
+        const dy = Math.abs(e.changedTouches[0].clientY - startY);
+        if (dy > 60) return;
+        if (dx > 55 && startX > window.innerWidth * 0.65) openCartDrawer();
       }, { passive: true });
     })();
-
-    // ====== WIRE EVERYTHING AFTER DOM READY ======
-    document.addEventListener('DOMContentLoaded', () => {
-      // Reset auto-close timer on any interaction inside the cart drawer
-      const cart = document.getElementById('cart-sidebar');
-      cart.addEventListener('touchstart', _resetCartAutoClose, { passive: true });
-      cart.addEventListener('click', _resetCartAutoClose);
-
-      // Watch cart-list for changes → update badge
-      const cartList = document.getElementById('cart-list');
-      const observer = new MutationObserver(_updateCartBadge);
-      observer.observe(cartList, { childList: true, subtree: true, characterData: true });
-
-      // Intercept card clicks → trigger fly animation (mobile only)
-      document.querySelector('main').addEventListener('click', (e) => {
-        if (window.innerWidth > 768) return;
-        const card = e.target.closest('.card');
-        if (card) _flyFoodToCart(card);
-      });
-    });
   </script>
 </body>
 
