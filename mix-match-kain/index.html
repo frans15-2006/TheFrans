@@ -99,42 +99,20 @@
       box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
     }
 
-    /* ====== MOBILE LAYOUT IMPROVEMENTS ====== */
+    /* ====== DESKTOP LAYOUT (unchanged) ====== */
+    @media (min-width: 769px) {
+      .cart-toggle { display: none; }
+      .cart-fab    { display: none !important; }
+      .cart-backdrop { display: none !important; }
+    }
+
+    /* ====== MOBILE LAYOUT ====== */
     @media (max-width: 768px) {
+      /* --- Grid & Typography --- */
       .container {
         grid-template-columns: 1fr !important;
         padding: 0 15px !important;
         gap: 20px !important;
-      }
-
-      .cart-area {
-        position: fixed !important;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: 20px 20px 0 0 !important;
-        z-index: 100;
-        max-height: 50vh;
-        overflow-y: auto;
-      }
-
-      .cart-area.collapsed {
-        max-height: 60px;
-        overflow: hidden;
-      }
-
-      .cart-area.collapsed #cart-list {
-        display: none;
-      }
-
-      .cart-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #333;
-        margin-bottom: 10px;
       }
 
       .grid {
@@ -142,48 +120,163 @@
         gap: 10px !important;
       }
 
-      .card img {
-        height: 100px !important;
+      .card img       { height: 100px !important; }
+      .card-name      { font-size: 0.85rem !important; }
+      .card-price     { font-size: 1rem !important; }
+      .anton-title    { font-size: 1.8rem !important; }
+      .anton-section-title { font-size: 1.3rem !important; }
+      header          { padding: 15px !important; }
+      .search-bar     { padding: 12px 20px 12px 45px; font-size: 0.9rem; }
+      .category-tab   { padding: 10px 18px; font-size: 0.85rem; }
+
+      /* --- Cart: right-side drawer --- */
+      .cart-area {
+        position: fixed !important;
+        top: 0 !important;
+        right: -105% !important;      /* hidden off-screen */
+        bottom: auto !important;
+        left: auto !important;
+        width: 88% !important;
+        max-width: 340px !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        z-index: 1000 !important;
+        overflow-y: auto !important;
+        padding: 24px 18px !important;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        /* keep whatever background style.css sets */
       }
 
-      .card-name {
-        font-size: 0.85rem !important;
+      .cart-area.cart-open {
+        right: 0 !important;
       }
 
-      .card-price {
-        font-size: 1rem !important;
-      }
+      /* hide old bottom-sheet toggle */
+      .cart-toggle { display: none !important; }
 
-      .anton-title {
-        font-size: 1.8rem !important;
+      /* Close button inside drawer */
+      .cart-close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 14px;
       }
-
-      .anton-section-title {
-        font-size: 1.3rem !important;
+      .cart-close-btn button {
+        background: none;
+        border: 1px solid #444;
+        color: #aaa;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+        cursor: pointer;
+        line-height: 1;
+        transition: border-color 0.2s, color 0.2s;
       }
+      .cart-close-btn button:hover { border-color: var(--primary); color: var(--primary); }
 
-      header {
-        padding: 15px !important;
-      }
-
-      .search-bar {
-        padding: 12px 20px 12px 45px;
-        font-size: 0.9rem;
-      }
-
-      .category-tab {
-        padding: 10px 18px;
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Hide cart toggle on desktop */
-    @media (min-width: 769px) {
-      .cart-toggle {
+      /* Auto-close progress bar */
+      .cart-timer-bar {
+        height: 3px;
+        background: #222;
+        border-radius: 2px;
+        margin-bottom: 16px;
+        overflow: hidden;
         display: none;
+      }
+      .cart-timer-bar.running { display: block; }
+      .cart-timer-fill {
+        height: 100%;
+        background: var(--primary, #ff5e00);
+        border-radius: 2px;
+        width: 100%;
+        transition: width 5s linear;
+      }
+      .cart-timer-fill.drain { width: 0%; }
+
+      /* --- Backdrop --- */
+      .cart-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 999;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+      }
+      .cart-backdrop.show { display: block; }
+
+      /* --- Cart FAB --- */
+      .cart-fab {
+        position: fixed !important;
+        bottom: 24px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary, #ff5e00);
+        border: none;
+        cursor: pointer;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        box-shadow: 0 4px 24px rgba(255, 94, 0, 0.55);
+        z-index: 998;
+        transition: transform 0.2s ease, box-shadow 0.2s;
+      }
+      .cart-fab:active { transform: scale(0.9); }
+      .cart-fab.pulse  {
+        animation: fabPulse 0.4s ease;
+      }
+      @keyframes fabPulse {
+        0%   { transform: scale(1); }
+        40%  { transform: scale(1.28); }
+        70%  { transform: scale(0.92); }
+        100% { transform: scale(1); }
+      }
+
+      /* Badge on FAB */
+      .cart-fab-badge {
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        background: #fff;
+        color: var(--primary, #ff5e00);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 4px;
+        border-radius: 999px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+      .cart-fab-badge.show { display: flex; }
+
+      /* --- Flying food animation --- */
+      .fly-food {
+        position: fixed;
+        border-radius: 8px;
+        object-fit: cover;
+        pointer-events: none;
+        z-index: 9999;
+        will-change: transform, opacity, border-radius;
+        transition:
+          top    0.55s cubic-bezier(0.4, 0, 0.2, 1),
+          left   0.55s cubic-bezier(0.4, 0, 0.2, 1),
+          width  0.55s cubic-bezier(0.4, 0, 0.2, 1),
+          height 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.45s ease 0.1s,
+          border-radius 0.55s ease;
       }
     }
   </style>
+
   <script src="script.js"></script>
 </head>
 
@@ -198,10 +291,19 @@
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Floating Action Button -->
+  <!-- Scroll-to-top FAB (original) -->
   <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </button>
+
+  <!-- ====== MOBILE CART FAB ====== -->
+  <button class="cart-fab" id="cart-fab" type="button" title="View your order" onclick="openCartSidebar()">
+    🛒
+    <span class="cart-fab-badge" id="cart-fab-badge">0</span>
+  </button>
+
+  <!-- ====== CART BACKDROP ====== -->
+  <div class="cart-backdrop" id="cart-backdrop" onclick="closeCartSidebar()"></div>
 
   <div id="page-wrapper">
     <!-- Prank Screen -->
@@ -287,10 +389,20 @@
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
+          <!-- Mobile close button -->
+          <div class="cart-close-btn">
+            <button onclick="closeCartSidebar()" title="Close">✕</button>
+          </div>
+          <!-- Auto-close timer bar -->
+          <div class="cart-timer-bar" id="cart-timer-bar">
+            <div class="cart-timer-fill" id="cart-timer-fill"></div>
+          </div>
+
           <div class="cart-toggle" onclick="toggleCart()">
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
+          <h3 class="cart-header" style="margin-bottom:12px">🛒 YOUR ORDER</h3>
           <div id="cart-list">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
@@ -336,7 +448,6 @@
     function handleSearch(query) {
       const clearBtn = document.querySelector('.search-clear');
       clearBtn.classList.toggle('show', query.length > 0);
-
       filterAndShowItems(query.toLowerCase(), currentCategory);
     }
 
@@ -349,47 +460,33 @@
 
     function filterCategory(category) {
       currentCategory = category;
-
-      // Update tab active state
       document.querySelectorAll('.category-tab').forEach((tab) => {
         tab.classList.toggle('active', tab.dataset.category === category);
       });
-
-      const query = document
-        .getElementById('search-input')
-        .value.toLowerCase();
+      const query = document.getElementById('search-input').value.toLowerCase();
       filterAndShowItems(query, category);
     }
 
     function filterAndShowItems(searchQuery, category) {
-      // Filter and show/hide sections based on category and search
-      const riceSection = document.getElementById('rice-section');
-      const ulamSection = document.getElementById('ulam-section');
+      const riceSection   = document.getElementById('rice-section');
+      const ulamSection   = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
 
-      // Show/hide sections based on category
-      const showRice = category === 'all' || category === 'rice';
-      const showUlam = category === 'all' || category === 'ulam';
-      const showDrinks = category === 'all' || category === 'drinks';
+      riceSection.style.display   = (category === 'all' || category === 'rice')   ? 'block' : 'none';
+      ulamSection.style.display   = (category === 'all' || category === 'ulam')   ? 'block' : 'none';
+      drinksSection.style.display = (category === 'all' || category === 'drinks') ? 'block' : 'none';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
-
-      // Filter items within each category
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      filterGridItems('rice-grid',   riceMenu,   searchQuery);
+      filterGridItems('ulam-grid',   ulamMenu,   searchQuery);
       filterGridItems('drinks-grid', drinksMenu, searchQuery);
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
-
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
-
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
@@ -400,13 +497,170 @@
       });
     }
 
-    // ====== MOBILE CART TOGGLE ======
+    // ====== OLD MOBILE CART TOGGLE (kept for compat, no-op on mobile now) ======
     function toggleCart() {
       const cart = document.getElementById('cart-sidebar');
       const icon = document.getElementById('cart-toggle-icon');
       cart.classList.toggle('collapsed');
       icon.textContent = cart.classList.contains('collapsed') ? '▲' : '▼';
     }
+
+    // ====== MOBILE SIDEBAR CART ======
+    let _cartAutoCloseTimer = null;
+
+    function openCartSidebar() {
+      if (window.innerWidth > 768) return;
+      const cart     = document.getElementById('cart-sidebar');
+      const backdrop = document.getElementById('cart-backdrop');
+      cart.classList.add('cart-open');
+      backdrop.classList.add('show');
+      _startCartAutoClose();
+    }
+
+    function closeCartSidebar() {
+      const cart     = document.getElementById('cart-sidebar');
+      const backdrop = document.getElementById('cart-backdrop');
+      cart.classList.remove('cart-open');
+      backdrop.classList.remove('show');
+      _stopCartAutoClose();
+    }
+
+    function _startCartAutoClose() {
+      _stopCartAutoClose();
+      // Show and animate the timer bar
+      const bar  = document.getElementById('cart-timer-bar');
+      const fill = document.getElementById('cart-timer-fill');
+      bar.classList.add('running');
+      fill.classList.remove('drain');         // reset to full width
+      // Force reflow so the transition fires from 100% → 0%
+      void fill.offsetWidth;
+      fill.classList.add('drain');
+
+      _cartAutoCloseTimer = setTimeout(closeCartSidebar, 5000);
+    }
+
+    function _stopCartAutoClose() {
+      clearTimeout(_cartAutoCloseTimer);
+      _cartAutoCloseTimer = null;
+      const bar  = document.getElementById('cart-timer-bar');
+      const fill = document.getElementById('cart-timer-fill');
+      bar.classList.remove('running');
+      fill.classList.remove('drain');
+    }
+
+    function _resetCartAutoClose() {
+      if (document.getElementById('cart-sidebar').classList.contains('cart-open')) {
+        _startCartAutoClose();
+      }
+    }
+
+    // ====== FLY-TO-CART ANIMATION ======
+    function _flyFoodToCart(card) {
+      const fab = document.getElementById('cart-fab');
+      const img = card.querySelector('img');
+      if (!img || !fab) return;
+
+      const imgRect = img.getBoundingClientRect();
+      const fabRect = fab.getBoundingClientRect();
+
+      const clone = document.createElement('img');
+      clone.src = img.src;
+      clone.className = 'fly-food';
+      clone.style.cssText = `
+        top: ${imgRect.top}px;
+        left: ${imgRect.left}px;
+        width: ${imgRect.width}px;
+        height: ${imgRect.height}px;
+        opacity: 1;
+      `;
+      document.body.appendChild(clone);
+
+      // Trigger transition in next frame
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const destX = fabRect.left + fabRect.width  / 2 - 24;
+          const destY = fabRect.top  + fabRect.height / 2 - 24;
+          clone.style.top          = destY + 'px';
+          clone.style.left         = destX + 'px';
+          clone.style.width        = '48px';
+          clone.style.height       = '48px';
+          clone.style.opacity      = '0';
+          clone.style.borderRadius = '50%';
+        });
+      });
+
+      // Pulse the FAB when item lands
+      setTimeout(() => {
+        clone.remove();
+        fab.classList.add('pulse');
+        setTimeout(() => fab.classList.remove('pulse'), 400);
+        // Brief peek of cart sidebar, then auto-close
+        openCartSidebar();
+      }, 560);
+    }
+
+    // ====== BADGE UPDATE VIA MUTATIONOBSERVER ======
+    function _updateCartBadge() {
+      if (window.innerWidth > 768) return;
+      const cartList = document.getElementById('cart-list');
+      const badge    = document.getElementById('cart-fab-badge');
+      const emptyMsg = cartList.querySelector('.empty-cart-message');
+      const total    = cartList.children.length;
+      const count    = emptyMsg ? total - 1 : total;
+
+      if (count > 0) {
+        badge.textContent = count;
+        badge.classList.add('show');
+      } else {
+        badge.classList.remove('show');
+      }
+    }
+
+    // ====== SWIPE-TO-OPEN DETECTION ======
+    (function initSwipe() {
+      let startX = 0, startY = 0;
+
+      document.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        const dx = startX - e.changedTouches[0].clientX;
+        const dy = Math.abs(startY - e.changedTouches[0].clientY);
+        if (dy > 70) return; // mostly vertical — ignore
+
+        const cart = document.getElementById('cart-sidebar');
+        // Swipe LEFT from right 40% of screen → open
+        if (dx > 55 && startX > window.innerWidth * 0.6) {
+          openCartSidebar();
+        }
+        // Swipe RIGHT while cart is open → close
+        if (dx < -55 && cart.classList.contains('cart-open')) {
+          closeCartSidebar();
+        }
+      }, { passive: true });
+    })();
+
+    // ====== WIRE EVERYTHING AFTER DOM READY ======
+    document.addEventListener('DOMContentLoaded', () => {
+      // Reset auto-close timer on any interaction inside the cart drawer
+      const cart = document.getElementById('cart-sidebar');
+      cart.addEventListener('touchstart', _resetCartAutoClose, { passive: true });
+      cart.addEventListener('click', _resetCartAutoClose);
+
+      // Watch cart-list for changes → update badge
+      const cartList = document.getElementById('cart-list');
+      const observer = new MutationObserver(_updateCartBadge);
+      observer.observe(cartList, { childList: true, subtree: true, characterData: true });
+
+      // Intercept card clicks → trigger fly animation (mobile only)
+      document.querySelector('main').addEventListener('click', (e) => {
+        if (window.innerWidth > 768) return;
+        const card = e.target.closest('.card');
+        if (card) _flyFoodToCart(card);
+      });
+    });
   </script>
 </body>
 
