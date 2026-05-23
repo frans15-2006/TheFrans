@@ -1005,7 +1005,7 @@ body.light-mode .cart-input {
   }
 
   100% {
-    transform: translateX(calc(-25% - 6.25px));
+    transform: translateX(calc(-50% - 12.5px));
   }
 }
 
@@ -1737,37 +1737,7 @@ body {
   opacity: 1;
 }
 
-/* Admin Dashboard Enhancements */
-
-.toast {
-  position: fixed;
-
-  top: 20px;
-
-  right: 20px;
-
-  background: linear-gradient(135deg, var(--primary), var(--secondary-primary));
-
-  color: white;
-
-  padding: 15px 25px;
-
-  border-radius: 8px;
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
-  transform: translateX(120%);
-
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-  z-index: 9999;
-
-  font-weight: bold;
-}
-
-.toast.show {
-  transform: translateX(0);
-}
+/* Admin Dashboard Enhancements - duplicate toast removed */
 
 .order-card.completed {
   opacity: 0.5;
