@@ -210,23 +210,17 @@
         font-size: 1rem;
         line-height: 1;
       }
-      /* Badge — pill on the tab */
+      /* Count — plain number, no circle */
       #cart-badge {
-        background: white;
-        color: #000;
-        border-radius: 10px;
-        min-width: 18px;
-        height: 18px;
-        padding: 0 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.65rem;
-        font-weight: 900;
-        transition: background 0.2s ease;
+        font-family: 'Anton', sans-serif;
+        font-size: 0.8rem;
+        color: white;
+        line-height: 1;
+        display: none; /* hidden when 0 */
       }
       #mobile-cart-fab.has-items #cart-badge {
-        background: #ffd700;
+        display: block;
+        color: #ffd700;
       }
       /* Pulse when item added */
       #mobile-cart-fab.fab-added { animation: tabPulse 0.35s ease; }
