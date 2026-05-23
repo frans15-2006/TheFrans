@@ -310,7 +310,7 @@
     .skill-info { display: flex; flex-direction: column; gap: 2px; }
     .skill-name { font-weight: 500; font-size: 14px; }
     .skill-cat { font-size: 11px; color: var(--text-3); font-family: var(--mono); }
-    .skill-level { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 500; }
+    .skill-level { display: none; }
     .skill-bar-wrap { width: 100%; height: 2px; background: var(--border); border-radius: 2px; margin-top: 8px; overflow: hidden; }
     .skill-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #ffb820); border-radius: 2px; width: 0%; transition: width 1.8s cubic-bezier(0.22,1,0.36,1); }
 
@@ -563,6 +563,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
       <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -575,7 +576,7 @@
     <div class="container">
       <div class="hero-tag">Let's Build Something</div>
       <h1 class="hero-name">Francis<br><span>Tarectican</span></h1>
-      <p class="hero-sub">Backend developer from Palawan. I built Mix &amp; Match Kain — a full ordering system used by a real restaurant, running on Node.js with a local-network backend that handles payments, stock, and orders.</p>
+      <p class="hero-sub">Backend developer from Palawan. I built Mix &amp; Match Kain — a food ordering system running in a real restaurant, powered by a local Node.js backend with no cloud dependency.</p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-ghost">Get in Touch</a>
@@ -597,7 +598,7 @@
         <div class="about-text reveal">
           <p>I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. I build web applications with a strong focus on the backend — how data flows, how systems scale, and how things work under the hood.</p>
           <p>My approach is straightforward: understand the problem first, then build the right solution. I care about code that's readable, maintainable, and actually works — not just code that looks impressive.</p>
-          <p>When I'm not coding, I'm exploring local AI deployments, tuning hardware, and figuring out how to run powerful tools in low-resource environments.</p>
+          <p>When I'm not coding, I'm exploring local AI deployments and tuning my own hardware — running 30B parameter models on a local RTX 5070 rig to keep everything private and offline.</p>
         </div>
         <div>
           <div class="about-stats">
@@ -761,10 +762,6 @@
               <div class="skill-info"><div class="skill-name">Local AI Deployment</div><div class="skill-cat">Ollama / LLM Infra</div></div>
               <div class="skill-level">70%</div>
             </div>
-            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">Hardware Configuration</div><div class="skill-cat">RAM / SSD / Tuning</div></div>
-              <div class="skill-level">90%</div>
-            </div>
           </div>
         </div>
 
@@ -862,33 +859,11 @@
           </div>
           <div class="project-status">
             <span class="status-badge">Completed</span>
+            <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Live ↗</a>
           </div>
         </div>
 
-        <div class="project-card">
-          <div>
-            <div class="project-meta">
-              <span class="project-cat">Business Application</span>
-              <span class="project-dot"></span>
-              <span class="project-date">2026</span>
-            </div>
-            <div class="project-title">Coffee Shop Web App</div>
-            <p class="project-desc">A full-stack business application for managing coffee shop operations end-to-end. Covers the full customer journey — browsing products, cart management, and checkout — alongside an admin dashboard for inventory and order tracking. Built with React on the frontend and a Node.js/MongoDB backend.</p>
-            <div class="project-features">
-              <span class="feature-tag">Product Catalog</span>
-              <span class="feature-tag">Cart System</span>
-              <span class="feature-tag">Admin Dashboard</span>
-              <span class="feature-tag">Customer Orders</span>
-            </div>
-            <div class="tech-stack">
-              <span class="tech-tag">React</span><span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Express</span><span class="tech-tag">MongoDB</span><span class="tech-tag">Tailwind</span>
-            </div>
-          </div>
-          <div class="project-status">
-            <span class="status-badge dev">Under Development</span>
-          </div>
-        </div>
+        <!-- Coffee Shop Web App — hidden until ready -->
 
         <div class="project-card">
           <div>
@@ -898,16 +873,16 @@
               <span class="project-date">2026</span>
             </div>
             <div class="project-title">Offline AI Environment</div>
-            <p class="project-desc">A fully local LLM deployment using Ollama and Docker — zero internet dependency, zero data sent to the cloud. Built to explore how capable AI tools can run in privacy-focused, resource-constrained environments. Useful for development setups where data cannot leave the machine.</p>
+            <p class="project-desc">Deployed Qwen3-Coder 30B locally using Ollama on a Lenovo LOQ 15IRX10 — Intel Core Ultra 9 185H, RTX 5070 with 12GB VRAM, 32GB DDR5. Full GPU-accelerated inference. No internet connection, no API calls, no data leaving the machine. A fully private coding assistant running at 30 billion parameters on local hardware.</p>
             <div class="project-features">
-              <span class="feature-tag">100% Offline Operation</span>
-              <span class="feature-tag">Local Model Inference</span>
-              <span class="feature-tag">Privacy-Focused</span>
-              <span class="feature-tag">Custom Model Setup</span>
+              <span class="feature-tag">GPU-Accelerated Inference</span>
+              <span class="feature-tag">30B Parameter Model</span>
+              <span class="feature-tag">Zero Cloud Dependency</span>
+              <span class="feature-tag">Fully Offline</span>
             </div>
             <div class="tech-stack">
-              <span class="tech-tag">Ollama</span><span class="tech-tag">Docker</span>
-              <span class="tech-tag">LLM</span><span class="tech-tag">Local Deployment</span>
+              <span class="tech-tag">Ollama</span><span class="tech-tag">Qwen3-Coder:30b</span>
+              <span class="tech-tag">RTX 5070</span><span class="tech-tag">Local Inference</span>
             </div>
           </div>
           <div class="project-status">
@@ -1062,6 +1037,10 @@
             <div class="contact-label">Status</div>
             <div class="contact-value" style="color:#4ade80;">Open to freelance &amp; collaboration</div>
           </div>
+          <div class="contact-item">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 ↗</a></div>
+          </div>
         </div>
         <div class="reveal reveal-delay-1">
           <form class="contact-form" id="contactForm">
@@ -1100,7 +1079,7 @@
   <footer>
     <div class="container footer-inner">
       <div class="footer-left"><span>francis.dev</span> — Built with HTML, CSS &amp; JS</div>
-      <div class="footer-right">© 2026 Francis Tarectican · Puerto Princesa, Palawan</div>
+      <div class="footer-right">© 2026 Francis Tarectican · <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" style="color:var(--text-3);text-decoration:none;">GitHub ↗</a></div>
     </div>
   </footer>
 
