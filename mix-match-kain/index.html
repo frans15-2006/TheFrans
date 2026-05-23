@@ -138,19 +138,14 @@
       }
       .cart-area.drawer-open { transform: translateX(0) !important; }
 
-      /* Auto-close timer bar */
-      #cart-timer-bar {
-        display: block;
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: var(--primary);
-        transform-origin: left;
-        transform: scaleX(1);
-        margin: 0 -18px 16px;
-        z-index: 5;
+      /* Countdown number shown in close button */
+      #cart-countdown {
+        font-size: 0.72rem;
+        opacity: 0.55;
+        min-width: 1.4em;
+        display: inline-block;
+        text-align: center;
+        font-family: monospace;
       }
 
       /* Drawer top padding */
@@ -244,8 +239,7 @@
 
     * { -webkit-tap-highlight-color: transparent; }
 
-    /* Timer bar hidden on desktop */
-    #cart-timer-bar { display: none; }
+    /* Countdown only renders inside the mobile close button — no desktop rule needed */
 
     /* ====== NUCLEAR BLUR FIX ======
        .card has backdrop-filter:blur(10px) in style.css — creates compositing layers.
@@ -365,13 +359,10 @@
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
-          <!-- Timer bar (mobile only) -->
-          <div id="cart-timer-bar"></div>
-
           <!-- Close row -->
           <div id="cart-close-btn">
             <span>🛒 YOUR ORDER</span>
-            <button onclick="closeCartDrawer()" aria-label="Close cart">✕</button>
+            <button onclick="closeCartDrawer()" aria-label="Close cart">✕ <span id="cart-countdown"></span></button>
           </div>
 
           <div class="cart-toggle" onclick="toggleCart()">
@@ -493,17 +484,18 @@
       _clearAutoClose();
       if (_inputFocused) return;
 
-      const bar = document.getElementById('cart-timer-bar');
-      if (!bar) return;
+      let remaining = Math.ceil(CLOSE_DELAY / 1000);
+      const cd = document.getElementById('cart-countdown');
+      if (cd) cd.textContent = remaining;
 
-      // Reset bar
-      bar.style.transition = 'none';
-      bar.style.transform = 'scaleX(1)';
-
-      // Force reflow then animate
-      void bar.offsetWidth;
-      bar.style.transition = `transform ${CLOSE_DELAY}ms linear`;
-      bar.style.transform = 'scaleX(0)';
+      _timerAnimation = setInterval(() => {
+        remaining--;
+        if (cd) cd.textContent = remaining > 0 ? remaining : '';
+        if (remaining <= 0) {
+          clearInterval(_timerAnimation);
+          _timerAnimation = null;
+        }
+      }, 1000);
 
       _autoCloseTimer = setTimeout(() => {
         if (!_inputFocused) closeCartDrawer();
@@ -512,8 +504,10 @@
 
     function _clearAutoClose() {
       if (_autoCloseTimer) { clearTimeout(_autoCloseTimer); _autoCloseTimer = null; }
-      const bar = document.getElementById('cart-timer-bar');
-      if (bar) { bar.style.transition = 'none'; bar.style.transform = 'scaleX(1)'; }
+      if (_timerAnimation) { clearInterval(_timerAnimation); _timerAnimation = null; }
+      const cd = document.getElementById('cart-countdown');
+      if (cd) cd.textContent = '';
+    }
     }
 
     function openCartDrawer() {
