@@ -55,12 +55,17 @@ const drinksMenu = [
 
 let cart = [];
 
-// ====== AUDIO CONTEXT ======
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+// ====== AUDIO CONTEXT (lazy — browsers block before user gesture) ======
+let audioContext = null;
+function getAudioContext() {
+  if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioContext.state === 'suspended') audioContext.resume();
+  return audioContext;
+}
 
 function playSound(frequency, duration, type = 'sine') {
-  if (!audioContext) return;
   try {
+    const audioContext = getAudioContext();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     oscillator.connect(gainNode);
@@ -81,6 +86,7 @@ function playSound(frequency, duration, type = 'sine') {
 
 // ====== PARTICLES ======
 function createParticles() {
+  if (window.innerWidth <= 768) return; // Skip on mobile — big lag culprit
   const particleContainer = document.body;
   const particleTypes = [
     { size: '4px', color: 'rgba(255, 94, 0, 0.3)', shape: 'circle' },
@@ -88,7 +94,7 @@ function createParticles() {
     { size: '3px', color: 'rgba(0, 255, 200, 0.25)', shape: 'square' },
   ];
 
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 25; i++) {
     const particle = document.createElement('div');
     const type =
       particleTypes[Math.floor(Math.random() * particleTypes.length)];
@@ -127,14 +133,16 @@ function scrollToTop() {
 }
 
 // ====== SHOW/HIDE FAB ======
-window.onscroll = function () {
-  const fab = document.getElementById('fab-btn');
-  if (document.getElementById('main-content').scrollTop > 300) {
-    fab.classList.add('show');
-  } else {
-    fab.classList.remove('show');
+// #main-content scrolls internally (body is overflow:hidden) — listen on the element
+document.addEventListener('DOMContentLoaded', () => {
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    mainContent.addEventListener('scroll', () => {
+      const fab = document.getElementById('fab-btn');
+      if (fab) fab.classList.toggle('show', mainContent.scrollTop > 300);
+    });
   }
-};
+});
 
 // ====== PRANK SCREEN ======
 function startPrank() {
@@ -189,8 +197,8 @@ function initHero() {
     })
     .join('');
 
-  // Quadruple for seamless loop
-  track.innerHTML = html.repeat(4);
+  // Double for seamless loop
+  track.innerHTML = html.repeat(2);
 }
 
 // ====== MENU NAVIGATION ======
@@ -213,7 +221,7 @@ function renderGrid(items, containerId) {
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
 
     card.innerHTML = `
-            <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}">
+            <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:140px;">
             <div class="card-description">
                 <div class="card-name">${item.name}</div>
                 <div class="card-price">₱${item.price}</div>
@@ -249,11 +257,13 @@ function addToCart(item, event) {
   flyingItem.style.left = `${startX}px`;
   flyingItem.style.top = `${startY}px`;
 
-  const cartRect = document
-    .getElementById('cart-sidebar')
-    .getBoundingClientRect();
-  const cartX = cartRect.left + cartRect.width / 2 - 30;
-  const cartY = cartRect.top + cartRect.height / 2 - 30;
+  const cartRect = document.getElementById('cart-sidebar').getBoundingClientRect();
+  // On mobile the sidebar is off-screen — fly to edge tab instead
+  const isMobile = window.innerWidth <= 768;
+  const edgeTab = document.getElementById('mobile-cart-fab');
+  const targetRect = (isMobile && edgeTab) ? edgeTab.getBoundingClientRect() : cartRect;
+  const cartX = targetRect.left + targetRect.width / 2 - 30;
+  const cartY = targetRect.top + targetRect.height / 2 - 30;
   flyingItem.style.setProperty('--start-x', `${startX}px`);
   flyingItem.style.setProperty('--start-y', `${startY}px`);
   flyingItem.style.setProperty('--cart-x', `${cartX}px`);
@@ -270,6 +280,16 @@ function addToCart(item, event) {
 
   updateCart();
   showToast(`Added ${item.name} to cart!`, 'success');
+
+  // Pulse the mobile FAB on mobile
+  if (window.innerWidth <= 768) {
+    const fab = document.getElementById('mobile-cart-fab');
+    if (fab) {
+      fab.classList.remove('fab-added');
+      void fab.offsetWidth;
+      fab.classList.add('fab-added');
+    }
+  }
 }
 
 // ====== UPDATE CART ======
@@ -319,6 +339,19 @@ function updateCart() {
     };
     requestAnimationFrame(step);
   }
+
+  // ====== UPDATE MOBILE CART FAB ======
+  const badge = document.getElementById('cart-badge');
+  const mobileFab = document.getElementById('mobile-cart-fab');
+  if (badge && mobileFab) {
+    const totalQty = cart.reduce((s, c) => s + c.qty, 0);
+    badge.textContent = totalQty;
+    mobileFab.classList.toggle('has-items', cart.length > 0);
+    const fabText = mobileFab.querySelector('.fab-text');
+    if (fabText) {
+      fabText.textContent = cart.length > 0 ? `₱${total}` : 'VIEW CART';
+    }
+  }
 }
 
 function changeQty(idx, delta) {
@@ -359,19 +392,7 @@ function generateQR() {
 
   const qrBox = document.getElementById('qrcode');
   qrBox.innerHTML = '';
-  qrBox.style.position = 'relative';
   new QRCode(qrBox, { text: '09618866276', width: 180, height: 180 });
-  setTimeout(() => {
-    const qrImg = qrBox.querySelector('img');
-    const qrCanvas = qrBox.querySelector('canvas');
-    if (qrImg) qrImg.style.cssText = 'filter:blur(14px);pointer-events:none;display:block;';
-    if (qrCanvas) qrCanvas.style.cssText = 'filter:blur(14px);pointer-events:none;display:block;';
-    const overlay = document.createElement('div');
-    overlay.className = 'qr-unavailable';
-    overlay.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);z-index:10;';
-    overlay.innerHTML = '<span style="font-family:Anton,sans-serif;font-size:1.1rem;letter-spacing:.15em;color:#ff5e00;text-transform:uppercase;line-height:1.2;text-align:center;">QR<br>UNAVAILABLE</span>';
-    qrBox.appendChild(overlay);
-  }, 120);
 
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
@@ -381,8 +402,39 @@ function generateQR() {
         <strong>TOTAL:</strong> ₱${total}
         <hr class="summary-label">
         ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-        <hr class="summary-label">
     `;
+
+  // Blur the QR code for demo/portfolio purposes
+  const qrWrapper = document.getElementById('qrcode');
+  qrWrapper.style.position = 'relative';
+  qrWrapper.style.filter = 'blur(6px)';
+  qrWrapper.style.userSelect = 'none';
+
+  // Strip title/alt from QR img so the number doesn't show on hover
+  setTimeout(() => {
+    const qrImg = qrWrapper.querySelector('img');
+    if (qrImg) {
+      qrImg.removeAttribute('title');
+      qrImg.removeAttribute('alt');
+      qrImg.title = '';
+      qrImg.alt = '';
+    }
+  }, 100);
+
+  // Overlay text
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.45);
+    color: #ff5e00; font-weight: bold; font-size: 13px;
+    letter-spacing: 0.08em; text-align: center;
+    border-radius: 8px; filter: none !important;
+    pointer-events: none; z-index: 10;
+  `;
+  overlay.innerHTML = '🚫 QR UNAVAILABLE<br><span style="font-size:10px;color:#aaa;">Demo Mode Only</span>';
+  qrWrapper.appendChild(overlay);
 
   // Celebration effects
   createConfetti();
@@ -441,8 +493,9 @@ function createConfetti() {
     '#00ffff',
   ];
   const shapes = ['square', 'circle', 'star'];
+  const confettiCount = window.innerWidth <= 768 ? 12 : 40;
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < confettiCount; i++) {
     const confetti = document.createElement('div');
     confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
     confetti.style.left = Math.random() * 100 + '%';
