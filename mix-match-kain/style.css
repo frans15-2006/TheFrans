@@ -1409,7 +1409,13 @@ header {
 }
 
 .sparkle.diamond {
-  transform: rotate(45deg);
+  animation: sparkleDiamond 0.8s ease-out forwards;
+}
+
+@keyframes sparkleDiamond {
+  0%   { transform: scale(0) rotate(45deg);   opacity: 1; }
+  50%  { transform: scale(1.5) rotate(225deg); opacity: 1; }
+  100% { transform: scale(0) rotate(405deg);  opacity: 0; }
 }
 
 /* ====== CART SHAKE ====== */
@@ -1439,6 +1445,20 @@ header {
 .cart-shake {
   animation: cartShake 0.5s ease-in-out;
   border-color: var(--error) !important;
+}
+
+/* On mobile the sidebar uses translateX which is !important — cartShake keyframes can't override it.
+   Use a separate shadow-flash animation instead so feedback is still visible. */
+@media (max-width: 768px) {
+  .cart-shake {
+    animation: cartShakeMobile 0.5s ease-in-out !important;
+  }
+}
+
+@keyframes cartShakeMobile {
+  0%, 100% { box-shadow: -6px 0 40px rgba(0,0,0,0.8); }
+  20%, 60% { box-shadow: -6px 0 30px rgba(255,51,51,0.9), 0 0 20px rgba(255,51,51,0.6); }
+  40%, 80% { box-shadow: -6px 0 40px rgba(0,0,0,0.8); }
 }
 
 /* ====== BOUNCE CARD ====== */
