@@ -232,6 +232,19 @@
 
     /* Timer bar hidden on desktop */
     #cart-timer-bar { display: none; }
+
+    /* ====== NUCLEAR BLUR FIX ======
+       .card has backdrop-filter:blur(10px) in style.css — creates compositing layers.
+       When drawer opens, body.drawer-open kills those layers so blur can't bleed
+       through the overlay or the sidebar background. */
+    body.drawer-open .card {
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+    @media (max-width: 768px) {
+      /* Remove will-change from cart-area — it creates its own stacking context */
+      .cart-area { will-change: auto !important; isolation: isolate; }
+    }
   </style>
 </head>
 
@@ -494,6 +507,10 @@
       const cart = document.getElementById('cart-sidebar');
       const overlay = document.getElementById('cart-overlay');
       const fab = document.getElementById('mobile-cart-fab');
+      // Kill card compositing layers first, THEN add drawer-open
+      document.body.classList.add('drawer-open');
+      // Belt + suspenders: inline styles beat everything
+      cart.style.cssText += ';background:#111!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;';
       cart.classList.add('drawer-open');
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -507,6 +524,7 @@
       const fab = document.getElementById('mobile-cart-fab');
       cart.classList.remove('drawer-open');
       overlay.classList.remove('active');
+      document.body.classList.remove('drawer-open');
       document.body.style.overflow = '';
       if (fab) fab.classList.remove('hidden');
       _clearAutoClose();
