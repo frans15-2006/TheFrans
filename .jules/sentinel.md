@@ -1,0 +1,4 @@
+## 2026-05-21 - DOM-based XSS in Ordering System
+**Vulnerability:** User-controlled input (customer name) was being directly injected into the DOM using `innerHTML`. Other dynamic fields like total price and item names were also being injected unsafely.
+**Learning:** Even simple transformations like `.toUpperCase()` do not provide security against XSS as HTML tags and attributes are case-insensitive. Refactoring a template string from `innerHTML` to a mix of `innerHTML` and `textContent` requires careful attention to ensure *all* dynamic parts are handled safely, not just the most obvious ones.
+**Prevention:** Use a "placeholder pattern": set the static HTML structure first (with placeholders for dynamic content), then use `textContent` or `innerText` to populate the placeholders. Avoid `innerHTML` whenever dynamic data is involved, even if the data is expected to be numeric or system-generated.
