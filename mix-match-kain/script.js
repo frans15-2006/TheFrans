@@ -261,7 +261,7 @@ function updateCart() {
     `;
   });
 
-  const oldTotal = parseInt(totalEl.textContent.replace('&#8369;', '').replace('₱', '')) || 0;
+  const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
     totalEl.classList.add('updating');
     const duration = 600;
@@ -321,6 +321,9 @@ function generateQR() {
   }
 
   playSound(600, 0.3, 'triangle');
+
+  // Close the cart drawer before opening modal so body.overflow and drawer state are clean
+  if (typeof closeCartDrawer === 'function') closeCartDrawer();
 
   const qrBox = document.getElementById('qrcode');
   qrBox.innerHTML = '';
@@ -399,24 +402,18 @@ function closeModal() {
     if (typeof _clearAutoClose === 'function') _clearAutoClose();
     // FIX: close the cart drawer before returning to landing — prevents stale drawer-open state on next session
     if (typeof closeCartDrawer === 'function') closeCartDrawer();
+    // Reset scroll position so next order starts from top of menu
+    const mc = document.getElementById('main-content');
+    if (mc) mc.scrollTop = 0;
     document.getElementById('landing-page').classList.remove('exit-3d');
     document.getElementById('main-content').classList.remove('enter-3d');
   }, 500);
 }
 
 // ====== SEND ORDER TO SERVER ======
-async function sendOrderToServer(orderData) {
-  try {
-    const response = await fetch('http://localhost:3000/order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData),
-    });
-    const result = await response.json();
-    console.log('Order sent:', result);
-  } catch (error) {
-    console.log('Server not available, order saved locally');
-  }
+// Server integration not active — orders are demo-only on GitHub Pages
+function sendOrderToServer(orderData) {
+  console.log('Order (demo):', orderData);
 }
 
 // ====== CONFETTI EFFECT ======
