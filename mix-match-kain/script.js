@@ -376,13 +376,37 @@ function generateQR() {
   document.getElementById('modal').style.display = 'flex';
   setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
 
-  document.getElementById('summary').innerHTML = `
-        <strong>CUSTOMER:</strong> ${name.toUpperCase()}<br>
-        <strong>TOTAL:</strong> ₱${total}
-        <hr class="summary-label">
-        ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
-        <hr class="summary-label">
-    `;
+  const summaryEl = document.getElementById('summary');
+  summaryEl.innerHTML = ''; // Clear previous content
+
+  const customerStrong = document.createElement('strong');
+  customerStrong.textContent = 'CUSTOMER:';
+  summaryEl.appendChild(customerStrong);
+  summaryEl.appendChild(document.createTextNode(` ${name.toUpperCase()}`));
+  summaryEl.appendChild(document.createElement('br'));
+
+  const totalStrong = document.createElement('strong');
+  totalStrong.textContent = 'TOTAL:';
+  summaryEl.appendChild(totalStrong);
+  summaryEl.appendChild(document.createTextNode(` ₱${total}`));
+
+  const hr1 = document.createElement('hr');
+  hr1.className = 'summary-label';
+  summaryEl.appendChild(hr1);
+
+  cart.forEach((c) => {
+    const itemText = document.createTextNode(`• ${c.name} `);
+    summaryEl.appendChild(itemText);
+    const qtySpan = document.createElement('span');
+    qtySpan.className = 'summary-item';
+    qtySpan.textContent = `x${c.qty}`;
+    summaryEl.appendChild(qtySpan);
+    summaryEl.appendChild(document.createElement('br'));
+  });
+
+  const hr2 = document.createElement('hr');
+  hr2.className = 'summary-label';
+  summaryEl.appendChild(hr2);
 
   // Celebration effects
   createConfetti();
