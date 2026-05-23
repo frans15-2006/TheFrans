@@ -133,7 +133,7 @@
       .cart-area {
         position: fixed !important;
         top: 0 !important;
-        right: -105% !important;      /* hidden off-screen */
+        right: -105% !important;
         bottom: auto !important;
         left: auto !important;
         width: 88% !important;
@@ -145,7 +145,20 @@
         overflow-y: auto !important;
         padding: 24px 18px !important;
         transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        /* keep whatever background style.css sets */
+
+        /* Solid background — no bleed-through */
+        background: #0d0d0d !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+
+        /* Orange left border = the vertical divider line */
+        border-left: 2px solid var(--primary, #ff5e00) !important;
+        border-top: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
+
+        /* Crisp shadow so it lifts off the menu */
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.7) !important;
       }
 
       .cart-area.cart-open {
