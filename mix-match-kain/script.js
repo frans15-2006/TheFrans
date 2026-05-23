@@ -233,7 +233,7 @@ function updateCart() {
 
   if (cart.length === 0) {
     list.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
-    totalEl.textContent = '&#8369;0';
+    totalEl.textContent = '₱0';
     const badge = document.getElementById('cart-badge');
     const mobileFab = document.getElementById('mobile-cart-fab');
     if (badge) badge.textContent = '0';
@@ -397,6 +397,8 @@ function closeModal() {
     document.getElementById('cust-name').value = '';
     // FIX BUG 3: clear auto-close timer so it can't fire on the reset/landed state
     if (typeof _clearAutoClose === 'function') _clearAutoClose();
+    // FIX: close the cart drawer before returning to landing — prevents stale drawer-open state on next session
+    if (typeof closeCartDrawer === 'function') closeCartDrawer();
     document.getElementById('landing-page').classList.remove('exit-3d');
     document.getElementById('main-content').classList.remove('enter-3d');
   }, 500);
