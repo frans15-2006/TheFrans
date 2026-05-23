@@ -69,7 +69,7 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; }
     .nav-logo {
       font-family: var(--mono); font-size: 13px; color: var(--accent);
-      text-decoration: none; letter-spacing: 0.02em;
+      text-decoration: none; letter-spacing: 0.02em; position: relative; z-index: 101;
     }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
@@ -83,6 +83,35 @@
       width: 0; height: 1px; background: var(--accent); transition: width 0.3s ease;
     }
     .nav-links a:hover::after { width: 100%; }
+
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 6px; cursor: none;
+      position: relative; z-index: 101;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text-2); border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.2s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--accent); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none; position: fixed; inset: 0;
+        background: rgba(12,12,14,0.97);
+        backdrop-filter: blur(24px);
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 40px; z-index: 99;
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-links a { font-size: 22px; letter-spacing: 0.06em; }
+      .nav-links a::after { bottom: -6px; }
+    }
 
     /* HERO */
     #hero {
@@ -174,6 +203,97 @@
       align-self: flex-start; margin-top: 6px;
     }
 
+    /* GALLERY (inside about) */
+    .about-gallery { margin-top: 64px; }
+    .about-gallery-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .gallery-eyebrow {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .gallery-eyebrow::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--accent); opacity: 0.5; }
+    .gallery-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; color: var(--text);
+    }
+    .gallery-heading em { font-style: italic; color: var(--accent); }
+    .gallery-meta-right { text-align: right; }
+    .gallery-meta-right p { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; line-height: 2; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.72fr 0.98fr;
+      gap: 2px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: var(--bg-3); aspect-ratio: 3/4;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: grayscale(100%) contrast(1.06) brightness(0.92);
+      transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); filter: grayscale(60%) contrast(1.1) brightness(1); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,12,14,0.85) 0%, rgba(12,12,14,0.1) 45%, transparent 100%);
+      opacity: 0; transition: opacity 0.4s ease;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.5rem 1.25rem;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+    .overlay-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 6px; }
+    .overlay-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+    .overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; color: var(--text); line-height: 1.2; }
+    .gallery-strip {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0; border-top: 1px solid var(--border); margin-top: 2px;
+    }
+    .strip-text { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; }
+    .strip-dots { display: flex; gap: 6px; align-items: center; }
+    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.25; transition: opacity 0.3s; }
+    .strip-dot.active { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .about-gallery-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .gallery-meta-right { text-align: left; }
+    }
+
+    /* LIGHTBOX */
+    .lb-backdrop {
+      position: fixed; inset: 0; background: rgba(12,12,14,0.97);
+      z-index: 200; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .lb-backdrop.open { opacity: 1; pointer-events: all; }
+    .lb-wrap { position: relative; max-width: 480px; width: 88vw; transform: translateY(24px); transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .lb-backdrop.open .lb-wrap { transform: translateY(0); }
+    .lb-wrap img { width: 100%; display: block; filter: grayscale(100%) contrast(1.06); }
+    .lb-bar { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0 0; }
+    .lb-info .lb-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+    .lb-info .lb-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--text); }
+    .lb-controls { display: flex; gap: 6px; }
+    .lb-btn {
+      width: 34px; height: 34px; background: transparent;
+      border: 1px solid var(--border); color: var(--text-2);
+      font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s; font-family: var(--sans);
+    }
+    .lb-btn:hover { border-color: rgba(240,165,0,0.4); color: var(--accent); background: var(--accent-dim); }
+    .lb-close {
+      position: absolute; top: -42px; right: 0;
+      width: 34px; height: 34px; background: transparent;
+      border: 1px solid var(--border); color: var(--text-2); font-size: 16px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .lb-close:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+
     /* SKILLS */
     .skills-categories { display: flex; flex-direction: column; gap: 40px; }
     .skill-group-label {
@@ -216,6 +336,26 @@
     .project-status { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
     .status-badge { font-family: var(--mono); font-size: 11px; padding: 5px 12px; border-radius: 999px; background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); white-space: nowrap; }
     .status-badge.dev { background: rgba(240,165,0,0.1); color: var(--accent); border-color: rgba(240,165,0,0.2); }
+
+    /* ARCHITECTURE DIAGRAM */
+    .arch-toggle {
+      margin-top: 20px; display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 11px; color: var(--text-3);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 14px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .arch-toggle:hover { border-color: rgba(240,165,0,0.4); color: var(--accent); }
+    .arch-toggle svg { transition: transform 0.3s; }
+    .arch-toggle.open svg { transform: rotate(180deg); }
+    .arch-diagram {
+      margin-top: 16px; border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; background: #0d1210;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .arch-diagram.open { max-height: 600px; }
+    .arch-diagram svg { width: 100%; height: auto; display: block; padding: 16px; }
 
     /* CLIENT WORK */
     .clients-grid {
@@ -275,91 +415,6 @@
     }
     @media (max-width: 768px) { .clients-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .clients-grid { grid-template-columns: 1fr; } }
-
-    /* GALLERY */
-    #gallery { padding: 100px 0; }
-    .gallery-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-bottom: 48px; padding-bottom: 28px; border-bottom: 1px solid var(--border);
-    }
-    .gallery-eyebrow {
-      font-family: var(--mono); font-size: 11px; color: var(--accent);
-      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .gallery-eyebrow::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--accent); opacity: 0.5; }
-    .gallery-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; color: var(--text);
-    }
-    .gallery-heading em { font-style: italic; color: var(--accent); }
-    .gallery-meta-right { text-align: right; }
-    .gallery-meta-right p { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; line-height: 2; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.72fr 0.98fr;
-      gap: 2px;
-    }
-    .gallery-item {
-      position: relative; overflow: hidden; cursor: pointer;
-      background: var(--bg-3); aspect-ratio: 3/4;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: grayscale(100%) contrast(1.06) brightness(0.92);
-      transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.5s ease;
-    }
-    .gallery-item:hover img { transform: scale(1.05); filter: grayscale(60%) contrast(1.1) brightness(1); }
-    .gallery-item-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(12,12,14,0.85) 0%, rgba(12,12,14,0.1) 45%, transparent 100%);
-      opacity: 0; transition: opacity 0.4s ease;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.5rem 1.25rem;
-    }
-    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
-    .overlay-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: rgba(240,165,0,0.15); line-height: 1; margin-bottom: 6px; }
-    .overlay-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
-    .overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 300; color: var(--text); line-height: 1.2; }
-    .gallery-strip {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 0; border-top: 1px solid var(--border); margin-top: 2px;
-    }
-    .strip-text { font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: 0.08em; }
-    .strip-dots { display: flex; gap: 6px; align-items: center; }
-    .strip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.25; transition: opacity 0.3s; }
-    .strip-dot.active { opacity: 1; }
-
-    /* LIGHTBOX */
-    .lb-backdrop {
-      position: fixed; inset: 0; background: rgba(12,12,14,0.97);
-      z-index: 200; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-    }
-    .lb-backdrop.open { opacity: 1; pointer-events: all; }
-    .lb-wrap { position: relative; max-width: 480px; width: 88vw; transform: translateY(24px); transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .lb-backdrop.open .lb-wrap { transform: translateY(0); }
-    .lb-wrap img { width: 100%; display: block; filter: grayscale(100%) contrast(1.06); }
-    .lb-bar { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0 0; }
-    .lb-info .lb-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
-    .lb-info .lb-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--text); }
-    .lb-controls { display: flex; gap: 6px; }
-    .lb-btn {
-      width: 34px; height: 34px; background: transparent;
-      border: 1px solid var(--border); color: var(--text-2);
-      font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s, background 0.2s; font-family: var(--sans);
-    }
-    .lb-btn:hover { border-color: rgba(240,165,0,0.4); color: var(--accent); background: var(--accent-dim); }
-    .lb-close {
-      position: absolute; top: -42px; right: 0;
-      width: 34px; height: 34px; background: transparent;
-      border: 1px solid var(--border); color: var(--text-2); font-size: 16px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .lb-close:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
 
     /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
@@ -483,16 +538,12 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
       .about-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .project-card { grid-template-columns: 1fr; }
       .project-status { flex-direction: row; }
       .edu-card { flex-direction: column; align-items: flex-start; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .gallery-meta-right { text-align: left; }
     }
   </style>
 </head>
@@ -506,14 +557,16 @@
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">francis.dev</a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#clients">Clients</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -522,7 +575,7 @@
     <div class="container">
       <div class="hero-tag">Let's Build Something</div>
       <h1 class="hero-name">Francis<br><span>Tarectican</span></h1>
-      <p class="hero-sub">Backend developer focused on building reliable, well-structured systems — clean APIs, solid databases, and code that holds up in production.</p>
+      <p class="hero-sub">Backend developer from Palawan. I built Mix &amp; Match Kain — a full ordering system used by a real restaurant, running on Node.js with a local-network backend that handles payments, stock, and orders.</p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-ghost">Get in Touch</a>
@@ -549,16 +602,16 @@
         <div>
           <div class="about-stats">
             <div class="stat-card reveal reveal-delay-1">
-              <div class="stat-num">8+</div>
-              <div class="stat-label">Sites Shipped</div>
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Projects Built</div>
             </div>
             <div class="stat-card reveal reveal-delay-2">
               <div class="stat-num">2+</div>
               <div class="stat-label">Years Coding</div>
             </div>
             <div class="stat-card reveal reveal-delay-3">
-              <div class="stat-num">100%</div>
-              <div class="stat-label">Self-Motivated</div>
+              <div class="stat-num">LAN</div>
+              <div class="stat-label">Local-First Backend</div>
             </div>
             <div class="stat-card reveal reveal-delay-4">
               <div class="stat-num">PH</div>
@@ -574,8 +627,78 @@
           </div>
         </div>
       </div>
+
+      <!-- GALLERY — moved inside About -->
+      <div class="about-gallery reveal">
+        <div class="about-gallery-header">
+          <div>
+            <div class="gallery-eyebrow">Gallery</div>
+            <h2 class="gallery-heading">Behind the<br><em>lens.</em></h2>
+          </div>
+          <div class="gallery-meta-right">
+            <p>Francis Tarectican</p>
+            <p>Editorial · Monochrome</p>
+            <p>2025 — 2026</p>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-index="0">
+            <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
+            <div class="gallery-item-overlay">
+              <div class="overlay-num">01</div>
+              <div class="overlay-cat">Editorial</div>
+              <div class="overlay-title">The Chair</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-index="1">
+            <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" />
+            <div class="gallery-item-overlay">
+              <div class="overlay-num">02</div>
+              <div class="overlay-cat">Portrait</div>
+              <div class="overlay-title">The Tie</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-index="2">
+            <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" />
+            <div class="gallery-item-overlay">
+              <div class="overlay-num">03</div>
+              <div class="overlay-cat">Editorial</div>
+              <div class="overlay-title">The Wall</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-strip">
+          <span class="strip-text">03 frames</span>
+          <div class="strip-dots">
+            <div class="strip-dot active" id="sdot-0"></div>
+            <div class="strip-dot" id="sdot-1"></div>
+            <div class="strip-dot" id="sdot-2"></div>
+          </div>
+          <span class="strip-text">Monochrome Series</span>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lb-backdrop" id="lbBackdrop" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lb-wrap">
+      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+      <img src="" alt="" id="lbImg" />
+      <div class="lb-bar">
+        <div class="lb-info">
+          <div class="lb-cat" id="lbCat">Editorial</div>
+          <div class="lb-title" id="lbTitle">The Chair</div>
+        </div>
+        <div class="lb-controls">
+          <button class="lb-btn" id="lbPrev" aria-label="Previous">←</button>
+          <button class="lb-btn" id="lbNext" aria-label="Next">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="divider"></div>
 
@@ -667,16 +790,74 @@
               <span class="project-date">December 2025</span>
             </div>
             <div class="project-title">Mix &amp; Match Kain</div>
-            <p class="project-desc">A web-based food ordering system built with a strong emphasis on backend architecture. The core work here was in the database schema, RESTful API structure, and authentication flow — not just the interface. Designed to handle real ordering workflows from menu selection to order management.</p>
+            <p class="project-desc">A web-based food ordering system built for a real restaurant in Palawan. Customers browse the menu, build a cart, and check out via QR code. The Node.js/Express backend — running on the local network — handles order recording, payment tracking, and stock updates in real time. No cloud dependency. No data leaves the machine.</p>
             <div class="project-features">
               <span class="feature-tag">RESTful API Architecture</span>
               <span class="feature-tag">Database Schema Design</span>
-              <span class="feature-tag">Authentication System</span>
-              <span class="feature-tag">Order Management</span>
+              <span class="feature-tag">QR Checkout Flow</span>
+              <span class="feature-tag">Real-Time Order Management</span>
             </div>
             <div class="tech-stack">
               <span class="tech-tag">Node.js</span><span class="tech-tag">Express</span>
               <span class="tech-tag">WebSockets</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">HTML/CSS</span>
+            </div>
+            <button class="arch-toggle" id="archToggle" aria-expanded="false">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              System Architecture
+            </button>
+            <div class="arch-diagram" id="archDiagram">
+              <svg width="100%" viewBox="0 0 680 510" role="img" xmlns="http://www.w3.org/2000/svg">
+                <title>Mix &amp; Match Kain — system architecture</title>
+                <desc>Data flow: customer browser on GitHub Pages through QR checkout into a local Node.js/Express backend handling payments, order records, and stock.</desc>
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+                <g>
+                  <rect x="220" y="40" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
+                  <text x="340" y="60" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Customer browser</text>
+                  <text x="340" y="78" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">GitHub Pages · HTML / CSS / JS</text>
+                </g>
+                <line x1="340" y1="96" x2="340" y2="128" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="220" y="132" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
+                  <text x="340" y="152" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Menu &amp; cart</text>
+                  <text x="340" y="170" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Choose items · enter name · review</text>
+                </g>
+                <line x1="340" y1="188" x2="340" y2="220" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="220" y="224" width="240" height="56" rx="8" fill="rgb(99,56,6)" stroke="rgb(239,159,39)" stroke-width="0.5"/>
+                  <text x="340" y="244" text-anchor="middle" dominant-baseline="central" fill="rgb(250,199,117)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">QR checkout</text>
+                  <text x="340" y="262" text-anchor="middle" dominant-baseline="central" fill="rgb(239,159,39)" font-size="12" font-family="system-ui,sans-serif">Order encoded → QR generated</text>
+                </g>
+                <line x1="340" y1="280" x2="340" y2="330" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <rect x="30" y="296" width="620" height="184" rx="12" fill="none" stroke="rgba(222,220,209,0.15)" stroke-width="0.8" stroke-dasharray="6 4"/>
+                <text x="50" y="316" fill="rgb(194,192,182)" font-size="12" font-family="system-ui,sans-serif">Local network · LAN only</text>
+                <g>
+                  <rect x="220" y="334" width="240" height="56" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
+                  <text x="340" y="354" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Node.js backend</text>
+                  <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">Express · localhost:3000</text>
+                </g>
+                <path d="M340 390 L340 410 L130 410 L130 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <line x1="340" y1="390" x2="340" y2="420" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <path d="M340 390 L340 410 L548 410 L548 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="50" y="420" width="160" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
+                  <text x="130" y="436" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Payments</text>
+                  <text x="130" y="454" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">Record transactions</text>
+                </g>
+                <g>
+                  <rect x="258" y="420" width="164" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
+                  <text x="340" y="436" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Order records</text>
+                  <text x="340" y="454" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">Store &amp; query</text>
+                </g>
+                <g>
+                  <rect x="468" y="420" width="160" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
+                  <text x="548" y="436" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Stock</text>
+                  <text x="548" y="454" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">Update inventory</text>
+                </g>
+              </svg>
             </div>
           </div>
           <div class="project-status">
@@ -745,7 +926,7 @@
     <div class="container">
       <div class="section-label">Client Work</div>
       <h2 class="section-title">Sites I've Shipped</h2>
-      <p class="section-desc">Production websites built and deployed for local businesses across the Philippines — each one live on GitHub Pages.</p>
+      <p class="section-desc">Production websites built and deployed for local businesses across the Philippines.</p>
 
       <div class="clients-grid">
 
@@ -768,7 +949,7 @@
               <span class="client-location">Philippines</span>
             </div>
             <div class="client-name">Summer Days Cafe</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -780,7 +961,7 @@
               <span class="client-location">Philippines</span>
             </div>
             <div class="client-name">Nonoy Matt B&amp;B</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -792,7 +973,7 @@
               <span class="client-location">Philippines</span>
             </div>
             <div class="client-name">PTCI</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -804,7 +985,7 @@
               <span class="client-location">Philippines</span>
             </div>
             <div class="client-name">Divine Truffles</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -816,7 +997,7 @@
               <span class="client-location">Philippines</span>
             </div>
             <div class="client-name">Eureka Bistro x Café</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -828,7 +1009,7 @@
               <span class="client-location">Borongan City, Eastern Samar</span>
             </div>
             <div class="client-name">Natad Bar and Grill</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -840,7 +1021,7 @@
               <span class="client-location">Puerto Princesa, Palawan</span>
             </div>
             <div class="client-name">iGo Bikes</div>
-            <div class="client-bottom"><span class="client-live">Under Development</span></div>
+            <div class="client-bottom"><span class="client-live">In Progress</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </div>
@@ -848,86 +1029,12 @@
       </div>
 
       <div class="clients-footer reveal">
-        <span class="clients-count"><span style="color:var(--accent)">8</span> sites live</span>
-        <span class="clients-more">+9 in queue</span>
+        <span class="clients-count"><span style="color:var(--accent)">1</span> site live</span>
+        <span class="clients-more">+7 in progress</span>
       </div>
 
     </div>
   </section>
-
-  <div class="divider"></div>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="container">
-      <div class="gallery-header reveal">
-        <div>
-          <div class="gallery-eyebrow">Gallery</div>
-          <h2 class="gallery-heading">Behind the<br><em>lens.</em></h2>
-        </div>
-        <div class="gallery-meta-right">
-          <p>Francis Tarectican</p>
-          <p>Editorial · Monochrome</p>
-          <p>2025 — 2026</p>
-        </div>
-      </div>
-
-      <div class="gallery-grid reveal">
-        <div class="gallery-item" data-index="0">
-          <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
-          <div class="gallery-item-overlay">
-            <div class="overlay-num">01</div>
-            <div class="overlay-cat">Editorial</div>
-            <div class="overlay-title">The Chair</div>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="1">
-          <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" />
-          <div class="gallery-item-overlay">
-            <div class="overlay-num">02</div>
-            <div class="overlay-cat">Portrait</div>
-            <div class="overlay-title">The Tie</div>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="2">
-          <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" />
-          <div class="gallery-item-overlay">
-            <div class="overlay-num">03</div>
-            <div class="overlay-cat">Editorial</div>
-            <div class="overlay-title">The Wall</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-strip">
-        <span class="strip-text">03 frames</span>
-        <div class="strip-dots">
-          <div class="strip-dot active" id="sdot-0"></div>
-          <div class="strip-dot" id="sdot-1"></div>
-          <div class="strip-dot" id="sdot-2"></div>
-        </div>
-        <span class="strip-text">Monochrome Series</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lb-backdrop" id="lbBackdrop" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <div class="lb-wrap">
-      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-      <img src="" alt="" id="lbImg" />
-      <div class="lb-bar">
-        <div class="lb-info">
-          <div class="lb-cat" id="lbCat">Editorial</div>
-          <div class="lb-title" id="lbTitle">The Chair</div>
-        </div>
-        <div class="lb-controls">
-          <button class="lb-btn" id="lbPrev" aria-label="Previous">←</button>
-          <button class="lb-btn" id="lbNext" aria-label="Next">→</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="divider"></div>
 
@@ -1001,6 +1108,22 @@
     // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+    // Mobile hamburger
+    const hamburger = document.getElementById('navHamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('mobile-open');
+      document.body.style.overflow = navLinks.classList.contains('mobile-open') ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('mobile-open');
+        document.body.style.overflow = '';
+      });
+    });
 
     // Scroll progress
     const progressBar = document.getElementById('scrollProgress');
@@ -1124,6 +1247,17 @@
     // Typing cursor
     const heroTag = document.querySelector('.hero-tag');
     if (heroTag) { const c = document.createElement('span'); c.className = 'typing-cursor'; heroTag.appendChild(c); }
+
+    // Architecture diagram toggle
+    const archToggle = document.getElementById('archToggle');
+    const archDiagram = document.getElementById('archDiagram');
+    if (archToggle && archDiagram) {
+      archToggle.addEventListener('click', () => {
+        const isOpen = archDiagram.classList.toggle('open');
+        archToggle.classList.toggle('open', isOpen);
+        archToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
 
     // Custom cursor
     const glow = document.getElementById('cursorGlow');
