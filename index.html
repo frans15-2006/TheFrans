@@ -48,7 +48,54 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
+    /* CURSOR — desktop only, applied via JS class on <html> */
+    html.custom-cursor * { cursor: none !important; }
+
+    .cur-dot {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+      transform: translate(-50%, -50%);
+      transition: width 0.15s ease, height 0.15s ease, opacity 0.2s ease;
+      will-change: transform;
+    }
+    .cur-ring {
+      position: fixed; z-index: 9998; pointer-events: none;
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1px solid rgba(240,165,0,0.35);
+      background: rgba(240,165,0,0.04);
+      backdrop-filter: blur(1px);
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease,
+                  border-color 0.2s ease, background 0.2s ease,
+                  opacity 0.2s ease;
+      will-change: transform;
+    }
+
+    /* Hover state — links, buttons, interactive */
+    html.cursor-hover .cur-dot {
+      width: 7px; height: 7px; opacity: 0.6;
+    }
+    html.cursor-hover .cur-ring {
+      width: 44px; height: 44px;
+      border-color: rgba(240,165,0,0.5);
+      background: rgba(240,165,0,0.06);
+    }
+
+    /* Click state */
+    html.cursor-click .cur-dot { width: 4px; height: 4px; opacity: 1; }
+    html.cursor-click .cur-ring { width: 22px; height: 22px; }
+
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 200;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.05s linear;
+    }
 
     /* NAV */
     nav {
@@ -84,7 +131,7 @@
     .nav-hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; padding: 6px;
-      position: relative; z-index: 101;
+      position: relative; z-index: 101; cursor: pointer;
     }
     .nav-hamburger span {
       display: block; width: 22px; height: 1.5px;
@@ -143,7 +190,7 @@
       animation: scrollLine 2s ease-in-out infinite;
     }
     @keyframes scrollLine { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
     /* SHARED */
     .btn {
@@ -151,9 +198,10 @@
       padding: 12px 24px; border-radius: var(--radius);
       font-size: 14px; font-weight: 600; text-decoration: none;
       transition: all 0.2s; border: none; font-family: var(--sans);
+      position: relative; overflow: hidden;
     }
     .btn-primary { background: var(--accent); color: #0c0c0e; }
-    .btn-primary:hover { background: #ffb820; transform: translateY(-1px); }
+    .btn-primary:hover { background: #ffb820; }
     .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: var(--bg-2); }
 
@@ -205,8 +253,9 @@
     .evidence-card {
       background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
       padding: 22px; transition: border-color 0.25s, background 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
     }
-    .evidence-card:hover { border-color: rgba(240,165,0,0.28); background: var(--bg-3); transform: translateY(-2px); }
+    .evidence-card:hover { border-color: rgba(240,165,0,0.28); background: var(--bg-3); }
     .evidence-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
     .evidence-capability { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); }
     .evidence-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
@@ -220,14 +269,33 @@
     .evidence-proof a { color: var(--text); text-decoration: none; text-transform: none; letter-spacing: normal; font-family: var(--sans); font-size: 13px; }
     .evidence-proof a:hover { color: var(--accent); }
 
+    /* CARD GLOW — shared by evidence + project cards */
+    .card-glow {
+      position: absolute; pointer-events: none;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,0.07) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+    .evidence-card:hover .card-glow,
+    .project-card:hover .card-glow { opacity: 1; }
+
+    /* All direct children of evidence-card above z-index 0 so glow stays behind */
+    .evidence-card > *:not(.card-glow) { position: relative; z-index: 1; }
+    .project-card > div:not(.card-glow) { position: relative; z-index: 1; }
+
     /* PROJECTS */
     .projects-list { display: flex; flex-direction: column; gap: 18px; }
     .project-card {
       background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px;
       padding: 30px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start;
       transition: border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
     }
-    .project-card:hover { border-color: rgba(240,165,0,0.3); background: var(--bg-3); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+    .project-card:hover { border-color: rgba(240,165,0,0.3); background: var(--bg-3); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
     .project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
     .project-cat { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
     .project-date { font-family: var(--mono); font-size: 11px; color: var(--text-3); }
@@ -299,32 +367,42 @@
     .contact-value a { color: var(--text); text-decoration: none; }
     .contact-value a:hover { color: var(--accent); }
 
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 32px 0; position: relative; overflow: hidden; }
-    footer::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: footerLine 3s ease-in-out infinite;
-    }
-    @keyframes footerLine { 0% { left: -100%; } 100% { left: 100%; } }
+    /* FOOTER — no laser animation */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-left { font-family: var(--mono); font-size: 12px; color: var(--text-3); }
     .footer-left span { color: var(--accent); }
     .footer-right { font-size: 12px; color: var(--text-3); }
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.15s; }
-    .reveal-delay-2 { transition-delay: 0.30s; }
-    .reveal-delay-3 { transition-delay: 0.45s; }
-    .reveal-delay-4 { transition-delay: 0.60s; }
+    /* REVEAL — improved with scale + blur */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      filter: blur(4px);
+      transition:
+        opacity 1s cubic-bezier(0.22,1,0.36,1),
+        transform 1s cubic-bezier(0.22,1,0.36,1),
+        filter 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.48s; }
 
-    .hero-name .letter { display: inline-block; opacity: 0; transform: translateY(60px) rotate(8deg); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    /* HERO NAME LETTERS — reduced to 0.45s, stagger 0.025 */
+    .hero-name .letter {
+      display: inline-block; opacity: 0;
+      transform: translateY(60px) rotate(8deg);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    }
     .hero-name .letter.letter-in { opacity: 1; transform: translateY(0) rotate(0deg); }
-
-    .typing-cursor { display: inline-block; width: 3px; height: 1em; background: var(--accent); margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: middle; }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -340,6 +418,14 @@
 </head>
 
 <body>
+
+  <!-- CURSOR (desktop only, injected by JS) -->
+  <div class="cur-dot"  id="curDot"  aria-hidden="true"></div>
+  <div class="cur-ring" id="curRing" aria-hidden="true"></div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <nav id="navbar" aria-label="Primary navigation">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">francis.dev</a>
@@ -364,7 +450,7 @@
       <h1 class="hero-name">Francis<br><span>Tarectican</span></h1>
       <p class="hero-sub">Built and deployed a local-first food ordering system for a real restaurant in Palawan. Debugged it live under load. Kept it running through a network outage.</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Work</a>
+        <a href="#projects" class="btn btn-primary magnetic">View Work</a>
         <a href="./mix-match-kain-case-study.html" class="btn btn-ghost">Case Study ↗</a>
       </div>
       <div class="hero-scroll" aria-hidden="true">
@@ -428,6 +514,7 @@
         <p class="section-desc">Capabilities backed by deployed work.</p>
         <div class="evidence-grid">
           <article class="evidence-card reveal">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Backend APIs</span>
               <span class="evidence-tag">Node.js / Express</span>
@@ -439,6 +526,7 @@
             </div>
           </article>
           <article class="evidence-card reveal reveal-delay-1">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Database Design</span>
               <span class="evidence-tag">Schema / State</span>
@@ -450,6 +538,7 @@
             </div>
           </article>
           <article class="evidence-card reveal reveal-delay-2">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Real-Time Operations</span>
               <span class="evidence-tag">WebSockets</span>
@@ -461,6 +550,7 @@
             </div>
           </article>
           <article class="evidence-card reveal reveal-delay-3">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Frontend Delivery</span>
               <span class="evidence-tag">Vanilla JS / HTML / CSS</span>
@@ -472,6 +562,7 @@
             </div>
           </article>
           <article class="evidence-card reveal">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Local AI Deployment</span>
               <span class="evidence-tag">Ollama / GPU</span>
@@ -483,6 +574,7 @@
             </div>
           </article>
           <article class="evidence-card reveal reveal-delay-1">
+            <div class="card-glow" aria-hidden="true"></div>
             <div class="evidence-head">
               <span class="evidence-capability">Production Judgment</span>
               <span class="evidence-tag">Live debugging</span>
@@ -507,6 +599,7 @@
         <div class="projects-list">
 
           <article class="project-card reveal">
+            <div class="card-glow" aria-hidden="true"></div>
             <div>
               <div class="project-meta">
                 <span class="project-cat">Full-Stack Web App</span>
@@ -580,6 +673,7 @@
           </article>
 
           <article class="project-card reveal">
+            <div class="card-glow" aria-hidden="true"></div>
             <div>
               <div class="project-meta">
                 <span class="project-cat">AI Infrastructure</span>
@@ -672,11 +766,76 @@
   </footer>
 
   <script>
-    // Navbar scroll
+    // ─── CUSTOM CURSOR (desktop, pointer device, no reduced-motion) ───
+    (function () {
+      const mq = window.matchMedia;
+      const isDesktop = mq('(hover: hover) and (pointer: fine)').matches;
+      const noMotion  = mq('(prefers-reduced-motion: reduce)').matches;
+      if (!isDesktop || noMotion) {
+        document.getElementById('curDot').style.display  = 'none';
+        document.getElementById('curRing').style.display = 'none';
+        return;
+      }
+
+      document.documentElement.classList.add('custom-cursor');
+
+      const dot  = document.getElementById('curDot');
+      const ring = document.getElementById('curRing');
+
+      // Actual mouse coords
+      let mx = -100, my = -100;
+      // Ring lerp coords — slight smoothing, NOT heavy lag
+      let rx = -100, ry = -100;
+      let rafId;
+
+      window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+      function tick() {
+        // Dot: direct, no lag
+        dot.style.left = mx + 'px';
+        dot.style.top  = my + 'px';
+
+        // Ring: fast lerp — 0.18 factor = responsive but slightly smooth
+        const LERP = 0.18;
+        rx += (mx - rx) * LERP;
+        ry += (my - ry) * LERP;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+
+      // Hover state on interactive elements
+      const HOVER_SEL = 'a, button, [role="button"], label, .arch-toggle, .btn, .client-card, .stat-card';
+      document.addEventListener('mouseover', e => {
+        if (e.target.closest(HOVER_SEL)) document.documentElement.classList.add('cursor-hover');
+      });
+      document.addEventListener('mouseout', e => {
+        if (e.target.closest(HOVER_SEL)) document.documentElement.classList.remove('cursor-hover');
+      });
+
+      // Click state
+      document.addEventListener('mousedown', () => document.documentElement.classList.add('cursor-click'));
+      document.addEventListener('mouseup',   () => document.documentElement.classList.remove('cursor-click'));
+
+      // Hide when leaving window
+      document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { dot.style.opacity = '';  ring.style.opacity = ''; });
+    })();
+
+    // ─── SCROLL PROGRESS BAR ───────────────────────────────
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      progressBar.style.transform = `scaleX(${Math.min(scrolled, 1)})`;
+    }, { passive: true });
+
+    // ─── NAVBAR SCROLL ─────────────────────────────────────
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
 
-    // Mobile hamburger
+    // ─── MOBILE HAMBURGER ──────────────────────────────────
     const hamburger = document.getElementById('navHamburger');
     const navLinks = document.getElementById('navLinks');
     hamburger.addEventListener('click', () => {
@@ -694,41 +853,13 @@
       });
     });
 
-    // Scroll reveal
+    // ─── SCROLL REVEAL ─────────────────────────────────────
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    // Count-up on stat cards
-    function countUp(el, target, suffix, duration) {
-      const end = parseInt(target);
-      if (isNaN(end)) { el.textContent = target + suffix; return; }
-      let current = 0;
-      const timer = setInterval(() => {
-        current++;
-        el.textContent = current + suffix;
-        if (current >= end) { el.textContent = target + suffix; clearInterval(timer); }
-      }, duration / end);
-    }
-    const statObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const numEl = e.target.querySelector('.stat-num');
-          if (numEl && !numEl.dataset.counted) {
-            numEl.dataset.counted = true;
-            const raw = numEl.textContent.trim();
-            const suffix = raw.replace(/[0-9]/g, '');
-            const num = raw.replace(/[^0-9]/g, '');
-            if (num) countUp(numEl, num, suffix, 800);
-          }
-          statObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.stat-card').forEach(el => statObs.observe(el));
-
-    // Section labels
+    // ─── SECTION LABEL SLIDE-IN ────────────────────────────
     document.querySelectorAll('.section-label').forEach(label => {
       const span = label.querySelector('span');
       if (!span) return;
@@ -738,40 +869,39 @@
       lObs.observe(label);
     });
 
-    // Hero name letter animation
-    (function() {
+    // ─── HERO NAME LETTER ANIMATION (stagger 0.025s) ───────
+    (function () {
       const nameEl = document.querySelector('.hero-name');
       if (!nameEl) return;
       const html = nameEl.innerHTML;
       let out = '', delay = 0.5;
       for (let i = 0; i < html.length; i++) {
         const ch = html[i];
-        if (html.slice(i).startsWith('<br>')) { out += '<br>'; i += 3; delay += 0.05; }
-        else if (html.slice(i).startsWith('<span')) {
+        if (html.slice(i).startsWith('<br>')) {
+          out += '<br>'; i += 3; delay += 0.025;
+        } else if (html.slice(i).startsWith('<span')) {
           const end = html.indexOf('</span>', i) + 7;
           const inner = html.slice(i, end);
           const text = inner.replace(/<[^>]+>/g, '');
           let spanOut = '<span style="color:var(--accent)">';
           for (let j = 0; j < text.length; j++) {
             const c = text[j];
-            if (c === ' ') { spanOut += ' '; } else { spanOut += `<span class="letter" style="transition-delay:${delay.toFixed(2)}s">${c}</span>`; delay += 0.05; }
+            if (c === ' ') { spanOut += ' '; }
+            else { spanOut += `<span class="letter" style="transition-delay:${delay.toFixed(3)}s">${c}</span>`; delay += 0.025; }
           }
           spanOut += '</span>';
           out += spanOut;
           i = end - 1;
         } else {
-          if (ch === ' ') { out += ' '; } else { out += `<span class="letter" style="transition-delay:${delay.toFixed(2)}s">${ch}</span>`; delay += 0.05; }
+          if (ch === ' ') { out += ' '; }
+          else { out += `<span class="letter" style="transition-delay:${delay.toFixed(3)}s">${ch}</span>`; delay += 0.025; }
         }
       }
       nameEl.innerHTML = out;
       requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.hero-name .letter').forEach(l => l.classList.add('letter-in')), 100));
     })();
 
-    // Typing cursor on hero tag
-    const heroTag = document.querySelector('.hero-tag');
-    if (heroTag) { const c = document.createElement('span'); c.className = 'typing-cursor'; c.setAttribute('aria-hidden', 'true'); heroTag.appendChild(c); }
-
-    // Architecture toggle
+    // ─── ARCHITECTURE TOGGLE ───────────────────────────────
     const archToggle = document.getElementById('archToggle');
     const archDiagram = document.getElementById('archDiagram');
     if (archToggle && archDiagram) {
@@ -779,6 +909,64 @@
         const isOpen = archDiagram.classList.toggle('open');
         archToggle.classList.toggle('open', isOpen);
         archToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // ─── CARD GLOW (evidence + project cards, desktop only) ─
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.evidence-card, .project-card').forEach(card => {
+        const glow = card.querySelector('.card-glow');
+        if (!glow) return;
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          glow.style.left = (e.clientX - rect.left) + 'px';
+          glow.style.top  = (e.clientY - rect.top)  + 'px';
+        });
+      });
+    }
+
+    // ─── CARD TILT (evidence + project cards, 3deg max, desktop only) ─
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.evidence-card, .project-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const cx = rect.left + rect.width  / 2;
+          const cy = rect.top  + rect.height / 2;
+          const dx = (e.clientX - cx) / (rect.width  / 2);
+          const dy = (e.clientY - cy) / (rect.height / 2);
+          const MAX = 3;
+          card.style.transform = `perspective(900px) rotateY(${dx * MAX}deg) rotateX(${-dy * MAX}deg) translateY(-2px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.25s, background 0.25s, box-shadow 0.3s';
+          card.style.transform = '';
+          setTimeout(() => card.style.transition = '', 500);
+        });
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'transform 0.1s ease, border-color 0.25s, background 0.25s, box-shadow 0.3s';
+        });
+      });
+    }
+
+    // ─── MAGNETIC BUTTONS (primary CTA only, desktop only) ─
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.btn.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const rect = btn.getBoundingClientRect();
+          const dx = (e.clientX - (rect.left + rect.width  / 2)) * 0.25;
+          const dy = (e.clientY - (rect.top  + rect.height / 2)) * 0.25;
+          const clamped_x = Math.max(-7, Math.min(7, dx));
+          const clamped_y = Math.max(-7, Math.min(7, dy));
+          btn.style.transform = `translate(${clamped_x}px, ${clamped_y}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.2s';
+          btn.style.transform = '';
+          setTimeout(() => btn.style.transition = '', 400);
+        });
+        btn.addEventListener('mouseenter', () => {
+          btn.style.transition = 'transform 0.1s ease, background 0.2s';
+        });
       });
     }
   </script>
