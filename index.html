@@ -294,25 +294,79 @@
     }
     .lb-close:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
 
-    /* SKILLS */
-    .skills-categories { display: flex; flex-direction: column; gap: 40px; }
-    .skill-group-label {
-      font-family: var(--mono); font-size: 11px; color: var(--text-3);
-      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;
-      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    /* EVIDENCE */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
-    .skill-item {
-      background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    .evidence-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .skill-item:hover { border-color: rgba(240,165,0,0.25); background: var(--bg-3); transform: translateY(-2px); }
-    .skill-info { display: flex; flex-direction: column; gap: 2px; }
-    .skill-name { font-weight: 500; font-size: 14px; }
-    .skill-cat { font-size: 11px; color: var(--text-3); font-family: var(--mono); }
-    .skill-level { display: none; }
-    .skill-bar-wrap { width: 100%; height: 2px; background: var(--border); border-radius: 2px; margin-top: 8px; overflow: hidden; }
-    .skill-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #ffb820); border-radius: 2px; width: 0%; transition: width 1.8s cubic-bezier(0.22,1,0.36,1); }
+    .evidence-card:hover {
+      border-color: rgba(240,165,0,0.28);
+      background: var(--bg-3);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+    }
+    .evidence-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .evidence-capability {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .evidence-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .evidence-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-2);
+      margin-bottom: 16px;
+    }
+    .evidence-proof {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .evidence-proof a {
+      color: var(--text);
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      font-family: var(--sans);
+      font-size: 13px;
+    }
+    .evidence-proof a:hover { color: var(--accent); }
+    @media (max-width: 768px) {
+      .evidence-grid { grid-template-columns: 1fr; }
+      .evidence-head { flex-direction: column; align-items: flex-start; }
+      .evidence-proof { flex-direction: column; align-items: flex-start; }
+    }
 
     /* PROJECTS */
     .projects-list { display: flex; flex-direction: column; gap: 18px; }
@@ -481,32 +535,6 @@
     .reveal-delay-4 { transition-delay: 0.60s; }
     .reveal-delay-5 { transition-delay: 0.75s; }
 
-    /* CURSOR */
-    *, *::before, *::after { cursor: none !important; }
-    .cursor-glow {
-      position: fixed; width: 380px; height: 380px; border-radius: 50%;
-      pointer-events: none; z-index: 0;
-      background: radial-gradient(circle, rgba(240,165,0,0.04) 0%, transparent 70%);
-      transform: translate(-50%, -50%); transition: opacity 0.3s ease;
-    }
-    .cursor-dot {
-      position: fixed; top: 0; left: 0; width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-      will-change: transform;
-    }
-    .cursor-ring {
-      position: fixed; top: 0; left: 0; width: 36px; height: 36px;
-      border: 1.5px solid rgba(240,165,0,0.5); border-radius: 50%;
-      pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
-      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
-      will-change: transform;
-    }
-    .cursor-dot.hovering { width: 10px; height: 10px; background: #ffb820; }
-    .cursor-ring.hovering { width: 52px; height: 52px; border-color: rgba(240,165,0,0.8); }
-    .cursor-dot.clicking { width: 4px; height: 4px; background: #fff; }
-    .cursor-ring.clicking { width: 28px; height: 28px; border-color: rgba(255,255,255,0.8); }
-
     .typing-cursor { display: inline-block; width: 3px; height: 1em; background: var(--accent); margin-left: 4px; animation: blink 1s step-end infinite; vertical-align: middle; }
     @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
@@ -519,22 +547,6 @@
     @keyframes heroSubIn { to { opacity: 1; transform: translateY(0); } }
 
     .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #ffb820); z-index: 999; width: 0%; transition: width 0.1s linear; }
-
-    .nav-logo { position: relative; }
-    .nav-logo:hover { animation: logoGlitch 0.4s steps(2) forwards; }
-    @keyframes logoGlitch {
-      0% { text-shadow: none; }
-      20% { text-shadow: 2px 0 #ff0080, -2px 0 #00ffff; letter-spacing: 0.08em; }
-      40% { text-shadow: -2px 0 #ff0080, 2px 0 #00ffff; letter-spacing: 0.01em; }
-      60% { text-shadow: 2px 0 #ff0080, -2px 0 #00ffff; }
-      80% { text-shadow: none; letter-spacing: 0.03em; }
-      100% { text-shadow: none; letter-spacing: 0.02em; }
-    }
-
-    @media (hover: none), (pointer: coarse) {
-      * { cursor: auto !important; }
-      #cursorDot, #cursorRing, .cursor-glow { display: none !important; }
-    }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -549,11 +561,6 @@
 </head>
 
 <body>
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">francis.dev</a>
@@ -597,13 +604,13 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. I build web applications with a strong focus on the backend — how data flows, how systems scale, and how things work under the hood.</p>
-          <p>My approach is straightforward: understand the problem first, then build the right solution. I care about code that's readable, maintainable, and actually works — not just code that looks impressive.</p>
+          <p>I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and watched it sell out on the first run. That's the standard I hold my work to.</p>
           <p>When I'm not coding, I'm exploring local AI deployments and tuning my own hardware — running 30B parameter models on a local RTX 5070 rig to keep everything private and offline.</p>
         </div>
         <div>
           <div class="about-stats">
             <div class="stat-card reveal reveal-delay-1">
-              <div class="stat-num">3+</div>
+              <div class="stat-num">2</div>
               <div class="stat-label">Projects Built</div>
             </div>
             <div class="stat-card reveal reveal-delay-2">
@@ -611,8 +618,8 @@
               <div class="stat-label">Years Coding</div>
             </div>
             <div class="stat-card reveal reveal-delay-3">
-              <div class="stat-num">LAN</div>
-              <div class="stat-label">Local-First Backend</div>
+              <div class="stat-num">1st</div>
+              <div class="stat-label">Run Sold Out</div>
             </div>
             <div class="stat-card reveal reveal-delay-4">
               <div class="stat-num">PH</div>
@@ -629,142 +636,86 @@
         </div>
       </div>
 
-      <!-- GALLERY — moved inside About -->
-      <div class="about-gallery reveal">
-        <div class="about-gallery-header">
-          <div>
-            <div class="gallery-eyebrow">Gallery</div>
-            <h2 class="gallery-heading">Behind the<br><em>lens.</em></h2>
-          </div>
-          <div class="gallery-meta-right">
-            <p>Francis Tarectican</p>
-            <p>Editorial · Monochrome</p>
-            <p>2025 — 2026</p>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-item" data-index="0">
-            <img src="./gallery-1.jpg" alt="Francis Tarectican — Editorial I" id="gimg-0" />
-            <div class="gallery-item-overlay">
-              <div class="overlay-num">01</div>
-              <div class="overlay-cat">Editorial</div>
-              <div class="overlay-title">The Chair</div>
-            </div>
-          </div>
-          <div class="gallery-item" data-index="1">
-            <img src="./gallery-2.jpg" alt="Francis Tarectican — Editorial II" id="gimg-1" />
-            <div class="gallery-item-overlay">
-              <div class="overlay-num">02</div>
-              <div class="overlay-cat">Portrait</div>
-              <div class="overlay-title">The Tie</div>
-            </div>
-          </div>
-          <div class="gallery-item" data-index="2">
-            <img src="./gallery-3.jpg" alt="Francis Tarectican — Editorial III" id="gimg-2" />
-            <div class="gallery-item-overlay">
-              <div class="overlay-num">03</div>
-              <div class="overlay-cat">Editorial</div>
-              <div class="overlay-title">The Wall</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-strip">
-          <span class="strip-text">03 frames</span>
-          <div class="strip-dots">
-            <div class="strip-dot active" id="sdot-0"></div>
-            <div class="strip-dot" id="sdot-1"></div>
-            <div class="strip-dot" id="sdot-2"></div>
-          </div>
-          <span class="strip-text">Monochrome Series</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- LIGHTBOX -->
-  <div class="lb-backdrop" id="lbBackdrop" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <div class="lb-wrap">
-      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-      <img src="" alt="" id="lbImg" />
-      <div class="lb-bar">
-        <div class="lb-info">
-          <div class="lb-cat" id="lbCat">Editorial</div>
-          <div class="lb-title" id="lbTitle">The Chair</div>
-        </div>
-        <div class="lb-controls">
-          <button class="lb-btn" id="lbPrev" aria-label="Previous">←</button>
-          <button class="lb-btn" id="lbNext" aria-label="Next">→</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- LIGHTBOX removed with gallery -->
 
   <div class="divider"></div>
 
-  <!-- SKILLS -->
+  <!-- EVIDENCE -->
   <section id="skills">
     <div class="container">
-      <div class="section-label">Skills</div>
-      <h2 class="section-title">What I Work With</h2>
-      <p class="section-desc">A focused set of tools I use regularly — not a laundry list, just what I actually know and use.</p>
-      <div class="skills-categories">
-
-        <div class="reveal">
-          <div class="skill-group-label">Backend &amp; Core</div>
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <div class="skill-item" style="margin-left:0;">
-              <div class="skill-info"><div class="skill-name">Node.js</div><div class="skill-cat">Runtime</div></div>
-              <div class="skill-level">90%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">JavaScript</div><div class="skill-cat">Language</div></div>
-              <div class="skill-level">85%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,8vw,40px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">Express.js</div><div class="skill-cat">Framework</div></div>
-              <div class="skill-level">85%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,12vw,60px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">MongoDB</div><div class="skill-cat">Database</div></div>
-              <div class="skill-level">80%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,16vw,80px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">REST API Design</div><div class="skill-cat">Architecture</div></div>
-              <div class="skill-level">85%</div>
-            </div>
+      <div class="section-label">Evidence</div>
+      <h2 class="section-title">What I've Actually Shipped</h2>
+      <p class="section-desc">Capabilities backed by deployed work, not self-rated percentages.</p>
+      <div class="evidence-grid">
+        <div class="evidence-card reveal">
+          <div class="evidence-head">
+            <span class="evidence-capability">Backend APIs</span>
+            <span class="evidence-tag">Node.js / Express</span>
+          </div>
+          <p class="evidence-text">Built the backend for Mix &amp; Match Kain, including order recording, payment tracking, and stock updates on a local network.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="#projects">Mix &amp; Match Kain</a>
           </div>
         </div>
-
-        <div class="reveal">
-          <div class="skill-group-label">Frontend</div>
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <div class="skill-item" style="margin-left:0;">
-              <div class="skill-info"><div class="skill-name">React</div><div class="skill-cat">UI Library</div></div>
-              <div class="skill-level">75%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,4vw,20px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">Tailwind CSS</div><div class="skill-cat">Styling</div></div>
-              <div class="skill-level">85%</div>
-            </div>
-            <div class="skill-item" style="margin-left:clamp(0px,8vw,40px);margin-top:8px;">
-              <div class="skill-info"><div class="skill-name">HTML CSS</div><div class="skill-cat">Markup &amp; Styles</div></div>
-              <div class="skill-level">90%</div>
-            </div>
+        <div class="evidence-card reveal reveal-delay-1">
+          <div class="evidence-head">
+            <span class="evidence-capability">Database Design</span>
+            <span class="evidence-tag">Schema / State</span>
+          </div>
+          <p class="evidence-text">Designed data flow for carts, orders, payments, and inventory so the system could run in a real restaurant setting.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="#projects">Architecture diagram</a>
           </div>
         </div>
-
-        <div class="reveal">
-          <div class="skill-group-label">Tools &amp; Other</div>
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <div class="skill-item" style="margin-left:0;">
-              <div class="skill-info"><div class="skill-name">Local AI Deployment</div><div class="skill-cat">Ollama / LLM Infra</div></div>
-              <div class="skill-level">70%</div>
-            </div>
+        <div class="evidence-card reveal reveal-delay-2">
+          <div class="evidence-head">
+            <span class="evidence-capability">Real-Time Operations</span>
+            <span class="evidence-tag">WebSockets</span>
+          </div>
+          <p class="evidence-text">Handled live order updates and stock changes during service, where timing mattered more than appearance.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="#projects">Live restaurant deployment</a>
           </div>
         </div>
-
+        <div class="evidence-card reveal reveal-delay-3">
+          <div class="evidence-head">
+            <span class="evidence-capability">Frontend Delivery</span>
+            <span class="evidence-tag">Vanilla JS / HTML / CSS</span>
+          </div>
+          <p class="evidence-text">Built the client-facing ordering flow and QR checkout interface without relying on a frontend framework.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="./mix-match-kain/" target="_blank" rel="noopener">Open live site</a>
+          </div>
+        </div>
+        <div class="evidence-card reveal">
+          <div class="evidence-head">
+            <span class="evidence-capability">Local AI Setup</span>
+            <span class="evidence-tag">Ollama / GPU</span>
+          </div>
+          <p class="evidence-text">Ran a 30B parameter model locally with no cloud dependency, keeping inference private and offline on an RTX 5070.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="#projects">Offline AI Environment</a>
+          </div>
+        </div>
+        <div class="evidence-card reveal reveal-delay-1">
+          <div class="evidence-head">
+            <span class="evidence-capability">Deployment Judgment</span>
+            <span class="evidence-tag">Production-minded</span>
+          </div>
+          <p class="evidence-text">Shipped a system that survived real customer traffic and a real kitchen workflow. The system held up. The kitchen ran out of food.</p>
+          <div class="evidence-proof">
+            <span>Proof</span>
+            <a href="#projects">Sold out on first run</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -775,7 +726,7 @@
   <section id="projects">
     <div class="container">
       <div class="section-label">Projects</div>
-      <h2 class="section-title">Things I've Built</h2>
+      <h2 class="section-title">Work</h2>
       <p class="section-desc">A selection of projects I've worked on — each one solving a real problem with a focus on backend logic and system design.</p>
       <div class="projects-list">
 
@@ -787,7 +738,7 @@
               <span class="project-date">December 2025</span>
             </div>
             <div class="project-title">Mix &amp; Match Kain</div>
-            <p class="project-desc">A web-based food ordering system built for a real restaurant in Palawan. Customers browse the menu, build a cart, and check out via QR code. The Node.js/Express backend — running on the local network — handles order recording, payment tracking, and stock updates in real time. No cloud dependency. No data leaves the machine.</p>
+            <p class="project-desc">A web-based food ordering system built for a real restaurant in Palawan. Customers browse the menu, build a cart, and check out via QR code. The Node.js/Express backend — running on the local network — handles order recording, payment tracking, and stock updates in real time. Sold out on its first run. The system held up; the kitchen ran out of food.</p>
             <div class="project-features">
               <span class="feature-tag">RESTful API Architecture</span>
               <span class="feature-tag">Database Schema Design</span>
@@ -859,6 +810,7 @@
           </div>
           <div class="project-status">
             <span class="status-badge">Completed</span>
+            <a href="./mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Case Study ↗</a>
             <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Live ↗</a>
           </div>
         </div>
@@ -901,113 +853,31 @@
     <div class="container">
       <div class="section-label">Client Work</div>
       <h2 class="section-title">Sites I've Shipped</h2>
-      <p class="section-desc">Production websites built and deployed for local businesses across the Philippines.</p>
+      <p class="section-desc">Production websites built and deployed for local businesses.</p>
 
-      <div class="clients-grid">
-
+      <div class="clients-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 480px;">
         <a href="./mix-match-kain/" target="_blank" rel="noopener" class="client-card reveal">
           <div class="client-card-inner">
             <div class="client-top">
               <span class="client-type">Restaurant</span>
-              <span class="client-location">Philippines</span>
+              <span class="client-location">Palawan, Philippines</span>
             </div>
             <div class="client-name">Mix &amp; Match Kain</div>
             <div class="client-bottom"><span class="client-live">Live ↗</span></div>
           </div>
           <div class="client-hover-bar"></div>
         </a>
-
-        <div class="client-card reveal reveal-delay-1">
+        <div class="client-card reveal reveal-delay-1" style="opacity:0.4;pointer-events:none;">
           <div class="client-card-inner">
             <div class="client-top">
-              <span class="client-type">Café</span>
-              <span class="client-location">Philippines</span>
+              <span class="client-type">More</span>
+              <span class="client-location">In progress</span>
             </div>
-            <div class="client-name">Summer Days Cafe</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
+            <div class="client-name">+7 sites in build</div>
+            <div class="client-bottom"><span class="client-live">Coming soon</span></div>
           </div>
-          <div class="client-hover-bar"></div>
         </div>
-
-        <div class="client-card reveal reveal-delay-2">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">Bed &amp; Breakfast</span>
-              <span class="client-location">Philippines</span>
-            </div>
-            <div class="client-name">Nonoy Matt B&amp;B</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
-        <div class="client-card reveal reveal-delay-3">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">Institution</span>
-              <span class="client-location">Philippines</span>
-            </div>
-            <div class="client-name">PTCI</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
-        <div class="client-card reveal">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">Confectionery</span>
-              <span class="client-location">Philippines</span>
-            </div>
-            <div class="client-name">Divine Truffles</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
-        <div class="client-card reveal reveal-delay-1">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">Bistro &amp; Café</span>
-              <span class="client-location">Philippines</span>
-            </div>
-            <div class="client-name">Eureka Bistro x Café</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
-        <div class="client-card reveal reveal-delay-2">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">Bar &amp; Grill</span>
-              <span class="client-location">Borongan City, Eastern Samar</span>
-            </div>
-            <div class="client-name">Natad Bar and Grill</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
-        <div class="client-card reveal reveal-delay-3">
-          <div class="client-card-inner">
-            <div class="client-top">
-              <span class="client-type">E-Bike Shop</span>
-              <span class="client-location">Puerto Princesa, Palawan</span>
-            </div>
-            <div class="client-name">iGo Bikes</div>
-            <div class="client-bottom"><span class="client-live">In Progress</span></div>
-          </div>
-          <div class="client-hover-bar"></div>
-        </div>
-
       </div>
-
-      <div class="clients-footer reveal">
-        <span class="clients-count"><span style="color:var(--accent)">1</span> site live</span>
-        <span class="clients-more">+7 in progress</span>
-      </div>
-
     </div>
   </section>
 
@@ -1017,60 +887,24 @@
   <section id="contact">
     <div class="container">
       <div class="section-label">Contact</div>
-      <h2 class="section-title">Let's Work Together</h2>
-      <p class="section-desc">Have a project in mind or just want to connect? Send me a message and I'll get back to you.</p>
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <div class="contact-item">
-            <div class="contact-label">Location</div>
-            <div class="contact-value">Puerto Princesa City, Palawan, PH</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">School</div>
-            <div class="contact-value">Palawan Technological College, Inc.</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">Focus</div>
-            <div class="contact-value">Backend Development · Full-Stack · AI Tooling</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">Status</div>
-            <div class="contact-value" style="color:#4ade80;">Open to freelance &amp; collaboration</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">GitHub</div>
-            <div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 ↗</a></div>
-          </div>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-desc">Open to freelance work and collaboration. Reach out directly.</p>
+      <div class="contact-info reveal" style="max-width:480px;">
+        <div class="contact-item">
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Puerto Princesa City, Palawan, PH</div>
         </div>
-        <div class="reveal reveal-delay-1">
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="name">Name</label>
-                <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="subject">Subject</label>
-              <input class="form-input" type="text" id="subject" name="subject" placeholder="What's this about?" required />
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Tell me about your project..." required></textarea>
-            </div>
-            <div class="form-msg" id="formMsg"></div>
-            <button type="submit" class="form-submit" id="submitBtn">
-              Send Message
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
-            </button>
-          </form>
+        <div class="contact-item">
+          <div class="contact-label">Status</div>
+          <div class="contact-value" style="color:#4ade80;">Open to freelance &amp; collaboration</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 ↗</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Messenger</div>
+          <div class="contact-value"><a href="https://facebook.com/frans15.2006" target="_blank" rel="noopener">facebook.com/frans15.2006 ↗</a></div>
         </div>
       </div>
     </div>
@@ -1152,38 +986,6 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.stat-card').forEach(el => statObs.observe(el));
 
-    // Skill bars
-    document.querySelectorAll('.skill-item').forEach(item => {
-      const levelEl = item.querySelector('.skill-level');
-      if (!levelEl) return;
-      const pct = levelEl.textContent.trim();
-      const bar = document.createElement('div');
-      bar.className = 'skill-bar-wrap';
-      bar.innerHTML = `<div class="skill-bar" data-width="${pct}"></div>`;
-      item.appendChild(bar);
-      const bObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const b = e.target.querySelector('.skill-bar');
-            if (b) setTimeout(() => { b.style.width = b.dataset.width; }, 100);
-            bObs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.5 });
-      bObs.observe(item);
-    });
-
-    // 3D tilt on project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
-        card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
-      });
-      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-    });
-
     // Section labels
     document.querySelectorAll('.section-label').forEach(label => {
       const text = label.textContent;
@@ -1238,90 +1040,6 @@
       });
     }
 
-    // Custom cursor
-    const glow = document.getElementById('cursorGlow');
-    const dot = document.getElementById('cursorDot');
-    const ring = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, dotX = 0, dotY = 0;
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      if (glow) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; }
-    });
-    (function animateCursor() {
-      dotX += (mouseX - dotX) * 0.9; dotY += (mouseY - dotY) * 0.9;
-      if (dot) { dot.style.left = dotX + 'px'; dot.style.top = dotY + 'px'; }
-      ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12;
-      if (ring) { ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px'; }
-      requestAnimationFrame(animateCursor);
-    })();
-    document.querySelectorAll('a, button, .skill-item, .project-card, .stat-card, input, textarea, .gallery-item, .client-card').forEach(el => {
-      el.addEventListener('mouseenter', () => { dot && dot.classList.add('hovering'); ring && ring.classList.add('hovering'); });
-      el.addEventListener('mouseleave', () => { dot && dot.classList.remove('hovering'); ring && ring.classList.remove('hovering'); });
-    });
-    document.addEventListener('mousedown', () => { dot && dot.classList.add('clicking'); ring && ring.classList.add('clicking'); });
-    document.addEventListener('mouseup', () => { dot && dot.classList.remove('clicking'); ring && ring.classList.remove('clicking'); });
-
-    // Contact form
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const msg = document.getElementById('formMsg');
-      const form = e.target;
-      btn.disabled = true; btn.textContent = 'Sending...'; msg.className = 'form-msg';
-      try {
-        const res = await fetch('https://formspree.io/f/xrerwavk', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: form.name.value, email: form.email.value, subject: form.subject.value, message: form.message.value })
-        });
-        if (res.ok) { msg.textContent = "Message sent! I'll get back to you soon."; msg.className = 'form-msg success'; form.reset(); }
-        else throw new Error();
-      } catch { msg.textContent = 'Something went wrong. Try again later.'; msg.className = 'form-msg error'; }
-      btn.disabled = false;
-      btn.innerHTML = 'Send Message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
-    });
-
-    // Gallery
-    const galleryData = [
-      { cat: 'Editorial', title: 'The Chair' },
-      { cat: 'Portrait',  title: 'The Tie'   },
-      { cat: 'Editorial', title: 'The Wall'  },
-    ];
-    const lbBackdrop = document.getElementById('lbBackdrop');
-    const lbImg      = document.getElementById('lbImg');
-    const lbCat      = document.getElementById('lbCat');
-    const lbTitle    = document.getElementById('lbTitle');
-    const lbClose    = document.getElementById('lbClose');
-    const lbPrev     = document.getElementById('lbPrev');
-    const lbNext     = document.getElementById('lbNext');
-    const sdots      = [0,1,2].map(i => document.getElementById('sdot-' + i));
-    let currentImg   = 0;
-
-    function openLb(index) {
-      currentImg = index;
-      const imgEl = document.getElementById('gimg-' + index);
-      lbImg.src = imgEl ? imgEl.src : '';
-      lbImg.alt = imgEl ? imgEl.alt : '';
-      lbCat.textContent = galleryData[index].cat;
-      lbTitle.textContent = galleryData[index].title;
-      lbBackdrop.classList.add('open');
-      sdots.forEach((d, i) => d.classList.toggle('active', i === index));
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLb() { lbBackdrop.classList.remove('open'); document.body.style.overflow = ''; }
-    function navLb(dir) { openLb((currentImg + dir + 3) % 3); }
-
-    document.querySelectorAll('.gallery-item').forEach((item, i) => item.addEventListener('click', () => openLb(i)));
-    lbClose.addEventListener('click', closeLb);
-    lbPrev.addEventListener('click', () => navLb(-1));
-    lbNext.addEventListener('click', () => navLb(1));
-    lbBackdrop.addEventListener('click', e => { if (e.target === lbBackdrop) closeLb(); });
-    document.addEventListener('keydown', e => {
-      if (!lbBackdrop.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLb();
-      if (e.key === 'ArrowLeft') navLb(-1);
-      if (e.key === 'ArrowRight') navLb(1);
-    });
   </script>
 </body>
 </html>
