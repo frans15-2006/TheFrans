@@ -1175,8 +1175,13 @@
 
     // 3D tilt on project cards
     document.querySelectorAll('.project-card').forEach(card => {
+      // PERFORMANCE OPTIMIZATION: Cache bounding rect on mouseenter to avoid layout thrashing
+      // during high-frequency mousemove events. Reduces getBoundingClientRect() calls
+      // from ~60 per second to once per interaction.
+      let rect;
+      card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); });
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
         const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
         card.style.transform = `translateY(-4px) rotateX(${y}deg) rotateY(${x}deg)`;
