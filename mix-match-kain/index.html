@@ -356,6 +356,14 @@
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
           </div>
+
+          <!-- No Results Feedback -->
+          <div id="no-results" class="empty-message" style="display:none; margin-top: 40px;">
+            <p>No items found matching your search.</p>
+            <button class="gradient-btn" onclick="clearSearch()" style="margin-top: 15px;">
+              Clear search
+            </button>
+          </div>
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
@@ -444,34 +452,45 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceMatches = filterGridItems('rice-grid', riceMenu, searchQuery);
+      const ulamMatches = filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      const drinksMatches = filterGridItems('drinks-grid', drinksMenu, searchQuery);
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && riceMatches > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && ulamMatches > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && drinksMatches > 0) ? 'block' : 'none';
+
+      const totalActiveMatches =
+        (showRice ? riceMatches : 0) +
+        (showUlam ? ulamMatches : 0) +
+        (showDrinks ? drinksMatches : 0);
+
+      noResults.style.display = totalActiveMatches === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let matchCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          matchCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return matchCount;
     }
 
     // ====== MOBILE CART DRAWER ======
