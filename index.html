@@ -389,9 +389,9 @@
           </div>
           <div>
             <div class="about-stats">
-              <article class="stat-card reveal reveal-delay-1" aria-label="2 projects built">
-                <div class="stat-num">2</div>
-                <div class="stat-label">Projects Built</div>
+              <article class="stat-card reveal reveal-delay-1" aria-label="1 production system deployed">
+                <div class="stat-num">1</div>
+                <div class="stat-label">Production System</div>
               </article>
               <article class="stat-card reveal reveal-delay-2" aria-label="2+ years coding">
                 <div class="stat-num">2+</div>
@@ -514,7 +514,7 @@
                 <span class="project-date">December 2025</span>
               </div>
               <h3 class="project-title">Mix &amp; Match Kain</h3>
-              <p class="project-desc">A food ordering system built for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs locally on-site — no cloud, no external dependency. Sold out on its first run. Two bugs debugged live during service. Survived a network outage mid-event.</p>
+              <p class="project-desc">A food ordering system built for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs locally on-site — deployed on a local machine over LAN with Express serving customer devices through restaurant WiFi. Designed to continue operating without internet connectivity. Resolved duplicate order writes caused by simultaneous stock updates during peak ordering. Survived a full network outage mid-event without interruption.</p>
               <div class="project-features">
                 <span class="feature-tag">Local-First Architecture</span>
                 <span class="feature-tag">QR Checkout Flow</span>
@@ -573,6 +573,7 @@
             </div>
             <div class="project-status">
               <span class="status-badge">Live</span>
+              <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Repo ↗</a>
               <a href="./mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Case Study ↗</a>
               <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:12px;padding:7px 14px;">Live ↗</a>
             </div>
@@ -586,7 +587,7 @@
                 <span class="project-date">2026</span>
               </div>
               <h3 class="project-title">Offline AI Environment</h3>
-              <p class="project-desc">Deployed Qwen3-Coder 30B locally using Ollama on a Lenovo LOQ 15IRX10 — Intel Core Ultra 9 185H, RTX 5070 with 12GB VRAM, 32GB DDR5. Full GPU-accelerated inference. No internet connection, no API calls, no data leaving the machine. A fully private coding assistant running at 30 billion parameters on local hardware.</p>
+              <p class="project-desc">Local LLM inference environment using Ollama and Qwen3-Coder 30B with GPU acceleration on consumer hardware — Lenovo LOQ 15IRX10, Intel Core Ultra 9 185H, RTX 5070 with 12GB VRAM, 32GB DDR5. No internet connection, no API calls. Fully offline inference for private development work.</p>
               <div class="project-features">
                 <span class="feature-tag">GPU-Accelerated Inference</span>
                 <span class="feature-tag">30B Parameter Model</span>
@@ -629,16 +630,6 @@
             </div>
             <div class="client-hover-bar" aria-hidden="true"></div>
           </a>
-          <div class="client-card reveal reveal-delay-1" style="opacity:0.4;pointer-events:none;" aria-hidden="true">
-            <div class="client-card-inner">
-              <div class="client-top">
-                <span class="client-type">More</span>
-                <span class="client-location">In progress</span>
-              </div>
-              <div class="client-name">+7 sites in build</div>
-              <div class="client-bottom"><span class="client-live">Coming soon</span></div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -675,7 +666,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <div class="footer-left"><span>francis.dev</span> — Built without frameworks</div>
+      <div class="footer-left"><span>francis.dev</span> — Built and deployed from the ground up.</div>
       <div class="footer-right">© 2026 Francis Tarectican · <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" style="color:var(--text-3);text-decoration:none;">GitHub ↗</a></div>
     </div>
   </footer>
