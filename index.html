@@ -1,3 +1,64 @@
+
+
+index.html
+File
+Find this CSS:
+css.nav-links a{font-size:20px;letter-spacing:.08em}
+
+Replace with:
+css.nav-links a{font-size:13px;letter-spacing:.12em}
+
+And change gap:36px to gap:20px in the same block:
+css.nav-
+
+links{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:20px;z-index:99}
+
+
+index(1).html
+File
+i mean full html do that try again
+
+Francis Tarectican — Backend Systems Developer and 13 more pages - Profile 1 - Microsoft​ Edge Beta 5_25_2026 7_33_22 PM.png
+huh its still way over the screen vro little more small but readable? look at pick vro
+
+
+Analysis paused
+
+Francis Tarectican — Backend Systems Developer and 13 more pages - Profile 1 - Microsoft​ Edge Beta 5_25_2026 8_47_26 PM.png
+i mean here huh its still way over the screen vro little more small but readable? look at pick vro
+
+Use this instead:
+
+.nav-links{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(8,8,8,.98);
+backdrop-filter:blur(24px);
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:10px;
+z-index:99;
+padding:80px 24px;
+}
+
+.nav-links a{
+font-size:10px;
+letter-spacing:.16em;
+line-height:1.2;
+}
+Your issue is not just font size. The menu is vertically centered with justify-content:center, so on small screens the stack still consumes too much vertical space. The reduced gap and tighter line-height fix the overflow while staying readable.
+
+
+
+index(1)-edited(1).html
+File
+you edit it vro hahahahahs take mucch time
+
+Thought for 26s
+Done. Download the tuned HTML
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +120,9 @@
     .nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--accent)}
     @media(max-width:768px){
       .nav-hamburger{display:flex}
-      .nav-links{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:20px;z-index:99}
+      .nav-links{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:12px;padding:92px 24px 28px;z-index:99;overflow-y:auto;-webkit-overflow-scrolling:touch}
       .nav-links.mobile-open{display:flex}
-      .nav-links a{font-size:13px;letter-spacing:.12em}
+      .nav-links a{font-size:10px;letter-spacing:.14em;line-height:1.2;padding:6px 0}
     }
     #skewWrap{will-change:transform;transform-origin:center top}
     .container{max-width:920px;margin:0 auto;padding:0 28px}
