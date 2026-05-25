@@ -137,15 +137,44 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
+
+    .case-header{position:relative}
+    .case-header::before{content:'';position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(240,165,0,.6),transparent);opacity:.45}
+    .case-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:1200;background:rgba(255,255,255,0.04);pointer-events:none}
+    .case-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ffd36a);transform-origin:left}
+    .case-header .container{position:relative}
+    .case-meta{margin-bottom:4px}
+    .hero-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:34px}
+    .hero-tile{padding:16px 18px;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(180deg,var(--bg-2),var(--bg-3));min-height:98px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
+    .hero-tile:hover{transform:translateY(-2px);border-color:rgba(240,165,0,.18);box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    .hero-tile-label{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase}
+    .hero-tile-value{font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+    .hero-tile-desc{font-size:12px;color:var(--text-2)}
+    .case-section{scroll-margin-top:96px}
+    .section-heading{position:relative}
+    .section-heading::after{content:'';display:block;width:56px;height:1px;margin-top:12px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.7}
+    .arch-box{box-shadow:0 18px 44px rgba(0,0,0,.18)}
+    .stack-tag,.constraint-item,.tradeoff-card,.redesign-item,.screenshot-slot,.incident-card{transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease}
+    .constraint-item:hover,.tradeoff-card:hover,.redesign-item:hover,.screenshot-slot:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.12);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .incident-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.16)}
+    .screenshots-grid .screenshot-slot{min-height:160px}
+    .screenshot-slot{position:relative;overflow:hidden}
+    .screenshot-slot::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(240,165,0,.06), transparent 60%);opacity:0;transition:opacity .25s ease}
+    .screenshot-slot:hover::before{opacity:1}
+
     @media (max-width: 640px) {
       .tradeoff-grid { grid-template-columns: 1fr; }
       .screenshots-grid { grid-template-columns: 1fr; }
+      .hero-tiles { grid-template-columns: 1fr; }
       .case-meta { gap: 20px; }
+
+      .hero-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
 
 <body>
+  <div class="case-progress" aria-hidden="true"><span id="caseProgressFill"></span></div>
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="./index.html" class="nav-logo">francis.dev</a>
@@ -179,6 +208,29 @@
         <div class="meta-item">
           <span class="meta-label">GitHub</span>
           <span class="meta-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 ↗</a></span>
+        </div>
+      </div>
+
+      <div class="hero-tiles reveal">
+        <div class="hero-tile">
+          <span class="hero-tile-label">Outcome</span>
+          <span class="hero-tile-value">Sold out</span>
+          <span class="hero-tile-desc">First live run</span>
+        </div>
+        <div class="hero-tile">
+          <span class="hero-tile-label">Reliability</span>
+          <span class="hero-tile-value">0 downtime</span>
+          <span class="hero-tile-desc">During outage</span>
+        </div>
+        <div class="hero-tile">
+          <span class="hero-tile-label">Incidents</span>
+          <span class="hero-tile-value">2 fixed live</span>
+          <span class="hero-tile-desc">No shutdown</span>
+        </div>
+        <div class="hero-tile">
+          <span class="hero-tile-label">Architecture</span>
+          <span class="hero-tile-value">Local-first</span>
+          <span class="hero-tile-desc">LAN-only deployment</span>
         </div>
       </div>
     </div>
@@ -435,12 +487,35 @@
 
   <script>
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+    const progressFill = document.getElementById('caseProgressFill');
 
+    const updateUI = () => {
+      const scrolled = window.scrollY > 40;
+      navbar.classList.toggle('scrolled', scrolled);
+
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (progressFill) progressFill.style.width = `${progress * 100}%`;
+    };
+
+    window.addEventListener('scroll', updateUI, { passive: true });
+    window.addEventListener('resize', updateUI);
+    updateUI();
+
+    const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.08}s`;
+      obs.observe(el);
+    });
   </script>
 </body>
 </html>
