@@ -247,16 +247,9 @@
     #heroName{will-change:transform}
     footer{will-change:opacity,transform}
 
-    /* ── AUTO-SCROLL LOCK OVERLAY ─────────────────────── */
-    /* Transparent full-screen capture layer — intercepts pointer/touch when active */
-    #scroll-lock-layer{
-      position:fixed;inset:0;z-index:8998;
-      pointer-events:none;touch-action:none;
-      /* transparent — invisible, just captures events */
-    }
+    #scroll-lock-layer{position:fixed;inset:0;z-index:8998;pointer-events:none;touch-action:none}
     #scroll-lock-layer.active{pointer-events:all}
 
-    /* ── UNLOCK NOTIFICATION ──────────────────────────── */
     #unlock-notif{
       position:fixed;bottom:32px;left:50%;
       transform:translateX(-50%) translateY(28px);
@@ -272,26 +265,14 @@
       transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);
       white-space:nowrap;overflow:hidden;
     }
-    #unlock-notif.show{
-      opacity:1;transform:translateX(-50%) translateY(0);
-    }
-    #unlock-notif .un-dot{
-      width:6px;height:6px;border-radius:50%;
-      background:var(--green);flex-shrink:0;
-      animation:_avail-pulse 1.6s ease-in-out infinite;
-    }
-    /* drain bar — covers full width, drains left over dismiss duration */
-    #unlock-notif .un-drain{
-      position:absolute;bottom:0;left:0;
-      height:1.5px;background:var(--accent);opacity:.35;
-      width:100%;transform-origin:left;
-    }
+    #unlock-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    #unlock-notif .un-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:_avail-pulse 1.6s ease-in-out infinite}
+    #unlock-notif .un-drain{position:absolute;bottom:0;left:0;height:1.5px;background:var(--accent);opacity:.35;width:100%;transform-origin:left}
     @keyframes _drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
   </style>
 </head>
 <body>
 
-<!-- SVG FILTER DEFS -->
 <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true" focusable="false">
   <defs>
     <filter id="card-distort" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="linearRGB">
@@ -301,7 +282,6 @@
   </defs>
 </svg>
 
-<!-- PRELOADER -->
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-logo">francis.dev</div>
   <div class="pl-counter" id="plCounter">00</div>
@@ -309,10 +289,8 @@
   <div class="pl-bar" id="plBar"></div>
 </div>
 
-<!-- AUTO-SCROLL LOCK LAYER -->
 <div id="scroll-lock-layer" aria-hidden="true"></div>
 
-<!-- UNLOCK NOTIFICATION -->
 <div id="unlock-notif" role="status" aria-live="polite" aria-atomic="true">
   <div class="un-dot"></div>
   <span>Scroll unlocked</span>
@@ -494,7 +472,7 @@
     <h2 class="section-title" id="clients-heading">Sites I've Shipped</h2>
     <p class="section-desc">Production websites built for local businesses across the Philippines.</p>
   </div>
- <div class="marquee-row" id="mqRow1" aria-label="Client sites row 1">
+  <div class="marquee-row" id="mqRow1" aria-label="Client sites row 1">
     <div class="marquee-track marquee-track--fwd">
       <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">&#8599;</span></a>
       <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">&#8599;</span></a>
@@ -514,7 +492,7 @@
       <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">&#8599;</span></a>
     </div>
   </div>
- <div class="marquee-row" id="mqRow2" aria-label="Client sites row 2" style="margin-top:1px;">
+  <div class="marquee-row" id="mqRow2" aria-label="Client sites row 2" style="margin-top:1px;">
     <div class="marquee-track marquee-track--rev">
       <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">&#8599;</span></a>
       <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">&#8599;</span></a>
@@ -565,7 +543,6 @@
 
 </div><!-- /skewWrap -->
 
-<!-- ── PRELOADER COUNTER — zero external deps, runs immediately ── -->
 <script>
 (function(){
   'use strict';
@@ -574,39 +551,25 @@
   var bar = document.getElementById('plBar');
   var DURATION = 1700;
   var start = null;
-
-  // Signal flag: main script waits for this before starting hero + scroll
   window.__preloaderDone = false;
-
   function pad(n){ return n < 10 ? '0'+n : ''+n; }
-
   function tick(ts){
     if(!start) start = ts;
     var p = Math.min((ts - start) / DURATION, 1);
     var e = 1 - Math.pow(1 - p, 3);
     ctr.textContent = pad(Math.round(e * 100));
     bar.style.width  = (e * 100) + '%';
-    if(p < 1){
-      requestAnimationFrame(tick);
-    } else {
-      ctr.textContent = '100';
-      bar.style.width = '100%';
-      setTimeout(exitPreloader, 260);
-    }
+    if(p < 1){ requestAnimationFrame(tick); }
+    else { ctr.textContent = '100'; bar.style.width = '100%'; setTimeout(exitPreloader, 260); }
   }
-
   function exitPreloader(){
     el.classList.add('exiting');
     el.addEventListener('transitionend', function(){
       el.style.display = 'none';
       window.__preloaderDone = true;
-      // If main script already attached a callback, fire it
-      if(typeof window.__onPreloaderDone === 'function'){
-        window.__onPreloaderDone();
-      }
+      if(typeof window.__onPreloaderDone === 'function'){ window.__onPreloaderDone(); }
     }, { once: true });
   }
-
   requestAnimationFrame(tick);
 })();
 </script>
@@ -619,7 +582,6 @@
 'use strict';
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-/* ── LENIS ───────────────────────────────────────────── */
 const lenis = new Lenis({
   duration: 1.2,
   easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -630,104 +592,52 @@ const lenis = new Lenis({
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
-lenis.stop(); // hold until preloader exits
+lenis.stop();
 
-/* ════════════════════════════════════════════════════════
-   1. PRELOADER CALLBACK — fires when counter finishes
-════════════════════════════════════════════════════════ */
 function onPreloaderReady(){
   lenis.start();
   startHeroLetters();
   setTimeout(startAutoScroll, 900);
 }
+if(window.__preloaderDone){ onPreloaderReady(); } else { window.__onPreloaderDone = onPreloaderReady; }
 
-// Preloader may already be done by the time CDNs finish loading
-if(window.__preloaderDone){
-  onPreloaderReady();
-} else {
-  window.__onPreloaderDone = onPreloaderReady;
-}
-
-/* ════════════════════════════════════════════════════════
-   2. AUTO-SCROLL — cinematic page reveal, input locked
-════════════════════════════════════════════════════════ */
 function startAutoScroll(){
-  const lockLayer  = document.getElementById('scroll-lock-layer');
+  const lockLayer = document.getElementById('scroll-lock-layer');
   const maxY = document.documentElement.scrollHeight - window.innerHeight;
-
-  // Nothing to scroll (very short viewport / content mismatch)
   if(maxY < 100){ return; }
-
-  // Speed: 380px/s → a 5000px page takes ~13s
-  const SPEED    = 380;
+  const SPEED = 380;
   const duration = maxY / SPEED;
-
-  /* ── LOCK ── */
-  // 1. Lenis already drives scroll — stop external input via:
-  //    a) transparent capture overlay (pointer/touch)
-  //    b) keydown preventDefault on scroll keys
   lockLayer.classList.add('active');
-
-  const BLOCKED_KEYS = new Set([
-    ' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',
-    'PageUp','PageDown','Home','End'
-  ]);
-  function blockKey(e){
-    if(BLOCKED_KEYS.has(e.key)) e.preventDefault();
-  }
-  // Block wheel via Lenis override — set wheelMultiplier to 0
-  // (cleaner than a passive:false event listener fighting Lenis)
-  lenis.options.wheelMultiplier  = 0;
-  lenis.options.touchMultiplier  = 0;
+  const BLOCKED_KEYS = new Set([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End']);
+  function blockKey(e){ if(BLOCKED_KEYS.has(e.key)) e.preventDefault(); }
+  lenis.options.wheelMultiplier = 0;
+  lenis.options.touchMultiplier = 0;
   window.addEventListener('keydown', blockKey);
-
-  /* ── SCROLL ── */
-  // Use Lenis scrollTo with a custom easing:
-  // slight ease-in (first 8%), linear middle, hard stop at end
   lenis.scrollTo(maxY, {
     duration: duration,
-    easing: function(t){
-      if(t < 0.08) return (t / 0.08) * 0.08; // ease in
-      return t;                                 // linear rest
-    },
+    easing: function(t){ if(t < 0.08) return (t / 0.08) * 0.08; return t; },
     onComplete: unlock
   });
-
-  /* ── UNLOCK ── */
   function unlock(){
-    // Restore input
     lockLayer.classList.remove('active');
-    lenis.options.wheelMultiplier  = 0.9;
-    lenis.options.touchMultiplier  = 1.6;
+    lenis.options.wheelMultiplier = 0.9;
+    lenis.options.touchMultiplier = 1.6;
     window.removeEventListener('keydown', blockKey);
-
     showUnlockNotif();
   }
 }
 
-/* ════════════════════════════════════════════════════════
-   3. UNLOCK NOTIFICATION
-════════════════════════════════════════════════════════ */
 function showUnlockNotif(){
   const DISMISS_MS = 2800;
-  const notif  = document.getElementById('unlock-notif');
-  const drain  = document.getElementById('unDrain');
-
+  const notif = document.getElementById('unlock-notif');
+  const drain = document.getElementById('unDrain');
   notif.classList.add('show');
-
-  // Start drain animation
   drain.style.animation = 'none';
-  drain.offsetWidth; // reflow
+  drain.offsetWidth;
   drain.style.animation = '_drain ' + (DISMISS_MS / 1000) + 's linear forwards';
-
-  setTimeout(() => {
-    notif.classList.remove('show');
-  }, DISMISS_MS);
+  setTimeout(() => { notif.classList.remove('show'); }, DISMISS_MS);
 }
 
-/* ════════════════════════════════════════════════════════
-   4. CUSTOM CURSOR
-════════════════════════════════════════════════════════ */
 (function(){
   const isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   const noMotion  = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -752,7 +662,6 @@ function showUnlockNotif(){
   document.addEventListener('mouseenter', ()=>{ dot.style.opacity=''; ring.style.opacity=''; });
 })();
 
-/* ── MOBILE NAV ──────────────────────────────────────── */
 const hamburger = document.getElementById('navHamburger');
 const navLinks  = document.getElementById('navLinks');
 hamburger.addEventListener('click', ()=>{
@@ -770,9 +679,6 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
   lenis.start();
 }));
 
-/* ════════════════════════════════════════════════════════
-   5. HERO LETTERS
-════════════════════════════════════════════════════════ */
 function startHeroLetters(){
   const el = document.getElementById('heroName');
   if(!el) return;
@@ -803,9 +709,6 @@ function startHeroLetters(){
   );
 }
 
-/* ════════════════════════════════════════════════════════
-   6. NAV SCRAMBLE
-════════════════════════════════════════════════════════ */
 (function(){
   const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&';
   const FRAMES=18;
@@ -831,7 +734,6 @@ function startHeroLetters(){
   });
 })();
 
-/* ── ARCH TOGGLE ─────────────────────────────────────── */
 const archToggle  = document.getElementById('archToggle');
 const archDiagram = document.getElementById('archDiagram');
 if(archToggle&&archDiagram){
@@ -842,17 +744,12 @@ if(archToggle&&archDiagram){
   });
 }
 
-/* ════════════════════════════════════════════════════════
-   7. CARD GLOW + TILT + SVG DISTORTION
-════════════════════════════════════════════════════════ */
 if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const turbEl = document.getElementById('cardTurb');
   const dispEl = document.getElementById('cardDisp');
   let dtl = null;
-
   document.querySelectorAll('.evidence-card,.project-card').forEach(card=>{
     const glow = card.querySelector('.card-glow');
-
     card.addEventListener('mousemove', e=>{
       const r=card.getBoundingClientRect();
       if(glow){ glow.style.left=(e.clientX-r.left)+'px'; glow.style.top=(e.clientY-r.top)+'px'; }
@@ -860,7 +757,6 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
       const dy=(e.clientY-(r.top+r.height/2))/(r.height/2);
       card.style.transform='perspective(1000px) rotateY('+(dx*2.5)+'deg) rotateX('+(-dy*2.5)+'deg) translateY(-2px)';
     });
-
     card.addEventListener('mouseenter', ()=>{
       card.style.transition='transform .08s ease,border-color .25s,background .25s,box-shadow .3s';
       card.classList.add('card-distort-active');
@@ -869,7 +765,6 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
         .to([turbEl,dispEl],{ attr:{baseFrequency:0.052,scale:22}, duration:.16, ease:'power2.out' })
         .to([turbEl,dispEl],{ attr:{baseFrequency:0.005,scale:3},  duration:.42, ease:'power3.out' });
     });
-
     card.addEventListener('mouseleave', ()=>{
       card.style.transition='transform .5s cubic-bezier(.22,1,.36,1),border-color .25s,background .25s,box-shadow .3s';
       card.style.transform='';
@@ -882,7 +777,6 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   });
 }
 
-/* ── MAGNETIC BUTTONS ────────────────────────────────── */
 if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   document.querySelectorAll('.btn.magnetic').forEach(btn=>{
     btn.addEventListener('mousemove', e=>{
@@ -900,7 +794,6 @@ if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   });
 }
 
-/* ── STAT COUNTER ────────────────────────────────────── */
 const countObs=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(!entry.isIntersecting) return;
@@ -925,88 +818,64 @@ if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
 }
 
 /* ════════════════════════════════════════════════════════
-   8. VELOCITY SKEW
+   8. VELOCITY SKEW — FIXED: removed mqRows skew that broke marquee
 ════════════════════════════════════════════════════════ */
 const noMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 if(!noMotion){
   const skewWrap = document.getElementById('skewWrap');
-  const mqRows   = document.querySelectorAll('.marquee-row');
-  let skewCur=0, mqSkewCur=0;
+  let skewCur=0;
 
   gsap.ticker.add(()=>{
     const vel = lenis.velocity || 0;
     const skewT = Math.max(-2, Math.min(2, vel * -0.012));
     skewCur += (skewT - skewCur) * 0.075;
     skewWrap.style.transform = 'skewY('+skewCur.toFixed(5)+'deg)';
-
-    const mqT = Math.max(-5, Math.min(5, vel * -0.065));
-    mqSkewCur += (mqT - mqSkewCur) * 0.10;
-    mqRows.forEach(row=>{
-      row.style.transform = 'skewX('+mqSkewCur.toFixed(5)+'deg)';
-    });
   });
 }
 
-/* ════════════════════════════════════════════════════════
-   9. GSAP SCROLL ANIMATIONS
-════════════════════════════════════════════════════════ */
+/* 9. GSAP SCROLL ANIMATIONS */
 if(!noMotion){
-
-  gsap.to('#heroName',{
-    yPercent:-18, ease:'none',
-    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.2}
-  });
-  gsap.to('.hero-sub',{
-    yPercent:-8, ease:'none',
-    scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5}
-  });
+  gsap.to('#heroName',{ yPercent:-18, ease:'none', scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.2} });
+  gsap.to('.hero-sub',{ yPercent:-8, ease:'none', scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5} });
 
   document.querySelectorAll('.section-label').forEach(el=>{
     gsap.from(el,{clipPath:'inset(0 100% 0 0)',opacity:0,duration:.9,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 92%',once:true}});
   });
-
   document.querySelectorAll('.section-title').forEach(el=>{
     const s=SplitText.create(el,{type:'words,lines'});
     gsap.from(s.words,{y:44,opacity:0,filter:'blur(8px)',duration:.75,stagger:.07,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 88%',once:true}});
   });
-
   document.querySelectorAll('.section-desc').forEach(el=>{
     const s=SplitText.create(el,{type:'words'});
     gsap.from(s.words,{y:18,opacity:0,filter:'blur(3px)',duration:.5,stagger:.028,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
-
   document.querySelectorAll('.about-text p').forEach(el=>{
     const s=SplitText.create(el,{type:'words'});
     gsap.from(s.words,{y:20,opacity:0,duration:.48,stagger:.022,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
-
   document.querySelectorAll('.project-title').forEach(el=>{
     const s=SplitText.create(el,{type:'lines',linesClass:'split-line'});
     gsap.from(s.lines,{y:32,opacity:0,duration:.65,stagger:.1,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
-
   document.querySelectorAll('.project-desc').forEach(el=>{
     const s=SplitText.create(el,{type:'words'});
     gsap.from(s.words,{y:14,opacity:0,duration:.4,stagger:.018,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
-
   document.querySelectorAll('.project-features').forEach(el=>{
     gsap.from(el.querySelectorAll('.feature-tag'),{y:12,opacity:0,scale:.92,duration:.4,stagger:.06,ease:'back.out(1.6)',
       scrollTrigger:{trigger:el,start:'top 90%',once:true}});
   });
-
   document.querySelectorAll('.tech-stack').forEach(el=>{
     gsap.from(el.querySelectorAll('.tech-tag'),{y:10,opacity:0,scale:.88,duration:.38,stagger:.05,ease:'back.out(1.8)',
       scrollTrigger:{trigger:el,start:'top 92%',once:true}});
   });
-
   gsap.from('.stat-card',{y:28,opacity:0,scale:.94,duration:.55,stagger:.08,ease:'power3.out',
     scrollTrigger:{trigger:'.stats-row',start:'top 88%',once:true}});
   gsap.from('.edu-card',{y:20,opacity:0,duration:.6,ease:'power2.out',
@@ -1015,7 +884,6 @@ if(!noMotion){
     scrollTrigger:{trigger:'.evidence-grid',start:'top 82%',once:true}});
   gsap.from('.project-card',{y:40,opacity:0,duration:.7,stagger:.12,ease:'power3.out',
     scrollTrigger:{trigger:'.projects-list',start:'top 84%',once:true}});
-
   const tl=document.querySelector('.contact-tagline');
   if(tl){
     const s=SplitText.create(tl,{type:'lines,words'});
