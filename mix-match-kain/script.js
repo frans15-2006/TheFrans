@@ -55,6 +55,7 @@ function createParticles() {
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
     { size: '3px', color: 'rgba(0, 255, 200, 0.25)', shape: 'square' },
   ];
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 25; i++) {
     const particle = document.createElement('div');
     const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
@@ -66,8 +67,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -241,12 +243,12 @@ function updateCart() {
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
+  let cartHtml = '';
 
   cart.forEach((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    cartHtml += `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
@@ -260,6 +262,7 @@ function updateCart() {
       </div>
     `;
   });
+  list.innerHTML = cartHtml;
 
   const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
