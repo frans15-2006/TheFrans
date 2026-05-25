@@ -1,0 +1,3 @@
+## 2026-05-25 - Accessibility Refinement for Non-Semantic Buttons
+**Learning:** Converting interactive `div` elements to semantic `<button>` elements significantly improves keyboard accessibility but can introduce inconsistent default browser styles. Using `appearance: none` and `-webkit-appearance: none` is a reliable way to ensure the new buttons retain their custom design across different platforms without inheriting unwanted platform-specific UI.
+**Action:** When refactoring interactive `div` or `span` elements to `<button>`, prioritize adding a CSS reset including `appearance: none` and ensuring the `cursor: pointer` is preserved.
