@@ -22,14 +22,13 @@
       --accent:#f0a500;--accent-hi:#ffbe30;--accent-dim:rgba(240,165,0,0.08);--accent-glow:rgba(240,165,0,0.18);
       --green:#4ade80;--radius:10px;--radius-lg:18px;
       --mono:'DM Mono',monospace;--sans:'Bricolage Grotesque',sans-serif;
-      --hero-size:clamp(52px,10.5vw,116px);
-      --mx:50vw;--my:24vh
+      --hero-size:clamp(52px,10.5vw,116px)
     }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
     body::before{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
     body::after{content:'';position:fixed;inset:0;z-index:8999;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:96px 96px;background-position:0 0,0 0;will-change:opacity}
-body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(240,165,0,.08);--ambient-3:rgba(74,222,128,.06)}
+    body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(240,165,0,.08);--ambient-3:rgba(74,222,128,.06)}
     body[data-section='clients']{--ambient-1:rgba(74,222,128,.10);--ambient-2:rgba(240,165,0,.06);--ambient-3:rgba(96,165,250,.07)}
     body[data-section='contact']{--ambient-1:rgba(255,190,48,.11);--ambient-2:rgba(96,165,250,.06);--ambient-3:rgba(74,222,128,.05)}
     ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-mid)}
@@ -40,8 +39,9 @@ body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(
     .pl-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-top:18px}
     .pl-bar{position:absolute;bottom:0;left:0;height:1px;background:var(--accent);width:0;opacity:.5}
     html.custom-cursor *{cursor:none!important}
-    .cur-dot{position:fixed;z-index:9999;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);will-change:transform}
-    .cur-ring{position:fixed;z-index:9998;pointer-events:none;width:26px;height:26px;border-radius:50%;border:1px solid rgba(240,165,0,.3);transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s,background .2s,opacity .2s;will-change:transform}
+    /* FIX: top/left:0, no transform — JS handles centering via translate3d */
+    .cur-dot{position:fixed;z-index:9999;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--accent);top:0;left:0;will-change:transform}
+    .cur-ring{position:fixed;z-index:9998;pointer-events:none;width:26px;height:26px;border-radius:50%;border:1px solid rgba(240,165,0,.3);top:0;left:0;transition:width .2s,height .2s,border-color .2s,background .2s,opacity .2s;will-change:transform}
     html.cursor-hover .cur-dot{width:6px;height:6px;opacity:.5}
     html.cursor-hover .cur-ring{width:42px;height:42px;border-color:rgba(240,165,0,.45);background:rgba(240,165,0,.04)}
     html.cursor-click .cur-dot{width:3px;height:3px}
@@ -68,7 +68,6 @@ body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(
       .nav-links.mobile-open{display:flex}
       .nav-links a{font-size:10px;letter-spacing:.14em;line-height:1.2;padding:6px 0}
     }
-
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .section-title,.section-desc,.section-label,.about-text p,.project-title,.project-desc,.feature-tag,.tech-tag,.stat-card,.edu-card,.evidence-card,.project-card,.mq-card,.contact-item,.contact-tagline{transform:translateZ(0)}
@@ -76,14 +75,13 @@ body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(
     .card-distort-active{filter:none}
     .card-glow{display:none}
     .hero-name .letter{transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1)}
-    .hero-cta .btn,.arch-toggle,.mq-card,.stat-card,.evidence-card,.project-card,.constraint-item,.tradeoff-card,.redesign-item{transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease,color .18s ease,opacity .18s ease}
-    .btn-primary:hover,.btn-ghost:hover,.arch-toggle:hover,.mq-card:hover,.stat-card:hover,.evidence-card:hover,.project-card:hover,.constraint-item:hover,.tradeoff-card:hover,.redesign-item:hover,.screenshot-slot:hover,.incident-card:hover{transform:translateY(-1px)}
+    .hero-cta .btn,.arch-toggle,.mq-card,.stat-card,.evidence-card,.project-card{transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease,color .18s ease,opacity .18s ease}
+    .btn-primary:hover,.btn-ghost:hover,.arch-toggle:hover,.mq-card:hover,.stat-card:hover,.evidence-card:hover,.project-card:hover{transform:translateY(-1px)}
     .hero-scroll-line,.hero-avail-dot,.scroll-progress,.pl-bar,#unlock-notif .un-drain,.cur-dot,.cur-ring,.hero-name .letter{will-change:transform}
-
     #skewWrap{position:relative;z-index:2;will-change:transform;transform-origin:center top}
     .container{max-width:920px;margin:0 auto;padding:0 28px}
     .divider{width:100%;height:1px;background:var(--border)}
-    section{padding:112px 0}
+    section{padding:112px 0;contain:layout style}
     .section-label{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;overflow:hidden}
     .section-label::before{content:'';width:24px;height:1px;background:var(--accent);opacity:.6;flex-shrink:0}
     .section-label span{display:inline-block}
@@ -170,7 +168,6 @@ body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(
     .arch-diagram{margin-top:14px;border:1px solid var(--border);border-radius:10px;background:#060d0b;max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
     .arch-diagram.open{max-height:600px}
     .arch-diagram svg{width:100%;height:auto;display:block;padding:14px}
-    /* MARQUEE */
     #clients{overflow:hidden}
     .marquee-row{overflow:hidden;position:relative}
     .marquee-row::before,.marquee-row::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
@@ -541,7 +538,6 @@ body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-
 <script>
 'use strict';
 gsap.registerPlugin(ScrollTrigger);
@@ -618,6 +614,7 @@ function showUnlockNotif(){
   setTimeout(() => notif.classList.remove('show'), DISMISS_MS);
 }
 
+/* CURSOR — continuous RAF loop, translate3d only, no left/top, no CSS var writes */
 (function(){
   const isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   const noMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -632,24 +629,20 @@ function showUnlockNotif(){
 
   document.documentElement.classList.add('custom-cursor');
 
-  let mx = -200, my = -200, rx = -200, ry = -200, raf = 0;
-  const render = () => {
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    raf = 0;
-  };
+  let mx = -200, my = -200, rx = -200, ry = -200;
 
   window.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    document.documentElement.style.setProperty('--mx', e.clientX + 'px');
-    document.documentElement.style.setProperty('--my', e.clientY + 'px');
-    if (!raf) raf = requestAnimationFrame(render);
-  }, {passive:true});
+  }, {passive: true});
+
+  (function loop(){
+    dot.style.transform = 'translate3d(calc('+mx+'px - 50%),calc('+my+'px - 50%),0)';
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.transform = 'translate3d(calc('+rx+'px - 50%),calc('+ry+'px - 50%),0)';
+    requestAnimationFrame(loop);
+  })();
 
   document.addEventListener('mousedown', () => document.documentElement.classList.add('cursor-click'));
   document.addEventListener('mouseup', () => document.documentElement.classList.remove('cursor-click'));
@@ -745,7 +738,7 @@ if(archToggle && archDiagram){
 }
 
 function startRevealObservers(){
-  const items = document.querySelectorAll('.reveal, .section-label, .section-title, .section-desc, .about-text p, .stat-card, .edu-card, .evidence-card, .project-card, .mq-card, .contact-item, .contact-tagline, .constraint-item, .tradeoff-card, .redesign-item, .screenshot-slot, .incident-card');
+  const items = document.querySelectorAll('.reveal, .section-label, .section-title, .section-desc, .about-text p, .stat-card, .edu-card, .evidence-card, .project-card, .mq-card, .contact-item, .contact-tagline');
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
@@ -755,14 +748,9 @@ function startRevealObservers(){
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
   items.forEach((el, i)=>{
-    if (el.classList.contains('reveal')) {
-      el.style.transitionDelay = (Math.min(i % 4, 3) * 0.05) + 's';
-      obs.observe(el);
-    } else {
-      el.classList.add('reveal');
-      el.style.transitionDelay = (Math.min(i % 4, 3) * 0.05) + 's';
-      obs.observe(el);
-    }
+    if(!el.classList.contains('reveal')) el.classList.add('reveal');
+    el.style.transitionDelay = (Math.min(i % 4, 3) * 0.05) + 's';
+    obs.observe(el);
   });
 }
 
@@ -782,5 +770,4 @@ function setupSectionTone(){
 }
 </script>
 </body>
-
 </html>
