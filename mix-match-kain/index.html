@@ -40,6 +40,7 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      appearance: none; -webkit-appearance: none;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
@@ -98,7 +99,7 @@
       .search-icon { left: 15px !important; }
 
       .category-tabs { gap: 7px; margin-bottom: 16px; }
-      .category-tab { padding: 8px 13px !important; font-size: 0.78rem !important; }
+      .category-tab { padding: 8px 13px !important; font-size: 0.78rem !important; appearance: none; -webkit-appearance: none; }
 
       .toast-container { top: 10px !important; right: 10px; left: 10px; }
       .toast { min-width: unset !important; width: 100%; font-size: 0.83rem; padding: 11px 14px; }
@@ -317,27 +318,27 @@
         <main>
           <!-- Search Bar -->
           <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <nav class="category-tabs" aria-label="Food categories">
+            <button class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
-          </div>
+            </button>
+          </nav>
 
           <!-- Rice Section -->
           <div id="rice-section">
@@ -355,6 +356,12 @@
           <div id="drinks-section">
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="no-results" class="empty-message" style="display: none; margin-top: 40px;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">No items found matching your search.</p>
+            <button class="gradient-btn" onclick="clearSearch()">Clear search</button>
           </div>
         </main>
 
@@ -376,6 +383,7 @@
             <span>TOTAL</span>
             <span id="total-price" class="cart-total-price price-counter">₱0</span>
           </div>
+          <label for="cust-name" class="visually-hidden">Name for order</label>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
             GENERATE QR CODE
@@ -444,34 +452,41 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceCount = filterGridItems('rice-grid', riceMenu, searchQuery);
+      const ulamCount = filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      const drinksCount = filterGridItems('drinks-grid', drinksMenu, searchQuery);
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && riceCount > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && ulamCount > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && drinksCount > 0) ? 'block' : 'none';
+
+      const totalVisible = (showRice ? riceCount : 0) + (showUlam ? ulamCount : 0) + (showDrinks ? drinksCount : 0);
+      noResults.style.display = (totalVisible === 0) ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let count = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          count++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return count;
     }
 
     // ====== MOBILE CART DRAWER ======
