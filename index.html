@@ -6,7 +6,7 @@
   <title>Francis Tarectican — Backend Systems Developer</title>
   <meta name="description" content="Francis Tarectican — backend-focused developer from Palawan, Philippines. Built and deployed a local-first food ordering system for a real restaurant. Node.js, Express, WebSockets." />
   <meta property="og:title" content="Francis Tarectican — Backend Systems Developer" />
-  <meta property="og:description" content="Backend-focused developer building local-first systems for real-world operations. Palawan, Philippines." />
+  <meta property="og:description" content="Backend developer. One production system. Real operational credibility. Palawan, Philippines." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,28 +26,36 @@
     }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    body::before{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
-    body::after{content:'';position:fixed;inset:0;z-index:8999;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:96px 96px;background-position:0 0,0 0;will-change:opacity}
-    body[data-section='projects']{--ambient-1:rgba(96,165,250,.12);--ambient-2:rgba(240,165,0,.08);--ambient-3:rgba(74,222,128,.06)}
-    body[data-section='clients']{--ambient-1:rgba(74,222,128,.10);--ambient-2:rgba(240,165,0,.06);--ambient-3:rgba(96,165,250,.07)}
-    body[data-section='contact']{--ambient-1:rgba(255,190,48,.11);--ambient-2:rgba(96,165,250,.06);--ambient-3:rgba(74,222,128,.05)}
+
+    /* Noise + grid overlays */
+    body::before{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
+    body::after{content:'';position:fixed;inset:0;z-index:8999;pointer-events:none;opacity:.09;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:96px 96px;will-change:opacity}
+
+    /* Scrollbar */
     ::-webkit-scrollbar{width:2px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border-mid)}
+
+    /* Preloader */
     #preloader{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;clip-path:inset(0 0 0% 0)}
-    #preloader.exiting{clip-path:inset(0 0 100% 0);transition:clip-path .72s cubic-bezier(.76,0,.24,1)}
+    #preloader.exiting{clip-path:inset(0 0 100% 0);transition:clip-path .6s cubic-bezier(.76,0,.24,1)}
     .pl-logo{position:absolute;top:28px;left:28px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;opacity:.7}
-    .pl-counter{font-family:var(--mono);font-size:clamp(80px,18vw,200px);font-weight:300;color:var(--accent);letter-spacing:-.06em;line-height:1;opacity:.92;min-width:3ch;text-align:center}
-    .pl-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-top:18px}
-    .pl-bar{position:absolute;bottom:0;left:0;height:1px;background:var(--accent);width:0;opacity:.5}
+    .pl-counter{font-family:var(--mono);font-size:clamp(72px,16vw,180px);font-weight:300;color:var(--accent);letter-spacing:-.06em;line-height:1;opacity:.88;min-width:3ch;text-align:center}
+    .pl-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-top:16px}
+    .pl-bar{position:absolute;bottom:0;left:0;height:1px;background:var(--accent);width:0;opacity:.45}
+
+    /* Cursor */
     html.custom-cursor *{cursor:none!important}
-    /* FIX: top/left:0, no transform — JS handles centering via translate3d */
-    .cur-dot{position:fixed;z-index:9999;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--accent);top:0;left:0;will-change:transform}
-    .cur-ring{position:fixed;z-index:9998;pointer-events:none;width:26px;height:26px;border-radius:50%;border:1px solid rgba(240,165,0,.3);top:0;left:0;transition:width .2s,height .2s,border-color .2s,background .2s,opacity .2s;will-change:transform}
-    html.cursor-hover .cur-dot{width:6px;height:6px;opacity:.5}
-    html.cursor-hover .cur-ring{width:42px;height:42px;border-color:rgba(240,165,0,.45);background:rgba(240,165,0,.04)}
+    .cur-dot{position:fixed;z-index:9999;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--accent);top:0;left:0;will-change:transform;opacity:.9}
+    .cur-ring{position:fixed;z-index:9998;pointer-events:none;width:24px;height:24px;border-radius:50%;border:1px solid rgba(240,165,0,.25);top:0;left:0;transition:width .18s,height .18s,border-color .18s,background .18s,opacity .18s;will-change:transform}
+    html.cursor-hover .cur-dot{width:5px;height:5px;opacity:.5}
+    html.cursor-hover .cur-ring{width:38px;height:38px;border-color:rgba(240,165,0,.4);background:rgba(240,165,0,.035)}
     html.cursor-click .cur-dot{width:3px;height:3px}
-    html.cursor-click .cur-ring{width:20px;height:20px}
+    html.cursor-click .cur-ring{width:18px;height:18px}
+
+    /* Scroll progress */
     @keyframes _prog{to{transform:scaleX(1)}}
     .scroll-progress{position:fixed;top:0;left:0;right:0;height:1.5px;z-index:300;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:_prog linear both;animation-timeline:scroll(root)}
+
+    /* Nav */
     @keyframes _nav-bg{from{background:rgba(8,8,8,0);border-bottom-color:transparent}to{background:rgba(8,8,8,.93);border-bottom-color:var(--border)}}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;border-bottom:1px solid transparent;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);animation:_nav-bg linear both;animation-timeline:scroll(root);animation-range:0px 64px}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
@@ -62,92 +70,112 @@
     .nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);background:var(--accent)}
     .nav-hamburger.open span:nth-child(2){opacity:0}
     .nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);background:var(--accent)}
+
     @media(max-width:768px){
       .nav-hamburger{display:flex}
       .nav-links{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:flex-start;gap:12px;padding:92px 24px 28px;z-index:99;overflow-y:auto;-webkit-overflow-scrolling:touch}
       .nav-links.mobile-open{display:flex}
       .nav-links a{font-size:10px;letter-spacing:.14em;line-height:1.2;padding:6px 0}
     }
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+
+    /* Reveal animations */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    .section-title,.section-desc,.section-label,.about-text p,.project-title,.project-desc,.feature-tag,.tech-tag,.stat-card,.edu-card,.evidence-card,.project-card,.mq-card,.contact-item,.contact-tagline{transform:translateZ(0)}
-    .evidence-card,.project-card,.stat-card,.mq-card{will-change:auto}
-    .card-distort-active{filter:none}
-    .card-glow{display:none}
-    .hero-name .letter{transition:opacity .28s ease,transform .28s cubic-bezier(.22,1,.36,1)}
-    .hero-cta .btn,.arch-toggle,.mq-card,.stat-card,.evidence-card,.project-card{transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease,color .18s ease,opacity .18s ease}
-    .btn-primary:hover,.btn-ghost:hover,.arch-toggle:hover,.mq-card:hover,.stat-card:hover,.evidence-card:hover,.project-card:hover{transform:translateY(-1px)}
-    .hero-scroll-line,.hero-avail-dot,.scroll-progress,.pl-bar,#unlock-notif .un-drain,.cur-dot,.cur-ring,.hero-name .letter{will-change:transform}
-    #skewWrap{position:relative;z-index:2;will-change:transform;transform-origin:center top}
-    .container{max-width:920px;margin:0 auto;padding:0 28px}
-    .divider{width:100%;height:1px;background:var(--border)}
-    section{padding:112px 0;contain:layout style}
-    .section-label{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;overflow:hidden}
-    .section-label::before{content:'';width:24px;height:1px;background:var(--accent);opacity:.6;flex-shrink:0}
-    .section-label span{display:inline-block}
-    .section-title{font-size:clamp(30px,4.5vw,46px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:14px}
-    .section-desc{color:var(--text-2);max-width:520px;margin-bottom:52px;font-size:14px;line-height:1.75}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius);font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;border:none;font-family:var(--sans);position:relative;overflow:hidden;letter-spacing:.01em}
-    .btn-primary{background:var(--accent);color:#080808}
-    .btn-primary:hover{background:var(--accent-hi);transform:translateY(-1px)}
-    .btn-ghost{background:transparent;border:1px solid var(--border-mid);color:var(--text-2)}
-    .btn-ghost:hover{border-color:rgba(255,255,255,.2);color:var(--text);background:var(--bg-3)}
-    #hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 80px;position:relative}
-    .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px}
-    .hero-avail{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--text-2);letter-spacing:.1em;text-transform:uppercase}
-    .hero-avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:_avail-pulse 2.4s ease-in-out infinite}
-    @keyframes _avail-pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}50%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
-    .hero-role-tag{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(240,165,0,.2);border-radius:4px;background:var(--accent-dim)}
-    .hero-name{font-size:var(--hero-size);font-weight:300;line-height:.95;letter-spacing:-.04em;margin-bottom:24px}
-    .hero-name .bold{font-weight:700;color:var(--accent)}
-    .hero-sub{font-size:clamp(14px,2vw,17px);color:var(--text-2);max-width:480px;margin-bottom:44px;line-height:1.7;font-weight:400}
-    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-scroll-indicator{position:absolute;bottom:36px;left:28px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
-    .hero-scroll-line{width:40px;height:1px;background:var(--text-3);animation:_scroll-breathe 2.2s ease-in-out infinite}
-    @keyframes _scroll-breathe{0%,100%{transform:scaleX(1);opacity:.4}50%{transform:scaleX(1.4);opacity:.9}}
-    .hero-name .letter{display:inline-block;opacity:0;transform:translateY(56px) rotate(6deg);transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1)}
-    .hero-name .letter.in{opacity:1;transform:translateY(0) rotate(0)}
-    @keyframes _reveal{from{opacity:0;transform:translateY(32px) scale(.97);filter:blur(7px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+
+    @keyframes _reveal{from{opacity:0;transform:translateY(28px) scale(.97);filter:blur(6px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
     @supports(animation-timeline:view()){
       .reveal{animation:_reveal linear both;animation-timeline:view();animation-range:entry 8% entry 52%}
       .reveal-d1{animation-range:entry 12% entry 56%}
       .reveal-d2{animation-range:entry 16% entry 60%}
       .reveal-d3{animation-range:entry 20% entry 64%}
-      .reveal-d4{animation-range:entry 24% entry 68%}
     }
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-    .about-text p{color:var(--text-2);font-size:14px;margin-bottom:18px;line-height:1.85}
+
+    /* Dividers with draw animation */
+    @keyframes _div-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @supports(animation-timeline:view()){
+      .divider{transform:scaleX(0);transform-origin:left;animation:_div-draw linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+    }
+
+    /* Layout */
+    .container{max-width:920px;margin:0 auto;padding:0 28px}
+    .divider{width:100%;height:1px;background:var(--border)}
+    section{padding:108px 0;contain:layout style}
+
+    /* Section labels */
+    .section-label{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;overflow:hidden}
+    .section-label::before{content:'';width:24px;height:1px;background:var(--accent);opacity:.6;flex-shrink:0}
+    .section-label span{display:inline-block}
+    .section-title{font-size:clamp(28px,4.2vw,44px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:12px}
+    .section-desc{color:var(--text-2);max-width:520px;margin-bottom:48px;font-size:14px;line-height:1.75}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius);font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;border:none;font-family:var(--sans);position:relative;overflow:hidden;letter-spacing:.01em}
+    .btn-primary{background:var(--accent);color:#080808}
+    .btn-primary:hover{background:var(--accent-hi);transform:translateY(-1px)}
+    .btn-ghost{background:transparent;border:1px solid var(--border-mid);color:var(--text-2)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.2);color:var(--text);background:var(--bg-3)}
+
+    /* Hero */
+    #hero{min-height:100svh;display:flex;align-items:center;padding:110px 0 80px;position:relative}
+    .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+    .hero-avail{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--text-2);letter-spacing:.1em;text-transform:uppercase}
+    .hero-avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:_avail-pulse 2.4s ease-in-out infinite;will-change:transform}
+    @keyframes _avail-pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.45)}50%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+    .hero-role-tag{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(240,165,0,.2);border-radius:4px;background:var(--accent-dim)}
+    .hero-name{font-size:var(--hero-size);font-weight:300;line-height:.95;letter-spacing:-.04em;margin-bottom:22px}
+    .hero-name .bold{font-weight:700;color:var(--accent)}
+    .hero-sub{font-size:clamp(14px,1.9vw,16px);color:var(--text-2);max-width:440px;margin-bottom:40px;line-height:1.75;font-weight:400}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-scroll-indicator{position:absolute;bottom:36px;left:28px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+    .hero-scroll-line{width:36px;height:1px;background:var(--text-3);animation:_scroll-breathe 2.2s ease-in-out infinite;will-change:transform}
+    @keyframes _scroll-breathe{0%,100%{transform:scaleX(1);opacity:.35}50%{transform:scaleX(1.35);opacity:.8}}
+
+    /* Hero letter animation */
+    .hero-name .letter{display:inline-block;opacity:0;transform:translateY(48px) rotate(5deg);transition:opacity .38s ease,transform .38s cubic-bezier(.22,1,.36,1);will-change:transform}
+    .hero-name .letter.in{opacity:1;transform:translateY(0) rotate(0)}
+
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+    .about-text p{color:var(--text-2);font-size:14px;margin-bottom:16px;line-height:1.85}
     .about-text p strong{color:var(--text);font-weight:600}
     .about-right{display:flex;flex-direction:column;gap:12px}
     .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .stat-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
-    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
-    .stat-card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.14);border-color:rgba(240,165,0,.16)}
+    .stat-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .25s,transform .2s,box-shadow .25s;position:relative;overflow:hidden}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .25s}
+    .stat-card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12);border-color:rgba(240,165,0,.16)}
     .stat-card:hover::before{opacity:1}
-    .stat-num{font-size:38px;font-weight:700;color:var(--accent);letter-spacing:-.04em;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+    .stat-num{font-size:36px;font-weight:700;color:var(--accent);letter-spacing:-.04em;line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
     .stat-label{font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:.1em;font-weight:500;font-family:var(--mono)}
     .edu-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px}
     .edu-degree{font-weight:600;font-size:14px;margin-bottom:4px}
     .edu-school{color:var(--text-2);font-size:12px;margin-bottom:10px}
     .edu-badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:999px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(240,165,0,.15);letter-spacing:.06em}
-    .evidence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .evidence-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color .25s,background .25s;position:relative;overflow:hidden}
+
+    /* Evidence */
+    .evidence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .evidence-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:border-color .22s,background .22s;position:relative;overflow:hidden}
     .evidence-card:hover{border-color:rgba(240,165,0,.16);background:var(--bg-3)}
-    .card-distort-active{filter:url(#card-distort)}
-    .card-glow{position:absolute;pointer-events:none;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity .4s ease;z-index:0}
+    .card-glow{position:absolute;pointer-events:none;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity .35s ease;z-index:0}
     .evidence-card:hover .card-glow,.project-card:hover .card-glow{opacity:1}
     .evidence-card>*:not(.card-glow){position:relative;z-index:1}
     .project-card>div:not(.card-glow){position:relative;z-index:1}
-    .evidence-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}
+    .evidence-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
     .evidence-capability{font-size:14px;font-weight:700;letter-spacing:-.01em}
     .evidence-tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding:3px 8px;border:1px solid rgba(240,165,0,.18);border-radius:4px;background:var(--accent-dim)}
-    .evidence-text{font-size:13px;line-height:1.75;color:var(--text-2);margin-bottom:14px}
-    .evidence-proof{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+    .evidence-text{font-size:13px;line-height:1.72;color:var(--text-2);margin-bottom:12px}
+    .evidence-proof{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px;border-top:1px solid var(--border);font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
     .evidence-proof a{color:var(--text-2);text-decoration:none;font-family:var(--sans);font-size:12px;letter-spacing:0;text-transform:none;transition:color .2s}
     .evidence-proof a:hover{color:var(--accent)}
-    .projects-list{display:flex;flex-direction:column;gap:16px}
-    .project-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;transition:border-color .3s,background .3s,box-shadow .3s;position:relative;overflow:hidden}
-    .project-card:hover{border-color:rgba(240,165,0,.18);background:var(--bg-3);box-shadow:0 8px 16px rgba(0,0,0,.16)}
+
+    /* Projects */
+    .projects-list{display:flex;flex-direction:column;gap:14px}
+
+    /* Flagship project card — visually elevated */
+    .project-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;transition:border-color .25s,background .25s,box-shadow .25s;position:relative;overflow:hidden}
+    .project-card:hover{border-color:rgba(240,165,0,.18);background:var(--bg-3);box-shadow:0 6px 14px rgba(0,0,0,.14)}
+    .project-card.flagship{border-color:rgba(240,165,0,.12);background:linear-gradient(135deg,var(--bg-2) 0%,rgba(240,165,0,.025) 100%)}
+    .project-card.flagship:hover{border-color:rgba(240,165,0,.25);box-shadow:0 8px 24px rgba(0,0,0,.18),0 0 0 1px rgba(240,165,0,.08)}
+
     .project-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
     .project-cat{font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
     .project-date{font-family:var(--mono);font-size:9px;color:var(--text-3)}
@@ -161,34 +189,48 @@
     .project-status{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
     .status-badge{font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:999px;background:rgba(74,222,128,.08);color:var(--green);border:1px solid rgba(74,222,128,.2);white-space:nowrap}
     .status-badge.done{background:rgba(255,255,255,.05);color:var(--text-2);border-color:var(--border)}
+
+    /* Incident notes — new proof surface */
+    .incident-block{margin-top:16px;padding:14px 16px;background:rgba(240,165,0,.04);border:1px solid rgba(240,165,0,.12);border-radius:8px}
+    .incident-label{font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+    .incident-item{font-size:12px;color:var(--text-2);line-height:1.7;padding-left:12px;position:relative;margin-bottom:4px}
+    .incident-item::before{content:'→';position:absolute;left:0;color:var(--text-3);font-size:10px}
+    .incident-item:last-child{margin-bottom:0}
+
+    /* Architecture diagram */
     .arch-toggle{margin-top:18px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--border);border-radius:6px;padding:7px 12px;transition:border-color .2s,color .2s;cursor:pointer}
     .arch-toggle:hover{border-color:rgba(240,165,0,.35);color:var(--accent)}
     .arch-toggle svg{transition:transform .3s}
     .arch-toggle.open svg{transform:rotate(180deg)}
-    .arch-diagram{margin-top:14px;border:1px solid var(--border);border-radius:10px;background:#060d0b;max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
+    .arch-diagram{margin-top:14px;border:1px solid rgba(240,165,0,.1);border-radius:10px;background:#060d0b;max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
     .arch-diagram.open{max-height:600px}
     .arch-diagram svg{width:100%;height:auto;display:block;padding:14px}
+
+    /* Clients marquee */
     #clients{overflow:hidden}
+    .clients-header{padding:0 0 48px}
     .marquee-row{overflow:hidden;position:relative}
-    .marquee-row::before,.marquee-row::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+    .marquee-row::before,.marquee-row::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
     .marquee-row::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
     .marquee-row::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-    @keyframes _mq-fwd{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
-    @keyframes _mq-rev{from{transform:translateX(-33.333%)}to{transform:translateX(0)}}
-    .marquee-track{display:flex;width:max-content;gap:1px;animation-duration:48s;animation-timing-function:linear;animation-iteration-count:infinite}
+    @keyframes _mq-fwd{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes _mq-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    .marquee-track{display:flex;width:max-content;gap:1px;animation-duration:54s;animation-timing-function:linear;animation-iteration-count:infinite}
     .marquee-track--fwd{animation-name:_mq-fwd}
     .marquee-track--rev{animation-name:_mq-rev}
     .marquee-row:hover .marquee-track{animation-play-state:paused}
-    .mq-card{display:flex;flex-direction:column;gap:4px;padding:18px 22px;min-width:170px;background:var(--bg-2);border:1px solid var(--border);text-decoration:none;color:var(--text);transition:background .2s,border-color .2s;position:relative;overflow:hidden}
+    .mq-card{display:flex;flex-direction:column;gap:4px;padding:20px 26px;min-width:190px;background:var(--bg-2);border:1px solid var(--border);text-decoration:none;color:var(--text);transition:background .2s,border-color .2s;position:relative;overflow:hidden}
     .mq-card:hover{background:var(--bg-3);border-color:rgba(240,165,0,.16)}
-    .mq-card-bar{position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+    .mq-card-bar{position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .28s ease}
     .mq-card:hover .mq-card-bar{transform:scaleX(1)}
     .mq-type{font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
     .mq-loc{font-family:var(--mono);font-size:9px;color:var(--text-3)}
     .mq-name{font-size:13px;font-weight:700;letter-spacing:-.01em;margin-top:4px;transition:color .2s}
     .mq-card:hover .mq-name{color:var(--accent)}
-    .mq-arrow{font-size:10px;color:var(--text-3);margin-top:8px;transition:color .2s}
+    .mq-arrow{font-size:10px;color:var(--text-3);margin-top:6px;transition:color .2s}
     .mq-card:hover .mq-arrow{color:var(--accent)}
+
+    /* Contact */
     .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
     .contact-info{display:flex;flex-direction:column;gap:22px}
     .contact-item{display:flex;flex-direction:column;gap:5px}
@@ -196,8 +238,10 @@
     .contact-value{font-size:14px;color:var(--text-2)}
     .contact-value a{color:var(--text);text-decoration:none;transition:color .2s}
     .contact-value a:hover{color:var(--accent)}
-    .contact-tagline{font-size:clamp(22px,3.5vw,38px);font-weight:300;letter-spacing:-.025em;line-height:1.2;color:var(--text-2)}
+    .contact-tagline{font-size:clamp(22px,3.4vw,36px);font-weight:300;letter-spacing:-.025em;line-height:1.22;color:var(--text-2)}
     .contact-tagline strong{font-weight:700;color:var(--text)}
+
+    /* Footer */
     footer{border-top:1px solid var(--border);padding:28px 0}
     .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
     .footer-left{font-family:var(--mono);font-size:11px;color:var(--text-3)}
@@ -205,59 +249,56 @@
     .footer-right{font-size:11px;color:var(--text-3)}
     .footer-right a{color:var(--text-3);text-decoration:none;transition:color .2s}
     .footer-right a:hover{color:var(--accent)}
+
+    /* Scroll lock + unlock notif */
+    #scroll-lock-layer{position:fixed;inset:0;z-index:8998;pointer-events:none;touch-action:none}
+    #scroll-lock-layer.active{pointer-events:all}
+    #unlock-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(28px);z-index:9100;opacity:0;pointer-events:none;background:rgba(8,8,8,.95);border:1px solid rgba(240,165,0,.3);border-radius:9px;padding:13px 22px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;gap:12px;transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1);white-space:nowrap;overflow:hidden}
+    #unlock-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    #unlock-notif .un-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:_avail-pulse 1.6s ease-in-out infinite}
+    #unlock-notif .un-drain{position:absolute;bottom:0;left:0;height:1.5px;background:var(--accent);opacity:.35;width:100%;transform-origin:left;will-change:transform}
+    @keyframes _drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+
+    /* Responsive */
     @media(max-width:768px){
-      .about-grid{grid-template-columns:1fr;gap:32px}
+      .about-grid{grid-template-columns:1fr;gap:28px}
       .evidence-grid{grid-template-columns:1fr}
       .evidence-head{flex-direction:column;align-items:flex-start}
       .project-card{grid-template-columns:1fr}
       .project-status{flex-direction:row}
-      .contact-layout{grid-template-columns:1fr;gap:40px}
+      .contact-layout{grid-template-columns:1fr;gap:36px}
       .hero-scroll-indicator{display:none}
+      /* Reduce motion intensity on mobile */
+      .reveal{transition-duration:.45s}
     }
     @media(max-width:520px){
       .stats-row{grid-template-columns:1fr 1fr}
       .hero-eyebrow{flex-direction:column;align-items:flex-start;gap:8px}
     }
-    @keyframes _div-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    @supports(animation-timeline:view()){
-      .divider{transform:scaleX(0);transform-origin:left;animation:_div-draw linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+    @media(prefers-reduced-motion:reduce){
+      .hero-name .letter,.reveal,.divider{transition:none!important;animation:none!important;opacity:1!important;transform:none!important}
     }
-    .section-label{will-change:clip-path}
-    #heroName{will-change:transform}
-    footer{will-change:opacity,transform}
-    #scroll-lock-layer{position:fixed;inset:0;z-index:8998;pointer-events:none;touch-action:none}
-    #scroll-lock-layer.active{pointer-events:all}
-    #unlock-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(28px);z-index:9100;opacity:0;pointer-events:none;background:rgba(8,8,8,.95);border:1px solid rgba(240,165,0,.3);border-radius:9px;padding:13px 22px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;gap:12px;transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);white-space:nowrap;overflow:hidden}
-    #unlock-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    #unlock-notif .un-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:_avail-pulse 1.6s ease-in-out infinite}
-    #unlock-notif .un-drain{position:absolute;bottom:0;left:0;height:1.5px;background:var(--accent);opacity:.35;width:100%;transform-origin:left}
-    @keyframes _drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
   </style>
 </head>
 <body>
-<svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true" focusable="false">
-  <defs>
-    <filter id="card-distort" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="linearRGB">
-      <feTurbulence id="cardTurb" type="turbulence" baseFrequency="0" numOctaves="3" seed="8" result="noise"/>
-      <feDisplacementMap id="cardDisp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-logo">francis.dev</div>
   <div class="pl-counter" id="plCounter">00</div>
-  <div class="pl-label">Initializing</div>
+  <div class="pl-label">Systems online</div>
   <div class="pl-bar" id="plBar"></div>
 </div>
+
 <div id="scroll-lock-layer" aria-hidden="true"></div>
 <div id="unlock-notif" role="status" aria-live="polite" aria-atomic="true">
   <div class="un-dot"></div>
   <span>Scroll unlocked</span>
   <div class="un-drain" id="unDrain"></div>
 </div>
+
 <div class="cur-dot" id="curDot" aria-hidden="true"></div>
 <div class="cur-ring" id="curRing" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"></div>
+
 <nav aria-label="Primary navigation">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">francis.dev</a>
@@ -274,6 +315,7 @@
     </button>
   </div>
 </nav>
+
 <div id="skewWrap">
 <header id="hero">
   <div class="container">
@@ -282,7 +324,7 @@
       <span class="hero-role-tag">Backend Systems Developer</span>
     </div>
     <h1 class="hero-name" id="heroName">Francis<br><span class="bold">Tarectican</span></h1>
-    <p class="hero-sub">Built and deployed a local-first food ordering system for a real restaurant in Palawan. Debugged it live under load. Kept it running through a network outage.</p>
+    <p class="hero-sub">One production system. Deployed to a real restaurant in Palawan. Debugged live under load — survived a full network outage mid-service.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary magnetic">View Work</a>
       <a href="./mix-match-kain-case-study.html" class="btn btn-ghost">Case Study ↗</a>
@@ -293,23 +335,25 @@
     <span>Scroll</span>
   </div>
 </header>
+
 <div class="divider" role="separator"></div>
+
 <main>
+<!-- ABOUT -->
 <section id="about" aria-labelledby="about-heading">
   <div class="container">
     <div class="section-label"><span>About</span></div>
     <h2 class="section-title" id="about-heading">Who I Am</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. I build web applications with a focus on the backend — how data flows, how systems hold up, and how things work under real conditions.</p>
-        <p>I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and watched it sell out on the first run. That's the standard I hold my work to.</p>
-        <p>Outside of client work, I run 30B parameter models locally on an RTX 5070 — no cloud, no API calls, fully private — and use the setup for daily development.</p>
+        <p>I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. I build web applications with a focus on the backend — how data flows, how systems hold up, and how things work when real people are using them.</p>
+        <p>I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and watched it sell out on the first run. That's the standard I hold work to.</p>
       </div>
       <div class="about-right reveal reveal-d1">
         <div class="stats-row">
-          <article class="stat-card"><div class="stat-num" data-count="1" data-suffix="">1</div><div class="stat-label">Production System</div></article>
-          <article class="stat-card"><div class="stat-num" data-count="2" data-suffix="+">2+</div><div class="stat-label">Years Coding</div></article>
-          <article class="stat-card"><div class="stat-num" data-count="1" data-suffix="st">1st</div><div class="stat-label">Run Sold Out</div></article>
+          <article class="stat-card"><div class="stat-num">1</div><div class="stat-label">Production System</div></article>
+          <article class="stat-card"><div class="stat-num">2+</div><div class="stat-label">Years Coding</div></article>
+          <article class="stat-card"><div class="stat-num">1st</div><div class="stat-label">Run Sold Out</div></article>
           <article class="stat-card"><div class="stat-num">PH</div><div class="stat-label">Palawan Based</div></article>
         </div>
         <div class="edu-card">
@@ -321,36 +365,122 @@
     </div>
   </div>
 </section>
+
 <div class="divider" role="separator"></div>
+
+<!-- EVIDENCE -->
 <section id="skills" aria-labelledby="evidence-heading">
   <div class="container">
     <div class="section-label"><span>Evidence</span></div>
-    <h2 class="section-title" id="evidence-heading">What I've Actually Shipped</h2>
-    <p class="section-desc">Capabilities backed by deployed production work.</p>
+    <h2 class="section-title" id="evidence-heading">Shipped. Deployed. Verified.</h2>
+    <p class="section-desc">Every capability below is backed by production work, not side projects.</p>
     <div class="evidence-grid">
-      <article class="evidence-card reveal"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Backend APIs</span><span class="evidence-tag">Node.js / Express</span></div><p class="evidence-text">Built the backend for Mix &amp; Match Kain — order recording, payment tracking, and stock updates running on a local network.</p><div class="evidence-proof"><span>Proof</span><a href="#projects">Mix &amp; Match Kain &#8594;</a></div></article>
-      <article class="evidence-card reveal reveal-d1"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Database Design</span><span class="evidence-tag">Schema / State</span></div><p class="evidence-text">Designed data flow for carts, orders, payments, and inventory for a live restaurant environment.</p><div class="evidence-proof"><span>Proof</span><a href="#projects">Architecture diagram &#8594;</a></div></article>
-      <article class="evidence-card reveal reveal-d2"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Real-Time Operations</span><span class="evidence-tag">WebSockets</span></div><p class="evidence-text">Handled live order updates and stock changes during active service. Debugged two concurrent-write bugs while customers were ordering.</p><div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain-case-study.html">Production incidents &#8594;</a></div></article>
-      <article class="evidence-card reveal reveal-d3"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Frontend Delivery</span><span class="evidence-tag">Vanilla JS / HTML / CSS</span></div><p class="evidence-text">Built the customer ordering flow and QR checkout interface without a frontend framework.</p><div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain/" target="_blank" rel="noopener">Open live site &#8594;</a></div></article>
-      <article class="evidence-card reveal"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Local AI Deployment</span><span class="evidence-tag">Ollama / GPU</span></div><p class="evidence-text">Running Qwen3-Coder 30B locally with full GPU acceleration. No cloud dependency, no API calls, fully offline inference.</p><div class="evidence-proof"><span>Proof</span><a href="#projects">Offline AI project &#8594;</a></div></article>
-      <article class="evidence-card reveal reveal-d1"><div class="card-glow" aria-hidden="true"></div><div class="evidence-head"><span class="evidence-capability">Production Judgment</span><span class="evidence-tag">Live debugging</span></div><p class="evidence-text">Fixed two production bugs during active service without taking the system offline. System survived an internet outage mid-event.</p><div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain-case-study.html">Full case study &#8594;</a></div></article>
+
+      <article class="evidence-card reveal">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Backend APIs</span>
+          <span class="evidence-tag">Node.js / Express</span>
+        </div>
+        <p class="evidence-text">Built the full backend for Mix &amp; Match Kain — order recording, payment tracking, and stock updates running on a LAN-only Express server. No cloud required.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="#projects">Mix &amp; Match Kain →</a></div>
+      </article>
+
+      <article class="evidence-card reveal reveal-d1">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Database Design</span>
+          <span class="evidence-tag">Schema / State</span>
+        </div>
+        <p class="evidence-text">Designed the data model for carts, orders, payments, and stock under concurrent write pressure in a live restaurant environment.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="#projects">Architecture diagram →</a></div>
+      </article>
+
+      <article class="evidence-card reveal reveal-d2">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Real-Time Operations</span>
+          <span class="evidence-tag">WebSockets</span>
+        </div>
+        <p class="evidence-text">Handled live order updates and stock sync during active service. Fixed two concurrent-write bugs without taking the system offline while customers were ordering.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain-case-study.html">Production incidents →</a></div>
+      </article>
+
+      <article class="evidence-card reveal reveal-d3">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Frontend Delivery</span>
+          <span class="evidence-tag">Vanilla JS / HTML / CSS</span>
+        </div>
+        <p class="evidence-text">Built the customer ordering flow and QR checkout interface without a framework. Ran on customer phones over restaurant WiFi with no app install.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain/" target="_blank" rel="noopener">Open live site →</a></div>
+      </article>
+
+      <article class="evidence-card reveal">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Offline AI Workflow</span>
+          <span class="evidence-tag">Ollama / GPU</span>
+        </div>
+        <p class="evidence-text">Running a 30B-parameter coding model locally as a daily development tool. Used during active production work — no API latency, no data leaving the machine.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="#projects">Offline AI project →</a></div>
+      </article>
+
+      <article class="evidence-card reveal reveal-d1">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="evidence-head">
+          <span class="evidence-capability">Production Judgment</span>
+          <span class="evidence-tag">Live debugging</span>
+        </div>
+        <p class="evidence-text">Two bugs fixed during active service. System survived a full internet outage mid-event — local architecture kept orders processing without interruption.</p>
+        <div class="evidence-proof"><span>Proof</span><a href="./mix-match-kain-case-study.html">Full case study →</a></div>
+      </article>
+
     </div>
   </div>
 </section>
+
 <div class="divider" role="separator"></div>
+
+<!-- PROJECTS -->
 <section id="projects" aria-labelledby="work-heading">
   <div class="container">
     <div class="section-label"><span>Work</span></div>
-    <h2 class="section-title" id="work-heading">Work</h2>
+    <h2 class="section-title" id="work-heading">Deployed Work</h2>
     <div class="projects-list">
-      <article class="project-card reveal">
+
+      <!-- FLAGSHIP -->
+      <article class="project-card flagship reveal">
         <div class="card-glow" aria-hidden="true"></div>
         <div>
-          <div class="project-meta"><span class="project-cat">Full-Stack Web App</span><span class="project-dot" aria-hidden="true"></span><span class="project-date">December 2025</span></div>
+          <div class="project-meta">
+            <span class="project-cat">Full-Stack Web App</span>
+            <span class="project-dot" aria-hidden="true"></span>
+            <span class="project-date">December 2025</span>
+          </div>
           <h3 class="project-title">Mix &amp; Match Kain</h3>
-          <p class="project-desc">A food ordering system built for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs locally on-site — deployed on a local machine over LAN with Express serving customer devices through restaurant WiFi. Designed to continue operating without internet connectivity. Resolved duplicate order writes caused by simultaneous stock updates during peak ordering. Survived a full network outage mid-event without interruption.</p>
-          <div class="project-features"><span class="feature-tag">Local-First Architecture</span><span class="feature-tag">QR Checkout Flow</span><span class="feature-tag">Real-Time Order Management</span><span class="feature-tag">Live Production Deployment</span></div>
-          <div class="tech-stack"><span class="tech-tag">Node.js</span><span class="tech-tag">Express</span><span class="tech-tag">WebSockets</span><span class="tech-tag">Vanilla JS</span><span class="tech-tag">HTML/CSS</span></div>
+          <p class="project-desc">A food ordering system for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs on a local machine over LAN — serving customer devices through restaurant WiFi with no internet dependency. Built to keep working through connectivity loss.</p>
+
+          <div class="incident-block">
+            <div class="incident-label">Production Incidents</div>
+            <div class="incident-item">Duplicate order writes caused by simultaneous stock updates under peak load — fixed live without downtime.</div>
+            <div class="incident-item">Full internet outage mid-event — local architecture continued processing orders uninterrupted.</div>
+          </div>
+
+          <div class="project-features" style="margin-top:16px;">
+            <span class="feature-tag">Local-First Architecture</span>
+            <span class="feature-tag">QR Checkout Flow</span>
+            <span class="feature-tag">Real-Time Order Management</span>
+            <span class="feature-tag">Offline Capable</span>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express</span>
+            <span class="tech-tag">WebSockets</span>
+            <span class="tech-tag">Vanilla JS</span>
+            <span class="tech-tag">HTML/CSS</span>
+          </div>
+
           <button class="arch-toggle" id="archToggle" aria-expanded="false" aria-controls="archDiagram">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             System Architecture
@@ -360,21 +490,21 @@
               <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
               <rect x="220" y="40" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
               <text x="340" y="60" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Customer phone</text>
-              <text x="340" y="78" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Restaurant WiFi &#183; own device</text>
+              <text x="340" y="78" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Restaurant WiFi · own device</text>
               <line x1="340" y1="96" x2="340" y2="128" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
               <rect x="220" y="132" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
               <text x="340" y="152" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Menu &amp; cart</text>
-              <text x="340" y="170" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Browse &#183; add items &#183; review</text>
+              <text x="340" y="170" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Browse · add items · review</text>
               <line x1="340" y1="188" x2="340" y2="220" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
               <rect x="220" y="224" width="240" height="56" rx="8" fill="rgb(99,56,6)" stroke="rgb(239,159,39)" stroke-width="0.5"/>
               <text x="340" y="244" text-anchor="middle" dominant-baseline="central" fill="rgb(250,199,117)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">QR checkout</text>
-              <text x="340" y="262" text-anchor="middle" dominant-baseline="central" fill="rgb(239,159,39)" font-size="12" font-family="system-ui,sans-serif">Order encoded &#183; QR generated</text>
+              <text x="340" y="262" text-anchor="middle" dominant-baseline="central" fill="rgb(239,159,39)" font-size="12" font-family="system-ui,sans-serif">Order encoded · QR generated</text>
               <line x1="340" y1="280" x2="340" y2="330" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
               <rect x="30" y="296" width="620" height="184" rx="12" fill="none" stroke="rgba(222,220,209,0.12)" stroke-width="0.8" stroke-dasharray="6 4"/>
-              <text x="50" y="316" fill="rgb(140,138,130)" font-size="12" font-family="system-ui,sans-serif">Local machine &#183; LAN only &#183; no internet required</text>
+              <text x="50" y="316" fill="rgb(140,138,130)" font-size="12" font-family="system-ui,sans-serif">Local machine · LAN only · no internet required</text>
               <rect x="220" y="334" width="240" height="56" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
               <text x="340" y="354" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Node.js / Express</text>
-              <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">localhost:3000 &#183; WebSockets</text>
+              <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">localhost:3000 · WebSockets</text>
               <path d="M340 390 L340 410 L130 410 L130 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
               <line x1="340" y1="390" x2="340" y2="420" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
               <path d="M340 390 L340 410 L548 410 L548 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
@@ -389,99 +519,111 @@
         </div>
         <div class="project-status">
           <span class="status-badge">Live</span>
-          <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Repo &#8599;</a>
-          <a href="./mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Case Study &#8599;</a>
-          <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Live &#8599;</a>
+          <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Repo ↗</a>
+          <a href="./mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Case Study ↗</a>
+          <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:11px;padding:6px 12px;">Live ↗</a>
         </div>
       </article>
+
+      <!-- OFFLINE AI — reframed as workflow tool -->
       <article class="project-card reveal">
         <div class="card-glow" aria-hidden="true"></div>
         <div>
-          <div class="project-meta"><span class="project-cat">AI Infrastructure</span><span class="project-dot" aria-hidden="true"></span><span class="project-date">2026</span></div>
-          <h3 class="project-title">Offline AI Environment</h3>
-          <p class="project-desc">Local LLM inference environment using Ollama and Qwen3-Coder 30B with GPU acceleration on consumer hardware — Lenovo LOQ 15IRX10, Intel Core Ultra 9 185H, RTX 5070 with 12GB VRAM, 32GB DDR5. No internet connection, no API calls. Fully offline inference for private development work.</p>
-          <div class="project-features"><span class="feature-tag">GPU-Accelerated Inference</span><span class="feature-tag">30B Parameter Model</span><span class="feature-tag">Zero Cloud Dependency</span><span class="feature-tag">Fully Offline</span></div>
-          <div class="tech-stack"><span class="tech-tag">Ollama</span><span class="tech-tag">Qwen3-Coder:30b</span><span class="tech-tag">RTX 5070</span><span class="tech-tag">Local Inference</span></div>
+          <div class="project-meta">
+            <span class="project-cat">Development Environment</span>
+            <span class="project-dot" aria-hidden="true"></span>
+            <span class="project-date">2026</span>
+          </div>
+          <h3 class="project-title">Offline AI Development Setup</h3>
+          <p class="project-desc">Local LLM inference used as an active development tool — not a demo. Qwen3-Coder 30B runs fully on-device via Ollama, GPU-accelerated. No API calls, no cloud round-trips, no data leaving the machine. This is the setup used during development of Mix &amp; Match Kain and ongoing client work.</p>
+          <div class="project-features">
+            <span class="feature-tag">Active Daily Use</span>
+            <span class="feature-tag">GPU-Accelerated Inference</span>
+            <span class="feature-tag">Private by Default</span>
+            <span class="feature-tag">Zero Latency Overhead</span>
+          </div>
+          <div class="tech-stack">
+            <span class="tech-tag">Ollama</span>
+            <span class="tech-tag">Qwen3-Coder:30b</span>
+            <span class="tech-tag">RTX 5070</span>
+            <span class="tech-tag">Local Inference</span>
+          </div>
         </div>
-        <div class="project-status"><span class="status-badge done">Completed</span></div>
+        <div class="project-status"><span class="status-badge done">Operational</span></div>
       </article>
+
     </div>
   </div>
 </section>
+
 <div class="divider" role="separator"></div>
+
+<!-- CLIENTS -->
 <section id="clients" aria-labelledby="clients-heading">
-  <div class="container">
+  <div class="container clients-header">
     <div class="section-label"><span>Client Work</span></div>
-    <h2 class="section-title" id="clients-heading">Sites I've Shipped</h2>
+    <h2 class="section-title" id="clients-heading">Sites Shipped</h2>
     <p class="section-desc">Production websites built for local businesses across the Philippines.</p>
   </div>
+
+  <!-- Row 1 — forward -->
   <div class="marquee-row" id="mqRow1" aria-label="Client sites row 1">
     <div class="marquee-track marquee-track--fwd">
-      <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./bnb/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./divine-truffles/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./eureka/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./gspots/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./natad/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./bnb/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./divine-truffles/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./eureka/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./gspots/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./natad/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./bnb/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./divine-truffles/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./eureka/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./gspots/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./natad/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">&#8599;</span></a>
+      <!-- Set A -->
+      <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">↗</span></a>
+      <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">↗</span></a>
+      <a href="./bnb/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span><span class="mq-arrow">↗</span></a>
+      <a href="./divine-truffles/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span><span class="mq-arrow">↗</span></a>
+      <a href="./eureka/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span><span class="mq-arrow">↗</span></a>
+      <a href="./gspots/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span><span class="mq-arrow">↗</span></a>
+      <a href="./natad/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span><span class="mq-arrow">↗</span></a>
+      <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">↗</span></a>
+      <!-- Set B (duplicate for seamless loop) -->
+      <a href="./mix-match-kain/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span><span class="mq-arrow">↗</span></a>
+      <a href="./summer-days/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span><span class="mq-arrow">↗</span></a>
+      <a href="./bnb/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span><span class="mq-arrow">↗</span></a>
+      <a href="./divine-truffles/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span><span class="mq-arrow">↗</span></a>
+      <a href="./eureka/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span><span class="mq-arrow">↗</span></a>
+      <a href="./gspots/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span><span class="mq-arrow">↗</span></a>
+      <a href="./natad/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span><span class="mq-arrow">↗</span></a>
+      <a href="./igo-bikes/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span><span class="mq-arrow">↗</span></a>
     </div>
   </div>
+
+  <!-- Row 2 — reverse -->
   <div class="marquee-row" id="mqRow2" aria-label="Client sites row 2" style="margin-top:1px;">
     <div class="marquee-track marquee-track--rev">
-      <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./C+F-Food-House/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./MK-Sushi-Bar-Antipolo/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo City, Rizal</span><span class="mq-name">MK Sushi Bar Antipolo</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./JO-Coffee/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occidental</span><span class="mq-name">JO Coffee Malita</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Izakaya-Tago/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./momentfood/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Muyoo/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Brgy.Coffee/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./ptci/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./silog-bites/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./C+F-Food-House/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./MK-Sushi-Bar-Antipolo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo City, Rizal</span><span class="mq-name">MK Sushi Bar Antipolo</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./JO-Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occidental</span><span class="mq-name">JO Coffee Malita</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Izakaya-Tago/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./momentfood/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Muyoo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Brgy.Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./ptci/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./silog-bites/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./C+F-Food-House/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./MK-Sushi-Bar-Antipolo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo City, Rizal</span><span class="mq-name">MK Sushi Bar Antipolo</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./JO-Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occidental</span><span class="mq-name">JO Coffee Malita</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Izakaya-Tago/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./momentfood/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Muyoo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./Brgy.Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./ptci/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span><span class="mq-arrow">&#8599;</span></a>
-      <a href="./silog-bites/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span><span class="mq-arrow">&#8599;</span></a>
+      <!-- Set A -->
+      <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./C+F-Food-House/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span><span class="mq-arrow">↗</span></a>
+      <a href="./MK-Sushi-Bar-Antipolo/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./JO-Coffee/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occidental</span><span class="mq-name">JO Coffee</span><span class="mq-arrow">↗</span></a>
+      <a href="./Izakaya-Tago/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span><span class="mq-arrow">↗</span></a>
+      <a href="./momentfood/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span><span class="mq-arrow">↗</span></a>
+      <a href="./Muyoo/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span><span class="mq-arrow">↗</span></a>
+      <a href="./Brgy.Coffee/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span><span class="mq-arrow">↗</span></a>
+      <a href="./ptci/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span><span class="mq-arrow">↗</span></a>
+      <a href="./silog-bites/" target="_blank" rel="noopener" class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span><span class="mq-arrow">↗</span></a>
+      <!-- Set B -->
+      <a href="./Empire-Cafe-and-Bar/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./Tokamak/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./C+F-Food-House/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span><span class="mq-arrow">↗</span></a>
+      <a href="./MK-Sushi-Bar-Antipolo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span><span class="mq-arrow">↗</span></a>
+      <a href="./JO-Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occidental</span><span class="mq-name">JO Coffee</span><span class="mq-arrow">↗</span></a>
+      <a href="./Izakaya-Tago/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span><span class="mq-arrow">↗</span></a>
+      <a href="./momentfood/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span><span class="mq-arrow">↗</span></a>
+      <a href="./Muyoo/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span><span class="mq-arrow">↗</span></a>
+      <a href="./Brgy.Coffee/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span><span class="mq-arrow">↗</span></a>
+      <a href="./ptci/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span><span class="mq-arrow">↗</span></a>
+      <a href="./silog-bites/" target="_blank" rel="noopener" class="mq-card" aria-hidden="true"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span><span class="mq-arrow">↗</span></a>
     </div>
   </div>
 </section>
+
 <div class="divider" role="separator"></div>
+
+<!-- CONTACT -->
 <section id="contact" aria-labelledby="contact-heading">
   <div class="container">
     <div class="section-label"><span>Contact</span></div>
@@ -491,57 +633,67 @@
       <div class="contact-info reveal reveal-d1">
         <div class="contact-item"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
         <div class="contact-item"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">Open to freelance &amp; collaboration</div></div>
-        <div class="contact-item"><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 &#8599;</a></div></div>
-        <div class="contact-item"><div class="contact-label">Messenger</div><div class="contact-value"><a href="https://facebook.com/frans15.2006" target="_blank" rel="noopener">facebook.com/frans15.2006 &#8599;</a></div></div>
+        <div class="contact-item"><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 ↗</a></div></div>
+        <div class="contact-item"><div class="contact-label">Messenger</div><div class="contact-value"><a href="https://facebook.com/frans15.2006" target="_blank" rel="noopener">facebook.com/frans15.2006 ↗</a></div></div>
       </div>
     </div>
   </div>
 </section>
 </main>
+
 <footer>
   <div class="container footer-inner">
-    <div class="footer-left"><span>francis.dev</span> &#8212; Built and deployed from the ground up.</div>
-    <div class="footer-right">&#169; 2026 Francis Tarectican &#183; <a href="https://github.com/frans15-2006" target="_blank" rel="noopener">GitHub &#8599;</a></div>
+    <div class="footer-left"><span>francis.dev</span> — Built and deployed from the ground up.</div>
+    <div class="footer-right">© 2026 Francis Tarectican · <a href="https://github.com/frans15-2006" target="_blank" rel="noopener">GitHub ↗</a></div>
   </div>
 </footer>
-</div>
+</div><!-- /skewWrap -->
+
+<!-- PRELOADER SCRIPT -->
 <script>
 (function(){
   'use strict';
-  var el=document.getElementById('preloader');
-  var ctr=document.getElementById('plCounter');
-  var bar=document.getElementById('plBar');
-  var DURATION=1700,start=null;
-  window.__preloaderDone=false;
-  function pad(n){return n<10?'0'+n:''+n;}
+  var el = document.getElementById('preloader');
+  var ctr = document.getElementById('plCounter');
+  var bar = document.getElementById('plBar');
+  var DURATION = 900, start = null;
+  window.__preloaderDone = false;
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
   function tick(ts){
-    if(!start)start=ts;
-    var p=Math.min((ts-start)/DURATION,1);
-    var e=1-Math.pow(1-p,3);
-    ctr.textContent=pad(Math.round(e*100));
-    bar.style.width=(e*100)+'%';
-    if(p<1){requestAnimationFrame(tick);}
-    else{ctr.textContent='100';bar.style.width='100%';setTimeout(exitPreloader,260);}
+    if(!start) start = ts;
+    var p = Math.min((ts - start) / DURATION, 1);
+    var e = 1 - Math.pow(1 - p, 3);
+    ctr.textContent = pad(Math.round(e * 100));
+    bar.style.width = (e * 100) + '%';
+    if(p < 1){ requestAnimationFrame(tick); }
+    else{ ctr.textContent = '100'; bar.style.width = '100%'; setTimeout(exitPreloader, 200); }
   }
+
   function exitPreloader(){
     el.classList.add('exiting');
-    el.addEventListener('transitionend',function(){
-      el.style.display='none';
-      window.__preloaderDone=true;
-      if(typeof window.__onPreloaderDone==='function'){window.__onPreloaderDone();}
-    },{once:true});
+    el.addEventListener('transitionend', function(){
+      el.style.display = 'none';
+      window.__preloaderDone = true;
+      if(typeof window.__onPreloaderDone === 'function') window.__onPreloaderDone();
+    }, { once: true });
   }
+
   requestAnimationFrame(tick);
 })();
 </script>
+
+<!-- DEPENDENCIES -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
 <script>
 'use strict';
 gsap.registerPlugin(ScrollTrigger);
 
+/* Lenis smooth scroll */
 const lenis = new Lenis({
   duration: 1.0,
   easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -551,38 +703,35 @@ const lenis = new Lenis({
   lerp: 0.08
 });
 lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time)=>{ lenis.raf(time * 1000); });
+gsap.ticker.add(time => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
 lenis.stop();
 
-const AUTO_SCROLL_KEY = 'francis_portfolio_autoscrolled';
+/* Auto-scroll on first visit */
+const AUTO_KEY = 'francis_autoscrolled_v2';
 
 function onPreloaderReady(){
   lenis.start();
   startHeroLetters();
   startRevealObservers();
-  setupSectionTone();
-  if (!sessionStorage.getItem(AUTO_SCROLL_KEY)) {
-    setTimeout(startAutoScroll, 900);
+  if(!sessionStorage.getItem(AUTO_KEY)){
+    setTimeout(startAutoScroll, 700);
   }
 }
-if(window.__preloaderDone){onPreloaderReady();}else{window.__onPreloaderDone=onPreloaderReady;}
-
-function setTone(section){
-  document.body.dataset.section = section;
-}
+if(window.__preloaderDone){ onPreloaderReady(); } else { window.__onPreloaderDone = onPreloaderReady; }
 
 function startAutoScroll(){
   const lockLayer = document.getElementById('scroll-lock-layer');
   const maxY = document.documentElement.scrollHeight - window.innerHeight;
-  if (maxY < 100 || sessionStorage.getItem(AUTO_SCROLL_KEY)) return;
-  sessionStorage.setItem(AUTO_SCROLL_KEY, '1');
+  if(maxY < 100 || sessionStorage.getItem(AUTO_KEY)) return;
+  sessionStorage.setItem(AUTO_KEY, '1');
+
   const SPEED = 520;
   const duration = Math.max(0.8, maxY / SPEED);
   lockLayer.classList.add('active');
 
-  const BLOCKED_KEYS = new Set([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End']);
-  function blockKey(e){ if(BLOCKED_KEYS.has(e.key)) e.preventDefault(); }
+  const BLOCKED = new Set([' ','ArrowUp','ArrowDown','PageUp','PageDown','Home','End']);
+  function blockKey(e){ if(BLOCKED.has(e.key)) e.preventDefault(); }
 
   lenis.options.wheelMultiplier = 0;
   lenis.options.touchMultiplier = 0;
@@ -604,17 +753,17 @@ function startAutoScroll(){
 }
 
 function showUnlockNotif(){
-  const DISMISS_MS = 2200;
+  const DISMISS = 2200;
   const notif = document.getElementById('unlock-notif');
   const drain = document.getElementById('unDrain');
   notif.classList.add('show');
   drain.style.animation = 'none';
-  drain.offsetWidth;
-  drain.style.animation = '_drain ' + (DISMISS_MS/1000) + 's linear forwards';
-  setTimeout(() => notif.classList.remove('show'), DISMISS_MS);
+  drain.offsetWidth; // reflow
+  drain.style.animation = '_drain ' + (DISMISS / 1000) + 's linear forwards';
+  setTimeout(() => notif.classList.remove('show'), DISMISS);
 }
 
-/* CURSOR — continuous RAF loop, translate3d only, no left/top, no CSS var writes */
+/* Custom cursor — RAF loop, no CSS var writes */
 (function(){
   const isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   const noMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -628,64 +777,59 @@ function showUnlockNotif(){
   }
 
   document.documentElement.classList.add('custom-cursor');
-
   let mx = -200, my = -200, rx = -200, ry = -200;
 
-  window.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
-  }, {passive: true});
+  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
 
   (function loop(){
-    dot.style.transform = 'translate3d(calc('+mx+'px - 50%),calc('+my+'px - 50%),0)';
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.transform = 'translate3d(calc('+rx+'px - 50%),calc('+ry+'px - 50%),0)';
+    dot.style.transform = 'translate3d(calc(' + mx + 'px - 50%),calc(' + my + 'px - 50%),0)';
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    ring.style.transform = 'translate3d(calc(' + rx + 'px - 50%),calc(' + ry + 'px - 50%),0)';
     requestAnimationFrame(loop);
   })();
 
   document.addEventListener('mousedown', () => document.documentElement.classList.add('cursor-click'));
   document.addEventListener('mouseup', () => document.documentElement.classList.remove('cursor-click'));
 
-  const HOV = 'a,button,[role="button"],.arch-toggle,.btn,.mq-card,.stat-card';
-  document.addEventListener('mouseover', e => {
-    if(e.target.closest(HOV)) document.documentElement.classList.add('cursor-hover');
-  });
-  document.addEventListener('mouseout', e => {
-    if(e.target.closest(HOV)) document.documentElement.classList.remove('cursor-hover');
-  });
+  const HOV = 'a,button,[role="button"],.arch-toggle,.btn,.mq-card,.stat-card,.evidence-card,.project-card';
+  document.addEventListener('mouseover', e => { if(e.target.closest(HOV)) document.documentElement.classList.add('cursor-hover'); });
+  document.addEventListener('mouseout', e => { if(e.target.closest(HOV)) document.documentElement.classList.remove('cursor-hover'); });
 })();
 
+/* Mobile nav */
 const hamburger = document.getElementById('navHamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', ()=>{
+hamburger.addEventListener('click', () => {
   const open = hamburger.classList.toggle('open');
   navLinks.classList.toggle('mobile-open', open);
   hamburger.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
-  if(open) lenis.stop(); else lenis.start();
+  open ? lenis.stop() : lenis.start();
 });
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   hamburger.classList.remove('open');
   navLinks.classList.remove('mobile-open');
-  hamburger.setAttribute('aria-expanded','false');
+  hamburger.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
   lenis.start();
 }));
 
+/* Hero letter stagger */
 function startHeroLetters(){
   const el = document.getElementById('heroName');
   if(!el) return;
   const raw = el.innerHTML;
   let out = '', delay = 0.04;
-  for(let i=0;i<raw.length;i++){
-    if(raw.slice(i,i+4) === '<br>'){ out += '<br>'; i += 3; delay += 0.01; continue; }
+
+  for(let i = 0; i < raw.length; i++){
+    if(raw.slice(i, i + 4) === '<br>'){ out += '<br>'; i += 3; delay += 0.01; continue; }
     if(raw.slice(i).startsWith('<span')){
       const end = raw.indexOf('</span>', i) + 7;
       const inner = raw.slice(i, end);
-      const text = inner.replace(/<[^>]+>/g,'');
+      const text = inner.replace(/<[^>]+>/g, '');
       let s = '<span class="bold">';
-      for(let j=0;j<text.length;j++){
+      for(let j = 0; j < text.length; j++){
         const c = text[j];
         s += c === ' ' ? ' ' : '<span class="letter" style="transition-delay:' + delay.toFixed(3) + 's">' + c + '</span>';
         if(c !== ' ') delay += 0.02;
@@ -698,24 +842,26 @@ function startHeroLetters(){
       if(c !== ' ' && c !== '\n') delay += 0.02;
     }
   }
+
   el.innerHTML = out;
-  requestAnimationFrame(()=>setTimeout(()=>el.querySelectorAll('.letter').forEach(l=>l.classList.add('in')), 30));
+  requestAnimationFrame(() => setTimeout(() => el.querySelectorAll('.letter').forEach(l => l.classList.add('in')), 30));
 }
 
+/* Nav scramble effect */
 (function(){
   const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&';
-  const FRAMES = 12;
-  document.querySelectorAll('.nav-links a[data-scramble]').forEach(a=>{
+  const FRAMES = 10;
+  document.querySelectorAll('.nav-links a[data-scramble]').forEach(a => {
     let rafId = null;
-    a.addEventListener('mouseenter', ()=>{
+    a.addEventListener('mouseenter', () => {
       const orig = a.dataset.scramble;
       let frame = 0;
       if(rafId) cancelAnimationFrame(rafId);
       function tick(){
-        a.textContent = orig.split('').map((c,i)=>{
+        a.textContent = orig.split('').map((c, i) => {
           if(c === ' ' || c === '↗') return c;
-          const alphaOnly = orig.replace(/[↗ ]/g,'');
-          if(frame / FRAMES > i / alphaOnly.length) return c;
+          const alpha = orig.replace(/[↗ ]/g, '');
+          if(frame / FRAMES > i / alpha.length) return c;
           return CHARS[Math.floor(Math.random() * CHARS.length)];
         }).join('');
         frame++;
@@ -727,46 +873,34 @@ function startHeroLetters(){
   });
 })();
 
+/* Architecture diagram toggle */
 const archToggle = document.getElementById('archToggle');
 const archDiagram = document.getElementById('archDiagram');
 if(archToggle && archDiagram){
-  archToggle.addEventListener('click', ()=>{
+  archToggle.addEventListener('click', () => {
     const open = archDiagram.classList.toggle('open');
     archToggle.classList.toggle('open', open);
     archToggle.setAttribute('aria-expanded', open);
   });
 }
 
+/* Reveal on scroll */
 function startRevealObservers(){
-  const items = document.querySelectorAll('.reveal, .section-label, .section-title, .section-desc, .about-text p, .stat-card, .edu-card, .evidence-card, .project-card, .mq-card, .contact-item, .contact-tagline');
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
+  const items = document.querySelectorAll('.reveal, .section-label, .section-title, .section-desc, .about-text p, .stat-card, .edu-card, .evidence-card, .project-card, .contact-item, .contact-tagline');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if(entry.isIntersecting){
         entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-  items.forEach((el, i)=>{
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+  items.forEach((el, i) => {
     if(!el.classList.contains('reveal')) el.classList.add('reveal');
     el.style.transitionDelay = (Math.min(i % 4, 3) * 0.05) + 's';
     obs.observe(el);
   });
-}
-
-function setupSectionTone(){
-  const sections = ['hero','about','skills','projects','clients','contact'];
-  if(!('IntersectionObserver' in window)) return;
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting) setTone(entry.target.id);
-    });
-  }, { threshold: 0.35, rootMargin: '-10% 0px -45% 0px' });
-  sections.forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) obs.observe(el);
-  });
-  setTone('hero');
 }
 </script>
 </body>
