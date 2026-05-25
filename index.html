@@ -545,7 +545,12 @@ lenis.on('scroll',ScrollTrigger.update);
 gsap.ticker.add((time)=>{lenis.raf(time*1000);});
 gsap.ticker.lagSmoothing(0);
 lenis.stop();
-function onPreloaderReady(){lenis.start();startHeroLetters();setTimeout(startAutoScroll,900);}
+const AUTO_SCROLL_KEY='francis_portfolio_autoscrolled';
+function onPreloaderReady(){
+  lenis.start();
+  startHeroLetters();
+  if(!sessionStorage.getItem(AUTO_SCROLL_KEY)){setTimeout(startAutoScroll,900);}
+}
 if(window.__preloaderDone){onPreloaderReady();}else{window.__onPreloaderDone=onPreloaderReady;}
 
 const toneMap={
@@ -567,6 +572,8 @@ function startAutoScroll(){
   const lockLayer=document.getElementById('scroll-lock-layer');
   const maxY=document.documentElement.scrollHeight-window.innerHeight;
   if(maxY<100){return;}
+  if(sessionStorage.getItem(AUTO_SCROLL_KEY)){return;}
+  sessionStorage.setItem(AUTO_SCROLL_KEY,'1');
   const SPEED=380,duration=maxY/SPEED;
   lockLayer.classList.add('active');
   const BLOCKED_KEYS=new Set([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End']);
