@@ -241,12 +241,12 @@ function updateCart() {
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
-
-  cart.forEach((c, i) => {
+  // Performance optimization: build the entire HTML string first and perform a single DOM update.
+  // This avoids O(n²) rendering overhead caused by repeated innerHTML += calls in a loop.
+  const cartHTML = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
@@ -259,7 +259,9 @@ function updateCart() {
         </div>
       </div>
     `;
-  });
+  }).join('');
+
+  list.innerHTML = cartHTML;
 
   const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
