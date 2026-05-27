@@ -1353,6 +1353,29 @@ function initDividers() {
       document.documentElement.classList.remove('cursor-hover', 'cursor-label');
     }
   });
+  document.addEventListener('focusin', () => {
+    const el = document.activeElement;
+    if (!el || el === document.body) return;
+    const r = el.getBoundingClientRect();
+    mx = r.left + r.width / 2;
+    my = r.top + r.height / 2;
+    let matched = false;
+    for (const { sel, text } of hoverMap) {
+      if (el.closest(sel)) {
+        label.textContent = text;
+        document.documentElement.classList.add('cursor-hover', 'cursor-label');
+        matched = true; break;
+      }
+    }
+    if (!matched && el.closest(genericHov)) {
+      label.textContent = '';
+      document.documentElement.classList.add('cursor-hover');
+      document.documentElement.classList.remove('cursor-label');
+    }
+  });
+  document.addEventListener('focusout', () => {
+    document.documentElement.classList.remove('cursor-hover', 'cursor-label');
+  });
 })();
 
 /* ══════════════════════════════════════════
@@ -1441,7 +1464,7 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   const FRAMES = 10;
   document.querySelectorAll('.nav-links a[data-scramble]').forEach(a => {
     let rafId = null;
-    a.addEventListener('mouseenter', () => {
+    const trigger = () => {
       const orig = a.dataset.scramble;
       let frame = 0;
       if (rafId) cancelAnimationFrame(rafId);
@@ -1457,7 +1480,9 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         else { a.textContent = orig + (orig === 'GitHub' ? ' ↗' : ''); rafId = null; }
       }
       tick();
-    });
+    };
+    a.addEventListener('mouseenter', trigger);
+    a.addEventListener('focus', trigger);
   });
 })();
 
