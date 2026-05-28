@@ -844,7 +844,14 @@ function initHeroCanvas() {
   const canvas = document.getElementById('heroCanvas');
   const hero = document.getElementById('hero');
   const ctx = canvas.getContext('2d');
-  function resize() { canvas.width = hero.offsetWidth; canvas.height = hero.offsetHeight; }
+  let rect, absTop, absLeft;
+  function resize() {
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+    rect = hero.getBoundingClientRect();
+    absTop = rect.top + window.scrollY;
+    absLeft = rect.left + window.scrollX;
+  }
   resize();
   window.addEventListener('resize', resize, { passive: true });
   const COLS = 18, ROWS = 9;
@@ -857,9 +864,9 @@ function initHeroCanvas() {
   }));
   let mx = 0.5, my = 0.5;
   hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    mx = (e.clientX - r.left) / r.width;
-    my = (e.clientY - r.top) / r.height;
+    if (!rect) resize();
+    mx = (e.pageX - absLeft) / rect.width;
+    my = (e.pageY - absTop) / rect.height;
   }, { passive: true });
   let t = 0, rafId;
   const W = () => canvas.width, H = () => canvas.height;
@@ -921,10 +928,17 @@ function initHeroParallax() {
   const line1 = document.querySelector('.hero-line-1');
   const line2 = document.querySelector('.hero-line-2');
   const hero = document.getElementById('hero');
+  let rect, absTop, absLeft;
+  function cache() {
+    rect = hero.getBoundingClientRect();
+    absTop = rect.top + window.scrollY;
+    absLeft = rect.left + window.scrollX;
+  }
+  cache();
+  window.addEventListener('resize', cache, { passive: true });
   hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
+    const nx = (e.pageX - absLeft) / rect.width - 0.5;
+    const ny = (e.pageY - absTop) / rect.height - 0.5;
     gsap.to(line1, { x: nx * 10, y: ny * 5, duration: 1.4, ease: 'power2.out' });
     gsap.to(line2, { x: nx * -8, y: ny * -4, duration: 1.6, ease: 'power2.out' });
   }, { passive: true });
@@ -976,10 +990,20 @@ function initSkewOnScroll() {
 function initMagneticButtons() {
   if (isMobile || noMotion) return;
   document.querySelectorAll('.magnetic, .btn').forEach(btn => {
+    let r, aT, aL;
+    btn.addEventListener('mouseenter', () => {
+      r = btn.getBoundingClientRect();
+      aT = r.top + window.scrollY;
+      aL = r.left + window.scrollX;
+    }, { passive: true });
     btn.addEventListener('mousemove', e => {
-      const r = btn.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width / 2)) * 0.38;
-      const dy = (e.clientY - (r.top + r.height / 2)) * 0.38;
+      if (!r) {
+        r = btn.getBoundingClientRect();
+        aT = r.top + window.scrollY;
+        aL = r.left + window.scrollX;
+      }
+      const dx = (e.pageX - (aL + r.width / 2)) * 0.38;
+      const dy = (e.pageY - (aT + r.height / 2)) * 0.38;
       gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: 'power2.out' });
     });
     btn.addEventListener('mouseleave', () => {
@@ -1077,10 +1101,20 @@ function initCardTilt() {
   if (isMobile || noMotion) return;
   const MAX_TILT = 4;
   document.querySelectorAll('.tilt-card').forEach(card => {
+    let r, aT, aL;
+    card.addEventListener('mouseenter', () => {
+      r = card.getBoundingClientRect();
+      aT = r.top + window.scrollY;
+      aL = r.left + window.scrollX;
+    }, { passive: true });
     card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (!r) {
+        r = card.getBoundingClientRect();
+        aT = r.top + window.scrollY;
+        aL = r.left + window.scrollX;
+      }
+      const nx = ((e.pageX - aL) / r.width - 0.5) * 2;
+      const ny = ((e.pageY - aT) / r.height - 0.5) * 2;
       gsap.to(card, {
         rotateX: -ny * MAX_TILT,
         rotateY: nx * MAX_TILT,
@@ -1168,10 +1202,20 @@ function initDividers() {
 document.querySelectorAll('.evidence-card, .project-card').forEach(card => {
   const glow = card.querySelector('.card-glow');
   if (!glow) return;
+  let r, aT, aL;
+  card.addEventListener('mouseenter', () => {
+    r = card.getBoundingClientRect();
+    aT = r.top + window.scrollY;
+    aL = r.left + window.scrollX;
+  }, { passive: true });
   card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    glow.style.left = (e.clientX - r.left) + 'px';
-    glow.style.top  = (e.clientY - r.top) + 'px';
+    if (!r) {
+      r = card.getBoundingClientRect();
+      aT = r.top + window.scrollY;
+      aL = r.left + window.scrollX;
+    }
+    glow.style.left = (e.pageX - aL) + 'px';
+    glow.style.top  = (e.pageY - aT) + 'px';
   }, { passive: true });
 });
 
