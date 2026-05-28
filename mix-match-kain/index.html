@@ -319,8 +319,8 @@
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              oninput="handleSearch(this.value)" aria-label="Search food items" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
@@ -356,6 +356,12 @@
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
           </div>
+
+          <!-- No Results Feedback -->
+          <div id="no-results" class="empty-message" style="display: none;">
+            <p>No matches found for your search. ☹️</p>
+            <button class="gradient-btn" onclick="clearSearch()" style="margin-top: 15px;">Clear search</button>
+          </div>
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
@@ -369,12 +375,12 @@
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
           <div class="cart-total-row">
             <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+            <span id="total-price" class="cart-total-price price-counter" aria-live="polite">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
@@ -444,34 +450,41 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceMatches = showRice ? filterGridItems('rice-grid', riceMenu, searchQuery) : 0;
+      const ulamMatches = showUlam ? filterGridItems('ulam-grid', ulamMenu, searchQuery) : 0;
+      const drinksMatches = showDrinks ? filterGridItems('drinks-grid', drinksMenu, searchQuery) : 0;
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && riceMatches > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && ulamMatches > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && drinksMatches > 0) ? 'block' : 'none';
+
+      const totalMatches = riceMatches + ulamMatches + drinksMatches;
+      noResults.style.display = totalMatches === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let matchCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          matchCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return matchCount;
     }
 
     // ====== MOBILE CART DRAWER ======
