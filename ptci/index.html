@@ -158,6 +158,109 @@
     .footer-dev { font-size: .78rem; color: rgba(255,255,255,.22); }
     .footer-dev a { color: var(--gold); text-decoration: none; }
 
+
+    /* VISUAL PATCHES */
+    #hero { isolation: isolate; }
+    .hero-bg { position: absolute; inset: 0; will-change: transform; }
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(245,166,35,.16), transparent 26%),
+        radial-gradient(circle at 80% 22%, rgba(255,255,255,.08), transparent 24%),
+        linear-gradient(to bottom, rgba(0,13,48,.25) 0%, rgba(0,13,48,.55) 45%, rgba(0,13,48,.86) 100%);
+      pointer-events: none;
+    }
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: .16;
+      mix-blend-mode: soft-light;
+      mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+      pointer-events: none;
+    }
+    .hero-bg img { transform: scale(1.06); }
+    .hero-content, .scroll-hint { position: relative; z-index: 2; }
+
+    #stats { position: relative; z-index: 1; }
+
+    .prog-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .prog-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,166,35,.12), transparent 42%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      z-index: -1;
+    }
+    .prog-card:hover::before { opacity: 1; }
+
+    #gallery {
+      min-height: 100vh;
+      position: relative;
+    }
+    .gallery-track {
+      cursor: grab;
+      user-select: none;
+    }
+    .gallery-item {
+      box-shadow: 0 22px 60px rgba(0,0,0,.22);
+    }
+
+    .section-desc {
+      max-width: 540px;
+      margin: .9rem auto 0;
+      color: #6B7280;
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #hero { min-height: 85svh; }
+      .hero-title { font-size: clamp(2.3rem, 14vw, 4.8rem); }
+      .hero-sub { font-size: .98rem; }
+      .section-desc { font-size: .92rem; }
+      #gallery { min-height: auto; }
+      .gallery-outer {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: .5rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .gallery-track {
+        width: max-content;
+        padding-right: 2rem;
+      }
+      .gallery-item {
+        width: 82vw;
+        scroll-snap-align: center;
+      }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 1024px) {
       #navbar { padding: 1rem 1.5rem; }
@@ -288,7 +391,7 @@
     <div class="tag">Academics</div>
     <div class="section-title">Academic Programs</div>
     <div class="divider" style="margin:1.25rem auto 0"></div>
-    <p style="max-width:540px;margin:.9rem auto 0;color:#6B7280;font-size:.95rem;line-height:1.65">CHED-accredited programs for A.Y. 2026–2027. No entrance exam. No minimum grade requirement. Affordable tuition. Flexible schedule.</p>
+    <p class="section-desc">CHED-accredited programs for A.Y. 2026–2027. No entrance exam. No minimum grade requirement. Affordable tuition. Flexible schedule.</p>
   </div>
   <div class="programs-grid">
 
@@ -440,7 +543,7 @@
       <div class="contact-brand-name">Palawan Technological College, Inc.</div>
       <div class="contact-brand-sub">Quality education in Puerto Princesa City since 1995.<br>Shaping Palawano professionals for the modern world.</div>
       <div class="contact-info-item"><span class="contact-icon">📍</span><span>245 Malvar St., Puerto Princesa City, Palawan 5300</span></div>
-      <div class="contact-info-item"><span class="contact-icon">📞</span><div><a href="tel:+639303369739">09303369739</a><br><a href="tel:+6348726 1499">(048) 726 1499</a></div></div>
+      <div class="contact-info-item"><span class="contact-icon">📞</span><div><a href="tel:+639303369739">09303369739</a><br><a href="tel:+63487261499">(048) 726 1499</a></div></div>
       <div class="contact-info-item"><span class="contact-icon">✉️</span><a href="mailto:ptci_ppc@yahoo.com">ptci_ppc@yahoo.com</a></div>
     </div>
     <div class="fade-up">
@@ -472,86 +575,170 @@
   </div>
 </footer>
 
+
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.to('#progress-bar', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: true } });
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 30); });
-
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
-
-const heroTl = gsap.timeline({ delay: .2 });
-heroTl
-  .to('#hero-badge',   { opacity:1, y:0, duration:.7, ease:'power3.out' })
-  .to('#hero-title',   { opacity:1, y:0, duration:.8, ease:'power3.out' }, '-=.4')
-  .to('#hero-sub',     { opacity:1, y:0, duration:.7, ease:'power3.out' }, '-=.5')
-  .to('#hero-actions', { opacity:1, y:0, duration:.7, ease:'power3.out' }, '-=.4');
-
-gsap.to('#hero-img', {
-  yPercent: 20,
-  ease: 'none',
-  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-});
-
-ScrollTrigger.create({
-  trigger: '#stats', start: 'top 85%',
-  onEnter: () => {
-    document.querySelectorAll('.stat-item').forEach((el, i) => {
-      gsap.to(el, { opacity:1, y:0, duration:.6, delay: i*.1, ease:'power3.out' });
-    });
-  },
-  once: true
-});
-
-document.querySelectorAll('.fade-up').forEach(el => {
-  const delay = parseFloat(el.style.getPropertyValue('--delay')) || 0;
-  gsap.to(el, { opacity: 1, y: 0, duration: .7, delay, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
-});
-
-document.querySelectorAll('.prog-card').forEach((card, i) => {
-  gsap.fromTo(card, { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: .65, delay: i * .1, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 88%', once: true } });
-});
-
-const track = document.getElementById('gallery-track');
-let isDown = false, startX, scrollLeft;
-track.addEventListener('mousedown', e => { isDown = true; track.style.cursor = 'grabbing'; startX = e.pageX - track.offsetLeft; scrollLeft = track.parentElement.scrollLeft; });
-track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
-track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; const walk = (x - startX) * 1.5; track.parentElement.scrollLeft = scrollLeft - walk; });
-track.style.cursor = 'grab';
-
-gsap.to(track, {
-  x: () => -(track.scrollWidth - track.parentElement.offsetWidth - 80),
-  ease: 'none',
-  scrollTrigger: { trigger: '#gallery', start: 'top center', end: 'bottom top', scrub: 1.5 }
-});
+function setText(el, value) {
+  if (el) el.textContent = value;
+}
 
 function countdown(targetDateStr, dEl, hEl, mEl) {
   const target = new Date(targetDateStr + 'T00:00:00+08:00').getTime();
+
   function update() {
-    const now = Date.now();
-    const diff = target - now;
-    if (diff <= 0) { dEl.textContent = hEl.textContent = mEl.textContent = '00'; return; }
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      setText(dEl, '00');
+      setText(hEl, '00');
+      setText(mEl, '00');
+      return;
+    }
+
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
-    dEl.textContent = String(d).padStart(2,'0');
-    hEl.textContent = String(h).padStart(2,'0');
-    mEl.textContent = String(m).padStart(2,'0');
+
+    setText(dEl, String(d).padStart(2, '0'));
+    setText(hEl, String(h).padStart(2, '0'));
+    setText(mEl, String(m).padStart(2, '0'));
   }
+
   update();
   setInterval(update, 30000);
 }
 
-countdown('2026-06-24', document.getElementById('cd-shs-d'), document.getElementById('cd-shs-h'), document.getElementById('cd-shs-m'));
-countdown('2026-07-13', document.getElementById('cd-col-d'), document.getElementById('cd-col-h'), document.getElementById('cd-col-m'));
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
 
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+}
+
+if (!reduceMotion) {
+  gsap.to('#progress-bar', {
+    scaleX: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true
+    }
+  });
+
+  const heroTl = gsap.timeline({ delay: .18 });
+  heroTl
+    .fromTo('#hero-badge', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' })
+    .fromTo('#hero-title', { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: .9, ease: 'power4.out' }, '-=.42')
+    .fromTo('#hero-sub', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, '-=.55')
+    .fromTo('#hero-actions', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, '-=.45');
+
+  gsap.to('#hero-img', {
+    yPercent: 18,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  });
+
+  gsap.utils.toArray('.fade-up').forEach(el => {
+    const delay = parseFloat(el.style.getPropertyValue('--delay')) || 0;
+    gsap.fromTo(el,
+      { opacity: 0, y: 34 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: .75,
+        delay,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      }
+    );
+  });
+
+  gsap.utils.toArray('.stat-item').forEach((el, i) => {
+    gsap.fromTo(el, { opacity: 0, y: 18 }, {
+      opacity: 1,
+      y: 0,
+      duration: .55,
+      delay: i * .08,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '#stats', start: 'top 85%', once: true }
+    });
+  });
+
+  gsap.utils.toArray('.prog-card').forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 44, x: i % 2 === 0 ? -20 : 20 },
+      {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration: .8,
+        delay: i * .08,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+      }
+    );
+  });
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 641px)', () => {
+    const track = document.getElementById('gallery-track');
+    const gallery = document.getElementById('gallery');
+    if (!track || !gallery) return;
+
+    const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth + 32);
+
+    gsap.to(track, {
+      x: () => -getDistance(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: gallery,
+        start: 'top top',
+        end: () => '+=' + (track.scrollWidth - window.innerWidth + 900),
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill(false));
+    };
+  });
+}
+
+countdown('2026-06-24',
+  document.getElementById('cd-shs-d'),
+  document.getElementById('cd-shs-h'),
+  document.getElementById('cd-shs-m')
+);
+
+countdown('2026-07-13',
+  document.getElementById('cd-col-d'),
+  document.getElementById('cd-col-h'),
+  document.getElementById('cd-col-m')
+);
+
+window.addEventListener('load', () => ScrollTrigger.refresh());
 window.addEventListener('resize', () => ScrollTrigger.refresh());
 </script>
+
 </body>
 </html>
