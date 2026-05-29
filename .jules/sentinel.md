@@ -1,0 +1,4 @@
+## 2025-05-15 - Hardening against Reverse Tabnabbing in Multi-Project Portfolios
+**Vulnerability:** Reverse Tabnabbing via `target="_blank"` links and `window.open()` calls.
+**Learning:** In a large portfolio of static sites, security hygiene for external links is often inconsistent. Vulnerabilities were found both in declarative HTML (missing `rel="noopener noreferrer"`) and imperative JavaScript (missing `noopener,noreferrer` in the features argument of `window.open()`). This allows a destination page to potentially hijack the opener's window via `window.opener`.
+**Prevention:** Enforce the use of `rel="noopener noreferrer"` for all `target="_blank"` links. When using JavaScript navigation, always pass `noopener,noreferrer` as the third argument to `window.open()`. In static environments, automated verification scripts (like Playwright) are essential to catch these patterns across dozens of independent sub-projects.
