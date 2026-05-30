@@ -19,6 +19,7 @@ const drinksMenu = [
 ];
 
 let cart = [];
+let totalPriceRafId = null;
 
 // ====== AUDIO CONTEXT (lazy) ======
 let audioContext = null;
@@ -55,6 +56,8 @@ function createParticles() {
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
     { size: '3px', color: 'rgba(0, 255, 200, 0.25)', shape: 'square' },
   ];
+  // BOLT: Use DocumentFragment to batch DOM injections
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 25; i++) {
     const particle = document.createElement('div');
     const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
@@ -66,8 +69,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -155,6 +159,8 @@ function goToMenu() {
 function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
+  // BOLT: Use DocumentFragment for batched card appends
+  const fragment = document.createDocumentFragment();
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -167,9 +173,10 @@ function renderGrid(items, containerId) {
         <div class="card-price">&#8369;${item.price}</div>
       </div>
     `;
-    container.appendChild(card);
+    fragment.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
   });
+  container.appendChild(fragment);
 }
 
 // ====== ADD TO CART ======
@@ -241,12 +248,13 @@ function updateCart() {
     return;
   }
 
-  list.innerHTML = '';
+  // BOLT: Batch innerHTML updates by building string first
+  let listHtml = '';
   let total = 0;
 
   cart.forEach((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    listHtml += `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
@@ -260,9 +268,12 @@ function updateCart() {
       </div>
     `;
   });
+  list.innerHTML = listHtml;
 
   const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
+    // BOLT: Cancel previous animation frame to prevent race conditions
+    if (totalPriceRafId) cancelAnimationFrame(totalPriceRafId);
     totalEl.classList.add('updating');
     const duration = 600;
     const start = Date.now();
@@ -270,10 +281,14 @@ function updateCart() {
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
       totalEl.textContent = '₱' + current;
-      if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      if (progress < 1) {
+        totalPriceRafId = requestAnimationFrame(step);
+      } else {
+        totalEl.classList.remove('updating');
+        totalPriceRafId = null;
+      }
     };
-    requestAnimationFrame(step);
+    totalPriceRafId = requestAnimationFrame(step);
   }
 
   const badge = document.getElementById('cart-badge');
@@ -420,10 +435,11 @@ function sendOrderToServer(orderData) {
 function createConfetti() {
   const container = document.createElement('div');
   container.className = 'confetti-container';
-  document.body.appendChild(container);
   const colors = ['#ff5e00', '#ff9e42', '#ffd700', '#00ff88', '#ff3333', '#00ffff'];
   const shapes = ['square', 'circle', 'star'];
   const confettiCount = window.innerWidth <= 768 ? 12 : 40;
+  // BOLT: Use DocumentFragment to batch confetti injections
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < confettiCount; i++) {
     const confetti = document.createElement('div');
     confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
@@ -433,8 +449,10 @@ function createConfetti() {
     confetti.style.animationDelay = Math.random() * 0.5 + 's';
     confetti.style.width = Math.random() * 10 + 8 + 'px';
     confetti.style.height = confetti.style.width;
-    container.appendChild(confetti);
+    fragment.appendChild(confetti);
   }
+  container.appendChild(fragment);
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 5000);
 }
 
