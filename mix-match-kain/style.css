@@ -821,6 +821,17 @@ body.light-mode .cart-input {
   box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
 }
 
+.search-bar:focus-visible,
+.search-clear:focus-visible,
+.category-tab:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.category-tab {
+  font-family: inherit;
+}
+
 .search-icon {
   position: absolute;
   left: 20px;
