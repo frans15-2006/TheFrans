@@ -55,6 +55,8 @@ function createParticles() {
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
     { size: '3px', color: 'rgba(0, 255, 200, 0.25)', shape: 'square' },
   ];
+  // Performance: Use DocumentFragment to batch DOM insertions and minimize reflows
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 25; i++) {
     const particle = document.createElement('div');
     const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
@@ -66,8 +68,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -155,6 +158,8 @@ function goToMenu() {
 function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
+  // Performance: Use DocumentFragment to batch card insertions and minimize reflows
+  const fragment = document.createDocumentFragment();
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -167,9 +172,10 @@ function renderGrid(items, containerId) {
         <div class="card-price">&#8369;${item.price}</div>
       </div>
     `;
-    container.appendChild(card);
+    fragment.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
   });
+  container.appendChild(fragment);
 }
 
 // ====== ADD TO CART ======
@@ -241,12 +247,11 @@ function updateCart() {
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
-
-  cart.forEach((c, i) => {
+  // Performance: Build HTML string and update innerHTML once to avoid O(n^2) re-parsing overhead
+  const cartHtml = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
@@ -259,7 +264,9 @@ function updateCart() {
         </div>
       </div>
     `;
-  });
+  }).join('');
+
+  list.innerHTML = cartHtml;
 
   const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
@@ -420,10 +427,11 @@ function sendOrderToServer(orderData) {
 function createConfetti() {
   const container = document.createElement('div');
   container.className = 'confetti-container';
-  document.body.appendChild(container);
   const colors = ['#ff5e00', '#ff9e42', '#ffd700', '#00ff88', '#ff3333', '#00ffff'];
   const shapes = ['square', 'circle', 'star'];
   const confettiCount = window.innerWidth <= 768 ? 12 : 40;
+  // Performance: Batch confetti insertions using DocumentFragment
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < confettiCount; i++) {
     const confetti = document.createElement('div');
     confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
@@ -433,8 +441,10 @@ function createConfetti() {
     confetti.style.animationDelay = Math.random() * 0.5 + 's';
     confetti.style.width = Math.random() * 10 + 8 + 'px';
     confetti.style.height = confetti.style.width;
-    container.appendChild(confetti);
+    fragment.appendChild(confetti);
   }
+  container.appendChild(fragment);
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 5000);
 }
 
@@ -447,7 +457,8 @@ function createSparkles(element, count = 20) {
   container.style.top = rect.top + 'px';
   container.style.width = rect.width + 'px';
   container.style.height = rect.height + 'px';
-  document.body.appendChild(container);
+  // Performance: Batch sparkle insertions using DocumentFragment
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
     const sparkle = document.createElement('div');
     const shapes = ['', 'star', 'circle', 'diamond'];
@@ -456,8 +467,10 @@ function createSparkles(element, count = 20) {
     sparkle.style.top = Math.random() * 100 + '%';
     sparkle.style.animationDelay = Math.random() * 0.5 + 's';
     sparkle.style.background = Math.random() > 0.5 ? '#ffd700' : '#ff5e00';
-    container.appendChild(sparkle);
+    fragment.appendChild(sparkle);
   }
+  container.appendChild(fragment);
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 1500);
 }
 
