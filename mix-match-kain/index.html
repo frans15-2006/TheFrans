@@ -40,11 +40,32 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      font-family: inherit;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
       background: var(--primary); border-color: var(--primary);
       color: white; box-shadow: 0 0 15px rgba(255,94,0,0.4);
+    }
+    .category-tab:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+    .no-results i {
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 15px;
+      display: block;
+    }
+    .no-results p {
+      color: #888;
+      font-size: 1.1rem;
     }
 
     /* ====== CART OVERLAY — NO BLUR ====== */
@@ -319,24 +340,24 @@
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <div class="category-tabs" role="tablist" aria-label="Food categories">
+            <button type="button" class="category-tab active" data-category="all" role="tab" aria-selected="true" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" role="tab" aria-selected="false" tabindex="-1" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" role="tab" aria-selected="false" tabindex="-1" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" role="tab" aria-selected="false" tabindex="-1" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -355,6 +376,12 @@
           <div id="drinks-section">
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
+          </div>
+
+          <!-- No Results -->
+          <div id="no-results" class="no-results" role="status" aria-live="polite">
+            <i class="fas fa-utensils"></i>
+            <p>No food matches your search...</p>
           </div>
         </main>
 
@@ -429,49 +456,84 @@
       searchInput.value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
+      searchInput.focus();
     }
 
     function filterCategory(category) {
       currentCategory = category;
       document.querySelectorAll('.category-tab').forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === category);
+        const isActive = tab.dataset.category === category;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
       });
       const query = document.getElementById('search-input').value.toLowerCase();
       filterAndShowItems(query, category);
     }
 
+    // ARIA Tablist Keyboard Support
+    document.querySelector('.category-tabs').addEventListener('keydown', (e) => {
+      const tabs = Array.from(document.querySelectorAll('.category-tab'));
+      const index = tabs.indexOf(document.activeElement);
+      if (index === -1) return;
+
+      let nextIndex;
+      if (e.key === 'ArrowRight') {
+        nextIndex = (index + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft') {
+        nextIndex = (index - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        nextIndex = 0;
+      } else if (e.key === 'End') {
+        nextIndex = tabs.length - 1;
+      } else {
+        return;
+      }
+
+      e.preventDefault();
+      tabs[nextIndex].focus();
+      tabs[nextIndex].click();
+    });
+
     function filterAndShowItems(searchQuery, category) {
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceCount = showRice ? filterGridItems('rice-grid', riceMenu, searchQuery) : 0;
+      const ulamCount = showUlam ? filterGridItems('ulam-grid', ulamMenu, searchQuery) : 0;
+      const drinksCount = showDrinks ? filterGridItems('drinks-grid', drinksMenu, searchQuery) : 0;
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && riceCount > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && ulamCount > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && drinksCount > 0) ? 'block' : 'none';
+
+      const totalVisible = riceCount + ulamCount + drinksCount;
+      noResults.style.display = totalVisible === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let count = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          count++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return count;
     }
 
     // ====== MOBILE CART DRAWER ======
