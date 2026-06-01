@@ -679,10 +679,9 @@
         <div class="contact-item reveal"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
         <div class="contact-item reveal"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036 &middot; Open to freelance</div></div>
         <div class="contact-item reveal"><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/frans15-2006" target="_blank" rel="noopener">github.com/frans15-2006 &#8599;</a></div></div>
-        <div <div class="contact-item reveal"><div class="contact-label">Facebook</div><div class="contact-value"><a href="https://www.facebook.com/franshessss" target="_blank" rel="noopener">facebook.com/franshessss &#8599;</a></div></div>
-    </a>
-  </div>
-</div>
+        <div class="contact-item reveal"><div class="contact-label">Facebook</div><div class="contact-value"><a href="https://www.facebook.com/franshessss" target="_blank" rel="noopener">facebook.com/franshessss &#8599;</a></div></div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -856,10 +855,16 @@ function initHeroCanvas() {
     amp: 0.0025 + Math.random() * 0.003
   }));
   let mx = 0.5, my = 0.5;
-  hero.addEventListener('mousemove', e => {
+  let heroRect = { left: 0, top: 0, width: 0, height: 0 };
+  const updateHeroRect = () => {
     const r = hero.getBoundingClientRect();
-    mx = (e.clientX - r.left) / r.width;
-    my = (e.clientY - r.top) / r.height;
+    heroRect = { left: r.left + window.scrollX, top: r.top + window.scrollY, width: r.width, height: r.height };
+  };
+  hero.addEventListener('mouseenter', updateHeroRect);
+  window.addEventListener('resize', updateHeroRect);
+  hero.addEventListener('mousemove', e => {
+    mx = (e.pageX - heroRect.left) / heroRect.width;
+    my = (e.pageY - heroRect.top) / heroRect.height;
   }, { passive: true });
   let t = 0, rafId;
   const W = () => canvas.width, H = () => canvas.height;
@@ -921,10 +926,16 @@ function initHeroParallax() {
   const line1 = document.querySelector('.hero-line-1');
   const line2 = document.querySelector('.hero-line-2');
   const hero = document.getElementById('hero');
-  hero.addEventListener('mousemove', e => {
+  let hRect = { left: 0, top: 0, width: 0, height: 0 };
+  const updateHRect = () => {
     const r = hero.getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
+    hRect = { left: r.left + window.scrollX, top: r.top + window.scrollY, width: r.width, height: r.height };
+  };
+  hero.addEventListener('mouseenter', updateHRect);
+  window.addEventListener('resize', updateHRect);
+  hero.addEventListener('mousemove', e => {
+    const nx = (e.pageX - hRect.left) / hRect.width - 0.5;
+    const ny = (e.pageY - hRect.top) / hRect.height - 0.5;
     gsap.to(line1, { x: nx * 10, y: ny * 5, duration: 1.4, ease: 'power2.out' });
     gsap.to(line2, { x: nx * -8, y: ny * -4, duration: 1.6, ease: 'power2.out' });
   }, { passive: true });
@@ -976,10 +987,14 @@ function initSkewOnScroll() {
 function initMagneticButtons() {
   if (isMobile || noMotion) return;
   document.querySelectorAll('.magnetic, .btn').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
+    let bRect = { left: 0, top: 0, width: 0, height: 0 };
+    btn.addEventListener('mouseenter', () => {
       const r = btn.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width / 2)) * 0.38;
-      const dy = (e.clientY - (r.top + r.height / 2)) * 0.38;
+      bRect = { left: r.left + window.scrollX, top: r.top + window.scrollY, width: r.width, height: r.height };
+    });
+    btn.addEventListener('mousemove', e => {
+      const dx = (e.pageX - (bRect.left + bRect.width / 2)) * 0.38;
+      const dy = (e.pageY - (bRect.top + bRect.height / 2)) * 0.38;
       gsap.to(btn, { x: dx, y: dy, duration: 0.35, ease: 'power2.out' });
     });
     btn.addEventListener('mouseleave', () => {
@@ -1077,10 +1092,14 @@ function initCardTilt() {
   if (isMobile || noMotion) return;
   const MAX_TILT = 4;
   document.querySelectorAll('.tilt-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
+    let cRect = { left: 0, top: 0, width: 0, height: 0 };
+    card.addEventListener('mouseenter', () => {
       const r = card.getBoundingClientRect();
-      const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      cRect = { left: r.left + window.scrollX, top: r.top + window.scrollY, width: r.width, height: r.height };
+    });
+    card.addEventListener('mousemove', e => {
+      const nx = ((e.pageX - cRect.left) / cRect.width - 0.5) * 2;
+      const ny = ((e.pageY - cRect.top) / cRect.height - 0.5) * 2;
       gsap.to(card, {
         rotateX: -ny * MAX_TILT,
         rotateY: nx * MAX_TILT,
@@ -1168,10 +1187,14 @@ function initDividers() {
 document.querySelectorAll('.evidence-card, .project-card').forEach(card => {
   const glow = card.querySelector('.card-glow');
   if (!glow) return;
-  card.addEventListener('mousemove', e => {
+  let gRect = { left: 0, top: 0 };
+  card.addEventListener('mouseenter', () => {
     const r = card.getBoundingClientRect();
-    glow.style.left = (e.clientX - r.left) + 'px';
-    glow.style.top  = (e.clientY - r.top) + 'px';
+    gRect = { left: r.left + window.scrollX, top: r.top + window.scrollY };
+  });
+  card.addEventListener('mousemove', e => {
+    glow.style.left = (e.pageX - gRect.left) + 'px';
+    glow.style.top  = (e.pageY - gRect.top) + 'px';
   }, { passive: true });
 });
 
