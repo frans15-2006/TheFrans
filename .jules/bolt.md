@@ -1,0 +1,3 @@
+## 2026-06-02 - DOM Thrashing in Static Portfolio Projects
+**Learning:** Legacy static projects often use `innerHTML +=` inside loops for cart updates and individual `appendChild` calls for particle systems. This causes O(n²) re-parsing overhead and excessive layout thrashing (reflows/repaints) which is particularly noticeable on low-end mobile devices common in the target demographic for these restaurant sites.
+**Action:** Always batch DOM updates. Use string accumulation or array-join for HTML content, and `DocumentFragment` for complex element trees before a single insertion into the live DOM.
