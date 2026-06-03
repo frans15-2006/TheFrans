@@ -1,0 +1,3 @@
+## 2025-05-15 - Accessible Semantic Navigation & Search Feedback
+**Learning:** Using `div` elements with `onclick` handlers for navigation tabs creates an accessibility gap where keyboard users cannot interact with the controls. Converting them to semantic `<button>` elements with `:focus-visible` styles ensures the app is navigable for all users without breaking existing layouts. Additionally, providing an `aria-live` status for empty search results is critical for screen reader users to understand why the grid has changed.
+**Action:** Always prefer semantic `<button>` or `<a>` tags for interactive elements and ensure dynamic UI changes (like empty states) are announced to assistive technologies.
