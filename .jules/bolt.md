@@ -1,0 +1,3 @@
+## 2025-06-04 - DOM and Animation Optimization in mix-match-kain
+**Learning:** In vanilla JS applications, iterative `innerHTML +=` triggers expensive O(n²) re-parsing and layout thrashing. Similarly, high-frequency DOM insertions in a loop (like particles or grid items) cause multiple reflows. Overlapping `requestAnimationFrame` cycles for UI animations (like price counters) can lead to race conditions and visual glitches.
+**Action:** Always batch DOM updates by building a single HTML string or using `DocumentFragment`. Cache frequently accessed elements at the top level (on DOMContentLoaded). Manage `requestAnimationFrame` by storing and cancelling the RAF ID before starting a new cycle to ensure animation safety.
