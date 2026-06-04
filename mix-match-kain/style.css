@@ -37,6 +37,12 @@ body {
   cursor: default;
 }
 
+/* ====== ACCESSIBILITY: FOCUS STATES ====== */
+*:focus-visible {
+  outline: 3px solid var(--primary) !important;
+  outline-offset: 4px !important;
+}
+
 .card,
 .btn,
 button,

@@ -40,6 +40,7 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      font-family: inherit;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
@@ -253,6 +254,7 @@
       /* Remove will-change from cart-area — it creates its own stacking context */
       .cart-area { will-change: auto !important; isolation: isolate; }
     }
+
   </style>
 </head>
 
@@ -268,7 +270,7 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Floating Action Button (scroll to top) -->
-  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
+  <button class="fab" id="fab-btn" type="button" title="Scroll to top" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -317,26 +319,26 @@
         <main>
           <!-- Search Bar -->
           <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <div class="category-tabs" role="tablist" aria-label="Food categories">
+            <button type="button" class="category-tab active" role="tab" data-category="all" onclick="filterCategory('all')" aria-selected="true">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" role="tab" data-category="rice" onclick="filterCategory('rice')" aria-selected="false">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" role="tab" data-category="ulam" onclick="filterCategory('ulam')" aria-selected="false">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" role="tab" data-category="drinks" onclick="filterCategory('drinks')" aria-selected="false">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -369,12 +371,12 @@
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
           <div class="cart-total-row">
             <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+            <span id="total-price" class="cart-total-price price-counter" aria-live="polite">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
@@ -434,7 +436,9 @@
     function filterCategory(category) {
       currentCategory = category;
       document.querySelectorAll('.category-tab').forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === category);
+        const isActive = tab.dataset.category === category;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive);
       });
       const query = document.getElementById('search-input').value.toLowerCase();
       filterAndShowItems(query, category);
