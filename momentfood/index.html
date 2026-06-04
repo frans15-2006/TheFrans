@@ -450,7 +450,7 @@ footer{background:var(--espresso2);padding:5rem 4rem 3rem;border-top:1px solid r
     <div class="cta-eyebrow rv">Ready to order?</div>
     <h2 class="cta-title rv d1">Your next<br><em>favourite meal</em><br>is one click away.</h2>
     <div class="cta-actions rv d2">
-      <a href="https://momentfood.com" target="_blank" class="btn-espresso">Order on momentfood.com</a>
+      <a href="https://momentfood.com" target="_blank" rel="noopener noreferrer" class="btn-espresso">Order on momentfood.com</a>
     </div>
     <p class="cta-note rv d3">Delivery within <strong>Greater Metro Manila</strong> · Flat rate <strong>₱150</strong> · Same-day · Cut-off <strong>9 PM daily</strong></p>
   </div>
@@ -557,7 +557,7 @@ revealEls.forEach(el => observer.observe(el));
 // --- BRAND CARD LINKS (mock) ---
 document.querySelectorAll('.brand-card').forEach(card => {
   card.addEventListener('click', () => {
-    window.open('https://momentfood.com', '_blank');
+    window.open('https://momentfood.com', '_blank', 'noopener,noreferrer');
   });
   card.style.cursor = 'pointer';
 });
