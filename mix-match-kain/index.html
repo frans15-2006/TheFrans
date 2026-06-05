@@ -40,6 +40,7 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      font-family: inherit;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
@@ -268,7 +269,7 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Floating Action Button (scroll to top) -->
-  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
+  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -320,23 +321,29 @@
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
               oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <div class="category-tabs" role="tablist">
+            <button class="category-tab active" data-category="all" onclick="filterCategory('all')" role="tab" aria-selected="true">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button class="category-tab" data-category="rice" onclick="filterCategory('rice')" role="tab" aria-selected="false">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button class="category-tab" data-category="ulam" onclick="filterCategory('ulam')" role="tab" aria-selected="false">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button class="category-tab" data-category="drinks" onclick="filterCategory('drinks')" role="tab" aria-selected="false">
               🥤 Drinks
-            </div>
+            </button>
+          </div>
+
+          <!-- No Results Message -->
+          <div id="no-results" style="display: none; text-align: center; padding: 40px 20px; color: #666; font-size: 1.1rem;" role="status" aria-live="polite">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🍽️</div>
+            No food items found matching your search.
           </div>
 
           <!-- Rice Section -->
@@ -369,12 +376,12 @@
             <h3 class="cart-header">🛒 YOUR ORDER</h3>
             <span id="cart-toggle-icon">▼</span>
           </div>
-          <div id="cart-list">
+          <div id="cart-list" aria-live="polite">
             <p class="empty-cart-message">Empty bowl...</p>
           </div>
           <div class="cart-total-row">
             <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
+            <span id="total-price" class="cart-total-price price-counter" aria-live="polite">₱0</span>
           </div>
           <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
           <button class="confirm-btn btn" onclick="generateQR()">
@@ -429,12 +436,15 @@
       searchInput.value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
+      searchInput.focus();
     }
 
     function filterCategory(category) {
       currentCategory = category;
       document.querySelectorAll('.category-tab').forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === category);
+        const isActive = tab.dataset.category === category;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive);
       });
       const query = document.getElementById('search-input').value.toLowerCase();
       filterAndShowItems(query, category);
@@ -449,29 +459,35 @@
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const visibleRice = showRice ? filterGridItems('rice-grid', riceMenu, searchQuery) : 0;
+      const visibleUlam = showUlam ? filterGridItems('ulam-grid', ulamMenu, searchQuery) : 0;
+      const visibleDrinks = showDrinks ? filterGridItems('drinks-grid', drinksMenu, searchQuery) : 0;
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && visibleRice > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && visibleUlam > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && visibleDrinks > 0) ? 'block' : 'none';
+
+      const totalVisible = visibleRice + visibleUlam + visibleDrinks;
+      document.getElementById('no-results').style.display = totalVisible === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let visibleCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          visibleCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return visibleCount;
     }
 
     // ====== MOBILE CART DRAWER ======

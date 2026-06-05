@@ -1,0 +1,3 @@
+## 2026-06-05 - [Improved Search Feedback and Tab Accessibility]
+**Learning:** Using `role="status"` with `aria-live="polite"` on empty state containers provides immediate and accessible feedback when user interactions (like searching) result in no visible content, preventing "dead air" for screen reader users. Additionally, converting interactive elements to semantic `<button>` tags is crucial for keyboard navigation as it provides native focus and activation support.
+**Action:** Always include an accessible empty state for searchable interfaces and prioritize semantic `<button>` elements for all non-navigation interactions.
