@@ -19,6 +19,9 @@ const drinksMenu = [
 ];
 
 let cart = [];
+// Cached DOM elements
+let cartList, totalPriceEl, cartBadge, mobileCartFab, cartSidebar, toastContainer;
+let totalPriceRafId; // For price animation cycle management
 
 // ====== AUDIO CONTEXT (lazy) ======
 let audioContext = null;
@@ -55,6 +58,8 @@ function createParticles() {
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
     { size: '3px', color: 'rgba(0, 255, 200, 0.25)', shape: 'square' },
   ];
+  // ⚡ Bolt: Use DocumentFragment to batch particle insertions
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 25; i++) {
     const particle = document.createElement('div');
     const type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
@@ -66,8 +71,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -155,6 +161,8 @@ function goToMenu() {
 function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
+  // ⚡ Bolt: Use DocumentFragment to batch DOM insertions and minimize reflows
+  const fragment = document.createDocumentFragment();
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -167,9 +175,10 @@ function renderGrid(items, containerId) {
         <div class="card-price">&#8369;${item.price}</div>
       </div>
     `;
-    container.appendChild(card);
+    fragment.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
   });
+  container.appendChild(fragment);
 }
 
 // ====== ADD TO CART ======
@@ -228,61 +237,61 @@ function addToCart(item, event) {
 
 // ====== UPDATE CART ======
 function updateCart() {
-  const list = document.getElementById('cart-list');
-  const totalEl = document.getElementById('total-price');
-
   if (cart.length === 0) {
-    list.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
-    totalEl.textContent = '₱0';
-    const badge = document.getElementById('cart-badge');
-    const mobileFab = document.getElementById('mobile-cart-fab');
-    if (badge) badge.textContent = '0';
-    if (mobileFab) mobileFab.classList.remove('has-items');
+    cartList.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
+    totalPriceEl.textContent = '₱0';
+    if (cartBadge) cartBadge.textContent = '0';
+    if (mobileCartFab) mobileCartFab.classList.remove('has-items');
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
-
-  cart.forEach((c, i) => {
+  // ⚡ Bolt: Batch DOM updates by using .map().join('') instead of += inside a loop
+  // This avoids O(n^2) re-parsing of the innerHTML string.
+  cartList.innerHTML = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
           <div class="cart-item-price">&#8369;${c.price} ea</div>
         </div>
         <div class="cart-item-controls">
-          <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+          <button class="qty-btn" onclick="changeQty(${i}, -1)" aria-label="Decrease quantity">-</button>
           <span>${c.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+          <button class="qty-btn" onclick="changeQty(${i}, 1)" aria-label="Increase quantity">+</button>
         </div>
       </div>
     `;
-  });
+  }).join('');
 
-  const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
+  const oldTotal = parseInt(totalPriceEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
-    totalEl.classList.add('updating');
+    // ⚡ Bolt: Cancel any existing animation cycle to prevent overlapping updates
+    if (totalPriceRafId) cancelAnimationFrame(totalPriceRafId);
+
+    totalPriceEl.classList.add('updating');
     const duration = 600;
     const start = Date.now();
     const step = () => {
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
-      totalEl.textContent = '₱' + current;
-      if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      totalPriceEl.textContent = '₱' + current;
+      if (progress < 1) {
+        totalPriceRafId = requestAnimationFrame(step);
+      } else {
+        totalPriceEl.classList.remove('updating');
+        totalPriceRafId = null;
+      }
     };
-    requestAnimationFrame(step);
+    totalPriceRafId = requestAnimationFrame(step);
   }
 
-  const badge = document.getElementById('cart-badge');
-  const mobileFab = document.getElementById('mobile-cart-fab');
-  if (badge && mobileFab) {
+  if (cartBadge && mobileCartFab) {
     const totalQty = cart.reduce((s, c) => s + c.qty, 0);
-    badge.textContent = totalQty;
-    mobileFab.classList.toggle('has-items', cart.length > 0);
-    const fabText = mobileFab.querySelector('.fab-text');
+    cartBadge.textContent = totalQty;
+    mobileCartFab.classList.toggle('has-items', cart.length > 0);
+    const fabText = mobileCartFab.querySelector('.fab-text');
     if (fabText) fabText.textContent = cart.length > 0 ? `₱${total}` : 'VIEW CART';
   }
 }
@@ -295,11 +304,11 @@ function changeQty(idx, delta) {
 
 // ====== TOAST NOTIFICATIONS ======
 function showToast(message, type = 'info') {
-  const container = document.getElementById('toast-container');
+  if (!toastContainer) return;
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.innerHTML = `<span>${message}</span>`;
-  container.appendChild(toast);
+  toastContainer.appendChild(toast);
   setTimeout(() => {
     toast.classList.add('fade-out');
     setTimeout(() => toast.remove(), 300);
@@ -424,6 +433,8 @@ function createConfetti() {
   const colors = ['#ff5e00', '#ff9e42', '#ffd700', '#00ff88', '#ff3333', '#00ffff'];
   const shapes = ['square', 'circle', 'star'];
   const confettiCount = window.innerWidth <= 768 ? 12 : 40;
+  // ⚡ Bolt: Use DocumentFragment to batch confetti insertions
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < confettiCount; i++) {
     const confetti = document.createElement('div');
     confetti.className = `confetti ${shapes[Math.floor(Math.random() * shapes.length)]}`;
@@ -433,8 +444,9 @@ function createConfetti() {
     confetti.style.animationDelay = Math.random() * 0.5 + 's';
     confetti.style.width = Math.random() * 10 + 8 + 'px';
     confetti.style.height = confetti.style.width;
-    container.appendChild(confetti);
+    fragment.appendChild(confetti);
   }
+  container.appendChild(fragment);
   setTimeout(() => container.remove(), 5000);
 }
 
@@ -448,6 +460,8 @@ function createSparkles(element, count = 20) {
   container.style.width = rect.width + 'px';
   container.style.height = rect.height + 'px';
   document.body.appendChild(container);
+  // ⚡ Bolt: Use DocumentFragment to batch sparkle insertions
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
     const sparkle = document.createElement('div');
     const shapes = ['', 'star', 'circle', 'diamond'];
@@ -456,13 +470,22 @@ function createSparkles(element, count = 20) {
     sparkle.style.top = Math.random() * 100 + '%';
     sparkle.style.animationDelay = Math.random() * 0.5 + 's';
     sparkle.style.background = Math.random() > 0.5 ? '#ffd700' : '#ff5e00';
-    container.appendChild(sparkle);
+    fragment.appendChild(sparkle);
   }
+  container.appendChild(fragment);
   setTimeout(() => container.remove(), 1500);
 }
 
 // ====== INITIALIZE ======
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize cached elements
+  cartList = document.getElementById('cart-list');
+  totalPriceEl = document.getElementById('total-price');
+  cartBadge = document.getElementById('cart-badge');
+  mobileCartFab = document.getElementById('mobile-cart-fab');
+  cartSidebar = document.getElementById('cart-sidebar');
+  toastContainer = document.getElementById('toast-container');
+
   renderGrid(riceMenu, 'rice-grid');
   renderGrid(ulamMenu, 'ulam-grid');
   renderGrid(drinksMenu, 'drinks-grid');
