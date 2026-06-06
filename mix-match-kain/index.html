@@ -31,6 +31,34 @@
     }
     .search-clear.show { display: block; }
 
+    /* ====== EMPTY STATE ====== */
+    #no-results {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      color: #666;
+    }
+    #no-results i { font-size: 3rem; margin-bottom: 15px; opacity: 0.5; }
+    #no-results p { font-size: 1.1rem; margin-bottom: 20px; }
+    #no-results .clear-btn {
+      padding: 10px 25px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 25px;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    #no-results .clear-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
     /* ====== CATEGORY TABS ====== */
     .category-tabs {
       display: flex; gap: 10px; margin-bottom: 22px;
@@ -268,7 +296,7 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Floating Action Button (scroll to top) -->
-  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
+  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -319,8 +347,8 @@
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              oninput="handleSearch(this.value)" aria-label="Search food items" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
@@ -337,6 +365,13 @@
             <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
             </div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="no-results" role="status" aria-live="polite">
+            <i class="fas fa-search"></i>
+            <p>No items found matching your search.</p>
+            <button class="clear-btn" onclick="clearSearch()">Clear Search</button>
           </div>
 
           <!-- Rice Section -->
@@ -429,6 +464,7 @@
       searchInput.value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
+      searchInput.focus();
     }
 
     function filterCategory(category) {
@@ -444,34 +480,41 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceMatches = showRice ? filterGridItems('rice-grid', riceMenu, searchQuery) : 0;
+      const ulamMatches = showUlam ? filterGridItems('ulam-grid', ulamMenu, searchQuery) : 0;
+      const drinksMatches = showDrinks ? filterGridItems('drinks-grid', drinksMenu, searchQuery) : 0;
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      riceSection.style.display = (showRice && riceMatches > 0) ? 'block' : 'none';
+      ulamSection.style.display = (showUlam && ulamMatches > 0) ? 'block' : 'none';
+      drinksSection.style.display = (showDrinks && drinksMatches > 0) ? 'block' : 'none';
+
+      const totalMatches = riceMatches + ulamMatches + drinksMatches;
+      noResults.style.display = (totalMatches === 0 && searchQuery) ? 'flex' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let visibleCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          visibleCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return visibleCount;
     }
 
     // ====== MOBILE CART DRAWER ======
