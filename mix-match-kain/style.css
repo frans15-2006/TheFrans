@@ -1883,3 +1883,24 @@ body {
   padding-left: 10px;
   color: #fff;
 }
+
+/* ====== PALETTE ENHANCEMENTS ====== */
+*:focus-visible {
+  outline: 3px solid var(--primary) !important;
+  outline-offset: 4px !important;
+}
+
+button.category-tab {
+  font-family: inherit;
+  appearance: none;
+}
+
+button.card {
+  font-family: inherit;
+  appearance: none;
+  text-align: inherit;
+  display: block;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+}
