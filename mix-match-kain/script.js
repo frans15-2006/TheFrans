@@ -20,6 +20,9 @@ const drinksMenu = [
 
 let cart = [];
 
+// Cached DOM Elements
+let cartList, totalPriceEl, cartBadge, mobileCartFab, cartSidebar, toastContainer;
+
 // ====== AUDIO CONTEXT (lazy) ======
 let audioContext = null;
 function getAudioContext() {
@@ -50,6 +53,7 @@ function playSound(frequency, duration, type = 'sine') {
 function createParticles() {
   if (window.innerWidth <= 768) return;
   const particleContainer = document.body;
+  const fragment = document.createDocumentFragment();
   const particleTypes = [
     { size: '4px', color: 'rgba(255, 94, 0, 0.3)', shape: 'circle' },
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
@@ -66,8 +70,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -154,7 +159,9 @@ function goToMenu() {
 // ====== RENDER GRID ======
 function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
+  if (!container) return;
   container.innerHTML = '';
+  const fragment = document.createDocumentFragment();
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -167,9 +174,10 @@ function renderGrid(items, containerId) {
         <div class="card-price">&#8369;${item.price}</div>
       </div>
     `;
-    container.appendChild(card);
+    fragment.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
   });
+  container.appendChild(fragment);
 }
 
 // ====== ADD TO CART ======
@@ -208,81 +216,71 @@ function addToCart(item, event) {
   document.body.appendChild(flyingItem);
   setTimeout(() => flyingItem.remove(), 800);
 
-  const cartSidebar = document.getElementById('cart-sidebar');
-  cartSidebar.classList.remove('cart-bounce');
-  void cartSidebar.offsetWidth;
-  cartSidebar.classList.add('cart-bounce');
+  if (cartSidebar) {
+    cartSidebar.classList.remove('cart-bounce');
+    void cartSidebar.offsetWidth;
+    cartSidebar.classList.add('cart-bounce');
+  }
 
   updateCart();
   showToast(`Added ${item.name} to cart!`, 'success');
 
-  if (isMobile) {
-    const fab = document.getElementById('mobile-cart-fab');
-    if (fab) {
-      fab.classList.remove('fab-added');
-      void fab.offsetWidth;
-      fab.classList.add('fab-added');
-    }
+  if (isMobile && mobileCartFab) {
+    mobileCartFab.classList.remove('fab-added');
+    void mobileCartFab.offsetWidth;
+    mobileCartFab.classList.add('fab-added');
   }
 }
 
 // ====== UPDATE CART ======
 function updateCart() {
-  const list = document.getElementById('cart-list');
-  const totalEl = document.getElementById('total-price');
-
   if (cart.length === 0) {
-    list.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
-    totalEl.textContent = '₱0';
-    const badge = document.getElementById('cart-badge');
-    const mobileFab = document.getElementById('mobile-cart-fab');
-    if (badge) badge.textContent = '0';
-    if (mobileFab) mobileFab.classList.remove('has-items');
+    if (cartList) cartList.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
+    if (totalPriceEl) totalPriceEl.textContent = '₱0';
+    if (cartBadge) cartBadge.textContent = '0';
+    if (mobileCartFab) mobileCartFab.classList.remove('has-items');
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
-
-  cart.forEach((c, i) => {
+  const html = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
           <div class="cart-item-price">&#8369;${c.price} ea</div>
         </div>
         <div class="cart-item-controls">
-          <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+          <button class="qty-btn" onclick="changeQty(${i}, -1)" aria-label="Decrease quantity">-</button>
           <span>${c.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+          <button class="qty-btn" onclick="changeQty(${i}, 1)" aria-label="Increase quantity">+</button>
         </div>
       </div>
     `;
-  });
+  }).join('');
+  if (cartList) cartList.innerHTML = html;
 
-  const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
+  const oldTotal = parseInt(totalPriceEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
-    totalEl.classList.add('updating');
+    totalPriceEl.classList.add('updating');
     const duration = 600;
     const start = Date.now();
     const step = () => {
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
-      totalEl.textContent = '₱' + current;
+      totalPriceEl.textContent = '₱' + current;
       if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      else totalPriceEl.classList.remove('updating');
     };
     requestAnimationFrame(step);
   }
 
-  const badge = document.getElementById('cart-badge');
-  const mobileFab = document.getElementById('mobile-cart-fab');
-  if (badge && mobileFab) {
+  if (cartBadge && mobileCartFab) {
     const totalQty = cart.reduce((s, c) => s + c.qty, 0);
-    badge.textContent = totalQty;
-    mobileFab.classList.toggle('has-items', cart.length > 0);
-    const fabText = mobileFab.querySelector('.fab-text');
+    cartBadge.textContent = totalQty;
+    mobileCartFab.classList.toggle('has-items', cart.length > 0);
+    const fabText = mobileCartFab.querySelector('.fab-text');
     if (fabText) fabText.textContent = cart.length > 0 ? `₱${total}` : 'VIEW CART';
   }
 }
@@ -295,11 +293,11 @@ function changeQty(idx, delta) {
 
 // ====== TOAST NOTIFICATIONS ======
 function showToast(message, type = 'info') {
-  const container = document.getElementById('toast-container');
+  if (!toastContainer) return;
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.innerHTML = `<span>${message}</span>`;
-  container.appendChild(toast);
+  toastContainer.appendChild(toast);
   setTimeout(() => {
     toast.classList.add('fade-out');
     setTimeout(() => toast.remove(), 300);
@@ -313,9 +311,10 @@ function generateQR() {
 
   if (!name || cart.length === 0) {
     showToast('Enter name & select items!', 'error');
-    const cartSidebar = document.getElementById('cart-sidebar');
-    cartSidebar.classList.add('cart-shake');
-    setTimeout(() => cartSidebar.classList.remove('cart-shake'), 500);
+    if (cartSidebar) {
+      cartSidebar.classList.add('cart-shake');
+      setTimeout(() => cartSidebar.classList.remove('cart-shake'), 500);
+    }
     playSound(200, 0.3, 'sawtooth');
     return;
   }
@@ -420,7 +419,7 @@ function sendOrderToServer(orderData) {
 function createConfetti() {
   const container = document.createElement('div');
   container.className = 'confetti-container';
-  document.body.appendChild(container);
+  const fragment = document.createDocumentFragment();
   const colors = ['#ff5e00', '#ff9e42', '#ffd700', '#00ff88', '#ff3333', '#00ffff'];
   const shapes = ['square', 'circle', 'star'];
   const confettiCount = window.innerWidth <= 768 ? 12 : 40;
@@ -433,8 +432,10 @@ function createConfetti() {
     confetti.style.animationDelay = Math.random() * 0.5 + 's';
     confetti.style.width = Math.random() * 10 + 8 + 'px';
     confetti.style.height = confetti.style.width;
-    container.appendChild(confetti);
+    fragment.appendChild(confetti);
   }
+  container.appendChild(fragment);
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 5000);
 }
 
@@ -447,7 +448,7 @@ function createSparkles(element, count = 20) {
   container.style.top = rect.top + 'px';
   container.style.width = rect.width + 'px';
   container.style.height = rect.height + 'px';
-  document.body.appendChild(container);
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < count; i++) {
     const sparkle = document.createElement('div');
     const shapes = ['', 'star', 'circle', 'diamond'];
@@ -456,13 +457,23 @@ function createSparkles(element, count = 20) {
     sparkle.style.top = Math.random() * 100 + '%';
     sparkle.style.animationDelay = Math.random() * 0.5 + 's';
     sparkle.style.background = Math.random() > 0.5 ? '#ffd700' : '#ff5e00';
-    container.appendChild(sparkle);
+    fragment.appendChild(sparkle);
   }
+  container.appendChild(fragment);
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 1500);
 }
 
 // ====== INITIALIZE ======
 document.addEventListener('DOMContentLoaded', () => {
+  // Cache DOM elements
+  cartList = document.getElementById('cart-list');
+  totalPriceEl = document.getElementById('total-price');
+  cartBadge = document.getElementById('cart-badge');
+  mobileCartFab = document.getElementById('mobile-cart-fab');
+  cartSidebar = document.getElementById('cart-sidebar');
+  toastContainer = document.getElementById('toast-container');
+
   renderGrid(riceMenu, 'rice-grid');
   renderGrid(ulamMenu, 'ulam-grid');
   renderGrid(drinksMenu, 'drinks-grid');
