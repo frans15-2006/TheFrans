@@ -195,9 +195,10 @@ function addToCart(item, event) {
   flyingItem.style.top = `${startY}px`;
 
   const isMobile = window.innerWidth <= 768;
-  const edgeTab = document.getElementById('mobile-cart-fab');
-  const cartRect = document.getElementById('cart-sidebar').getBoundingClientRect();
-  const targetRect = (isMobile && edgeTab) ? edgeTab.getBoundingClientRect() : cartRect;
+  if (!mobileCartFab) mobileCartFab = document.getElementById('mobile-cart-fab');
+  if (!cartSidebar) cartSidebar = document.getElementById('cart-sidebar');
+  const cartRect = cartSidebar.getBoundingClientRect();
+  const targetRect = (isMobile && mobileCartFab) ? mobileCartFab.getBoundingClientRect() : cartRect;
   const cartX = targetRect.left + targetRect.width / 2 - 30;
   const cartY = targetRect.top + targetRect.height / 2 - 30;
   flyingItem.style.setProperty('--start-x', `${startX}px`);
@@ -208,7 +209,6 @@ function addToCart(item, event) {
   document.body.appendChild(flyingItem);
   setTimeout(() => flyingItem.remove(), 800);
 
-  const cartSidebar = document.getElementById('cart-sidebar');
   cartSidebar.classList.remove('cart-bounce');
   void cartSidebar.offsetWidth;
   cartSidebar.classList.add('cart-bounce');
@@ -216,73 +216,75 @@ function addToCart(item, event) {
   updateCart();
   showToast(`Added ${item.name} to cart!`, 'success');
 
-  if (isMobile) {
-    const fab = document.getElementById('mobile-cart-fab');
-    if (fab) {
-      fab.classList.remove('fab-added');
-      void fab.offsetWidth;
-      fab.classList.add('fab-added');
-    }
+  if (isMobile && mobileCartFab) {
+    mobileCartFab.classList.remove('fab-added');
+    void mobileCartFab.offsetWidth;
+    mobileCartFab.classList.add('fab-added');
   }
 }
 
+// Cached DOM elements for performance
+let cartList, totalPriceEl, cartBadge, mobileCartFab, toastContainer, cartSidebar;
+
 // ====== UPDATE CART ======
 function updateCart() {
-  const list = document.getElementById('cart-list');
-  const totalEl = document.getElementById('total-price');
+  if (!cartList) cartList = document.getElementById('cart-list');
+  if (!totalPriceEl) totalPriceEl = document.getElementById('total-price');
+  if (!cartBadge) cartBadge = document.getElementById('cart-badge');
+  if (!mobileCartFab) mobileCartFab = document.getElementById('mobile-cart-fab');
 
   if (cart.length === 0) {
-    list.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
-    totalEl.textContent = '₱0';
-    const badge = document.getElementById('cart-badge');
-    const mobileFab = document.getElementById('mobile-cart-fab');
-    if (badge) badge.textContent = '0';
-    if (mobileFab) mobileFab.classList.remove('has-items');
+    cartList.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
+    totalPriceEl.textContent = '₱0';
+    if (cartBadge) cartBadge.textContent = '0';
+    if (mobileCartFab) mobileCartFab.classList.remove('has-items');
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
+  let totalQty = 0;
 
-  cart.forEach((c, i) => {
+  // Optimized: Batch DOM updates by building HTML string first
+  // Also calculates total price and quantity in a single pass to avoid O(n) overhead
+  const cartHTML = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    totalQty += c.qty;
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
           <div class="cart-item-price">&#8369;${c.price} ea</div>
         </div>
         <div class="cart-item-controls">
-          <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+          <button class="qty-btn" onclick="changeQty(${i}, -1)" aria-label="Decrease quantity">-</button>
           <span>${c.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+          <button class="qty-btn" onclick="changeQty(${i}, 1)" aria-label="Increase quantity">+</button>
         </div>
       </div>
     `;
-  });
+  }).join('');
 
-  const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
+  cartList.innerHTML = cartHTML;
+
+  const oldTotal = parseInt(totalPriceEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
-    totalEl.classList.add('updating');
+    totalPriceEl.classList.add('updating');
     const duration = 600;
     const start = Date.now();
     const step = () => {
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
-      totalEl.textContent = '₱' + current;
+      totalPriceEl.textContent = '₱' + current;
       if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      else totalPriceEl.classList.remove('updating');
     };
     requestAnimationFrame(step);
   }
 
-  const badge = document.getElementById('cart-badge');
-  const mobileFab = document.getElementById('mobile-cart-fab');
-  if (badge && mobileFab) {
-    const totalQty = cart.reduce((s, c) => s + c.qty, 0);
-    badge.textContent = totalQty;
-    mobileFab.classList.toggle('has-items', cart.length > 0);
-    const fabText = mobileFab.querySelector('.fab-text');
+  if (cartBadge && mobileCartFab) {
+    cartBadge.textContent = totalQty;
+    mobileCartFab.classList.toggle('has-items', cart.length > 0);
+    const fabText = mobileCartFab.querySelector('.fab-text');
     if (fabText) fabText.textContent = cart.length > 0 ? `₱${total}` : 'VIEW CART';
   }
 }
@@ -295,11 +297,11 @@ function changeQty(idx, delta) {
 
 // ====== TOAST NOTIFICATIONS ======
 function showToast(message, type = 'info') {
-  const container = document.getElementById('toast-container');
+  if (!toastContainer) toastContainer = document.getElementById('toast-container');
   const toast = document.createElement('div');
   toast.className = `toast ${type}`;
   toast.innerHTML = `<span>${message}</span>`;
-  container.appendChild(toast);
+  toastContainer.appendChild(toast);
   setTimeout(() => {
     toast.classList.add('fade-out');
     setTimeout(() => toast.remove(), 300);
@@ -313,7 +315,7 @@ function generateQR() {
 
   if (!name || cart.length === 0) {
     showToast('Enter name & select items!', 'error');
-    const cartSidebar = document.getElementById('cart-sidebar');
+    if (!cartSidebar) cartSidebar = document.getElementById('cart-sidebar');
     cartSidebar.classList.add('cart-shake');
     setTimeout(() => cartSidebar.classList.remove('cart-shake'), 500);
     playSound(200, 0.3, 'sawtooth');
