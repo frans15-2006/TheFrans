@@ -1883,3 +1883,9 @@ body {
   padding-left: 10px;
   color: #fff;
 }
+
+/* ====== GLOBAL FOCUS INDICATOR ====== */
+*:focus-visible {
+  outline: 3px solid var(--primary) !important;
+  outline-offset: 4px !important;
+}

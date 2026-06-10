@@ -325,18 +325,18 @@
 
           <!-- Category Tabs -->
           <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+            <button type="button" class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -355,6 +355,10 @@
           <div id="drinks-section">
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
+          </div>
+
+          <div id="no-results" class="empty-message" style="display:none; text-align:center; padding:40px; color:#aaa;" role="status" aria-live="polite">
+            No items match your search.
           </div>
         </main>
 
@@ -444,34 +448,49 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
-      const showRice = category === 'all' || category === 'rice';
-      const showUlam = category === 'all' || category === 'ulam';
-      const showDrinks = category === 'all' || category === 'drinks';
+      const showRiceByCategory = category === 'all' || category === 'rice';
+      const showUlamByCategory = category === 'all' || category === 'ulam';
+      const showDrinksByCategory = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceMatches = filterGridItems('rice-grid', riceMenu, searchQuery);
+      const ulamMatches = filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      const drinksMatches = filterGridItems('drinks-grid', drinksMenu, searchQuery);
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      const hasRice = showRiceByCategory && riceMatches > 0;
+      const hasUlam = showUlamByCategory && ulamMatches > 0;
+      const hasDrinks = showDrinksByCategory && drinksMatches > 0;
+
+      riceSection.style.display = hasRice ? 'block' : 'none';
+      ulamSection.style.display = hasUlam ? 'block' : 'none';
+      drinksSection.style.display = hasDrinks ? 'block' : 'none';
+
+      const totalMatches = (showRiceByCategory ? riceMatches : 0) +
+                           (showUlamByCategory ? ulamMatches : 0) +
+                           (showDrinksByCategory ? drinksMatches : 0);
+
+      noResults.style.display = totalMatches === 0 ? 'block' : 'none';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let matchesCount = 0;
+
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          matchesCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return matchesCount;
     }
 
     // ====== MOBILE CART DRAWER ======
