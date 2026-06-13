@@ -356,6 +356,12 @@
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
           </div>
+
+          <!-- No Results Message -->
+          <div id="no-results" class="empty-message" style="display: none; margin-top: 40px;" role="status" aria-live="polite">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">No items match your search.</p>
+            <button class="gradient-btn" onclick="clearSearch()">Clear search</button>
+          </div>
         </main>
 
         <aside class="cart-area" id="cart-sidebar">
@@ -429,6 +435,7 @@
       searchInput.value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
+      searchInput.focus();
     }
 
     function filterCategory(category) {
@@ -444,34 +451,44 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
       const showDrinks = category === 'all' || category === 'drinks';
 
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
+      const riceCount = filterGridItems('rice-grid', riceMenu, searchQuery);
+      const ulamCount = filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      const drinksCount = filterGridItems('drinks-grid', drinksMenu, searchQuery);
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      const riceVisible = showRice && riceCount > 0;
+      const ulamVisible = showUlam && ulamCount > 0;
+      const drinksVisible = showDrinks && drinksCount > 0;
+
+      riceSection.style.display = riceVisible ? 'block' : 'none';
+      ulamSection.style.display = ulamVisible ? 'block' : 'none';
+      drinksSection.style.display = drinksVisible ? 'block' : 'none';
+
+      noResults.style.display = (riceVisible || ulamVisible || drinksVisible) ? 'none' : 'block';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let visibleCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          visibleCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return visibleCount;
     }
 
     // ====== MOBILE CART DRAWER ======
