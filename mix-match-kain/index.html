@@ -40,6 +40,7 @@
       padding: 11px 22px; background: #1a1a1a; border: 1px solid #333;
       border-radius: 25px; color: #888; cursor: pointer; white-space: nowrap;
       transition: all 0.3s ease; font-weight: bold; font-size: 0.9rem;
+      appearance: none; -webkit-appearance: none;
     }
     .category-tab:hover { border-color: var(--primary); color: var(--primary); }
     .category-tab.active {
@@ -317,26 +318,26 @@
         <main>
           <!-- Search Bar -->
           <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
             <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+              aria-label="Search food items" oninput="handleSearch(this.value)" />
+            <button class="search-clear" onclick="clearSearch()" aria-label="Clear search">✕</button>
           </div>
 
           <!-- Category Tabs -->
           <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+            <button type="button" class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -355,6 +356,12 @@
           <div id="drinks-section">
             <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
             <div class="grid" id="drinks-grid"></div>
+          </div>
+
+          <!-- No Results Message -->
+          <div id="no-results" class="empty-message" style="display: none; margin-top: 40px;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">No items match your search.</p>
+            <button class="gradient-btn" onclick="clearSearch()">Clear search</button>
           </div>
         </main>
 
@@ -444,6 +451,7 @@
       const riceSection = document.getElementById('rice-section');
       const ulamSection = document.getElementById('ulam-section');
       const drinksSection = document.getElementById('drinks-section');
+      const noResults = document.getElementById('no-results');
 
       const showRice = category === 'all' || category === 'rice';
       const showUlam = category === 'all' || category === 'ulam';
@@ -453,25 +461,38 @@
       ulamSection.style.display = showUlam ? 'block' : 'none';
       drinksSection.style.display = showDrinks ? 'block' : 'none';
 
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      let totalMatches = 0;
+      if (showRice) totalMatches += filterGridItems('rice-grid', riceMenu, searchQuery);
+      if (showUlam) totalMatches += filterGridItems('ulam-grid', ulamMenu, searchQuery);
+      if (showDrinks) totalMatches += filterGridItems('drinks-grid', drinksMenu, searchQuery);
+
+      if (totalMatches === 0) {
+        riceSection.style.display = 'none';
+        ulamSection.style.display = 'none';
+        drinksSection.style.display = 'none';
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let matchCount = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
           card.style.display = '';
           card.classList.add('reveal');
+          matchCount++;
         } else {
           card.style.display = 'none';
           card.classList.remove('reveal');
         }
       });
+      return matchCount;
     }
 
     // ====== MOBILE CART DRAWER ======
