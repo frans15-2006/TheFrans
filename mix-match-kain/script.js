@@ -19,6 +19,7 @@ const drinksMenu = [
 ];
 
 let cart = [];
+let totalPriceRafId = null;
 
 // ====== AUDIO CONTEXT (lazy) ======
 let audioContext = null;
@@ -50,6 +51,7 @@ function playSound(frequency, duration, type = 'sine') {
 function createParticles() {
   if (window.innerWidth <= 768) return;
   const particleContainer = document.body;
+  const fragment = document.createDocumentFragment();
   const particleTypes = [
     { size: '4px', color: 'rgba(255, 94, 0, 0.3)', shape: 'circle' },
     { size: '6px', color: 'rgba(255, 200, 0, 0.2)', shape: 'circle' },
@@ -66,8 +68,9 @@ function createParticles() {
     particle.style.left = Math.random() * 100 + '%';
     particle.style.animationDelay = Math.random() * 20 + 's';
     particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-    particleContainer.appendChild(particle);
+    fragment.appendChild(particle);
   }
+  particleContainer.appendChild(fragment);
 }
 
 // ====== FLOATING HEARTS ======
@@ -155,6 +158,7 @@ function goToMenu() {
 function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
+  const fragment = document.createDocumentFragment();
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -167,9 +171,10 @@ function renderGrid(items, containerId) {
         <div class="card-price">&#8369;${item.price}</div>
       </div>
     `;
-    container.appendChild(card);
+    fragment.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
   });
+  container.appendChild(fragment);
 }
 
 // ====== ADD TO CART ======
@@ -241,12 +246,10 @@ function updateCart() {
     return;
   }
 
-  list.innerHTML = '';
   let total = 0;
-
-  cart.forEach((c, i) => {
+  const cartHtml = cart.map((c, i) => {
     total += c.price * c.qty;
-    list.innerHTML += `
+    return `
       <div class="cart-item">
         <div>
           <div class="cart-item-details">${c.name}</div>
@@ -259,10 +262,13 @@ function updateCart() {
         </div>
       </div>
     `;
-  });
+  }).join('');
+
+  list.innerHTML = cartHtml;
 
   const oldTotal = parseInt(totalEl.textContent.replace('₱', '')) || 0;
   if (oldTotal !== total) {
+    if (totalPriceRafId) cancelAnimationFrame(totalPriceRafId);
     totalEl.classList.add('updating');
     const duration = 600;
     const start = Date.now();
@@ -270,10 +276,14 @@ function updateCart() {
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
       totalEl.textContent = '₱' + current;
-      if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      if (progress < 1) {
+        totalPriceRafId = requestAnimationFrame(step);
+      } else {
+        totalEl.classList.remove('updating');
+        totalPriceRafId = null;
+      }
     };
-    requestAnimationFrame(step);
+    totalPriceRafId = requestAnimationFrame(step);
   }
 
   const badge = document.getElementById('cart-badge');
@@ -420,7 +430,6 @@ function sendOrderToServer(orderData) {
 function createConfetti() {
   const container = document.createElement('div');
   container.className = 'confetti-container';
-  document.body.appendChild(container);
   const colors = ['#ff5e00', '#ff9e42', '#ffd700', '#00ff88', '#ff3333', '#00ffff'];
   const shapes = ['square', 'circle', 'star'];
   const confettiCount = window.innerWidth <= 768 ? 12 : 40;
@@ -435,6 +444,7 @@ function createConfetti() {
     confetti.style.height = confetti.style.width;
     container.appendChild(confetti);
   }
+  document.body.appendChild(container);
   setTimeout(() => container.remove(), 5000);
 }
 
