@@ -1,20 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <title>Mix & Match Kain</title>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;700&family=Source+Code+Pro&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#000000" name="theme-color"/>
+<title>Mix &amp; Match Kain</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Open+Sans:wght@400;700&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
     /* ====== SEARCH BAR ====== */
     .search-container { position: relative; margin-bottom: 18px; }
     .search-bar {
@@ -254,167 +250,144 @@
       .cart-area { will-change: auto !important; isolation: isolate; }
     }
   </style>
-</head>
-
+<meta content="Mix &amp; Match Kain - Official website." name="description"/></head>
 <body onload="startPrank()">
-  <!-- Aurora Background -->
-  <div class="aurora-bg">
-    <div class="aurora"></div>
-    <div class="aurora"></div>
-    <div class="aurora"></div>
-  </div>
-
-  <!-- Toast Container -->
-  <div class="toast-container" id="toast-container"></div>
-
-  <!-- Floating Action Button (scroll to top) -->
-  <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <div id="page-wrapper">
-    <!-- Prank Screen -->
-    <div id="error-screen">
-      <div class="terminal-box glitch-box">
-        <p class="error-text glitch-text">
+<!-- Aurora Background -->
+<div class="aurora-bg">
+<div class="aurora"></div>
+<div class="aurora"></div>
+<div class="aurora"></div>
+</div>
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+<!-- Floating Action Button (scroll to top) -->
+<button class="fab" id="fab-btn" onclick="scrollToTop()" title="Scroll to top" type="button">
+<i class="fas fa-arrow-up"></i>
+</button>
+<div id="page-wrapper">
+<!-- Prank Screen -->
+<div id="error-screen">
+<div class="terminal-box glitch-box">
+<p class="error-text glitch-text">
           [SYSTEM_FAILURE] Critical Dependency Missing.
         </p>
-        <p class="error-text glitch-text">
+<p class="error-text glitch-text">
           Failed to load:
           <span class="syntax-highlight">'main_logic.js'</span>
+</p>
+<p class="error-text error-text-faded">
+          &gt; SyntaxError: Unexpected token 'bro' at line 420
         </p>
-        <p class="error-text error-text-faded">
-          > SyntaxError: Unexpected token 'bro' at line 420
-        </p>
-        <p class="error-text">> Attempting server-side hotfix...</p>
-      </div>
-      <p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
-    </div>
-
-    <!-- Landing Page -->
-    <div id="landing-page">
-      <h2 class="hero-title neon-text">MIX & <span>MATCH</span> KAIN</h2>
-      <div class="scroller-container">
-        <div class="scroller-track" id="hero-scroller"></div>
-      </div>
-      <button class="order-now-btn btn ripple" onclick="goToMenu()">
+<p class="error-text">&gt; Attempting server-side hotfix...</p>
+</div>
+<p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
+</div>
+<!-- Landing Page -->
+<div id="landing-page">
+<h2 class="hero-title neon-text">MIX &amp; <span>MATCH</span> KAIN</h2>
+<div class="scroller-container">
+<div class="scroller-track" id="hero-scroller"></div>
+</div>
+<button class="order-now-btn btn ripple" onclick="goToMenu()">
         ORDER NOW
       </button>
-    </div>
-
-    <!-- Main Content -->
-    <div id="main-content">
-      <!-- Mobile Cart Backdrop -->
-      <div id="cart-overlay" onclick="closeCartDrawer()"></div>
-
-      <header>
-        <h1 class="anton-title neon-text">
-          MIX & MATCH <span class="anton-title-highlight">KAIN</span>
-        </h1>
-      </header>
-
-      <div class="container">
-        <main>
-          <!-- Search Bar -->
-          <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
-              oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
-          </div>
-
-          <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+</div>
+<!-- Main Content -->
+<div id="main-content">
+<!-- Mobile Cart Backdrop -->
+<div id="cart-overlay" onclick="closeCartDrawer()"></div>
+<header>
+<h1 class="anton-title neon-text">
+          MIX &amp; MATCH <span class="anton-title-highlight">KAIN</span>
+</h1>
+</header>
+<div class="container">
+<main>
+<!-- Search Bar -->
+<div class="search-container">
+<i class="fas fa-search search-icon"></i>
+<input class="search-bar" id="search-input" oninput="handleSearch(this.value)" placeholder="🔍 Search food items..." type="text"/>
+<button class="search-clear" onclick="clearSearch()">✕</button>
+</div>
+<!-- Category Tabs -->
+<div class="category-tabs">
+<div class="category-tab active" data-category="all" onclick="filterCategory('all')">
               🍽️ All
             </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+<div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
               🍚 Rice
             </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+<div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
               🍖 Ulam
             </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+<div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
               🥤 Drinks
             </div>
-          </div>
-
-          <!-- Rice Section -->
-          <div id="rice-section">
-            <h2 class="anton-section-title">🍚 1. SELECT RICE</h2>
-            <div class="grid" id="rice-grid"></div>
-          </div>
-
-          <!-- Ulam Section -->
-          <div id="ulam-section">
-            <h2 class="anton-section-title ulam">🍖 2. SELECT ULAM</h2>
-            <div class="grid" id="ulam-grid"></div>
-          </div>
-
-          <!-- Drinks Section -->
-          <div id="drinks-section">
-            <h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
-            <div class="grid" id="drinks-grid"></div>
-          </div>
-        </main>
-
-        <aside class="cart-area" id="cart-sidebar">
-          <!-- Close row -->
-          <div id="cart-close-btn">
-            <span>🛒 YOUR ORDER</span>
-            <button onclick="closeCartDrawer()" aria-label="Close cart">✕ <span id="cart-countdown"></span></button>
-          </div>
-
-          <div class="cart-toggle" onclick="toggleCart()">
-            <h3 class="cart-header">🛒 YOUR ORDER</h3>
-            <span id="cart-toggle-icon">▼</span>
-          </div>
-          <div id="cart-list">
-            <p class="empty-cart-message">Empty bowl...</p>
-          </div>
-          <div class="cart-total-row">
-            <span>TOTAL</span>
-            <span id="total-price" class="cart-total-price price-counter">₱0</span>
-          </div>
-          <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
-          <button class="confirm-btn btn" onclick="generateQR()">
+</div>
+<!-- Rice Section -->
+<div id="rice-section">
+<h2 class="anton-section-title">🍚 1. SELECT RICE</h2>
+<div class="grid" id="rice-grid"></div>
+</div>
+<!-- Ulam Section -->
+<div id="ulam-section">
+<h2 class="anton-section-title ulam">🍖 2. SELECT ULAM</h2>
+<div class="grid" id="ulam-grid"></div>
+</div>
+<!-- Drinks Section -->
+<div id="drinks-section">
+<h2 class="anton-section-title">🥤 3. SELECT DRINKS</h2>
+<div class="grid" id="drinks-grid"></div>
+</div>
+</main>
+<aside class="cart-area" id="cart-sidebar">
+<!-- Close row -->
+<div id="cart-close-btn">
+<span>🛒 YOUR ORDER</span>
+<button aria-label="Close cart" onclick="closeCartDrawer()">✕ <span id="cart-countdown"></span></button>
+</div>
+<div class="cart-toggle" onclick="toggleCart()">
+<h3 class="cart-header">🛒 YOUR ORDER</h3>
+<span id="cart-toggle-icon">▼</span>
+</div>
+<div id="cart-list">
+<p class="empty-cart-message">Empty bowl...</p>
+</div>
+<div class="cart-total-row">
+<span>TOTAL</span>
+<span class="cart-total-price price-counter" id="total-price">₱0</span>
+</div>
+<input class="cart-input" id="cust-name" placeholder="Name for order..." type="text"/>
+<button class="confirm-btn btn" onclick="generateQR()">
             GENERATE QR CODE
           </button>
-        </aside>
-      </div><!-- end .container -->
-
-      <!-- Mobile Edge Tab -->
-      <button id="mobile-cart-fab" type="button" onclick="openCartDrawer()" aria-label="Open cart">
-        <span class="fab-icon">🛒</span>
-        <span id="cart-badge">0</span>
-      </button>
-
-    </div><!-- end #main-content -->
-  </div>
-
-  <!-- QR Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-box">
-      <h2 class="scan-title">SCAN TO PAY</h2>
-      <div id="qrcode" class="qrcode-box"></div>
-      <div id="summary" class="summary-box"></div>
-      <button class="confirm-btn done-btn btn" onclick="closeModal()">
+</aside>
+</div><!-- end .container -->
+<!-- Mobile Edge Tab -->
+<button aria-label="Open cart" id="mobile-cart-fab" onclick="openCartDrawer()" type="button">
+<span class="fab-icon">🛒</span>
+<span id="cart-badge">0</span>
+</button>
+</div><!-- end #main-content -->
+</div>
+<!-- QR Modal -->
+<div class="modal" id="modal">
+<div class="modal-box">
+<h2 class="scan-title">SCAN TO PAY</h2>
+<div class="qrcode-box" id="qrcode"></div>
+<div class="summary-box" id="summary"></div>
+<button class="confirm-btn done-btn btn" onclick="closeModal()">
         DONE / NEW ORDER
       </button>
-    </div>
-  </div>
-
-  <link rel="preload" href="pictures_of_foods/classic_rice.jpg" as="image">
-  <link rel="preload" href="pictures_of_foods/java_rice.jpg" as="image">
-  <link rel="preload" href="pictures_of_foods/lumpia.jpg" as="image">
-  <link rel="preload" href="pictures_of_foods/sunny_side_egg.jpg" as="image">
-
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍚</text></svg>">
-
-  <script src="script.js"></script>
-
-  <script>
+</div>
+</div>
+<link as="image" href="pictures_of_foods/classic_rice.jpg" rel="preload"/>
+<link as="image" href="pictures_of_foods/java_rice.jpg" rel="preload"/>
+<link as="image" href="pictures_of_foods/lumpia.jpg" rel="preload"/>
+<link as="image" href="pictures_of_foods/sunny_side_egg.jpg" rel="preload"/>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🍚&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<script src="script.js"></script>
+<script>
     // ====== SEARCH FUNCTIONALITY ======
     let currentCategory = 'all';
 
@@ -588,5 +561,4 @@
     })();
   </script>
 </body>
-
 </html>
