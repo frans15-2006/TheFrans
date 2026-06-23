@@ -1,0 +1,21 @@
+# TheFrans
+
+> Portfolio of Francis Tarectican (TheFrans) — backend-focused developer from
+> Puerto Princesa City, Palawan, Philippines. IT Specialist at the Bureau of
+> Internal Revenue, RDO 036. Builds and deploys production web systems for
+> local Philippine businesses, primarily food, beverage, and travel/hospitality.
+
+## Flagship project
+
+- [Mix & Match Kain — case study](https://thefrans.is-a.dev/mix-match-kain-case-study.html): a local-first QR food-ordering system built with Node.js, Express, and WebSockets, deployed and operating under live load at a real restaurant.
+
+## About
+
+Backend systems developer. Freelance web development practice covering 19+
+deployed client sites for cafés, restaurants, spas, hotels, and travel
+agencies across Puerto Princesa and Palawan. Stack: vanilla HTML/CSS/JS, GSAP,
+Lenis, raw WebGL/shaders for interactive site backgrounds.
+
+## Contact
+
+GitHub: https://github.com/frans15-2006
