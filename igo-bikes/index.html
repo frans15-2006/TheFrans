@@ -1,16 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iGo Bikes — Puerto Princesa, Palawan</title>
-  <meta name="description" content="iGo Bikes — E-bike rentals, sales, and repair in Puerto Princesa, Palawan." />
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>iGo Bikes &mdash; Puerto Princesa, Palawan</title>
+<meta content="iGo Bikes &mdash; E-bike rentals, sales, and repair in Puerto Princesa, Palawan." name="description"/>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Barlow+Condensed:wght@400;600;700;800&amp;family=Barlow:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -452,246 +452,228 @@
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav id="main-nav">
-    <a href="#hero" class="nav-logo">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="18" cy="18" r="18" fill="#F47920"/>
-        <path d="M10 22L16 10L20 16L24 12L26 22H10Z" fill="#0C0C0C" opacity="0.9"/>
-        <circle cx="18" cy="20" r="3" fill="#0C0C0C"/>
-      </svg>
-      <span class="nav-logo-text"><span>i</span>Go Bikes</span>
-    </a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#services" onclick="closeMenu()">Services</a></li>
-      <li><a href="#about" onclick="closeMenu()">About</a></li>
-      <li><a href="#fleet" onclick="closeMenu()">Fleet</a></li>
-      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg" id="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="speed-lines" id="speed-lines"></div>
-
-    <div class="hero-content">
-      <p class="hero-eyebrow">Puerto Princesa, Palawan</p>
-      <h1 class="hero-title">
-        <span class="i">i</span><span class="go">Go</span>
-        <span class="bikes">Bikes</span>
-      </h1>
-      <p class="hero-desc">Rent · Buy · Repair · Charge — Your E-Bike Hub in Palawan</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-primary">Our Services</a>
-        <a href="#contact" class="btn-outline">Find Us</a>
-      </div>
-    </div>
-
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span class="scroll-label">Scroll</span>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">Our Services</h2>
-      <div class="divider"></div>
-
-      <div class="services-grid">
-
-        <!-- Rentals -->
-        <div class="service-card">
-          <span class="service-num">01</span>
-          <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-            <circle cx="14" cy="38" r="6" stroke="#F47920" stroke-width="2"/>
-            <circle cx="38" cy="38" r="6" stroke="#F47920" stroke-width="2"/>
-            <path d="M14 32L18 18H30L36 32" stroke="#F47920" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M22 18L20 12H28" stroke="#F47920" stroke-width="2"/>
-            <path d="M30 18L38 32" stroke="#F47920" stroke-width="2"/>
-            <circle cx="32" cy="14" r="3" fill="#F47920" opacity="0.4"/>
-          </svg>
-          <p class="service-name">E-Bike Rentals</p>
-          <p class="service-desc">Explore Puerto Princesa on two wheels. Hourly and daily rental options available. Perfect for tourists and locals getting around the city.</p>
-          <span class="service-tag">Hourly · Daily</span>
-        </div>
-
-        <!-- Sales -->
-        <div class="service-card">
-          <span class="service-num">02</span>
-          <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-            <rect x="8" y="14" width="36" height="24" rx="3" stroke="#F47920" stroke-width="2"/>
-            <path d="M16 38V42M36 38V42" stroke="#F47920" stroke-width="2" stroke-linecap="round"/>
-            <path d="M20 26L24 30L32 22" stroke="#F47920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <p class="service-name">E-Bike Sales</p>
-          <p class="service-desc">Own your ride. We carry a selection of quality e-bikes suited for daily commutes, delivery, and leisure. Ask about current models and pricing.</p>
-          <span class="service-tag">New Units Available</span>
-        </div>
-
-        <!-- Repair & Charging -->
-        <div class="service-card">
-          <span class="service-num">03</span>
-          <svg class="service-icon" viewBox="0 0 52 52" fill="none">
-            <path d="M26 8V20L32 14" stroke="#F47920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M26 20L20 14" stroke="#F47920" stroke-width="2" stroke-linecap="round"/>
-            <rect x="16" y="24" width="20" height="20" rx="2" stroke="#F47920" stroke-width="2"/>
-            <path d="M22 32L24 36H28L30 30" stroke="#F47920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <p class="service-name">Repair & Charging</p>
-          <p class="service-desc">Full e-bike repair and maintenance at iGo Moto Garage. Battery diagnostics, motor servicing, and charging station available on-site.</p>
-          <span class="service-tag">Walk-ins Welcome</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PARALLAX STRIP -->
-  <div class="parallax-strip">
-    <div class="parallax-strip-bg" id="strip-bg"></div>
-    <div class="parallax-strip-overlay">
-      <p class="strip-title"><span>i</span>Go. Anywhere.</p>
-      <p class="strip-sub">Puerto Princesa · Palawan · Philippines</p>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-img-wrap">
-          <img src="./imgs/shop.jpg" alt="iGo Bikes shop" class="about-img" />
-          <div class="about-img-badge">
-            <span class="badge-num">iGo</span>
-            <span class="badge-label">Moto Garage</span>
-          </div>
-        </div>
-        <div class="about-text">
-          <p class="section-label">Who We Are</p>
-          <h2 class="section-title">Built for<br>Palawan Roads</h2>
-          <div class="divider"></div>
-          <p>iGo Bikes is Puerto Princesa's go-to e-bike shop — covering everything from short tourist rentals to full unit purchases and professional e-bike servicing at our iGo Moto Garage.</p>
-          <p>Whether you're a visitor wanting to explore the city, a local looking to own your first e-bike, or a rider who needs their battery checked and motor tuned — we've got you covered.</p>
-          <ul class="feature-list">
-            <li>Quality e-bike units — tested and road-ready</li>
-            <li>Trained mechanics for all e-bike brands</li>
-            <li>On-site charging station</li>
-            <li>Flexible rental rates for tourists and locals</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLEET -->
-  <section id="fleet">
-    <div class="container">
-      <p class="section-label">What We Offer</p>
-      <h2 class="section-title">Our Fleet</h2>
-      <div class="divider"></div>
-      <p style="color:var(--muted); font-size:0.9rem; margin-top:-0.5rem;">Available units for rent and purchase. Ask us for current stock and pricing.</p>
-
-      <div class="fleet-grid">
-        <div class="bike-card">
-          <img src="./imgs/bike1.jpg" alt="3-Wheel Cargo E-Bike" class="bike-img" style="object-fit:cover; width:100%; aspect-ratio:16/9;" />
-          <div class="bike-info">
-            <p class="bike-name">Cargo Trike</p>
-            <p class="bike-type">For Sale · For Rent</p>
-            <div class="bike-specs">
-              <div class="spec"><p class="spec-val">60V</p><p class="spec-key">Battery</p></div>
-              <div class="spec"><p class="spec-val">50km</p><p class="spec-key">Range</p></div>
-              <div class="spec"><p class="spec-val">3-Wheel</p><p class="spec-key">Type</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="bike-card">
-          <img src="./imgs/bike2.jpg" alt="Road Bike" class="bike-img" style="object-fit:cover; width:100%; aspect-ratio:16/9;" />
-          <div class="bike-info">
-            <p class="bike-name">Road Bike</p>
-            <p class="bike-type">For Sale</p>
-            <div class="bike-specs">
-              <div class="spec"><p class="spec-val">21spd</p><p class="spec-key">Gears</p></div>
-              <div class="spec"><p class="spec-val">700c</p><p class="spec-key">Wheel</p></div>
-              <div class="spec"><p class="spec-val">Alloy</p><p class="spec-key">Frame</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="bike-card">
-          <img src="./imgs/bike3.jpg" alt="E-Scooter" class="bike-img" style="object-fit:cover; width:100%; aspect-ratio:16/9;" />
-          <div class="bike-info">
-            <p class="bike-name">E-Scooter</p>
-            <p class="bike-type">Rental · For Sale</p>
-            <div class="bike-specs">
-              <div class="spec"><p class="spec-val">60V</p><p class="spec-key">Battery</p></div>
-              <div class="spec"><p class="spec-val">40km</p><p class="spec-key">Range</p></div>
-              <div class="spec"><p class="spec-val">45kph</p><p class="spec-key">Top Speed</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <p style="margin-top:1.5rem; font-size:0.75rem; color:rgba(245,245,245,0.25); font-style:italic;">* Specs are approximate. Actual units and availability may vary. Contact us for current stock.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Find Us</p>
-      <h2 class="section-title">Visit iGo</h2>
-      <div class="divider"></div>
-      <div class="contact-grid">
-        <div>
-          <div class="info-block">
-            <h4>Location</h4>
-            <address>North Highway, Brgy. San Jose<br>Puerto Princesa City, Palawan</address>
-          </div>
-          <div class="info-block">
-            <h4>Hours</h4>
-            <div class="hours-row"><span class="hours-day">Monday – Saturday</span><span class="hours-time">8:00 AM – 6:00 PM</span></div>
-            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">9:00 AM – 5:00 PM</span></div>
-          </div>
-          <div class="info-block">
-            <h4>Contact</h4>
-            <p>
-              📞 0968-881-7583<br>
-              Facebook: <a href="https://www.facebook.com/igobikes" target="_blank" rel="noopener" style="color:var(--orange); text-decoration:none;">IGOBIKES</a><br>
+<!-- NAV -->
+<nav id="main-nav">
+<a class="nav-logo" href="#hero">
+<svg class="nav-logo-icon" fill="none" viewbox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="18" fill="#F47920" r="18"></circle>
+<path d="M10 22L16 10L20 16L24 12L26 22H10Z" fill="#0C0C0C" opacity="0.9"></path>
+<circle cx="18" cy="20" fill="#0C0C0C" r="3"></circle>
+</svg>
+<span class="nav-logo-text"><span>i</span>Go Bikes</span>
+</a>
+<ul class="nav-links" id="nav-links">
+<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="#about" onclick="closeMenu()">About</a></li>
+<li><a href="#fleet" onclick="closeMenu()">Fleet</a></li>
+<li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+</ul>
+<button aria-label="Toggle menu" class="nav-toggle" id="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<!-- HERO -->
+<section id="hero">
+<div class="hero-bg" id="hero-bg"></div>
+<div class="hero-grid"></div>
+<div class="speed-lines" id="speed-lines"></div>
+<div class="hero-content">
+<p class="hero-eyebrow">Puerto Princesa, Palawan</p>
+<h1 class="hero-title">
+<span class="i">i</span><span class="go">Go</span>
+<span class="bikes">Bikes</span>
+</h1>
+<p class="hero-desc">Rent &middot; Buy &middot; Repair &middot; Charge &mdash; Your E-Bike Hub in Palawan</p>
+<div class="hero-actions">
+<a class="btn-primary" href="#services">Our Services</a>
+<a class="btn-outline" href="#contact">Find Us</a>
+</div>
+</div>
+<div class="hero-scroll">
+<div class="scroll-line"></div>
+<span class="scroll-label">Scroll</span>
+</div>
+</section>
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+<p class="section-label">What We Do</p>
+<h2 class="section-title">Our Services</h2>
+<div class="divider"></div>
+<div class="services-grid">
+<!-- Rentals -->
+<div class="service-card">
+<span class="service-num">01</span>
+<svg class="service-icon" fill="none" viewbox="0 0 52 52">
+<circle cx="14" cy="38" r="6" stroke="#F47920" stroke-width="2"></circle>
+<circle cx="38" cy="38" r="6" stroke="#F47920" stroke-width="2"></circle>
+<path d="M14 32L18 18H30L36 32" stroke="#F47920" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M22 18L20 12H28" stroke="#F47920" stroke-width="2"></path>
+<path d="M30 18L38 32" stroke="#F47920" stroke-width="2"></path>
+<circle cx="32" cy="14" fill="#F47920" opacity="0.4" r="3"></circle>
+</svg>
+<p class="service-name">E-Bike Rentals</p>
+<p class="service-desc">Explore Puerto Princesa on two wheels. Hourly and daily rental options available. Perfect for tourists and locals getting around the city.</p>
+<span class="service-tag">Hourly &middot; Daily</span>
+</div>
+<!-- Sales -->
+<div class="service-card">
+<span class="service-num">02</span>
+<svg class="service-icon" fill="none" viewbox="0 0 52 52">
+<rect height="24" rx="3" stroke="#F47920" stroke-width="2" width="36" x="8" y="14"></rect>
+<path d="M16 38V42M36 38V42" stroke="#F47920" stroke-linecap="round" stroke-width="2"></path>
+<path d="M20 26L24 30L32 22" stroke="#F47920" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<p class="service-name">E-Bike Sales</p>
+<p class="service-desc">Own your ride. We carry a selection of quality e-bikes suited for daily commutes, delivery, and leisure. Ask about current models and pricing.</p>
+<span class="service-tag">New Units Available</span>
+</div>
+<!-- Repair & Charging -->
+<div class="service-card">
+<span class="service-num">03</span>
+<svg class="service-icon" fill="none" viewbox="0 0 52 52">
+<path d="M26 8V20L32 14" stroke="#F47920" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M26 20L20 14" stroke="#F47920" stroke-linecap="round" stroke-width="2"></path>
+<rect height="20" rx="2" stroke="#F47920" stroke-width="2" width="20" x="16" y="24"></rect>
+<path d="M22 32L24 36H28L30 30" stroke="#F47920" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<p class="service-name">Repair &amp; Charging</p>
+<p class="service-desc">Full e-bike repair and maintenance at iGo Moto Garage. Battery diagnostics, motor servicing, and charging station available on-site.</p>
+<span class="service-tag">Walk-ins Welcome</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PARALLAX STRIP -->
+<div class="parallax-strip">
+<div class="parallax-strip-bg" id="strip-bg"></div>
+<div class="parallax-strip-overlay">
+<p class="strip-title"><span>i</span>Go. Anywhere.</p>
+<p class="strip-sub">Puerto Princesa &middot; Palawan &middot; Philippines</p>
+</div>
+</div>
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img-wrap">
+<img alt="iGo Bikes shop" class="about-img" src="./imgs/shop.jpg"/>
+<div class="about-img-badge">
+<span class="badge-num">iGo</span>
+<span class="badge-label">Moto Garage</span>
+</div>
+</div>
+<div class="about-text">
+<p class="section-label">Who We Are</p>
+<h2 class="section-title">Built for<br/>Palawan Roads</h2>
+<div class="divider"></div>
+<p>iGo Bikes is Puerto Princesa's go-to e-bike shop &mdash; covering everything from short tourist rentals to full unit purchases and professional e-bike servicing at our iGo Moto Garage.</p>
+<p>Whether you're a visitor wanting to explore the city, a local looking to own your first e-bike, or a rider who needs their battery checked and motor tuned &mdash; we've got you covered.</p>
+<ul class="feature-list">
+<li>Quality e-bike units &mdash; tested and road-ready</li>
+<li>Trained mechanics for all e-bike brands</li>
+<li>On-site charging station</li>
+<li>Flexible rental rates for tourists and locals</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- FLEET -->
+<section id="fleet">
+<div class="container">
+<p class="section-label">What We Offer</p>
+<h2 class="section-title">Our Fleet</h2>
+<div class="divider"></div>
+<p style="color:var(--muted); font-size:0.9rem; margin-top:-0.5rem;">Available units for rent and purchase. Ask us for current stock and pricing.</p>
+<div class="fleet-grid">
+<div class="bike-card">
+<img alt="3-Wheel Cargo E-Bike" class="bike-img" src="./imgs/bike1.jpg" style="object-fit:cover; width:100%; aspect-ratio:16/9;"/>
+<div class="bike-info">
+<p class="bike-name">Cargo Trike</p>
+<p class="bike-type">For Sale &middot; For Rent</p>
+<div class="bike-specs">
+<div class="spec"><p class="spec-val">60V</p><p class="spec-key">Battery</p></div>
+<div class="spec"><p class="spec-val">50km</p><p class="spec-key">Range</p></div>
+<div class="spec"><p class="spec-val">3-Wheel</p><p class="spec-key">Type</p></div>
+</div>
+</div>
+</div>
+<div class="bike-card">
+<img alt="Road Bike" class="bike-img" src="./imgs/bike2.jpg" style="object-fit:cover; width:100%; aspect-ratio:16/9;"/>
+<div class="bike-info">
+<p class="bike-name">Road Bike</p>
+<p class="bike-type">For Sale</p>
+<div class="bike-specs">
+<div class="spec"><p class="spec-val">21spd</p><p class="spec-key">Gears</p></div>
+<div class="spec"><p class="spec-val">700c</p><p class="spec-key">Wheel</p></div>
+<div class="spec"><p class="spec-val">Alloy</p><p class="spec-key">Frame</p></div>
+</div>
+</div>
+</div>
+<div class="bike-card">
+<img alt="E-Scooter" class="bike-img" src="./imgs/bike3.jpg" style="object-fit:cover; width:100%; aspect-ratio:16/9;"/>
+<div class="bike-info">
+<p class="bike-name">E-Scooter</p>
+<p class="bike-type">Rental &middot; For Sale</p>
+<div class="bike-specs">
+<div class="spec"><p class="spec-val">60V</p><p class="spec-key">Battery</p></div>
+<div class="spec"><p class="spec-val">40km</p><p class="spec-key">Range</p></div>
+<div class="spec"><p class="spec-val">45kph</p><p class="spec-key">Top Speed</p></div>
+</div>
+</div>
+</div>
+</div>
+<p style="margin-top:1.5rem; font-size:0.75rem; color:rgba(245,245,245,0.25); font-style:italic;">* Specs are approximate. Actual units and availability may vary. Contact us for current stock.</p>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<p class="section-label">Find Us</p>
+<h2 class="section-title">Visit iGo</h2>
+<div class="divider"></div>
+<div class="contact-grid">
+<div>
+<div class="info-block">
+<h4>Location</h4>
+<address>North Highway, Brgy. San Jose<br/>Puerto Princesa City, Palawan</address>
+</div>
+<div class="info-block">
+<h4>Hours</h4>
+<div class="hours-row"><span class="hours-day">Monday &ndash; Saturday</span><span class="hours-time">8:00 AM &ndash; 6:00 PM</span></div>
+<div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">9:00 AM &ndash; 5:00 PM</span></div>
+</div>
+<div class="info-block">
+<h4>Contact</h4>
+<p>
+              📞 0968-881-7583<br/>
+              Facebook: <a href="https://www.facebook.com/igobikes" rel="noopener" style="color:var(--orange); text-decoration:none;" target="_blank">IGOBIKES</a><br/>
               Message us for rentals and inquiries
             </p>
-          </div>
-          <a href="#services" class="btn-primary" style="display:inline-block; margin-top:1rem;">Book a Rental</a>
-        </div>
-        <a href="https://www.google.com/maps/search/iGo+Bikes+North+Highway+Brgy+San+Jose+Puerto+Princesa+Palawan" target="_blank" rel="noopener" class="map-placeholder">
-          <div class="map-pin"></div>
-          <span class="map-label">Open in Google Maps</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p class="footer-logo"><span>i</span>Go Bikes</p>
-    <p class="footer-tagline">Puerto Princesa · Palawan · Philippines</p>
-    <ul class="footer-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#fleet">Fleet</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <p class="footer-copy">&copy; 2025 iGo Bikes. All rights reserved.</p>
-  </footer>
-
-  <script>
+</div>
+<a class="btn-primary" href="#services" style="display:inline-block; margin-top:1rem;">Book a Rental</a>
+</div>
+<a class="map-placeholder" href="https://www.google.com/maps/search/iGo+Bikes+North+Highway+Brgy+San+Jose+Puerto+Princesa+Palawan" rel="noopener" target="_blank">
+<div class="map-pin"></div>
+<span class="map-label">Open in Google Maps</span>
+</a>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<p class="footer-logo"><span>i</span>Go Bikes</p>
+<p class="footer-tagline">Puerto Princesa &middot; Palawan &middot; Philippines</p>
+<ul class="footer-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#fleet">Fleet</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<p class="footer-copy">&copy; 2025 iGo Bikes. All rights reserved.</p>
+</footer>
+<script>
     // ── Nav scroll ──
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
