@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francis Tarectican — Backend Systems Developer</title>
-  <meta name="description" content="Francis Tarectican — backend-focused developer from Palawan, Philippines. Built and deployed a local-first food ordering system for a real restaurant. Node.js, Express, WebSockets." />
-  <meta property="og:title" content="Francis Tarectican — Backend Systems Developer" />
-  <meta property="og:description" content="Backend developer. One production system. Real operational credibility. Palawan, Philippines." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.png" />
-  <link rel="canonical" href="https://thefrans.is-a.dev/" />
-  <script type="application/ld+json">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Francis Tarectican — Backend Systems Developer</title>
+<meta content="Francis Tarectican — backend-focused developer from Palawan, Philippines. Built and deployed a local-first food ordering system for a real restaurant. Node.js, Express, WebSockets." name="description"/>
+<meta content="Francis Tarectican — Backend Systems Developer" property="og:title"/>
+<meta content="Backend developer. One production system. Real operational credibility. Palawan, Philippines." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/og-image.png" property="og:image"/>
+<link href="https://thefrans.is-a.dev/" rel="canonical"/>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
@@ -62,12 +63,12 @@
     ]
   }
   </script>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-  <style>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&amp;family=DM+Mono:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/lenis@1.3.23/dist/lenis.css" rel="stylesheet"/>
+<style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --bg:#080808;--bg-2:#0d0d0d;--bg-3:#131313;--bg-4:#1a1a1a;
@@ -390,510 +391,480 @@
   </style>
 </head>
 <body>
-
-<div id="preloader" role="status" aria-label="Loading">
-  <div class="pl-logo">TheFrans.is-a.dev</div>
-  <div class="pl-counter" id="plCounter">00</div>
-  <div class="pl-label">Systems online</div>
-  <div class="pl-bar" id="plBar"></div>
+<div aria-label="Loading" id="preloader" role="status">
+<div class="pl-logo">TheFrans.is-a.dev</div>
+<div class="pl-counter" id="plCounter">00</div>
+<div class="pl-label">Systems online</div>
+<div class="pl-bar" id="plBar"></div>
 </div>
-
-<div id="unlock-notif" role="status" aria-live="polite" aria-atomic="true">
-  <div class="un-dot"></div>
-  <span>Scroll unlocked</span>
-  <div class="un-drain" id="unDrain"></div>
+<div aria-atomic="true" aria-live="polite" id="unlock-notif" role="status">
+<div class="un-dot"></div>
+<span>Scroll unlocked</span>
+<div class="un-drain" id="unDrain"></div>
 </div>
-
-<div class="cur-dot" id="curDot" aria-hidden="true"></div>
-<div class="cur-ring" id="curRing" aria-hidden="true"></div>
-<div class="cur-label" id="curLabel" aria-hidden="true"></div>
-<div class="scroll-progress" aria-hidden="true"></div>
-<div class="grid-overlay" aria-hidden="true"></div>
-
+<div aria-hidden="true" class="cur-dot" id="curDot"></div>
+<div aria-hidden="true" class="cur-ring" id="curRing"></div>
+<div aria-hidden="true" class="cur-label" id="curLabel"></div>
+<div aria-hidden="true" class="scroll-progress"></div>
+<div aria-hidden="true" class="grid-overlay"></div>
 <nav aria-label="Primary navigation">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-logo">TheFrans.is-a.dev</a>
-    <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="#about" data-scramble="About">About</a></li>
-      <li><a href="#skills" data-scramble="Evidence">Evidence</a></li>
-      <li><a href="#projects" data-scramble="Work">Work</a></li>
-      <li><a href="#clients" data-scramble="Clients">Clients</a></li>
-      <li><a href="#contact" data-scramble="Contact">Contact</a></li>
-      <li><a href="https://thefrans.is-a.dev" data-scramble="Portfolio">Portfolio &#8599;</a></li>
-    </ul>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<div class="container nav-inner">
+<a class="nav-logo" href="#hero">TheFrans.is-a.dev</a>
+<ul class="nav-links" id="navLinks" role="list">
+<li><a data-scramble="About" href="#about">About</a></li>
+<li><a data-scramble="Evidence" href="#skills">Evidence</a></li>
+<li><a data-scramble="Work" href="#projects">Work</a></li>
+<li><a data-scramble="Clients" href="#clients">Clients</a></li>
+<li><a data-scramble="Contact" href="#contact">Contact</a></li>
+<li><a data-scramble="Portfolio" href="https://thefrans.is-a.dev">Portfolio ↗</a></li>
+</ul>
+<button aria-expanded="false" aria-label="Toggle navigation" class="nav-hamburger" id="navHamburger">
+<span></span><span></span><span></span>
+</button>
+</div>
 </nav>
-
 <div id="skewWrap">
 <header id="hero">
-  <canvas id="heroCanvas" aria-hidden="true"></canvas>
-  <div class="container hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-avail"><div class="hero-avail-dot"></div><span>IT Specialist @ BIR RDO 036</span></div>
-      <span class="hero-role-tag">Backend Systems Developer</span>
-    </div>
-    <h1 class="hero-name" id="heroName">
-      <span class="hero-line-1">Francis</span>
-      <span class="bold hero-line-2">Tarectican</span>
-    </h1>
-    <p class="hero-sub">Backend developer from Palawan. One production system built, deployed, and debugged under live load. Now IT Specialist at Bureau of Internal Revenue &mdash; RDO 036, Puerto Princesa City.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary magnetic">View Work</a>
-      <a href="https://thefrans.is-a.dev" class="btn btn-ghost magnetic">Portfolio &#8599;</a>
-    </div>
-  </div>
-  <div class="hero-scroll-indicator" aria-hidden="true">
-    <div class="hero-scroll-line"></div>
-    <span>Scroll</span>
-  </div>
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="container hero-content">
+<div class="hero-eyebrow">
+<div class="hero-avail"><div class="hero-avail-dot"></div><span>IT Specialist @ BIR RDO 036</span></div>
+<span class="hero-role-tag">Backend Systems Developer</span>
+</div>
+<h1 class="hero-name" id="heroName">
+<span class="hero-line-1">Francis</span>
+<span class="bold hero-line-2">Tarectican</span>
+</h1>
+<p class="hero-sub">Backend developer from Palawan. One production system built, deployed, and debugged under live load. Now IT Specialist at Bureau of Internal Revenue — RDO 036, Puerto Princesa City.</p>
+<div class="hero-cta">
+<a class="btn btn-primary magnetic" href="#projects">View Work</a>
+<a class="btn btn-ghost magnetic" href="https://thefrans.is-a.dev">Portfolio ↗</a>
+</div>
+</div>
+<div aria-hidden="true" class="hero-scroll-indicator">
+<div class="hero-scroll-line"></div>
+<span>Scroll</span>
+</div>
 </header>
-
 <div class="divider" role="separator"></div>
-
 <main>
-<section id="about" aria-labelledby="about-heading">
-  <div class="container">
-    <div class="section-label"><span><span class="s-num">01 —</span> About</span></div>
-    <div class="section-title-wrap">
-      <span class="section-ghost-num" aria-hidden="true">01</span>
-      <h2 class="section-title reveal" id="about-heading">Who I Am</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="reveal">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. Currently serving as <strong>IT Specialist at Bureau of Internal Revenue &mdash; RDO 036</strong>, Puerto Princesa City. I build web applications with a focus on the backend &mdash; how data flows, how systems hold up, and how things work when real people are using them.</p>
-        <p class="reveal">I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and debugged concurrent-write failures during live service without taking the system offline. That's the standard I hold work to.</p>
-        <p class="reveal">Daily development runs a local 30B-parameter coding model on-device via Ollama &mdash; GPU-accelerated, no cloud dependency, no data leaving the machine.</p>
-      </div>
-      <div class="about-right">
-        <div class="stats-row">
-          <article class="stat-card tilt-card reveal"><div class="stat-num">1</div><div class="stat-label">Production System</div></article>
-          <article class="stat-card tilt-card reveal"><div class="stat-num">2+</div><div class="stat-label">Years Coding</div></article>
-          <article class="stat-card tilt-card reveal"><div class="stat-num">77+</div><div class="stat-label">Client Sites</div></article>
-          <article class="stat-card tilt-card reveal"><div class="stat-num">PH</div><div class="stat-label">Palawan Based</div></article>
-        </div>
-        <div class="edu-card reveal">
-          <div class="edu-degree">BS Information Technology</div>
-          <div class="edu-school">Palawan Technological College, Inc. &mdash; Puerto Princesa City</div>
-          <span class="edu-badge">Ongoing</span>
-        </div>
-        <div class="edu-card reveal" style="border-color:rgba(0,187,200,0.18);background:linear-gradient(135deg,var(--bg-2) 0%,rgba(0,187,200,0.04) 100%);">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="rgba(0,187,200,0.7)" stroke-width="1.5"/><path d="M8 12l2.5 2.5L16 9" stroke="rgba(0,187,200,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="edu-degree" style="margin-bottom:0;">Cisco Networking Academy</div>
-          </div>
-          <div class="edu-school">Networking &middot; Security &middot; Programming &middot; IT Fundamentals</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-            <span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">31 Badges</span>
-            <span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">32 Courses</span>
-            <span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">2025</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section aria-labelledby="about-heading" id="about">
+<div class="container">
+<div class="section-label"><span><span class="s-num">01 —</span> About</span></div>
+<div class="section-title-wrap">
+<span aria-hidden="true" class="section-ghost-num">01</span>
+<h2 class="section-title reveal" id="about-heading">Who I Am</h2>
+</div>
+<div class="about-grid">
+<div class="about-text">
+<p class="reveal">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. Currently serving as <strong>IT Specialist at Bureau of Internal Revenue — RDO 036</strong>, Puerto Princesa City. I build web applications with a focus on the backend — how data flows, how systems hold up, and how things work when real people are using them.</p>
+<p class="reveal">I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and debugged concurrent-write failures during live service without taking the system offline. That's the standard I hold work to.</p>
+<p class="reveal">Daily development runs a local 30B-parameter coding model on-device via Ollama — GPU-accelerated, no cloud dependency, no data leaving the machine.</p>
+</div>
+<div class="about-right">
+<div class="stats-row">
+<article class="stat-card tilt-card reveal"><div class="stat-num">1</div><div class="stat-label">Production System</div></article>
+<article class="stat-card tilt-card reveal"><div class="stat-num">2+</div><div class="stat-label">Years Coding</div></article>
+<article class="stat-card tilt-card reveal"><div class="stat-num">77+</div><div class="stat-label">Client Sites</div></article>
+<article class="stat-card tilt-card reveal"><div class="stat-num">PH</div><div class="stat-label">Palawan Based</div></article>
+</div>
+<div class="edu-card reveal">
+<div class="edu-degree">BS Information Technology</div>
+<div class="edu-school">Palawan Technological College, Inc. — Puerto Princesa City</div>
+<span class="edu-badge">Ongoing</span>
+</div>
+<div class="edu-card reveal" style="border-color:rgba(0,187,200,0.18);background:linear-gradient(135deg,var(--bg-2) 0%,rgba(0,187,200,0.04) 100%);">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+<svg aria-hidden="true" fill="none" height="18" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="10" stroke="rgba(0,187,200,0.7)" stroke-width="1.5"></circle><path d="M8 12l2.5 2.5L16 9" stroke="rgba(0,187,200,0.9)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div class="edu-degree" style="margin-bottom:0;">Cisco Networking Academy</div>
+</div>
+<div class="edu-school">Networking · Security · Programming · IT Fundamentals</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+<span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">31 Badges</span>
+<span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">32 Courses</span>
+<span class="edu-badge" style="background:rgba(0,187,200,0.08);color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);">2025</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <div class="divider" role="separator"></div>
-
-<section id="skills" aria-labelledby="evidence-heading">
-  <div class="container">
-    <div class="section-label"><span><span class="s-num">02 —</span> Evidence</span></div>
-    <div class="section-title-wrap">
-      <span class="section-ghost-num" aria-hidden="true">02</span>
-      <h2 class="section-title reveal" id="evidence-heading">Shipped. Deployed. Verified.</h2>
-    </div>
-    <p class="section-desc reveal">Every capability below is backed by production work, not side projects.</p>
-    <div class="evidence-grid">
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Backend APIs</span>
-          <span class="evidence-tag">Node.js / Express</span>
-        </div>
-        <p class="evidence-text">Built the full backend for Mix &amp; Match Kain &mdash; order recording, payment tracking, and stock updates running on a LAN-only Express server. No cloud required.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="#projects">Mix &amp; Match Kain &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Database Design</span>
-          <span class="evidence-tag">Schema / State</span>
-        </div>
-        <p class="evidence-text">Designed the data model for carts, orders, payments, and stock under concurrent write pressure in a live restaurant environment.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="#projects">Architecture diagram &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Real-Time Operations</span>
-          <span class="evidence-tag">WebSockets</span>
-        </div>
-        <p class="evidence-text">Handled live order updates and stock sync during active service. Fixed two concurrent-write bugs without taking the system offline while customers were ordering.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="#projects">Production incidents &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Frontend Delivery</span>
-          <span class="evidence-tag">Vanilla JS / HTML / CSS</span>
-        </div>
-        <p class="evidence-text">Built the customer ordering flow and QR checkout interface without a framework. Ran on customer phones over restaurant WiFi with no app install.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="https://thefrans.is-a.dev">View portfolio &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Production Judgment</span>
-          <span class="evidence-tag">Live debugging</span>
-        </div>
-        <p class="evidence-text">Two bugs fixed during active service. System survived a full internet outage mid-event &mdash; local architecture kept orders processing without interruption.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="https://thefrans.is-a.dev">View portfolio &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Client Web Delivery</span>
-          <span class="evidence-tag">77+ Sites Shipped</span>
-        </div>
-        <p class="evidence-text">Production websites built for local businesses across the Philippines &mdash; restaurants, cafes, retail, and institutions. Custom HTML/CSS/JS, no templates. Each client owns a site built to their operation, not a theme.</p>
-        <div class="evidence-proof"><span>Proof</span><a href="#clients">View all clients &rarr;</a></div>
-      </article>
-
-      <article class="evidence-card tilt-card">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Government Systems</span>
-          <span class="evidence-tag">BIR RDO 036</span>
-        </div>
-        <p class="evidence-text">IT Specialist at Bureau of Internal Revenue &mdash; RDO 036, Puerto Princesa City. Maintain internal systems supporting taxpayer data processing across multiple departments. Focus: system reliability, data integrity, and uptime.</p>
-        <div class="evidence-proof"><span>2026 &mdash; Present</span><span>Puerto Princesa, Palawan</span></div>
-      </article>
-
-      <article class="evidence-card tilt-card" style="grid-column:span 2;border-color:rgba(0,187,200,0.14);background:linear-gradient(135deg,var(--bg-2) 0%,rgba(0,187,200,0.03) 100%);">
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="evidence-head">
-          <span class="evidence-capability">Technical Certifications</span>
-          <span class="evidence-tag" style="color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);background:rgba(0,187,200,0.07);">31 Badges &middot; Cisco NA</span>
-        </div>
-        <p class="evidence-text">32 courses completed across Cisco Networking Academy covering four domains: <strong style="color:var(--text);">Networking</strong> (Basics, Devices &amp; Config, Network Addressing, Support &amp; Troubleshooting, Network Defense) &mdash; <strong style="color:var(--text);">Security</strong> (Endpoint Security, Cyber Threat Management, Junior Cybersecurity Analyst, Ethical Hacker) &mdash; <strong style="color:var(--text);">Programming</strong> (Python Essentials 1 &amp; 2, JavaScript Essentials, HTML &amp; CSS Essentials) &mdash; <strong style="color:var(--text);">IT Fundamentals</strong> (Computer Hardware, Operating Systems, IT Customer Support, Data Analytics, IoT).</p>
-        <div class="evidence-proof">
-          <span>Cisco Networking Academy &middot; 2025</span>
-          <a href="https://www.netacad.com" target="_blank" rel="noopener">netacad.com &#8599;</a>
-        </div>
-      </article>
-
-    </div>
-  </div>
+<section aria-labelledby="evidence-heading" id="skills">
+<div class="container">
+<div class="section-label"><span><span class="s-num">02 —</span> Evidence</span></div>
+<div class="section-title-wrap">
+<span aria-hidden="true" class="section-ghost-num">02</span>
+<h2 class="section-title reveal" id="evidence-heading">Shipped. Deployed. Verified.</h2>
+</div>
+<p class="section-desc reveal">Every capability below is backed by production work, not side projects.</p>
+<div class="evidence-grid">
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Backend APIs</span>
+<span class="evidence-tag">Node.js / Express</span>
+</div>
+<p class="evidence-text">Built the full backend for Mix &amp; Match Kain — order recording, payment tracking, and stock updates running on a LAN-only Express server. No cloud required.</p>
+<div class="evidence-proof"><span>Proof</span><a href="#projects">Mix &amp; Match Kain →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Database Design</span>
+<span class="evidence-tag">Schema / State</span>
+</div>
+<p class="evidence-text">Designed the data model for carts, orders, payments, and stock under concurrent write pressure in a live restaurant environment.</p>
+<div class="evidence-proof"><span>Proof</span><a href="#projects">Architecture diagram →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Real-Time Operations</span>
+<span class="evidence-tag">WebSockets</span>
+</div>
+<p class="evidence-text">Handled live order updates and stock sync during active service. Fixed two concurrent-write bugs without taking the system offline while customers were ordering.</p>
+<div class="evidence-proof"><span>Proof</span><a href="#projects">Production incidents →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Frontend Delivery</span>
+<span class="evidence-tag">Vanilla JS / HTML / CSS</span>
+</div>
+<p class="evidence-text">Built the customer ordering flow and QR checkout interface without a framework. Ran on customer phones over restaurant WiFi with no app install.</p>
+<div class="evidence-proof"><span>Proof</span><a href="https://thefrans.is-a.dev">View portfolio →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Production Judgment</span>
+<span class="evidence-tag">Live debugging</span>
+</div>
+<p class="evidence-text">Two bugs fixed during active service. System survived a full internet outage mid-event — local architecture kept orders processing without interruption.</p>
+<div class="evidence-proof"><span>Proof</span><a href="https://thefrans.is-a.dev">View portfolio →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Client Web Delivery</span>
+<span class="evidence-tag">77+ Sites Shipped</span>
+</div>
+<p class="evidence-text">Production websites built for local businesses across the Philippines — restaurants, cafes, retail, and institutions. Custom HTML/CSS/JS, no templates. Each client owns a site built to their operation, not a theme.</p>
+<div class="evidence-proof"><span>Proof</span><a href="#clients">View all clients →</a></div>
+</article>
+<article class="evidence-card tilt-card">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Government Systems</span>
+<span class="evidence-tag">BIR RDO 036</span>
+</div>
+<p class="evidence-text">IT Specialist at Bureau of Internal Revenue — RDO 036, Puerto Princesa City. Maintain internal systems supporting taxpayer data processing across multiple departments. Focus: system reliability, data integrity, and uptime.</p>
+<div class="evidence-proof"><span>2026 — Present</span><span>Puerto Princesa, Palawan</span></div>
+</article>
+<article class="evidence-card tilt-card" style="grid-column:span 2;border-color:rgba(0,187,200,0.14);background:linear-gradient(135deg,var(--bg-2) 0%,rgba(0,187,200,0.03) 100%);">
+<div aria-hidden="true" class="card-glow"></div>
+<div class="evidence-head">
+<span class="evidence-capability">Technical Certifications</span>
+<span class="evidence-tag" style="color:rgba(0,187,200,0.9);border-color:rgba(0,187,200,0.2);background:rgba(0,187,200,0.07);">31 Badges · Cisco NA</span>
+</div>
+<p class="evidence-text">32 courses completed across Cisco Networking Academy covering four domains: <strong style="color:var(--text);">Networking</strong> (Basics, Devices &amp; Config, Network Addressing, Support &amp; Troubleshooting, Network Defense) — <strong style="color:var(--text);">Security</strong> (Endpoint Security, Cyber Threat Management, Junior Cybersecurity Analyst, Ethical Hacker) — <strong style="color:var(--text);">Programming</strong> (Python Essentials 1 &amp; 2, JavaScript Essentials, HTML &amp; CSS Essentials) — <strong style="color:var(--text);">IT Fundamentals</strong> (Computer Hardware, Operating Systems, IT Customer Support, Data Analytics, IoT).</p>
+<div class="evidence-proof">
+<span>Cisco Networking Academy · 2025</span>
+<a href="https://www.netacad.com" rel="noopener noreferrer" target="_blank">netacad.com ↗</a>
+</div>
+</article>
+</div>
+</div>
 </section>
-
 <div class="divider" role="separator"></div>
-
-<section id="projects" aria-labelledby="work-heading">
-  <div class="container">
-    <div class="section-label"><span><span class="s-num">03 —</span> Work</span></div>
-    <div class="section-title-wrap">
-      <span class="section-ghost-num" aria-hidden="true">03</span>
-      <h2 class="section-title reveal" id="work-heading">Deployed Work</h2>
-    </div>
-    <div class="cinema-line" id="cinemaLine" aria-hidden="true"></div>
-    <div class="project-reveal-stage">
-      <div class="projects-list">
-        <article class="project-card flagship tilt-card reveal" id="flagshipCard">
-          <div class="card-glow" aria-hidden="true"></div>
-          <div>
-            <div class="project-meta">
-              <span class="project-cat">Full-Stack Web App</span>
-              <span class="project-dot" aria-hidden="true"></span>
-              <span class="project-date">December 2025</span>
-            </div>
-            <h3 class="project-title">Mix &amp; Match Kain</h3>
-            <p class="project-desc">A food ordering system for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs on a local machine over LAN &mdash; serving customer devices through restaurant WiFi with no internet dependency. Built to keep working through connectivity loss.</p>
-            <div class="incident-block">
-              <div class="incident-label">Production Incidents</div>
-              <div class="incident-item">Duplicate order writes caused by simultaneous stock updates under peak load &mdash; fixed live without downtime.</div>
-              <div class="incident-item">Full internet outage mid-event &mdash; local architecture continued processing orders uninterrupted.</div>
-            </div>
-            <div class="project-features" style="margin-top:16px;">
-              <span class="feature-tag">Local-First Architecture</span>
-              <span class="feature-tag">QR Checkout Flow</span>
-              <span class="feature-tag">Real-Time Order Management</span>
-              <span class="feature-tag">Offline Capable</span>
-            </div>
-            <div class="tech-stack">
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Express</span>
-              <span class="tech-tag">WebSockets</span>
-              <span class="tech-tag">Vanilla JS</span>
-              <span class="tech-tag">HTML/CSS</span>
-            </div>
-            <button class="arch-toggle" id="archToggle" aria-expanded="false" aria-controls="archDiagram">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+<section aria-labelledby="work-heading" id="projects">
+<div class="container">
+<div class="section-label"><span><span class="s-num">03 —</span> Work</span></div>
+<div class="section-title-wrap">
+<span aria-hidden="true" class="section-ghost-num">03</span>
+<h2 class="section-title reveal" id="work-heading">Deployed Work</h2>
+</div>
+<div aria-hidden="true" class="cinema-line" id="cinemaLine"></div>
+<div class="project-reveal-stage">
+<div class="projects-list">
+<article class="project-card flagship tilt-card reveal" id="flagshipCard">
+<div aria-hidden="true" class="card-glow"></div>
+<div>
+<div class="project-meta">
+<span class="project-cat">Full-Stack Web App</span>
+<span aria-hidden="true" class="project-dot"></span>
+<span class="project-date">December 2025</span>
+</div>
+<h3 class="project-title">Mix &amp; Match Kain</h3>
+<p class="project-desc">A food ordering system for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs on a local machine over LAN — serving customer devices through restaurant WiFi with no internet dependency. Built to keep working through connectivity loss.</p>
+<div class="incident-block">
+<div class="incident-label">Production Incidents</div>
+<div class="incident-item">Duplicate order writes caused by simultaneous stock updates under peak load — fixed live without downtime.</div>
+<div class="incident-item">Full internet outage mid-event — local architecture continued processing orders uninterrupted.</div>
+</div>
+<div class="project-features" style="margin-top:16px;">
+<span class="feature-tag">Local-First Architecture</span>
+<span class="feature-tag">QR Checkout Flow</span>
+<span class="feature-tag">Real-Time Order Management</span>
+<span class="feature-tag">Offline Capable</span>
+</div>
+<div class="tech-stack">
+<span class="tech-tag">Node.js</span>
+<span class="tech-tag">Express</span>
+<span class="tech-tag">WebSockets</span>
+<span class="tech-tag">Vanilla JS</span>
+<span class="tech-tag">HTML/CSS</span>
+</div>
+<button aria-controls="archDiagram" aria-expanded="false" class="arch-toggle" id="archToggle">
+<svg aria-hidden="true" fill="none" height="11" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="11"><polyline points="6 9 12 15 18 9"></polyline></svg>
               System Architecture
             </button>
-            <div class="arch-diagram" id="archDiagram" role="img" aria-label="System architecture diagram">
-              <svg width="100%" viewBox="0 0 680 510" xmlns="http://www.w3.org/2000/svg">
-                <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-                <rect x="220" y="40" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
-                <text x="340" y="60" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Customer phone</text>
-                <text x="340" y="78" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Restaurant WiFi · own device</text>
-                <line x1="340" y1="96" x2="340" y2="128" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <rect x="220" y="132" width="240" height="56" rx="8" fill="rgb(8,80,65)" stroke="rgb(93,202,165)" stroke-width="0.5"/>
-                <text x="340" y="152" text-anchor="middle" dominant-baseline="central" fill="rgb(159,225,203)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Menu &amp; cart</text>
-                <text x="340" y="170" text-anchor="middle" dominant-baseline="central" fill="rgb(93,202,165)" font-size="12" font-family="system-ui,sans-serif">Browse · add items · review</text>
-                <line x1="340" y1="188" x2="340" y2="220" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <rect x="220" y="224" width="240" height="56" rx="8" fill="rgb(99,56,6)" stroke="rgb(239,159,39)" stroke-width="0.5"/>
-                <text x="340" y="244" text-anchor="middle" dominant-baseline="central" fill="rgb(250,199,117)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">QR checkout</text>
-                <text x="340" y="262" text-anchor="middle" dominant-baseline="central" fill="rgb(239,159,39)" font-size="12" font-family="system-ui,sans-serif">Order encoded · QR generated</text>
-                <line x1="340" y1="280" x2="340" y2="330" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <rect x="30" y="296" width="620" height="184" rx="12" fill="none" stroke="rgba(222,220,209,0.12)" stroke-width="0.8" stroke-dasharray="6 4"/>
-                <text x="50" y="316" fill="rgb(140,138,130)" font-size="12" font-family="system-ui,sans-serif">Local machine · LAN only · no internet required</text>
-                <rect x="220" y="334" width="240" height="56" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
-                <text x="340" y="354" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Node.js / Express</text>
-                <text x="340" y="372" text-anchor="middle" dominant-baseline="central" fill="rgb(175,169,236)" font-size="12" font-family="system-ui,sans-serif">localhost:3000 · WebSockets</text>
-                <path d="M340 390 L340 410 L130 410 L130 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <line x1="340" y1="390" x2="340" y2="420" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <path d="M340 390 L340 410 L548 410 L548 420" fill="none" stroke="rgb(156,154,146)" stroke-width="1.5" marker-end="url(#arrow)"/>
-                <rect x="50" y="420" width="160" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
-                <text x="130" y="442" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Payments</text>
-                <rect x="258" y="420" width="164" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
-                <text x="340" y="442" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Order records</text>
-                <rect x="468" y="420" width="160" height="44" rx="8" fill="rgb(60,52,137)" stroke="rgb(175,169,236)" stroke-width="0.5"/>
-                <text x="548" y="442" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Stock</text>
-              </svg>
-            </div>
-          </div>
-          <div class="project-status">
-            <span class="status-badge">Live</span>
-            
-            <a href="https://thefrans.is-a.dev" class="btn btn-ghost" style="font-size:11px;padding:7px 13px;">Portfolio &#8599;</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
+<div aria-label="System architecture diagram" class="arch-diagram" id="archDiagram" role="img">
+<svg viewbox="0 0 680 510" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></marker></defs>
+<rect fill="rgb(8,80,65)" height="56" rx="8" stroke="rgb(93,202,165)" stroke-width="0.5" width="240" x="220" y="40"></rect>
+<text dominant-baseline="central" fill="rgb(159,225,203)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="340" y="60">Customer phone</text>
+<text dominant-baseline="central" fill="rgb(93,202,165)" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle" x="340" y="78">Restaurant WiFi · own device</text>
+<line marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5" x1="340" x2="340" y1="96" y2="128"></line>
+<rect fill="rgb(8,80,65)" height="56" rx="8" stroke="rgb(93,202,165)" stroke-width="0.5" width="240" x="220" y="132"></rect>
+<text dominant-baseline="central" fill="rgb(159,225,203)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="340" y="152">Menu &amp; cart</text>
+<text dominant-baseline="central" fill="rgb(93,202,165)" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle" x="340" y="170">Browse · add items · review</text>
+<line marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5" x1="340" x2="340" y1="188" y2="220"></line>
+<rect fill="rgb(99,56,6)" height="56" rx="8" stroke="rgb(239,159,39)" stroke-width="0.5" width="240" x="220" y="224"></rect>
+<text dominant-baseline="central" fill="rgb(250,199,117)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="340" y="244">QR checkout</text>
+<text dominant-baseline="central" fill="rgb(239,159,39)" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle" x="340" y="262">Order encoded · QR generated</text>
+<line marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5" x1="340" x2="340" y1="280" y2="330"></line>
+<rect fill="none" height="184" rx="12" stroke="rgba(222,220,209,0.12)" stroke-dasharray="6 4" stroke-width="0.8" width="620" x="30" y="296"></rect>
+<text fill="rgb(140,138,130)" font-family="system-ui,sans-serif" font-size="12" x="50" y="316">Local machine · LAN only · no internet required</text>
+<rect fill="rgb(60,52,137)" height="56" rx="8" stroke="rgb(175,169,236)" stroke-width="0.5" width="240" x="220" y="334"></rect>
+<text dominant-baseline="central" fill="rgb(206,203,246)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="340" y="354">Node.js / Express</text>
+<text dominant-baseline="central" fill="rgb(175,169,236)" font-family="system-ui,sans-serif" font-size="12" text-anchor="middle" x="340" y="372">localhost:3000 · WebSockets</text>
+<path d="M340 390 L340 410 L130 410 L130 420" fill="none" marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5"></path>
+<line marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5" x1="340" x2="340" y1="390" y2="420"></line>
+<path d="M340 390 L340 410 L548 410 L548 420" fill="none" marker-end="url(#arrow)" stroke="rgb(156,154,146)" stroke-width="1.5"></path>
+<rect fill="rgb(60,52,137)" height="44" rx="8" stroke="rgb(175,169,236)" stroke-width="0.5" width="160" x="50" y="420"></rect>
+<text dominant-baseline="central" fill="rgb(206,203,246)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="130" y="442">Payments</text>
+<rect fill="rgb(60,52,137)" height="44" rx="8" stroke="rgb(175,169,236)" stroke-width="0.5" width="164" x="258" y="420"></rect>
+<text dominant-baseline="central" fill="rgb(206,203,246)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="340" y="442">Order records</text>
+<rect fill="rgb(60,52,137)" height="44" rx="8" stroke="rgb(175,169,236)" stroke-width="0.5" width="160" x="468" y="420"></rect>
+<text dominant-baseline="central" fill="rgb(206,203,246)" font-family="system-ui,sans-serif" font-size="14" font-weight="500" text-anchor="middle" x="548" y="442">Stock</text>
+</svg>
+</div>
+</div>
+<div class="project-status">
+<span class="status-badge">Live</span>
+<a class="btn btn-ghost" href="https://thefrans.is-a.dev" style="font-size:11px;padding:7px 13px;">Portfolio ↗</a>
+</div>
+</article>
+</div>
+</div>
+</div>
 </section>
-
 <div class="divider" role="separator"></div>
-
-<section id="clients" aria-labelledby="clients-heading">
-  <div class="container clients-header">
-    <div class="section-label"><span><span class="s-num">04 —</span> Client Work</span></div>
-    <div class="section-title-wrap">
-      <span class="section-ghost-num" aria-hidden="true">04</span>
-      <h2 class="section-title reveal" id="clients-heading">Sites Shipped</h2>
-    </div>
-    <p class="section-desc reveal">Production websites built for local businesses across the Philippines. Custom HTML/CSS/JS per client — no templates, no themes.</p>
-  </div>
-
-  <div class="marquee-row" id="mqRow1" aria-label="Client sites row 1">
-    <div class="marquee-track marquee-track--fwd">
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Ramen Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Kalye Ramen</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Japanese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Fujisan Restaurant</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Thai Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Pergola Thai</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Italian Osteria</span><span class="mq-loc">Philippines</span><span class="mq-name">Luiz Osteria</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Vietnamese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Xin Chao</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Filipino Bistro</span><span class="mq-loc">Philippines</span><span class="mq-name">Guni Guni Bistro</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant &amp; Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Hibiscus Restaurant Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Reef Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Vinyl Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Nook Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Calm Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">De Javu Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Eightynine Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Golden Hour Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Gold Cup Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Order to Brew</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Ourtable Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Plant-Based Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Grains Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Homebound Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Ramen Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Kalye Ramen</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Japanese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Fujisan Restaurant</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Thai Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Pergola Thai</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Italian Osteria</span><span class="mq-loc">Philippines</span><span class="mq-name">Luiz Osteria</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Vietnamese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Xin Chao</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Filipino Bistro</span><span class="mq-loc">Philippines</span><span class="mq-name">Guni Guni Bistro</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant &amp; Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Hibiscus Restaurant Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Reef Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Vinyl Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Nook Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Calm Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">De Javu Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Eightynine Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Golden Hour Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Gold Cup Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Order to Brew</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Ourtable Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Plant-Based Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Grains Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Homebound Cafe</span></a>
-    </div>
-  </div>
-
-  <div class="marquee-row" id="mqRow2" aria-label="Client sites row 2" style="margin-top:1px;">
-    <div class="marquee-track marquee-track--rev" style="animation-duration:68s">
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occ.</span><span class="mq-name">JO Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Hakuna Matata</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Meetup Cafe</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Itoys Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Sspresso Coffee</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tao Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tipsy Turtle</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Sir KCs Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Tavern</span><span class="mq-loc">Philippines</span><span class="mq-name">UG Tavern</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cave Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Yama Cave Bar</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Ver de Puerto Princesa</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Fashion Boutique</span><span class="mq-loc">Philippines</span><span class="mq-name">Hollywood Fashion</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Clothing Brand</span><span class="mq-loc">Philippines</span><span class="mq-name">Primer Clothing</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Art Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">L&apos;Artista</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Crafts &amp; Retail</span><span class="mq-loc">Philippines</span><span class="mq-name">Binuatan Creations</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Arapilak</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occ.</span><span class="mq-name">JO Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Hakuna Matata</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Meetup Cafe</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Itoys Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Sspresso Coffee</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tao Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tipsy Turtle</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Sir KCs Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Tavern</span><span class="mq-loc">Philippines</span><span class="mq-name">UG Tavern</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cave Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Yama Cave Bar</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Ver de Puerto Princesa</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Fashion Boutique</span><span class="mq-loc">Philippines</span><span class="mq-name">Hollywood Fashion</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Clothing Brand</span><span class="mq-loc">Philippines</span><span class="mq-name">Primer Clothing</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Art Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">L&apos;Artista</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Crafts &amp; Retail</span><span class="mq-loc">Philippines</span><span class="mq-name">Binuatan Creations</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Arapilak</span></a>
-    </div>
-  </div>
-
-  <div class="marquee-row" id="mqRow3" aria-label="Client sites row 3" style="margin-top:1px;">
-    <div class="marquee-track marquee-track--fwd" style="animation-duration:52s">
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Tourist Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">4Cs Tourist Lodge</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Boutique Suites</span><span class="mq-loc">Philippines</span><span class="mq-name">Bambu Suites</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Cozy Stop Inn</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Hotel</span><span class="mq-loc">Palawan</span><span class="mq-name">Crown Hotel Palawan</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Globetrotter Inn</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Pension House</span><span class="mq-loc">Philippines</span><span class="mq-name">Julieta&apos;s Pension</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">Mayumi Lodge</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Clark Kent Travel</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel &amp; Tours</span><span class="mq-loc">Philippines</span><span class="mq-name">Corazon Travel &amp; Tours</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Explora Getaway</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Natural Arts Travel</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Palawan</span><span class="mq-name">Palawan Travel Solutions</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Sia Travels</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Eco Travel</span><span class="mq-loc">Palawan</span><span class="mq-name">Travel Palawan Naturalis</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Entertainment</span><span class="mq-loc">Palawan</span><span class="mq-name">Rage Room Palawan</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Amarri Spa</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Wellness Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Beautyfeel Spa</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa &amp; Wellness</span><span class="mq-loc">Philippines</span><span class="mq-name">La Pearle Spa</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Massage &amp; Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Mulan&apos;s Massage Spa</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Spa Navi</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Beauty Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">Beauty Studio Jessa D</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Brow Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">CDC Master Brows</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Nail Salon</span><span class="mq-loc">Philippines</span><span class="mq-name">Nail Story</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Aesthetics Clinic</span><span class="mq-loc">Philippines</span><span class="mq-name">Sierra Aesthetics</span></a>
-      <a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Tourist Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">4Cs Tourist Lodge</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Boutique Suites</span><span class="mq-loc">Philippines</span><span class="mq-name">Bambu Suites</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Cozy Stop Inn</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Hotel</span><span class="mq-loc">Palawan</span><span class="mq-name">Crown Hotel Palawan</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Globetrotter Inn</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Pension House</span><span class="mq-loc">Philippines</span><span class="mq-name">Julieta&apos;s Pension</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">Mayumi Lodge</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Clark Kent Travel</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel &amp; Tours</span><span class="mq-loc">Philippines</span><span class="mq-name">Corazon Travel &amp; Tours</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Explora Getaway</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Natural Arts Travel</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Palawan</span><span class="mq-name">Palawan Travel Solutions</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Sia Travels</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Eco Travel</span><span class="mq-loc">Palawan</span><span class="mq-name">Travel Palawan Naturalis</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Entertainment</span><span class="mq-loc">Palawan</span><span class="mq-name">Rage Room Palawan</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Amarri Spa</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Wellness Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Beautyfeel Spa</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa &amp; Wellness</span><span class="mq-loc">Philippines</span><span class="mq-name">La Pearle Spa</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Massage &amp; Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Mulan&apos;s Massage Spa</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Spa Navi</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Beauty Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">Beauty Studio Jessa D</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Brow Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">CDC Master Brows</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Nail Salon</span><span class="mq-loc">Philippines</span><span class="mq-name">Nail Story</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Aesthetics Clinic</span><span class="mq-loc">Philippines</span><span class="mq-name">Sierra Aesthetics</span></a>
-      <a class="mq-card" aria-hidden="true" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span></a>
-    </div>
-  </div>
+<section aria-labelledby="clients-heading" id="clients">
+<div class="container clients-header">
+<div class="section-label"><span><span class="s-num">04 —</span> Client Work</span></div>
+<div class="section-title-wrap">
+<span aria-hidden="true" class="section-ghost-num">04</span>
+<h2 class="section-title reveal" id="clients-heading">Sites Shipped</h2>
+</div>
+<p class="section-desc reveal">Production websites built for local businesses across the Philippines. Custom HTML/CSS/JS per client — no templates, no themes.</p>
+</div>
+<div aria-label="Client sites row 1" class="marquee-row" id="mqRow1">
+<div class="marquee-track marquee-track--fwd">
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Ramen Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Kalye Ramen</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Japanese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Fujisan Restaurant</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Thai Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Pergola Thai</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Italian Osteria</span><span class="mq-loc">Philippines</span><span class="mq-name">Luiz Osteria</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Vietnamese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Xin Chao</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Filipino Bistro</span><span class="mq-loc">Philippines</span><span class="mq-name">Guni Guni Bistro</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant &amp; Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Hibiscus Restaurant Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Reef Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Vinyl Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Nook Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Calm Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">De Javu Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Eightynine Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Golden Hour Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Gold Cup Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Order to Brew</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Ourtable Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Plant-Based Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Grains Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Homebound Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Mix &amp; Match Kain</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Summer Days Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bistro &amp; Cafe</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Eureka Bistro x Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Confectionery</span><span class="mq-loc">Philippines</span><span class="mq-name">Divine Truffles</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Grill</span><span class="mq-loc">Eastern Samar</span><span class="mq-name">NATAD Bar and Grill</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Silog Bites</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Brgy. Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Ramen Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Kalye Ramen</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Japanese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Fujisan Restaurant</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Thai Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Pergola Thai</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Italian Osteria</span><span class="mq-loc">Philippines</span><span class="mq-name">Luiz Osteria</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Vietnamese Rest.</span><span class="mq-loc">Philippines</span><span class="mq-name">Xin Chao</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Filipino Bistro</span><span class="mq-loc">Philippines</span><span class="mq-name">Guni Guni Bistro</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant &amp; Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Hibiscus Restaurant Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Reef Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Vinyl Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Nook Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Calm Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">De Javu Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Eightynine Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Golden Hour Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Gold Cup Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Order to Brew</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Ourtable Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Plant-Based Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Grains Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Homebound Cafe</span></a>
+</div>
+</div>
+<div aria-label="Client sites row 2" class="marquee-row" id="mqRow2" style="margin-top:1px;">
+<div class="marquee-track marquee-track--rev" style="animation-duration:68s">
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occ.</span><span class="mq-name">JO Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Hakuna Matata</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Meetup Cafe</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Itoys Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Sspresso Coffee</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tao Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tipsy Turtle</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Sir KCs Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Tavern</span><span class="mq-loc">Philippines</span><span class="mq-name">UG Tavern</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Cave Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Yama Cave Bar</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Ver de Puerto Princesa</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Fashion Boutique</span><span class="mq-loc">Philippines</span><span class="mq-name">Hollywood Fashion</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Clothing Brand</span><span class="mq-loc">Philippines</span><span class="mq-name">Primer Clothing</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Art Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">L'Artista</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Crafts &amp; Retail</span><span class="mq-loc">Philippines</span><span class="mq-name">Binuatan Creations</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Arapilak</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe &amp; Bar</span><span class="mq-loc">Tanauan, Batangas</span><span class="mq-name">Empire Cafe and Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Dauin, Negros Oriental</span><span class="mq-name">Tokamak Resto Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palanan, Makati</span><span class="mq-name">C&amp;F Food House</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Antipolo, Rizal</span><span class="mq-name">MK Sushi Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Malita, Davao Occ.</span><span class="mq-name">JO Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Resto Bar</span><span class="mq-loc">Lipa City, Batangas</span><span class="mq-name">Izakaya Tago</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Food Platform</span><span class="mq-loc">Metro Manila</span><span class="mq-name">momentfood.com</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Retail</span><span class="mq-loc">Manila</span><span class="mq-name">Muyoo Philippines</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">E-Bike Shop</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">iGo Bikes</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Guide</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Palawan G! Spots</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Philippines</span><span class="mq-name">Hakuna Matata</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cafe</span><span class="mq-loc">Philippines</span><span class="mq-name">Meetup Cafe</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Itoys Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Coffee Shop</span><span class="mq-loc">Philippines</span><span class="mq-name">Sspresso Coffee</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tao Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Tipsy Turtle</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Sir KCs Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Tavern</span><span class="mq-loc">Philippines</span><span class="mq-name">UG Tavern</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Cave Bar</span><span class="mq-loc">Philippines</span><span class="mq-name">Yama Cave Bar</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bar &amp; Restaurant</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">Ver de Puerto Princesa</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Fashion Boutique</span><span class="mq-loc">Philippines</span><span class="mq-name">Hollywood Fashion</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Clothing Brand</span><span class="mq-loc">Philippines</span><span class="mq-name">Primer Clothing</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Art Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">L'Artista</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Crafts &amp; Retail</span><span class="mq-loc">Philippines</span><span class="mq-name">Binuatan Creations</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Restaurant</span><span class="mq-loc">Palawan</span><span class="mq-name">Arapilak</span></a>
+</div>
+</div>
+<div aria-label="Client sites row 3" class="marquee-row" id="mqRow3" style="margin-top:1px;">
+<div class="marquee-track marquee-track--fwd" style="animation-duration:52s">
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Tourist Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">4Cs Tourist Lodge</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Boutique Suites</span><span class="mq-loc">Philippines</span><span class="mq-name">Bambu Suites</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Cozy Stop Inn</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Hotel</span><span class="mq-loc">Palawan</span><span class="mq-name">Crown Hotel Palawan</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Globetrotter Inn</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Pension House</span><span class="mq-loc">Philippines</span><span class="mq-name">Julieta's Pension</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">Mayumi Lodge</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Clark Kent Travel</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel &amp; Tours</span><span class="mq-loc">Philippines</span><span class="mq-name">Corazon Travel &amp; Tours</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Explora Getaway</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Natural Arts Travel</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Palawan</span><span class="mq-name">Palawan Travel Solutions</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Sia Travels</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Eco Travel</span><span class="mq-loc">Palawan</span><span class="mq-name">Travel Palawan Naturalis</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Entertainment</span><span class="mq-loc">Palawan</span><span class="mq-name">Rage Room Palawan</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Amarri Spa</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Wellness Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Beautyfeel Spa</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa &amp; Wellness</span><span class="mq-loc">Philippines</span><span class="mq-name">La Pearle Spa</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Massage &amp; Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Mulan's Massage Spa</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Spa Navi</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Beauty Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">Beauty Studio Jessa D</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Brow Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">CDC Master Brows</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Nail Salon</span><span class="mq-loc">Philippines</span><span class="mq-name">Nail Story</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Aesthetics Clinic</span><span class="mq-loc">Philippines</span><span class="mq-name">Sierra Aesthetics</span></a>
+<a class="mq-card"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Bed &amp; Breakfast</span><span class="mq-loc">Philippines</span><span class="mq-name">Nonoy Matt B&amp;B</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Tourist Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">4Cs Tourist Lodge</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Boutique Suites</span><span class="mq-loc">Philippines</span><span class="mq-name">Bambu Suites</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Cozy Stop Inn</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Hotel</span><span class="mq-loc">Palawan</span><span class="mq-name">Crown Hotel Palawan</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Inn</span><span class="mq-loc">Philippines</span><span class="mq-name">Globetrotter Inn</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Pension House</span><span class="mq-loc">Philippines</span><span class="mq-name">Julieta's Pension</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Lodge</span><span class="mq-loc">Philippines</span><span class="mq-name">Mayumi Lodge</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Clark Kent Travel</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel &amp; Tours</span><span class="mq-loc">Philippines</span><span class="mq-name">Corazon Travel &amp; Tours</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Explora Getaway</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Natural Arts Travel</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Palawan</span><span class="mq-name">Palawan Travel Solutions</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Travel Agency</span><span class="mq-loc">Philippines</span><span class="mq-name">Sia Travels</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Eco Travel</span><span class="mq-loc">Palawan</span><span class="mq-name">Travel Palawan Naturalis</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Entertainment</span><span class="mq-loc">Palawan</span><span class="mq-name">Rage Room Palawan</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Amarri Spa</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Wellness Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Beautyfeel Spa</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa &amp; Wellness</span><span class="mq-loc">Philippines</span><span class="mq-name">La Pearle Spa</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Massage &amp; Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Mulan's Massage Spa</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Spa</span><span class="mq-loc">Philippines</span><span class="mq-name">Spa Navi</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Beauty Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">Beauty Studio Jessa D</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Brow Studio</span><span class="mq-loc">Philippines</span><span class="mq-name">CDC Master Brows</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Nail Salon</span><span class="mq-loc">Philippines</span><span class="mq-name">Nail Story</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Aesthetics Clinic</span><span class="mq-loc">Philippines</span><span class="mq-name">Sierra Aesthetics</span></a>
+<a aria-hidden="true" class="mq-card" tabindex="-1"><div class="mq-card-bar"></div><span class="mq-type">Institution</span><span class="mq-loc">Puerto Princesa</span><span class="mq-name">PTCI</span></a>
+</div>
+</div>
 </section>
-
 <div class="divider" role="separator"></div>
-
-<section id="contact" aria-labelledby="contact-heading">
-  <div class="container">
-    <div class="section-label"><span><span class="s-num">05 —</span> Contact</span></div>
-    <div class="section-title-wrap">
-      <span class="section-ghost-num" aria-hidden="true">05</span>
-      <h2 class="section-title reveal" id="contact-heading">Get in Touch</h2>
-    </div>
-    <div class="contact-layout">
-      <div class="contact-tagline reveal"><strong>IT Specialist</strong><br>BIR RDO 036.<br>Still building.</div>
-      <div class="contact-info">
-        <div class="contact-item reveal"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
-        <div class="contact-item reveal"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036 &middot; Open to freelance</div></div>
-        <div class="contact-item reveal"><div class="contact-label">Portfolio</div><div class="contact-value"><a href="https://thefrans.is-a.dev">thefrans.is-a.dev &#8599;</a></div></div>
-        <div class="contact-item reveal"><div class="contact-label">Facebook</div><div class="contact-value"><a href="https://www.facebook.com/franshessss" target="_blank" rel="noopener">facebook.com/franshessss &#8599;</a></div></div>
-      </div>
-    </div>
-  </div>
+<section aria-labelledby="contact-heading" id="contact">
+<div class="container">
+<div class="section-label"><span><span class="s-num">05 —</span> Contact</span></div>
+<div class="section-title-wrap">
+<span aria-hidden="true" class="section-ghost-num">05</span>
+<h2 class="section-title reveal" id="contact-heading">Get in Touch</h2>
+</div>
+<div class="contact-layout">
+<div class="contact-tagline reveal"><strong>IT Specialist</strong><br/>BIR RDO 036.<br/>Still building.</div>
+<div class="contact-info">
+<div class="contact-item reveal"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
+<div class="contact-item reveal"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036 · Open to freelance</div></div>
+<div class="contact-item reveal"><div class="contact-label">Portfolio</div><div class="contact-value"><a href="https://thefrans.is-a.dev">thefrans.is-a.dev ↗</a></div></div>
+<div class="contact-item reveal"><div class="contact-label">Facebook</div><div class="contact-value"><a href="https://www.facebook.com/franshessss" rel="noopener noreferrer" target="_blank">facebook.com/franshessss ↗</a></div></div>
+</div>
+</div>
+</div>
 </section>
 </main>
-
 <footer>
-  <div class="container footer-inner">
-    <div class="footer-left"><span>TheFrans.is-a.dev</span> &mdash; Built and deployed from the ground up.</div>
-    <div class="footer-right">&copy; 2026 Francis Tarectican &middot; <a href="https://thefrans.is-a.dev">TheFrans.is-a.dev &#8599;</a></div>
-  </div>
+<div class="container footer-inner">
+<div class="footer-left"><span>TheFrans.is-a.dev</span> — Built and deployed from the ground up.</div>
+<div class="footer-right">© 2026 Francis Tarectican · <a href="https://thefrans.is-a.dev">TheFrans.is-a.dev ↗</a></div>
+</div>
 </footer>
 </div>
-
 <script>
 (function(){
   'use strict';
@@ -923,11 +894,9 @@
   requestAnimationFrame(tick);
 })();
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-
 <script>
 'use strict';
 gsap.registerPlugin(ScrollTrigger);
