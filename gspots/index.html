@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Palawan G! Spots — Kung gusto mong masarapan, go na sa Palawan!</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='50' fill='%230d7377'/%3E%3Ctext x='5' y='22' font-family='Georgia,serif' font-weight='700' font-size='13' fill='%23f5e6c8'%3EG!%3C/text%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='50' fill='%230d7377'/%3E%3Ctext x='5' y='22' font-family='Georgia,serif' font-weight='700' font-size='13' fill='%23f5e6c8'%3EG!%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&amp;family=DM+Sans:wght@200;300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 *::-webkit-scrollbar{display:none;}
@@ -231,345 +232,320 @@ footer{background:var(--ocean);border-top:.5px solid var(--border);padding:4rem 
   .counter-strip{grid-template-columns:1fr;}
 }
 </style>
-</head>
+<meta content="Gspots - Official website." name="description"/></head>
 <body>
-
 <!-- CURSOR -->
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 <!-- PROGRESS -->
 <div id="prog"></div>
-
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo">Palawan <em>G!</em> Spots</a>
-  <ul class="nav-links">
-    <li><a href="#spots">Spots</a></li>
-    <li><a href="#restaurants">Restaurants</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-  <a href="#spots" class="nav-cta">Explore</a>
+<a class="logo" href="#">Palawan <em>G!</em> Spots</a>
+<ul class="nav-links">
+<li><a href="#spots">Spots</a></li>
+<li><a href="#restaurants">Restaurants</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+<a class="nav-cta" href="#spots">Explore</a>
 </nav>
-
 <!-- HERO -->
 <div class="hero" id="hero">
-  <div class="hero-px" id="hero-px"></div>
-  <div class="hero-ovl"></div>
-  <div class="noise"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Palawan · Philippines · The Last Frontier</div>
-    <h1 class="hero-title" id="hero-title">
-      Palawan<br>
-      <em>G! Spots</em>
-    </h1>
-    <p class="hero-tagline">Kung gusto mong masarapan, go na sa Palawan!</p>
-    <div class="hero-actions">
-      <a href="#spots" class="btn-teal">Discover Spots</a>
-      <a href="#restaurants" class="btn-ghost">Find Food</a>
-    </div>
-  </div>
-  <div class="hero-badge">PH</div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span class="scroll-txt">Scroll</span>
-  </div>
+<div class="hero-px" id="hero-px"></div>
+<div class="hero-ovl"></div>
+<div class="noise"></div>
+<div class="hero-content">
+<div class="hero-eyebrow">Palawan · Philippines · The Last Frontier</div>
+<h1 class="hero-title" id="hero-title">
+      Palawan<br/>
+<em>G! Spots</em>
+</h1>
+<p class="hero-tagline">Kung gusto mong masarapan, go na sa Palawan!</p>
+<div class="hero-actions">
+<a class="btn-teal" href="#spots">Discover Spots</a>
+<a class="btn-ghost" href="#restaurants">Find Food</a>
 </div>
-
+</div>
+<div class="hero-badge">PH</div>
+<div class="hero-scroll">
+<div class="scroll-line"></div>
+<span class="scroll-txt">Scroll</span>
+</div>
+</div>
 <!-- MARQUEE -->
-<div class="mq-wrap" aria-hidden="true">
-  <div class="mq-track">
-    <span class="mq-item">El Nido</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Coron</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">San Vicente</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Underground River</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Baker's Hill</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Badjao Seafront</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Kinabuch's Grill</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Haim Chicken Inato</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Balinsasayaw</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">K'na Boyet</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">El Nido</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Coron</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">San Vicente</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Underground River</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Baker's Hill</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Badjao Seafront</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Kinabuch's Grill</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Haim Chicken Inato</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">Balinsasayaw</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-    <span class="mq-item">K'na Boyet</span><span class="mq-sep">&nbsp;·&nbsp;</span>
-  </div>
+<div aria-hidden="true" class="mq-wrap">
+<div class="mq-track">
+<span class="mq-item">El Nido</span><span class="mq-sep"> · </span>
+<span class="mq-item">Coron</span><span class="mq-sep"> · </span>
+<span class="mq-item">San Vicente</span><span class="mq-sep"> · </span>
+<span class="mq-item">Underground River</span><span class="mq-sep"> · </span>
+<span class="mq-item">Baker's Hill</span><span class="mq-sep"> · </span>
+<span class="mq-item">Badjao Seafront</span><span class="mq-sep"> · </span>
+<span class="mq-item">Kinabuch's Grill</span><span class="mq-sep"> · </span>
+<span class="mq-item">Haim Chicken Inato</span><span class="mq-sep"> · </span>
+<span class="mq-item">Balinsasayaw</span><span class="mq-sep"> · </span>
+<span class="mq-item">K'na Boyet</span><span class="mq-sep"> · </span>
+<span class="mq-item">El Nido</span><span class="mq-sep"> · </span>
+<span class="mq-item">Coron</span><span class="mq-sep"> · </span>
+<span class="mq-item">San Vicente</span><span class="mq-sep"> · </span>
+<span class="mq-item">Underground River</span><span class="mq-sep"> · </span>
+<span class="mq-item">Baker's Hill</span><span class="mq-sep"> · </span>
+<span class="mq-item">Badjao Seafront</span><span class="mq-sep"> · </span>
+<span class="mq-item">Kinabuch's Grill</span><span class="mq-sep"> · </span>
+<span class="mq-item">Haim Chicken Inato</span><span class="mq-sep"> · </span>
+<span class="mq-item">Balinsasayaw</span><span class="mq-sep"> · </span>
+<span class="mq-item">K'na Boyet</span><span class="mq-sep"> · </span>
 </div>
-
+</div>
 <!-- INTRO -->
 <div class="intro">
-  <div class="intro-img rl">
-    <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/published/san-vicente-2.jpg" alt="San Vicente Long Beach Palawan" loading="lazy">
-    <div class="intro-ovl"></div>
-  </div>
-  <div class="intro-text reveal d2">
-    <div class="sec-tag">Welcome</div>
-    <h2 class="sec-title">This Is Where<br><em>Adventure Begins.</em></h2>
-    <p>Palawan has been called the last frontier of the Philippines — and for good reason. From the limestone karsts of El Nido to the crystal waters of Coron, from the longest white sand beach in the country to one of the longest navigable underground rivers in the world.</p>
-    <p>This is a place that <strong>consistently tops the world's best island lists</strong>. Conde Nast. Travel + Leisure. National Geographic. They all say the same thing: there is nowhere quite like Palawan.</p>
-    <p>We are here to show you where to go, where to eat, and where to sit and let the world slow down for a while.</p>
-    <div class="intro-pills">
-      <span class="pill">Adventure</span>
-      <span class="pill">Relaxation</span>
-      <span class="pill">Delicacies</span>
-      <span class="pill">Marine Life</span>
-      <span class="pill">White Sand Beaches</span>
-      <span class="pill">Limestone Karsts</span>
-    </div>
-  </div>
+<div class="intro-img rl">
+<img alt="San Vicente Long Beach Palawan" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/published/san-vicente-2.jpg"/>
+<div class="intro-ovl"></div>
 </div>
-
+<div class="intro-text reveal d2">
+<div class="sec-tag">Welcome</div>
+<h2 class="sec-title">This Is Where<br/><em>Adventure Begins.</em></h2>
+<p>Palawan has been called the last frontier of the Philippines — and for good reason. From the limestone karsts of El Nido to the crystal waters of Coron, from the longest white sand beach in the country to one of the longest navigable underground rivers in the world.</p>
+<p>This is a place that <strong>consistently tops the world's best island lists</strong>. Conde Nast. Travel + Leisure. National Geographic. They all say the same thing: there is nowhere quite like Palawan.</p>
+<p>We are here to show you where to go, where to eat, and where to sit and let the world slow down for a while.</p>
+<div class="intro-pills">
+<span class="pill">Adventure</span>
+<span class="pill">Relaxation</span>
+<span class="pill">Delicacies</span>
+<span class="pill">Marine Life</span>
+<span class="pill">White Sand Beaches</span>
+<span class="pill">Limestone Karsts</span>
+</div>
+</div>
+</div>
 <!-- COUNTER STRIP -->
 <div class="counter-strip">
-  <div class="counter-item reveal"><div class="counter-n">1<span>,780</span></div><div class="counter-l">Islands & Islets</div></div>
-  <div class="counter-item reveal d1"><div class="counter-n">8<span>.2KM</span></div><div class="counter-l">Underground River</div></div>
-  <div class="counter-item reveal d2"><div class="counter-n">5<span>+</span></div><div class="counter-l">World Best Awards</div></div>
-  <div class="counter-item reveal d3"><div class="counter-n">∞</div><div class="counter-l">Reasons to Go</div></div>
+<div class="counter-item reveal"><div class="counter-n">1<span>,780</span></div><div class="counter-l">Islands &amp; Islets</div></div>
+<div class="counter-item reveal d1"><div class="counter-n">8<span>.2KM</span></div><div class="counter-l">Underground River</div></div>
+<div class="counter-item reveal d2"><div class="counter-n">5<span>+</span></div><div class="counter-l">World Best Awards</div></div>
+<div class="counter-item reveal d3"><div class="counter-n">∞</div><div class="counter-l">Reasons to Go</div></div>
 </div>
-
 <!-- PARALLAX STRIP 1 -->
 <div class="px-strip">
-  <div class="px-img" id="px1" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/309953022-426926069514873-7616073151451642670-n_orig.png');"></div>
-  <div class="px-ovl" style="background:rgba(10,22,40,.55);">
-    <div class="px-label">El Nido.<br><em>Palawan.</em></div>
-    <div class="px-sub">Where the sky touches the sea</div>
-  </div>
+<div class="px-img" id="px1" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/309953022-426926069514873-7616073151451642670-n_orig.png');"></div>
+<div class="px-ovl" style="background:rgba(10,22,40,.55);">
+<div class="px-label">El Nido.<br/><em>Palawan.</em></div>
+<div class="px-sub">Where the sky touches the sea</div>
 </div>
-
+</div>
 <!-- TOURIST SPOTS -->
 <section class="spots" id="spots">
-  <div class="reveal" style="margin-bottom:1rem;">
-    <div class="sec-tag">Top Tourist Spots</div>
-    <h2 class="sec-title">Five Places<br><em>That Will Change You.</em></h2>
-  </div>
-  <p class="sec-desc reveal d1">These are the top 5 famous spots in Palawan. Each one a world of its own. Explore and enjoy — and don't forget to look up.</p>
-
-  <div class="spots-grid">
-    <!-- El Nido - Featured -->
-    <div class="spot-card featured reveal">
-      <div class="spot-img-wrap">
-        <img class="spot-img" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/309953022-426926069514873-7616073151451642670-n_orig.png" alt="El Nido Palawan" loading="lazy">
-      </div>
-      <div class="spot-num">01</div>
-      <div class="spot-info">
-        <div class="spot-cat">El Nido, Palawan</div>
-        <div class="spot-name">El Nido</div>
-        <div class="spot-desc">Spectacular lagoons, white sand beaches, rocky islets, towering limestone cliffs, and crystal waters full of marine life. Consistently ranked among the best islands in the world — and it earns every bit of that praise.</div>
-      </div>
-    </div>
-
-    <!-- Coron -->
-    <div class="spot-card reveal d1">
-      <div class="spot-img-wrap">
-        <img class="spot-img" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/coron_orig.png" alt="Coron Palawan" loading="lazy">
-      </div>
-      <div class="spot-num">02</div>
-      <div class="spot-info">
-        <div class="spot-cat">Coron, Palawan</div>
-        <div class="spot-name">Coron</div>
-        <div class="spot-desc">Coral reefs, WWII shipwrecks beneath crystal-clear water, and some of the most spectacular diving in the Philippines. Above the surface, equally magnificent.</div>
-      </div>
-    </div>
-
-    <!-- San Vicente -->
-    <div class="spot-card reveal">
-      <div class="spot-img-wrap">
-        <img class="spot-img" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/san-vicente_orig.png" alt="San Vicente Palawan" loading="lazy">
-      </div>
-      <div class="spot-num">03</div>
-      <div class="spot-info">
-        <div class="spot-cat">San Vicente, Palawan</div>
-        <div class="spot-name">San Vicente</div>
-        <div class="spot-desc">Home to Long Beach — the longest white sand beach in the Philippines and the second-longest in all of Southeast Asia. Nestled between El Nido and Puerto Princesa, still untouched.</div>
-      </div>
-    </div>
-
-    <!-- Underground River -->
-    <div class="spot-card reveal d1">
-      <div class="spot-img-wrap">
-        <img class="spot-img" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/ppur_orig.png" alt="Puerto Princesa Underground River" loading="lazy">
-      </div>
-      <div class="spot-num">04</div>
-      <div class="spot-info">
-        <div class="spot-cat">Puerto Princesa, Palawan</div>
-        <div class="spot-name">Underground River</div>
-        <div class="spot-desc">One of the largest cave systems in the world. The longest navigable underground river on Earth. A UNESCO World Heritage Site — and one of the New Seven Wonders of Nature.</div>
-      </div>
-    </div>
-
-    <!-- Baker's Hill -->
-    <div class="spot-card reveal d2" style="grid-column:1/-1;">
-      <div class="spot-img-wrap">
-        <img class="spot-img" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/baker-s-hill_orig.png" alt="Baker's Hill Palawan" loading="lazy" style="height:320px;">
-      </div>
-      <div class="spot-num">05</div>
-      <div class="spot-info">
-        <div class="spot-cat">Puerto Princesa, Palawan</div>
-        <div class="spot-name">Baker's Hill</div>
-        <div class="spot-desc">Originally a beloved bakery known for its hopia and pastries, now a gorgeous park open to the public. The perfect place to buy pasalubong and end your Palawan adventure on a sweet note.</div>
-      </div>
-    </div>
-  </div>
+<div class="reveal" style="margin-bottom:1rem;">
+<div class="sec-tag">Top Tourist Spots</div>
+<h2 class="sec-title">Five Places<br/><em>That Will Change You.</em></h2>
+</div>
+<p class="sec-desc reveal d1">These are the top 5 famous spots in Palawan. Each one a world of its own. Explore and enjoy — and don't forget to look up.</p>
+<div class="spots-grid">
+<!-- El Nido - Featured -->
+<div class="spot-card featured reveal">
+<div class="spot-img-wrap">
+<img alt="El Nido Palawan" class="spot-img" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/309953022-426926069514873-7616073151451642670-n_orig.png"/>
+</div>
+<div class="spot-num">01</div>
+<div class="spot-info">
+<div class="spot-cat">El Nido, Palawan</div>
+<div class="spot-name">El Nido</div>
+<div class="spot-desc">Spectacular lagoons, white sand beaches, rocky islets, towering limestone cliffs, and crystal waters full of marine life. Consistently ranked among the best islands in the world — and it earns every bit of that praise.</div>
+</div>
+</div>
+<!-- Coron -->
+<div class="spot-card reveal d1">
+<div class="spot-img-wrap">
+<img alt="Coron Palawan" class="spot-img" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/coron_orig.png"/>
+</div>
+<div class="spot-num">02</div>
+<div class="spot-info">
+<div class="spot-cat">Coron, Palawan</div>
+<div class="spot-name">Coron</div>
+<div class="spot-desc">Coral reefs, WWII shipwrecks beneath crystal-clear water, and some of the most spectacular diving in the Philippines. Above the surface, equally magnificent.</div>
+</div>
+</div>
+<!-- San Vicente -->
+<div class="spot-card reveal">
+<div class="spot-img-wrap">
+<img alt="San Vicente Palawan" class="spot-img" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/san-vicente_orig.png"/>
+</div>
+<div class="spot-num">03</div>
+<div class="spot-info">
+<div class="spot-cat">San Vicente, Palawan</div>
+<div class="spot-name">San Vicente</div>
+<div class="spot-desc">Home to Long Beach — the longest white sand beach in the Philippines and the second-longest in all of Southeast Asia. Nestled between El Nido and Puerto Princesa, still untouched.</div>
+</div>
+</div>
+<!-- Underground River -->
+<div class="spot-card reveal d1">
+<div class="spot-img-wrap">
+<img alt="Puerto Princesa Underground River" class="spot-img" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/ppur_orig.png"/>
+</div>
+<div class="spot-num">04</div>
+<div class="spot-info">
+<div class="spot-cat">Puerto Princesa, Palawan</div>
+<div class="spot-name">Underground River</div>
+<div class="spot-desc">One of the largest cave systems in the world. The longest navigable underground river on Earth. A UNESCO World Heritage Site — and one of the New Seven Wonders of Nature.</div>
+</div>
+</div>
+<!-- Baker's Hill -->
+<div class="spot-card reveal d2" style="grid-column:1/-1;">
+<div class="spot-img-wrap">
+<img alt="Baker's Hill Palawan" class="spot-img" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/baker-s-hill_orig.png" style="height:320px;"/>
+</div>
+<div class="spot-num">05</div>
+<div class="spot-info">
+<div class="spot-cat">Puerto Princesa, Palawan</div>
+<div class="spot-name">Baker's Hill</div>
+<div class="spot-desc">Originally a beloved bakery known for its hopia and pastries, now a gorgeous park open to the public. The perfect place to buy pasalubong and end your Palawan adventure on a sweet note.</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- PARALLAX STRIP 2 -->
 <div class="px-strip">
-  <div class="px-img" id="px2" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/badjao-seafront-1_orig.png');"></div>
-  <div class="px-ovl" style="background:rgba(10,22,40,.6);">
-    <div class="px-label">Eat.<br><em>Enjoy.</em> Entertain.</div>
-    <div class="px-sub">Puerto Princesa's finest</div>
-  </div>
+<div class="px-img" id="px2" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/badjao-seafront-1_orig.png');"></div>
+<div class="px-ovl" style="background:rgba(10,22,40,.6);">
+<div class="px-label">Eat.<br/><em>Enjoy.</em> Entertain.</div>
+<div class="px-sub">Puerto Princesa's finest</div>
 </div>
-
+</div>
 <!-- RESTAURANTS -->
 <section class="restaurants" id="restaurants">
-  <div class="rest-header reveal">
-    <div>
-      <div class="sec-tag">Restaurants</div>
-      <h2 class="sec-title">Fill Your Belly.<br><em>Fill Your Heart.</em></h2>
-    </div>
-    <p style="max-width:360px;font-size:.9rem;line-height:1.75;color:var(--sand2);">After touring the stunning attractions, here are five restaurants that will complete your Palawan experience.</p>
-  </div>
-
-  <div class="rest-grid">
-    <!-- Badjao - Featured -->
-    <div class="rest-card full reveal">
-      <div class="rest-img">
-        <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/badjao-seafront-1_orig.png" alt="Badjao Seafront" loading="lazy">
-      </div>
-      <div class="rest-body">
-        <span class="rest-num">01</span>
-        <div class="rest-cat">Floating Restaurant · Seafood</div>
-        <div class="rest-name">Badjao Seafront</div>
-        <div class="rest-desc">A floating eatery constructed in a mangrove area with breathtaking views of Puerto Princesa's marine environment. The kind of place where the view is as good as the food — and the food is very, very good.</div>
-        <div class="rest-loc">Abueg Street, Puerto Princesa City</div>
-      </div>
-    </div>
-
-    <!-- K'na Boyet -->
-    <div class="rest-card reveal">
-      <div class="rest-img">
-        <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/k-na-boyet_orig.png" alt="K'na Boyet" loading="lazy">
-      </div>
-      <div class="rest-body">
-        <span class="rest-num">02</span>
-        <div class="rest-cat">Bar & Grill · Seafood</div>
-        <div class="rest-name">K'na Boyet</div>
-        <div class="rest-desc">Fresh seafood by the Baywalk, prepared to your specifications, at reasonable prices. Bring your bargaining skills for the shrimp.</div>
-        <div class="rest-loc">Baywalk, Puerto Princesa City</div>
-      </div>
-    </div>
-
-    <!-- Haim -->
-    <div class="rest-card reveal d1">
-      <div class="rest-img">
-        <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/haim-inato_orig.png" alt="Haim Chicken Inato" loading="lazy">
-      </div>
-      <div class="rest-body">
-        <span class="rest-num">03</span>
-        <div class="rest-cat">Filipino · Chicken</div>
-        <div class="rest-name">Haim Chicken Inato</div>
-        <div class="rest-desc">The original and first chicken house in Puerto Princesa since 1999. Now one of the premier restaurants in Palawan — a true institution.</div>
-        <div class="rest-loc">Puerto Princesa City, Palawan</div>
-      </div>
-    </div>
-
-    <!-- Balinsasayaw -->
-    <div class="rest-card reveal">
-      <div class="rest-img">
-        <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/balinsasayaw_orig.png" alt="Balinsasayaw" loading="lazy">
-      </div>
-      <div class="rest-body">
-        <span class="rest-num">04</span>
-        <div class="rest-cat">Resort Restaurant · Coron</div>
-        <div class="rest-name">Balinsasayaw</div>
-        <div class="rest-desc">Excellent service and superior facilities in Coron, Palawan. Room service, tours, family rooms, restaurant — everything you need for an unforgettable stay.</div>
-        <div class="rest-loc">Coron, Palawan</div>
-      </div>
-    </div>
-
-    <!-- Kinabuch's -->
-    <div class="rest-card reveal d1">
-      <div class="rest-img">
-        <img src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/kinabuch-s_orig.png" alt="Kinabuch's Grill and Bar" loading="lazy">
-      </div>
-      <div class="rest-body">
-        <span class="rest-num">05</span>
-        <div class="rest-cat">Native · Exotic · Grill</div>
-        <div class="rest-name">Kinabuch's Grill & Bar</div>
-        <div class="rest-desc">Native-inspired bar & grill near the Provincial Capitol. Serving Palawan's exotic food — tamilok, crocodile sisig — for the adventurous palate.</div>
-        <div class="rest-loc">Near Provincial Capitol, Palawan</div>
-      </div>
-    </div>
-  </div>
+<div class="rest-header reveal">
+<div>
+<div class="sec-tag">Restaurants</div>
+<h2 class="sec-title">Fill Your Belly.<br/><em>Fill Your Heart.</em></h2>
+</div>
+<p style="max-width:360px;font-size:.9rem;line-height:1.75;color:var(--sand2);">After touring the stunning attractions, here are five restaurants that will complete your Palawan experience.</p>
+</div>
+<div class="rest-grid">
+<!-- Badjao - Featured -->
+<div class="rest-card full reveal">
+<div class="rest-img">
+<img alt="Badjao Seafront" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/badjao-seafront-1_orig.png"/>
+</div>
+<div class="rest-body">
+<span class="rest-num">01</span>
+<div class="rest-cat">Floating Restaurant · Seafood</div>
+<div class="rest-name">Badjao Seafront</div>
+<div class="rest-desc">A floating eatery constructed in a mangrove area with breathtaking views of Puerto Princesa's marine environment. The kind of place where the view is as good as the food — and the food is very, very good.</div>
+<div class="rest-loc">Abueg Street, Puerto Princesa City</div>
+</div>
+</div>
+<!-- K'na Boyet -->
+<div class="rest-card reveal">
+<div class="rest-img">
+<img alt="K'na Boyet" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/k-na-boyet_orig.png"/>
+</div>
+<div class="rest-body">
+<span class="rest-num">02</span>
+<div class="rest-cat">Bar &amp; Grill · Seafood</div>
+<div class="rest-name">K'na Boyet</div>
+<div class="rest-desc">Fresh seafood by the Baywalk, prepared to your specifications, at reasonable prices. Bring your bargaining skills for the shrimp.</div>
+<div class="rest-loc">Baywalk, Puerto Princesa City</div>
+</div>
+</div>
+<!-- Haim -->
+<div class="rest-card reveal d1">
+<div class="rest-img">
+<img alt="Haim Chicken Inato" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/haim-inato_orig.png"/>
+</div>
+<div class="rest-body">
+<span class="rest-num">03</span>
+<div class="rest-cat">Filipino · Chicken</div>
+<div class="rest-name">Haim Chicken Inato</div>
+<div class="rest-desc">The original and first chicken house in Puerto Princesa since 1999. Now one of the premier restaurants in Palawan — a true institution.</div>
+<div class="rest-loc">Puerto Princesa City, Palawan</div>
+</div>
+</div>
+<!-- Balinsasayaw -->
+<div class="rest-card reveal">
+<div class="rest-img">
+<img alt="Balinsasayaw" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/balinsasayaw_orig.png"/>
+</div>
+<div class="rest-body">
+<span class="rest-num">04</span>
+<div class="rest-cat">Resort Restaurant · Coron</div>
+<div class="rest-name">Balinsasayaw</div>
+<div class="rest-desc">Excellent service and superior facilities in Coron, Palawan. Room service, tours, family rooms, restaurant — everything you need for an unforgettable stay.</div>
+<div class="rest-loc">Coron, Palawan</div>
+</div>
+</div>
+<!-- Kinabuch's -->
+<div class="rest-card reveal d1">
+<div class="rest-img">
+<img alt="Kinabuch's Grill and Bar" loading="lazy" src="https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/kinabuch-s_orig.png"/>
+</div>
+<div class="rest-body">
+<span class="rest-num">05</span>
+<div class="rest-cat">Native · Exotic · Grill</div>
+<div class="rest-name">Kinabuch's Grill &amp; Bar</div>
+<div class="rest-desc">Native-inspired bar &amp; grill near the Provincial Capitol. Serving Palawan's exotic food — tamilok, crocodile sisig — for the adventurous palate.</div>
+<div class="rest-loc">Near Provincial Capitol, Palawan</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- PARALLAX STRIP 3 -->
 <div class="px-strip">
-  <div class="px-img" id="px3" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/philippineislands-original-orig_orig.jpg');background-position:center 60%;"></div>
-  <div class="px-ovl" style="background:rgba(10,22,40,.62);">
-    <div class="px-label">Meet Me Where<br><em>The Sky Touches the Sea.</em></div>
-    <div class="px-sub">— Jennifer Donnelly</div>
-  </div>
+<div class="px-img" id="px3" style="background-image:url('https://palawangspots.weebly.com/uploads/1/4/3/5/143503528/philippineislands-original-orig_orig.jpg');background-position:center 60%;"></div>
+<div class="px-ovl" style="background:rgba(10,22,40,.62);">
+<div class="px-label">Meet Me Where<br/><em>The Sky Touches the Sea.</em></div>
+<div class="px-sub">— Jennifer Donnelly</div>
 </div>
-
+</div>
 <!-- ABOUT — THE TRIBUTE -->
 <section class="about" id="about">
-  <div class="about-inner">
-    <div class="about-visual reveal">
-      <div class="about-frame">
-        <div class="about-frame-ghost">G!</div>
-      </div>
-      <div class="about-corner-tl"></div>
-      <div class="about-corner-br"></div>
-      <div class="about-stats">
-        <div class="about-stat"><div class="astat-n">2022<span></span></div><div class="astat-l">Born in Grade 11</div></div>
-        <div class="about-stat"><div class="astat-n">5<span>+</span></div><div class="astat-l">Pages Built</div></div>
-        <div class="about-stat"><div class="astat-n">1<span>st</span></div><div class="astat-l">Website Project</div></div>
-        <div class="about-stat"><div class="astat-n">∞</div><div class="astat-l">Memories Made</div></div>
-      </div>
-    </div>
-
-    <div class="about-text reveal d2">
-      <div class="sec-tag">About This Site</div>
-      <h2 class="sec-title">Old But<br><em>Gold.</em></h2>
-      <p>This site was originally built by a group of Grade 11 students from Palawan Technological College, Inc. as a school project — their first time building a website, their first time putting something on the internet and calling it theirs.</p>
-      <p>That original site, built on Weebly in 2022, <strong>is still alive to this day</strong>. It survived long after the school year ended, long after anyone expected it to still be there.</p>
-      <p>This redesign is a tribute to where it all started. Same content. Same heart. Just grown up now — the way its creator has grown up since then.</p>
-      <div class="tribute-box">
-        <p>Making a website is a unique way to communicate with the rest of the world. There are no limitations on what you may do — whether you want to share your passion, educate people, or simply show what you love. If you have a website, you have a ton of alternatives.</p>
-        <span>— Original mission statement, Palawan G! Spots, 2022</span>
-      </div>
-    </div>
-  </div>
+<div class="about-inner">
+<div class="about-visual reveal">
+<div class="about-frame">
+<div class="about-frame-ghost">G!</div>
+</div>
+<div class="about-corner-tl"></div>
+<div class="about-corner-br"></div>
+<div class="about-stats">
+<div class="about-stat"><div class="astat-n">2022<span></span></div><div class="astat-l">Born in Grade 11</div></div>
+<div class="about-stat"><div class="astat-n">5<span>+</span></div><div class="astat-l">Pages Built</div></div>
+<div class="about-stat"><div class="astat-n">1<span>st</span></div><div class="astat-l">Website Project</div></div>
+<div class="about-stat"><div class="astat-n">∞</div><div class="astat-l">Memories Made</div></div>
+</div>
+</div>
+<div class="about-text reveal d2">
+<div class="sec-tag">About This Site</div>
+<h2 class="sec-title">Old But<br/><em>Gold.</em></h2>
+<p>This site was originally built by a group of Grade 11 students from Palawan Technological College, Inc. as a school project — their first time building a website, their first time putting something on the internet and calling it theirs.</p>
+<p>That original site, built on Weebly in 2022, <strong>is still alive to this day</strong>. It survived long after the school year ended, long after anyone expected it to still be there.</p>
+<p>This redesign is a tribute to where it all started. Same content. Same heart. Just grown up now — the way its creator has grown up since then.</p>
+<div class="tribute-box">
+<p>Making a website is a unique way to communicate with the rest of the world. There are no limitations on what you may do — whether you want to share your passion, educate people, or simply show what you love. If you have a website, you have a ton of alternatives.</p>
+<span>— Original mission statement, Palawan G! Spots, 2022</span>
+</div>
+</div>
+</div>
 </section>
-
 <!-- FOOTER -->
 <footer>
-  <div class="foot-marquee"><div class="foot-marquee-text">Palawan G! Spots &nbsp;·&nbsp; Kung gusto mong masarapan, go na sa Palawan! &nbsp;·&nbsp; El Nido · Coron · San Vicente · Underground River · Baker's Hill &nbsp;·&nbsp; Palawan G! Spots &nbsp;·&nbsp; Kung gusto mong masarapan, go na sa Palawan! &nbsp;·&nbsp; El Nido · Coron · San Vicente · Underground River · Baker's Hill &nbsp;·&nbsp;</div></div>
-  <div class="foot-inner">
-    <div class="foot-logo">Palawan <em>G!</em> Spots</div>
-    <div class="foot-links">
-      <a href="#spots">Tourist Spots</a>
-      <a href="#restaurants">Restaurants</a>
-      <a href="#about">About</a>
-      <a href="https://palawangspots.weebly.com" target="_blank" rel="noopener">Original Site</a>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <p class="foot-tagline"><strong>Kung gusto mong masarapan,</strong> go na sa Palawan!</p>
-    <div>
-      <p class="foot-copy">© 2022–2026 · Palawan G! Spots · All Rights Reserved</p>
-      <p class="foot-made">Originally built in Grade 11 · Redesigned with <span>love</span> in 2026</p>
-    </div>
-  </div>
+<div class="foot-marquee"><div class="foot-marquee-text">Palawan G! Spots  ·  Kung gusto mong masarapan, go na sa Palawan!  ·  El Nido · Coron · San Vicente · Underground River · Baker's Hill  ·  Palawan G! Spots  ·  Kung gusto mong masarapan, go na sa Palawan!  ·  El Nido · Coron · San Vicente · Underground River · Baker's Hill  · </div></div>
+<div class="foot-inner">
+<div class="foot-logo">Palawan <em>G!</em> Spots</div>
+<div class="foot-links">
+<a href="#spots">Tourist Spots</a>
+<a href="#restaurants">Restaurants</a>
+<a href="#about">About</a>
+<a href="https://palawangspots.weebly.com" rel="noopener noreferrer" target="_blank">Original Site</a>
+</div>
+</div>
+<div class="foot-bottom">
+<p class="foot-tagline"><strong>Kung gusto mong masarapan,</strong> go na sa Palawan!</p>
+<div>
+<p class="foot-copy">© 2022–2026 · Palawan G! Spots · All Rights Reserved</p>
+<p class="foot-made">Originally built in Grade 11 · Redesigned with <span>love</span> in 2026</p>
+</div>
+</div>
 </footer>
-
 <script>
 /* CURSOR */
 const dot=document.getElementById('cur-dot');
