@@ -1,5 +1,196 @@
-<!DOCTYPE html>
-<title>Palawan Uno Hotel</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palawan Uno Hotel — Puerto Princesa</title>
+<meta name="description" content="Palawan Uno Hotel — a 50-room full-service hotel in Barangay San Pedro, Puerto Princesa. Restaurant, spa, gym, pool, function halls, and a free hourly airport shuttle.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --ink:#f0ead6;
+  --ink-dim:#a8a195;
+  --ink-faint:#5c574c;
+  --gold:#f0a500;
+  --line:rgba(240,234,214,0.1);
+  --line-strong:rgba(240,234,214,0.2);
+  --ff-display:'Bricolage Grotesque', sans-serif;
+  --ff-mono:'DM Mono', monospace;
+  --ease:cubic-bezier(.16,.84,.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--ff-display);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+::selection{background:var(--gold);color:#0a0a0a;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 6vw;}
+.eyebrow{font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.7em;margin-bottom:1.2em;}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
+h1,h2{font-family:var(--ff-display);font-weight:600;letter-spacing:-.01em;line-height:1.05;}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);}
+p{color:var(--ink-dim);font-size:1rem;max-width:38em;}
+
+/* ---- nav ---- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 6vw;font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);backdrop-filter:blur(6px);background:linear-gradient(to bottom, rgba(10,10,10,.7), transparent);}
+.topbar b{color:var(--ink);font-family:var(--ff-display);letter-spacing:0;text-transform:none;font-weight:700;}
+.topbar .call{color:var(--gold);}
+
+/* ---- hero ---- */
+#hero{min-height:92vh;display:flex;align-items:center;padding-top:80px;position:relative;}
+#hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(ellipse at 75% 20%, rgba(240,165,0,.10), transparent 55%),
+             radial-gradient(ellipse at 10% 90%, rgba(240,165,0,.06), transparent 50%);
+}
+.hero-sub{margin-top:1.4em;}
+.hero-meta{display:flex;gap:2em;flex-wrap:wrap;margin-top:2.6em;font-family:var(--ff-mono);font-size:.78rem;color:var(--ink-faint);}
+.hero-meta b{color:var(--gold);display:block;font-size:1rem;font-family:var(--ff-display);font-weight:700;}
+.btn-row{display:flex;gap:1em;margin-top:2.4em;flex-wrap:wrap;}
+.btn{font-family:var(--ff-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.95em 1.6em;border-radius:2px;transition:transform .3s var(--ease),background .3s var(--ease);}
+.btn--solid{background:var(--gold);color:#0a0a0a;}
+.btn--solid:hover{transform:translateY(-2px);}
+.btn--ghost{border:1px solid var(--line-strong);color:var(--ink);}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ---- sections ---- */
+.section{padding:clamp(4rem,10vh,6.5rem) 0;border-top:1px solid var(--line);}
+.section-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);}
+@media (max-width:760px){.section-grid{grid-template-columns:1fr;}}
+
+.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.5em;}
+.amenity{background:var(--bg);padding:1.6em 1.4em;}
+.amenity .ic{color:var(--gold);font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
+.amenity .lbl{margin-top:.5em;font-size:.95rem;}
+@media (max-width:760px){.amenity-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.amenity-grid{grid-template-columns:1fr;}}
+
+.quote{border-left:2px solid var(--gold);padding-left:1.4em;margin-top:1.8em;font-style:italic;color:var(--ink);font-size:1.05rem;max-width:34em;}
+.quote cite{display:block;margin-top:.7em;font-style:normal;font-family:var(--ff-mono);font-size:.75rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
+
+.near-list{margin-top:1.6em;display:flex;flex-direction:column;gap:.7em;font-family:var(--ff-mono);font-size:.85rem;}
+.near-list div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:.6em;color:var(--ink-dim);}
+.near-list div span:last-child{color:var(--ink);}
+
+.contact-card{border:1px solid var(--line-strong);padding:2.2em;margin-top:1.6em;}
+.contact-card .row{display:flex;justify-content:space-between;align-items:baseline;padding:.7em 0;border-bottom:1px solid var(--line);font-family:var(--ff-mono);font-size:.85rem;}
+.contact-card .row:last-child{border-bottom:none;}
+.contact-card .row span:first-child{color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
+.contact-card .row span:last-child{color:var(--gold);}
+
+footer{padding:3em 6vw 3em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;font-family:var(--ff-mono);font-size:.72rem;color:var(--ink-faint);border-top:1px solid var(--line);}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+
+<nav class="topbar">
+  <b>Palawan Uno Hotel</b>
+  <a class="call" href="tel:+639175999666">+63 917 599 9666</a>
+</nav>
+
+<main>
+<section id="hero">
+  <div class="wrap">
+    <span class="eyebrow">Hotel · Brgy. San Pedro, Puerto Princesa</span>
+    <h1>Comfort and value,<br>five minutes from the runway.</h1>
+    <p class="hero-sub">Fifty rooms, a full restaurant, a spa, a gym, and a pool — all under one roof in Barangay San Pedro. Palawan Uno has run the same playbook since 2009: hotel-grade comfort near the airport, without the resort markup, plus a shuttle that runs to and from the terminal every hour.</p>
+    <div class="hero-meta">
+      <div><b>50</b>Rooms &amp; suites</div>
+      <div><b>5 min</b>From the airport</div>
+      <div><b>Since 2009</b>Open and operating</div>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--solid" href="tel:+639175999666">Call to Book</a>
+      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Palawan+Uno+Hotel%2C+National+Highway%2C+Barangay+San+Pedro%2C+Puerto+Princesa+City%2C+Palawan" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap section-grid">
+    <div><span class="eyebrow">The Stay</span><h2>Full-service,<br>without the resort price.</h2></div>
+    <div>
+      <p>Most budget stays near an airport mean a bed and not much else. Palawan Uno runs the opposite playbook — an on-site restaurant, a working spa, a gym, function halls for events, even a karaoke room — built into a property designed specifically for travelers passing through Puerto Princesa, not just somewhere to lodge them.</p>
+      <div class="quote reveal">Clean, comfortable rooms and staff that actually go out of their way to help — exactly what you want for a stop near the airport.<cite>Guest impression, paraphrased from recent reviews</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="amenities">
+  <div class="wrap">
+    <span class="eyebrow">What's Included</span>
+    <h2>Everything a resort<br>has, minus the markup.</h2>
+    <div class="amenity-grid reveal">
+      <div class="amenity"><div class="ic">Connectivity</div><div class="lbl">Free WiFi throughout</div></div>
+      <div class="amenity"><div class="ic">Comfort</div><div class="lbl">Air-conditioned rooms</div></div>
+      <div class="amenity"><div class="ic">Dining</div><div class="lbl">UNO Resto on-site</div></div>
+      <div class="amenity"><div class="ic">Wellness</div><div class="lbl">Full-service spa</div></div>
+      <div class="amenity"><div class="ic">Recreation</div><div class="lbl">Outdoor swimming pool</div></div>
+      <div class="amenity"><div class="ic">Recreation</div><div class="lbl">Karaoke rooms</div></div>
+      <div class="amenity"><div class="ic">Fitness</div><div class="lbl">Gym access</div></div>
+      <div class="amenity"><div class="ic">Events</div><div class="lbl">Function halls</div></div>
+      <div class="amenity"><div class="ic">Transport</div><div class="lbl">Free hourly airport shuttle</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="location">
+  <div class="wrap section-grid">
+    <div><span class="eyebrow">Getting Here</span><h2>Central, and five<br>minutes from the gate.</h2></div>
+    <div>
+      <p>National Highway, Barangay San Pedro — close enough to the airport that the hotel runs its own shuttle on the hour, and central enough that the city's main landmarks are a short drive away.</p>
+      <div class="near-list reveal">
+        <div><span>Puerto Princesa Airport</span><span>~1.6 km</span></div>
+        <div><span>Baywalk Park</span><span>~2 km</span></div>
+        <div><span>Mendoza City Park</span><span>~2.8 km</span></div>
+        <div><span>Immaculate Conception Cathedral</span><span>~3.1 km</span></div>
+        <div><span>Palawan Butterfly Garden</span><span>~3.9 km</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap section-grid">
+    <div><span class="eyebrow">Book Direct</span><h2>Skip the OTA<br>markup. Call ahead.</h2><p>Booking direct means no third-party commission baked into the rate — and it means the shuttle has your flight details before you land, not after.</p></div>
+    <div>
+      <div class="contact-card reveal">
+        <div class="row"><span>Mobile</span><span><a href="tel:+639175999666">+63 917 599 9666</a></span></div>
+        <div class="row"><span>Landline</span><span><a href="tel:+63484339999">(048) 433-9999</a></span></div>
+        <div class="row"><span>Address</span><span>National Highway, Brgy. San Pedro</span></div>
+        <div class="row"><span>Facebook</span><span><a href="https://www.facebook.com/palawanunohotel/" target="_blank" rel="noopener">palawanunohotel</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Palawan Uno Hotel · Puerto Princesa City, Palawan</span>
+  <span>Built by francis.dev</span>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
+</html>
