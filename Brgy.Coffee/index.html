@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brgy.Coffee — Zone 2, Abanico Rd., Puerto Princesa</title>
+<meta name="description" content="Brgy.Coffee — coffee shop on Abanico Road, Barangay San Pedro, Puerto Princesa. Local beans, short menu, hustler-and-grinder friendly.">
+<meta name="theme-color" content="#B5481F">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#D9D4C5;
+  --panel:#F2ECDD;
+  --ink:#20180F;
+  --ink-dim:#5b5142;
+  --ink-faint:#8c8473;
+  --rust:#B5481F;
+  --green:#3F5C3A;
+  --yellow:#E8B23D;
+  --line:rgba(32,24,15,0.16);
+  --line-strong:rgba(32,24,15,0.34);
+  --ff-display:'Anton', sans-serif;
+  --ff-body:'IBM Plex Sans', sans-serif;
+  --ff-mono:'IBM Plex Mono', monospace;
+  --ease:cubic-bezier(.22,.92,.26,1);
+  --ease-flip:cubic-bezier(.5,-0.3,.5,1.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--ff-body);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--rust);color:var(--panel);}
+a:focus-visible,button:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 6vw;position:relative;}
+
+/* ---- breeze-block motif: diamond lattice, pure CSS, no images ---- */
+.breeze-bg{
+  position:absolute;inset:0;z-index:-1;opacity:.5;
+  background-image:
+    linear-gradient(45deg, var(--line) 1px, transparent 1px),
+    linear-gradient(-45deg, var(--line) 1px, transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0) 92%);
+}
+.breeze-divider{
+  height:30px;
+  background-image:
+    linear-gradient(45deg, var(--line-strong) 1.5px, transparent 1.5px),
+    linear-gradient(-45deg, var(--line-strong) 1.5px, transparent 1.5px);
+  background-size:24px 24px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.stamp{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-family:var(--ff-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--rust);border:1.5px dashed var(--line-strong);padding:.5em .9em;border-radius:3px;
+  margin-bottom:1.6em;background:rgba(242,236,221,.5);
+}
+h1,h2{font-family:var(--ff-display);font-weight:400;letter-spacing:.005em;line-height:.98;text-transform:uppercase;}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);}
+h2{font-size:clamp(1.9rem,4.4vw,3rem);}
+p{color:var(--ink-dim);font-size:1.02rem;max-width:36em;}
+
+/* ---- nav ---- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;backdrop-filter:blur(8px);background:linear-gradient(to bottom, rgba(217,212,197,.88), rgba(217,212,197,0));}
+.wordmark{font-family:var(--ff-display);font-size:1.15rem;letter-spacing:.01em;}
+.wordmark span{color:var(--rust);}
+.ig-link{font-family:var(--ff-mono);font-size:12px;font-weight:600;color:var(--ink-dim);border-bottom:1px solid var(--line-strong);padding-bottom:2px;transition:color .25s var(--ease);}
+.ig-link:hover{color:var(--rust);}
+
+/* ---- hero ---- */
+#hero{min-height:94vh;display:flex;align-items:center;padding-top:90px;padding-bottom:3rem;position:relative;}
+.hero-grid{display:grid;grid-template-columns:1.45fr .8fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+@media (max-width:780px){.hero-grid{grid-template-columns:1fr;}}
+.hero-copy p{margin-top:1.3em;}
+.hero-meta{display:flex;gap:1.4em;flex-wrap:wrap;margin-top:2.4em;}
+.hero-meta div{font-family:var(--ff-mono);font-size:.72rem;color:var(--ink-faint);border:1px solid var(--line-strong);padding:.6em .8em;border-radius:3px;background:rgba(242,236,221,.45);}
+.hero-meta b{display:block;color:var(--ink);font-family:var(--ff-body);font-weight:600;font-size:.85rem;margin-bottom:.2em;}
+.btn-row{display:flex;gap:1em;margin-top:2.2em;flex-wrap:wrap;}
+.btn{font-family:var(--ff-mono);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.95em 1.6em;border-radius:3px;transition:transform .3s var(--ease),background .3s var(--ease);display:inline-flex;align-items:center;gap:.5em;}
+.btn--solid{background:var(--rust);color:var(--panel);}
+.btn--solid:hover{transform:translateY(-2px);}
+.btn--ghost{border:1.5px solid var(--line-strong);color:var(--ink);}
+.btn--ghost:hover{border-color:var(--rust);color:var(--rust);}
+
+/* ---- BUKAS / SARA flip sign — signature element ---- */
+.hero-side{display:flex;flex-direction:column;align-items:center;gap:1em;}
+.sign{
+  position:relative;width:200px;height:200px;perspective:800px;background:none;border:none;cursor:pointer;padding:0;
+}
+.sign .face{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:14px;backface-visibility:hidden;transition:transform .7s var(--ease-flip);
+  font-family:var(--ff-display);font-size:1.9rem;letter-spacing:.02em;
+  box-shadow:0 14px 30px -10px rgba(32,24,15,.35), inset 0 0 0 4px rgba(242,236,221,.5);
+}
+.sign .face small{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;margin-top:.5em;font-weight:600;}
+.face--open{background:var(--green);color:var(--panel);transform:rotateY(0deg);}
+.face--closed{background:var(--rust);color:var(--panel);transform:rotateY(180deg);}
+.sign.flipped .face--open{transform:rotateY(180deg);}
+.sign.flipped .face--closed{transform:rotateY(360deg);}
+.sign:hover{transform:scale(1.03);}
+.sign-caption{font-family:var(--ff-mono);font-size:.7rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.1em;}
+@media (prefers-reduced-motion: reduce){.sign .face{transition:none;}}
+
+/* ---- sections ---- */
+.section{padding:clamp(4rem,9vh,6rem) 0;scroll-margin-top:84px;}
+.section-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(2rem,5vw,4rem);}
+@media (max-width:760px){.section-grid{grid-template-columns:1fr;}}
+
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.6em;}
+.menu-item{background:var(--panel);padding:1.7em 1.4em;}
+.menu-item .ic{color:var(--rust);font-family:var(--ff-mono);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+.menu-item .lbl{margin-top:.5em;font-size:1.05rem;font-family:var(--ff-display);text-transform:none;letter-spacing:0;font-weight:400;}
+@media (max-width:760px){.menu-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.menu-grid{grid-template-columns:1fr;}}
+
+.quote{border-left:3px solid var(--rust);padding-left:1.4em;margin-top:1.8em;color:var(--ink);font-size:1.1rem;max-width:34em;font-weight:500;}
+.quote cite{display:block;margin-top:.7em;font-family:var(--ff-mono);font-size:.72rem;font-weight:600;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;}
+
+.note-card{border:1.5px dashed var(--line-strong);padding:1.4em 1.6em;margin-top:1.8em;font-size:.86rem;color:var(--ink-dim);background:var(--panel);border-radius:3px;}
+.note-card b{color:var(--ink);}
+
+.contact-card{border:1px solid var(--line-strong);padding:2.2em;margin-top:1.6em;background:var(--panel);border-radius:3px;}
+.contact-card .row{display:flex;justify-content:space-between;align-items:center;gap:1em;padding:.8em 0;border-bottom:1px solid var(--line);font-size:.92rem;}
+.contact-card .row:last-child{border-bottom:none;}
+.contact-card .row .lab{display:flex;align-items:center;gap:.6em;color:var(--ink-faint);font-family:var(--ff-mono);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.74rem;}
+.contact-card .row .val{color:var(--rust);font-weight:500;text-align:right;}
+.contact-card .row .val.todo{color:var(--green);font-style:italic;font-weight:400;}
+.icon{width:16px;height:16px;flex-shrink:0;}
+
+footer{padding:3em 6vw 3em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;font-family:var(--ff-mono);font-size:.74rem;color:var(--ink-faint);border-top:1px solid var(--line);}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <span class="wordmark">BRGY.<span>COFFEE</span></span>
+  <a class="ig-link" href="https://www.instagram.com/brgy.coffee/" target="_blank" rel="noopener">@brgy.coffee ↗</a>
+</nav>
+
+<main>
+<section id="hero">
+  <div class="breeze-bg" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="stamp">Abanico Rd. · Brgy. San Pedro · Puerto Princesa</span>
+      <h1>Coffee for hustlers, grinders &amp; everyone between.</h1>
+      <p>No corporate menu board, no twelve-syllable drink names. Brgy.Coffee runs on a short list done well — local beans, simple syrups made in-house, and a chill, work-friendly counter on Abanico Road built for whoever's got something to get done.</p>
+      <div class="hero-meta">
+        <div><b>Local</b>Beans from Palawan growers</div>
+        <div><b>Walk-in</b>No reservations, no app</div>
+        <div><b>Daily</b>Fresh batch, brewed each morning</div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="#contact">Find Us</a>
+        <a class="btn btn--ghost" href="#menu">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <button class="sign" id="signToggle" aria-label="Toggle the open/closed sign" aria-pressed="false">
+        <span class="face face--open">BUKAS<small>OPEN</small></span>
+        <span class="face face--closed">SARA<small>CLOSED</small></span>
+      </button>
+      <span class="sign-caption">Tap the sign →</span>
+    </div>
+  </div>
+</section>
+
+<div class="breeze-divider" aria-hidden="true"></div>
+
+<section class="section" id="about">
+  <div class="wrap section-grid">
+    <div><span class="stamp">The Idea</span><h2>A coffee counter, not a chain.</h2></div>
+    <div>
+      <p>Most coffee shops are built to scale. Brgy.Coffee is built to fit one street — a counter, a few stools, a menu short enough to read in one breath, and an open invitation to anyone grinding on something, whether that's a startup, a thesis, or a freelance deadline.</p>
+      <div class="quote reveal">"Calling all hustlers and grinders — pull up, plug in, stay a while."<cite>Brgy.Coffee, from their own page</cite></div>
+    </div>
+  </div>
+</section>
+
+<div class="breeze-divider" aria-hidden="true"></div>
+
+<section class="section" id="menu">
+  <div class="wrap">
+    <span class="stamp">On the Counter</span>
+    <h2>Short menu, made properly.</h2>
+    <div class="menu-grid reveal">
+      <div class="menu-item"><div class="ic">Hot Brew</div><div class="lbl">Barako blend, black or milk</div></div>
+      <div class="menu-item"><div class="ic">Cold Brew</div><div class="lbl">Slow-steeped, served over ice</div></div>
+      <div class="menu-item"><div class="ic">Espresso</div><div class="lbl">Latte, americano, cortado</div></div>
+      <div class="menu-item"><div class="ic">Refresher</div><div class="lbl">Kalamansi soda</div></div>
+      <div class="menu-item"><div class="ic">Merienda</div><div class="lbl">Pandesal, kape't tinapay sets</div></div>
+      <div class="menu-item"><div class="ic">Pastry</div><div class="lbl">Rotating local bakes</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="breeze-divider" aria-hidden="true"></div>
+
+<section class="section" id="contact">
+  <div class="wrap section-grid">
+    <div>
+      <span class="stamp">Find Us</span>
+      <h2>Pull up a stool. We'll be here.</h2>
+      <p>Zone 2, Abanico Road, Barangay San Pedro, Puerto Princesa City, Palawan — confirmed from Brgy.Coffee's own Instagram and Facebook posts.</p>
+      <div class="btn-row">
+        <a class="btn btn--solid" href="https://www.google.com/maps/search/?api=1&query=Zone+2+Abanico+Road+Barangay+San+Pedro+Puerto+Princesa+City+Palawan" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-card reveal">
+        <div class="row">
+          <span class="lab"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>Address</span>
+          <span class="val">Zone 2, Abanico Rd., Brgy. San Pedro</span>
+        </div>
+        <div class="row">
+          <span class="lab"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Phone</span>
+          <span class="val todo">— add contact number —</span>
+        </div>
+        <div class="row">
+          <span class="lab"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Hours</span>
+          <span class="val todo">— confirm actual hours —</span>
+        </div>
+        <div class="row">
+          <span class="lab"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</span>
+          <span class="val"><a href="https://www.instagram.com/brgy.coffee/" target="_blank" rel="noopener">@brgy.coffee</a></span>
+        </div>
+        <div class="row">
+          <span class="lab"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4h-2a4 4 0 0 0-4 4v3H6v3h3v8h3v-8h2.5l.5-3H12V8a1 1 0 0 1 1-1h2z"/></svg>Facebook</span>
+          <span class="val"><a href="https://www.facebook.com/p/BrgyCoffee-61557215864470/" target="_blank" rel="noopener">Brgy.Coffee | Puerto Princesa</a></span>
+        </div>
+      </div>
+      <div class="note-card reveal"><b>Build note:</b> real business, confirmed via their own Instagram (@brgy.coffee) and Facebook (Brgy.Coffee | Puerto Princesa) — address pulled from their post captions. Meta blocks automated fetching of the pages themselves, so phone, exact hours, and menu pricing couldn't be pulled from here — swap the marked rows for the real info before this goes live.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Brgy.Coffee · Zone 2, Abanico Rd., Brgy. San Pedro, Puerto Princesa City, Palawan</span>
+  <span>Built by francis.dev</span>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function(entries,obs){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var sign = document.getElementById('signToggle');
+  if(!sign) return;
+  sign.addEventListener('click', function(){
+    var flipped = sign.classList.toggle('flipped');
+    sign.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+  });
+})();
+</script>
+</body>
+</html>
