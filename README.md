@@ -27,10 +27,10 @@ Live index: [thefrans.is-a.dev](https://thefrans.is-a.dev)
 | [Natad](./natad/) | Business website | HTML, CSS, JS |
 
 ## Local Business Landing Pages
-57 single-page builds for Puerto Princesa and Palawan-area businesses — cafes, spas, hotels, restaurants, salons, travel agencies, and bars. Browse folders directly in the repo file tree.
+58 single-page builds for Puerto Princesa and Palawan-area businesses — cafes, spas, hotels, restaurants, salons, travel agencies, and bars. Browse folders directly in the repo file tree.
 
 ## In Progress
-20 scaffolded folders reserved for prospective clients, plus Brgy.Coffee. Not yet live.
+19 scaffolded folders reserved for prospective clients, plus Brgy.Coffee. Not yet live.
 
 ## Case Studies
 - [Mix & Match Kain](./mix-match-kain-case-study.html)
