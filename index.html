@@ -8,7 +8,13 @@
   <meta property="og:title" content="Francis Tarectican — Backend Systems Developer" />
   <meta property="og:description" content="Backend developer. One production system. Real operational credibility. Palawan, Philippines." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://thefrans.is-a.dev/" />
+  <meta property="og:image" content="https://thefrans.is-a.dev/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Francis Tarectican — Backend Systems Developer" />
+  <meta name="twitter:description" content="Backend developer. One production system. Real operational credibility. Palawan, Philippines." />
+  <meta name="twitter:image" content="https://thefrans.is-a.dev/og-image.png" />
+  <meta name="theme-color" content="#080808" />
   <link rel="canonical" href="https://thefrans.is-a.dev/" />
   <script type="application/ld+json">
   {
@@ -33,7 +39,8 @@
         },
         "description": "Backend-focused developer from Palawan, Philippines. Built and deployed a local-first food ordering system for a real restaurant using Node.js, Express, and WebSockets.",
         "sameAs": [
-          "https://github.com/frans15-2006"
+          "https://github.com/frans15-2006",
+          "https://www.facebook.com/franshessss"
         ]
       },
       {
@@ -173,6 +180,7 @@
     }
     .reveal,.reveal-clip{opacity:0}
     .reveal{transform:translateY(22px)}
+    .blur-words .bw-word{display:inline-block;filter:blur(6px);opacity:0;transform:translateY(6px);will-change:filter,opacity,transform}
     .container{max-width:940px;margin:0 auto;padding:0 32px}
     .divider{width:100%;height:1px;background:var(--border);transform-origin:left;transform:scaleX(0);opacity:0}
     section{padding:var(--section-pad) 0;contain:layout style}
@@ -207,6 +215,8 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius);font-size:13px;font-weight:600;text-decoration:none;transition:all .25s var(--easing-premium);border:none;font-family:var(--sans);position:relative;overflow:hidden;letter-spacing:.015em;will-change:transform}
     .btn-primary{background:var(--accent);color:#080808}
     .btn-primary:hover{background:var(--accent-hi)}
+    .btn-primary::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);pointer-events:none;transition:left .55s var(--easing-premium)}
+    .btn-primary:hover::before{left:125%}
     .btn-ghost{background:transparent;border:1px solid var(--border-mid);color:var(--text-2)}
     .btn-ghost:hover{border-color:rgba(255,255,255,.18);color:var(--text);background:var(--bg-3)}
     #hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 88px;position:relative;overflow:hidden}
@@ -250,7 +260,8 @@
     .edu-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px}
     .edu-degree{font-weight:600;font-size:14px;margin-bottom:5px}
     .edu-school{color:var(--text-2);font-size:12px;margin-bottom:11px;line-height:1.5}
-    .edu-badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:999px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(240,165,0,.14);letter-spacing:.06em}
+    .edu-badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:999px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(240,165,0,.14);letter-spacing:.06em;transition:transform .25s var(--easing-premium),border-color .22s}
+    .edu-badge:hover{transform:translateY(-2px) scale(1.05);border-color:rgba(240,165,0,.32)}
     .evidence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
     .evidence-card{
       background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);
@@ -299,9 +310,11 @@
     .project-title{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
     .project-desc{color:var(--text-2);font-size:13.5px;line-height:1.8;margin-bottom:18px}
     .project-features{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
-    .feature-tag{font-size:11px;padding:3px 11px;border-radius:5px;background:var(--bg-4);border:1px solid var(--border);color:var(--text-2)}
+    .feature-tag{font-size:11px;padding:3px 11px;border-radius:5px;background:var(--bg-4);border:1px solid var(--border);color:var(--text-2);transition:transform .25s var(--easing-premium),border-color .22s}
+    .feature-tag:hover{transform:translateY(-2px) scale(1.04);border-color:rgba(240,165,0,.25)}
     .tech-stack{display:flex;flex-wrap:wrap;gap:6px}
-    .tech-tag{font-family:var(--mono);font-size:10px;padding:2px 9px;border-radius:5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(240,165,0,.13)}
+    .tech-tag{font-family:var(--mono);font-size:10px;padding:2px 9px;border-radius:5px;background:var(--accent-dim);color:var(--accent);border:1px solid rgba(240,165,0,.13);transition:transform .25s var(--easing-premium),border-color .22s}
+    .tech-tag:hover{transform:translateY(-2px) scale(1.04);border-color:rgba(240,165,0,.3)}
     .project-status{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
     .status-badge{font-family:var(--mono);font-size:10px;padding:5px 11px;border-radius:999px;background:rgba(74,222,128,.07);color:var(--green);border:1px solid rgba(74,222,128,.18);white-space:nowrap}
     .status-badge.done{background:rgba(255,255,255,.04);color:var(--text-2);border-color:var(--border)}
@@ -310,8 +323,9 @@
     .incident-item{font-size:12.5px;color:var(--text-2);line-height:1.72;padding-left:14px;position:relative;margin-bottom:5px}
     .incident-item::before{content:'→';position:absolute;left:0;color:var(--text-3);font-size:10px;top:.1em}
     .incident-item:last-child{margin-bottom:0}
-    .arch-toggle{margin-top:18px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--border);border-radius:6px;padding:8px 14px;transition:border-color .22s,color .22s;cursor:pointer}
-    .arch-toggle:hover{border-color:rgba(240,165,0,.3);color:var(--accent)}
+    @keyframes _toggle-breathe{0%,100%{box-shadow:0 0 0 0 rgba(240,165,0,0)}50%{box-shadow:0 0 14px 0 rgba(240,165,0,.14)}}
+    .arch-toggle{margin-top:18px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--border);border-radius:6px;padding:8px 14px;transition:border-color .22s,color .22s;cursor:pointer;animation:_toggle-breathe 3.4s ease-in-out infinite}
+    .arch-toggle:hover{border-color:rgba(240,165,0,.3);color:var(--accent);animation-play-state:paused}
     .arch-toggle svg{transition:transform .32s var(--easing-premium)}
     .arch-toggle.open svg{transform:rotate(180deg)}
     .arch-diagram{margin-top:14px;border:1px solid rgba(240,165,0,.09);border-radius:10px;background:#060d0b;max-height:0;overflow:hidden;transition:max-height .55s var(--easing-premium)}
@@ -359,6 +373,8 @@
     .footer-right a:hover{color:var(--accent)}
     #unlock-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(28px);z-index:9100;opacity:0;pointer-events:none;background:rgba(8,8,8,.96);border:1px solid rgba(240,165,0,.25);border-radius:9px;padding:13px 22px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;gap:12px;transition:opacity .4s,transform .4s var(--easing-premium);white-space:nowrap;overflow:hidden}
     #unlock-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    #tour-notif{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(28px);z-index:9100;opacity:0;pointer-events:none;background:rgba(8,8,8,.96);border:1px solid rgba(240,165,0,.25);border-radius:9px;padding:13px 22px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;align-items:center;gap:12px;transition:opacity .4s,transform .4s var(--easing-premium);white-space:nowrap}
+    #tour-notif.show{opacity:1;transform:translateX(-50%) translateY(0)}
     #unlock-notif .un-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;animation:_avail-pulse 1.6s ease-in-out infinite}
     #unlock-notif .un-drain{position:absolute;bottom:0;left:0;height:1.5px;background:var(--accent);opacity:.35;width:100%;transform-origin:left}
     @keyframes _drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
@@ -384,7 +400,8 @@
       .hero-eyebrow{flex-direction:column;align-items:flex-start;gap:8px}
     }
     @media(prefers-reduced-motion:reduce){
-      .hero-name,.reveal,.divider,.evidence-card,.project-card{transition:none!important;animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
+      .hero-name,.reveal,.divider,.evidence-card,.project-card,.arch-toggle{transition:none!important;animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
+      .bw-word{filter:none!important;opacity:1!important;transform:none!important}
       body::before,body::after{animation:none!important}
     }
   </style>
@@ -402,6 +419,11 @@
   <div class="un-dot"></div>
   <span>Scroll unlocked</span>
   <div class="un-drain" id="unDrain"></div>
+</div>
+
+<div id="tour-notif" role="status" aria-live="polite">
+  <div class="un-dot"></div>
+  <span>Auto tour &mdash; scroll to skip</span>
 </div>
 
 <div class="cur-dot" id="curDot" aria-hidden="true"></div>
@@ -463,9 +485,9 @@
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p class="reveal">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. Currently serving as <strong>IT Specialist at Bureau of Internal Revenue &mdash; RDO 036</strong>, Puerto Princesa City. I build web applications with a focus on the backend &mdash; how data flows, how systems hold up, and how things work when real people are using them.</p>
-        <p class="reveal">I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and debugged concurrent-write failures during live service without taking the system offline. That's the standard I hold work to.</p>
-        <p class="reveal">Daily development runs a local 30B-parameter coding model on-device via Ollama &mdash; GPU-accelerated, no cloud dependency, no data leaving the machine.</p>
+        <p class="blur-words">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. Currently serving as <strong>IT Specialist at Bureau of Internal Revenue &mdash; RDO 036</strong>, Puerto Princesa City. I build web applications with a focus on the backend &mdash; how data flows, how systems hold up, and how things work when real people are using them.</p>
+        <p class="blur-words">I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and debugged concurrent-write failures during live service without taking the system offline. That's the standard I hold work to.</p>
+        <p class="blur-words">Daily development runs a local 30B-parameter coding model on-device via Ollama &mdash; GPU-accelerated, no cloud dependency, no data leaving the machine.</p>
       </div>
       <div class="about-right">
         <div class="stats-row">
@@ -505,7 +527,7 @@
       <span class="section-ghost-num" aria-hidden="true">02</span>
       <h2 class="section-title reveal" id="evidence-heading">Shipped. Deployed. Verified.</h2>
     </div>
-    <p class="section-desc reveal">Every capability below is backed by production work, not side projects.</p>
+    <p class="section-desc blur-words">Every capability below is backed by production work, not side projects.</p>
     <div class="evidence-grid">
 
       <article class="evidence-card tilt-card">
@@ -691,7 +713,7 @@
       <span class="section-ghost-num" aria-hidden="true">04</span>
       <h2 class="section-title reveal" id="clients-heading">Sites Shipped</h2>
     </div>
-    <p class="section-desc reveal">Production websites built for local businesses across the Philippines. Custom HTML/CSS/JS per client — no templates, no themes.</p>
+    <p class="section-desc blur-words">Production websites built for local businesses across the Philippines. Custom HTML/CSS/JS per client — no templates, no themes.</p>
   </div>
 
   <div class="marquee-row" id="mqRow1" aria-label="Client sites row 1">
@@ -874,7 +896,7 @@
       <h2 class="section-title reveal" id="contact-heading">Get in Touch</h2>
     </div>
     <div class="contact-layout">
-      <div class="contact-tagline reveal"><strong>IT Specialist</strong><br>BIR RDO 036.<br>Still building.</div>
+      <div class="contact-tagline reveal"><strong>IT Specialist</strong><br>BIR RDO 036.<br>FD Building.</div>
       <div class="contact-info">
         <div class="contact-item reveal"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
         <div class="contact-item reveal"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036 &middot; Open to freelance</div></div>
@@ -958,13 +980,14 @@ function onPreloaderReady() {
   initSkewOnScroll();
   initMagneticButtons();
   initRevealSystem();
+  initBlurTextReveal();
   initEvidenceReveals();
   initDividers();
   initTypographyMorph();
   initSignatureReveal();
   initCardTilt();
   initHeroScrollExit();
-  if (!sessionStorage.getItem(AUTO_KEY)) setTimeout(startAutoScroll, 800);
+  if (!noMotion && !sessionStorage.getItem(AUTO_KEY)) setTimeout(startAutoScroll, 800);
 }
 if (window.__preloaderDone) { onPreloaderReady(); }
 else { window.__onPreloaderDone = onPreloaderReady; }
@@ -1088,12 +1111,19 @@ void main() {
     const s = gl.createShader(type);
     gl.shaderSource(s, src);
     gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.warn('[heroCanvas] shader compile failed:', gl.getShaderInfoLog(s));
+    }
     return s;
   }
   const program = gl.createProgram();
   gl.attachShader(program, compile(gl.VERTEX_SHADER, VERT));
   gl.attachShader(program, compile(gl.FRAGMENT_SHADER, FRAG));
   gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.warn('[heroCanvas] program link failed:', gl.getProgramInfoLog(program));
+    return; // leave canvas empty rather than running with broken uniforms
+  }
   gl.useProgram(program);
 
   function hexToRgb01(hex) {
@@ -1250,6 +1280,50 @@ function initRevealSystem() {
         scrollTrigger: { trigger: el, start: 'top 91%', toggleActions: 'play none none none' }
       }
     );
+  });
+}
+
+function wrapWordsInNode(node) {
+  Array.from(node.childNodes).forEach(child => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      if (!child.textContent.trim()) return;
+      const frag = document.createDocumentFragment();
+      child.textContent.split(/(\s+)/).forEach(part => {
+        if (part === '') return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        const span = document.createElement('span');
+        span.className = 'bw-word';
+        span.textContent = part;
+        frag.appendChild(span);
+      });
+      node.replaceChild(frag, child);
+    } else if (child.nodeType === Node.ELEMENT_NODE) {
+      wrapWordsInNode(child);
+    }
+  });
+}
+
+function initBlurTextReveal() {
+  const targets = document.querySelectorAll('.blur-words');
+  if (!targets.length) return;
+  targets.forEach(el => wrapWordsInNode(el));
+  if (noMotion) {
+    document.querySelectorAll('.bw-word').forEach(w => {
+      w.style.filter = 'none'; w.style.opacity = '1'; w.style.transform = 'none';
+    });
+    return;
+  }
+  targets.forEach(el => {
+    const words = el.querySelectorAll('.bw-word');
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%', toggleActions: 'play none none none',
+      onEnter: () => {
+        gsap.to(words, {
+          filter: 'blur(0px)', opacity: 1, y: 0,
+          duration: 0.6, ease: 'power3.out', stagger: 0.018
+        });
+      }
+    });
   });
 }
 
@@ -1434,13 +1508,14 @@ function startAutoScroll() {
   sessionStorage.setItem(AUTO_KEY, '1');
   const SPEED = 500;
   const duration = Math.max(0.8, maxY / SPEED);
+  const tourNotif = document.getElementById('tour-notif');
   let aborted = false;
   function abort() {
     if (aborted) return;
     aborted = true;
     lenis.stop();
     setTimeout(() => lenis.start(), 32);
-    cleanup(); showUnlockNotif();
+    cleanup(); tourNotif.classList.remove('show'); showUnlockNotif();
   }
   function onKey(e) {
     if (new Set([' ','ArrowUp','ArrowDown','PageUp','PageDown','Home','End']).has(e.key)) abort();
@@ -1453,9 +1528,10 @@ function startAutoScroll() {
   window.addEventListener('wheel', abort, { passive: true });
   window.addEventListener('touchstart', abort, { passive: true });
   window.addEventListener('keydown', onKey);
+  tourNotif.classList.add('show');
   lenis.scrollTo(maxY, {
     duration, easing: t => t,
-    onComplete: () => { cleanup(); showUnlockNotif(); }
+    onComplete: () => { cleanup(); tourNotif.classList.remove('show'); showUnlockNotif(); }
   });
 }
 
