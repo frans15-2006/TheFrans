@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TheFrans</title>
+  <title>Francis A. Tarectican — Dossier</title>
   <meta name="description" content="Francis A. Tarectican — Backend Systems Developer. FD Building. Puerto Princesa, Palawan PH." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2137,7 +2137,7 @@
           <div><strong>Issuer:</strong> ${item.issuer}</div>
           <div><strong>Date:</strong> ${item.date}</div>
           <div><strong>Category:</strong> ${meta.label}</div>
-          <div><strong>File:</strong> FAT-${item.fileNo} · ${item.fileStem}</div>
+          <div><strong>File:</strong> FAT-${String(item.fileIndex + 1).padStart(4, '0')} · ${item.file}</div>
         `;
         modalOpen.href = item.pdfRel;
       };
@@ -2183,7 +2183,7 @@
           const cards = group.items.map(item => {
             const fileNo = String(item.fileIndex + 1).padStart(4, '0');
             return `
-              <a class="cred-card spotlight js-up" href="${item.pdfRel}" style="--card-accent:${meta.color}; --card-glow:${meta.glow}; --spot-color:${meta.glow};" data-pdf="${item.pdfRel}" data-thumb="${item.thumb}" data-title="${item.title}" data-issuer="${item.issuer}" data-date="${item.date}" data-category="${meta.label}" data-file-no="${fileNo}" data-badge="${item.badge}" data-cursor="PREVIEW">
+              <a class="cred-card spotlight js-up" href="${item.pdfRel}" style="--card-accent:${meta.color}; --card-glow:${meta.glow}; --spot-color:${meta.glow};" data-idx="${item.fileIndex}" data-cursor="PREVIEW">
                 <div class="cred-card-top">
                   <div class="cred-fileno">FILE NO: FAT-${fileNo}</div>
                   <div class="cred-seal">${meta.code}</div>
@@ -2221,17 +2221,8 @@
         exhibits.querySelectorAll('.cred-card').forEach(card => {
           card.addEventListener('click', (e) => {
             e.preventDefault();
-            openModal({
-              pdfRel: card.dataset.pdf,
-              thumb: card.dataset.thumb,
-              title: card.dataset.title,
-              issuer: card.dataset.issuer,
-              date: card.dataset.date,
-              category: card.dataset.category,
-              fileIndex: Number(card.dataset.fileNo),
-              badge: card.dataset.badge,
-              dateSort: '',
-            });
+            const record = records[Number(card.dataset.idx)];
+            if (record) openModal(record);
           });
         });
       };
