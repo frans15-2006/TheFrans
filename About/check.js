@@ -465,408 +465,227 @@
     }
 
 
-    function renderCreds() {
-      const total = CREDENTIALS.length;
-      const activeCategories = CATEGORY_ORDER.filter(key => CREDENTIALS.some(c => c.category === key));
-      const tally = document.getElementById('cred-tally');
-      const bar = document.getElementById('cred-bar');
-      const chips = document.getElementById('cred-chips');
-      const exhibits = document.getElementById('cred-exhibits');
-      const search = document.getElementById('cred-search');
-      const sort = document.getElementById('cred-sort');
+   function renderCreds() {
+  const total = CREDENTIALS.length;
+  const activeCategories = CATEGORY_ORDER.filter(key => CREDENTIALS.some(c => c.category === key));
 
-      tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / STATUS: ALL VERIFIED`;
+  const tally = document.getElementById('cred-tally');
+  const bar = document.getElementById('cred-bar');
+  const chips = document.getElementById('cred-chips');
+  const exhibits = document.getElementById('cred-exhibits');
+  const search = document.getElementById('cred-search');
+  const sort = document.getElementById('cred-sort');
 
-      bar.innerHTML = activeCategories.map(key => {
-        const count = CREDENTIALS.filter(c => c.category === key).length;
-        const pct = (count / total * 100).toFixed(2);
-        return `<div class="cred-bar-seg" data-cat="${key}" style="width:${pct}%; background:${CATEGORIES[key].color};"></div>`;
-      }).join('');
+  if (!tally || !bar || !chips || !exhibits) return;
 
-      chips.innerHTML = ['all', ...activeCategories].map(key => {
-        const isAll = key === 'all';
-        const count = isAll ? total : CREDENTIALS.filter(c => c.category === key).length;
-        const label = isAll ? 'ALL RECORDS' : CATEGORIES[key].label.toUpperCase();
-        const color = isAll ? 'var(--text-sec)' : CATEGORIES[key].color;
+  const hasSearch = !!search;
+  const hasSort = !!sort;
+
+  tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / STATUS: ALL VERIFIED`;
+
+  bar.innerHTML = activeCategories.map(key => {
+    const count = CREDENTIALS.filter(c => c.category === key).length;
+    const pct = (count / total * 100).toFixed(2);
+    return `<div class="cred-bar-seg" data-cat="${key}" style="width:${pct}%; background:${CATEGORIES[key].color};"></div>`;
+  }).join('');
+
+  chips.innerHTML = ['all', ...activeCategories].map(key => {
+    const isAll = key === 'all';
+    const count = isAll ? total : CREDENTIALS.filter(c => c.category === key).length;
+    const label = isAll ? 'ALL RECORDS' : CATEGORIES[key].label.toUpperCase();
+    const color = isAll ? 'var(--text-sec)' : CATEGORIES[key].color;
+    return `
+      <button class="cred-chip${isAll ? ' is-active' : ''}" data-filter="${key}" type="button" data-cursor="FILTER">
+        <span class="chip-dot" style="background:${color};"></span>
+        ${label} <span class="chip-count">(${String(count).padStart(2,'0')})</span>
+      </button>
+    `;
+  }).join('');
+
+  const modal = document.getElementById('cred-modal');
+  const modalImg = document.getElementById('cred-modal-img');
+  const modalCategory = document.getElementById('cred-modal-category');
+  const modalTitle = document.getElementById('cred-modal-title');
+  const modalMeta = document.getElementById('cred-modal-meta');
+  const modalOpen = document.getElementById('cred-modal-open');
+
+  let selectedFilter = 'all';
+  const records = CREDENTIALS.map((c, index) => ({ ...c, fileIndex: index }));
+
+  const sortRecords = (items) => {
+    if (!hasSort) return items.slice().sort((a, b) => Number(b.dateSort) - Number(a.dateSort));
+
+    const value = sort.value;
+    const byTitle = (a, b) => a.title.localeCompare(b.title);
+    const byDateDesc = (a, b) => Number(b.dateSort) - Number(a.dateSort);
+    const byDateAsc = (a, b) => Number(a.dateSort) - Number(b.dateSort);
+
+    if (value === 'date-asc') return items.slice().sort(byDateAsc);
+    if (value === 'title-asc') return items.slice().sort(byTitle);
+    return items.slice().sort(byDateDesc);
+  };
+
+  const openModal = (item) => {
+    if (!modal || !modalImg || !modalCategory || !modalTitle || !modalMeta || !modalOpen) return;
+
+    const meta = CATEGORIES[item.category];
+    modal.dataset.open = 'true';
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.style.setProperty('--card-accent', meta.color);
+
+    modalImg.src = item.thumb;
+    modalImg.alt = `${item.title} certificate preview`;
+    modalCategory.textContent = `${meta.label} · ${item.badge}`;
+    modalTitle.textContent = item.title;
+    modalMeta.innerHTML = `
+      <div><strong>Issuer:</strong> ${item.issuer}</div>
+      <div><strong>Date:</strong> ${item.date}</div>
+      <div><strong>Category:</strong> ${meta.label}</div>
+      <div><strong>File:</strong> FAT-${item.fileNo}</div>
+    `;
+    modalOpen.href = item.pdfRel;
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
+  const render = () => {
+    const query = hasSearch ? search.value.trim().toLowerCase() : '';
+
+    let filtered = records.filter(item => {
+      const pool = [
+        item.title,
+        item.issuer,
+        item.date,
+        item.category,
+        CATEGORIES[item.category].label
+      ].join(' ').toLowerCase();
+
+      const matchesFilter = selectedFilter === 'all' || item.category === selectedFilter;
+      const matchesQuery = !query || pool.includes(query);
+      return matchesFilter && matchesQuery;
+    });
+
+    filtered = sortRecords(filtered);
+
+    const grouped = CATEGORY_ORDER
+      .map(key => ({ key, items: filtered.filter(item => item.category === key) }))
+      .filter(group => group.items.length);
+
+    const totalVisible = filtered.length;
+    tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / VISIBLE: ${String(totalVisible).padStart(3,'0')} / STATUS: ALL VERIFIED`;
+
+    bar.querySelectorAll('.cred-bar-seg').forEach(seg => {
+      const cat = seg.dataset.cat;
+      const visibleCount = filtered.filter(c => c.category === cat).length;
+      const totalCount = CREDENTIALS.filter(c => c.category === cat).length;
+      seg.style.opacity = visibleCount ? '1' : '0.14';
+      seg.style.width = `${(totalCount / total * 100).toFixed(2)}%`;
+    });
+
+    const groupLetters = { cyber: 'A', web: 'B', data: 'C', core: 'D' };
+
+    if (!grouped.length) {
+      exhibits.innerHTML = `<div class="cred-empty js-up spotlight">No matching records.</div>`;
+      return;
+    }
+
+    exhibits.innerHTML = grouped.map(group => {
+      const meta = CATEGORIES[group.key];
+      const cards = group.items.map(item => {
+        const fileNo = String(item.fileIndex + 1).padStart(4, '0');
         return `
-          <button class="cred-chip${isAll ? ' is-active' : ''}" data-filter="${key}" type="button" data-cursor="FILTER">
-            <span class="chip-dot" style="background:${color};"></span>
-            ${label} <span class="chip-count">(${String(count).padStart(2,'0')})</span>
-          </button>
+          <a class="cred-card spotlight js-up"
+             href="${item.pdfRel}"
+             style="--card-accent:${meta.color}; --card-glow:${meta.glow}; --spot-color:${meta.glow};"
+             data-pdf="${item.pdfRel}"
+             data-thumb="${item.thumb}"
+             data-title="${item.title}"
+             data-issuer="${item.issuer}"
+             data-date="${item.date}"
+             data-category="${meta.label}"
+             data-file-no="${fileNo}"
+             data-badge="${item.badge}"
+             data-cursor="PREVIEW">
+            <div class="cred-card-top">
+              <div class="cred-fileno">FILE NO: FAT-${fileNo}</div>
+              <div class="cred-seal">${meta.code}</div>
+            </div>
+
+            <div class="cred-thumb">
+              <img src="${item.thumb}" alt="${item.title} thumbnail" loading="lazy" />
+            </div>
+
+            <div class="cred-title-wrap">
+              <div class="cred-issuer">${item.issuer}</div>
+              <div class="cred-title">${item.title}</div>
+              <div class="cred-mini">${meta.label}</div>
+              <div class="cred-card-link">Preview →</div>
+            </div>
+
+            <div class="cred-foot">
+              <div class="cred-date">${item.date}</div>
+              <div class="cred-badge linked">${item.badge}</div>
+            </div>
+          </a>
         `;
       }).join('');
 
-      const modal = document.getElementById('cred-modal');
-      const modalImg = document.getElementById('cred-modal-img');
-      const modalCategory = document.getElementById('cred-modal-category');
-      const modalTitle = document.getElementById('cred-modal-title');
-      const modalMeta = document.getElementById('cred-modal-meta');
-      const modalOpen = document.getElementById('cred-modal-open');
-      let selectedFilter = 'all';
-
-      const records = CREDENTIALS.map((c, index) => ({ ...c, fileIndex: index }));
-
-      const sortRecords = (items) => {
-        const value = sort.value;
-        const byTitle = (a, b) => a.title.localeCompare(b.title);
-        const byDateDesc = (a, b) => Number(b.dateSort) - Number(a.dateSort);
-        const byDateAsc = (a, b) => Number(a.dateSort) - Number(b.dateSort);
-        if (value === 'date-asc') return items.slice().sort(byDateAsc);
-        if (value === 'title-asc') return items.slice().sort(byTitle);
-        return items.slice().sort(byDateDesc);
-      };
-
-      const openModal = (item) => {
-        const meta = CATEGORIES[item.category];
-        modal.dataset.open = 'true';
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        modal.style.setProperty('--card-accent', meta.color);
-        modalImg.src = item.thumb;
-        modalImg.alt = `${item.title} certificate preview`;
-        modalCategory.textContent = `${meta.label} · ${item.badge}`;
-        modalTitle.textContent = item.title;
-        modalMeta.innerHTML = `
-          <div><strong>Issuer:</strong> ${item.issuer}</div>
-          <div><strong>Date:</strong> ${item.date}</div>
-          <div><strong>Category:</strong> ${meta.label}</div>
-          <div><strong>File:</strong> FAT-${item.fileNo} · ${item.fileStem}</div>
-        `;
-        modalOpen.href = item.pdfRel;
-      };
-
-      const closeModal = () => {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-      };
-
-      const render = () => {
-        const query = search.value.trim().toLowerCase();
-        let filtered = records.filter(item => {
-          const pool = [item.title, item.issuer, item.date, item.category, CATEGORIES[item.category].label].join(' ').toLowerCase();
-          const matchesFilter = selectedFilter === 'all' || item.category === selectedFilter;
-          const matchesQuery = !query || pool.includes(query);
-          return matchesFilter && matchesQuery;
-        });
-        filtered = sortRecords(filtered);
-
-        const grouped = CATEGORY_ORDER
-          .map(key => ({ key, items: filtered.filter(item => item.category === key) }))
-          .filter(group => group.items.length);
-
-        const totalVisible = filtered.length;
-        tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / VISIBLE: ${String(totalVisible).padStart(3,'0')} / STATUS: ALL VERIFIED`;
-
-        bar.querySelectorAll('.cred-bar-seg').forEach(seg => {
-          const cat = seg.dataset.cat;
-          const visibleCount = filtered.filter(c => c.category === cat).length;
-          const totalCount = CREDENTIALS.filter(c => c.category === cat).length;
-          seg.style.opacity = visibleCount ? '1' : '0.14';
-          seg.style.width = `${(totalCount / total * 100).toFixed(2)}%`;
-        });
-
-        const groupLetters = { cyber: 'A', web: 'B', data: 'C', core: 'D' };
-        if (!grouped.length) {
-          exhibits.innerHTML = `<div class="cred-empty js-up spotlight">No matching records. Tighten or loosen the search query.</div>`;
-          return;
-        }
-
-        exhibits.innerHTML = grouped.map(group => {
-          const meta = CATEGORIES[group.key];
-          const cards = group.items.map(item => {
-            const fileNo = String(item.fileIndex + 1).padStart(4, '0');
-            return `
-              <a class="cred-card spotlight js-up" href="${item.pdfRel}" style="--card-accent:${meta.color}; --card-glow:${meta.glow}; --spot-color:${meta.glow};" data-pdf="${item.pdfRel}" data-thumb="${item.thumb}" data-title="${item.title}" data-issuer="${item.issuer}" data-date="${item.date}" data-category="${meta.label}" data-file-no="${fileNo}" data-badge="${item.badge}" data-cursor="PREVIEW">
-                <div class="cred-card-top">
-                  <div class="cred-fileno">FILE NO: FAT-${fileNo}</div>
-                  <div class="cred-seal">${meta.code}</div>
-                </div>
-                <div class="cred-thumb">
-                  <img src="${item.thumb}" alt="${item.title} thumbnail" loading="lazy" />
-                </div>
-                <div class="cred-title-wrap">
-                  <div class="cred-issuer">${item.issuer}</div>
-                  <div class="cred-title">${item.title}</div>
-                  <div class="cred-mini">${meta.label}</div>
-                  <div class="cred-card-link">Preview →</div>
-                </div>
-                <div class="cred-foot">
-                  <div class="cred-date">${item.date}</div>
-                  <div class="cred-badge linked">${item.badge}</div>
-                </div>
-              </a>
-            `;
-          }).join('');
-
-          return `
-            <div class="exhibit-group" data-div="${group.key}">
-              <div class="exhibit-head js-left">
-                <span class="exhibit-tag" style="color:${meta.color};">EXHIBIT ${groupLetters[group.key] || group.key}</span>
-                <span class="exhibit-label">${meta.label}</span>
-                <span class="exhibit-count">${String(group.items.length).padStart(2,'0')} ON FILE</span>
-                <span class="exhibit-rule"></span>
-              </div>
-              <div class="cred-grid">${cards}</div>
-            </div>
-          `;
-        }).join('');
-
-        exhibits.querySelectorAll('.cred-card').forEach(card => {
-          card.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal({
-              pdfRel: card.dataset.pdf,
-              thumb: card.dataset.thumb,
-              title: card.dataset.title,
-              issuer: card.dataset.issuer,
-              date: card.dataset.date,
-              category: card.dataset.category,
-              fileIndex: Number(card.dataset.fileNo),
-              badge: card.dataset.badge,
-              dateSort: '',
-            });
-          });
-        });
-      };
-
-      chips.querySelectorAll('.cred-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          selectedFilter = chip.dataset.filter;
-          chips.querySelectorAll('.cred-chip').forEach(c => c.classList.toggle('is-active', c === chip));
-          render();
-        });
-      });
-
-      search.addEventListener('input', render);
-      sort.addEventListener('change', render);
-      modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-      });
-
-      render();
-    }
-
-    function renderFieldwork() {
-      document.getElementById('fw-list').innerHTML = FIELD_WORK.map((f, i) => `
-        <a href="${f.url}" class="fw-row spotlight js-up" ${f.url !== 'index.html' ? 'target="_blank" rel="noopener"' : ''} data-cursor="${f.url === 'index.html' ? 'ALL FILES' : 'OPEN'}">
-          <div class="fw-idx">${String(i + 1).padStart(2,'0')}</div>
-          <div>
-            <div class="fw-name">${f.name}</div>
-            <div class="fw-type">${f.type}</div>
+      return `
+        <div class="exhibit-group" data-div="${group.key}">
+          <div class="exhibit-head js-left">
+            <span class="exhibit-tag" style="color:${meta.color};">EXHIBIT ${groupLetters[group.key] || group.key}</span>
+            <span class="exhibit-label">${meta.label}</span>
+            <span class="exhibit-count">${String(group.items.length).padStart(2,'0')} ON FILE</span>
+            <span class="exhibit-rule"></span>
           </div>
-          <div class="fw-arrow">&#x2192;</div>
-        </a>
-      `).join('');
-    }
-
-    function renderEffects() {
-      document.getElementById('effects-grid').innerHTML = EFFECTS.map((e, i) => `
-        <div class="effect-tag js-up spotlight">
-          <div class="effect-num">${e.tag}-${String(i + 1).padStart(2,'0')}</div>
-          <div class="effect-label">${e.label}</div>
-          <div class="effect-detail">${e.detail}</div>
+          <div class="cred-grid">${cards}</div>
         </div>
-      `).join('');
-    }
+      `;
+    }).join('');
 
-    gsap.registerPlugin(ScrollTrigger);
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const finePointer = window.matchMedia('(pointer: fine)').matches;
-
-    renderStack();
-    renderArchive();
-    renderCreds();
-    renderFieldwork();
-    renderEffects();
-
-    const lenis = new Lenis({ lerp: 0.08, duration: 1.35 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-    tl
-      .from('#hero-case', { opacity: 0, duration: 0.8, delay: 0.15 })
-      .from('#h-first', { y: '110%', opacity: 0, duration: 1.1 }, '-=0.4')
-      .from('#h-last', { y: '110%', opacity: 0, duration: 1.1 }, '-=0.85')
-      .from('#hero .hero-lead', { y: 18, opacity: 0, duration: 0.75 }, '-=0.55')
-      .from('#hero-meta .meta-field', { y: 18, opacity: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out' }, '-=0.45')
-      .from('.hero-side > *', { y: 24, opacity: 0, stagger: 0.08, duration: 0.75 }, '-=0.65')
-      .to('#seal', {
-        opacity: 0.55,
-        scale: 1,
-        rotate: -16,
-        duration: 0.7,
-        ease: 'back.out(1.5)',
-        onComplete: () => {
-          if (!reduceMotion) {
-            gsap.to('#seal', { rotate: '-=4', duration: 6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-          }
-        }
-      }, '-=0.3');
-
-    gsap.to('#scan-line', {
-      top: '100%',
-      opacity: 0.5,
-      duration: 1.4,
-      ease: 'power1.inOut',
-      delay: 0.2,
-      onComplete: () => { document.getElementById('scan-line').style.opacity = 0; }
-    });
-
-    const makeScrollAnim = (selector, fromVars, overrides = {}) => {
-      gsap.utils.toArray(selector).forEach(el => {
-        gsap.from(el, {
-          ...fromVars,
-          duration: 0.75,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-            ...overrides,
-          }
+    exhibits.querySelectorAll('.cred-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal({
+          pdfRel: card.dataset.pdf,
+          thumb: card.dataset.thumb,
+          title: card.dataset.title,
+          issuer: card.dataset.issuer,
+          date: card.dataset.date,
+          category: card.dataset.category,
+          fileNo: card.dataset.fileNo,
+          badge: card.dataset.badge
         });
       });
-    };
-
-    setTimeout(() => {
-      makeScrollAnim('.js-up', { y: 36, opacity: 0 });
-      makeScrollAnim('.js-left', { x: -52, opacity: 0 });
-      if (!reduceMotion) {
-        gsap.to('#mission-text .redact-bar', {
-          scaleX: 0,
-          duration: 0.55,
-          stagger: 0.12,
-          ease: 'power3.inOut',
-          scrollTrigger: {
-            trigger: '#mission-text',
-            start: 'top 78%',
-            toggleActions: 'play none none none',
-          }
-        });
-      }
-    }, 50);
-
-    document.addEventListener('mousemove', (e) => {
-      const card = e.target.closest('.spotlight');
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
     });
+  };
 
-    const tabs = Array.from(document.querySelectorAll('.dossier-tab'));
-    const sectionIds = ['hero', 's-identity', 's-profile', 's-arsenal', 's-archive', 's-credentials', 's-fieldwork', 's-fieldkit'];
-    const tabByTarget = new Map(tabs.map(tab => [tab.dataset.target, tab]));
-    let activeSectionId = null;
-    let scrollTicking = false;
-
-    function setActiveTab(targetId) {
-      if (activeSectionId === targetId) return;
-      activeSectionId = targetId;
-      tabs.forEach(tab => tab.classList.toggle('is-active', tab.dataset.target === targetId));
-    }
-
-    function resolveActiveSection() {
-      const line = window.innerHeight * 0.42;
-      let fallback = sectionIds[0];
-      let current = null;
-
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= line) fallback = id;
-        if (rect.top <= line && rect.bottom > line) {
-          current = id;
-          break;
-        }
-      }
-
-      return current || fallback;
-    }
-
-    function updateActiveTab() {
-      setActiveTab(resolveActiveSection());
-      scrollTicking = false;
-    }
-
-    function requestTabUpdate() {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      requestAnimationFrame(updateActiveTab);
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = document.getElementById(tab.dataset.target);
-        if (!target) return;
-        if (lenis && typeof lenis.scrollTo === 'function') {
-          lenis.scrollTo(target, { offset: -20 });
-        } else {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
+  chips.querySelectorAll('.cred-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      selectedFilter = chip.dataset.filter;
+      chips.querySelectorAll('.cred-chip').forEach(c => c.classList.toggle('is-active', c === chip));
+      render();
     });
+  });
 
-    ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, requestTabUpdate, { passive: true }));
-    if (lenis && typeof lenis.on === 'function') lenis.on('scroll', requestTabUpdate);
-    requestTabUpdate();
+  if (hasSearch) search.addEventListener('input', render);
+  if (hasSort) sort.addEventListener('change', render);
 
-    if (finePointer && !reduceMotion) {
-      document.body.classList.add('has-cursor');
-      const dot = document.getElementById('cursor-dot');
-      const ring = document.getElementById('cursor-ring');
-      const label = document.getElementById('cursor-label');
+  if (modal) {
+    modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
 
-      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-      let rx = mx, ry = my;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
 
-      window.addEventListener('mousemove', (e) => {
-        mx = e.clientX; my = e.clientY;
-        dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-
-        const target = e.target.closest('[data-cursor]');
-        if (target) {
-          ring.classList.add('is-active');
-          label.textContent = target.dataset.cursor;
-        } else {
-          ring.classList.remove('is-active');
-          label.textContent = '';
-        }
-      });
-
-      const raf = () => {
-        rx += (mx - rx) * 0.18;
-        ry += (my - ry) * 0.18;
-        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-        requestAnimationFrame(raf);
-      };
-      requestAnimationFrame(raf);
-
-      document.addEventListener('mousemove', (e) => {
-        const magnet = e.target.closest('.nav-return');
-        if (!magnet) return;
-        const rect = magnet.getBoundingClientRect();
-        const relX = e.clientX - (rect.left + rect.width / 2);
-        const relY = e.clientY - (rect.top + rect.height / 2);
-        gsap.to(magnet, { x: relX * 0.28, y: relY * 0.28, duration: 0.35, ease: 'power2.out' });
-      });
-
-      document.querySelectorAll('.nav-return').forEach(el => {
-        el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' }));
-      });
-    } else {
-      document.getElementById('cursor-dot').style.display = 'none';
-      document.getElementById('cursor-ring').style.display = 'none';
-    }
-  
+  render();
+}
