@@ -1291,9 +1291,167 @@
       .pulse-bar { animation: none; }
       .ticker-track { animation: none; }
     }
+
+    /* ACCESS GATE — device lock */
+    #access-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.6rem;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(200,169,110,0.07), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(139,30,47,0.08), transparent 32%),
+        var(--bg);
+    }
+    #access-gate::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .gate-shell {
+      position: relative;
+      z-index: 1;
+      width: min(640px, 100%);
+      border: 1px solid var(--border-hi);
+      background: linear-gradient(180deg, rgba(20,19,17,0.96), rgba(9,9,8,0.98));
+      padding: 2.4rem 2.4rem 2rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .gate-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .gate-stamp {
+      color: var(--stamp-red);
+      border: 1.5px solid var(--stamp-red);
+      padding: 0.15rem 0.5rem;
+      transform: rotate(-4deg);
+      letter-spacing: 0.14em;
+    }
+    .gate-title {
+      font-family: var(--fd-display);
+      font-size: clamp(2rem, 7vw, 2.9rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      color: var(--text-pri);
+      margin-bottom: 0.9rem;
+    }
+    .gate-copy {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text-sec);
+      margin-bottom: 1.6rem;
+    }
+    .gate-copy strong { color: var(--text-pri); font-weight: 600; }
+    .gate-field {
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      background: var(--surface);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.6rem;
+    }
+    .gate-field-label {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .gate-field-value {
+      font-size: 0.92rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+    .gate-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .gate-spec-pill {
+      font-family: var(--fd-mono);
+      font-size: 0.46rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-sec);
+      border: 1px solid var(--border-hi);
+      padding: 0.32rem 0.55rem;
+    }
+    .gate-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .gate-foot .gate-live { color: var(--accent); }
+    .gate-foot .gate-live::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 0.5em;
+      box-shadow: 0 0 6px var(--accent);
+    }
+    @media (max-width: 600px) {
+      .gate-shell { padding: 1.8rem 1.5rem 1.6rem; }
+      .gate-foot { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
   </style>
 </head>
 <body>
+  <div id="access-gate">
+    <div class="gate-shell">
+      <div class="gate-top">
+        <span>CASE ID: FAT-2006 / ACCESS LOG</span>
+        <span class="gate-stamp">DENIED</span>
+      </div>
+      <div class="gate-title">UNAVAILABLE<br />ON YOUR DEVICE</div>
+      <p class="gate-copy">
+        This dossier is temporarily offline for the device you're viewing it on. <strong>Section 05 — Credentials</strong> is being re-filed. Re-attempt access once clearance is restored, or view the full case file on the recommended hardware below.
+      </p>
+      <div class="gate-field">
+        <div class="gate-field-label">Recommended Hardware</div>
+        <div class="gate-field-value">RedMagic 11 Pro</div>
+        <div class="gate-specs">
+          <span class="gate-spec-pill">Snapdragon 8 Elite Gen 5</span>
+          <span class="gate-spec-pill">Up to 24GB RAM</span>
+          <span class="gate-spec-pill">AquaCore Liquid Cooling</span>
+          <span class="gate-spec-pill">7,500mAh</span>
+        </div>
+      </div>
+      <div class="gate-foot">
+        <span class="gate-live">STATUS: LOCKED</span>
+        <span>FD BUILDING &copy; 2026</span>
+      </div>
+    </div>
+  </div>
+
   <div class="grain-overlay"></div>
   <div class="sky-orb"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
@@ -1608,6 +1766,16 @@
   </footer>
 
   <script>
+    // ACCESS GATE CONTROL — flip to false to unlock the page
+    const SITE_LOCKED = true;
+    if (SITE_LOCKED) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      const gateEl = document.getElementById('access-gate');
+      if (gateEl) gateEl.remove();
+    }
+
     const STACK = [
       { cat: 'CORE', name: 'HTML / CSS', level: 5 },
       { cat: 'CORE', name: 'Vanilla JS', level: 5 },
