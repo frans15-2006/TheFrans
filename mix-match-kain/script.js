@@ -42,7 +42,7 @@ function playSound(frequency, duration, type = 'sine') {
     oscillator.start(ctx.currentTime);
     oscillator.stop(ctx.currentTime + duration);
   } catch (e) {
-    console.log('Audio not available');
+    // Audio not available
   }
 }
 
@@ -413,7 +413,7 @@ function closeModal() {
 // ====== SEND ORDER TO SERVER ======
 // Server integration not active — orders are demo-only on GitHub Pages
 function sendOrderToServer(orderData) {
-  console.log('Order (demo):', orderData);
+  // Demo Mode: Order data handled locally
 }
 
 // ====== CONFETTI EFFECT ======
