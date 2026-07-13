@@ -1,0 +1,2540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheFrans</title>
+  <meta name="description" content="Francis A. Tarectican — Backend Systems Developer. FD Building. Puerto Princesa, Palawan PH." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #070707;
+      --surface: #0e0e0d;
+      --surface-2: #151412;
+      --surface-3: #1a1815;
+      --border: #1e1e1b;
+      --border-hi: #2f2d28;
+      --text-pri: #e5e0d3;
+      --text-sec: #6c685d;
+      --text-dim: #313029;
+      --accent: #c8a96e;
+      --accent-glow: rgba(200, 169, 110, 0.08);
+      --accent-glow-hi: rgba(200, 169, 110, 0.16);
+      --ink-blue: #6f8fae;
+      --ink-blue-glow: rgba(111, 143, 174, 0.12);
+      --ink-green: #3f8f5f;
+      --ink-green-glow: rgba(63, 143, 95, 0.12);
+      --stamp-red: #8b1e2f;
+      --fd-display: 'Bebas Neue', sans-serif;
+      --fd-body: 'Public Sans', sans-serif;
+      --fd-mono: 'JetBrains Mono', monospace;
+      --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: auto; }
+    body {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(200,169,110,0.09), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(111,143,174,0.08), transparent 18%),
+        radial-gradient(circle at 50% 95%, rgba(63,143,95,0.06), transparent 24%),
+        var(--bg);
+      color: var(--text-pri);
+      font-family: var(--fd-body);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      pointer-events: none;
+      opacity: 0.05;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .sky-orb {
+      position: fixed;
+      inset: auto auto 8% 6%;
+      width: 32rem;
+      height: 32rem;
+      background: radial-gradient(circle, rgba(200,169,110,0.10), transparent 64%);
+      filter: blur(20px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate3d(0,0,0);
+    }
+
+    .cursor-dot, .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+    }
+    .cursor-dot {
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .cursor-ring {
+      width: 34px; height: 34px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.25s var(--ease-out-back), height 0.25s var(--ease-out-back), border-color 0.25s, background 0.25s;
+    }
+    .cursor-ring::before, .cursor-ring::after {
+      content: '';
+      position: absolute;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+    .cursor-ring::before { width: 1px; height: 7px; top: -10px; left: 50%; transform: translateX(-50%); }
+    .cursor-ring::after  { width: 7px; height: 1px; left: -10px; top: 50%; transform: translateY(-50%); }
+    .cursor-label {
+      font-family: var(--fd-mono);
+      font-size: 0.42rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .cursor-ring.is-active {
+      width: 58px; height: 58px;
+      background: rgba(200,169,110,0.06);
+    }
+    .cursor-ring.is-active .cursor-label { opacity: 1; }
+    .cursor-ring.is-active::before, .cursor-ring.is-active::after { opacity: 0; }
+    body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; }
+
+    .dossier-tabs {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .dossier-tab {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-right: none;
+      color: var(--text-sec);
+      font-family: var(--fd-mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.85rem 0.55rem;
+      cursor: pointer;
+      appearance: none;
+      clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%);
+      transition: color 0.2s, background 0.2s, transform 0.25s var(--ease-out-expo), border-color 0.2s;
+    }
+    .dossier-tab:hover { color: var(--text-pri); }
+    .dossier-tab.is-active {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateX(-8px);
+    }
+    @media (max-width: 900px) { .dossier-tabs { display: none; } }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 1.4rem 2.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(0px);
+    }
+    nav.scrolled {
+      background: rgba(7,7,7,0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--fd-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-return {
+      font-family: var(--fd-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--text-sec);
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      padding: 0.45rem 1rem;
+      display: inline-block;
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+      will-change: transform;
+    }
+    .nav-return:hover { color: var(--text-pri); border-color: var(--text-sec); }
+
+    .ticker {
+      position: sticky;
+      top: 0;
+      z-index: 180;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,7,7,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 2rem;
+      padding: 0.7rem 0;
+      white-space: nowrap;
+      animation: tickerMove 22s linear infinite;
+      font-family: var(--fd-mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .ticker span { color: var(--accent); }
+    @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    #hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+      gap: 3rem;
+      align-items: end;
+      padding: 7.5rem 2.8rem 4.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.22;
+    }
+    .hero-grid::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 105%, transparent 30%, var(--bg) 75%);
+    }
+
+    .hero-scan {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+    }
+
+    .corner {
+      position: absolute;
+      width: 18px; height: 18px;
+      opacity: 0.25;
+    }
+    .corner-tl { top: 5rem; left: 2.8rem; border-top: 1px solid var(--text-sec); border-left: 1px solid var(--text-sec); }
+    .corner-tr { top: 5rem; right: 2.8rem; border-top: 1px solid var(--text-sec); border-right: 1px solid var(--text-sec); }
+    .corner-bl { bottom: 4.5rem; left: 2.8rem; border-bottom: 1px solid var(--text-sec); border-left: 1px solid var(--text-sec); }
+    .corner-br { bottom: 4.5rem; right: 2.8rem; border-bottom: 1px solid var(--text-sec); border-right: 1px solid var(--text-sec); }
+
+    .seal-wrap {
+      position: absolute;
+      top: 8.5rem;
+      right: 5rem;
+      width: clamp(118px, 15vw, 190px);
+      aspect-ratio: 1;
+      color: var(--stamp-red);
+      opacity: 0;
+      transform: rotate(-16deg) scale(0.85);
+      pointer-events: none;
+      user-select: none;
+      mix-blend-mode: screen;
+    }
+    .seal-svg { width: 100%; height: 100%; display: block; }
+    .seal-svg .seal-ring { fill: none; stroke: currentColor; }
+    .seal-svg .seal-arc-text { font-family: var(--fd-mono); letter-spacing: 0.18em; fill: currentColor; }
+    .seal-svg .seal-core { font-family: var(--fd-display); fill: currentColor; text-anchor: middle; letter-spacing: 0.03em; }
+    .seal-svg .seal-sub { font-family: var(--fd-mono); fill: currentColor; text-anchor: middle; letter-spacing: 0.32em; }
+
+    .hero-main {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+    }
+    .hero-case {
+      font-family: var(--fd-mono);
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+    .hero-case .caret {
+      display: inline-block;
+      width: 6px;
+      color: var(--accent);
+      opacity: 0;
+      animation: caret-blink 1s steps(1) infinite;
+    }
+    @keyframes caret-blink { 50% { opacity: 0; } 0%, 100% { opacity: 1; } }
+
+    .hero-name {
+      font-family: var(--fd-display);
+      font-size: clamp(3.5rem, 11vw, 10rem);
+      line-height: 0.88;
+      letter-spacing: 0.025em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-name .line-first { display: block; color: var(--text-pri); overflow: hidden; }
+    .hero-name .line-last { display: block; color: var(--accent); overflow: hidden; }
+    .hero-name .inner { display: block; }
+
+    .hero-lead {
+      max-width: 740px;
+      color: var(--text-sec);
+      font-size: 0.98rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .hero-lead strong { color: var(--text-pri); font-weight: 600; }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .meta-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 160px;
+    }
+    .meta-label {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .meta-value { font-size: 0.82rem; color: var(--text-sec); }
+    .meta-value.live { color: var(--accent); }
+    .meta-value.live::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 0.5em;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .hero-side {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 1rem;
+      align-self: stretch;
+      padding-bottom: 1.3rem;
+    }
+
+    .profile-card {
+      background: linear-gradient(180deg, rgba(22,21,19,0.92), rgba(14,14,13,0.96));
+      border: 1px solid var(--border-hi);
+      padding: 1.2rem 1.2rem 1rem;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 93%, 94% 100%, 0 100%);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.24);
+    }
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,169,110,0.08), transparent 40%, rgba(111,143,174,0.05));
+      pointer-events: none;
+    }
+    .profile-kicker {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--accent);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .profile-copy {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--text-sec);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .profile-copy strong { color: var(--text-pri); font-weight: 600; }
+    .profile-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      position: relative;
+      z-index: 1;
+    }
+    .profile-pill {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      color: var(--text-sec);
+      background: rgba(7,7,7,0.45);
+      padding: 0.42rem 0.62rem;
+    }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .spec-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.95rem 1rem;
+      min-height: 92px;
+      position: relative;
+      overflow: hidden;
+    }
+    .spec-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120px circle at 20% 20%, var(--accent-glow-hi), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .spec-card:hover::before { opacity: 1; }
+    .spec-label {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .spec-value {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-pri);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.2rem; right: 2.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--fd-mono);
+      font-size: 0.54rem;
+      color: var(--text-dim);
+      letter-spacing: 0.18em;
+      z-index: 2;
+    }
+    .scroll-dash { width: 36px; height: 1px; background: var(--text-dim); }
+
+    .dossier-section {
+      padding: 7rem 2.8rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chapter {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 4rem;
+    }
+    .ch-num {
+      font-family: var(--fd-display);
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 1;
+      color: var(--text-pri);
+      opacity: 0.05;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .ch-text { display: flex; flex-direction: column; gap: 0.28rem; }
+    .ch-eyebrow {
+      font-family: var(--fd-mono);
+      font-size: 0.54rem;
+      color: var(--accent);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+    .ch-title {
+      font-family: var(--fd-display);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      letter-spacing: 0.06em;
+      color: var(--text-pri);
+      line-height: 1;
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .panel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.15rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 162px;
+    }
+    .panel-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow-hi), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .panel-card:hover::after { opacity: 1; }
+    .panel-label {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .panel-title {
+      font-family: var(--fd-display);
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--text-pri);
+      line-height: 1;
+      margin-bottom: 0.7rem;
+    }
+    .panel-copy {
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--text-sec);
+      position: relative;
+      z-index: 1;
+    }
+
+    .id-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      max-width: 860px;
+    }
+    .id-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.6rem;
+    }
+    .id-cell.accent-bar { border-left: 2px solid var(--accent); }
+    .id-cell.full { grid-column: 1 / -1; }
+    .id-cell-label {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .id-cell-value {
+      font-size: 0.85rem;
+      color: var(--text-sec);
+      line-height: 1.65;
+    }
+
+    .redact-line { position: relative; display: block; margin-bottom: 0.3rem; }
+    .redact-bar {
+      position: absolute;
+      inset: -1px -3px;
+      background: #050505;
+      transform-origin: right center;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1px;
+    }
+    .stack-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+    }
+    .stack-card:hover {
+      background: var(--surface-2);
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+    }
+    .stack-cat {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--accent);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .stack-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-pri);
+    }
+    .stack-pips { display: flex; gap: 3px; margin-top: 0.25rem; }
+    .pip { width: 18px; height: 2px; background: var(--border-hi); }
+    .pip.on { background: var(--accent); }
+
+    .spotlight { position: relative; }
+    .spotlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s;
+      pointer-events: none;
+      background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), var(--spot-color, var(--accent-glow-hi)), transparent 70%);
+    }
+    .spotlight:hover::before { opacity: 1; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 1rem;
+    }
+    .info-stack { display: grid; gap: 1rem; }
+    .info-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-block::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(260px circle at 30% 20%, var(--accent-glow-hi), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .info-block:hover::after { opacity: 1; }
+    .info-label {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .info-title {
+      font-family: var(--fd-display);
+      font-size: 2rem;
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+      color: var(--text-pri);
+      margin-bottom: 0.7rem;
+    }
+    .info-copy {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-sec);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cred-summary {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cred-tally {
+      font-family: var(--fd-mono);
+      font-size: 0.56rem;
+      color: var(--text-sec);
+      letter-spacing: 0.16em;
+      margin-bottom: 1.1rem;
+    }
+    .cred-bar {
+      display: flex;
+      width: 100%;
+      height: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 1.1rem;
+    }
+    .cred-bar-seg { height: 100%; transition: opacity 0.25s; }
+    .cred-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .cred-chip {
+      appearance: none;
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      color: var(--text-sec);
+      font-family: var(--fd-mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      cursor: pointer;
+      will-change: transform;
+      transition: border-color 0.18s, color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .cred-chip:hover { border-color: var(--text-sec); color: var(--text-pri); transform: translateY(-1px); }
+    .cred-chip .chip-dot { width: 7px; height: 7px; flex-shrink: 0; }
+    .cred-chip.is-active {
+      color: var(--text-pri);
+      background: var(--surface-2);
+      border-color: var(--accent);
+    }
+    .cred-chip .chip-count { color: var(--text-dim); }
+    .cred-chip.is-active .chip-count { color: var(--text-sec); }
+
+    .exhibit-group { margin-bottom: 3.2rem; }
+    .exhibit-group:last-child { margin-bottom: 0; }
+    .exhibit-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+    .exhibit-tag {
+      font-family: var(--fd-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.6rem;
+      border: 1px solid currentColor;
+    }
+    .exhibit-label {
+      font-family: var(--fd-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-pri);
+    }
+    .exhibit-count {
+      font-family: var(--fd-mono);
+      font-size: 0.56rem;
+      color: var(--text-dim);
+      margin-left: auto;
+    }
+    .exhibit-rule { flex: 1; height: 1px; background: var(--border); }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1px;
+    }
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--card-accent, var(--accent));
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .cred-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-glow, var(--accent-glow));
+      opacity: 0;
+      transition: opacity 0.18s;
+      pointer-events: none;
+    }
+    .cred-card:hover::after { opacity: 1; }
+    .cred-card:hover { background: var(--surface-2); transform: translateY(-2px); }
+    .cred-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .cred-fileno {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+    .cred-seal {
+      width: 26px; height: 26px;
+      flex-shrink: 0;
+      border: 1px solid var(--card-accent, var(--accent));
+      color: var(--card-accent, var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+    }
+    .cred-issuer {
+      font-family: var(--fd-mono);
+      font-size: 0.6rem;
+      color: var(--card-accent, var(--accent));
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .cred-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-pri);
+      line-height: 1.45;
+    }
+    .cred-id {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+    .cred-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    .cred-date {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-dim);
+    }
+    .cred-badge {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: #2eb87a;
+      letter-spacing: 0.1em;
+      background: rgba(46,184,122,0.1);
+      border: 1px solid rgba(46,184,122,0.22);
+      padding: 0.18rem 0.5rem;
+    }
+    .cred-badge.linked { color: var(--card-accent, var(--accent)); background: transparent; border-color: currentColor; }
+
+
+    .cred-toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) 220px;
+      gap: 0.9rem;
+      margin: 1rem 0 2.3rem;
+      align-items: end;
+    }
+    .cred-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .cred-field-label {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .cred-search,
+    .cred-sort {
+      appearance: none;
+      width: 100%;
+      border: 1px solid var(--border-hi);
+      background: var(--surface);
+      color: var(--text-pri);
+      padding: 0.9rem 1rem;
+      font-family: var(--fd-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      outline: none;
+    }
+    .cred-search::placeholder { color: var(--text-dim); }
+    .cred-search:focus,
+    .cred-sort:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(200,169,110,0.18);
+    }
+    .cred-empty {
+      background: var(--surface);
+      border: 1px dashed var(--border-hi);
+      padding: 1.25rem 1.4rem;
+      color: var(--text-sec);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+    .cred-thumb {
+      margin-top: 0.2rem;
+      border: 1px solid var(--border-hi);
+      background: #050505;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cred-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.02);
+      transform: scale(1.01);
+    }
+    .cred-title-wrap {
+      position: relative;
+      z-index: 1;
+    }
+    .cred-mini {
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--text-dim);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .cred-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--fd-mono);
+      font-size: 0.48rem;
+      color: var(--card-accent, var(--accent));
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+    .cred-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.4rem;
+    }
+    .cred-modal.is-open { display: flex; }
+    .cred-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(10px);
+    }
+    .cred-modal-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 100%);
+      max-height: min(92svh, 920px);
+      overflow: auto;
+      border: 1px solid var(--border-hi);
+      background: linear-gradient(180deg, rgba(22,21,19,0.98), rgba(10,10,9,0.98));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .cred-modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--fd-mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.52rem;
+      color: var(--text-dim);
+    }
+    .cred-modal-close {
+      appearance: none;
+      border: 1px solid var(--border-hi);
+      background: transparent;
+      color: var(--text-pri);
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+    .cred-modal-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+      gap: 0;
+    }
+    .cred-modal-preview {
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      background: #050505;
+    }
+    .cred-modal-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border-hi);
+      background: #000;
+    }
+    .cred-modal-copy {
+      padding: 1.25rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .cred-modal-kicker {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--card-accent, var(--accent));
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .cred-modal-title {
+      font-family: var(--fd-display);
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      line-height: 0.95;
+      color: var(--text-pri);
+      letter-spacing: 0.04em;
+    }
+    .cred-modal-meta {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-sec);
+    }
+    .cred-modal-open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--card-accent, var(--accent));
+      color: var(--card-accent, var(--accent));
+      font-family: var(--fd-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .cred-modal-open:hover { background: rgba(255,255,255,0.03); }
+    @media (max-width: 900px) {
+      .cred-toolbar { grid-template-columns: 1fr; }
+      .cred-modal-body { grid-template-columns: 1fr; }
+      .cred-modal-preview { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    .fw-list { display: flex; flex-direction: column; gap: 1px; }
+    .fw-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.5rem;
+      display: grid;
+      grid-template-columns: 2.5rem 1fr auto;
+      align-items: center;
+      gap: 1.4rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+    }
+    .fw-row:hover {
+      background: var(--surface-2);
+      border-color: var(--border-hi);
+      transform: translateY(-1px);
+    }
+    .fw-idx { font-family: var(--fd-mono); font-size: 0.55rem; color: var(--text-dim); }
+    .fw-name { font-size: 0.88rem; font-weight: 500; color: var(--text-pri); margin-bottom: 0.2rem; }
+    .fw-type { font-family: var(--fd-mono); font-size: 0.5rem; color: var(--text-sec); letter-spacing: 0.1em; text-transform: uppercase; }
+    .fw-arrow { font-size: 0.85rem; color: var(--text-dim); transition: color 0.18s, transform 0.18s; }
+    .fw-row:hover .fw-arrow { color: var(--accent); transform: translateX(5px); }
+
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .effect-tag {
+      background: var(--surface);
+      border: 1px dashed var(--border-hi);
+      padding: 1.1rem 1.3rem 1.1rem 2.3rem;
+      position: relative;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    }
+    .effect-tag:hover { border-color: var(--text-sec); background: var(--surface-2); transform: translateY(-2px); }
+    .effect-tag::before {
+      content: '';
+      position: absolute;
+      left: 0.95rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border-hi);
+    }
+    .effect-num {
+      font-family: var(--fd-mono);
+      font-size: 0.46rem;
+      color: var(--text-dim);
+      letter-spacing: 0.18em;
+      margin-bottom: 0.5rem;
+    }
+    .effect-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-pri);
+      margin-bottom: 0.3rem;
+    }
+    .effect-detail {
+      font-family: var(--fd-mono);
+      font-size: 0.5rem;
+      color: var(--text-sec);
+      letter-spacing: 0.04em;
+    }
+
+    .pulse-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 8px;
+      margin-top: 1.2rem;
+      max-width: 480px;
+      opacity: 0.85;
+    }
+    .pulse-bar {
+      grid-column: span 1;
+      height: 6px;
+      background: var(--border-hi);
+      transform-origin: bottom;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .pulse-bar:nth-child(3n) { animation-delay: 0.15s; }
+    .pulse-bar:nth-child(4n) { animation-delay: 0.3s; }
+    .pulse-bar:nth-child(5n) { animation-delay: 0.45s; }
+    @keyframes pulse {
+      0%, 100% { transform: scaleY(0.45); opacity: 0.45; }
+      50% { transform: scaleY(1.35); opacity: 1; background: var(--accent); }
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .archive-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.2rem 1rem;
+      min-height: 170px;
+      position: relative;
+      overflow: hidden;
+    }
+    .archive-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow-hi), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .archive-card:hover::before { opacity: 1; }
+    .archive-year {
+      font-family: var(--fd-display);
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.92;
+      margin-bottom: 0.7rem;
+    }
+    .archive-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-pri);
+      line-height: 1.45;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .archive-detail {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--text-sec);
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      padding: 2.5rem 2.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .ft-id, .ft-domain {
+      font-family: var(--fd-mono);
+      font-size: 0.56rem;
+      color: var(--text-dim);
+      letter-spacing: 0.14em;
+    }
+    .ft-links { display: flex; gap: 1.4rem; }
+    .ft-link {
+      font-family: var(--fd-mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .ft-link:hover { color: var(--accent); }
+
+    .js-up { opacity: 0; transform: translateY(36px); }
+    .js-left { opacity: 0; transform: translateX(-48px); }
+
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-side { padding-bottom: 0; }
+      .hero-panel, .archive-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1.1rem 1.4rem; }
+      #hero { padding: 5.8rem 1.4rem 3.5rem; }
+      .dossier-section { padding: 5rem 1.4rem; }
+      .seal-wrap { top: 6.4rem; right: 1.4rem; width: 88px; }
+      .id-grid { grid-template-columns: 1fr; }
+      .id-cell.full { grid-column: 1; }
+      .cred-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 1.2rem; }
+      .exhibit-count { display: none; }
+      footer { padding: 2rem 1.4rem; }
+      .fw-row { grid-template-columns: 1.8rem 1fr auto; gap: 0.9rem; padding: 1rem 1rem; }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .cursor-dot, .cursor-ring { display: none !important; }
+      body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js-up, .js-left { opacity: 1; transform: none; }
+      .redact-bar { display: none; }
+      .cursor-dot, .cursor-ring { display: none !important; }
+      body.has-cursor { cursor: auto; }
+      .hero-case .caret { animation: none; opacity: 1; }
+      .pulse-bar { animation: none; }
+      .ticker-track { animation: none; }
+    }
+
+    .maintenance-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(200,169,110,0.09), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(111,143,174,0.08), transparent 18%),
+        var(--bg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .maintenance-box { max-width: 34rem; }
+    .maintenance-stamp {
+      display: inline-block;
+      border: 2px solid var(--stamp-red);
+      color: var(--stamp-red);
+      font-family: var(--fd-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      transform: rotate(-4deg);
+      margin-bottom: 2rem;
+    }
+    .maintenance-title {
+      font-family: var(--fd-display);
+      font-size: clamp(2.4rem, 8vw, 4.6rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--text-pri);
+      margin-bottom: 1.1rem;
+    }
+    .maintenance-sub {
+      font-family: var(--fd-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-sec);
+      margin-bottom: 2.4rem;
+    }
+    .maintenance-return {
+      font-family: var(--fd-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      padding: 0.6rem 1.5rem;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .maintenance-return:hover { border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="maintenance-overlay">
+    <div class="maintenance-box">
+      <div class="maintenance-stamp">Status // Restricted</div>
+      <h1 class="maintenance-title">Under Maintenance</h1>
+      <p class="maintenance-sub">Dossier temporarily unavailable</p>
+      <a href="/" class="maintenance-return">← Return to Portfolio</a>
+    </div>
+  </div>
+
+  <div class="grain-overlay"></div>
+  <div class="sky-orb"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"><span class="cursor-label" id="cursor-label"></span></div>
+
+  <div class="dossier-tabs" id="dossier-tabs">
+    <button class="dossier-tab" data-target="hero" type="button">00 HOME</button>
+    <button class="dossier-tab" data-target="s-identity" type="button">01 IDENTITY</button>
+    <button class="dossier-tab" data-target="s-profile" type="button">02 PROFILE</button>
+    <button class="dossier-tab" data-target="s-arsenal" type="button">03 ARSENAL</button>
+    <button class="dossier-tab" data-target="s-archive" type="button">04 ARCHIVE</button>
+    <button class="dossier-tab" data-target="s-credentials" type="button">05 CREDENTIALS</button>
+    <button class="dossier-tab" data-target="s-fieldwork" type="button">06 FIELD WORK</button>
+    <button class="dossier-tab" data-target="s-fieldkit" type="button">07 FIELD KIT</button>
+  </div>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo">FD / BUILDING</a>
+    <a href="/" class="nav-return" data-cursor="OPEN">← Portfolio</a>
+  </nav>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>FD DOSSIER</span> / BACKEND SYSTEMS / GSAP MOTION / WEBGL2 / LIVE DEPLOYMENTS / PALAWAN PH / SCANLINE / / <span>FD DOSSIER</span> / BACKEND SYSTEMS / GSAP MOTION / WEBGL2 / LIVE DEPLOYMENTS / PALAWAN PH / SCANLINE /
+    </div>
+  </div>
+
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-scan" id="scan-line"></div>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <div class="seal-wrap" id="seal">
+      <svg class="seal-svg" viewBox="0 0 220 220">
+        <defs>
+          <path id="arcTop" d="M 26,118 A 84,84 0 1,1 194,118" fill="none" />
+          <path id="arcBot" d="M 194,120 A 84,84 0 1,1 26,120" fill="none" />
+        </defs>
+        <circle class="seal-ring" cx="110" cy="110" r="96" stroke-width="2.5" />
+        <circle class="seal-ring" cx="110" cy="110" r="83" stroke-width="1" />
+        <text class="seal-arc-text" font-size="10.5"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">VERIFIED · FIELD AGENT</textPath></text>
+        <text class="seal-arc-text" font-size="10.5"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FD BUILDING · PALAWAN PH</textPath></text>
+        <text class="seal-core" x="110" y="104" font-size="34">FAT</text>
+        <text class="seal-sub" x="110" y="130" font-size="9">CLEARED</text>
+      </svg>
+    </div>
+
+    <div class="hero-main">
+      <div class="hero-case" id="hero-case">
+        CASE ID: FAT-2006 &nbsp;/&nbsp; SUBJECT DOSSIER &nbsp;/&nbsp; CLASSIFICATION: OPEN<span class="caret">_</span>
+      </div>
+
+      <h1 class="hero-name">
+        <span class="line-first"><span class="inner" id="h-first">FRANCIS</span></span>
+        <span class="line-last"><span class="inner" id="h-last">TARECTICAN</span></span>
+      </h1>
+
+      <p class="hero-lead js-up">
+        Backend systems developer. Scroll-built interfaces. Production work over decorative theory. The page is framed like a dossier because the work is operational, not ornamental.
+      </p>
+
+      <div class="hero-meta" id="hero-meta">
+        <div class="meta-field">
+          <span class="meta-label">Designation</span>
+          <span class="meta-value">Backend Systems Developer</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Operation</span>
+          <span class="meta-value">FD Building</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Base</span>
+          <span class="meta-value">Puerto Princesa, Palawan PH</span>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">Status</span>
+          <span class="meta-value live">ACTIVE</span>
+        </div>
+      </div>
+
+      <div class="pulse-grid" aria-hidden="true">
+        <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+        <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+        <div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div><div class="pulse-bar"></div>
+      </div>
+    </div>
+
+    <aside class="hero-side">
+      <div class="profile-card js-up spotlight">
+        <div class="profile-kicker">Profile Notes</div>
+        <div class="profile-copy">
+          <strong>Systems-first.</strong> Scroll choreography, motion discipline, and real deployment context. The page reads like a case file because the intent is evidence, not decoration.
+        </div>
+        <div class="profile-pills">
+          <span class="profile-pill">GSAP</span>
+          <span class="profile-pill">Lenis</span>
+          <span class="profile-pill">WebGL2</span>
+          <span class="profile-pill">Vanilla JS</span>
+          <span class="profile-pill">Live Deployments</span>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-card js-up spotlight">
+          <div class="spec-label">Format</div>
+          <div class="spec-value">Dossier UI with hard typography and layered scanline motion.</div>
+        </div>
+        <div class="spec-card js-up spotlight">
+          <div class="spec-label">Signal</div>
+          <div class="spec-value">Personal site, but treated as an operational record.</div>
+        </div>
+        <div class="spec-card js-up spotlight">
+          <div class="spec-label">Tone</div>
+          <div class="spec-value">Sparse, deliberate, and high contrast.</div>
+        </div>
+        <div class="spec-card js-up spotlight">
+          <div class="spec-label">Scope</div>
+          <div class="spec-value">Personal identity, credentials, client work, and off-duty kit.</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="hero-scroll">
+      <span class="scroll-dash"></span>
+      SCROLL TO READ
+    </div>
+  </section>
+
+  <section class="dossier-section" id="s-identity">
+    <div class="chapter js-left">
+      <div class="ch-num">01</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">IDENTITY</span>
+      </div>
+    </div>
+
+    <div class="id-grid" id="id-grid">
+      <div class="id-cell accent-bar js-up spotlight">
+        <div class="id-cell-label">Full Name</div>
+        <div class="id-cell-value">Francis A. Tarectican</div>
+      </div>
+      <div class="id-cell js-up spotlight">
+        <div class="id-cell-label">Known As</div>
+        <div class="id-cell-value">Frans</div>
+      </div>
+      <div class="id-cell js-up spotlight">
+        <div class="id-cell-label">Current Role</div>
+        <div class="id-cell-value">IT Specialist — BIR RDO 036</div>
+      </div>
+      <div class="id-cell js-up spotlight">
+        <div class="id-cell-label">Academic</div>
+        <div class="id-cell-value">BSIT — Palawan Technological College, Inc.</div>
+      </div>
+      <div class="id-cell full js-up spotlight">
+        <div class="id-cell-label">Mission Statement</div>
+        <div class="id-cell-value" id="mission-text">
+          <span class="redact-line"><span class="redact-bar"></span>Building production-grade systems for local businesses.</span>
+          <span class="redact-line"><span class="redact-bar"></span>No templates, no drag-drop.</span>
+          <span class="redact-line"><span class="redact-bar"></span>Raw WebGL2 shaders, GSAP animation pipelines, and full-stack ordering systems —</span>
+          <span class="redact-line"><span class="redact-bar"></span>deployed live, serving real clients across Palawan.</span>
+        </div>
+      </div>
+      <div class="id-cell js-up spotlight">
+        <div class="id-cell-label">Contact</div>
+        <div class="id-cell-value">francistarectican47@gmail.com</div>
+      </div>
+      <div class="id-cell js-up spotlight">
+        <div class="id-cell-label">GitHub</div>
+        <div class="id-cell-value">Frans15-2006</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dossier-section" id="s-profile">
+    <div class="chapter js-left">
+      <div class="ch-num">02</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">PROFILE</span>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="panel-card js-up spotlight">
+        <div class="panel-label">Operating Model</div>
+        <div class="panel-title">Build, deploy, repeat.</div>
+        <div class="panel-copy">The page should behave like evidence. Every motion has a reason. Every card should feel filed, catalogued, and ready for inspection.</div>
+      </div>
+      <div class="panel-card js-up spotlight">
+        <div class="panel-label">Creative Method</div>
+        <div class="panel-title">High density.</div>
+        <div class="panel-copy">Hard lines, redaction, seals, scan effects, and a controlled amount of noise. The style is not decorative; it is part of the identity system.</div>
+      </div>
+      <div class="panel-card js-up spotlight">
+        <div class="panel-label">Current Focus</div>
+        <div class="panel-title">Production systems.</div>
+        <div class="panel-copy">Client work, portfolio polish, backend logic, animation structure, and a stronger personal brand that reads like an operation log.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dossier-section" id="s-arsenal">
+    <div class="chapter js-left">
+      <div class="ch-num">03</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">ARSENAL</span>
+      </div>
+    </div>
+    <div class="stack-grid" id="stack-grid"></div>
+  </section>
+
+  <section class="dossier-section" id="s-archive">
+    <div class="chapter js-left">
+      <div class="ch-num">04</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">ARCHIVE</span>
+      </div>
+    </div>
+    <div class="archive-grid" id="archive-grid"></div>
+  </section>
+
+  <section class="dossier-section" id="s-credentials">
+    <div class="chapter js-left">
+      <div class="ch-num">05</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">CREDENTIALS</span>
+      </div>
+    </div>
+
+    <div class="cred-summary js-up">
+      <div class="cred-tally" id="cred-tally">LOADING RECORDS...</div>
+      <div class="cred-bar" id="cred-bar"></div>
+      <div class="cred-chips" id="cred-chips"></div>
+    </div>
+
+    <div class="cred-toolbar js-up">
+      <label class="cred-field" for="cred-search">
+        <span class="cred-field-label">Search records</span>
+        <input id="cred-search" class="cred-search" type="search" placeholder="Search by title, issuer, date, or category" autocomplete="off" data-cursor="SEARCH" />
+      </label>
+      <label class="cred-field" for="cred-sort">
+        <span class="cred-field-label">Sort order</span>
+        <select id="cred-sort" class="cred-sort" data-cursor="SORT">
+          <option value="date-desc">Newest first</option>
+          <option value="date-asc">Oldest first</option>
+          <option value="title-asc">Title A–Z</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="cred-exhibits"></div>
+  </section>
+
+  <section class="dossier-section" id="s-fieldwork">
+    <div class="chapter js-left">
+      <div class="ch-num">06</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter</span>
+        <span class="ch-title">FIELD WORK</span>
+      </div>
+    </div>
+    <div class="fw-list" id="fw-list"></div>
+  </section>
+
+  <section class="dossier-section" id="s-fieldkit">
+    <div class="chapter js-left">
+      <div class="ch-num">07</div>
+      <div class="ch-text">
+        <span class="ch-eyebrow">Section / Chapter — Off The Clock</span>
+        <span class="ch-title">FIELD KIT</span>
+      </div>
+    </div>
+    <div class="effects-grid" id="effects-grid"></div>
+  </section>
+
+  <div class="cred-modal" id="cred-modal" aria-hidden="true">
+    <div class="cred-modal-backdrop" data-modal-close></div>
+    <div class="cred-modal-shell" role="dialog" aria-modal="true" aria-labelledby="cred-modal-title">
+      <div class="cred-modal-top">
+        <span id="cred-modal-kicker">CERTIFICATE PREVIEW</span>
+        <button class="cred-modal-close" type="button" aria-label="Close preview" data-modal-close>×</button>
+      </div>
+      <div class="cred-modal-body">
+        <div class="cred-modal-preview">
+          <img id="cred-modal-img" alt="Certificate preview" />
+        </div>
+        <div class="cred-modal-copy">
+          <div class="cred-modal-kicker" id="cred-modal-category"></div>
+          <div class="cred-modal-title" id="cred-modal-title"></div>
+          <div class="cred-modal-meta" id="cred-modal-meta"></div>
+          <a id="cred-modal-open" class="cred-modal-open" href="#" target="_blank" rel="noopener">Open PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="ft-id">DOSSIER / FAT-2006 / FD BUILDING &copy; 2026</div>
+    <div class="ft-links">
+      <a href="mailto:francistarectican47@gmail.com" class="ft-link" data-cursor="MAIL">EMAIL</a>
+      <a href="https://github.com/Frans15-2006" target="_blank" rel="noopener" class="ft-link" data-cursor="OPEN">GITHUB</a>
+      <a href="https://www.tiktok.com/@franshess2" target="_blank" rel="noopener" class="ft-link" data-cursor="OPEN">TIKTOK</a>
+    </div>
+    <div class="ft-domain">thefrans.is-a.dev</div>
+  </footer>
+
+  <script>
+    const STACK = [
+      { cat: 'CORE', name: 'HTML / CSS', level: 5 },
+      { cat: 'CORE', name: 'Vanilla JS', level: 5 },
+      { cat: 'GRAPHICS', name: 'WebGL2 / GLSL', level: 4 },
+      { cat: 'ANIMATION', name: 'GSAP', level: 5 },
+      { cat: 'ANIMATION', name: 'Lenis', level: 4 },
+      { cat: 'BACKEND', name: 'Node.js / Express', level: 4 },
+      { cat: 'BACKEND', name: 'WebSockets', level: 3 },
+      { cat: 'INFRA', name: 'GitHub Pages', level: 5 },
+      { cat: 'TOOLS', name: 'Git', level: 4 },
+      { cat: 'AI', name: 'Anthropic API', level: 3 },
+    ];
+
+    const CATEGORIES = {
+      "cyber": {
+            "label": "Cybersecurity & Networking",
+            "code": "CY",
+            "color": "var(--accent)",
+            "glow": "var(--accent-glow)",
+            "chip": "SECURITY"
+      },
+      "web": {
+            "label": "Web Development",
+            "code": "WD",
+            "color": "var(--ink-blue)",
+            "glow": "var(--ink-blue-glow)",
+            "chip": "BUILD"
+      },
+      "data": {
+            "label": "Data / AI",
+            "code": "DA",
+            "color": "var(--ink-green)",
+            "glow": "var(--ink-green-glow)",
+            "chip": "DATA"
+      },
+      "core": {
+            "label": "Core IT / Communication",
+            "code": "CR",
+            "color": "var(--text-sec)",
+            "glow": "rgba(92,88,77,0.12)",
+            "chip": "CORE"
+      }
+};
+    const CATEGORY_ORDER = ['cyber', 'web', 'data', 'core'];
+
+    const CREDENTIALS = [
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "English for IT 1",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_0e22139e-919d-475b-add7-023185209f85.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_0e22139e-919d-475b-add7-023185209f85.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_0e22139e-919d-475b-add7-023185209f85.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Network Addressing and Basic Troubleshooting",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_19397fb9-fa9c-4319-8b66-c515d03703fc.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_19397fb9-fa9c-4319-8b66-c515d03703fc.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_19397fb9-fa9c-4319-8b66-c515d03703fc.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Create Digital Content, Communicate and Collaborate Online",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_57720270-c8b9-479c-86ac-b61719647a5c.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_57720270-c8b9-479c-86ac-b61719647a5c.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_57720270-c8b9-479c-86ac-b61719647a5c.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Endpoint Security",
+            "date": "15 Apr 2025",
+            "dateSort": "20250415",
+            "dateISO": "2025-04-15",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_5bbc4858-4c66-4ccb-8a30-c227a1ad79c3.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_5bbc4858-4c66-4ccb-8a30-c227a1ad79c3.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_5bbc4858-4c66-4ccb-8a30-c227a1ad79c3.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Introduction to Data Science",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "data",
+            "badge": "ANALYZED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_5eb80dba-b597-4330-b189-eceec9ab2bb8.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_5eb80dba-b597-4330-b189-eceec9ab2bb8.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_5eb80dba-b597-4330-b189-eceec9ab2bb8.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Introduction to Cybersecurity",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_623f48c5-6f56-4760-903d-6e472265c413.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_623f48c5-6f56-4760-903d-6e472265c413.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_623f48c5-6f56-4760-903d-6e472265c413.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Digital Awareness",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_6a0f67c7-5645-44d2-8b08-3fb962f596f3.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_6a0f67c7-5645-44d2-8b08-3fb962f596f3.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_6a0f67c7-5645-44d2-8b08-3fb962f596f3.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "JavaScript Essentials 2",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_6e76a878-a211-4128-ac42-50a45da15b84.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_6e76a878-a211-4128-ac42-50a45da15b84.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_6e76a878-a211-4128-ac42-50a45da15b84.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Python Essentials 2",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_73d4b017-2631-4282-b0f3-d8ded0e36a01.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_73d4b017-2631-4282-b0f3-d8ded0e36a01.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_73d4b017-2631-4282-b0f3-d8ded0e36a01.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Introduction to IoT and Digital Transformation",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "data",
+            "badge": "ANALYZED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_74a10dc9-217c-42ba-8438-ad7994c6adfb.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_74a10dc9-217c-42ba-8438-ad7994c6adfb.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_74a10dc9-217c-42ba-8438-ad7994c6adfb.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Ethical Hacker",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_7567da3a-d008-4e15-9c8b-ccbdc6b50b6a.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_7567da3a-d008-4e15-9c8b-ccbdc6b50b6a.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_7567da3a-d008-4e15-9c8b-ccbdc6b50b6a.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Cyber Threat Management",
+            "date": "15 Apr 2025",
+            "dateSort": "20250415",
+            "dateISO": "2025-04-15",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_7a622f7b-8b6b-4f62-a73a-0ab16a8a5ea7.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_7a622f7b-8b6b-4f62-a73a-0ab16a8a5ea7.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_7a622f7b-8b6b-4f62-a73a-0ab16a8a5ea7.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "JavaScript Essentials 1",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_7c489afd-3532-4d31-ad8e-900da6701d77.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_7c489afd-3532-4d31-ad8e-900da6701d77.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_7c489afd-3532-4d31-ad8e-900da6701d77.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Operating Systems Basics",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_823ba21f-cc7a-4d52-91f1-20bc6f07cb17.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_823ba21f-cc7a-4d52-91f1-20bc6f07cb17.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_823ba21f-cc7a-4d52-91f1-20bc6f07cb17.pdf"
+      },
+      {
+            "issuer": "DICT-ITU DTC Initiative",
+            "title": "CSS Essentials",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_859a2cf8-eb70-4c6f-b8e0-3617b1d48ae0.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_859a2cf8-eb70-4c6f-b8e0-3617b1d48ae0.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_859a2cf8-eb70-4c6f-b8e0-3617b1d48ae0.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Digital Safety and Security Awareness",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_88fdd2c8-dc7c-440b-9f96-71fc5f29e747.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_88fdd2c8-dc7c-440b-9f96-71fc5f29e747.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_88fdd2c8-dc7c-440b-9f96-71fc5f29e747.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "HTML Essentials",
+            "date": "16 Apr 2025",
+            "dateSort": "20250416",
+            "dateISO": "2025-04-16",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_8aa4e1e7-a2be-41ca-8504-234352eb7d64.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_8aa4e1e7-a2be-41ca-8504-234352eb7d64.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_8aa4e1e7-a2be-41ca-8504-234352eb7d64.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Networking Basics",
+            "date": "15 Apr 2025",
+            "dateSort": "20250415",
+            "dateISO": "2025-04-15",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_8ad0fb6e-a348-42a0-a223-b61f5a8d7927.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_8ad0fb6e-a348-42a0-a223-b61f5a8d7927.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_8ad0fb6e-a348-42a0-a223-b61f5a8d7927.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Computer Hardware Basics",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_951223b4-40d5-46a4-89a9-4af0c7db0e12.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_951223b4-40d5-46a4-89a9-4af0c7db0e12.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_951223b4-40d5-46a4-89a9-4af0c7db0e12.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "English for IT 2",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_9c50f387-2c9e-434c-84ac-af827e30bd8d.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_9c50f387-2c9e-434c-84ac-af827e30bd8d.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_9c50f387-2c9e-434c-84ac-af827e30bd8d.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Networking Devices and Initial Configuration",
+            "date": "15 Apr 2025",
+            "dateSort": "20250415",
+            "dateISO": "2025-04-15",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_9fdc2309-9a41-4338-b600-f7c2ca2a21e3.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_9fdc2309-9a41-4338-b600-f7c2ca2a21e3.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_9fdc2309-9a41-4338-b600-f7c2ca2a21e3.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "CSS Essentials",
+            "date": "15 Apr 2025",
+            "dateSort": "20250415",
+            "dateISO": "2025-04-15",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_a88fbb2b-3ac0-4e17-9025-e45f5e8a00fd.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_a88fbb2b-3ac0-4e17-9025-e45f5e8a00fd.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_a88fbb2b-3ac0-4e17-9025-e45f5e8a00fd.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Python Essentials 1",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "web",
+            "badge": "BUILT",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_af08e88c-34a4-4203-ab3a-d411df159572.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_af08e88c-34a4-4203-ab3a-d411df159572.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_af08e88c-34a4-4203-ab3a-d411df159572.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Using Computer and Mobile Devices",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_bb0828ab-5bbd-4835-bf98-2da3846e6d7e.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_bb0828ab-5bbd-4835-bf98-2da3846e6d7e.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_bb0828ab-5bbd-4835-bf98-2da3846e6d7e.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Network Support and Security",
+            "date": "17 Apr 2025",
+            "dateSort": "20250417",
+            "dateISO": "2025-04-17",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_d35e0450-91db-4ac5-a044-99c04ef80978.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_d35e0450-91db-4ac5-a044-99c04ef80978.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_d35e0450-91db-4ac5-a044-99c04ef80978.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Network Defense",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_dab038c8-49c4-4166-9f2a-318210c689a5.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_dab038c8-49c4-4166-9f2a-318210c689a5.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_dab038c8-49c4-4166-9f2a-318210c689a5.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Introduction to Greenhouse Gas Accounting for IT",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "data",
+            "badge": "ANALYZED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_e0f0b7f2-e093-479a-85a1-f88f42ae3b9f.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_e0f0b7f2-e093-479a-85a1-f88f42ae3b9f.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_e0f0b7f2-e093-479a-85a1-f88f42ae3b9f.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Junior Cybersecurity Analyst Career Path Exam",
+            "date": "20 Apr 2025",
+            "dateSort": "20250420",
+            "dateISO": "2025-04-20",
+            "category": "cyber",
+            "badge": "SECURED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_e20adcb6-2a36-4853-b558-85078ab73343.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_e20adcb6-2a36-4853-b558-85078ab73343.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_e20adcb6-2a36-4853-b558-85078ab73343.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Introduction to Modern AI",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "data",
+            "badge": "ANALYZED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_e3f65054-f722-4976-a2e2-a91b9b7ab9a5.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_e3f65054-f722-4976-a2e2-a91b9b7ab9a5.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_e3f65054-f722-4976-a2e2-a91b9b7ab9a5.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "Data Analytics Essentials",
+            "date": "21 Apr 2025",
+            "dateSort": "20250421",
+            "dateISO": "2025-04-21",
+            "category": "data",
+            "badge": "ANALYZED",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_e75f5550-7ba1-44b7-b99b-e787b55ed858.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_e75f5550-7ba1-44b7-b99b-e787b55ed858.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_e75f5550-7ba1-44b7-b99b-e787b55ed858.pdf"
+      },
+      {
+            "issuer": "Cisco Networking Academy",
+            "title": "IT Customer Support Basics",
+            "date": "14 Apr 2025",
+            "dateSort": "20250414",
+            "dateISO": "2025-04-14",
+            "category": "core",
+            "badge": "FOUNDATION",
+            "thumb": "certs/thumbs/_certificate_francistarectican47-gmail-com_e929e243-331e-413d-9527-3f5c80a989aa.png",
+            "pdfRel": "certs/_certificate_francistarectican47-gmail-com_e929e243-331e-413d-9527-3f5c80a989aa.pdf",
+            "file": "_certificate_francistarectican47-gmail-com_e929e243-331e-413d-9527-3f5c80a989aa.pdf"
+      }
+];
+
+    const FIELD_WORK = [
+      { name: 'Mix & Match Kain', type: 'FULL-STACK — Node.js / Express / WebSockets QR Ordering', url: '#' },
+      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#' },
+      { name: '19+ Deployed Client Sites', type: 'VIEW FULL PORTFOLIO', url: '/' },
+    ];
+
+    const EFFECTS = [
+      { tag: 'RIG-01', label: 'Lenovo LOQ 15IRX10', detail: 'RTX 5070 · Primary Build Machine' },
+      { tag: 'RIG-02', label: 'ASUS TUF A15', detail: 'Secondary Machine' },
+      { tag: 'COMMS', label: 'Tecno Camon 40 Pro 5G', detail: 'Field Device' },
+      { tag: 'DOWNTIME', label: 'Wuthering Waves', detail: 'Active Since v1.0' },
+      { tag: 'DOWNTIME', label: 'Arknights: Endfield', detail: 'Current Rotation' },
+      { tag: 'DOWNTIME', label: 'Stellar Blade', detail: 'Current Rotation' },
+      { tag: 'DOWNTIME', label: 'Neverness to Everness', detail: 'Current Rotation' },
+      { tag: 'SIGNAL', label: '@franshess2', detail: 'TikTok — Field Broadcast' },
+    ];
+
+    const ARCHIVE = [
+      { year: '2026', title: 'Live client work across Palawan', detail: 'Production systems, ordering flows, and deployed interfaces that already exist in the wild.' },
+      { year: '2026', title: 'BIR RDO 036', detail: 'Current professional track with a systems-focused day job and practical delivery constraints.' },
+      { year: '2026', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
+    ];
+
+    function renderStack() {
+      document.getElementById('stack-grid').innerHTML = STACK.map(s => `
+        <div class="stack-card spotlight js-up">
+          <div class="stack-cat">${s.cat}</div>
+          <div class="stack-name">${s.name}</div>
+          <div class="stack-pips">
+            ${[1,2,3,4,5].map(i => `<div class="pip${i <= s.level ? ' on' : ''}"></div>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderArchive() {
+      document.getElementById('archive-grid').innerHTML = ARCHIVE.map(item => `
+        <div class="archive-card js-up spotlight">
+          <div class="archive-year">${item.year}</div>
+          <div class="archive-title">${item.title}</div>
+          <div class="archive-detail">${item.detail}</div>
+        </div>
+      `).join('');
+    }
+
+
+    function renderCreds() {
+      const total = CREDENTIALS.length;
+      const activeCategories = CATEGORY_ORDER.filter(key => CREDENTIALS.some(c => c.category === key));
+      const tally = document.getElementById('cred-tally');
+      const bar = document.getElementById('cred-bar');
+      const chips = document.getElementById('cred-chips');
+      const exhibits = document.getElementById('cred-exhibits');
+      const search = document.getElementById('cred-search');
+      const sort = document.getElementById('cred-sort');
+
+      tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / STATUS: ALL VERIFIED`;
+
+      bar.innerHTML = activeCategories.map(key => {
+        const count = CREDENTIALS.filter(c => c.category === key).length;
+        const pct = (count / total * 100).toFixed(2);
+        return `<div class="cred-bar-seg" data-cat="${key}" style="width:${pct}%; background:${CATEGORIES[key].color};"></div>`;
+      }).join('');
+
+      chips.innerHTML = ['all', ...activeCategories].map(key => {
+        const isAll = key === 'all';
+        const count = isAll ? total : CREDENTIALS.filter(c => c.category === key).length;
+        const label = isAll ? 'ALL RECORDS' : CATEGORIES[key].label.toUpperCase();
+        const color = isAll ? 'var(--text-sec)' : CATEGORIES[key].color;
+        return `
+          <button class="cred-chip${isAll ? ' is-active' : ''}" data-filter="${key}" type="button" data-cursor="FILTER">
+            <span class="chip-dot" style="background:${color};"></span>
+            ${label} <span class="chip-count">(${String(count).padStart(2,'0')})</span>
+          </button>
+        `;
+      }).join('');
+
+      const modal = document.getElementById('cred-modal');
+      const modalImg = document.getElementById('cred-modal-img');
+      const modalCategory = document.getElementById('cred-modal-category');
+      const modalTitle = document.getElementById('cred-modal-title');
+      const modalMeta = document.getElementById('cred-modal-meta');
+      const modalOpen = document.getElementById('cred-modal-open');
+      let selectedFilter = 'all';
+
+      const records = CREDENTIALS.map((c, index) => ({ ...c, fileIndex: index }));
+
+      const sortRecords = (items) => {
+        const value = sort.value;
+        const byTitle = (a, b) => a.title.localeCompare(b.title);
+        const byDateDesc = (a, b) => Number(b.dateSort) - Number(a.dateSort);
+        const byDateAsc = (a, b) => Number(a.dateSort) - Number(b.dateSort);
+        if (value === 'date-asc') return items.slice().sort(byDateAsc);
+        if (value === 'title-asc') return items.slice().sort(byTitle);
+        return items.slice().sort(byDateDesc);
+      };
+
+      const openModal = (item) => {
+        const meta = CATEGORIES[item.category];
+        modal.dataset.open = 'true';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        modal.style.setProperty('--card-accent', meta.color);
+        modalImg.src = item.thumb;
+        modalImg.alt = `${item.title} certificate preview`;
+        modalCategory.textContent = `${meta.label} · ${item.badge}`;
+        modalTitle.textContent = item.title;
+        modalMeta.innerHTML = `
+          <div><strong>Issuer:</strong> ${item.issuer}</div>
+          <div><strong>Date:</strong> ${item.date}</div>
+          <div><strong>Category:</strong> ${meta.label}</div>
+          <div><strong>File:</strong> FAT-${String(item.fileIndex + 1).padStart(4, '0')} · ${item.file}</div>
+        `;
+        modalOpen.href = item.pdfRel;
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+      };
+
+      const render = () => {
+        const query = search.value.trim().toLowerCase();
+        let filtered = records.filter(item => {
+          const pool = [item.title, item.issuer, item.date, item.category, CATEGORIES[item.category].label].join(' ').toLowerCase();
+          const matchesFilter = selectedFilter === 'all' || item.category === selectedFilter;
+          const matchesQuery = !query || pool.includes(query);
+          return matchesFilter && matchesQuery;
+        });
+        filtered = sortRecords(filtered);
+
+        const grouped = CATEGORY_ORDER
+          .map(key => ({ key, items: filtered.filter(item => item.category === key) }))
+          .filter(group => group.items.length);
+
+        const totalVisible = filtered.length;
+        tally.textContent = `TOTAL RECORDS: ${String(total).padStart(3,'0')} / VISIBLE: ${String(totalVisible).padStart(3,'0')} / STATUS: ALL VERIFIED`;
+
+        bar.querySelectorAll('.cred-bar-seg').forEach(seg => {
+          const cat = seg.dataset.cat;
+          const visibleCount = filtered.filter(c => c.category === cat).length;
+          const totalCount = CREDENTIALS.filter(c => c.category === cat).length;
+          seg.style.opacity = visibleCount ? '1' : '0.14';
+          seg.style.width = `${(totalCount / total * 100).toFixed(2)}%`;
+        });
+
+        const groupLetters = { cyber: 'A', web: 'B', data: 'C', core: 'D' };
+        if (!grouped.length) {
+          exhibits.innerHTML = `<div class="cred-empty js-up spotlight">No matching records. Tighten or loosen the search query.</div>`;
+          return;
+        }
+
+        exhibits.innerHTML = grouped.map(group => {
+          const meta = CATEGORIES[group.key];
+          const cards = group.items.map(item => {
+            const fileNo = String(item.fileIndex + 1).padStart(4, '0');
+            return `
+              <a class="cred-card spotlight js-up" href="${item.pdfRel}" style="--card-accent:${meta.color}; --card-glow:${meta.glow}; --spot-color:${meta.glow};" data-idx="${item.fileIndex}" data-cursor="PREVIEW">
+                <div class="cred-card-top">
+                  <div class="cred-fileno">FILE NO: FAT-${fileNo}</div>
+                  <div class="cred-seal">${meta.code}</div>
+                </div>
+                <div class="cred-thumb">
+                  <img src="${item.thumb}" alt="${item.title} thumbnail" loading="lazy" />
+                </div>
+                <div class="cred-title-wrap">
+                  <div class="cred-issuer">${item.issuer}</div>
+                  <div class="cred-title">${item.title}</div>
+                  <div class="cred-mini">${meta.label}</div>
+                  <div class="cred-card-link">Preview →</div>
+                </div>
+                <div class="cred-foot">
+                  <div class="cred-date">${item.date}</div>
+                  <div class="cred-badge linked">${item.badge}</div>
+                </div>
+              </a>
+            `;
+          }).join('');
+
+          return `
+            <div class="exhibit-group" data-div="${group.key}">
+              <div class="exhibit-head js-left">
+                <span class="exhibit-tag" style="color:${meta.color};">EXHIBIT ${groupLetters[group.key] || group.key}</span>
+                <span class="exhibit-label">${meta.label}</span>
+                <span class="exhibit-count">${String(group.items.length).padStart(2,'0')} ON FILE</span>
+                <span class="exhibit-rule"></span>
+              </div>
+              <div class="cred-grid">${cards}</div>
+            </div>
+          `;
+        }).join('');
+
+        exhibits.querySelectorAll('.cred-card').forEach(card => {
+          card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const record = records[Number(card.dataset.idx)];
+            if (record) openModal(record);
+          });
+        });
+      };
+
+      chips.querySelectorAll('.cred-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          selectedFilter = chip.dataset.filter;
+          chips.querySelectorAll('.cred-chip').forEach(c => c.classList.toggle('is-active', c === chip));
+          render();
+        });
+      });
+
+      search.addEventListener('input', render);
+      sort.addEventListener('change', render);
+      modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      render();
+    }
+
+    function renderFieldwork() {
+      document.getElementById('fw-list').innerHTML = FIELD_WORK.map((f, i) => `
+        <a href="${f.url}" class="fw-row spotlight js-up" ${f.url !== '/' ? 'target="_blank" rel="noopener"' : ''} data-cursor="${f.url === '/' ? 'ALL FILES' : 'OPEN'}">
+          <div class="fw-idx">${String(i + 1).padStart(2,'0')}</div>
+          <div>
+            <div class="fw-name">${f.name}</div>
+            <div class="fw-type">${f.type}</div>
+          </div>
+          <div class="fw-arrow">&#x2192;</div>
+        </a>
+      `).join('');
+    }
+
+    function renderEffects() {
+      document.getElementById('effects-grid').innerHTML = EFFECTS.map((e, i) => `
+        <div class="effect-tag js-up spotlight">
+          <div class="effect-num">${e.tag}-${String(i + 1).padStart(2,'0')}</div>
+          <div class="effect-label">${e.label}</div>
+          <div class="effect-detail">${e.detail}</div>
+        </div>
+      `).join('');
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+    renderStack();
+    renderArchive();
+    renderCreds();
+    renderFieldwork();
+    renderEffects();
+
+    const lenis = new Lenis({ lerp: 0.08, duration: 1.35 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    tl
+      .from('#hero-case', { opacity: 0, duration: 0.8, delay: 0.15 })
+      .from('#h-first', { y: '110%', opacity: 0, duration: 1.1 }, '-=0.4')
+      .from('#h-last', { y: '110%', opacity: 0, duration: 1.1 }, '-=0.85')
+      .from('#hero .hero-lead', { y: 18, opacity: 0, duration: 0.75 }, '-=0.55')
+      .from('#hero-meta .meta-field', { y: 18, opacity: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out' }, '-=0.45')
+      .from('.hero-side > *', { y: 24, opacity: 0, stagger: 0.08, duration: 0.75 }, '-=0.65')
+      .to('#seal', {
+        opacity: 0.55,
+        scale: 1,
+        rotate: -16,
+        duration: 0.7,
+        ease: 'back.out(1.5)',
+        onComplete: () => {
+          if (!reduceMotion) {
+            gsap.to('#seal', { rotate: '-=4', duration: 6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+          }
+        }
+      }, '-=0.3');
+
+    gsap.to('#scan-line', {
+      top: '100%',
+      opacity: 0.5,
+      duration: 1.4,
+      ease: 'power1.inOut',
+      delay: 0.2,
+      onComplete: () => { document.getElementById('scan-line').style.opacity = 0; }
+    });
+
+    const makeScrollAnim = (selector, fromVars, overrides = {}) => {
+      gsap.utils.toArray(selector).forEach(el => {
+        gsap.from(el, {
+          ...fromVars,
+          duration: 0.75,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+            ...overrides,
+          }
+        });
+      });
+    };
+
+    setTimeout(() => {
+      makeScrollAnim('.js-up', { y: 36, opacity: 0 });
+      makeScrollAnim('.js-left', { x: -52, opacity: 0 });
+      if (!reduceMotion) {
+        gsap.to('#mission-text .redact-bar', {
+          scaleX: 0,
+          duration: 0.55,
+          stagger: 0.12,
+          ease: 'power3.inOut',
+          scrollTrigger: {
+            trigger: '#mission-text',
+            start: 'top 78%',
+            toggleActions: 'play none none none',
+          }
+        });
+      }
+    }, 50);
+
+    document.addEventListener('mousemove', (e) => {
+      const card = e.target.closest('.spotlight');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    });
+
+    const tabs = Array.from(document.querySelectorAll('.dossier-tab'));
+    const sectionIds = ['hero', 's-identity', 's-profile', 's-arsenal', 's-archive', 's-credentials', 's-fieldwork', 's-fieldkit'];
+    const tabByTarget = new Map(tabs.map(tab => [tab.dataset.target, tab]));
+    let activeSectionId = null;
+    let scrollTicking = false;
+
+    function setActiveTab(targetId) {
+      if (activeSectionId === targetId) return;
+      activeSectionId = targetId;
+      tabs.forEach(tab => tab.classList.toggle('is-active', tab.dataset.target === targetId));
+    }
+
+    function resolveActiveSection() {
+      const line = window.innerHeight * 0.42;
+      let fallback = sectionIds[0];
+      let current = null;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= line) fallback = id;
+        if (rect.top <= line && rect.bottom > line) {
+          current = id;
+          break;
+        }
+      }
+
+      return current || fallback;
+    }
+
+    function updateActiveTab() {
+      setActiveTab(resolveActiveSection());
+      scrollTicking = false;
+    }
+
+    function requestTabUpdate() {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(updateActiveTab);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = document.getElementById(tab.dataset.target);
+        if (!target) return;
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          lenis.scrollTo(target, { offset: -20 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, requestTabUpdate, { passive: true }));
+    if (lenis && typeof lenis.on === 'function') lenis.on('scroll', requestTabUpdate);
+    requestTabUpdate();
+
+    if (finePointer && !reduceMotion) {
+      document.body.classList.add('has-cursor');
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      const label = document.getElementById('cursor-label');
+
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let rx = mx, ry = my;
+
+      window.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+
+        const target = e.target.closest('[data-cursor]');
+        if (target) {
+          ring.classList.add('is-active');
+          label.textContent = target.dataset.cursor;
+        } else {
+          ring.classList.remove('is-active');
+          label.textContent = '';
+        }
+      });
+
+      const raf = () => {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+
+      document.addEventListener('mousemove', (e) => {
+        const magnet = e.target.closest('.nav-return');
+        if (!magnet) return;
+        const rect = magnet.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        gsap.to(magnet, { x: relX * 0.28, y: relY * 0.28, duration: 0.35, ease: 'power2.out' });
+      });
+
+      document.querySelectorAll('.nav-return').forEach(el => {
+        el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' }));
+      });
+    } else {
+      document.getElementById('cursor-dot').style.display = 'none';
+      document.getElementById('cursor-ring').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
