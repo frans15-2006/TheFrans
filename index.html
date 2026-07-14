@@ -1508,6 +1508,7 @@ function startAutoScroll() {
   const duration = Math.max(0.8, maxY / SPEED);
   const tourNotif = document.getElementById('tour-notif');
   let aborted = false;
+  let originX = null, originY = null;
   function abort() {
     if (aborted) return;
     aborted = true;
@@ -1515,16 +1516,22 @@ function startAutoScroll() {
     setTimeout(() => lenis.start(), 32);
     cleanup(); tourNotif.classList.remove('show'); showUnlockNotif();
   }
+  function onMove(e) {
+    if (originX === null) { originX = e.clientX; originY = e.clientY; return; }
+    if (Math.hypot(e.clientX - originX, e.clientY - originY) > 8) abort();
+  }
   function onKey(e) {
     if (new Set([' ','ArrowUp','ArrowDown','PageUp','PageDown','Home','End']).has(e.key)) abort();
   }
   function cleanup() {
     window.removeEventListener('wheel', abort);
     window.removeEventListener('touchstart', abort);
+    window.removeEventListener('mousemove', onMove);
     window.removeEventListener('keydown', onKey);
   }
   window.addEventListener('wheel', abort, { passive: true });
   window.addEventListener('touchstart', abort, { passive: true });
+  window.addEventListener('mousemove', onMove, { passive: true });
   window.addEventListener('keydown', onKey);
   tourNotif.classList.add('show');
   lenis.scrollTo(maxY, {
