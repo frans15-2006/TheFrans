@@ -380,6 +380,22 @@
     @keyframes _drain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
     #skewWrap{will-change:transform;transform-origin:center center}
     .tilt-card{transform-style:preserve-3d;transition:transform 0.12s ease}
+    .section-rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:16px;align-items:center}
+    .rail-dot{position:relative;width:7px;height:7px;border-radius:50%;background:var(--border-mid);border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s var(--easing-premium)}
+    .rail-dot::before{content:'';position:absolute;inset:-9px;border-radius:50%}
+    .rail-dot:hover{background:rgba(240,165,0,.5)}
+    .rail-dot.active{background:var(--accent);transform:scale(1.6)}
+    .rail-label{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;background:rgba(8,8,8,.94);padding:4px 9px;border-radius:5px;border:1px solid var(--border)}
+    .rail-dot:hover .rail-label{opacity:1}
+    @supports (animation-timeline:view()){
+      @media (prefers-reduced-motion:no-preference){
+        .feature-tag,.tech-tag{animation:_chip-in linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+        @keyframes _chip-in{from{opacity:0;transform:translateY(10px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+      }
+    }
+    @media(max-width:900px){
+      .section-rail{display:none}
+    }
     @media(max-width:768px){
       :root{--section-pad:88px}
       .about-grid{grid-template-columns:1fr;gap:28px}
@@ -403,6 +419,8 @@
       .hero-name,.reveal,.divider,.evidence-card,.project-card,.arch-toggle{transition:none!important;animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
       .bw-word{filter:none!important;opacity:1!important;transform:none!important}
       body::before,body::after{animation:none!important}
+      .rail-dot{transition:none!important}
+      .rail-dot.active{transform:none!important}
     }
   </style>
 </head>
@@ -431,6 +449,14 @@
 <div class="cur-label" id="curLabel" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"></div>
 <div class="grid-overlay" aria-hidden="true"></div>
+
+<nav class="section-rail" id="sectionRail" aria-label="Section progress">
+  <button class="rail-dot" type="button" data-target="#about"><span class="rail-label">About</span></button>
+  <button class="rail-dot" type="button" data-target="#skills"><span class="rail-label">Evidence</span></button>
+  <button class="rail-dot" type="button" data-target="#projects"><span class="rail-label">Work</span></button>
+  <button class="rail-dot" type="button" data-target="#clients"><span class="rail-label">Clients</span></button>
+  <button class="rail-dot" type="button" data-target="#contact"><span class="rail-label">Contact</span></button>
+</nav>
 
 <nav aria-label="Primary navigation">
   <div class="container nav-inner">
@@ -985,6 +1011,10 @@ function onPreloaderReady() {
   initSignatureReveal();
   initCardTilt();
   initHeroScrollExit();
+  initCountUp();
+  initMarqueeVelocity();
+  initGhostParallax();
+  initSectionRail();
   if (!noMotion && !sessionStorage.getItem(AUTO_KEY)) setTimeout(startAutoScroll, 800);
 }
 if (window.__preloaderDone) { onPreloaderReady(); }
@@ -1434,6 +1464,82 @@ function initDividers() {
   });
 }
 
+function initCountUp() {
+  if (noMotion) return;
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const match = el.textContent.trim().match(/^(\d+)(\D*)$/);
+    if (!match) return;
+    const target = parseInt(match[1], 10);
+    const suffix = match[2] || '';
+    const counter = { val: 0 };
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        gsap.to(counter, {
+          val: target, duration: 1.15, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(counter.val) + suffix; }
+        });
+      }
+    });
+  });
+}
+
+function initMarqueeVelocity() {
+  if (noMotion) return;
+  const tracks = document.querySelectorAll('.marquee-track');
+  if (!tracks.length) return;
+  let rate = 1;
+  lenis.on('scroll', ({ velocity }) => {
+    const boosted = 1 + Math.min(Math.abs(velocity) * 0.06, 3.5);
+    rate = Math.max(rate, boosted);
+  });
+  gsap.ticker.add(() => {
+    rate += (1 - rate) * 0.03;
+    tracks.forEach(t => {
+      const anim = t.getAnimations && t.getAnimations()[0];
+      if (anim) anim.playbackRate = rate;
+    });
+  });
+}
+
+function initGhostParallax() {
+  if (noMotion || isMobile) return;
+  document.querySelectorAll('.section-ghost-num').forEach(el => {
+    gsap.to(el, {
+      y: -40, ease: 'none',
+      scrollTrigger: {
+        trigger: el.closest('.section-title-wrap'),
+        start: 'top bottom', end: 'bottom top', scrub: 1
+      }
+    });
+  });
+}
+
+function initSectionRail() {
+  const rail = document.getElementById('sectionRail');
+  if (!rail) return;
+  const dots = Array.from(rail.querySelectorAll('.rail-dot'));
+  function setActive(activeDot) {
+    dots.forEach(d => d.classList.toggle('active', d === activeDot));
+  }
+  dots.forEach(dot => {
+    const target = document.querySelector(dot.dataset.target);
+    if (!target) return;
+    dot.addEventListener('click', () => {
+      lenis.scrollTo(target, { offset: -60, duration: 1.1 });
+    });
+    ScrollTrigger.create({
+      trigger: target,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => setActive(dot),
+      onEnterBack: () => setActive(dot)
+    });
+  });
+}
+
 (function() {
   const isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   const dot = document.getElementById('curDot');
@@ -1508,7 +1614,7 @@ function startAutoScroll() {
   const duration = Math.max(0.8, maxY / SPEED);
   const tourNotif = document.getElementById('tour-notif');
   let aborted = false;
-  let originX = null, originY = null;
+  let startX = null, startY = null;
   function abort() {
     if (aborted) return;
     aborted = true;
@@ -1516,23 +1622,23 @@ function startAutoScroll() {
     setTimeout(() => lenis.start(), 32);
     cleanup(); tourNotif.classList.remove('show'); showUnlockNotif();
   }
-  function onMove(e) {
-    if (originX === null) { originX = e.clientX; originY = e.clientY; return; }
-    if (Math.hypot(e.clientX - originX, e.clientY - originY) > 8) abort();
-  }
   function onKey(e) {
     if (new Set([' ','ArrowUp','ArrowDown','PageUp','PageDown','Home','End']).has(e.key)) abort();
+  }
+  function onMouseMove(e) {
+    if (startX === null) { startX = e.clientX; startY = e.clientY; return; }
+    if (Math.hypot(e.clientX - startX, e.clientY - startY) > 24) abort();
   }
   function cleanup() {
     window.removeEventListener('wheel', abort);
     window.removeEventListener('touchstart', abort);
-    window.removeEventListener('mousemove', onMove);
     window.removeEventListener('keydown', onKey);
+    window.removeEventListener('mousemove', onMouseMove);
   }
   window.addEventListener('wheel', abort, { passive: true });
   window.addEventListener('touchstart', abort, { passive: true });
-  window.addEventListener('mousemove', onMove, { passive: true });
   window.addEventListener('keydown', onKey);
+  window.addEventListener('mousemove', onMouseMove, { passive: true });
   tourNotif.classList.add('show');
   lenis.scrollTo(maxY, {
     duration, easing: t => t,
