@@ -324,6 +324,7 @@
     .project-status{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
     .status-badge{font-family:var(--mono);font-size:10px;padding:5px 11px;border-radius:999px;background:rgba(74,222,128,.07);color:var(--green);border:1px solid rgba(74,222,128,.18);white-space:nowrap}
     .status-badge.done{background:rgba(255,255,255,.04);color:var(--text-2);border-color:var(--border)}
+    .status-badge.progress{background:rgba(240,165,0,.07);color:var(--accent);border-color:rgba(240,165,0,.2)}
     .incident-block{margin-top:16px;padding:15px 17px;background:rgba(240,165,0,.035);border:1px solid rgba(240,165,0,.1);border-radius:8px}
     .incident-label{font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:9px}
     .incident-item{font-size:12.5px;color:var(--text-2);line-height:1.72;padding-left:14px;position:relative;margin-bottom:5px}
@@ -741,6 +742,36 @@
             <span class="status-badge">Live</span>
             
             <a href="https://thefrans.is-a.dev" class="btn btn-ghost" style="font-size:11px;padding:7px 13px;">Portfolio &#8599;</a>
+          </div>
+        </article>
+
+        <article class="project-card tilt-card reveal" id="voltCard">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div>
+            <div class="project-meta">
+              <span class="project-cat">Android App &middot; Jetpack Compose</span>
+              <span class="project-dot" aria-hidden="true"></span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">VOLT</h3>
+            <p class="project-desc">A smart home energy operations platform for Android. Monitor, control, and automate every electrical outlet in a home from one interface &mdash; room-based dashboards, real-time wattage tracking, fire/overheat detection with emergency shutdown, and an interactive floor plan built for smooth 120&ndash;144&nbsp;Hz motion.</p>
+            <div class="project-features" style="margin-top:16px;">
+              <span class="feature-tag">Remote Outlet Control</span>
+              <span class="feature-tag">Fire &amp; Overheat Detection</span>
+              <span class="feature-tag">Away Mode</span>
+              <span class="feature-tag">Scheduling &amp; Automation</span>
+              <span class="feature-tag">Interactive Floor Plan</span>
+              <span class="feature-tag">AI Copilot</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">Jetpack Compose</span>
+              <span class="tech-tag">Material 3</span>
+              <span class="tech-tag">Gemini API</span>
+            </div>
+          </div>
+          <div class="project-status">
+            <span class="status-badge progress">In Development</span>
           </div>
         </article>
       </div>
