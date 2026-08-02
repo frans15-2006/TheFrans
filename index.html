@@ -158,7 +158,7 @@
     html.cursor-click .cur-ring{width:20px;height:20px}
     .scroll-progress{position:fixed;top:0;left:0;right:0;height:1px;z-index:300;background:var(--accent);transform:scaleX(0);transform-origin:left;animation:_prog linear both;animation-timeline:scroll(root)}
     @keyframes _prog{to{transform:scaleX(1)}}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;border-bottom:1px solid transparent;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:_nav-bg linear both;animation-timeline:scroll(root);animation-range:0px 80px}
+    nav[aria-label="Primary navigation"]{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;border-bottom:1px solid transparent;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);animation:_nav-bg linear both;animation-timeline:scroll(root);animation-range:0px 80px}
     @keyframes _nav-bg{from{background:rgba(8,8,8,0);border-bottom-color:transparent}to{background:rgba(8,8,8,.92);border-bottom-color:var(--border)}}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
     .nav-logo{font-family:var(--mono);font-size:12px;color:var(--accent);text-decoration:none;letter-spacing:.04em;position:relative;z-index:101;opacity:.85;transition:opacity .2s}
