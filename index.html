@@ -89,7 +89,7 @@
       --easing-premium:cubic-bezier(0.22,1,0.36,1);
       --easing-cinema:cubic-bezier(0.76,0,0.24,1);
       --easing-heavy:cubic-bezier(0.86,0,0.07,1);
-      --orb-x:50%;--orb-y:40%
+      --orb-x:50%;--orb-y:40%;--orb2-x:62%;--orb2-y:58%
     }
     html{}
     body{
@@ -122,6 +122,18 @@
       animation:_orb-breathe 14s ease-in-out infinite
     }
     body.orb-ready::after{opacity:1}
+    .orb-glow-2{
+      position:fixed;inset:0;z-index:8997;pointer-events:none;
+      background:radial-gradient(
+        ellipse 30vw 24vh at var(--orb2-x) var(--orb2-y),
+        rgba(255,190,48,0.05) 0%,
+        rgba(255,190,48,0.012) 45%,
+        transparent 72%
+      );
+      filter:blur(4px);mix-blend-mode:screen;
+      transition:opacity 1.6s ease;opacity:0
+    }
+    body.orb-ready .orb-glow-2{opacity:1}
     @keyframes _orb-breathe{
       0%,100%{filter:blur(0px)}
       50%{filter:blur(1px)}
@@ -218,8 +230,8 @@
     .btn-primary:hover{background:var(--accent-hi)}
     .btn-primary::before{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);pointer-events:none;transition:left .55s var(--easing-premium)}
     .btn-primary:hover::before{left:125%}
-    .btn-ghost{background:transparent;border:1px solid var(--border-mid);color:var(--text-2)}
-    .btn-ghost:hover{border-color:rgba(255,255,255,.18);color:var(--text);background:var(--bg-3)}
+    .btn-ghost{background:transparent;border:1px solid var(--border-mid);color:var(--text-2);box-shadow:0 0 0 0 rgba(240,165,0,0)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.18);color:var(--text);background:var(--bg-3);box-shadow:0 0 0 4px rgba(240,165,0,.05)}
     #hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 88px;position:relative;overflow:hidden}
     #heroCanvas{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.4s ease;z-index:0}
     #heroCanvas.visible{opacity:1}
@@ -371,15 +383,26 @@
     .contact-value a:hover{color:var(--accent)}
     .contact-tagline{font-size:clamp(22px,3.5vw,38px);font-weight:300;letter-spacing:-.03em;line-height:1.25;color:var(--text-2)}
     .contact-tagline strong{font-weight:700;color:var(--text)}
-    footer{border-top:1px solid var(--border);padding:30px 0}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    footer{border-top:1px solid var(--border);padding:64px 0 30px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:40px;padding-bottom:44px}
+    .footer-brand-word{font-family:var(--sans);font-weight:800;font-size:19px;letter-spacing:-.01em;color:var(--text)}
+    .footer-brand-word span{color:var(--accent)}
+    .footer-tagline{font-size:13px;color:var(--text-2);line-height:1.7;margin-top:12px;max-width:280px}
+    .footer-heading{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin-bottom:16px}
+    .footer-links{display:flex;flex-direction:column;gap:11px;list-style:none}
+    .footer-links a{font-size:13px;color:var(--text-2);text-decoration:none;transition:color .2s;position:relative;display:inline-block;width:fit-content}
+    .footer-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width .35s var(--easing-premium)}
+    .footer-links a:hover{color:var(--text)}
+    .footer-links a:hover::after{width:100%}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:26px;border-top:1px solid var(--border)}
     .footer-left{font-family:var(--mono);font-size:11px;color:var(--text-3)}
     .footer-left span{color:var(--accent)}
     .footer-right{font-size:11px;color:var(--text-3)}
     .footer-right a{color:var(--text-3);text-decoration:none;transition:color .2s}
     .footer-right a:hover{color:var(--accent)}
-    .footer-record{display:flex;align-items:center;gap:7px;margin-top:6px;color:var(--official);font-size:10px;letter-spacing:.05em}
+    .footer-record{display:flex;align-items:center;gap:7px;margin-top:10px;color:var(--official);font-size:10px;letter-spacing:.05em}
     .footer-record svg{flex-shrink:0;opacity:.85}
+    @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;row-gap:32px}.footer-grid>div:first-child{grid-column:1/-1}}
     .nav-record{display:inline-flex;align-items:center;gap:4px;margin-left:10px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--official);padding:3px 7px;border:1px solid rgba(77,116,212,.22);border-radius:4px;background:var(--official-dim);vertical-align:middle}
     .nav-record::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--official);flex-shrink:0}
     @media(max-width:900px){.nav-record{display:none}}
@@ -465,6 +488,7 @@
 <div class="cur-label" id="curLabel" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"></div>
 <div class="grid-overlay" aria-hidden="true"></div>
+<div class="orb-glow-2" aria-hidden="true"></div>
 
 <nav class="section-rail" id="sectionRail" aria-label="Section progress">
   <button class="rail-dot" type="button" data-target="#about"><span class="rail-label">About</span></button>
@@ -989,12 +1013,36 @@
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <div class="footer-left">
-      <span>TheFrans.is-a.dev</span> &mdash; Built and deployed from the ground up.
-      <div class="footer-record"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="6" y1="5" x2="18" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="19" x2="18" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Filed under: Production Systems &middot; Status: Active, On Record</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-word">TheFrans<span>.is-a.dev</span></div>
+        <p class="footer-tagline">Backend developer from Palawan. Built and deployed from the ground up &mdash; no template, no shortcuts.</p>
+        <div class="footer-record"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><line x1="6" y1="5" x2="18" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="19" x2="18" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Filed under: Production Systems &middot; Status: Active, On Record</div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="/About/">About</a></li>
+          <li><a href="#skills">Evidence</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Connect</div>
+        <ul class="footer-links">
+          <li><a href="https://www.facebook.com/franshessss" target="_blank" rel="noopener">Facebook &#8599;</a></li>
+          <li><a href="https://github.com/Frans15-2006" target="_blank" rel="noopener">GitHub &#8599;</a></li>
+          <li><a href="#hero">Back to top</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-right">&copy; 2026 Francis Tarectican &middot; <a href="https://thefrans.is-a.dev">TheFrans.is-a.dev &#8599;</a></div>
+    <div class="footer-bottom">
+      <div class="footer-left"><span>&copy; 2026 Francis Tarectican</span> &mdash; Puerto Princesa City, Palawan</div>
+      <div class="footer-right"><a href="https://thefrans.is-a.dev">TheFrans.is-a.dev &#8599;</a></div>
+    </div>
   </div>
 </footer>
 </div>
@@ -1302,7 +1350,9 @@ function initAmbientOrb() {
   if (noMotion) return;
   let tx = 50, ty = 40;
   let cx = 50, cy = 40;
+  let cx2 = 62, cy2 = 58;
   const LERP = isMobile ? 0 : 0.006;
+  const LERP2 = isMobile ? 0 : 0.0032;
   window.addEventListener('mousemove', e => {
     tx = (e.clientX / window.innerWidth) * 100;
     ty = (e.clientY / window.innerHeight) * 100;
@@ -1317,8 +1367,12 @@ function initAmbientOrb() {
     if (isMobile) autonomousDrift();
     cx += (tx - cx) * (isMobile ? 0.004 : LERP);
     cy += (ty - cy) * (isMobile ? 0.004 : LERP);
+    cx2 += (tx - cx2) * (isMobile ? 0.002 : LERP2);
+    cy2 += (ty - cy2) * (isMobile ? 0.002 : LERP2);
     document.body.style.setProperty('--orb-x', cx.toFixed(2) + '%');
     document.body.style.setProperty('--orb-y', cy.toFixed(2) + '%');
+    document.body.style.setProperty('--orb2-x', cx2.toFixed(2) + '%');
+    document.body.style.setProperty('--orb2-y', cy2.toFixed(2) + '%');
     requestAnimationFrame(loop);
   }
   setTimeout(() => {
