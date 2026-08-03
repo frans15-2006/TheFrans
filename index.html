@@ -29,7 +29,7 @@
         "jobTitle": "Backend Systems Developer",
         "worksFor": {
           "@type": "Organization",
-          "name": "Bureau of Internal Revenue — RDO 036"
+          "name": "Bureau of Internal Revenue \u2014 RDO 036"
         },
         "address": {
           "@type": "PostalAddress",
@@ -62,7 +62,7 @@
         "@type": "WebSite",
         "@id": "https://thefrans.is-a.dev/#website",
         "url": "https://thefrans.is-a.dev/",
-        "name": "TheFrans — Francis Tarectican",
+        "name": "TheFrans \u2014 Francis Tarectican",
         "publisher": { "@id": "https://thefrans.is-a.dev/#organization" },
         "inLanguage": "en"
       }
@@ -461,9 +461,60 @@
       .rail-dot{transition:none!important}
       .rail-dot.active{transform:none!important}
     }
+  
+    #maintenance-overlay{
+      position:fixed;
+      inset:0;
+      z-index:20000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(8,8,8,.92);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      pointer-events:auto;
+    }
+    #maintenance-overlay .mo-card{
+      width:min(92vw, 520px);
+      padding:28px 26px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      background:rgba(13,13,13,.78);
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+      text-align:center;
+    }
+    #maintenance-overlay .mo-kicker{
+      font-family:var(--mono);
+      font-size:10px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:14px;
+    }
+    #maintenance-overlay .mo-title{
+      font-size:clamp(30px,5vw,46px);
+      line-height:1.05;
+      letter-spacing:-.03em;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    #maintenance-overlay .mo-sub{
+      font-size:14px;
+      line-height:1.8;
+      color:var(--text-2);
+    }
+
   </style>
 </head>
+
 <body>
+<div id="maintenance-overlay" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="mo-card">
+    <div class="mo-kicker">Under Maintenance</div>
+    <div class="mo-title">Unavailable</div>
+    <div class="mo-sub">This portfolio is temporarily unavailable.</div>
+  </div>
+</div>
 
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-logo">TheFrans.is-a.dev</div>
@@ -1241,6 +1292,8 @@ function initHeroCanvas() {
   const gl = canvas.getContext('webgl2');
   if (!gl) return; // no WebGL2 — leave canvas empty, body background still shows
 
+  // Flow Field: domain-warped noise shader. Desktop/high-end tier, chosen as
+  // the production background. Fullscreen-triangle trick, no vertex buffers.
   const VERT = `#version 300 es
 void main() {
   vec2 pos = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
@@ -1295,7 +1348,7 @@ void main() {
   gl.linkProgram(program);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     console.warn('[heroCanvas] program link failed:', gl.getProgramInfoLog(program));
-    return;
+    return; // leave canvas empty rather than running with broken uniforms
   }
   gl.useProgram(program);
 
