@@ -363,15 +363,30 @@
       text-transform: uppercase;
     }
     .meta-value { font-size: 0.82rem; color: var(--text-sec); }
-    .meta-value.live { color: var(--accent); }
-    .meta-value.live::before {
-      content: '';
-      display: inline-block;
-      width: 5px; height: 5px;
+    .meta-value.live { color: var(--accent); display: inline-flex; align-items: center; }
+
+    .status-orb {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-right: 0.55em;
+    }
+    .status-orb span {
+      width: 4px; height: 4px;
       border-radius: 50%;
       background: var(--accent);
-      margin-right: 0.5em;
-      box-shadow: 0 0 6px var(--accent);
+      box-shadow: 0 0 5px var(--accent);
+      animation: orbPulse 1.4s ease-in-out infinite;
+    }
+    .status-orb span:nth-child(1) { animation-delay: 0s; }
+    .status-orb span:nth-child(2) { animation-delay: 0.18s; }
+    .status-orb span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes orbPulse {
+      0%, 60%, 100% { transform: scale(0.6); opacity: 0.35; }
+      30% { transform: scale(1.15); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .status-orb span { animation: none; opacity: 0.8; }
     }
 
     .hero-side {
@@ -1375,7 +1390,7 @@
         </div>
         <div class="meta-field">
           <span class="meta-label">Status</span>
-          <span class="meta-value live">ACTIVE</span>
+          <span class="meta-value live"><span class="status-orb" aria-hidden="true"><span></span><span></span><span></span></span>ACTIVE</span>
         </div>
       </div>
 
@@ -2051,7 +2066,7 @@
     const ARCHIVE = [
       { year: '2026', title: 'Live client work across Palawan', detail: 'Production systems, ordering flows, and deployed interfaces that already exist in the wild.' },
       { year: '2026', title: 'BIR RDO 036', detail: 'Current professional track with a systems-focused day job and practical delivery constraints.' },
-      { year: '2026', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
+      { year: '2024', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
     ];
 
     function renderStack() {
@@ -2457,7 +2472,7 @@
       requestAnimationFrame(raf);
 
       document.addEventListener('mousemove', (e) => {
-        const magnet = e.target.closest('.nav-return');
+        const magnet = e.target.closest('.nav-return, .profile-pill');
         if (!magnet) return;
         const rect = magnet.getBoundingClientRect();
         const relX = e.clientX - (rect.left + rect.width / 2);
@@ -2465,7 +2480,7 @@
         gsap.to(magnet, { x: relX * 0.28, y: relY * 0.28, duration: 0.35, ease: 'power2.out' });
       });
 
-      document.querySelectorAll('.nav-return').forEach(el => {
+      document.querySelectorAll('.nav-return, .profile-pill').forEach(el => {
         el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' }));
       });
     } else {
