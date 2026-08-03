@@ -2373,6 +2373,11 @@
       }
     }, 50);
 
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+
     document.addEventListener('mousemove', (e) => {
       const card = e.target.closest('.spotlight');
       if (!card) return;
