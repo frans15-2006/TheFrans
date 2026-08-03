@@ -53,7 +53,8 @@
         var(--bg);
       color: var(--text-pri);
       font-family: var(--fd-body);
-      overflow-x: hidden;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
@@ -362,30 +363,15 @@
       text-transform: uppercase;
     }
     .meta-value { font-size: 0.82rem; color: var(--text-sec); }
-    .meta-value.live { color: var(--accent); display: inline-flex; align-items: center; }
-
-    .status-orb {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      margin-right: 0.55em;
-    }
-    .status-orb span {
-      width: 4px; height: 4px;
+    .meta-value.live { color: var(--accent); }
+    .meta-value.live::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 5px var(--accent);
-      animation: orbPulse 1.4s ease-in-out infinite;
-    }
-    .status-orb span:nth-child(1) { animation-delay: 0s; }
-    .status-orb span:nth-child(2) { animation-delay: 0.18s; }
-    .status-orb span:nth-child(3) { animation-delay: 0.36s; }
-    @keyframes orbPulse {
-      0%, 60%, 100% { transform: scale(0.6); opacity: 0.35; }
-      30% { transform: scale(1.15); opacity: 1; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .status-orb span { animation: none; opacity: 0.8; }
+      margin-right: 0.5em;
+      box-shadow: 0 0 6px var(--accent);
     }
 
     .hero-side {
@@ -1306,9 +1292,73 @@
       .ticker-track { animation: none; }
     }
 
+    .maintenance-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(200,169,110,0.09), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(111,143,174,0.08), transparent 18%),
+        var(--bg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .maintenance-box { max-width: 34rem; }
+    .maintenance-stamp {
+      display: inline-block;
+      border: 2px solid var(--stamp-red);
+      color: var(--stamp-red);
+      font-family: var(--fd-mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      transform: rotate(-4deg);
+      margin-bottom: 2rem;
+    }
+    .maintenance-title {
+      font-family: var(--fd-display);
+      font-size: clamp(2.4rem, 8vw, 4.6rem);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: var(--text-pri);
+      margin-bottom: 1.1rem;
+    }
+    .maintenance-sub {
+      font-family: var(--fd-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-sec);
+      margin-bottom: 2.4rem;
+    }
+    .maintenance-return {
+      font-family: var(--fd-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      padding: 0.6rem 1.5rem;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .maintenance-return:hover { border-color: var(--accent); }
   </style>
 </head>
 <body>
+  <div class="maintenance-overlay">
+    <div class="maintenance-box">
+      <div class="maintenance-stamp">Status // Restricted</div>
+      <h1 class="maintenance-title">Under Maintenance</h1>
+      <p class="maintenance-sub">Dossier temporarily unavailable</p>
+      <a href="/" class="maintenance-return">← Return to Portfolio</a>
+    </div>
+  </div>
 
   <div class="grain-overlay"></div>
   <div class="sky-orb"></div>
@@ -1389,7 +1439,7 @@
         </div>
         <div class="meta-field">
           <span class="meta-label">Status</span>
-          <span class="meta-value live"><span class="status-orb" aria-hidden="true"><span></span><span></span><span></span></span>ACTIVE</span>
+          <span class="meta-value live">ACTIVE</span>
         </div>
       </div>
 
@@ -2046,9 +2096,8 @@
 
     const FIELD_WORK = [
       { name: 'Mix & Match Kain', type: 'FULL-STACK — Node.js / Express / WebSockets QR Ordering', url: '#' },
-      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#', hidden: true },
-      { name: 'VOLT', type: 'ANDROID — Jetpack Compose Smart Outlet Control & Fire Telemetry', url: 'https://github.com/frans15-2006/TheFrans3' },
-      { name: '76+ Deployed Client Sites', type: 'VIEW FULL PORTFOLIO', url: '/' },
+      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#' },
+      { name: '19+ Deployed Client Sites', type: 'VIEW FULL PORTFOLIO', url: '/' },
     ];
 
     const EFFECTS = [
@@ -2065,7 +2114,7 @@
     const ARCHIVE = [
       { year: '2026', title: 'Live client work across Palawan', detail: 'Production systems, ordering flows, and deployed interfaces that already exist in the wild.' },
       { year: '2026', title: 'BIR RDO 036', detail: 'Current professional track with a systems-focused day job and practical delivery constraints.' },
-      { year: '2024', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
+      { year: '2026', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
     ];
 
     function renderStack() {
@@ -2268,7 +2317,7 @@
     }
 
     function renderFieldwork() {
-      document.getElementById('fw-list').innerHTML = FIELD_WORK.filter(f => !f.hidden).map((f, i) => `
+      document.getElementById('fw-list').innerHTML = FIELD_WORK.map((f, i) => `
         <a href="${f.url}" class="fw-row spotlight js-up" ${f.url !== '/' ? 'target="_blank" rel="noopener"' : ''} data-cursor="${f.url === '/' ? 'ALL FILES' : 'OPEN'}">
           <div class="fw-idx">${String(i + 1).padStart(2,'0')}</div>
           <div>
@@ -2373,11 +2422,6 @@
       }
     }, 50);
 
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => ScrollTrigger.refresh());
-    }
-    window.addEventListener('load', () => ScrollTrigger.refresh());
-
     document.addEventListener('mousemove', (e) => {
       const card = e.target.closest('.spotlight');
       if (!card) return;
@@ -2476,7 +2520,7 @@
       requestAnimationFrame(raf);
 
       document.addEventListener('mousemove', (e) => {
-        const magnet = e.target.closest('.nav-return, .profile-pill');
+        const magnet = e.target.closest('.nav-return');
         if (!magnet) return;
         const rect = magnet.getBoundingClientRect();
         const relX = e.clientX - (rect.left + rect.width / 2);
@@ -2484,7 +2528,7 @@
         gsap.to(magnet, { x: relX * 0.28, y: relY * 0.28, duration: 0.35, ease: 'power2.out' });
       });
 
-      document.querySelectorAll('.nav-return, .profile-pill').forEach(el => {
+      document.querySelectorAll('.nav-return').forEach(el => {
         el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' }));
       });
     } else {
