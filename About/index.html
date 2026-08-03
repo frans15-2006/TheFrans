@@ -1292,73 +1292,9 @@
       .ticker-track { animation: none; }
     }
 
-    .maintenance-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(200,169,110,0.09), transparent 26%),
-        radial-gradient(circle at 80% 10%, rgba(111,143,174,0.08), transparent 18%),
-        var(--bg);
-      padding: 2rem;
-      text-align: center;
-    }
-    .maintenance-box { max-width: 34rem; }
-    .maintenance-stamp {
-      display: inline-block;
-      border: 2px solid var(--stamp-red);
-      color: var(--stamp-red);
-      font-family: var(--fd-mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      padding: 0.5rem 1.2rem;
-      transform: rotate(-4deg);
-      margin-bottom: 2rem;
-    }
-    .maintenance-title {
-      font-family: var(--fd-display);
-      font-size: clamp(2.4rem, 8vw, 4.6rem);
-      letter-spacing: 0.02em;
-      line-height: 1;
-      color: var(--text-pri);
-      margin-bottom: 1.1rem;
-    }
-    .maintenance-sub {
-      font-family: var(--fd-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-sec);
-      margin-bottom: 2.4rem;
-    }
-    .maintenance-return {
-      font-family: var(--fd-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      text-decoration: none;
-      text-transform: uppercase;
-      border: 1px solid var(--border-hi);
-      padding: 0.6rem 1.5rem;
-      display: inline-block;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .maintenance-return:hover { border-color: var(--accent); }
   </style>
 </head>
 <body>
-  <div class="maintenance-overlay">
-    <div class="maintenance-box">
-      <div class="maintenance-stamp">Status // Restricted</div>
-      <h1 class="maintenance-title">Under Maintenance</h1>
-      <p class="maintenance-sub">Dossier temporarily unavailable</p>
-      <a href="/" class="maintenance-return">← Return to Portfolio</a>
-    </div>
-  </div>
 
   <div class="grain-overlay"></div>
   <div class="sky-orb"></div>
