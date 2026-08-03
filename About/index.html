@@ -2032,8 +2032,9 @@
 
     const FIELD_WORK = [
       { name: 'Mix & Match Kain', type: 'FULL-STACK — Node.js / Express / WebSockets QR Ordering', url: '#' },
-      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#' },
-      { name: '19+ Deployed Client Sites', type: 'VIEW FULL PORTFOLIO', url: '/' },
+      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#', hidden: true },
+      { name: 'VOLT', type: 'ANDROID — Jetpack Compose Smart Outlet Control & Fire Telemetry', url: 'https://github.com/frans15-2006/TheFrans3' },
+      { name: '76+ Deployed Client Sites', type: 'VIEW FULL PORTFOLIO', url: '/' },
     ];
 
     const EFFECTS = [
@@ -2253,7 +2254,7 @@
     }
 
     function renderFieldwork() {
-      document.getElementById('fw-list').innerHTML = FIELD_WORK.map((f, i) => `
+      document.getElementById('fw-list').innerHTML = FIELD_WORK.filter(f => !f.hidden).map((f, i) => `
         <a href="${f.url}" class="fw-row spotlight js-up" ${f.url !== '/' ? 'target="_blank" rel="noopener"' : ''} data-cursor="${f.url === '/' ? 'ALL FILES' : 'OPEN'}">
           <div class="fw-idx">${String(i + 1).padStart(2,'0')}</div>
           <div>
