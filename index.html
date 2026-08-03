@@ -754,20 +754,31 @@
               <span class="project-date">2026</span>
             </div>
             <h3 class="project-title">VOLT</h3>
-            <p class="project-desc">A smart home energy operations platform for Android. Monitor, control, and automate every electrical outlet in a home from one interface &mdash; room-based dashboards, real-time wattage tracking, fire/overheat detection with emergency shutdown, and an interactive floor plan built.</p>
+            <p class="project-desc">A smart home energy operations platform for Android. Monitor, control, and automate every electrical outlet in a home from one interface &mdash; room-based dashboards, real-time wattage tracking, fire/overheat detection with emergency shutdown, and an interactive floor plan built for smooth 120&ndash;144&nbsp;Hz motion. Six screens (Dashboard, Automation, Insights, Outlet Detail, Copilot, Settings) run on an MVVM architecture with a Room-backed local database as the single source of truth.</p>
+            <div class="incident-block">
+              <div class="incident-label">Under the Hood</div>
+              <div class="incident-item">Every outlet toggle writes an event log with a computed wattage delta &mdash; manual overrides are tracked separately from automation so scheduled actions never silently clobber a user's manual state.</div>
+              <div class="incident-item">Floor plan pins are stored as normalized X/Y percentages per outlet, so the layout stays correct across any screen size without hardcoded coordinates.</div>
+            </div>
             <div class="project-features" style="margin-top:16px;">
-              <span class="feature-tag">Remote Outlet Control</span>
+              <span class="feature-tag">Room-Based Dashboard</span>
               <span class="feature-tag">Fire &amp; Overheat Detection</span>
               <span class="feature-tag">Away Mode</span>
               <span class="feature-tag">Scheduling &amp; Automation</span>
               <span class="feature-tag">Interactive Floor Plan</span>
+              <span class="feature-tag">Event Logging</span>
               <span class="feature-tag">AI Copilot</span>
+              <span class="feature-tag">Secure Auth</span>
             </div>
             <div class="tech-stack">
               <span class="tech-tag">Kotlin</span>
               <span class="tech-tag">Jetpack Compose</span>
               <span class="tech-tag">Material 3</span>
+              <span class="tech-tag">Room</span>
+              <span class="tech-tag">Retrofit &amp; Moshi</span>
+              <span class="tech-tag">Firebase Auth</span>
               <span class="tech-tag">Gemini API</span>
+              <span class="tech-tag">CameraX</span>
             </div>
           </div>
           <div class="project-status">
