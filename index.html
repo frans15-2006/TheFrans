@@ -29,7 +29,7 @@
         "jobTitle": "Backend Systems Developer",
         "worksFor": {
           "@type": "Organization",
-          "name": "Bureau of Internal Revenue \u2014 RDO 036"
+          "name": "Bureau of Internal Revenue — RDO 036"
         },
         "address": {
           "@type": "PostalAddress",
@@ -62,7 +62,7 @@
         "@type": "WebSite",
         "@id": "https://thefrans.is-a.dev/#website",
         "url": "https://thefrans.is-a.dev/",
-        "name": "TheFrans \u2014 Francis Tarectican",
+        "name": "TheFrans — Francis Tarectican",
         "publisher": { "@id": "https://thefrans.is-a.dev/#organization" },
         "inLanguage": "en"
       }
@@ -1241,8 +1241,6 @@ function initHeroCanvas() {
   const gl = canvas.getContext('webgl2');
   if (!gl) return; // no WebGL2 — leave canvas empty, body background still shows
 
-  // Flow Field: domain-warped noise shader. Desktop/high-end tier, chosen as
-  // the production background. Fullscreen-triangle trick, no vertex buffers.
   const VERT = `#version 300 es
 void main() {
   vec2 pos = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
@@ -1297,7 +1295,7 @@ void main() {
   gl.linkProgram(program);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
     console.warn('[heroCanvas] program link failed:', gl.getProgramInfoLog(program));
-    return; // leave canvas empty rather than running with broken uniforms
+    return;
   }
   gl.useProgram(program);
 
