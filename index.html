@@ -461,60 +461,9 @@
       .rail-dot{transition:none!important}
       .rail-dot.active{transform:none!important}
     }
-  
-    #maintenance-overlay{
-      position:fixed;
-      inset:0;
-      z-index:20000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(8,8,8,.92);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-      pointer-events:auto;
-    }
-    #maintenance-overlay .mo-card{
-      width:min(92vw, 520px);
-      padding:28px 26px;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      background:rgba(13,13,13,.78);
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
-      text-align:center;
-    }
-    #maintenance-overlay .mo-kicker{
-      font-family:var(--mono);
-      font-size:10px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--accent);
-      margin-bottom:14px;
-    }
-    #maintenance-overlay .mo-title{
-      font-size:clamp(30px,5vw,46px);
-      line-height:1.05;
-      letter-spacing:-.03em;
-      font-weight:700;
-      margin-bottom:12px;
-    }
-    #maintenance-overlay .mo-sub{
-      font-size:14px;
-      line-height:1.8;
-      color:var(--text-2);
-    }
-
   </style>
 </head>
-
 <body>
-<div id="maintenance-overlay" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="mo-card">
-    <div class="mo-kicker">Under Maintenance</div>
-    <div class="mo-title">Unavailable</div>
-    <div class="mo-sub">This portfolio is temporarily unavailable.</div>
-  </div>
-</div>
 
 <div id="preloader" role="status" aria-label="Loading">
   <div class="pl-logo">TheFrans.is-a.dev</div>
@@ -858,6 +807,37 @@
           </div>
           <div class="project-status">
             <span class="status-badge progress">In Development</span>
+          </div>
+        </article>
+
+        <article class="project-card tilt-card reveal" id="fluentflyoutCard">
+          <div class="card-glow" aria-hidden="true"></div>
+          <div>
+            <div class="project-meta">
+              <span class="project-cat">Open Source Contribution &middot; WPF</span>
+              <span class="project-dot" aria-hidden="true"></span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-title">FluentFlyout</h3>
+            <p class="project-desc">Contributed to unchihugo/FluentFlyout, an open-source Fluent 2 Design flyout utility for Windows 11. Refactored duplicated taskbar and marquee update logic scattered across property change handlers into two shared helper methods, and hardened the saved-language restore path so a missing or invalid language tag falls back gracefully instead of crashing the app on launch.</p>
+            <div class="incident-block">
+              <div class="incident-label">Under the Hood</div>
+              <div class="incident-item">Consolidated repeated taskbar/marquee state updates into <code>UpdateTaskbar()</code> and <code>UpdateTaskbarMarquees()</code> helpers, with null-safe access to <code>MainWindow</code> and widget instances &mdash; no behavior change, no new user-facing features.</div>
+              <div class="incident-item">Replaced a throwing <code>.First()</code> lookup in the app-language restore path with a cascading fallback (exact match &rarr; system default &rarr; first available), logging a warning whenever a fallback occurs.</div>
+            </div>
+            <div class="project-features" style="margin-top:16px;">
+              <span class="feature-tag">Code Refactor</span>
+              <span class="feature-tag">Crash Fix</span>
+              <span class="feature-tag">Settings Restore Logic</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">WPF</span>
+              <span class="tech-tag">.NET</span>
+            </div>
+          </div>
+          <div class="project-status">
+            <span class="status-badge progress">Pending Review</span>
           </div>
         </article>
       </div>
