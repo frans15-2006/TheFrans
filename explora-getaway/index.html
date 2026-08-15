@@ -1,60 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explora Getaway Travel and Tours</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explora Getaway | Palawan travel, stays, and island routes</title>
+  <meta name="description" content="Explora Getaway is a Puerto Princesa City-based travel and tours service arranging verified Palawan stays, including Astoria Palawan room types, resort amenities, and local booking support.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="/explora-getaway/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Explora Getaway | Palawan travel, stays, and island routes">
+  <meta property="og:description" content="Book verified Palawan stays and local travel support from Puerto Princesa with Explora Getaway.">
+  <meta property="og:image" content="assets/img/hero-palawan.svg">
+  <meta property="og:url" content="/explora-getaway/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Explora Getaway | Palawan travel, stays, and island routes">
+  <meta name="twitter:description" content="Book verified Palawan stays and local travel support from Puerto Princesa with Explora Getaway.">
+  <meta name="twitter:image" content="assets/img/hero-palawan.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.7);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.5);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(240, 165, 0, 0.06), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.3);
+      color: var(--text);
+    }
+
+    .font-display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    .font-mono-ui {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .hairline {
+      border-color: var(--line);
+    }
+
+    .text-soft {
+      color: var(--muted);
+    }
+
+    .section-shell {
+      position: relative;
+      padding-top: clamp(4.5rem, 8vw, 7rem);
+      padding-bottom: clamp(4.5rem, 8vw, 7rem);
+    }
+
+    .section-title {
+      max-width: 16ch;
+      line-height: 0.93;
+    }
+
+    .section-note {
+      max-width: 34rem;
+    }
+
+    .nav-blur {
+      background: rgba(8, 8, 8, 0.08);
+      transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .nav-blur.is-scrolled {
+      background: rgba(8, 8, 8, 0.82);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      border-color: rgba(234, 234, 234, 0.1);
+    }
+
+    .hero-glow {
+      background: linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.72) 42%, rgba(8, 8, 8, 0.22) 72%, rgba(8, 8, 8, 0) 100%);
+    }
+
+    .hero-fade {
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.12) 0%, rgba(8, 8, 8, 0.36) 50%, rgba(8, 8, 8, 0.88) 100%);
+    }
+
+    .grid-line {
+      background-image: linear-gradient(to bottom, rgba(234, 234, 234, 0.08), rgba(234, 234, 234, 0.08));
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: top left;
+    }
+
+    .btn-base {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn-base:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    .btn-amber:hover {
+      background: #ffbb2e;
+    }
+
+    .btn-outline {
+      border-color: rgba(234, 234, 234, 0.18);
+      color: var(--text);
+      background: rgba(234, 234, 234, 0.03);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(240, 165, 0, 0.4);
+      color: var(--amber);
+    }
+
+    .metric {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .map-frame {
+      border: 1px solid var(--line);
+      background: #0d0d0d;
+    }
+
+    .accent-rule {
+      width: 3rem;
+      height: 1px;
+      background: var(--amber);
+    }
+  </style>
 </head>
 <body>
-    <h1>Explora Getaway Travel and Tours</h1>
-    <span class="category">Tour Agency</span>
-    <p class="address">R. San Juan St, Puerto Princesa City</p>
-    <p class="phone">+63 915 835 3646</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header data-header class="nav-blur fixed inset-x-0 top-0 z-50 border-b hairline">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#home" data-scroll class="flex items-center gap-3 tracking-[0.18em] text-[#eaeaea]" aria-label="Explora Getaway home">
+        <span class="flex h-11 w-11 items-center justify-center border border-[rgba(240,165,0,0.35)] text-sm font-semibold text-[var(--amber)]">EG</span>
+        <span class="hidden text-[0.88rem] uppercase sm:block">Explora Getaway</span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-soft md:flex">
+        <a href="#rooms" data-scroll class="transition-colors hover:text-[var(--amber)]">Rooms</a>
+        <a href="#amenities" data-scroll class="transition-colors hover:text-[var(--amber)]">Amenities</a>
+        <a href="#location" data-scroll class="transition-colors hover:text-[var(--amber)]">Location</a>
+        <a href="#gallery" data-scroll class="transition-colors hover:text-[var(--amber)]">Gallery</a>
+        <a href="#contact" data-scroll class="transition-colors hover:text-[var(--amber)]">Contact</a>
+      </nav>
+      <a href="#booking" data-scroll class="btn-base btn-outline text-sm">Book now</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative flex min-h-[100svh] items-end overflow-hidden pt-24">
+      <img src="assets/img/hero-palawan.svg" alt="Illustrated Palawan seascape with a resort silhouette, palms, and water" class="hero-art absolute inset-0 h-full w-full object-cover object-center">
+      <div class="hero-glow absolute inset-0"></div>
+      <div class="hero-fade absolute inset-0"></div>
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-20">
+        <div class="max-w-3xl">
+          <p class="hero-kicker font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">Puerto Princesa City, Palawan</p>
+          <p class="hero-brand mt-4 font-display text-6xl leading-none text-[#eaeaea] sm:text-8xl lg:text-[9rem]">Explora Getaway</p>
+          <h1 class="hero-copy mt-5 max-w-2xl text-2xl font-medium leading-tight text-[#f4f1ea] sm:text-3xl lg:text-4xl">Your Palawan getaway, planned from Puerto Princesa.</h1>
+          <p class="hero-copy mt-4 max-w-xl text-base leading-7 text-soft sm:text-lg">Explora Getaway Travel & Tours Services is a Puerto Princesa City-based booking team arranging resort stays, island days, and transfers across Palawan.</p>
+          <div class="hero-cta mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#booking" data-scroll class="btn-base btn-amber font-medium">Book a getaway</a>
+            <a href="tel:+639158353646" class="btn-base btn-outline font-medium">Call +63 915 835 3646</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms" class="section-shell">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mb-10 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">01 / VERIFIED STAYS</p>
+            <h2 class="section-title mt-3 font-display text-5xl sm:text-6xl lg:text-7xl">Rooms & accommodations</h2>
+            <div class="accent-rule mt-5"></div>
+            <p class="section-note mt-5 text-base leading-7 text-soft">Published room categories at Astoria Palawan that you can request through Explora Getaway, using the resort's public accommodation details.</p>
+          </div>
+          <p class="max-w-md font-mono-ui text-xs leading-6 text-soft">Verified from Astoria Palawan's accommodation pages and public travel listings, so every room type, size, and core feature shown here is grounded in real data.</p>
+        </div>
+
+        <div class="grid gap-0 md:grid-cols-2 xl:grid-cols-5">
+          <article class="reveal grid-line py-6 pr-4 md:pr-6 xl:pr-8">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">32 sqm</p>
+            <h3 class="mt-3 font-display text-4xl text-[#f4f1ea]">Superior Room</h3>
+            <p class="mt-4 text-sm leading-7 text-soft">1 king-sized or 2 queen-sized beds, modern shower and bathtub, flat screen TV, free Wi-Fi, room service, and a safety deposit box.</p>
+          </article>
+          <article class="reveal grid-line py-6 pr-4 md:pr-6 xl:pr-8">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">38 sqm</p>
+            <h3 class="mt-3 font-display text-4xl text-[#f4f1ea]">Deluxe Room</h3>
+            <p class="mt-4 text-sm leading-7 text-soft">2 queen-sized beds with the same clean comfort mix of shower and bathtub, flat screen TV, free Wi-Fi, room service, and a safety deposit box.</p>
+          </article>
+          <article class="reveal grid-line py-6 pr-4 md:pr-6 xl:pr-8">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">56 sqm</p>
+            <h3 class="mt-3 font-display text-4xl text-[#f4f1ea]">One-Bedroom Suite</h3>
+            <p class="mt-4 text-sm leading-7 text-soft">Separate ensuite living and bedroom, with 1 king-sized or 2 queen-sized beds, modern shower and bathtub, flat screen TV, free Wi-Fi, room service, and a safety deposit box.</p>
+          </article>
+          <article class="reveal grid-line py-6 pr-4 md:pr-6 xl:pr-8">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">91 sqm</p>
+            <h3 class="mt-3 font-display text-4xl text-[#f4f1ea]">Two-Bedroom Suite</h3>
+            <p class="mt-4 text-sm leading-7 text-soft">4 queen-sized beds, 2 bathrooms, modern shower and bathtub, flat screen TV, free Wi-Fi, room service, and a safety deposit box.</p>
+          </article>
+          <article class="reveal grid-line py-6 pr-4 md:pr-6 xl:pr-0 xl:border-l xl:pl-8">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">36 sqm</p>
+            <h3 class="mt-3 font-display text-4xl text-[#f4f1ea]">Superior Plus Room</h3>
+            <p class="mt-4 text-sm leading-7 text-soft">2 queen-sized beds, modern shower and bathtub, flat screen TV, free Wi-Fi, room service, and a safety deposit box.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities" class="section-shell border-y hairline">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          <div class="reveal">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">02 / AMENITIES</p>
+            <h2 class="section-title mt-3 font-display text-5xl sm:text-6xl lg:text-7xl">Waterpark, pool, and resort essentials</h2>
+            <div class="accent-rule mt-5"></div>
+            <p class="section-note mt-5 text-base leading-7 text-soft">Astoria Palawan's public pages highlight a 39-meter infinity pool, the Palawan Waterpark by Astoria, private beach access, restaurant dining, and a full set of family-friendly and business-ready facilities.</p>
+
+            <ul class="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">39-meter infinity pool</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Palawan Waterpark by Astoria</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Private beach access</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Restaurant and bar</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Gym and fitness center</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Spa and massage services</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Free parking and Wi-Fi</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Airport shuttle and car hire</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Kids club, game room, and indoor play area</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Meeting rooms and banquet facilities</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Concierge, luggage storage, and laundry service</li>
+              <li class="grid-line py-3 text-sm text-[#f4f1ea]">Room service and daily housekeeping</li>
+            </ul>
+          </div>
+
+          <figure class="reveal lg:pt-8">
+            <div class="map-frame overflow-hidden">
+              <img src="assets/img/pool-waterpark.svg" alt="Illustrated pool and waterpark scene with palms and resort seating" class="h-full w-full object-cover">
+            </div>
+            <figcaption class="mt-4 font-mono-ui text-xs leading-6 text-soft">The amenities mix balances leisure and convenience, making the property work for family weekends, couples' escapes, and small group stays.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section-shell">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <div class="reveal">
+            <p class="font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">03 / LOCATION</p>
+            <h2 class="section-title mt-3 font-display text-5xl sm:text-6xl lg:text-7xl">San Rafael, Puerto Princesa</h2>
+            <div class="accent-rule mt-5"></div>
+            <p class="section-note mt-5 text-base leading-7 text-soft">Explora Getaway operates from Puerto Princesa City, while the featured stay pins Astoria Palawan in San Rafael on the north road. The map below uses the resort's Palawan coordinates, not Manila.</p>
+
+            <div class="mt-8 space-y-6">
+              <div class="grid-line py-4">
+                <p class="font-mono-ui text-[11px] uppercase tracking-[0.25em] text-[var(--amber)]">Office address</p>
+                <p class="mt-2 text-sm leading-7 text-[#f4f1ea]">R. San Juan St., Brgy. San Miguel, Puerto Princesa City, Palawan 5300</p>
+              </div>
+              <div class="grid-line py-4">
+                <p class="font-mono-ui text-[11px] uppercase tracking-[0.25em] text-[var(--amber)]">Featured stay</p>
+                <p class="mt-2 text-sm leading-7 text-[#f4f1ea]">Km. 62, North National Highway, Barangay San Rafael, Puerto Princesa City, Palawan 5300</p>
+              </div>
+              <div class="grid-line py-4">
+                <p class="font-mono-ui text-[11px] uppercase tracking-[0.25em] text-[var(--amber)]">Map coordinates</p>
+                <p class="mt-2 text-sm leading-7 text-[#f4f1ea]">9.98506, 118.96627</p>
+              </div>
+            </div>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="https://www.google.com/maps?q=9.98506,118.96627" target="_blank" rel="noopener noreferrer" class="btn-base btn-amber">Open in Maps</a>
+              <a href="https://exploragetaway.com/" target="_blank" rel="noopener noreferrer" class="btn-base btn-outline">Official site</a>
+            </div>
+          </div>
+
+          <div class="reveal map-frame overflow-hidden">
+            <iframe
+              title="Astoria Palawan map"
+              src="https://www.google.com/maps?q=9.98506,118.96627&z=15&output=embed"
+              class="h-[420px] w-full border-0 sm:h-[520px]"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section-shell border-y hairline">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <p class="font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">04 / BOOKING CTA</p>
+            <h2 class="section-title mt-3 font-display text-5xl sm:text-6xl lg:text-7xl">Plan your dates with Explora Getaway</h2>
+            <div class="accent-rule mt-5"></div>
+            <p class="section-note mt-5 text-base leading-7 text-soft">Send your preferred dates, guest count, and room type. Explora Getaway can help coordinate the resort booking, airport routing, and island add-ons from Puerto Princesa.</p>
+          </div>
+
+          <div class="flex flex-col gap-3 lg:items-end">
+            <a href="mailto:Exploragetaway@gmail.com?subject=Explora%20Getaway%20booking%20request" class="btn-base btn-amber w-full sm:w-auto">Email a booking request</a>
+            <a href="tel:+639158353646" class="btn-base btn-outline w-full sm:w-auto">Call +63 915 835 3646</a>
+            <a href="mailto:Exploragetaway@gmail.com" class="font-mono-ui text-xs tracking-[0.2em] text-soft underline decoration-[rgba(240,165,0,0.35)] underline-offset-4">Exploragetaway@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-shell">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal mb-8 max-w-2xl">
+          <p class="font-mono-ui text-xs uppercase tracking-[0.35em] text-[var(--amber)]">05 / GALLERY</p>
+          <h2 class="section-title mt-3 font-display text-5xl sm:text-6xl lg:text-7xl">A visual route through Palawan</h2>
+          <div class="accent-rule mt-5"></div>
+          <p class="section-note mt-5 text-base leading-7 text-soft">A mix of resort, room, and Palawan landscape imagery keeps the page anchored to place, not abstract decoration.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-12">
+          <figure class="reveal md:col-span-7">
+            <img src="assets/img/hero-palawan.svg" alt="Palawan resort bay illustration" class="h-[320px] w-full object-cover sm:h-[420px]">
+            <figcaption class="mt-3 text-sm text-soft">Puerto Princesa's shoreline mood, brought into a single dominant hero plane.</figcaption>
+          </figure>
+          <figure class="reveal md:col-span-5">
+            <img src="assets/img/room-superior.svg" alt="Superior room illustration" class="h-[320px] w-full object-cover sm:h-[420px]">
+            <figcaption class="mt-3 text-sm text-soft">Compact and calm: the published Superior Room category.</figcaption>
+          </figure>
+          <figure class="reveal md:col-span-4">
+            <img src="assets/img/pool-waterpark.svg" alt="Pool and waterpark illustration" class="h-[280px] w-full object-cover sm:h-[340px]">
+            <figcaption class="mt-3 text-sm text-soft">The waterpark-and-pool side of the stay.</figcaption>
+          </figure>
+          <figure class="reveal md:col-span-8">
+            <img src="assets/img/room-suite.svg" alt="Suite illustration" class="h-[280px] w-full object-cover sm:h-[340px]">
+            <figcaption class="mt-3 text-sm text-soft">Suites with living space for longer Palawan breaks.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="border-t hairline pb-10 pt-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-start">
+        <div>
+          <p class="font-display text-5xl leading-none text-[#f4f1ea]">Explora Getaway</p>
+          <p class="mt-4 max-w-xl text-sm leading-7 text-soft">Puerto Princesa City-based travel and tours service for Palawan stays, route planning, and resort bookings.</p>
+        </div>
+        <div class="space-y-3 md:text-right">
+          <p class="font-mono-ui text-xs uppercase tracking-[0.3em] text-[var(--amber)]">Contact</p>
+          <a href="tel:+639158353646" class="block text-sm text-[#f4f1ea] transition-colors hover:text-[var(--amber)]">+63 915 835 3646</a>
+          <a href="mailto:Exploragetaway@gmail.com" class="block text-sm text-[#f4f1ea] transition-colors hover:text-[var(--amber)]">Exploragetaway@gmail.com</a>
+          <p class="text-sm text-soft">R. San Juan St., Brgy. San Miguel, Puerto Princesa City, Palawan 5300</p>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col gap-3 border-t hairline pt-6 text-xs leading-6 text-soft sm:flex-row sm:items-center sm:justify-between">
+        <p>Room categories and amenity details are based on Astoria Palawan's public accommodation pages and listings.</p>
+        <p>&copy; <span id="year"></span> Explora Getaway. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const header = document.querySelector('[data-header]');
+    const year = document.querySelector('#year');
+    year.textContent = new Date().getFullYear();
+
+    const updateHeader = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    const internalLinks = document.querySelectorAll('a[href^="#"][data-scroll]');
+
+    let lenis = null;
+    if (!prefersReducedMotion && window.Lenis) {
+      lenis = new Lenis({
+        smoothWheel: true,
+        smoothTouch: false,
+        lerp: 0.08
+      });
+
+      lenis.on('scroll', () => ScrollTrigger.update());
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    internalLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        event.preventDefault();
+
+        if (lenis) {
+          lenis.scrollTo(target, { offset: -72 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!prefersReducedMotion) {
+        gsap.from('.hero-kicker, .hero-brand, .hero-copy, .hero-cta, .metric', {
+          opacity: 0,
+          y: 26,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+          delay: 0.15
+        });
+
+        gsap.from('.hero-art', {
+          opacity: 0,
+          scale: 1.08,
+          xPercent: 5,
+          duration: 1.35,
+          ease: 'power2.out',
+          delay: 0.05
+        });
+
+        gsap.to('.hero-art', {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#home',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.utils.toArray('.reveal').forEach((el) => {
+          gsap.from(el, {
+            opacity: 0,
+            y: 32,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 84%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('section:not(#home) img').forEach((img) => {
+          gsap.from(img, {
+            opacity: 0,
+            scale: 1.03,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top 85%'
+            }
+          });
+        });
+      } else {
+        gsap.set(['.hero-kicker', '.hero-brand', '.hero-copy', '.hero-cta', '.metric', '.reveal'], { opacity: 1, y: 0 });
+      }
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Lagoon landscape illustration</title>
+  <desc id="desc">Palawan limestone cliffs, clear lagoon water, and small island boats at sunset.</desc>
+  <defs>
+    <linearGradient id="lagoonSky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="lagoonWater" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f5259"/>
+      <stop offset="100%" stop-color="#08171a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#lagoonSky)"/>
+  <circle cx="248" cy="196" r="78" fill="#f0a500" opacity="0.82"/>
+  <path d="M0 420C170 370 310 420 450 386c170-40 326-108 486-68 136 34 254 112 420 88 116-16 180-48 244-66v760H0Z" fill="url(#lagoonWater)"/>
+  <path d="M110 560c150-92 316-102 468-28 98 48 208 62 314 40 142-30 258-18 394 32" fill="none" stroke="rgba(234,234,234,0.14)" stroke-width="4"/>
+  <path d="M120 654c146-76 304-80 474-14 116 46 224 54 332 26 136-36 264-24 402 28" fill="none" stroke="rgba(240,165,0,0.2)" stroke-width="4"/>
+  <path d="M152 780c146-52 278-48 430 12 114 44 228 52 346 22 140-36 280-22 456 36" fill="none" stroke="rgba(234,234,234,0.1)" stroke-width="3"/>
+  <path d="M104 452c68 18 120 66 156 144 82-82 162-128 240-138 40 106 58 200 56 282" fill="none" stroke="#f0a500" stroke-opacity="0.3" stroke-width="18" stroke-linecap="round"/>
+  <path d="M960 386c80-110 192-164 338-162 112 2 214 38 306 108-10 56-32 108-66 158-56-34-122-56-198-66-144-18-282 10-414 82-10-60 2-120 34-180z" fill="#2f2a21" opacity="0.9"/>
+  <path d="M952 386c72 16 150 52 234 108 84 56 150 94 198 112" fill="none" stroke="rgba(240,165,0,0.4)" stroke-width="6"/>
+  <path d="M1144 710c92-106 196-138 314-96 36 14 70 34 102 60-24 82-56 140-96 174-38-20-82-34-128-42-78-14-154-4-230 32-2-50 10-94 38-128z" fill="#1b1915" stroke="rgba(234,234,234,0.08)" stroke-width="3"/>
+  <path d="M1256 686l54 76-56 84" fill="none" stroke="#f0a500" stroke-opacity="0.38" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1300" cy="748" r="12" fill="#f0a500"/>
+  <path d="M160 938c96-76 208-118 338-128 122-10 248 4 378 42 146 44 272 58 378 40 112-20 210-62 308-128" fill="none" stroke="rgba(234,234,234,0.16)" stroke-width="4"/>
+</svg>

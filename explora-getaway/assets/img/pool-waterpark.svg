@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Pool and waterpark illustration</title>
+  <desc id="desc">A pool deck with slides, lounge chairs, palms, and resort architecture.</desc>
+  <defs>
+    <linearGradient id="poolBg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#161616"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#164f57"/>
+      <stop offset="100%" stop-color="#0b1b1e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#poolBg)"/>
+  <rect x="110" y="120" width="1380" height="860" rx="26" fill="#0f0f0f" stroke="rgba(234,234,234,0.12)" stroke-width="4"/>
+  <rect x="150" y="180" width="1300" height="72" fill="#f0a500" opacity="0.14"/>
+  <rect x="210" y="284" width="860" height="440" rx="30" fill="url(#water)" stroke="rgba(240,165,0,0.3)" stroke-width="4"/>
+  <path d="M240 350c120-46 248-46 368 0s248 46 368 0" fill="none" stroke="rgba(234,234,234,0.2)" stroke-width="5"/>
+  <path d="M242 418c112-36 228-36 340 0s228 36 340 0" fill="none" stroke="rgba(240,165,0,0.26)" stroke-width="4"/>
+  <path d="M238 482c130-52 264-52 394 0s264 52 394 0" fill="none" stroke="rgba(234,234,234,0.14)" stroke-width="4"/>
+  <rect x="1090" y="292" width="220" height="344" rx="18" fill="#141414" stroke="rgba(234,234,234,0.08)" stroke-width="3"/>
+  <rect x="1120" y="328" width="160" height="48" fill="#f0a500" opacity="0.62"/>
+  <rect x="1120" y="400" width="160" height="48" fill="#f4f1ea" opacity="0.12"/>
+  <rect x="1120" y="472" width="160" height="48" fill="#f0a500" opacity="0.24"/>
+  <rect x="1120" y="544" width="160" height="48" fill="#f4f1ea" opacity="0.08"/>
+  <path d="M1260 246c96 28 160 100 198 210" fill="none" stroke="#f0a500" stroke-opacity="0.5" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1360 232c58 42 94 94 110 156" fill="none" stroke="#f4f1ea" stroke-opacity="0.18" stroke-width="18" stroke-linecap="round"/>
+  <rect x="174" y="750" width="360" height="52" rx="12" fill="#f0a500" opacity="0.18"/>
+  <rect x="188" y="820" width="132" height="64" rx="10" fill="#151515" stroke="rgba(240,165,0,0.28)" stroke-width="4"/>
+  <rect x="340" y="820" width="132" height="64" rx="10" fill="#151515" stroke="rgba(240,165,0,0.28)" stroke-width="4"/>
+  <rect x="492" y="820" width="132" height="64" rx="10" fill="#151515" stroke="rgba(240,165,0,0.28)" stroke-width="4"/>
+  <rect x="668" y="756" width="126" height="128" rx="12" fill="#f0a500" opacity="0.16"/>
+  <rect x="838" y="744" width="150" height="140" rx="12" fill="#151515" stroke="rgba(234,234,234,0.08)" stroke-width="3"/>
+  <circle cx="896" cy="808" r="26" fill="#f0a500" opacity="0.42"/>
+  <path d="M170 272c30-58 80-98 146-122 58 82 86 170 86 264" fill="none" stroke="#f0a500" stroke-opacity="0.3" stroke-width="14" stroke-linecap="round"/>
+  <path d="M122 710c114-96 190-124 280-134" fill="none" stroke="#f4f1ea" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round"/>
+  <rect x="110" y="930" width="1380" height="12" fill="#f0a500" opacity="0.18"/>
+</svg>

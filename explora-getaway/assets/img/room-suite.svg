@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Suite illustration</title>
+  <desc id="desc">A larger suite with a living area, bedroom, and warm amber accents.</desc>
+  <defs>
+    <linearGradient id="suiteBg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#suiteBg)"/>
+  <rect x="96" y="108" width="1408" height="884" rx="26" fill="#0d0d0d" stroke="rgba(234,234,234,0.12)" stroke-width="4"/>
+  <rect x="134" y="146" width="670" height="806" fill="#101010"/>
+  <rect x="804" y="146" width="662" height="806" fill="#0c0c0c"/>
+  <rect x="170" y="200" width="420" height="54" fill="#f0a500" opacity="0.22"/>
+  <rect x="170" y="292" width="300" height="20" fill="#eaeaea" opacity="0.12"/>
+  <rect x="170" y="334" width="360" height="20" fill="#eaeaea" opacity="0.1"/>
+  <rect x="170" y="430" width="420" height="220" rx="18" fill="#171717" stroke="rgba(240,165,0,0.28)" stroke-width="4"/>
+  <rect x="194" y="454" width="372" height="174" fill="#090909"/>
+  <rect x="230" y="508" width="300" height="64" fill="#f0a500" opacity="0.72"/>
+  <rect x="218" y="482" width="324" height="28" fill="#f4f1ea" opacity="0.16"/>
+  <rect x="246" y="586" width="262" height="18" fill="#f4f1ea" opacity="0.12"/>
+  <rect x="230" y="652" width="108" height="16" fill="#f0a500" opacity="0.32"/>
+  <rect x="648" y="272" width="54" height="512" fill="#2b2011"/>
+  <rect x="706" y="202" width="586" height="220" rx="18" fill="#121212" stroke="rgba(234,234,234,0.08)" stroke-width="3"/>
+  <path d="M724 220h550v184H724z" fill="#102121"/>
+  <circle cx="1202" cy="312" r="78" fill="#f0a500" opacity="0.2"/>
+  <rect x="730" y="486" width="540" height="228" rx="18" fill="#171717" stroke="rgba(240,165,0,0.28)" stroke-width="4"/>
+  <rect x="750" y="510" width="232" height="54" fill="#f0a500" opacity="0.68"/>
+  <rect x="750" y="582" width="300" height="22" fill="#f4f1ea" opacity="0.14"/>
+  <rect x="750" y="626" width="368" height="20" fill="#f4f1ea" opacity="0.08"/>
+  <rect x="1118" y="510" width="118" height="126" fill="#0c0c0c" stroke="rgba(234,234,234,0.08)" stroke-width="3"/>
+  <rect x="1150" y="540" width="56" height="68" fill="#f0a500" opacity="0.32"/>
+  <rect x="96" y="930" width="1408" height="12" fill="#f0a500" opacity="0.2"/>
+</svg>

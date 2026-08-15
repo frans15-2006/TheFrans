@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Palawan resort bay illustration</title>
+  <desc id="desc">Dark tropical seascape with a resort silhouette, palms, a pool, and glowing horizon.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="55%" stop-color="#1c1a16"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1a2221"/>
+      <stop offset="100%" stop-color="#0a0f11"/>
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f7d37a" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#sky)"/>
+  <circle cx="270" cy="210" r="84" fill="url(#amberGlow)" opacity="0.8"/>
+  <ellipse cx="310" cy="245" rx="170" ry="40" fill="#f0a500" opacity="0.08"/>
+  <path d="M0 430 C 260 410, 420 470, 610 435 C 780 405, 970 360, 1170 395 C 1340 425, 1490 475, 1600 448 L1600 1100 L0 1100 Z" fill="url(#sea)"/>
+  <path d="M0 520 C 210 490, 380 560, 570 532 C 740 507, 940 455, 1150 490 C 1340 520, 1490 575, 1600 552" fill="none" stroke="rgba(234,234,234,0.15)" stroke-width="4"/>
+  <path d="M0 610 C 240 575, 410 650, 650 618 C 860 592, 1040 545, 1260 580 C 1420 604, 1520 654, 1600 640" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="3"/>
+  <rect x="910" y="500" width="360" height="118" rx="10" fill="#101010" stroke="rgba(240,165,0,0.34)" stroke-width="4"/>
+  <rect x="938" y="528" width="54" height="34" fill="#f0a500" opacity="0.75"/>
+  <rect x="1008" y="528" width="54" height="34" fill="#f0a500" opacity="0.75"/>
+  <rect x="1078" y="528" width="54" height="34" fill="#f0a500" opacity="0.75"/>
+  <rect x="1148" y="528" width="54" height="34" fill="#f0a500" opacity="0.75"/>
+  <rect x="972" y="570" width="182" height="18" fill="#f4f1ea" opacity="0.36"/>
+  <rect x="1204" y="548" width="220" height="138" rx="12" fill="#0c0c0c" stroke="rgba(234,234,234,0.12)" stroke-width="3"/>
+  <rect x="1230" y="574" width="168" height="84" fill="#f0a500" opacity="0.2"/>
+  <rect x="1202" y="675" width="232" height="30" fill="#f0a500" opacity="0.28"/>
+  <rect x="1202" y="706" width="232" height="56" fill="#0c0c0c" opacity="0.9"/>
+  <rect x="990" y="678" width="268" height="58" fill="#0c0c0c" opacity="0.95"/>
+  <rect x="1004" y="688" width="236" height="22" fill="#f0a500" opacity="0.18"/>
+  <rect x="940" y="748" width="438" height="22" fill="#f4f1ea" opacity="0.16"/>
+  <path d="M960 820h492c20 0 34 14 34 34v66H926v-66c0-20 14-34 34-34z" fill="#090909" stroke="rgba(234,234,234,0.12)" stroke-width="3"/>
+  <rect x="980" y="846" width="144" height="44" fill="#f0a500" opacity="0.24"/>
+  <rect x="1144" y="846" width="184" height="44" fill="#f0a500" opacity="0.12"/>
+  <circle cx="1310" cy="844" r="10" fill="#f0a500"/>
+  <path d="M80 900c86-90 106-158 96-250 50 62 72 100 73 180 42-76 65-125 133-185-5 118 18 190 62 263" fill="none" stroke="#f0a500" stroke-opacity="0.58" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M100 650c-12 76-55 155-124 236" fill="none" stroke="#f4f1ea" stroke-opacity="0.55" stroke-width="16" stroke-linecap="round"/>
+  <path d="M100 650c48 20 92 58 122 114" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1460 742c-10 82-52 160-124 234" fill="none" stroke="#f4f1ea" stroke-opacity="0.48" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1460 742c44 18 86 56 118 112" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="12" stroke-linecap="round"/>
+  <rect x="0" y="0" width="1600" height="1100" fill="none" stroke="rgba(234,234,234,0.05)" stroke-width="6"/>
+</svg>
