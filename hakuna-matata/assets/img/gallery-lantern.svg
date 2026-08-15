@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Evening lantern common area illustration">
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#301a10"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <rect x="120" y="110" width="960" height="680" rx="24" fill="#121212" stroke="#2a2a2a" stroke-width="4"/>
+  <path d="M160 220 H1040" stroke="#2f2f2f" stroke-width="6"/>
+  <circle cx="310" cy="290" r="48" fill="#f0a500" opacity="0.88"/>
+  <circle cx="600" cy="250" r="60" fill="#f0a500" opacity="0.76"/>
+  <circle cx="860" cy="310" r="44" fill="#f0a500" opacity="0.9"/>
+  <rect x="250" y="430" width="700" height="200" rx="18" fill="#1a2326"/>
+  <rect x="290" y="468" width="620" height="24" rx="10" fill="#eaeaea" opacity="0.12"/>
+  <rect x="290" y="510" width="540" height="24" rx="10" fill="#eaeaea" opacity="0.12"/>
+  <rect x="290" y="552" width="450" height="24" rx="10" fill="#eaeaea" opacity="0.12"/>
+  <path d="M190 720 C320 682, 480 668, 630 678 C790 689, 920 706, 1030 734" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.45"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Simple guest room illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="85" y="80" width="1030" height="720" rx="24" fill="#0f1518" stroke="#f0a500" stroke-opacity="0.22"/>
+  <rect x="130" y="150" width="430" height="500" rx="18" fill="#1e2b2f"/>
+  <rect x="620" y="150" width="480" height="500" rx="18" fill="#1b2225"/>
+  <rect x="150" y="430" width="380" height="150" rx="16" fill="#5a3b22"/>
+  <rect x="165" y="450" width="350" height="105" rx="14" fill="#d8c2a3"/>
+  <rect x="150" y="590" width="380" height="30" rx="10" fill="#2b1a12"/>
+  <rect x="210" y="360" width="230" height="60" rx="16" fill="#d2d2cf"/>
+  <rect x="205" y="344" width="240" height="20" rx="8" fill="#f0a500" opacity="0.7"/>
+  <circle cx="465" cy="240" r="48" fill="#121212" stroke="#f0a500" stroke-opacity="0.45" stroke-width="8"/>
+  <circle cx="465" cy="240" r="10" fill="#f0a500"/>
+  <path d="M465 192 V132" stroke="#8b6b33" stroke-width="10" stroke-linecap="round"/>
+  <path d="M467 128 C494 114, 526 110, 548 118" stroke="#8b6b33" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M465 270 C465 340, 465 390, 465 438" stroke="#8b6b33" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <rect x="690" y="190" width="300" height="420" rx="14" fill="#0f1011" stroke="#2b3538" stroke-width="4"/>
+  <rect x="720" y="220" width="240" height="90" rx="12" fill="#f0a500" opacity="0.12"/>
+  <rect x="720" y="338" width="240" height="42" rx="12" fill="#2a3336"/>
+  <rect x="720" y="392" width="240" height="18" rx="9" fill="#d7d7d1" opacity="0.7"/>
+  <rect x="720" y="450" width="140" height="100" rx="14" fill="#d8c2a3"/>
+  <rect x="884" y="450" width="76" height="170" rx="14" fill="#5a3b22"/>
+  <path d="M114 770 C240 705, 380 688, 525 704 C663 719, 796 737, 1040 772" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.65"/>
+</svg>

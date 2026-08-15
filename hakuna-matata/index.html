@@ -1,60 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakuna Matata</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakuna Matata | El Nido Hostel, Palawan</title>
+  <meta name="description" content="Hakuna Matata is a small El Nido hostel on Fisherman Street in Barangay Buena Suerte, Palawan, with fan-cooled rooms, free coffee and water, a shared kitchen, hammocks, and a central town location near the beach and El Nido Dock.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hakuna Matata | El Nido Hostel, Palawan">
+  <meta property="og:description" content="A verified El Nido stay on Fisherman Street in Barangay Buena Suerte, with fan-cooled rooms, free coffee and water, a shared kitchen, and a central location near the beach.">
+  <meta property="og:image" content="assets/img/hero-palawan.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/hakuna-matata/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.14);
+      --line-strong: rgba(240, 165, 0, 0.48);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+      max-width: 42rem;
+    }
+
+    .section-label {
+      margin: 0;
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      line-height: 0.92;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.06);
+      will-change: transform;
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.6) 40%, rgba(8, 8, 8, 0.18) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.18) 0%, rgba(8, 8, 8, 0.35) 50%, rgba(8, 8, 8, 0.92) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 6rem 0 2rem;
+      display: grid;
+      gap: 1rem;
+      align-content: end;
+      min-height: 100svh;
+    }
+
+    .hero-kicker {
+      margin: 0;
+      color: var(--accent);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.6rem, 14vw, 11rem);
+      line-height: 0.86;
+      letter-spacing: 0.03em;
+      max-width: 8ch;
+    }
+
+    .hero-copy {
+      max-width: 33rem;
+      color: rgba(234, 234, 234, 0.82);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      padding-top: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.9rem 1.15rem;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: rgba(8, 8, 8, 0.42);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #080808;
+    }
+
+    .btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.24);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border-color: rgba(234, 234, 234, 0.28);
+    }
+
+    .btn.secondary:hover,
+    .btn.secondary:focus-visible {
+      border-color: var(--accent);
+      background: rgba(240, 165, 0, 0.12);
+      color: var(--text);
+    }
+
+    .rooms-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .rooms-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .room-item {
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .room-item h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      letter-spacing: 0.03em;
+    }
+
+    .room-meta {
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+    }
+
+    .room-item ul,
+    .contact-list,
+    .amenity-rows {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .room-item li,
+    .contact-list li {
+      color: var(--muted);
+    }
+
+    .amenity-rows {
+      display: grid;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .amenity-row {
+      display: grid;
+      gap: 0.12rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-row strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .amenity-row span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .location-card {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 26rem;
+      border: 1px solid var(--line);
+      background: #0f0f0f;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      min-height: 26rem;
+      filter: grayscale(1) contrast(1.02) brightness(0.85);
+    }
+
+    .quote-line {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.84);
+      max-width: 34rem;
+    }
+
+    .cta-band {
+      padding: 4rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.07), transparent 75%);
+    }
+
+    .cta-shell {
+      display: grid;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .cta-shell h2 {
+      max-width: 10ch;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #101010;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item figcaption {
+      font-family: "JetBrains Mono", monospace;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      padding: 3rem 0 4rem;
+    }
+
+    .footer-shell {
+      display: grid;
+      gap: 1.25rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+
+    .footer-note {
+      color: rgba(234, 234, 234, 0.58);
+      max-width: 42rem;
+      font-size: 0.92rem;
+    }
+
+    .link-inline {
+      color: var(--text);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.45);
+    }
+
+    .link-inline:hover,
+    .link-inline:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(22px);
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 700px) {
+      .wrap {
+        width: min(1180px, calc(100% - 3rem));
+      }
+
+      .hero-inner {
+        padding-bottom: 2.5rem;
+      }
+
+      .rooms-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      }
+
+      .cta-shell {
+        grid-template-columns: minmax(0, 1.1fr) auto;
+      }
+
+      .footer-shell {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-copy {
+        max-width: 36rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero-media {
+        transform: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hakuna Matata</h1>
-    <span class="category">Nail Salon</span>
-    <p class="address">18 H. Mendoza St, Puerto Princesa City</p>
-    <p class="phone">+63 977 478 4833</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="hero" id="top">
+    <img class="hero-media" src="assets/img/hero-palawan.svg" alt="Illustrated El Nido shoreline with a bamboo guesthouse, palms, and the sea">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner wrap">
+      <p class="mono hero-kicker" data-reveal>El Nido, Palawan</p>
+      <h1 class="display" data-reveal>Hakuna Matata</h1>
+      <p class="hero-copy" data-reveal>On Fisherman Street in Barangay Buena Suerte, Hakuna Matata keeps El Nido simple with fan-cooled rooms, free coffee and water, a shared kitchen, and a relaxed common area near the beach.</p>
+      <div class="hero-actions" data-reveal>
+        <a class="btn" href="#rooms">View rooms</a>
+        <a class="btn secondary" href="#contact">Confirm availability</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="rooms">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="section-label">Rooms / Accommodations</p>
+          <h2>Simple room styles for low-key Palawan nights</h2>
+          <p>Public listings describe seven fan-cooled rooms. Guest reports point to dorm beds, private fan rooms, and twin-bed rooms, all set up for a straightforward stay in town.</p>
+        </div>
+
+        <div class="rooms-grid">
+          <article class="room-item" data-reveal>
+            <p class="room-meta">Reported room style 01</p>
+            <h3>Dorm beds</h3>
+            <ul>
+              <li>Best for backpackers who want a social base near the beach.</li>
+              <li>Fans, mosquito nets, and compact sleeping space were mentioned in reviews.</li>
+            </ul>
+          </article>
+          <article class="room-item" data-reveal>
+            <p class="room-meta">Reported room style 02</p>
+            <h3>Private fan room</h3>
+            <ul>
+              <li>Guests describe a simple private setup with fan cooling.</li>
+              <li>Some reviews mention a private toilet and shower.</li>
+            </ul>
+          </article>
+          <article class="room-item" data-reveal>
+            <p class="room-meta">Reported room style 03</p>
+            <h3>Twin-bed room</h3>
+            <ul>
+              <li>A practical two-bed layout for friends or couples on a tighter budget.</li>
+              <li>Fresh towels, fans, and a calm common area were all mentioned by past guests.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="section-label">Amenities</p>
+          <h2>What keeps the stay easy</h2>
+          <p>Verified listings and guest reports consistently call out the same practical comforts: simple food prep, easy downtime, and help with getting around El Nido.</p>
+        </div>
+
+        <div class="amenity-rows">
+          <div class="amenity-row" data-reveal>
+            <strong>Free coffee, tea, and drinking water</strong>
+            <span>Available around the clock in public listings.</span>
+          </div>
+          <div class="amenity-row" data-reveal>
+            <strong>24-hour Wi-Fi</strong>
+            <span>One of the most repeated details across guest reviews.</span>
+          </div>
+          <div class="amenity-row" data-reveal>
+            <strong>Shared kitchen and basic cooking facilities</strong>
+            <span>Useful for simple breakfasts and low-key nights in.</span>
+          </div>
+          <div class="amenity-row" data-reveal>
+            <strong>Hammocks and a chill-out area</strong>
+            <span>Common space for resting, meeting travelers, and slowing down.</span>
+          </div>
+          <div class="amenity-row" data-reveal>
+            <strong>Laundry service and luggage help</strong>
+            <span>Guest reviews mention laundry and practical support from staff.</span>
+          </div>
+          <div class="amenity-row" data-reveal>
+            <strong>Tour and transfer assistance</strong>
+            <span>Past guests note help with island trips, vans, and local plans.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="section-label">Location / Map</p>
+          <h2>Fisherman Street in the heart of El Nido</h2>
+          <p>Verified public listings place Hakuna Matata at Fisherman St., Brgy. Buena Suerte, El Nido, Palawan 5313, with a pin at 11.180128, 119.38807. The property is described as a minute from the beach, close to shops and restaurants, and facing Cadlao Island.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card" data-reveal>
+            <p class="quote-line">"Good mood hostel" was how one public listing described it, and the location notes line up with that tone: central, walkable, and built for easy days between tours.</p>
+            <ul class="contact-list">
+              <li><span class="mono">Address</span><br>Fisherman St., Brgy. Buena Suerte, El Nido, Palawan 5313</li>
+              <li><span class="mono">Coordinates</span><br>11.180128, 119.38807</li>
+              <li><span class="mono">Nearby</span><br>El Nido beach, El Nido Dock, town shops, and restaurants</li>
+            </ul>
+            <a class="btn secondary" href="https://www.openstreetmap.org/?mlat=11.180128&mlon=119.38807#map=18/11.180128/119.38807" target="_blank" rel="noopener noreferrer">Open map</a>
+          </div>
+
+          <div class="map-frame" data-reveal>
+            <iframe
+              title="Map of Hakuna Matata Hostel in El Nido, Palawan"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=119.3861%2C11.1781%2C119.3903%2C11.1823&layer=mapnik&marker=11.180128%2C119.38807">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="booking">
+      <div class="wrap cta-shell">
+        <div class="section-head" data-reveal>
+          <p class="section-label">Booking CTA</p>
+          <h2>Ask about dates before you arrive in town</h2>
+          <p>Use the contact links below to confirm room style, availability, and arrival details directly.</p>
+        </div>
+        <div class="hero-actions" data-reveal>
+          <a class="btn" href="tel:+639997093391">Call +63 999 709 3391</a>
+          <a class="btn secondary" href="https://www.facebook.com/hakunamatata.elnido/" target="_blank" rel="noopener noreferrer">Message on Facebook</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="section-label">Gallery</p>
+          <h2>Rooms, hammocks, and El Nido light</h2>
+          <p>These SVG scenes echo the verified property details: bamboo rooms, shared spaces, and the Palawan shoreline that sits just beyond the street.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-room.svg" alt="Illustrated fan-cooled guest room with a simple bed and bamboo details">
+            <figcaption>Fan-cooled room</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-hammock.svg" alt="Illustrated hammock lounge with warm light and a relaxed common area">
+            <figcaption>Hammock corner</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-shore.svg" alt="Illustrated El Nido shoreline with water, islands, and a small banca boat">
+            <figcaption>Beach edge</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-private.svg" alt="Illustrated private room layout with a bed, lamp, and fan">
+            <figcaption>Private room</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-kitchen.svg" alt="Illustrated shared kitchen area with a counter, cups, and simple cooking tools">
+            <figcaption>Shared kitchen</figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/gallery-lantern.svg" alt="Illustrated evening lanterns and bamboo textures inside a hostel common area">
+            <figcaption>Evening mood</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-shell">
+      <div data-reveal>
+        <p class="section-label">Contact / Footer</p>
+        <h2 class="display" style="font-size: clamp(2.8rem, 8vw, 5.5rem); margin: 0.2rem 0 0.8rem;">Get in touch</h2>
+        <p class="footer-note">Public listings and archived guest reports were cross-checked for the address, room styles, amenities, and location used on this page. Confirm live availability directly before traveling.</p>
+      </div>
+
+      <ul class="contact-list" data-reveal>
+        <li><span class="mono">Phone</span><br><a class="link-inline" href="tel:+639997093391">+63 999 709 3391</a></li>
+        <li><span class="mono">Facebook</span><br><a class="link-inline" href="https://www.facebook.com/hakunamatata.elnido/" target="_blank" rel="noopener noreferrer">hakunamatata.elnido</a></li>
+        <li><span class="mono">Address</span><br>Fisherman St., Brgy. Buena Suerte, El Nido, Palawan 5313</li>
+        <li><span class="mono">Map pin</span><br>11.180128, 119.38807</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion && window.Lenis && window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+          lerp: 0.085,
+          smoothWheel: true,
+          smoothTouch: false
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        gsap.to('.hero-media', {
+          scale: 1.14,
+          y: 70,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.utils.toArray('[data-reveal]').forEach((el) => {
+          gsap.fromTo(el, {
+            opacity: 0,
+            y: 26
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 86%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.gallery-item img').forEach((img) => {
+          gsap.fromTo(img, {
+            y: 18,
+            scale: 1.02
+          }, {
+            y: -10,
+            scale: 1.06,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+        });
+
+        window.addEventListener('load', () => {
+          ScrollTrigger.refresh();
+        });
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Hammock and common area illustration">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b1110"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#night)"/>
+  <circle cx="935" cy="178" r="96" fill="#f0a500" opacity="0.8"/>
+  <circle cx="935" cy="178" r="146" fill="#f0a500" opacity="0.08"/>
+  <rect x="100" y="120" width="1000" height="650" rx="22" fill="#121212" stroke="#2d2d2d" stroke-width="4"/>
+  <rect x="160" y="210" width="80" height="470" rx="18" fill="#4a321d"/>
+  <rect x="960" y="210" width="80" height="470" rx="18" fill="#4a321d"/>
+  <path d="M210 660 C420 548, 790 548, 990 660" stroke="#1f9a7f" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M210 660 C420 572, 790 572, 990 660" stroke="#c9e8d8" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.72"/>
+  <path d="M220 660 C400 720, 800 720, 980 660" stroke="#0e0e0e" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <rect x="280" y="200" width="360" height="140" rx="18" fill="#1f2b2f"/>
+  <rect x="300" y="235" width="320" height="70" rx="12" fill="#f0a500" opacity="0.14"/>
+  <rect x="740" y="230" width="190" height="210" rx="20" fill="#232323"/>
+  <rect x="780" y="280" width="110" height="24" rx="10" fill="#f0a500" opacity="0.72"/>
+  <rect x="780" y="324" width="110" height="24" rx="10" fill="#eaeaea" opacity="0.26"/>
+  <rect x="780" y="368" width="110" height="24" rx="10" fill="#eaeaea" opacity="0.16"/>
+  <path d="M250 125 C310 108, 362 112, 430 128" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.52"/>
+</svg>

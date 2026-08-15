@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="El Nido shoreline illustration with a banca boat">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b2337"/>
+      <stop offset="100%" stop-color="#08121b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky2)"/>
+  <circle cx="920" cy="160" r="78" fill="#f0a500" opacity="0.92"/>
+  <path d="M0 430 C170 390, 340 395, 520 425 C665 449, 795 424, 930 408 C1035 396, 1132 404, 1200 430 L1200 900 L0 900 Z" fill="#0d3147"/>
+  <path d="M0 545 C160 520, 300 536, 454 575 C620 618, 761 605, 915 574 C1028 550, 1122 544, 1200 565 L1200 900 L0 900 Z" fill="#0a2434"/>
+  <path d="M190 408 C260 378, 330 380, 394 406 C346 448, 290 469, 230 470 C182 451, 172 432, 190 408 Z" fill="#071118"/>
+  <path d="M738 392 C810 362, 882 364, 946 392 C898 436, 844 457, 784 458 C738 440, 724 418, 738 392 Z" fill="#071118"/>
+  <path d="M320 700 C390 676, 476 672, 560 688 C640 704, 737 704, 838 692" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <path d="M556 620 C596 590, 657 577, 710 580 C770 585, 822 606, 854 640 C809 649, 763 652, 705 648 C648 645, 598 638, 556 620 Z" fill="#1f1210"/>
+  <path d="M602 620 C627 605, 648 601, 668 603 C658 620, 645 633, 626 642 Z" fill="#f0a500" opacity="0.7"/>
+  <path d="M602 620 C576 604, 554 600, 534 602 C545 620, 561 633, 582 643 Z" fill="#f0a500" opacity="0.7"/>
+  <path d="M612 600 C612 548, 623 514, 642 478" stroke="#d0b28a" stroke-width="10" stroke-linecap="round" fill="none"/>
+</svg>

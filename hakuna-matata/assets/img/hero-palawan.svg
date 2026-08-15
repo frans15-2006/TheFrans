@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="El Nido shoreline illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#08111f"/>
+      <stop offset="55%" stop-color="#0d2740"/>
+      <stop offset="100%" stop-color="#071a26"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#103a56"/>
+      <stop offset="100%" stop-color="#071a24"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a97a35"/>
+      <stop offset="100%" stop-color="#5d4120"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1290" cy="170" r="78" fill="#f0a500" opacity="0.92"/>
+  <circle cx="1290" cy="170" r="120" fill="#f0a500" opacity="0.08"/>
+  <path d="M0 430 C180 380, 320 390, 455 420 C540 440, 610 430, 690 410 C792 383, 890 370, 1005 390 C1128 412, 1248 455, 1385 446 C1485 439, 1550 410, 1600 390 L1600 900 L0 900 Z" fill="url(#sea)"/>
+  <path d="M0 520 C140 500, 240 515, 360 548 C490 582, 615 602, 745 586 C890 568, 1040 525, 1195 536 C1340 546, 1470 594, 1600 608 L1600 900 L0 900 Z" fill="#092334" opacity="0.9"/>
+  <path d="M280 434 C342 400, 405 392, 460 416 C418 452, 369 474, 309 485 C266 471, 252 454, 280 434 Z" fill="#0a1720"/>
+  <path d="M1280 410 C1358 368, 1440 369, 1520 402 C1470 446, 1400 466, 1322 468 C1278 451, 1262 433, 1280 410 Z" fill="#0a1720"/>
+  <path d="M690 422 C770 382, 848 384, 922 412 C879 455, 817 480, 744 483 C688 468, 668 447, 690 422 Z" fill="#0a1720"/>
+  <rect y="640" width="1600" height="260" fill="url(#sand)"/>
+  <path d="M0 640 C180 590, 310 589, 500 621 C624 641, 760 655, 930 652 C1090 648, 1240 626, 1400 634 C1480 638, 1545 645, 1600 652 L1600 900 L0 900 Z" fill="#c08a42" opacity="0.25"/>
+  <path d="M300 620 L325 490 L351 620 Z" fill="#18222a"/>
+  <path d="M325 492 C340 460, 368 448, 398 452 C385 476, 370 495, 350 508 Z" fill="#2d5b33"/>
+  <path d="M323 492 C305 468, 282 461, 258 466 C272 488, 291 502, 312 510 Z" fill="#2d5b33"/>
+  <path d="M345 500 C356 474, 382 459, 416 458 C405 482, 387 500, 366 513 Z" fill="#2d5b33"/>
+  <path d="M340 500 C344 478, 357 458, 379 441" stroke="#2d5b33" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M325 520 L280 560 L350 560 Z" fill="#4d341b"/>
+  <path d="M350 520 L405 560 L355 560 Z" fill="#4d341b"/>
+  <path d="M270 556 H420 V620 H270 Z" fill="#3a2a1d"/>
+  <path d="M290 564 H403 V608 H290 Z" fill="#6b3f22"/>
+  <path d="M308 500 H378 L390 548 H298 Z" fill="#5d4120"/>
+  <path d="M305 518 H381" stroke="#f0a500" stroke-width="8" opacity="0.55"/>
+  <path d="M355 556 C410 590, 470 606, 556 614" stroke="#0d1013" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M352 556 C409 579, 468 592, 548 597" stroke="#9f6231" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <path d="M1270 615 C1320 590, 1368 590, 1433 616 C1369 628, 1318 628, 1270 615 Z" fill="#103246"/>
+  <path d="M1248 613 C1278 600, 1308 598, 1340 607 C1317 619, 1283 621, 1248 613 Z" fill="#f0a500" opacity="0.18"/>
+  <path d="M1400 590 C1408 564, 1417 548, 1430 536 C1442 551, 1448 568, 1448 590 Z" fill="#d5e6ef" opacity="0.7"/>
+  <path d="M110 760 C188 732, 260 718, 360 718 C458 718, 528 730, 615 756 C542 776, 444 790, 358 790 C256 790, 175 779, 110 760 Z" fill="#08111b" opacity="0.68"/>
+  <path d="M930 748 C1008 724, 1088 714, 1176 716 C1255 718, 1320 730, 1385 756 C1312 777, 1222 790, 1142 790 C1048 790, 973 777, 930 748 Z" fill="#08111b" opacity="0.6"/>
+  <path d="M0 820 C130 798, 280 802, 410 818 C560 836, 683 846, 814 846 C940 846, 1064 837, 1218 816 C1360 797, 1480 797, 1600 820 L1600 900 L0 900 Z" fill="#050505"/>
+  <g opacity="0.34">
+    <path d="M150 300 C210 286, 252 292, 302 310" stroke="#f0a500" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M1210 250 C1270 236, 1312 241, 1362 260" stroke="#f0a500" stroke-width="5" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
