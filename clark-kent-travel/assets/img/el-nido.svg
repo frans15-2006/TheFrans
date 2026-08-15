@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="El Nido illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#10192a"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1f7284"/>
+      <stop offset="1" stop-color="#0a1d24"/>
+    </linearGradient>
+    <linearGradient id="island" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#283334"/>
+      <stop offset="1" stop-color="#0b0f0f"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="46%" cy="24%" r="35%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="570" cy="160" r="250" fill="url(#sun)"/>
+  <path d="M0 500 C160 466 300 470 456 452 C590 438 680 392 812 396 C968 400 1082 454 1200 434 L1200 900 L0 900 Z" fill="url(#sea)"/>
+  <path d="M90 482 C170 368 250 330 334 332 C398 334 450 364 488 426 C426 456 366 478 292 488 C216 498 160 494 90 482 Z" fill="url(#island)"/>
+  <path d="M378 444 C444 316 534 252 620 244 C706 236 780 280 842 354 C792 380 734 404 662 416 C562 432 472 430 378 444 Z" fill="url(#island)"/>
+  <path d="M862 468 C934 360 1024 322 1102 328 C1160 332 1192 356 1200 386 L1200 900 L788 900 C790 742 814 572 862 468 Z" fill="url(#island)"/>
+  <path d="M270 602 C330 580 394 580 460 602" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M558 614 C618 588 682 588 744 614" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M916 600 C962 586 1012 586 1064 600" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M520 650 C576 626 634 626 682 650 C660 678 628 692 598 694 C564 696 532 684 520 650 Z" fill="#080808"/>
+  <path d="M556 627 L650 627 L662 678 L546 678 Z" fill="#dcd7c7" opacity="0.92"/>
+  <path d="M568 613 C596 591 624 590 650 627" fill="none" stroke="#080808" stroke-width="7" stroke-linecap="round"/>
+</svg>

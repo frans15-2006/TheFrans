@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Coron illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#121a2b"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1a7583"/>
+      <stop offset="1" stop-color="#0b2227"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2d3a3d"/>
+      <stop offset="1" stop-color="#0a0f10"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="52%" cy="23%" r="34%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.86"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="620" cy="150" r="240" fill="url(#sun)"/>
+  <path d="M0 520 C170 492 292 506 420 494 C558 480 662 430 792 426 C936 422 1070 474 1200 452 L1200 900 L0 900 Z" fill="url(#sea)"/>
+  <path d="M82 486 C186 360 262 314 342 310 C420 306 484 340 530 412 C470 438 412 456 348 470 C262 488 180 492 82 486 Z" fill="url(#mountain)"/>
+  <path d="M384 454 C482 312 578 250 670 246 C762 242 846 288 902 370 C842 398 774 416 700 428 C600 444 494 448 384 454 Z" fill="url(#mountain)"/>
+  <path d="M846 484 C916 380 996 340 1078 340 C1140 340 1182 368 1200 404 L1200 900 L814 900 C814 734 818 588 846 484 Z" fill="url(#mountain)"/>
+  <path d="M250 606 C304 590 366 590 424 606" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  <path d="M576 616 C632 592 692 592 744 616" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  <path d="M926 604 C972 590 1028 590 1078 604" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  <path d="M556 658 C608 632 664 632 712 658 C690 684 658 696 628 698 C592 700 560 684 556 658 Z" fill="#080808"/>
+  <path d="M586 636 L678 636 L690 688 L576 688 Z" fill="#ddd8c8" opacity="0.92"/>
+  <path d="M598 622 C624 600 652 600 678 636" fill="none" stroke="#080808" stroke-width="7" stroke-linecap="round"/>
+</svg>

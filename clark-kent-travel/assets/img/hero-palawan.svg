@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Palawan seascape illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="0.45" stop-color="#12233d"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1d5e6d"/>
+      <stop offset="1" stop-color="#0a1d26"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1e2a2c"/>
+      <stop offset="1" stop-color="#091012"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#b88328"/>
+      <stop offset="1" stop-color="#5c3c14"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="38%" r="26%">
+      <stop offset="0" stop-color="#f6c34d" stop-opacity="0.95"/>
+      <stop offset="0.55" stop-color="#f0a500" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1210" cy="170" r="250" fill="url(#sun)"/>
+  <path d="M0 490 C240 430 420 450 620 410 C760 382 870 320 1020 334 C1185 349 1385 428 1600 385 L1600 900 L0 900 Z" fill="url(#sea)"/>
+  <path d="M0 545 C210 510 420 540 575 506 C720 475 830 418 970 430 C1138 444 1383 520 1600 485 L1600 900 L0 900 Z" fill="#123744" opacity="0.9"/>
+  <path d="M120 500 C230 350 320 300 420 306 C510 312 595 350 675 414 C620 440 580 460 525 500 C425 536 285 552 120 500 Z" fill="url(#cliff)"/>
+  <path d="M980 420 C1068 306 1150 246 1264 232 C1375 220 1470 264 1560 340 L1600 354 L1600 900 L970 900 Z" fill="url(#cliff)"/>
+  <path d="M0 735 C160 700 270 725 390 708 C510 692 625 639 748 650 C876 660 1010 720 1138 706 C1302 688 1430 633 1600 665 L1600 900 L0 900 Z" fill="#071014"/>
+  <path d="M206 632 C262 605 331 606 386 635 C352 676 316 690 280 691 C238 692 202 670 206 632 Z" fill="#132023"/>
+  <path d="M208 635 C282 593 369 590 431 622 C402 659 349 692 298 692 C246 692 207 669 208 635 Z" fill="#20353c" opacity="0.55"/>
+  <path d="M210 640 C318 602 404 616 447 674 C401 692 326 697 271 693 C237 690 210 672 210 640 Z" fill="#0b1011"/>
+  <path d="M1100 640 C1148 600 1215 592 1276 624 C1246 679 1200 702 1146 702 C1106 702 1083 674 1100 640 Z" fill="#132023"/>
+  <path d="M1096 648 C1180 606 1275 615 1320 675 C1275 696 1210 701 1150 695 C1117 692 1090 675 1096 648 Z" fill="#0b1011"/>
+  <path d="M206 670 C258 654 320 658 374 672" fill="none" stroke="#f0a500" stroke-opacity="0.44" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1128 666 C1180 648 1240 648 1290 666" fill="none" stroke="#f0a500" stroke-opacity="0.36" stroke-width="4" stroke-linecap="round"/>
+  <path d="M444 588 C486 582 526 599 558 629 C520 637 486 637 450 627 Z" fill="#f0a500" opacity="0.82"/>
+  <path d="M430 613 C499 586 565 596 612 639 C562 651 506 650 451 642 Z" fill="#080808"/>
+  <rect x="478" y="616" width="84" height="12" rx="6" fill="#eaeaea" opacity="0.9"/>
+  <rect x="484" y="609" width="18" height="54" rx="9" fill="#eaeaea" opacity="0.22"/>
+  <path d="M472 628 C502 620 548 620 592 629" fill="none" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+  <g opacity="0.45" stroke="#eaeaea" stroke-width="2" stroke-linecap="round">
+    <path d="M110 615 C160 606 209 606 258 615"/>
+    <path d="M160 646 C207 639 253 639 301 646"/>
+    <path d="M1270 614 C1320 605 1372 606 1426 615"/>
+    <path d="M1318 646 C1364 639 1414 639 1460 646"/>
+  </g>
+</svg>

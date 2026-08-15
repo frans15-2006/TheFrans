@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Puerto Princesa illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#101a2c"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#21596a"/>
+      <stop offset="1" stop-color="#0d2228"/>
+    </linearGradient>
+    <linearGradient id="rock" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2e3839"/>
+      <stop offset="1" stop-color="#0b1010"/>
+    </linearGradient>
+    <radialGradient id="light" cx="52%" cy="26%" r="35%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="750" cy="180" r="280" fill="url(#light)"/>
+  <path d="M0 540 C160 504 280 506 405 514 C548 524 646 470 755 462 C892 452 1032 495 1200 470 L1200 900 L0 900 Z" fill="url(#water)"/>
+  <path d="M0 650 C160 612 304 626 420 640 C575 660 670 620 804 614 C931 608 1042 631 1200 618 L1200 900 L0 900 Z" fill="#0b1d23"/>
+  <path d="M120 520 C180 432 244 402 320 408 C380 412 438 448 474 502 C412 530 362 546 296 553 C224 559 162 548 120 520 Z" fill="url(#rock)"/>
+  <path d="M840 472 C902 380 982 340 1062 342 C1120 344 1168 372 1200 410 L1200 900 L792 900 C792 734 796 586 840 472 Z" fill="url(#rock)"/>
+  <path d="M790 458 C814 430 840 410 880 394 C885 446 874 500 844 552 C818 540 798 520 790 458 Z" fill="#f0a500" opacity="0.82"/>
+  <path d="M146 602 C198 588 250 588 304 602" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M892 600 C948 586 1000 586 1060 600" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+  <path d="M548 640 C602 610 662 610 714 640 C682 680 646 694 612 696 C578 698 548 676 548 640 Z" fill="#080808"/>
+  <path d="M592 614 L674 614 L686 684 L584 684 Z" fill="#d9d5c6" opacity="0.9"/>
+  <path d="M594 614 C615 596 642 592 674 614" fill="none" stroke="#080808" stroke-width="8" stroke-linecap="round"/>
+  <path d="M542 684 H726" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
+</svg>

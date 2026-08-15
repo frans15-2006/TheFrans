@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Clark Kent Travel and Tours social preview">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#10192a"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#214d5b"/>
+      <stop offset="1" stop-color="#0a1a20"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="60%" cy="25%" r="36%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="870" cy="180" r="230" fill="url(#sun)"/>
+  <path d="M0 400 C180 370 360 382 516 350 C660 320 790 284 932 292 C1048 299 1122 325 1200 342 L1200 630 L0 630 Z" fill="url(#sea)"/>
+  <path d="M78 378 C150 278 224 240 300 246 C360 251 416 280 456 336 C396 360 330 382 268 390 C194 400 130 394 78 378 Z" fill="#1b2222"/>
+  <text x="76" y="168" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="84" letter-spacing="6">Clark Kent</text>
+  <text x="78" y="248" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="4">TRAVEL AND TOURS</text>
+  <text x="78" y="328" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="38">Palawan packages from Puerto Princesa City</text>
+  <text x="78" y="382" fill="#b7b7b7" font-family="Space Grotesk, sans-serif" font-size="24">Verified itineraries, published rates, and local travel support.</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Balabac sandbar illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#10182a"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#2a7b84"/>
+      <stop offset="1" stop-color="#0b2427"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#cfac67"/>
+      <stop offset="1" stop-color="#86602b"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="58%" cy="22%" r="35%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="690" cy="140" r="240" fill="url(#sun)"/>
+  <path d="M0 500 C160 474 320 490 468 478 C610 466 714 424 858 424 C1024 424 1124 466 1200 452 L1200 900 L0 900 Z" fill="url(#sea)"/>
+  <path d="M170 622 C274 558 394 548 498 602 C448 662 400 702 336 712 C254 725 194 694 170 622 Z" fill="url(#sand)"/>
+  <path d="M506 616 C596 556 702 548 812 594 C782 658 734 704 668 716 C594 730 530 694 506 616 Z" fill="url(#sand)"/>
+  <path d="M162 628 C246 598 330 604 408 640" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  <path d="M512 624 C602 598 692 604 780 642" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+  <path d="M428 654 C482 632 542 632 592 654 C568 682 538 694 506 696 C470 698 440 684 428 654 Z" fill="#080808"/>
+  <path d="M458 632 L548 632 L560 684 L446 684 Z" fill="#ddd6bf" opacity="0.92"/>
+  <path d="M470 618 C496 596 524 596 548 632" fill="none" stroke="#080808" stroke-width="7" stroke-linecap="round"/>
+</svg>
