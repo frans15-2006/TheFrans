@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Pastry illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="bread" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1c48d"/>
+      <stop offset="1" stop-color="#9a5b1f"/>
+    </linearGradient>
+    <linearGradient id="berry" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c0e24"/>
+      <stop offset="1" stop-color="#de4060"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0e8d8"/>
+      <stop offset="1" stop-color="#d7c8ad"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="960" cy="220" r="180" fill="#f0a500" fill-opacity="0.18"/>
+  <g opacity="0.28" fill="none" stroke="#eaeaea" stroke-width="2">
+    <path d="M94 900 C 244 844, 364 944, 502 900 S 748 844, 884 896 S 1088 948, 1150 910"/>
+  </g>
+
+  <g transform="translate(180 250)">
+    <ellipse cx="430" cy="748" rx="330" ry="42" fill="#000" opacity="0.45"/>
+    <g transform="translate(128 330)">
+      <path d="M160 130 C 184 56, 252 18, 340 18 C 430 18, 496 60, 520 136 C 544 214, 526 300, 478 360 C 432 416, 394 442, 340 442 C 286 442, 246 416, 196 358 C 146 300, 136 212, 160 130 Z" fill="url(#bread)"/>
+      <path d="M236 94 C 276 70, 306 60, 340 60 C 380 60, 414 72, 448 98" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+      <path d="M238 160 C 274 144, 308 136, 340 136 C 374 136, 414 146, 448 164" fill="none" stroke="#eaeaea" stroke-width="7" stroke-linecap="round" opacity="0.5"/>
+      <path d="M252 238 C 284 228, 314 224, 340 224 C 376 224, 406 230, 440 240" fill="none" stroke="#7a3f14" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+    </g>
+
+    <g transform="translate(574 360)">
+      <rect x="0" y="110" width="196" height="132" rx="22" fill="#1f1208"/>
+      <rect x="18" y="90" width="160" height="118" rx="18" fill="url(#berry)"/>
+      <path d="M26 138 C 54 114, 86 104, 118 104 C 150 104, 176 114, 194 136" fill="none" stroke="#f0a500" stroke-width="8" opacity="0.8"/>
+      <path d="M34 168 C 58 156, 84 150, 110 150 C 142 150, 168 156, 184 170" fill="none" stroke="#f1e5d4" stroke-width="6" opacity="0.6"/>
+    </g>
+
+    <g transform="translate(70 170)">
+      <path d="M0 120 h258 v220 h-258z" fill="#111111" stroke="#eaeaea" stroke-opacity="0.14"/>
+      <path d="M40 160 h178 v40 h-178z" fill="url(#cream)"/>
+      <path d="M54 228 h150" stroke="#f0a500" stroke-width="6" opacity="0.9"/>
+      <path d="M70 190 c12 -34 32 -54 56 -54 c24 0 42 20 54 54" fill="none" stroke="#eaeaea" stroke-width="8" stroke-linecap="round" opacity="0.42"/>
+    </g>
+  </g>
+</svg>

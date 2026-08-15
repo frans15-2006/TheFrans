@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Calm Cafe hero illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="0.55" stop-color="#101010"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.74" cy="0.26" r="0.38">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.7"/>
+      <stop offset="0.48" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaeaea"/>
+      <stop offset="1" stop-color="#b8b8b8"/>
+    </linearGradient>
+    <linearGradient id="coffee" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b3e12"/>
+      <stop offset="1" stop-color="#351c07"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <rect width="1600" height="1200" fill="url(#glow)"/>
+
+  <g opacity="0.24" fill="none" stroke="#eaeaea" stroke-width="1.2">
+    <path d="M-20 770 C 180 705, 360 820, 560 760 S 940 702, 1120 768 S 1420 818, 1640 740"/>
+    <path d="M-20 820 C 160 760, 320 900, 520 836 S 900 780, 1090 840 S 1400 900, 1640 800"/>
+    <path d="M-20 872 C 180 820, 370 960, 580 908 S 960 840, 1140 900 S 1410 962, 1640 874"/>
+  </g>
+
+  <g transform="translate(0 10)">
+    <path d="M0 870 C 150 800, 235 760, 350 770 C 480 782, 560 850, 700 842 C 840 834, 890 756, 1040 748 C 1210 738, 1290 816, 1420 828 C 1495 835, 1555 818, 1600 800 L 1600 1200 L 0 1200 Z" fill="#070707"/>
+    <path d="M0 920 C 160 872, 290 880, 430 910 C 580 943, 710 980, 860 964 C 1030 946, 1120 888, 1280 878 C 1395 872, 1500 904, 1600 880 L 1600 1200 L 0 1200 Z" fill="#111111" opacity="0.92"/>
+  </g>
+
+  <g transform="translate(980 180)">
+    <circle cx="260" cy="120" r="84" fill="#f0a500" fill-opacity="0.24"/>
+    <circle cx="260" cy="120" r="48" fill="#f0a500" fill-opacity="0.82"/>
+    <circle cx="260" cy="120" r="20" fill="#eaeaea" fill-opacity="0.24"/>
+  </g>
+
+  <g transform="translate(930 330)">
+    <path d="M220 0 C 180 30, 136 72, 102 126 C 54 202, 26 286, 10 390" fill="none" stroke="#eaeaea" stroke-width="10" stroke-linecap="round" opacity="0.56"/>
+    <path d="M212 18 C 168 48, 128 96, 98 150 C 56 224, 32 300, 20 380" fill="none" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.75"/>
+    <path d="M195 8 C 194 118, 198 222, 202 326 C 205 390, 207 456, 210 520" fill="none" stroke="#eaeaea" stroke-width="7" stroke-linecap="round" opacity="0.42"/>
+  </g>
+
+  <g transform="translate(220 322)">
+    <ellipse cx="320" cy="390" rx="250" ry="34" fill="#000" opacity="0.42"/>
+    <path d="M214 122 h248 a48 48 0 0 1 48 48 v178 a88 88 0 0 1 -88 88 h-168 a88 88 0 0 1 -88 -88 V170 a48 48 0 0 1 48 -48 z" fill="url(#cup)"/>
+    <rect x="262" y="212" width="152" height="142" rx="44" fill="url(#coffee)"/>
+    <path d="M170 196 h74 v134 h-74 a58 58 0 0 1 -58 -58 v-18 a58 58 0 0 1 58 -58 z" fill="none" stroke="url(#cup)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M492 208 c38 0 58 26 58 56 c0 40 -26 72 -68 72" fill="none" stroke="url(#cup)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M228 180 C 260 154, 292 150, 324 174 C 356 198, 388 196, 418 176" fill="none" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+    <path d="M260 154 C 288 134, 320 128, 350 144 C 382 160, 408 160, 436 144" fill="none" stroke="#eaeaea" stroke-width="6" stroke-linecap="round" opacity="0.52"/>
+    <path d="M270 340 h128" stroke="#f0a500" stroke-width="4" opacity="0.85"/>
+  </g>
+
+  <g transform="translate(115 878)" opacity="0.88">
+    <path d="M0 40 C 52 22, 102 34, 144 52 C 186 70, 236 78, 292 66 C 352 54, 382 26, 446 18 C 518 9, 576 34, 640 46 C 710 58, 782 56, 846 38" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+    <path d="M0 92 C 68 72, 132 84, 186 100 C 248 118, 310 118, 364 102 C 422 84, 486 70, 558 74 C 640 78, 692 108, 760 114 C 806 118, 848 108, 894 96" fill="none" stroke="#eaeaea" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  </g>
+</svg>

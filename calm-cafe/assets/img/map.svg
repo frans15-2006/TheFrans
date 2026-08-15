@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Location graphic for Calm Cafe in Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <g opacity="0.16" fill="none" stroke="#eaeaea" stroke-width="2">
+    <path d="M120 210 H1080"/>
+    <path d="M120 360 H1080"/>
+    <path d="M120 510 H1080"/>
+    <path d="M120 660 H1080"/>
+    <path d="M120 810 H1080"/>
+    <path d="M210 120 V1080"/>
+    <path d="M390 120 V1080"/>
+    <path d="M570 120 V1080"/>
+    <path d="M750 120 V1080"/>
+    <path d="M930 120 V1080"/>
+  </g>
+
+  <g transform="translate(170 210)">
+    <path d="M144 126 C 94 164, 68 222, 58 286 C 40 404, 78 522, 146 602 C 230 702, 358 748, 500 738 C 654 726, 774 668, 876 556 C 954 470, 1000 352, 1000 236 C 1000 174, 982 128, 954 88 C 892 0, 754 -20, 626 10 C 506 40, 404 96, 284 112 C 234 118, 184 114, 144 126 Z" fill="#111111" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="10"/>
+    <path d="M188 184 C 146 254, 128 328, 136 404 C 150 538, 232 644, 348 690 C 490 746, 640 718, 748 634 C 840 560, 902 446, 912 324 C 920 222, 894 146, 842 82" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="704" cy="420" r="36" fill="url(#amber)"/>
+    <path d="M704 334 C 674 362, 660 386, 660 418 C 660 456, 684 492, 704 526 C 726 492, 748 458, 748 418 C 748 386, 734 362, 704 334 Z" fill="#eaeaea" fill-opacity="0.94"/>
+    <circle cx="704" cy="418" r="12" fill="#080808"/>
+    <path d="M104 822 H904" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="6"/>
+    <text x="104" y="888" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="4">9.7420125, 118.7410156</text>
+    <text x="104" y="932" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="4">PUERTO PRINCESA, PALAWAN</text>
+  </g>
+</svg>

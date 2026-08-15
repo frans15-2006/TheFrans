@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Spanish latte illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f6f6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#c9c9c9" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="coffee" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#824913"/>
+      <stop offset="1" stop-color="#271205"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="900" cy="240" r="220" fill="url(#amber)" fill-opacity="0.2"/>
+
+  <g opacity="0.35" stroke="#eaeaea" stroke-width="2" fill="none">
+    <path d="M90 900 C 220 850, 352 930, 480 900 S 720 850, 860 896 S 1050 940, 1160 880"/>
+    <path d="M80 960 C 240 918, 370 1010, 520 980 S 780 922, 940 968 S 1080 1006, 1180 952"/>
+  </g>
+
+  <g transform="translate(260 170)">
+    <ellipse cx="340" cy="780" rx="280" ry="38" fill="#000" opacity="0.45"/>
+    <path d="M210 190 h260 a46 46 0 0 1 46 46 v312 a112 112 0 0 1 -112 112 h-128 a112 112 0 0 1 -112 -112 V236 a46 46 0 0 1 46 -46 z" fill="url(#glass)"/>
+    <path d="M234 330 C 258 254, 302 218, 340 212 C 388 204, 446 224, 492 300 L 492 520 C 452 548, 404 570, 336 570 C 270 570, 230 542, 210 522 Z" fill="url(#coffee)"/>
+    <path d="M250 320 C 292 296, 330 286, 370 294 C 412 302, 442 320, 470 350" fill="none" stroke="#f0a500" stroke-width="14" stroke-linecap="round" opacity="0.8"/>
+    <path d="M590 250 C 676 164, 720 116, 762 46" stroke="#eaeaea" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.58"/>
+    <path d="M620 264 C 704 184, 744 136, 788 68" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.76"/>
+    <circle cx="804" cy="44" r="18" fill="#f0a500" fill-opacity="0.9"/>
+    <circle cx="820" cy="70" r="10" fill="#eaeaea" fill-opacity="0.55"/>
+    <path d="M198 624 h286" stroke="#f0a500" stroke-width="5" opacity="0.85"/>
+  </g>
+</svg>
