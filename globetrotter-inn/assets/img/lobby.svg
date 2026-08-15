@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Illustration of the lobby and shared lounge">
+  <defs>
+    <linearGradient id="lobbyBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#lobbyBg)"/>
+  <rect x="68" y="72" width="1064" height="756" fill="#101010" stroke="#292929" stroke-width="3"/>
+  <rect x="112" y="138" width="246" height="562" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <rect x="144" y="168" width="182" height="106" fill="#f0a500" opacity="0.12"/>
+  <rect x="144" y="296" width="182" height="348" fill="#0e0e0e"/>
+  <rect x="398" y="174" width="372" height="164" rx="6" fill="#171717" stroke="#313131" stroke-width="3"/>
+  <rect x="430" y="202" width="308" height="78" rx="4" fill="#f0a500" opacity="0.12"/>
+  <rect x="446" y="225" width="276" height="28" fill="#f0a500" opacity="0.42"/>
+  <rect x="434" y="378" width="322" height="188" rx="6" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <rect x="466" y="408" width="130" height="124" rx="64" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="2"/>
+  <rect x="608" y="408" width="118" height="124" rx="60" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="2"/>
+  <circle cx="544" cy="470" r="16" fill="#f0a500" opacity="0.55"/>
+  <circle cx="668" cy="470" r="16" fill="#f0a500" opacity="0.55"/>
+  <rect x="796" y="138" width="292" height="562" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <rect x="830" y="176" width="226" height="90" rx="4" fill="#eaeaea"/>
+  <rect x="830" y="278" width="226" height="24" fill="#f0a500" opacity="0.42"/>
+  <rect x="830" y="320" width="226" height="122" fill="#1b1b1b"/>
+  <rect x="830" y="458" width="226" height="64" fill="#262626"/>
+  <rect x="830" y="538" width="226" height="64" fill="#262626"/>
+  <rect x="830" y="618" width="226" height="64" fill="#262626"/>
+  <path d="M92 752 H1108" stroke="#1f1f1f" stroke-width="4"/>
+</svg>

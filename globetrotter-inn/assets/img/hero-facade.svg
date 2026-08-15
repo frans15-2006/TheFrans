@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Illustrated facade of Globetrotter Inn in Puerto Princesa at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="45%" stop-color="#1a150f"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#23201a"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1290" cy="185" r="76" fill="#f0a500" opacity="0.12"/>
+  <circle cx="1290" cy="185" r="40" fill="#f0a500" opacity="0.16"/>
+  <path d="M0 640 C180 600, 280 660, 420 632 S710 606, 860 634 S1180 670, 1600 610 L1600 1000 L0 1000 Z" fill="#070707"/>
+  <path d="M0 700 C180 645, 300 690, 460 675 S760 655, 920 690 S1270 724, 1600 660 L1600 1000 L0 1000 Z" fill="#101010" opacity="0.94"/>
+  <g transform="translate(170 316)">
+    <rect x="0" y="120" width="700" height="335" rx="2" fill="url(#building)" stroke="#262626" stroke-width="3"/>
+    <rect x="0" y="60" width="700" height="86" fill="#191919" stroke="#262626" stroke-width="3"/>
+    <rect x="60" y="0" width="210" height="74" fill="#101010" stroke="#262626" stroke-width="3"/>
+    <rect x="500" y="0" width="140" height="74" fill="#101010" stroke="#262626" stroke-width="3"/>
+    <rect x="102" y="32" width="510" height="20" fill="#f0a500" opacity="0.8"/>
+    <text x="254" y="46" fill="#080808" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" letter-spacing="3">GLOBETROTTER INN</text>
+    <g fill="#f0a500">
+      <rect x="70" y="180" width="54" height="54"/>
+      <rect x="162" y="180" width="54" height="54"/>
+      <rect x="254" y="180" width="54" height="54"/>
+      <rect x="346" y="180" width="54" height="54"/>
+      <rect x="438" y="180" width="54" height="54"/>
+      <rect x="530" y="180" width="54" height="54"/>
+      <rect x="622" y="180" width="54" height="54"/>
+      <rect x="70" y="274" width="54" height="54"/>
+      <rect x="162" y="274" width="54" height="54"/>
+      <rect x="254" y="274" width="54" height="54"/>
+      <rect x="346" y="274" width="54" height="54"/>
+      <rect x="438" y="274" width="54" height="54"/>
+      <rect x="530" y="274" width="54" height="54"/>
+      <rect x="622" y="274" width="54" height="54"/>
+    </g>
+    <g fill="#1f1f1f">
+      <rect x="118" y="180" width="34" height="148"/>
+      <rect x="210" y="180" width="34" height="148"/>
+      <rect x="302" y="180" width="34" height="148"/>
+      <rect x="394" y="180" width="34" height="148"/>
+      <rect x="486" y="180" width="34" height="148"/>
+      <rect x="578" y="180" width="34" height="148"/>
+    </g>
+    <rect x="280" y="374" width="140" height="81" fill="#080808" stroke="#f0a500" stroke-width="4"/>
+    <rect x="304" y="388" width="92" height="53" fill="#1a1a1a" stroke="#2d2d2d" stroke-width="2"/>
+    <circle cx="354" cy="414" r="9" fill="#f0a500"/>
+    <path d="M28 456 H672" stroke="#2b2b2b" stroke-width="6"/>
+  </g>
+  <path d="M1130 908 C1200 834, 1240 754, 1260 635 C1270 566, 1260 508, 1237 470" stroke="#102114" stroke-width="28" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <g fill="none" stroke="#f0a500" stroke-linecap="round" opacity="0.84">
+    <path d="M1237 470 C1185 440, 1140 438, 1098 448" stroke-width="6"/>
+    <path d="M1237 470 C1210 416, 1177 386, 1131 366" stroke-width="6"/>
+    <path d="M1237 470 C1268 426, 1304 398, 1350 383" stroke-width="6"/>
+    <path d="M1237 470 C1287 466, 1330 476, 1375 500" stroke-width="6"/>
+    <path d="M1237 470 C1188 500, 1160 533, 1135 581" stroke-width="6"/>
+  </g>
+  <rect x="1076" y="460" width="140" height="24" rx="12" fill="url(#glow)" opacity="0.8"/>
+  <path d="M0 844 C190 798, 360 792, 530 840 S905 916, 1600 826" stroke="#1b1b1b" stroke-width="5" fill="none" opacity="0.75"/>
+  <path d="M0 882 H1600" stroke="#f0a500" stroke-width="3" opacity="0.2"/>
+</svg>

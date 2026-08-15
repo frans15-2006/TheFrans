@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Illustration of the family room interior">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg2)"/>
+  <rect x="66" y="76" width="1068" height="748" fill="#101010" stroke="#2a2a2a" stroke-width="3"/>
+  <rect x="104" y="126" width="240" height="176" rx="4" fill="#1a1a1a" stroke="#313131" stroke-width="3"/>
+  <rect x="138" y="150" width="112" height="102" rx="2" fill="url(#lamp)"/>
+  <path d="M194 150 V252 M138 201 H250" stroke="#2b2b2b" stroke-width="4"/>
+  <rect x="356" y="138" width="210" height="266" rx="6" fill="#171717" stroke="#303030" stroke-width="3"/>
+  <rect x="385" y="168" width="154" height="90" rx="2" fill="#eaeaea"/>
+  <rect x="385" y="260" width="154" height="38" fill="#d1d1d1"/>
+  <rect x="385" y="299" width="154" height="38" fill="#bcbcbc"/>
+  <rect x="389" y="334" width="146" height="28" fill="#262626"/>
+  <rect x="588" y="138" width="210" height="266" rx="6" fill="#171717" stroke="#303030" stroke-width="3"/>
+  <rect x="617" y="168" width="154" height="90" rx="2" fill="#eaeaea"/>
+  <rect x="617" y="260" width="154" height="38" fill="#d1d1d1"/>
+  <rect x="617" y="299" width="154" height="38" fill="#bcbcbc"/>
+  <rect x="621" y="334" width="146" height="28" fill="#262626"/>
+  <rect x="822" y="138" width="240" height="266" rx="6" fill="#171717" stroke="#303030" stroke-width="3"/>
+  <rect x="855" y="168" width="174" height="90" rx="2" fill="#eaeaea"/>
+  <rect x="855" y="260" width="174" height="38" fill="#d1d1d1"/>
+  <rect x="855" y="299" width="174" height="38" fill="#bcbcbc"/>
+  <rect x="859" y="334" width="166" height="28" fill="#262626"/>
+  <rect x="132" y="462" width="394" height="236" rx="4" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <rect x="160" y="500" width="122" height="104" fill="#eaeaea"/>
+  <rect x="163" y="505" width="116" height="14" fill="#f0a500" opacity="0.7"/>
+  <rect x="165" y="529" width="112" height="62" fill="#d8d8d8"/>
+  <rect x="313" y="500" width="120" height="104" fill="#eaeaea"/>
+  <rect x="316" y="505" width="114" height="14" fill="#f0a500" opacity="0.7"/>
+  <rect x="318" y="529" width="110" height="62" fill="#d8d8d8"/>
+  <circle cx="499" cy="614" r="58" fill="#f0a500" opacity="0.08"/>
+  <rect x="535" y="462" width="180" height="236" rx="4" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <rect x="565" y="508" width="118" height="30" rx="4" fill="#262626"/>
+  <rect x="583" y="540" width="82" height="94" rx="4" fill="#0f0f0f" stroke="#3a3a3a" stroke-width="2"/>
+  <rect x="744" y="462" width="316" height="236" rx="4" fill="#141414" stroke="#313131" stroke-width="3"/>
+  <path d="M770 638 H1036" stroke="#2d2d2d" stroke-width="8"/>
+  <rect x="794" y="556" width="116" height="72" rx="36" fill="#1c1c1c" stroke="#3b3b3b" stroke-width="2"/>
+  <rect x="928" y="556" width="116" height="72" rx="36" fill="#1c1c1c" stroke="#3b3b3b" stroke-width="2"/>
+  <rect x="841" y="540" width="116" height="28" rx="14" fill="#f0a500" opacity="0.45"/>
+  <path d="M110 826 H1096" stroke="#1f1f1f" stroke-width="4"/>
+</svg>

@@ -1,60 +1,987 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globetrotter Inn Palawan</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globetrotter Inn Palawan | Budget Stay in Puerto Princesa</title>
+  <meta name="description" content="Globetrotter Inn in San Jose, Puerto Princesa offers budget-friendly stays with two verified room types, free Wi-Fi, free parking, air conditioning, and easy access to the airport and city essentials.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Globetrotter Inn Palawan | Budget Stay in Puerto Princesa">
+  <meta property="og:description" content="A practical Puerto Princesa base on Green Valley Road with two-room options, free Wi-Fi, free parking, and quick access to San Jose and the airport corridor.">
+  <meta property="og:image" content="assets/img/hero-facade.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/globetrotter-inn/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Globetrotter Inn Palawan | Budget Stay in Puerto Princesa">
+  <meta name="twitter:description" content="Budget-friendly rooms, practical amenities, and a San Jose location in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="assets/img/hero-facade.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #101010;
+      --panel-2: #141414;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.12);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.14);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+      --space: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Bebas Neue", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--space);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.07), transparent 34%),
+        linear-gradient(180deg, #0b0b0b 0%, #080808 36%, #0d0d0d 100%);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--amber);
+      color: #111;
+      font: 700 0.85rem/1 var(--mono);
+      transform: translateY(-140%);
+      transition: transform 0.2s ease;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.4rem;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand strong,
+    .hero-brand strong {
+      font-family: var(--display);
+      font-size: clamp(1.65rem, 2.4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+
+    .brand span,
+    .hero-brand span {
+      font: 500 0.72rem/1.3 var(--mono);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.9rem;
+      font: 500 0.72rem/1 var(--mono);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .nav a {
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--amber);
+      border-color: rgba(240, 165, 0, 0.65);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 4.4rem);
+      overflow: hidden;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+      filter: saturate(0.94) contrast(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0.5) 48%, rgba(8, 8, 8, 0.82) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.16) 0%, rgba(8, 8, 8, 0.34) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100svh - 4.4rem);
+      display: grid;
+      align-content: end;
+      gap: 1.15rem;
+      padding: 4.2rem 0 2.2rem;
+    }
+
+    .hero-brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      width: fit-content;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.18);
+    }
+
+    .hero-kicker {
+      font: 500 0.72rem/1.3 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hero h1,
+    .section h2,
+    .booking h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+    }
+
+    .hero h1 {
+      max-width: 11ch;
+      font-size: clamp(4.2rem, 11vw, 8.8rem);
+    }
+
+    .hero p {
+      max-width: 36rem;
+      margin: 0;
+      color: rgba(234, 234, 234, 0.82);
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+      line-height: 1.65;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 2.9rem;
+      padding: 0.8rem 1.1rem;
+      border: 1px solid rgba(234, 234, 234, 0.18);
+      background: rgba(16, 16, 16, 0.76);
+      color: var(--text);
+      font: 700 0.8rem/1 var(--mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.6);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #111;
+      border-color: rgba(240, 165, 0, 0.95);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #ffb61a;
+      color: #080808;
+    }
+
+    .section {
+      padding: clamp(4.5rem, 8vw, 7rem) 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.85rem;
+      max-width: 46rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-kicker {
+      margin: 0;
+      font: 500 0.74rem/1.2 var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section h2,
+    .booking h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 42rem;
+    }
+
+    .room-grid,
+    .gallery-grid,
+    .location-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .room-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .room {
+      display: grid;
+      gap: 1rem;
+      align-items: stretch;
+      padding-top: 1rem;
+      border-top: 1px solid var(--faint);
+    }
+
+    .room img,
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .room-visual {
+      aspect-ratio: 16 / 11;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.09);
+      background: #111;
+    }
+
+    .room-copy {
+      display: grid;
+      gap: 0.8rem;
+      align-content: start;
+    }
+
+    .room-tag,
+    .amenity-tag,
+    .gallery-tag {
+      margin: 0;
+      font: 500 0.72rem/1.2 var(--mono);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .room h3 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+    }
+
+    .room-meta {
+      margin: 0;
+      font: 500 0.82rem/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      color: rgba(234, 234, 234, 0.86);
+      line-height: 1.65;
+    }
+
+    .feature-list li {
+      padding-left: 0.95rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.1);
+    }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .amenity-block {
+      padding-top: 1rem;
+      border-top: 1px solid var(--faint);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .amenity-block h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.1;
+    }
+
+    .amenity-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+      color: rgba(234, 234, 234, 0.82);
+      line-height: 1.6;
+    }
+
+    .amenity-list li {
+      padding: 0.22rem 0 0.22rem 0.95rem;
+      position: relative;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .amenity-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.88rem;
+      width: 0.33rem;
+      height: 0.33rem;
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.8);
+    }
+
+    .location-grid {
+      align-items: start;
+      grid-template-columns: 1fr;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 0.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--faint);
+    }
+
+    .location-copy .address {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .location-note {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mini-link {
+      width: fit-content;
+      color: var(--amber);
+      font: 700 0.78rem/1 var(--mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(240, 165, 0, 0.5);
+      padding-bottom: 0.15rem;
+    }
+
+    .map-shell {
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #111;
+      overflow: hidden;
+      min-height: 22rem;
+      box-shadow: var(--shadow);
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      display: block;
+      filter: grayscale(0.16) contrast(1.08) saturate(0.92);
+    }
+
+    .booking {
+      padding: 0;
+    }
+
+    .booking-panel {
+      background: linear-gradient(135deg, #f0a500 0%, #d58f00 100%);
+      color: #111;
+      padding: clamp(2rem, 5vw, 4rem);
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .booking .section-kicker {
+      color: rgba(17, 17, 17, 0.82);
+    }
+
+    .booking .section-copy {
+      color: rgba(17, 17, 17, 0.82);
+    }
+
+    .booking .btn {
+      background: rgba(8, 8, 8, 0.92);
+      color: var(--text);
+      border-color: rgba(8, 8, 8, 0.2);
+    }
+
+    .booking .btn:hover,
+    .booking .btn:focus-visible {
+      background: #181818;
+      border-color: rgba(8, 8, 8, 0.35);
+      color: var(--text);
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      margin-top: 1.8rem;
+    }
+
+    .gallery-item {
+      display: grid;
+      gap: 0.7rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--faint);
+    }
+
+    .gallery-frame {
+      aspect-ratio: 16 / 11;
+      border: 1px solid rgba(234, 234, 234, 0.09);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .gallery-item figcaption {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.84);
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: clamp(2.5rem, 6vw, 4.2rem) 0 3rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      padding-top: 1rem;
+    }
+
+    .footer address {
+      font-style: normal;
+      color: rgba(234, 234, 234, 0.84);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.55rem;
+      font: 500 0.92rem/1.5 var(--space);
+    }
+
+    .footer-links a {
+      width: fit-content;
+      color: var(--amber);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.45);
+      padding-bottom: 0.14rem;
+    }
+
+    .footer small {
+      display: block;
+      margin-top: 1.25rem;
+      color: rgba(234, 234, 234, 0.46);
+      line-height: 1.6;
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 720px) {
+      .hero-content {
+        padding-top: 5rem;
+      }
+
+      .room {
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 1.3rem;
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .location-grid {
+        grid-template-columns: 0.88fr 1.12fr;
+        gap: 1.4rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .nav {
+        gap: 1.15rem;
+      }
+
+      .hero-content {
+        max-width: 70rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.15fr 0.85fr 0.85fr 1.15fr;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .gallery-item:nth-child(4) {
+        grid-column: span 2;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Globetrotter Inn Palawan</h1>
-    <span class="category">Hostel</span>
-    <p class="address">Green Valley Highway, Puerto Princesa City</p>
-    <p class="phone">+63 917 543 6554</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Globetrotter Inn Palawan home">
+        <strong>Globetrotter Inn</strong>
+        <span>Puerto Princesa, Palawan</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#booking">Book</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-label="Globetrotter Inn hero">
+      <img class="hero-art" src="assets/img/hero-facade.svg" alt="Illustrated facade of Globetrotter Inn in Puerto Princesa at dusk" fetchpriority="high">
+      <div class="container hero-content">
+        <div class="hero-brand reveal">
+          <strong>Globetrotter Inn</strong>
+          <span>Green Valley Road, Barangay San Jose</span>
+        </div>
+        <p class="hero-kicker reveal">Budget inn | Puerto Princesa, Palawan</p>
+        <h1 class="reveal">Easy stays in San Jose</h1>
+        <p class="reveal">Globetrotter Inn is a practical Puerto Princesa base with verified room choices, air conditioning, free Wi-Fi, free parking, and quick access to the airport corridor and city essentials.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#booking">Book direct</a>
+          <a class="btn" href="tel:+639175436554">Call +63 917 543 6554</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Accommodations</p>
+          <h2>Two room types, built for real trip sizes</h2>
+          <p class="section-copy">The public listings for Globetrotter Inn show two main layouts. Both keep the essentials close at hand: air conditioning, private bathrooms, flat-screen TVs, wardrobes, and space to settle in after a day around Puerto Princesa.</p>
+        </div>
+
+        <div class="room-grid">
+          <article class="room reveal">
+            <div class="room-visual">
+              <img src="assets/img/room-apartment.svg" alt="Illustration of the two-bedroom apartment with a main bed, bunk beds, and tropical light">
+            </div>
+            <div class="room-copy">
+              <p class="room-tag">Two-Bedroom Apartment</p>
+              <h3>Room for five with a little more breathing space</h3>
+              <p class="room-meta">Approx. 50 sqm | 538 sq ft | 1 full bed + 2 bunk beds</p>
+              <ul class="feature-list">
+                <li>Private bathroom with shower and bidet</li>
+                <li>Air conditioning, flat-screen TV, cable channels, and wardrobe</li>
+                <li>Some units include a balcony or terrace</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-visual">
+              <img src="assets/img/room-family.svg" alt="Illustration of the family room with multiple beds and a clean, practical layout">
+            </div>
+            <div class="room-copy">
+              <p class="room-tag">Family Room</p>
+              <h3>Set up for six without feeling cramped</h3>
+              <p class="room-meta">Approx. 48 sqm | 517 sq ft | 4 twin beds + 1 full bed + 1 bunk bed</p>
+              <ul class="feature-list">
+                <li>Private bathroom with shower and bidet</li>
+                <li>Air conditioning, flat-screen TV, cable channels, and wardrobe</li>
+                <li>Best for families or groups who want one shared base</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Amenities</p>
+          <h2>Practical comforts that match the price point</h2>
+          <p class="section-copy">The property leans into what budget travelers actually need: parking, connectivity, simple service, and outdoor space to unwind without paying for features that do not matter.</p>
+        </div>
+
+        <div class="amenity-grid">
+          <div class="amenity-block reveal">
+            <p class="amenity-tag">Stay connected</p>
+            <h3>Internet and arrival basics</h3>
+            <ul class="amenity-list">
+              <li>Free Wi-Fi</li>
+              <li>Free private parking</li>
+              <li>Luggage storage</li>
+              <li>Tour desk</li>
+            </ul>
+          </div>
+
+          <div class="amenity-block reveal">
+            <p class="amenity-tag">In the room</p>
+            <h3>Simple comfort where it counts</h3>
+            <ul class="amenity-list">
+              <li>Air conditioning</li>
+              <li>Private bathroom</li>
+              <li>Flat-screen TV with cable channels</li>
+              <li>Wardrobe or closet</li>
+            </ul>
+          </div>
+
+          <div class="amenity-block reveal">
+            <p class="amenity-tag">Shared spaces</p>
+            <h3>Outdoor corners for downtime</h3>
+            <ul class="amenity-list">
+              <li>Garden</li>
+              <li>Terrace</li>
+              <li>Shared lounge / TV area</li>
+              <li>Laundry service and room service</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Location</p>
+          <h2>Green Valley Road, Barangay San Jose</h2>
+          <p class="section-copy">This verified Puerto Princesa address sits in the San Jose area, a useful north-city base with fast access to San Jose New Market, Robinsons Place Palawan, Honda Bay routes, and Puerto Princesa International Airport.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-copy reveal">
+            <p class="address">Green Valley Road, Barangay San Jose, Puerto Princesa, Palawan 5300, Philippines</p>
+            <p class="location-note">The coordinates used below are set to Puerto Princesa, not Manila: 9.782916, 118.753169.</p>
+            <a class="mini-link" href="https://www.google.com/maps/search/?api=1&query=9.782916,118.753169">Open in Google Maps</a>
+          </div>
+
+          <div class="map-shell reveal" aria-label="Map of Globetrotter Inn location">
+            <iframe
+              title="Map showing Globetrotter Inn in Puerto Princesa, Palawan"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.743169%2C9.772916%2C118.763169%2C9.792916&layer=mapnik&marker=9.782916%2C118.753169">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking" id="booking">
+      <div class="container booking-panel reveal">
+        <p class="section-kicker">Booking CTA</p>
+        <h2>Reserve a clean, good-value base in Puerto Princesa</h2>
+        <p class="section-copy">Use the official booking link if you want to lock in your dates, or reach the property directly if you need to ask about room fit, parking, or group travel before you book.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://us2.cloudbeds.com/reservation/kCNoW2">Book direct</a>
+          <a class="btn" href="mailto:globetrotter.palawan@gmail.com">Email the inn</a>
+          <a class="btn" href="tel:+639175436554">Call the desk</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-kicker">Gallery</p>
+          <h2>Spaces that tell you what kind of stay to expect</h2>
+          <p class="section-copy">From the facade to the terrace and rooms, the visuals focus on the actual atmosphere of the inn: simple, practical, and suited to travelers who care more about value and location than luxury theatrics.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <div class="gallery-frame">
+              <img src="assets/img/hero-facade.svg" alt="Illustrated facade of Globetrotter Inn at dusk">
+            </div>
+            <figcaption>
+              <p class="gallery-tag">Facade</p>
+              The inn's street-facing mood after dark.
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-frame">
+              <img src="assets/img/room-apartment.svg" alt="Illustration of the two-bedroom apartment interior">
+            </div>
+            <figcaption>
+              <p class="gallery-tag">Two-bedroom apartment</p>
+              A room layout suited to families or friends traveling together.
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-frame">
+              <img src="assets/img/terrace.svg" alt="Illustration of the rooftop terrace with seating and warm light">
+            </div>
+            <figcaption>
+              <p class="gallery-tag">Terrace</p>
+              Outdoor space for slow mornings and evening downtime.
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-frame">
+              <img src="assets/img/lobby.svg" alt="Illustration of the lobby and shared lounge area">
+            </div>
+            <figcaption>
+              <p class="gallery-tag">Shared lounge</p>
+              A straightforward common area for arrivals, planning, and a quick reset.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <address>
+          Globetrotter Inn Palawan<br>
+          Green Valley Road, Barangay San Jose<br>
+          Puerto Princesa, Palawan 5300, Philippines
+        </address>
+        <small>Room types, address, and amenities on this page reflect current public listings and official contact references for Globetrotter Inn Palawan.</small>
+      </div>
+
+      <div class="footer-links">
+        <a href="tel:+639175436554">+63 917 543 6554</a>
+        <a href="mailto:globetrotter.palawan@gmail.com">globetrotter.palawan@gmail.com</a>
+        <a href="https://www.facebook.com/globetrotter.palawan/">Facebook page</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && window.Lenis && window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (!target) return;
+          event.preventDefault();
+          lenis.scrollTo(target, { offset: -78 });
+        });
+      });
+
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro
+        .from('.site-header', { y: -18, opacity: 0, duration: 0.8 })
+        .from('.hero-art', { scale: 1.08, opacity: 0.3, duration: 1.3 }, 0)
+        .from('.hero .reveal', { y: 26, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.18);
+
+      gsap.to('.hero-art', {
+        yPercent: 4,
+        scale: 1.08,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      document.querySelectorAll('.section .reveal').forEach((element) => {
+        gsap.fromTo(element, { y: 30, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.room').forEach((room, index) => {
+        gsap.fromTo(room.querySelector('.room-visual'), { x: index % 2 === 0 ? -22 : 22, opacity: 0 }, {
+          x: 0,
+          opacity: 1,
+          duration: 0.95,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: room,
+            start: 'top 78%'
+          }
+        });
+
+        gsap.fromTo(room.querySelector('.room-copy'), { y: 24, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: room,
+            start: 'top 76%'
+          }
+        });
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+  </script>
 </body>
 </html>

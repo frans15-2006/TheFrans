@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Illustration of the rooftop terrace with seating and warm evening light">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241912"/>
+      <stop offset="55%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sunset)"/>
+  <circle cx="900" cy="178" r="96" fill="#f0a500" opacity="0.17"/>
+  <circle cx="900" cy="178" r="52" fill="#f0a500" opacity="0.18"/>
+  <path d="M0 572 C180 520, 332 554, 500 544 S836 504, 1008 520 S1200 516, 1200 516 L1200 900 L0 900 Z" fill="#0d0d0d"/>
+  <rect x="86" y="478" width="1028" height="260" rx="4" fill="#141414" stroke="#2d2d2d" stroke-width="3"/>
+  <path d="M118 548 H1082" stroke="#2d2d2d" stroke-width="7"/>
+  <path d="M118 548 L194 578 H1010 L1082 548" fill="#1a1a1a"/>
+  <path d="M120 548 H1080" stroke="#f0a500" stroke-opacity="0.38" stroke-width="4"/>
+  <path d="M180 582 H360" stroke="#eaeaea" stroke-width="10" opacity="0.35"/>
+  <path d="M540 582 H736" stroke="#eaeaea" stroke-width="10" opacity="0.35"/>
+  <path d="M880 582 H1026" stroke="#eaeaea" stroke-width="10" opacity="0.35"/>
+  <rect x="180" y="620" width="174" height="92" rx="46" fill="#1b1b1b" stroke="#333" stroke-width="2"/>
+  <rect x="272" y="588" width="100" height="26" rx="13" fill="#f0a500" opacity="0.58"/>
+  <rect x="492" y="620" width="174" height="92" rx="46" fill="#1b1b1b" stroke="#333" stroke-width="2"/>
+  <rect x="584" y="588" width="100" height="26" rx="13" fill="#f0a500" opacity="0.58"/>
+  <rect x="804" y="620" width="174" height="92" rx="46" fill="#1b1b1b" stroke="#333" stroke-width="2"/>
+  <rect x="896" y="588" width="100" height="26" rx="13" fill="#f0a500" opacity="0.58"/>
+  <rect x="408" y="602" width="92" height="106" rx="4" fill="#151515" stroke="#343434" stroke-width="2"/>
+  <rect x="708" y="602" width="92" height="106" rx="4" fill="#151515" stroke="#343434" stroke-width="2"/>
+  <circle cx="602" cy="624" r="58" fill="#f0a500" opacity="0.08"/>
+  <rect x="286" y="444" width="630" height="24" rx="12" fill="#f0a500" opacity="0.42"/>
+  <g fill="none" stroke="#f0a500" stroke-linecap="round" opacity="0.7">
+    <path d="M348 446 V390" stroke-width="5"/>
+    <path d="M448 446 V382" stroke-width="5"/>
+    <path d="M548 446 V396" stroke-width="5"/>
+    <path d="M648 446 V386" stroke-width="5"/>
+    <path d="M748 446 V392" stroke-width="5"/>
+    <path d="M848 446 V384" stroke-width="5"/>
+  </g>
+  <path d="M120 830 H1080" stroke="#1f1f1f" stroke-width="4"/>
+</svg>
