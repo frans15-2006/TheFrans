@@ -1,5 +1,519 @@
 <!DOCTYPE html>
-<title>Catalina Bakeshop Cafe</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalina's Bakeshop Cafe | Puerto Princesa Pasalubong & Cafe</title>
+  <meta name="description" content="Catalina's Bakeshop Cafe in Puerto Princesa, Palawan serves buko puffs, coconut cream puffs, mini puffburitos, Filipino cafe plates, and coffee at 402 Rizal Avenue Extension.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Catalina's Bakeshop Cafe | Puerto Princesa Pasalubong & Cafe">
+  <meta property="og:description" content="A Puerto Princesa bakeshop and cafe known for pasalubong favorites, warm pastries, and daily cafe comfort in Bancao-Bancao.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/catalina-bakeshop-cafe/assets/img/hero-scene.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/catalina-bakeshop-cafe/">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/catalina-bakeshop-cafe/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --paper: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.14);
+      --line-strong: rgba(240, 165, 0, 0.42);
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--paper);
+      scroll-behavior: auto;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.07), transparent 26%),
+        var(--bg);
+      color: var(--paper);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .font-mono-ui {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-rule {
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.65), transparent);
+      height: 1px;
+      width: 100%;
+    }
+
+    .soft-grid {
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .outline-link {
+      border: 1px solid rgba(234, 234, 234, 0.18);
+      transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+    }
+
+    .outline-link:hover,
+    .outline-link:focus-visible {
+      border-color: rgba(240, 165, 0, 0.8);
+      color: #080808;
+      background: var(--amber);
+    }
+
+    .subtle-link {
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    .subtle-link:hover,
+    .subtle-link:focus-visible {
+      color: var(--amber);
+      opacity: 1;
+    }
+
+    .shadow-amber {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.18), 0 0 0 12px rgba(240, 165, 0, 0.04);
+    }
+
+    .map-frame {
+      filter: saturate(0.92) contrast(1.04) brightness(0.95);
+    }
+
+    .viz-frame {
+      background: linear-gradient(180deg, rgba(234, 234, 234, 0.02), rgba(234, 234, 234, 0));
+      border: 1px solid var(--line);
+    }
+
+    .hours-row {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hours-row:last-child {
+      border-bottom: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: smooth;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[999] focus:rounded-full focus:bg-[#f0a500] focus:px-4 focus:py-2 focus:text-[#080808]">Skip to content</a>
+
+  <main id="content">
+    <section id="home" class="relative min-h-[100svh] overflow-hidden border-b border-white/10">
+      <img src="assets/img/hero-scene.svg" alt="Stylized Catalina's Bakeshop Cafe pastry and coffee scene" class="hero-art absolute inset-0 h-full w-full object-cover">
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.95)_0%,rgba(8,8,8,0.86)_42%,rgba(8,8,8,0.42)_100%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(240,165,0,0.28),transparent_30%),radial-gradient(circle_at_18%_22%,rgba(234,234,234,0.07),transparent_24%)]"></div>
+
+      <div class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-5 pb-8 pt-5 md:px-8">
+        <header class="hero-copy reveal border-b border-white/10 pb-4">
+          <div class="flex items-center justify-between gap-4">
+            <a href="#home" class="font-display text-2xl text-[var(--paper)] md:text-3xl">Catalina's</a>
+            <nav class="font-mono-ui hidden items-center gap-6 text-[10px] text-white/72 md:flex md:text-[11px]">
+              <a href="#menu" class="subtle-link">Menu</a>
+              <a href="#story" class="subtle-link">Story</a>
+              <a href="#gallery" class="subtle-link">Gallery</a>
+              <a href="#location" class="subtle-link">Hours</a>
+            </nav>
+          </div>
+        </header>
+
+        <div class="flex flex-1 items-end pt-8 md:pt-12">
+          <div class="max-w-3xl pb-8 md:pb-12">
+            <p class="reveal font-mono-ui text-[10px] text-white/58 md:text-[11px]">Puerto Princesa, Palawan</p>
+            <h1 class="hero-copy reveal mt-4 max-w-3xl font-display text-[4.9rem] leading-[0.84] tracking-[0.05em] text-[var(--paper)] sm:text-[6.4rem] md:text-[8.8rem] lg:text-[10rem]">
+              Catalina's<br>Bakeshop Cafe
+            </h1>
+            <p class="hero-copy reveal mt-5 max-w-xl text-base leading-7 text-white/78 md:text-lg">
+              Home of the best pasalubong from Puerto Princesa. Fresh buko puffs, coconut cream puffs, mini puffburitos, and Filipino cafe comfort at 402 Rizal Avenue Extension, Bancao-Bancao.
+            </p>
+            <div class="hero-copy reveal mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="tel:+639621128658" class="outline-link inline-flex items-center justify-center rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-medium text-[#080808]">Call +63 962 112 8658</a>
+              <a href="#location" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Get directions</a>
+            </div>
+            <p class="hero-copy reveal mt-4 font-mono-ui text-[10px] text-white/56 md:text-[11px]">Open daily 8:00 AM - 10:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="relative border-b border-white/10 py-20 md:py-24">
+      <div class="soft-grid absolute inset-0 opacity-[0.06]"></div>
+      <div class="relative mx-auto max-w-7xl px-5 md:px-8">
+        <div class="section-rule mb-10 md:mb-14"></div>
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div>
+            <p class="reveal font-mono-ui text-[10px] text-white/58 md:text-[11px]">Menu highlights</p>
+            <h2 class="reveal mt-3 max-w-xl font-display text-5xl leading-[0.9] md:text-7xl">The items guests keep naming first.</h2>
+            <p class="reveal mt-4 max-w-xl text-base leading-7 text-white/72 md:text-lg">
+              These highlights come from the shop's public listings and guest reviews: the coconut cream puff, buko puff, mini puffburitos, seafood pancit canton, pandesal, and coffee.
+            </p>
+
+            <dl class="mt-10 divide-y divide-white/10 border-t border-white/10">
+              <div class="menu-item grid gap-3 py-5 md:grid-cols-[220px_1fr] md:gap-6 md:py-6">
+                <dt class="font-display text-3xl text-[var(--paper)] md:text-4xl">Coconut cream puff</dt>
+                <dd class="max-w-2xl text-sm leading-7 text-white/72 md:text-base">Called out as a best seller in public guide listings, this is the pastry people point to when they talk about Catalina's pastries first.</dd>
+              </div>
+              <div class="menu-item grid gap-3 py-5 md:grid-cols-[220px_1fr] md:gap-6 md:py-6">
+                <dt class="font-display text-3xl text-[var(--paper)] md:text-4xl">Buko puff</dt>
+                <dd class="max-w-2xl text-sm leading-7 text-white/72 md:text-base">Described in reviews as a puff filled with custard and coconut pieces, it carries the shop's most recognizable coconut note.</dd>
+              </div>
+              <div class="menu-item grid gap-3 py-5 md:grid-cols-[220px_1fr] md:gap-6 md:py-6">
+                <dt class="font-display text-3xl text-[var(--paper)] md:text-4xl">Mini puffburitos</dt>
+                <dd class="max-w-2xl text-sm leading-7 text-white/72 md:text-base">A playful bite-sized pastry that shows up in photo captions and guest mentions, ideal for a pasalubong box.</dd>
+              </div>
+              <div class="menu-item grid gap-3 py-5 md:grid-cols-[220px_1fr] md:gap-6 md:py-6">
+                <dt class="font-display text-3xl text-[var(--paper)] md:text-4xl">Seafood pancit canton</dt>
+                <dd class="max-w-2xl text-sm leading-7 text-white/72 md:text-base">A recurring savory favorite in reviews, often mentioned alongside the cafe's generous portions and drinks.</dd>
+              </div>
+              <div class="menu-item grid gap-3 py-5 md:grid-cols-[220px_1fr] md:gap-6 md:py-6">
+                <dt class="font-display text-3xl text-[var(--paper)] md:text-4xl">Pandesal and coffee</dt>
+                <dd class="max-w-2xl text-sm leading-7 text-white/72 md:text-base">A simple pairing that keeps coming up in guest notes for early visits, quiet corners, and a longer stay.</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure class="reveal viz-frame overflow-hidden">
+            <img src="assets/img/pasalubong-box.svg" alt="Stylized pasalubong box with pastries" class="w-full h-full object-cover">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="relative border-b border-white/10 py-20 md:py-24">
+      <div class="relative mx-auto max-w-7xl px-5 md:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <figure class="reveal viz-frame overflow-hidden order-2 lg:order-1">
+            <img src="assets/img/coffee-counter.svg" alt="Stylized cafe counter with coffee and pastry" class="w-full h-full object-cover">
+          </figure>
+
+          <div class="order-1 lg:order-2">
+            <p class="reveal font-mono-ui text-[10px] text-white/58 md:text-[11px]">Story / About</p>
+            <h2 class="reveal mt-3 max-w-xl font-display text-5xl leading-[0.9] md:text-7xl">Built for pasalubong, made for the long stop.</h2>
+            <p class="reveal mt-4 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
+              Catalina's Bakeshop Cafe sits in Bancao-Bancao with the kind of menu that works two ways: fresh pastries for the take-home box, and savory cafe plates when the trip turns into a sit-down meal. Guests repeatedly mention warm pastries, good coffee, and a relaxed place to linger.
+            </p>
+            <p class="reveal mt-4 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
+              The public profile copy says it plainly: home of the best pasalubong from Puerto Princesa. This page keeps that focus front and center, with the real address, hours, and the menu names people keep sharing online.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="relative border-b border-white/10 py-20 md:py-24">
+      <div class="relative mx-auto max-w-7xl px-5 md:px-8">
+        <div class="section-rule mb-10 md:mb-14"></div>
+        <p class="reveal font-mono-ui text-[10px] text-white/58 md:text-[11px]">Gallery</p>
+        <h2 class="reveal mt-3 max-w-xl font-display text-5xl leading-[0.9] md:text-7xl">A small look around the counter.</h2>
+        <p class="reveal mt-4 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
+          The art here is local and original, made to match the cafe's amber-and-ink palette while keeping the page lightweight and deployable on GitHub Pages.
+        </p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <figure class="reveal viz-frame overflow-hidden">
+            <img src="assets/img/hero-scene.svg" alt="Hero scene of pastry and coffee" class="h-full w-full object-cover">
+            <figcaption class="border-t border-white/10 px-4 py-3 font-mono-ui text-[10px] text-white/58">Fresh pastry mood</figcaption>
+          </figure>
+          <figure class="reveal viz-frame overflow-hidden">
+            <img src="assets/img/pasalubong-box.svg" alt="Pasalubong box illustration" class="h-full w-full object-cover">
+            <figcaption class="border-t border-white/10 px-4 py-3 font-mono-ui text-[10px] text-white/58">Ready to take home</figcaption>
+          </figure>
+          <figure class="reveal viz-frame overflow-hidden">
+            <img src="assets/img/palawan-route.svg" alt="Puerto Princesa location motif" class="h-full w-full object-cover">
+            <figcaption class="border-t border-white/10 px-4 py-3 font-mono-ui text-[10px] text-white/58">Puerto Princesa, Palawan</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="relative border-b border-white/10 py-20 md:py-24">
+      <div class="relative mx-auto max-w-7xl px-5 md:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <p class="reveal font-mono-ui text-[10px] text-white/58 md:text-[11px]">Hours / Location</p>
+            <h2 class="reveal mt-3 max-w-xl font-display text-5xl leading-[0.9] md:text-7xl">Open daily in Bancao-Bancao.</h2>
+            <p class="reveal mt-4 max-w-xl text-base leading-7 text-white/72 md:text-lg">
+              402 Rizal Avenue Extension, Bancao-Bancao, Puerto Princesa, Palawan 5300, Philippines.
+            </p>
+            <p class="reveal mt-3 max-w-xl text-sm leading-7 text-white/60 md:text-base">
+              Public listings and the official social profiles point to the same daily hours: 8:00 AM to 10:00 PM.
+            </p>
+
+            <div class="reveal mt-8 overflow-hidden border border-white/10">
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Monday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Tuesday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Wednesday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Thursday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Friday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Saturday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+              <div class="grid grid-cols-[1fr_auto] gap-4 px-4 py-3 text-sm md:px-5">
+                <span>Sunday</span><span class="font-mono-ui text-[11px] text-white/70">8:00 AM - 10:00 PM</span>
+              </div>
+            </div>
+
+            <div class="reveal mt-8 space-y-3 text-sm leading-7 text-white/72 md:text-base">
+              <p><span class="font-mono-ui text-[10px] text-white/56">Phone</span><br><a class="subtle-link" href="tel:+639621128658">+63 962 112 8658</a></p>
+              <p><span class="font-mono-ui text-[10px] text-white/56">Email</span><br><a class="subtle-link" href="mailto:catalinascafe.ph@gmail.com">catalinascafe.ph@gmail.com</a></p>
+              <p><span class="font-mono-ui text-[10px] text-white/56">Coordinates</span><br><span class="text-white/72">9.7395066, 118.7519947</span></p>
+            </div>
+          </div>
+
+          <div class="reveal space-y-4">
+            <div class="viz-frame overflow-hidden">
+              <iframe
+                title="Catalina's Bakeshop Cafe location on OpenStreetMap"
+                class="map-frame h-[430px] w-full border-0 md:h-[560px]"
+                loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=118.7448%2C9.7343%2C118.7585%2C9.7448&layer=mapnik&marker=9.7395066%2C118.7519947">
+              </iframe>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <a href="https://www.openstreetmap.org/?mlat=9.7395066&mlon=118.7519947#map=17/9.7395066/118.7519947" target="_blank" rel="noopener noreferrer" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Open map</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=402+Rizal+Avenue+Extension+Bancao+Bancao+Puerto+Princesa+Palawan+5300" target="_blank" rel="noopener noreferrer" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Open in Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="relative py-14 md:py-16">
+      <div class="mx-auto max-w-7xl px-5 md:px-8">
+        <div class="section-rule mb-8"></div>
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="font-mono-ui text-[10px] text-white/58 md:text-[11px]">Contact / Footer</p>
+            <h2 class="mt-3 font-display text-5xl leading-[0.9] md:text-7xl">Come by for pastries, coffee, and pasalubong.</h2>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="tel:+639621128658" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Call</a>
+            <a href="mailto:catalinascafe.ph@gmail.com" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Email</a>
+            <a href="https://www.instagram.com/catalinascafe.ph/" target="_blank" rel="noopener noreferrer" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Instagram</a>
+            <a href="https://www.facebook.com/p/Catalinas-Bakeshop-Cafe-100092729239890/" target="_blank" rel="noopener noreferrer" class="outline-link inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-[var(--paper)]">Facebook</a>
+          </div>
+        </div>
+        <div class="mt-8 grid gap-3 border-t border-white/10 pt-5 text-sm text-white/58 md:grid-cols-[1fr_auto] md:items-center">
+          <p>Catalina's Bakeshop Cafe, 402 Rizal Avenue Extension, Bancao-Bancao, Puerto Princesa, Palawan, Philippines.</p>
+          <p class="font-mono-ui text-[10px] text-white/48 md:text-[11px]">Dine-in · Takeout · Delivery</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Catalina's Bakeshop Cafe",
+    "url": "https://frans15-2006.github.io/TheFrans/catalina-bakeshop-cafe/",
+    "image": "https://frans15-2006.github.io/TheFrans/catalina-bakeshop-cafe/assets/img/hero-scene.svg",
+    "telephone": "+63 962 112 8658",
+    "email": "catalinascafe.ph@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "402 Rizal Avenue Extension, Bancao-Bancao",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7395066,
+      "longitude": 118.7519947
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "08:00", "closes": "22:00"}
+    ],
+    "servesCuisine": ["Filipino", "Cafe", "Bakery"],
+    "sameAs": [
+      "https://www.instagram.com/catalinascafe.ph/",
+      "https://www.facebook.com/p/Catalinas-Bakeshop-Cafe-100092729239890/"
+    ],
+    "hasMap": "https://www.openstreetmap.org/?mlat=9.7395066&mlon=118.7519947#map=17/9.7395066/118.7519947"
+  }
+  </script>
+
+  <script>
+    /* global gsap, ScrollTrigger, Lenis */
+    window.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+      const ready = !reduceMotion && window.gsap && window.ScrollTrigger && window.Lenis;
+
+      const revealEls = document.querySelectorAll('section:not(#home) .reveal');
+
+      if (ready) {
+        const lenis = new Lenis({
+          smoothWheel: true,
+          smoothTouch: false
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', (event) => {
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            event.preventDefault();
+            lenis.scrollTo(target, { offset: -12 });
+          });
+        });
+
+        gsap.set('.hero-art', { scale: 1.06, yPercent: 0 });
+        gsap.to('.hero-art', {
+          yPercent: 7,
+          scale: 1.12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#home',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.from('.hero-art', {
+          opacity: 0,
+          duration: 1.4,
+          ease: 'power2.out'
+        });
+
+        gsap.from('.hero-copy', {
+          opacity: 0,
+          y: 28,
+          duration: 1.0,
+          stagger: 0.12,
+          ease: 'power3.out'
+        });
+
+        revealEls.forEach((el) => {
+          gsap.fromTo(el, {
+            y: 26,
+            opacity: 0,
+            filter: 'blur(8px)'
+          }, {
+            y: 0,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%'
+            }
+          });
+        });
+
+        document.querySelectorAll('.menu-item').forEach((item) => {
+          gsap.fromTo(item, {
+            y: 18,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '#menu',
+              start: 'top 72%'
+            }
+          });
+        });
+
+        document.querySelectorAll('figure.viz-frame').forEach((figure) => {
+          gsap.fromTo(figure, {
+            y: 24,
+            opacity: 0,
+            scale: 0.985
+          }, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: figure,
+              start: 'top 82%'
+            }
+          });
+        });
+      } else {
+        document.documentElement.style.scrollBehavior = 'smooth';
+      }
+
+      if (!ready) {
+        revealEls.forEach((el) => el.style.opacity = '1');
+      }
+    });
+  </script>
 </body>
+</html>
