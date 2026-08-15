@@ -1,5 +1,573 @@
 <!DOCTYPE html>
-<title>Cafe Y Ruedas</title>
-<body>
-<!-- placeholder: build pending -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafe Y Ruedas | Intramuros Coffee, Burgers, and Golf Course Views</title>
+  <meta name="description" content="Cafe Y Ruedas in Intramuros, Manila serves coffee, burgers, rice meals, pasta, and sweets beside the golf course. See verified address, hours, menu highlights, gallery, and contact links.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cafe Y Ruedas">
+  <meta property="og:title" content="Cafe Y Ruedas | Intramuros, Manila">
+  <meta property="og:description" content="Verified cafe details, menu highlights, gallery, hours, and directions for Cafe Y Ruedas in Intramuros, Manila.">
+  <meta property="og:url" content="https://frans15-2006.github.io/cafe-y-ruedas/">
+  <meta property="og:image" content="https://frans15-2006.github.io/cafe-y-ruedas/assets/img/hero-bike.svg">
+  <meta property="og:image:alt" content="Cafe Y Ruedas hero illustration">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cafe Y Ruedas | Intramuros, Manila">
+  <meta name="twitter:description" content="Verified cafe details, menu highlights, gallery, hours, and directions for Cafe Y Ruedas in Intramuros, Manila.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/cafe-y-ruedas/assets/img/hero-bike.svg">
+  <meta name="twitter:image:alt" content="Cafe Y Ruedas hero illustration">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/cafe-y-ruedas/">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --off: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--off);
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 15%, rgba(240, 165, 0, 0.07), transparent 22%),
+        linear-gradient(180deg, #0a0a0a 0%, #080808 50%, #050505 100%);
+      color: var(--off);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.35);
+      color: var(--off);
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.03em;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .noise::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      mix-blend-mode: screen;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 24px 24px;
+      z-index: 1;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 2;
+    }
+
+    .container-narrow {
+      width: min(1120px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .section-pad {
+      padding-block: clamp(4rem, 8vw, 7.5rem);
+    }
+
+    .top-line {
+      border-top: 1px solid var(--line);
+    }
+
+    .bottom-line {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ink-link {
+      position: relative;
+      transition: color 180ms ease;
+    }
+
+    .ink-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0.35);
+      transform-origin: left;
+      opacity: 0.55;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .ink-link:hover::after,
+    .ink-link:focus-visible::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .button-amber {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(240, 165, 0, 0.4);
+      background: rgba(240, 165, 0, 0.12);
+      color: var(--off);
+      padding: 0.95rem 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .button-amber:hover,
+    .button-amber:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(240, 165, 0, 0.18);
+      border-color: rgba(240, 165, 0, 0.72);
+    }
+
+    .button-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid var(--line);
+      color: var(--off);
+      padding: 0.95rem 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .button-line:hover,
+    .button-line:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(234, 234, 234, 0.28);
+      background: rgba(234, 234, 234, 0.04);
+    }
+
+    .hero {
+      min-height: 100svh;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.95) contrast(1.02);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.36) 0%, rgba(8, 8, 8, 0.48) 56%, rgba(8, 8, 8, 0.88) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.5) 0%, rgba(8, 8, 8, 0.18) 52%, rgba(8, 8, 8, 0.62) 100%);
+    }
+
+    .hero-copy {
+      text-wrap: balance;
+    }
+
+    .menu-row {
+      border-top: 1px solid var(--line);
+      padding-block: 1.05rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .menu-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-row strong {
+      font-size: 1.06rem;
+      line-height: 1.15;
+      font-weight: 500;
+    }
+
+    .menu-row p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .gallery-frame {
+      border-top: 1px solid var(--line);
+    }
+
+    .gallery-frame figure {
+      margin: 0;
+      padding-top: 1rem;
+    }
+
+    .gallery-frame figcaption {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.75rem;
+    }
+
+    .figure-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #0c0c0c;
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .hours-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid var(--line);
+      padding-block: 0.9rem;
+    }
+
+    .hours-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hours-item span:first-child {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .hours-item span:last-child {
+      text-align: right;
+    }
+
+    .subtle-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.7), transparent);
+    }
+
+    @media (min-width: 768px) {
+      .menu-row {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+      }
+
+      .hero-copy {
+        max-width: 44rem;
+      }
+    }
+  </style>
+</head>
+<body class="noise">
+  <div class="shell">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#080808]/70 backdrop-blur-xl">
+      <div class="container-narrow flex items-center justify-between py-4">
+        <a class="display text-2xl tracking-[0.08em] text-[var(--off)]" href="#hero">Cafe Y Ruedas</a>
+        <nav class="hidden items-center gap-6 md:flex mono text-[0.72rem] uppercase tracking-[0.1em] text-white/70">
+          <a class="ink-link hover:text-[var(--off)]" href="#menu">Menu</a>
+          <a class="ink-link hover:text-[var(--off)]" href="#story">Story</a>
+          <a class="ink-link hover:text-[var(--off)]" href="#gallery">Gallery</a>
+          <a class="ink-link hover:text-[var(--off)]" href="#location">Location</a>
+          <a class="ink-link hover:text-[var(--off)]" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero relative flex items-end border-b border-white/10">
+        <img class="hero-media" src="assets/img/hero-bike.svg" alt="Illustrated hero scene for Cafe Y Ruedas with a bicycle wheel, coffee cup, and Intramuros greens" data-hero-media>
+        <div class="hero-overlay"></div>
+        <div class="relative z-10 container-narrow pb-14 pt-28 sm:pb-16 lg:pb-20">
+          <div class="hero-copy">
+            <p class="mono mb-4 text-[0.72rem] uppercase tracking-[0.18em] text-white/70" data-hero-kicker>Intramuros, Manila</p>
+            <h1 class="display max-w-4xl text-[clamp(4.2rem,14vw,10rem)] leading-[0.88] text-[var(--off)]" data-hero-title>Cafe Y Ruedas</h1>
+            <p class="mt-5 max-w-xl text-[clamp(1.03rem,2.4vw,1.32rem)] leading-7 text-white/78" data-hero-text>
+              Coffee, burgers, and open-sky pauses beside the former moat of Intramuros, now framed by the golf course.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3" data-hero-actions>
+              <a class="button-amber" href="#menu">View menu</a>
+              <a class="button-line" href="#location">Open in maps</a>
+            </div>
+            <p class="mono mt-8 max-w-xl text-[0.72rem] uppercase tracking-[0.12em] text-white/65" data-hero-meta>
+              Verified public listing: Victoria St, Intramuros, Manila, 1002 Metro Manila, Philippines.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section-pad top-line">
+        <div class="container-narrow">
+          <div class="max-w-2xl" data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--amber)]">Menu highlights</p>
+            <h2 class="display mt-2 text-[clamp(3rem,8vw,5.2rem)] leading-[0.92]">Public favorites, with prices that keep the day moving.</h2>
+            <p class="mt-4 max-w-xl text-white/72 leading-7">
+              These are publicly posted items from Cafe Y Ruedas' features and social listings, grouped so the essentials are easy to scan.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-10 md:grid-cols-2">
+            <div data-reveal>
+              <p class="mono text-[0.72rem] uppercase tracking-[0.16em] text-white/55">Coffee and drinks</p>
+              <div id="drink-list" class="mt-4"></div>
+            </div>
+            <div data-reveal>
+              <p class="mono text-[0.72rem] uppercase tracking-[0.16em] text-white/55">Meals and bites</p>
+              <div id="food-list" class="mt-4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="section-pad top-line">
+        <div class="container-narrow grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--amber)]">Story</p>
+            <h2 class="display mt-2 text-[clamp(3rem,8vw,5.2rem)] leading-[0.92]">A calm corner for coffee, conversation, and long views.</h2>
+            <p class="mt-5 max-w-xl text-white/74 leading-7">
+              Cafe Y Ruedas sits on Victoria Street in Intramuros, facing the open greens of the golf course. Public features describe breezy alfresco seating, warm evening lights, and a quiet, comfortable interior that works for a lingering meal or a slow coffee break.
+            </p>
+            <p class="mt-4 max-w-xl text-white/74 leading-7">
+              The cafe's vibe stays rooted in the walled city: historic surroundings outside, comfort food and coffee inside, with just enough space to breathe between both.
+            </p>
+            <p class="mono mt-6 text-[0.72rem] uppercase tracking-[0.16em] text-white/55">
+              Verified location: Intramuros, Manila, not a Palawan branch.
+            </p>
+          </div>
+          <figure class="m-0" data-reveal>
+            <img class="figure-image w-full" src="assets/img/story-courtyard.svg" alt="Illustrated outdoor cafe scene with tables, trees, and warm lights" loading="lazy">
+          </figure>
+        </div>
+      </section>
+
+      <section id="gallery" class="section-pad top-line">
+        <div class="container-narrow">
+          <div class="max-w-2xl" data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--amber)]">Gallery</p>
+            <h2 class="display mt-2 text-[clamp(3rem,8vw,5.2rem)] leading-[0.92]">Three views of the cafe, from table to twilight.</h2>
+          </div>
+
+          <div class="gallery-frame mt-10 grid gap-8 md:grid-cols-3">
+            <figure data-reveal>
+              <img class="figure-image" src="assets/img/gallery-food.svg" alt="Illustrated burger, fries, and coffee on a dark table" loading="lazy">
+              <figcaption>Comfort food and coffee</figcaption>
+            </figure>
+            <figure data-reveal>
+              <img class="figure-image" src="assets/img/gallery-evening.svg" alt="Illustrated evening cafe view with string lights and open greens" loading="lazy">
+              <figcaption>Evening light over Intramuros</figcaption>
+            </figure>
+            <figure data-reveal>
+              <img class="figure-image" src="assets/img/gallery-detail.svg" alt="Illustrated bike-and-coffee detail inspired by Cafe Y Ruedas" loading="lazy">
+              <figcaption>Bike-inspired details</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="section-pad top-line bottom-line">
+        <div class="container-narrow grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--amber)]">Hours and location</p>
+            <h2 class="display mt-2 text-[clamp(3rem,8vw,5.2rem)] leading-[0.92]">Find it on Victoria Street in Intramuros.</h2>
+            <p class="mt-5 max-w-xl text-white/74 leading-7">
+              Public listings place the cafe at Victoria St, Intramuros, Manila, 1002 Metro Manila, Philippines, beside the historic greens of the district.
+            </p>
+
+            <div class="hours-grid mt-8 mono text-[0.8rem] uppercase tracking-[0.1em]" aria-label="Cafe hours">
+              <div class="hours-item"><span>Mon-Fri</span><span>11:00 AM - 9:00 PM</span></div>
+              <div class="hours-item"><span>Sat-Sun and holidays</span><span>7:00 AM - 9:00 PM</span></div>
+              <div class="hours-item"><span>Coordinates</span><span>14.5895206, 120.9796714</span></div>
+            </div>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a class="button-amber" href="https://www.google.com/maps?q=14.5895206,120.9796714" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+              <a class="button-line" href="https://www.google.com/maps/dir/?api=1&destination=14.5895206,120.9796714" target="_blank" rel="noopener noreferrer">Get directions</a>
+            </div>
+          </div>
+
+          <figure class="m-0" data-reveal>
+            <img class="figure-image w-full" src="assets/img/map-ruedas.svg" alt="Stylized map illustration centered on Cafe Y Ruedas in Intramuros, Manila" loading="lazy">
+            <figcaption class="mono mt-3 text-[0.72rem] uppercase tracking-[0.14em] text-white/55">Verified coordinates land in Intramuros, Manila.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="section-pad">
+      <div class="container-narrow grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div data-reveal>
+          <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--amber)]">Contact</p>
+          <h2 class="display mt-2 text-[clamp(3rem,8vw,5rem)] leading-[0.92]">Reach out for inquiries, updates, or a table with a view.</h2>
+          <p class="mt-4 max-w-2xl text-white/72 leading-7">
+            For the most current menu drops or schedule changes, the cafe's public social channels are the safest reference.
+          </p>
+        </div>
+
+        <div class="grid gap-3 text-[0.92rem]" data-reveal>
+          <a class="ink-link" href="mailto:cafeyruedas@gmail.com">cafeyruedas@gmail.com</a>
+          <a class="ink-link" href="tel:+639202590984">+63 920 259 0984</a>
+          <a class="ink-link" href="https://instagram.com/cafeyruedas_" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="ink-link" href="https://www.tiktok.com/@cafeyruedas" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a class="ink-link" href="https://linktr.ee/cafeyruedas" target="_blank" rel="noopener noreferrer">Linktree</a>
+        </div>
+      </div>
+
+      <div class="container-narrow mt-12 flex flex-col gap-3 border-t border-white/10 pt-5 mono text-[0.68rem] uppercase tracking-[0.14em] text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <p>Verified public details gathered from social profiles and published food features.</p>
+        <p id="year"></p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const menuData = {
+      drinks: [
+        { name: 'Honey Glow', price: 'PHP 165', note: 'Featured in the Intramuros coffee guide.' },
+        { name: 'Classic coffee brews', price: 'from PHP 95', note: 'Public listing price range.' },
+        { name: 'Iced blends', price: 'PHP 135-PHP 165', note: "A colder take on the cafe's coffee line." },
+        { name: 'Matcha Latte', price: 'PHP 125-PHP 145', note: 'Milk-based drink from the published menu.' },
+        { name: 'Strawberry Milk', price: 'PHP 125-PHP 145', note: 'Sweet, chilled, and easy to pair.' },
+        { name: 'Biscoff Latte', price: 'PHP 195', note: 'Seen in a public order diary.' }
+      ],
+      food: [
+        { name: 'Ruedas Burger', price: 'PHP 250', note: 'Two patties and a strong view.' },
+        { name: 'Egg Drop Sandwich', price: 'PHP 139', note: 'Breakfast highlight from the feature article.' },
+        { name: 'Spam and Egg Sandwich', price: 'PHP 145', note: 'Another Sunrise Special.' },
+        { name: 'Beef Tapa', price: 'PHP 149', note: 'Served with egg and rice.' },
+        { name: 'Truffle Cream Pasta', price: 'PHP 199', note: 'Rich, creamy, and easy to share.' },
+        { name: 'Chicken Parmigiana', price: 'PHP 219', note: 'Crispy, cheesy comfort.' },
+        { name: 'Chicken Karaage', price: 'PHP 159', note: 'A rice plate favorite.' },
+        { name: 'Fries', price: 'PHP 99', note: 'Quick bite for the table.' }
+      ]
+    };
+
+    function renderMenu(list, target) {
+      target.innerHTML = list.map(item => `
+        <div class="menu-row" data-reveal-item>
+          <div>
+            <strong>${item.name}</strong>
+            <p>${item.note}</p>
+          </div>
+          <div class="mono text-[0.78rem] uppercase tracking-[0.1em] text-[var(--amber)] md:text-right">${item.price}</div>
+        </div>
+      `).join('');
+    }
+
+    renderMenu(menuData.drinks, document.getElementById('drink-list'));
+    renderMenu(menuData.food, document.getElementById('food-list'));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: !reduceMotion,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.2
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+
+    if (reduceMotion) {
+      gsap.set('[data-hero-kicker], [data-hero-title], [data-hero-text], [data-hero-actions], [data-hero-meta]', { opacity: 1, y: 0 });
+      gsap.set('[data-reveal], [data-reveal-item]', { opacity: 1, y: 0 });
+    } else {
+      gsap.set('[data-hero-kicker], [data-hero-title], [data-hero-text], [data-hero-actions], [data-hero-meta]', { opacity: 0, y: 24 });
+
+      gsap.to('[data-hero-kicker]', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+      gsap.to('[data-hero-title]', { opacity: 1, y: 0, duration: 0.95, ease: 'power4.out', delay: 0.18 });
+      gsap.to('[data-hero-text]', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.28 });
+      gsap.to('[data-hero-actions]', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.38 });
+      gsap.to('[data-hero-meta]', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.48 });
+      gsap.to('[data-hero-media]', { scale: 1.08, duration: 1.8, ease: 'power2.out' });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 78%'
+          },
+          y: 36,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out'
+        });
+      });
+
+      gsap.utils.toArray('[data-reveal-item]').forEach((el, index) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 86%'
+          },
+          y: 18,
+          opacity: 0,
+          duration: 0.55,
+          delay: index * 0.02,
+          ease: 'power2.out'
+        });
+      });
+
+      gsap.to('.figure-image', {
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        },
+        yPercent: -4,
+        ease: 'none'
+      });
+    }
+  </script>
 </body>
+</html>

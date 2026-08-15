@@ -1,0 +1,38 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Y Ruedas food illustration</title>
+  <desc id="desc">A dark tabletop with a burger, fries, and coffee cup in warm amber tones.</desc>
+  <rect width="1200" height="900" fill="#090909"/>
+  <rect y="612" width="1200" height="288" fill="#111111"/>
+  <ellipse cx="598" cy="626" rx="392" ry="66" fill="#0f0f0f"/>
+  <path d="M304 556C418 488 498 456 608 456C722 456 816 492 914 554" stroke="#f0a500" stroke-opacity="0.25" stroke-width="5" stroke-linecap="round"/>
+  <g>
+    <rect x="410" y="260" width="380" height="256" rx="88" fill="#131313" stroke="#eaeaea" stroke-opacity="0.12"/>
+    <path d="M458 350C510 294 564 270 608 270C660 270 718 294 766 350" stroke="#f0a500" stroke-width="26" stroke-linecap="round"/>
+    <path d="M438 390H784" stroke="#f0a500" stroke-opacity="0.58" stroke-width="18" stroke-linecap="round"/>
+    <path d="M460 432C524 406 568 398 606 398C652 398 704 408 756 432" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="14" stroke-linecap="round"/>
+    <path d="M442 470C516 510 700 510 778 470" stroke="#f0a500" stroke-opacity="0.78" stroke-width="20" stroke-linecap="round"/>
+    <path d="M456 290H760" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2"/>
+    <circle cx="494" cy="370" r="10" fill="#eaeaea" fill-opacity="0.85"/>
+    <circle cx="604" cy="350" r="10" fill="#eaeaea" fill-opacity="0.85"/>
+    <circle cx="708" cy="370" r="10" fill="#eaeaea" fill-opacity="0.85"/>
+  </g>
+  <g>
+    <rect x="808" y="350" width="156" height="186" rx="32" fill="#121212" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="848" y="320" width="76" height="52" rx="24" fill="#f0a500" fill-opacity="0.85"/>
+    <path d="M860 384H912" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+    <path d="M860 424H912" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+    <path d="M860 464H912" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g>
+    <circle cx="250" cy="390" r="92" fill="#141414" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+    <path d="M202 390H298" stroke="#f0a500" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round"/>
+    <path d="M250 346V434" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="250" cy="390" r="28" fill="#f0a500" fill-opacity="0.26"/>
+  </g>
+  <g stroke="#f0a500" stroke-opacity="0.18" stroke-linecap="round">
+    <path d="M96 170H1104" stroke-width="2" stroke-dasharray="10 18"/>
+    <path d="M72 744H1124" stroke-width="2" stroke-dasharray="10 18"/>
+  </g>
+  <circle cx="952" cy="178" r="64" fill="#f0a500" fill-opacity="0.08"/>
+  <circle cx="972" cy="160" r="18" fill="#eaeaea" fill-opacity="0.6"/>
+</svg>

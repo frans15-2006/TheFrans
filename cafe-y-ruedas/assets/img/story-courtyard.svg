@@ -1,0 +1,57 @@
+<svg width="1400" height="1200" viewBox="0 0 1400 1200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Y Ruedas courtyard illustration</title>
+  <desc id="desc">An editorial-style illustration of an alfresco cafe with trees, tables, and warm lights.</desc>
+  <rect width="1400" height="1200" fill="#090909"/>
+  <rect y="780" width="1400" height="420" fill="#101010"/>
+  <path d="M0 850C175 790 330 770 500 804C677 840 824 862 1000 826C1150 796 1278 786 1400 820V1200H0V850Z" fill="#121212"/>
+  <path d="M0 886C180 842 357 834 510 862C684 894 858 914 1016 888C1160 864 1285 858 1400 878" stroke="#f0a500" stroke-opacity="0.17" stroke-width="2"/>
+  <path d="M140 684H1260" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="3" stroke-linecap="round"/>
+  <path d="M160 664C245 598 320 564 404 558C492 552 572 586 640 648" stroke="#f0a500" stroke-opacity="0.32" stroke-width="10" stroke-linecap="round"/>
+  <path d="M430 662C500 604 574 568 660 558C748 547 834 572 910 632" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="8" stroke-linecap="round"/>
+  <path d="M760 664C832 600 918 566 1010 560C1098 554 1180 586 1240 648" stroke="#f0a500" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round"/>
+  <g opacity="0.92">
+    <rect x="184" y="742" width="186" height="64" rx="22" fill="#151515" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="400" y="748" width="186" height="64" rx="22" fill="#151515" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="616" y="740" width="186" height="64" rx="22" fill="#151515" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="832" y="748" width="186" height="64" rx="22" fill="#151515" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="1048" y="742" width="186" height="64" rx="22" fill="#151515" stroke="#eaeaea" stroke-opacity="0.14"/>
+  </g>
+  <g>
+    <circle cx="260" cy="434" r="130" fill="#0F0F0F" stroke="#f0a500" stroke-opacity="0.28" stroke-width="10"/>
+    <circle cx="260" cy="434" r="74" fill="#f0a500" fill-opacity="0.08"/>
+    <path d="M202 434H318" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="5" stroke-linecap="round"/>
+    <path d="M260 376V492" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="5" stroke-linecap="round"/>
+    <path d="M217 391L303 477" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="3" stroke-linecap="round"/>
+    <path d="M303 391L217 477" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g>
+    <circle cx="1110" cy="390" r="108" fill="#121212" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="4"/>
+    <circle cx="1110" cy="390" r="64" fill="#f0a500" fill-opacity="0.06"/>
+    <path d="M1070 390H1150" stroke="#f0a500" stroke-opacity="0.22" stroke-width="6" stroke-linecap="round"/>
+    <path d="M1110 350V430" stroke="#f0a500" stroke-opacity="0.22" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g>
+    <path d="M1040 292C1028 264 1018 232 1012 198" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1012 198C1032 208 1055 212 1080 210" stroke="#f0a500" stroke-opacity="0.36" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1090 214C1116 220 1141 220 1162 214" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g>
+    <circle cx="124" cy="216" r="84" fill="#f0a500" fill-opacity="0.1"/>
+    <circle cx="1270" cy="180" r="100" fill="#f0a500" fill-opacity="0.08"/>
+    <circle cx="132" cy="920" r="110" fill="#f0a500" fill-opacity="0.06"/>
+    <circle cx="1240" cy="964" r="130" fill="#eaeaea" fill-opacity="0.03"/>
+  </g>
+  <g stroke="#eaeaea" stroke-opacity="0.22" stroke-linecap="round">
+    <path d="M120 120V270" stroke-width="3"/>
+    <path d="M168 116V244" stroke-width="2"/>
+    <path d="M126 180H178" stroke-width="2"/>
+    <path d="M1246 126V264" stroke-width="3"/>
+    <path d="M1304 130V250" stroke-width="2"/>
+    <path d="M1248 188H1300" stroke-width="2"/>
+  </g>
+  <g stroke="#f0a500" stroke-opacity="0.45" stroke-linecap="round">
+    <path d="M152 92H1252" stroke-width="1.5" stroke-dasharray="7 12"/>
+    <path d="M110 292H1290" stroke-width="1.5" stroke-dasharray="7 12"/>
+    <path d="M110 612H1290" stroke-width="1.5" stroke-dasharray="7 12"/>
+  </g>
+</svg>

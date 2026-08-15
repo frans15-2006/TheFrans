@@ -1,0 +1,43 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Y Ruedas map illustration</title>
+  <desc id="desc">A stylized map centered on Cafe Y Ruedas in Intramuros, Manila, with a location pin and coordinate labels.</desc>
+  <rect width="1400" height="900" fill="#090909"/>
+  <rect x="60" y="60" width="1280" height="780" rx="36" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <g stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2">
+    <path d="M140 160H1260"/>
+    <path d="M140 280H1260"/>
+    <path d="M140 400H1260"/>
+    <path d="M140 520H1260"/>
+    <path d="M140 640H1260"/>
+    <path d="M260 120V780"/>
+    <path d="M420 120V780"/>
+    <path d="M580 120V780"/>
+    <path d="M740 120V780"/>
+    <path d="M900 120V780"/>
+    <path d="M1060 120V780"/>
+    <path d="M1220 120V780"/>
+  </g>
+  <g stroke="#f0a500" stroke-width="6" stroke-linecap="round" stroke-opacity="0.34">
+    <path d="M180 220C360 170 552 164 740 204C910 240 1090 238 1220 196"/>
+    <path d="M178 350C372 318 560 318 732 354C912 392 1078 392 1222 358"/>
+    <path d="M180 466C364 432 548 430 724 458C920 490 1100 490 1220 470"/>
+    <path d="M200 620C380 590 564 586 724 612C912 644 1088 646 1222 620"/>
+  </g>
+  <g stroke="#eaeaea" stroke-opacity="0.16" stroke-width="5" stroke-linecap="round">
+    <path d="M310 180V690"/>
+    <path d="M520 146V720"/>
+    <path d="M840 160V710"/>
+    <path d="M1080 130V720"/>
+  </g>
+  <g transform="translate(690 430)">
+    <path d="M0 108C-34 72 -52 50 -52 18C-52 -30 -16 -66 32 -66C80 -66 116 -30 116 18C116 50 98 72 64 108L32 144L0 108Z" fill="#f0a500" fill-opacity="0.94"/>
+    <circle cx="32" cy="18" r="24" fill="#090909"/>
+  </g>
+  <g>
+    <text x="88" y="118" fill="#eaeaea" fill-opacity="0.82" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="2">INTRAMUROS, MANILA</text>
+    <text x="88" y="150" fill="#f0a500" fill-opacity="0.86" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="1.8">14.5895206, 120.9796714</text>
+    <text x="862" y="786" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="1.6">VICTORIA ST</text>
+    <text x="860" y="814" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="1.6">BESIDE THE GOLF COURSE</text>
+  </g>
+  <path d="M180 740H1220" stroke="#f0a500" stroke-opacity="0.2" stroke-width="2" stroke-dasharray="8 16"/>
+</svg>

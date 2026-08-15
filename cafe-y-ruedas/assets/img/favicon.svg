@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Y Ruedas favicon</title>
+  <desc id="desc">A minimalist wheel and coffee mark.</desc>
+  <rect width="64" height="64" rx="16" fill="#080808"/>
+  <circle cx="32" cy="32" r="16" stroke="#f0a500" stroke-width="4"/>
+  <path d="M22 32H42" stroke="#eaeaea" stroke-opacity="0.68" stroke-width="3" stroke-linecap="round"/>
+  <path d="M32 22V42" stroke="#eaeaea" stroke-opacity="0.68" stroke-width="3" stroke-linecap="round"/>
+  <path d="M45 18C50 18 53 22 53 27C53 32 50 36 45 36" stroke="#f0a500" stroke-width="3" stroke-linecap="round"/>
+</svg>

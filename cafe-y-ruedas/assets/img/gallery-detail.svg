@@ -1,0 +1,26 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Cafe Y Ruedas detail illustration</title>
+  <desc id="desc">A close-up detail illustration combining a bicycle wheel, cup, and geometric cafe marks.</desc>
+  <rect width="1200" height="900" fill="#090909"/>
+  <circle cx="890" cy="300" r="200" stroke="#f0a500" stroke-opacity="0.42" stroke-width="20"/>
+  <circle cx="890" cy="300" r="108" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+  <path d="M780 300H1000" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="4" stroke-linecap="round"/>
+  <path d="M890 190V410" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="4" stroke-linecap="round"/>
+  <path d="M814 224L966 376" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3" stroke-linecap="round"/>
+  <path d="M966 224L814 376" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="890" cy="300" r="10" fill="#eaeaea" fill-opacity="0.88"/>
+  <rect x="148" y="300" width="246" height="286" rx="56" fill="#111111" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="194" y="224" width="154" height="108" rx="46" fill="#f0a500" fill-opacity="0.88"/>
+  <rect x="208" y="340" width="126" height="160" rx="34" fill="#151515" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <path d="M216 370H324" stroke="#f0a500" stroke-opacity="0.82" stroke-width="16" stroke-linecap="round"/>
+  <path d="M216 424H324" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="14" stroke-linecap="round"/>
+  <path d="M216 476H300" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="548" cy="610" r="84" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+  <circle cx="548" cy="610" r="46" fill="#f0a500" fill-opacity="0.12"/>
+  <path d="M510 610H586" stroke="#f0a500" stroke-opacity="0.84" stroke-width="12" stroke-linecap="round"/>
+  <path d="M548 574V646" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="8" stroke-linecap="round"/>
+  <path d="M100 740H1100" stroke="#f0a500" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="10 18"/>
+  <path d="M100 124H1100" stroke="#f0a500" stroke-opacity="0.12" stroke-width="2" stroke-dasharray="10 18"/>
+  <circle cx="1060" cy="120" r="52" fill="#f0a500" fill-opacity="0.08"/>
+  <circle cx="1040" cy="744" r="76" fill="#eaeaea" fill-opacity="0.03"/>
+</svg>
