@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized Fujisan Restaurant hero illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="28%" r="40%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="24%" stop-color="#f0a500" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="amber" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#ffcf66"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <circle cx="1180" cy="270" r="410" fill="url(#glow)"/>
+  <g opacity="0.14" stroke="#eaeaea" stroke-width="1">
+    <path d="M120 120H820"/>
+    <path d="M120 180H700"/>
+    <path d="M120 240H610"/>
+    <path d="M120 300H540"/>
+    <path d="M120 360H490"/>
+    <path d="M120 420H450"/>
+  </g>
+  <g opacity="0.22" stroke="#f0a500" stroke-width="2" fill="none">
+    <path d="M240 980c0-140 110-250 250-250h540c140 0 250 110 250 250"/>
+    <path d="M310 900c0-95 76-172 170-172h340c94 0 170 77 170 172"/>
+  </g>
+  <g transform="translate(150 330)">
+    <path d="M250 360h540c45 0 82 37 82 82v165H168V442c0-45 37-82 82-82Z" fill="#121212" stroke="#eaeaea" stroke-opacity="0.18"/>
+    <path d="M234 398h572l-25-60H259z" fill="#0a0a0a" stroke="#f0a500" stroke-opacity="0.5"/>
+    <path d="M210 480h620" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+    <g stroke="#f0a500" stroke-width="8" stroke-linecap="round" opacity="0.82">
+      <path d="M300 452l24 92"/>
+      <path d="M370 452l24 92"/>
+      <path d="M440 452l24 92"/>
+      <path d="M510 452l24 92"/>
+      <path d="M580 452l24 92"/>
+      <path d="M650 452l24 92"/>
+    </g>
+    <g stroke="#eaeaea" stroke-opacity="0.55" stroke-width="3" fill="none" stroke-linecap="round">
+      <path d="M350 300c-18 30-18 60 0 90"/>
+      <path d="M490 288c-14 32-14 66 0 98"/>
+      <path d="M640 300c-18 30-18 60 0 90"/>
+    </g>
+  </g>
+  <g transform="translate(880 690)">
+    <ellipse cx="205" cy="150" rx="230" ry="98" fill="#000" opacity="0.3"/>
+    <rect x="35" y="35" width="340" height="240" rx="28" fill="#111" stroke="#eaeaea" stroke-opacity="0.14"/>
+    <rect x="60" y="60" width="290" height="190" rx="18" fill="#0c0c0c" stroke="#f0a500" stroke-opacity="0.45"/>
+    <path d="M78 196h254" stroke="#f0a500" stroke-width="4" opacity="0.85"/>
+    <circle cx="146" cy="123" r="28" fill="#f0a500" fill-opacity="0.26" stroke="#f0a500" stroke-width="3"/>
+    <circle cx="232" cy="123" r="28" fill="#f0a500" fill-opacity="0.26" stroke="#f0a500" stroke-width="3"/>
+    <path d="M90 94h240" stroke="#eaeaea" stroke-opacity="0.16"/>
+    <path d="M110 237h215" stroke="#eaeaea" stroke-opacity="0.1"/>
+  </g>
+  <g transform="translate(140 790)">
+    <rect x="0" y="0" width="510" height="160" rx="30" fill="#0b0b0b" stroke="#f0a500" stroke-opacity="0.35"/>
+    <circle cx="90" cy="80" r="48" fill="#f0a500" fill-opacity="0.12" stroke="url(#amber)" stroke-width="6"/>
+    <circle cx="90" cy="80" r="22" fill="#f0a500"/>
+    <g stroke="#eaeaea" stroke-opacity="0.65" stroke-width="4" stroke-linecap="round">
+      <path d="M178 50h160"/>
+      <path d="M178 80h220"/>
+      <path d="M178 110h190"/>
+    </g>
+    <path d="M430 34h44v92h-44z" fill="#111" stroke="#f0a500" stroke-width="4"/>
+    <path d="M451 0l20 34h-40z" fill="#f0a500"/>
+  </g>
+  <text x="120" y="220" fill="#eaeaea" fill-opacity="0.08" font-family="Bebas Neue, sans-serif" font-size="150" letter-spacing="10">FUJISAN</text>
+</svg>

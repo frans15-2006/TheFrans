@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Stylized restaurant interior illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1000" cy="150" r="220" fill="#f0a500" fill-opacity="0.16"/>
+  <rect x="120" y="140" width="960" height="620" rx="42" fill="#111" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <g transform="translate(180 210)">
+    <rect x="0" y="0" width="840" height="500" rx="32" fill="#0c0c0c" stroke="#f0a500" stroke-opacity="0.22"/>
+    <rect x="42" y="42" width="756" height="416" rx="24" fill="#080808" stroke="#eaeaea" stroke-opacity="0.08"/>
+    <g fill="#f0a500" fill-opacity="0.74">
+      <circle cx="170" cy="120" r="52"/>
+      <circle cx="420" cy="120" r="52"/>
+      <circle cx="670" cy="120" r="52"/>
+    </g>
+    <g fill="#eaeaea" fill-opacity="0.18">
+      <rect x="120" y="286" width="230" height="64" rx="14"/>
+      <rect x="490" y="286" width="230" height="64" rx="14"/>
+      <rect x="240" y="372" width="360" height="18" rx="9"/>
+    </g>
+    <g stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.65">
+      <path d="M170 172v90"/>
+      <path d="M420 172v90"/>
+      <path d="M670 172v90"/>
+    </g>
+  </g>
+  <text x="600" y="830" text-anchor="middle" fill="#eaeaea" fill-opacity="0.08" font-family="Bebas Neue, sans-serif" font-size="70" letter-spacing="8">WARM ROOM</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Stylized Puerto Princesa location map with a pin for Fujisan Restaurant">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="pin" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ffcf66"/>
+      <stop offset="100%" stop-color="#f0a500"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <g stroke="#eaeaea" stroke-opacity="0.08" stroke-width="1">
+    <path d="M0 120H1400"/>
+    <path d="M0 240H1400"/>
+    <path d="M0 360H1400"/>
+    <path d="M0 480H1400"/>
+    <path d="M0 600H1400"/>
+    <path d="M0 720H1400"/>
+    <path d="M180 0V900"/>
+    <path d="M360 0V900"/>
+    <path d="M540 0V900"/>
+    <path d="M720 0V900"/>
+    <path d="M900 0V900"/>
+    <path d="M1080 0V900"/>
+    <path d="M1260 0V900"/>
+  </g>
+  <path d="M200 550c140-145 320-230 540-240 150-6 250 18 390 100 70 40 120 92 160 168-160 80-270 110-460 110-280 0-470-42-630-138Z" fill="#111" stroke="#f0a500" stroke-opacity="0.24" stroke-width="3"/>
+  <path d="M320 485c92-95 222-150 390-165 98-8 187 8 264 48 42 22 76 48 116 92-121 42-249 62-405 62-164 0-275-12-365-37Z" fill="#0c0c0c" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+  <g transform="translate(785 410)">
+    <path d="M0 0c0-62 50-112 112-112s112 50 112 112c0 88-112 218-112 218S0 88 0 0Z" fill="url(#pin)"/>
+    <circle cx="112" cy="0" r="42" fill="#080808"/>
+    <circle cx="112" cy="0" r="22" fill="#f0a500"/>
+  </g>
+  <g fill="#eaeaea" fill-opacity="0.8" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="3">
+    <text x="280" y="160">PUERTO PRINCESA</text>
+    <text x="980" y="250">MANALO STREET</text>
+  </g>
+  <g fill="#eaeaea" fill-opacity="0.42" font-family="Bebas Neue, sans-serif" font-size="92" letter-spacing="9">
+    <text x="170" y="820">9.735819, 118.74219</text>
+  </g>
+  <text x="1020" y="790" fill="#eaeaea" fill-opacity="0.1" font-family="Bebas Neue, sans-serif" font-size="84" letter-spacing="8">PALAWAN</text>
+</svg>

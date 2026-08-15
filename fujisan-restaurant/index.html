@@ -1,60 +1,882 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fujisan Japanese Restaurant</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fujisan Restaurant | Japanese Dining in Puerto Princesa, Palawan</title>
+  <meta name="description" content="Fujisan Restaurant serves Japanese comfort food on Manalo Street in Puerto Princesa, Palawan, with sashimi, gyoza, yakiniku, tempura, ramen, and classic sushi favorites.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fujisan Restaurant | Japanese Dining in Puerto Princesa, Palawan">
+  <meta property="og:description" content="Japanese-owned dining on Manalo Street with verified favorites like tuna sashimi, gyoza, yakiniku, tempura, ramen, and sushi rolls.">
+  <meta property="og:image" content="./assets/img/og-image.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fujisan Restaurant | Japanese Dining in Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Japanese comfort food and all-you-can-eat value on Manalo Street in Puerto Princesa.">
+  <meta name="twitter:image" content="./assets/img/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --ink: #eaeaea;
+      --ink-soft: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.18);
+      --line: rgba(234, 234, 234, 0.14);
+      --line-strong: rgba(240, 165, 0, 0.35);
+      --shadow: 0 18px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.16), transparent 24%),
+        radial-gradient(circle at 12% 26%, rgba(240, 165, 0, 0.08), transparent 18%),
+        linear-gradient(180deg, #090909 0%, #070707 100%);
+      color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(4.5rem, 8vw, 7rem) 0;
+    }
+
+    .section + .section::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 2.5rem;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .section-title {
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      margin: 0;
+    }
+
+    .section-lead {
+      max-width: 38rem;
+      color: var(--ink-soft);
+      font-size: clamp(1.03rem, 2vw, 1.18rem);
+      line-height: 1.75;
+      margin: 1.25rem 0 0;
+    }
+
+    .nav-shell {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 60;
+      pointer-events: none;
+      padding-top: 1rem;
+    }
+
+    .nav-inner {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: rgba(8, 8, 8, 0.58);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .brand-sigil {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.5);
+      background:
+        radial-gradient(circle at 35% 35%, rgba(240, 165, 0, 0.95) 0 18%, transparent 19%),
+        radial-gradient(circle at 60% 65%, rgba(240, 165, 0, 0.18) 0 38%, transparent 39%),
+        #080808;
+      box-shadow: inset 0 0 0 1px rgba(234, 234, 234, 0.05);
+      flex: none;
+    }
+
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.25rem;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--ink);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 6.25rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.06) contrast(1.02);
+      transform: scale(1.04);
+    }
+
+    .hero-wash {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.55) 42%, rgba(8, 8, 8, 0.92) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.8) 0%, transparent 50%, rgba(8, 8, 8, 0.34) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 1.4rem;
+      width: min(760px, 100%);
+      padding-bottom: 0.5rem;
+    }
+
+    .hero .mono {
+      color: rgba(234, 234, 234, 0.74);
+    }
+
+    .hero-title {
+      font-size: clamp(4.5rem, 14vw, 10.5rem);
+      margin: 0;
+      max-width: 7ch;
+    }
+
+    .hero-copy {
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2vw, 1.23rem);
+      line-height: 1.75;
+      color: rgba(234, 234, 234, 0.78);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3.1rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      background: rgba(234, 234, 234, 0.04);
+      color: var(--ink);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.1);
+    }
+
+    .button:focus-visible,
+    .nav-links a:focus-visible,
+    .brand-mark:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    .button--solid {
+      background: var(--amber);
+      color: #080808;
+      border-color: var(--amber);
+    }
+
+    .button--solid:hover {
+      background: #ffb61a;
+      border-color: #ffb61a;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .menu-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.9rem, 5vw, 2.75rem);
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+    }
+
+    .menu-note {
+      color: var(--ink-soft);
+      line-height: 1.65;
+      max-width: 28rem;
+    }
+
+    .story-copy {
+      color: rgba(234, 234, 234, 0.76);
+      font-size: clamp(1.02rem, 2vw, 1.16rem);
+      line-height: 1.9;
+      max-width: 42rem;
+      margin: 0;
+    }
+
+    .story-aside {
+      align-self: end;
+      color: var(--ink-soft);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      line-height: 1.8;
+      font-size: 0.76rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .gallery-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .gallery-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      border-top: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-panel {
+      display: grid;
+      gap: 1.25rem;
+      padding-top: 0.6rem;
+    }
+
+    .cta-copy {
+      max-width: 40rem;
+      font-size: clamp(1.08rem, 2vw, 1.22rem);
+      line-height: 1.8;
+      color: rgba(234, 234, 234, 0.78);
+      margin: 0;
+    }
+
+    .location-wrap {
+      display: grid;
+      gap: 2rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .map-shell {
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+      min-height: 18rem;
+    }
+
+    .map-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1rem;
+      padding: 0;
+      margin: 1.5rem 0 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: grid;
+      gap: 0.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-list strong,
+    .meta-row strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .meta-row {
+      display: grid;
+      gap: 0.35rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 1.4rem 0 2.8rem;
+      color: rgba(234, 234, 234, 0.62);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.2rem;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1rem;
+    }
+
+    .footer-links a {
+      color: var(--ink);
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        align-items: end;
+      }
+
+      .menu-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .menu-item {
+        padding: 1.05rem 1.4rem 1.05rem 0;
+      }
+
+      .menu-item:nth-child(odd) {
+        padding-right: 1.4rem;
+        border-right: 1px solid var(--line);
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .gallery-stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .location-wrap {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-inner {
+        border-radius: 1.2rem;
+      }
+
+      .brand-name {
+        font-size: 1.3rem;
+      }
+
+      .hero {
+        padding-top: 5.75rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Fujisan Japanese Restaurant</h1>
-    <span class="category">Japanese Buffet</span>
-    <p class="address">Manalo St, Puerto Princesa City</p>
-    <p class="phone">+63 48 433 8403</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="nav-shell">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand-mark" href="#hero" aria-label="Fujisan Restaurant home">
+          <span class="brand-sigil" aria-hidden="true"></span>
+          <span>
+            <span class="brand-name">Fujisan Restaurant</span>
+            <span class="mono brand-sub">Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Section navigation">
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reserve">Reservations</a>
+          <a href="#location">Location</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/img/hero.svg" alt="" aria-hidden="true">
+      </div>
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="mono hero-anim">Japanese restaurant | Manalo Street</div>
+          <h1 class="display hero-title hero-anim">Fujisan Restaurant</h1>
+          <p class="hero-copy hero-anim">Japanese-owned dining in Puerto Princesa with the dishes guests keep naming first: tuna sashimi, gyoza, yakiniku, tempura, ramen, and classic sushi rolls.</p>
+          <div class="cta-row hero-anim">
+            <a class="button button--solid" href="tel:+639475369582">Call +63 947 536 9582</a>
+            <a class="button" href="#location">View location</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="mono eyebrow reveal">Verified menu highlights</div>
+        <h2 class="display section-title reveal">What diners keep coming back for</h2>
+        <p class="section-lead reveal">Public menu listings and guest reviews point to a concise Fujisan sweet spot: sashimi, grill items, tempura, noodles, and rolls that work for both quick lunches and lingering dinners.</p>
+
+        <ul class="menu-list" aria-label="Menu highlights">
+          <li class="menu-item reveal">
+            <span class="menu-name">Tuna Sashimi</span>
+            <span class="menu-note">Repeatedly called out in reviews for its freshness and melt-in-the-mouth texture.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Gyoza</span>
+            <span class="menu-note">A consistent favorite in traveler notes and one of the most mentioned side dishes.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Yakiniku</span>
+            <span class="menu-note">Part of the grill-forward all-you-can-eat draw that made Fujisan a local repeat stop.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Shrimp Tempura</span>
+            <span class="menu-note">A public menu highlight and a dish diners consistently mention alongside the seafood lineup.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Ramen</span>
+            <span class="menu-note">Listed on the menu alongside fried rice and soup for a more filling, everyday Japanese meal.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">California Maki</span>
+            <span class="menu-note">A familiar roll that anchors the sushi section for mixed groups and first-time diners.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Teriyaki Chicken</span>
+            <span class="menu-note">One of the Japanese specialties listed in public menu sources for cooked-meal comfort.</span>
+          </li>
+          <li class="menu-item reveal">
+            <span class="menu-name">Bibimbap</span>
+            <span class="menu-note">A small reminder that the menu stretches beyond one lane without losing its casual feel.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container grid-2">
+        <div>
+          <div class="mono eyebrow reveal">About Fujisan</div>
+          <h2 class="display section-title reveal">Japanese-owned, local in pace, generous in spirit</h2>
+          <p class="story-copy reveal">Fujisan sits on Manalo Street in Puerto Princesa and has built its name around straight-ahead Japanese comfort food. Public descriptions and reviews point to a casual room, attentive service, and a menu that leans into the plates people actually order again: sashimi, tempura, gyoza, yakiniku, sushi, and noodles.</p>
+        </div>
+        <div class="story-aside reveal">
+          Japanese ownership noted on the official Facebook page.<br>
+          Guests frequently describe it as a place for value-driven, filling meals.<br>
+          The dining room is known for its all-you-can-eat and a la carte options.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="mono eyebrow reveal">Gallery</div>
+        <h2 class="display section-title reveal">The Fujisan mood</h2>
+        <p class="section-lead reveal">Three visual notes from the room, the grill, and the plate. The palette stays dark and warm so the amber details carry the same late-evening energy as the restaurant itself.</p>
+
+        <div class="gallery-grid">
+          <figure class="gallery-frame reveal" style="aspect-ratio: 4 / 5;">
+            <img src="assets/img/gallery-sashimi.svg" alt="Illustrated sashimi plate with Japanese tableware" loading="lazy" decoding="async">
+            <figcaption class="gallery-caption"><span>Sashimi plate</span><span>fresh / clean / simple</span></figcaption>
+          </figure>
+
+          <div class="gallery-stack">
+            <figure class="gallery-frame reveal" style="aspect-ratio: 16 / 10;">
+              <img src="assets/img/gallery-yakiniku.svg" alt="Illustrated yakiniku grill with smoke and skewers" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption"><span>Yakiniku grill</span><span>fire / smoke / order again</span></figcaption>
+            </figure>
+
+            <figure class="gallery-frame reveal" style="aspect-ratio: 16 / 10;">
+              <img src="assets/img/gallery-interior.svg" alt="Illustrated interior with lanterns and dining tables" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption"><span>Dining room</span><span>low light / warm service</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reserve">
+      <div class="container cta-panel">
+        <div class="mono eyebrow reveal">Reservations and contact</div>
+        <h2 class="display section-title reveal">Call ahead for a smoother seat</h2>
+        <p class="cta-copy reveal">Fujisan does not need a booking engine to feel welcoming. If you are planning a dinner, a family lunch, or a group stop after exploring Puerto Princesa, use the number below and head straight to Manalo Street.</p>
+        <div class="cta-row reveal">
+          <a class="button button--solid" href="tel:+639475369582">Call now</a>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&query=Fujisan+Japanese+Restaurant+Manalo+Street+Puerto+Princesa+9.735819,118.74219" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="mono eyebrow reveal">Location and footer</div>
+        <h2 class="display section-title reveal">Manalo Street, Puerto Princesa, Palawan</h2>
+        <p class="section-lead reveal">Verified map coordinates place Fujisan in Puerto Princesa at approximately 9.735819, 118.74219, which matches the city and not Manila. The pin sits a short distance from the Rizal Avenue side of town according to public reviews.</p>
+
+        <div class="location-wrap">
+          <div class="map-shell reveal">
+            <img src="assets/img/location-map.svg" alt="Stylized map for Fujisan Restaurant in Puerto Princesa with a location pin" loading="lazy" decoding="async">
+          </div>
+
+          <div class="reveal">
+            <ul class="contact-list" aria-label="Restaurant details">
+              <li>
+                <span class="mono">Address</span>
+                <strong>Manalo Street, Puerto Princesa, Palawan 5300, Philippines</strong>
+              </li>
+              <li>
+                <span class="mono">Phone</span>
+                <strong><a href="tel:+639475369582">+63 947 536 9582</a></strong>
+              </li>
+              <li>
+                <span class="mono">Coordinates</span>
+                <strong>9.735819, 118.74219</strong>
+              </li>
+              <li>
+                <span class="mono">Cuisine</span>
+                <strong>Japanese, sushi, seafood, grill items</strong>
+              </li>
+            </ul>
+
+            <div class="meta-row" style="margin-top: 1.3rem;">
+              <div><strong>Official sources used:</strong> public Facebook intro, TripAdvisor listing, and menu aggregators.</div>
+              <div><strong>Note:</strong> opening hours can vary by listing, so call before heading over.</div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer reveal">
+          <div class="footer-bar">
+            <div>Fujisan Restaurant, Puerto Princesa, Palawan</div>
+            <div class="footer-links">
+              <a href="https://www.facebook.com/Fujisanjapaneserestaurant/" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.tripadvisor.com/Restaurant_Review-g294257-d8826564-Reviews-Fujisan_Japanese_Restaurant-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimar.html" target="_blank" rel="noopener noreferrer">TripAdvisor</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+          duration: 1.05,
+          smoothWheel: true,
+          smoothTouch: false,
+          lerp: 0.08
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', (event) => {
+            const target = anchor.getAttribute('href');
+            if (!target || target === '#') return;
+            const section = document.querySelector(target);
+            if (!section) return;
+            event.preventDefault();
+            lenis.scrollTo(section, { offset: -92 });
+          });
+        });
+
+        gsap.from('.hero-anim', {
+          y: 42,
+          opacity: 0,
+          duration: 1.1,
+          ease: 'power3.out',
+          stagger: 0.08,
+          delay: 0.18
+        });
+
+        gsap.to('.hero-media img', {
+          yPercent: 4,
+          scale: 1.08,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        gsap.to('.hero-wash', {
+          opacity: 0.82,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        gsap.set('.reveal', {
+          opacity: 0,
+          y: 28
+        });
+
+        gsap.utils.toArray('.reveal').forEach((element) => {
+          gsap.to(element, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: element,
+              start: 'top 82%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.gallery-frame').forEach((frame, index) => {
+          gsap.fromTo(frame, {
+            y: 34,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: frame,
+              start: 'top 82%'
+            },
+            delay: index * 0.08
+          });
+        });
+
+        const navLinks = [...document.querySelectorAll('.nav-links a')];
+        const sections = navLinks
+          .map((link) => document.querySelector(link.getAttribute('href')))
+          .filter(Boolean);
+
+        sections.forEach((section, index) => {
+          ScrollTrigger.create({
+            trigger: section,
+            start: 'top center',
+            end: 'bottom center',
+            onEnter: () => setActive(index),
+            onEnterBack: () => setActive(index)
+          });
+        });
+
+        function setActive(index) {
+          navLinks.forEach((link, linkIndex) => {
+            link.classList.toggle('is-active', linkIndex === index);
+          });
+        }
+
+        setActive(0);
+      }
+    });
+  </script>
 </body>
 </html>
