@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080808"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 180) rotate(90) scale(220 280)">
+      <stop stop-color="#F0A500" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#F0A500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3EEE4"/>
+      <stop offset="1" stop-color="#C6BCAF"/>
+    </linearGradient>
+    <linearGradient id="coffee" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9C5827"/>
+      <stop offset="1" stop-color="#34190E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="870" cy="180" r="280" fill="url(#glow)"/>
+
+  <path d="M828 124H1096V392H828V124Z" fill="#131313" stroke="#262626"/>
+  <path d="M848 144H1076V372H848V144Z" fill="#18212A"/>
+  <path d="M960 144V372" stroke="#6A5422" stroke-opacity="0.7" stroke-width="6"/>
+  <path d="M848 256H1076" stroke="#6A5422" stroke-opacity="0.7" stroke-width="6"/>
+  <path d="M854 354C892 330 932 300 975 259C1010 224 1042 173 1088 146" stroke="#F0A500" stroke-opacity="0.18" stroke-width="12" stroke-linecap="round"/>
+
+  <ellipse cx="476" cy="430" rx="164" ry="29" fill="#000000" opacity="0.72"/>
+  <path d="M390 213H568C591 213 610 232 610 255V416C610 449 583 476 550 476H408C375 476 348 449 348 416V255C348 232 367 213 390 213Z" fill="url(#cup)"/>
+  <path d="M364 254H594V410C594 435 574 455 549 455H409C384 455 364 435 364 410V254Z" fill="#F8F2E9" opacity="0.92"/>
+  <path d="M382 290H576V388C576 406 561 420 543 420H415C397 420 382 406 382 388V290Z" fill="url(#coffee)"/>
+  <path d="M576 283H611C639 283 661 305 661 333C661 361 639 383 611 383H576" stroke="#CFC6B7" stroke-width="24" stroke-linecap="round"/>
+  <path d="M416 476H542" stroke="#D2C8BA" stroke-width="18" stroke-linecap="round"/>
+  <path d="M430 501H529" stroke="#F0A500" stroke-opacity="0.2" stroke-width="9" stroke-linecap="round"/>
+  <path d="M418 187C405 160 412 144 423 128" stroke="#EAEAEA" stroke-opacity="0.42" stroke-width="7" stroke-linecap="round"/>
+  <path d="M452 176C442 152 448 136 460 119" stroke="#EAEAEA" stroke-opacity="0.32" stroke-width="7" stroke-linecap="round"/>
+  <path d="M494 186C482 160 488 144 501 126" stroke="#EAEAEA" stroke-opacity="0.26" stroke-width="7" stroke-linecap="round"/>
+
+  <text x="92" y="135" fill="#F0A500" font-family="Bebas Neue, sans-serif" font-size="92" letter-spacing="5">DE JAVU CAFE</text>
+  <text x="96" y="184" fill="#EAEAEA" fill-opacity="0.82" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="1.4">P. Abrea Rd, Puerto Princesa City, Palawan</text>
+  <text x="96" y="240" fill="#EAEAEA" fill-opacity="0.7" font-family="Space Grotesk, sans-serif" font-size="30">Coffee, Filipino comfort, and Asian picks from recent reviews.</text>
+</svg>

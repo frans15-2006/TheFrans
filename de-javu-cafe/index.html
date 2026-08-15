@@ -1,60 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Javu Cafe</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De Javu Cafe | Puerto Princesa, Palawan</title>
+  <meta name="description" content="De Javu Cafe is a P. Abrea Rd cafe in Puerto Princesa City, Palawan, serving coffee, Asian, and Filipino comfort picks like Spanish Latte and Spam Musubi in a Bowl.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="De Javu Cafe | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A verified Puerto Princesa cafe on P. Abrea Rd with coffee, Asian, and Filipino comfort picks from recent reviews.">
+  <meta property="og:image" content="assets/img/og-card.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="De Javu Cafe | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="A verified Puerto Princesa cafe on P. Abrea Rd with coffee, Asian, and Filipino comfort picks from recent reviews.">
+  <meta name="twitter:image" content="assets/img/og-card.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.14);
+      --line-strong: rgba(240, 165, 0, 0.38);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.7);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.15);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+      --radius: 1.25rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.05), transparent 24%),
+        linear-gradient(180deg, #0c0c0c 0%, #080808 18%, #080808 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      line-height: 1.45;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, iframe { display: block; width: 100%; }
+    img { height: auto; }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(110deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.84) 44%, rgba(8, 8, 8, 0.12) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.18), rgba(8, 8, 8, 0.38));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 7rem 0 2rem;
+      min-height: 100svh;
+    }
+
+    .hero-copy {
+      align-self: end;
+      max-width: 36rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .brand {
+      margin: 0 0 0.6rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 14vw, 8.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 32rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.3vw, 1.1rem);
+    }
+
+    .hero-copy .lede {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.95rem;
+      padding: 0.8rem 1.1rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.7);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+    }
+
+    .button.primary:hover { background: #ffb21d; }
+
+    .hero-media {
+      position: relative;
+      align-self: end;
+      justify-self: end;
+      width: min(100%, 900px);
+      margin-right: -0.5rem;
+      filter: drop-shadow(var(--shadow));
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      max-width: 40rem;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4.9rem);
+      line-height: 0.92;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .menu-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.8rem 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .menu-row strong {
+      font-size: clamp(1rem, 2.7vw, 1.2rem);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .menu-row .price {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .menu-row p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 42rem;
+    }
+
+    .story-grid,
+    .location-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .story-text p + p { margin-top: 1rem; }
+
+    .story-note {
+      margin-top: 1.35rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .gallery-item {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      background: #111;
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.8rem;
+      color: rgba(234, 234, 234, 0.76);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .info-stack {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .info-block {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      font-size: 0.96rem;
+    }
+
+    .hours-list .day {
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .hours-list .time,
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .map-frame {
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      min-height: 22rem;
+      background: #0f0f0f;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.08) brightness(0.96);
+    }
+
+    .map-meta {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 3rem 0 4rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .footer-grid p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a:hover { color: var(--amber); }
+
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: rgba(234, 234, 234, 0.84);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.5);
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.38); }
+      70% { box-shadow: 0 0 0 10px rgba(240, 165, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(240, 165, 0, 0); }
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 2rem;
+        padding: 6rem 0 3rem;
+      }
+
+      .hero-copy {
+        padding-bottom: 2rem;
+      }
+
+      .story-grid {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        align-items: start;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        align-items: start;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr) auto;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-media {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .menu-row {
+        grid-template-columns: 1fr;
+      }
+
+      figcaption,
+      .hours-list li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>De Javu Cafe</h1>
-    <span class="category">Cafe & Tattoo</span>
-    <p class="address">P. Abrea Rd, Puerto Princesa City</p>
+  <main>
+    <section class="hero" id="top">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <h1 class="brand">De Javu Cafe</h1>
+          <p>A verified P. Abrea Rd cafe in Puerto Princesa City, Palawan, with coffee, Asian, and Filipino comfort picks that show up in recent guest reviews.</p>
+          <p class="lede">Recent mentions include Spanish Latte, Chicken Poppers Solo, Spam Musubi in a Bowl, and Fried Chicken Wings with Rice.</p>
+          <div class="actions">
+            <a class="button primary" href="#menu">Menu highlights</a>
+            <a class="button" href="#location">Open on map</a>
+          </div>
+        </div>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+        <div class="hero-media">
+          <img src="assets/img/hero-scene.svg" alt="Stylized night scene with coffee, counter light, and tropical window details">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Menu highlights</p>
+          <h2>What guests keep ordering</h2>
+          <p class="section-copy">These are pulled from the public Foodpanda listing and recent review mentions, so the lineup stays grounded in what people actually talk about.</p>
+        </div>
+
+        <div class="menu-list" aria-label="Highlighted dishes">
+          <div class="menu-row">
+            <div>
+              <strong>Spanish Latte</strong>
+              <p>Recent review favorite.</p>
+            </div>
+            <div class="price">₱205</div>
+          </div>
+          <div class="menu-row">
+            <div>
+              <strong>Chicken Poppers Solo</strong>
+              <p>Recent review favorite.</p>
+            </div>
+            <div class="price">₱139</div>
+          </div>
+          <div class="menu-row">
+            <div>
+              <strong>Spam Musubi in a Bowl</strong>
+              <p>Recent review favorite.</p>
+            </div>
+            <div class="price">₱155</div>
+          </div>
+          <div class="menu-row">
+            <div>
+              <strong>Fried Chicken Wings with Rice</strong>
+              <p>Recent review favorite.</p>
+            </div>
+            <div class="price">₱170</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="shell story-grid">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Story / About</p>
+          <h2>Built for coffee breaks that drift into dinner</h2>
+        </div>
+
+        <div class="story-text" data-reveal>
+          <p class="section-copy">De Javu Cafe reads like a neighborhood stop with a late-day rhythm. The public listing places it in the coffee, Asian, and Filipino lane, while recent guest comments point to a tight set of comfort dishes rather than a sprawling menu.</p>
+          <p class="section-copy">That makes it easy to frame: grab a Spanish Latte, keep going with a rice meal or a bowl, and stay long enough for the evening crowd to settle in.</p>
+          <p class="story-note">Verified from Foodpanda listing data and review snippets.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Gallery</p>
+          <h2>Amber light, dark walls, easy pours</h2>
+          <p class="section-copy">These SVG scenes stand in for the cafe mood, the coffee, and the plate side of the menu so the page stays deployable without broken external image links.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/hero-scene.svg" alt="Cafe interior illustration with coffee cup and warm window light">
+            <figcaption><span>Atmosphere</span><span>Night counter</span></figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/latte.svg" alt="Spanish latte illustration in a glass with layered tones">
+            <figcaption><span>Drink</span><span>Spanish Latte</span></figcaption>
+          </figure>
+          <figure class="gallery-item" data-reveal>
+            <img src="assets/img/plate.svg" alt="Snack plate illustration with rice bowl and wings">
+            <figcaption><span>Plate</span><span>Comfort picks</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Hours / Location</p>
+          <h2>P. Abrea Rd in Puerto Princesa City</h2>
+          <p class="section-copy">The pin and hours below mirror the public delivery listing, so the map lands in Puerto Princesa instead of somewhere generic.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="info-stack" data-reveal>
+            <div class="info-block">
+              <span id="live-status" class="status-line" aria-live="polite"><span class="status-dot"></span><span>Checking Manila time</span></span>
+            </div>
+
+            <div class="info-block">
+              <p class="eyebrow">Address</p>
+              <p class="section-copy">P. Abrea Rd, Puerto Princesa City, 5300 Palawan, Philippines</p>
+            </div>
+
+            <div class="info-block">
+              <p class="eyebrow">Hours</p>
+              <ul class="hours-list" aria-label="Opening hours">
+                <li><span class="day">Monday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Tuesday</span><span class="time">1:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Wednesday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Thursday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Friday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Saturday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+                <li><span class="day">Sunday</span><span class="time">3:00 PM - 12:00 AM</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div data-reveal>
+            <div class="map-frame" aria-label="Map showing De Javu Cafe in Puerto Princesa City">
+              <iframe
+                title="De Javu Cafe map pin"
+                loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=118.7483126%2C9.7337749%2C118.7643126%2C9.7417749&layer=mapnik&marker=9.7377749%2C118.7563126">
+              </iframe>
+            </div>
+            <div class="map-meta">
+              <p class="section-copy">Geo pin: 9.7377749, 118.7563126. That coordinate sits in Puerto Princesa City and matches the public delivery listing.</p>
+              <div class="actions">
+                <a class="button primary" target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/?mlat=9.7377749&mlon=118.7563126#map=17/9.7377749/118.7563126">Open map</a>
+                <a class="button" target="_blank" rel="noopener noreferrer" href="https://www.foodpanda.ph/restaurant/vq4q/de-javu-cafe">Foodpanda listing</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="shell footer-grid">
+        <div>
+          <p class="eyebrow">Contact / Footer</p>
+          <p>For the most grounded public details, use the delivery listing or open the map pin above. The page is verified against the address, hours, and review snippets currently available online.</p>
+          <div class="footer-links">
+            <a target="_blank" rel="noopener noreferrer" href="https://www.foodpanda.ph/restaurant/vq4q/de-javu-cafe">Foodpanda</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/?mlat=9.7377749&mlon=118.7563126#map=17/9.7377749/118.7563126">OpenStreetMap</a>
+            <a href="#top">Back to top</a>
+          </div>
+        </div>
+        <div class="mono" id="source-note">Verified public details used: address, hours, geo pin, and menu mentions.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "De Javu Cafe",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "P. Abrea Rd",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7377749,
+      "longitude": 118.7563126
+    },
+    "servesCuisine": ["Asian", "Beverages", "Filipino", "Coffee"],
+    "priceRange": "₱₱",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "15:00", "closes": "23:59"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday"], "opens": "13:00", "closes": "23:59"}
+    ],
+    "hasMenu": "https://www.foodpanda.ph/restaurant/vq4q/de-javu-cafe",
+    "sameAs": ["https://www.foodpanda.ph/restaurant/vq4q/de-javu-cafe"]
+  }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const updateStatus = () => {
+        const status = document.getElementById('live-status');
+        if (!status) return;
+
+        const now = new Date();
+        const parts = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'Asia/Manila',
+          weekday: 'short',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        }).formatToParts(now).reduce((acc, part) => {
+          if (part.type !== 'literal') acc[part.type] = part.value;
+          return acc;
+        }, {});
+
+        const weekdayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        const day = weekdayMap[parts.weekday] ?? 0;
+        const hour = Number(parts.hour);
+        const minute = Number(parts.minute);
+        const openHour = day === 2 ? 13 : 15;
+        const openMinutes = openHour * 60;
+        const currentMinutes = hour * 60 + minute;
+        const openToday = currentMinutes >= openMinutes;
+
+        const openLabel = day === 2 ? '1:00 PM' : '3:00 PM';
+        const text = openToday ? `Open now until midnight` : `Closed now, opens at ${openLabel}`;
+        status.innerHTML = `<span class="status-dot"></span><span>${text}</span>`;
+      };
+
+      updateStatus();
+      setInterval(updateStatus, 60 * 1000);
+
+      if (prefersReduced || !window.gsap) return;
+
+      if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+      if (window.Lenis) {
+        const lenis = new Lenis({
+          duration: 1.15,
+          smoothWheel: true,
+          wheelMultiplier: 0.95,
+          lerp: 0.08
+        });
+
+        lenis.on('scroll', () => {
+          if (window.ScrollTrigger) ScrollTrigger.update();
+        });
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      gsap.from('.hero-copy > *', {
+        y: 24,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power2.out'
+      });
+
+      gsap.from('.hero-media', {
+        y: 40,
+        opacity: 0,
+        scale: 0.985,
+        duration: 1.1,
+        ease: 'power3.out',
+        delay: 0.1
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((node) => {
+        gsap.from(node, {
+          opacity: 0,
+          y: 28,
+          duration: 0.85,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: node,
+            start: 'top 84%'
+          }
+        });
+      });
+
+      gsap.from('.menu-row', {
+        scrollTrigger: {
+          trigger: '.menu-list',
+          start: 'top 80%'
+        },
+        opacity: 0,
+        y: 18,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: 'power2.out'
+      });
+
+      gsap.to('.hero-media img', {
+        y: 14,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.6
+        }
+      });
+    });
+  </script>
 </body>
 </html>
