@@ -1,0 +1,18 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="998" cy="128" r="118" fill="#F0A500" fill-opacity="0.08"/>
+  <path d="M0 501C139 471 239 420 330 377C458 318 559 301 663 322C781 346 892 427 1002 454C1080 473 1136 473 1200 462V630H0V501Z" fill="#101010"/>
+  <path d="M0 536C132 507 240 471 347 438C467 401 573 398 685 424C795 450 898 507 1008 535C1087 555 1141 551 1200 539V630H0V536Z" fill="#141414"/>
+  <text x="76" y="128" fill="#F0A500" font-family="Bebas Neue, sans-serif" font-size="96" letter-spacing="6">GOLD CUP COFFEE</text>
+  <text x="78" y="184" fill="#EAEAEA" fill-opacity="0.82" font-family="Space Grotesk, sans-serif" font-size="28">Specialty coffee in Puerto Princesa, Palawan</text>
+  <text x="78" y="236" fill="#EAEAEA" fill-opacity="0.65" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="3">293 Rizal Avenue • 9.74025, 118.74203</text>
+  <ellipse cx="760" cy="367" rx="176" ry="22" fill="#000" fill-opacity="0.45"/>
+  <rect x="590" y="191" width="326" height="284" rx="52" fill="#EAEAEA"/>
+  <rect x="628" y="221" width="250" height="188" rx="28" fill="#141414"/>
+  <path d="M676 251C686 222 688 205 698 184" stroke="#F0A500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M742 242C735 214 740 192 755 168" stroke="#EAEAEA" stroke-opacity="0.75" stroke-width="5" stroke-linecap="round"/>
+  <path d="M805 253C798 225 803 202 818 178" stroke="#F0A500" stroke-opacity="0.65" stroke-width="6" stroke-linecap="round"/>
+  <path d="M680 449H884" stroke="#F0A500" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="908" cy="319" r="52" fill="#F0A500"/>
+  <circle cx="908" cy="319" r="18" fill="#080808"/>
+</svg>

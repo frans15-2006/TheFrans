@@ -1,60 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gold Cup Specialty Coffee Roasters</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Cup Coffee | Specialty Coffee in Puerto Princesa, Palawan</title>
+  <meta name="description" content="Gold Cup Coffee serves specialty coffee, brunch, and late-night cups on Rizal Avenue in Puerto Princesa, Palawan. Find the verified address, hours, and guest favorites.">
+  <meta property="og:title" content="Gold Cup Coffee | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Specialty coffee, brunch, and late-night cups on Rizal Avenue in Puerto Princesa, Palawan.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gold Cup Coffee">
+  <meta property="og:image" content="assets/img/og-card.svg">
+  <meta property="og:image:alt" content="Gold Cup Coffee in Puerto Princesa, Palawan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gold Cup Coffee | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Specialty coffee, brunch, and late-night cups on Rizal Avenue in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="assets/img/og-card.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --soft: rgba(234, 234, 234, 0.12);
+      --soft-2: rgba(240, 165, 0, 0.18);
+    }
+
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      position: relative;
+      isolation: isolate;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.08), transparent 28%);
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+    .gc-mono { font-family: 'JetBrains Mono', monospace; }
+    .text-amber-brand { color: var(--amber); }
+    .border-soft { border-color: var(--soft); }
+    .border-soft-2 { border-color: var(--soft-2); }
+    .text-muted { color: var(--muted); }
+    .no-tap-highlight { -webkit-tap-highlight-color: transparent; }
+    .hero-glow {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.2), 0 0 80px rgba(240, 165, 0, 0.08);
+    }
+    .section-rule {
+      position: relative;
+    }
+    .section-rule::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 4.5rem;
+      height: 1px;
+      background: var(--amber);
+    }
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: #080808;
+      border: 1px solid var(--amber);
+    }
+    .btn-secondary {
+      border: 1px solid var(--soft);
+      color: var(--text);
+      background: rgba(234, 234, 234, 0.03);
+    }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+    .btn-secondary:hover { border-color: rgba(240, 165, 0, 0.5); }
+    .link-underline {
+      position: relative;
+      white-space: nowrap;
+    }
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.2rem;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0.32);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+    .link-underline:hover::after { transform: scaleX(1); }
+    .menu-row {
+      display: grid;
+      gap: 0.75rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--soft);
+    }
+    .menu-row:first-child { border-top: 1px solid var(--soft); }
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+    .map-shell {
+      background: rgba(234, 234, 234, 0.03);
+      border: 1px solid var(--soft);
+    }
+    .thin-grid {
+      background-image:
+        linear-gradient(to right, rgba(234, 234, 234, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(234, 234, 234, 0.06) 1px, transparent 1px);
+      background-size: 2.4rem 2.4rem;
+    }
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Gold Cup Coffee",
+      "url": ".",
+      "image": ["assets/img/hero-coffee.svg"],
+      "telephone": "+63 947 987 2865",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "293 Rizal Avenue, opposite Pinoy Litson Manok, at the back of AP Cargo",
+        "addressLocality": "Puerto Princesa",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.74025,
+        "longitude": 118.74203
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "10:00", "closes": "23:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "23:00"}
+      ],
+      "servesCuisine": ["Coffee", "Brunch", "Pastry"],
+      "priceRange": "$$"
+    }
+  </script>
 </head>
 <body>
-    <h1>Gold Cup Specialty Coffee Roasters</h1>
-    <span class="category">Coffee Roastery</span>
-    <p class="address">293 Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 947 987 2865</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+      <a href="#home" class="font-display text-2xl tracking-[0.2em] text-amber-brand">Gold Cup Coffee</a>
+      <nav class="hidden items-center gap-7 gc-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/75 md:flex">
+        <a class="link-underline" href="#menu">Menu</a>
+        <a class="link-underline" href="#about">About</a>
+        <a class="link-underline" href="#location">Location</a>
+        <a class="link-underline" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section id="hero" class="relative min-h-[100svh] overflow-hidden">
+      <img src="assets/img/hero-coffee.svg" alt="Gold Cup Coffee hero scene with espresso, palm silhouettes, and warm amber light" class="absolute inset-0 h-full w-full object-cover" data-hero-media>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/55 to-black"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(240,165,0,0.12),transparent_24%),radial-gradient(circle_at_80%_30%,rgba(240,165,0,0.09),transparent_22%)]"></div>
+      <div class="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-10 pt-24 sm:px-8 sm:pb-14 lg:px-12 lg:pb-16">
+        <div class="max-w-4xl">
+          <p class="gc-mono text-[0.72rem] uppercase tracking-[0.42em] text-amber-brand" data-hero-reveal>Puerto Princesa, Palawan</p>
+          <h1 class="mt-4 max-w-3xl font-display text-[clamp(4.5rem,14vw,9.5rem)] leading-[0.84] text-white" data-hero-reveal>Gold Cup Coffee</h1>
+          <p class="mt-5 max-w-xl text-base leading-7 text-white/78 sm:text-lg" data-hero-reveal>Specialty coffee, late-night pours, and brunch on Rizal Avenue, shaped by the brand's Puerto Princesa roots.</p>
+          <div class="mt-8 flex flex-wrap gap-3" data-hero-reveal>
+            <a href="#menu" class="btn-primary no-tap-highlight">View menu highlights</a>
+            <a href="https://www.google.com/maps?q=9.74025,118.74203" target="_blank" rel="noopener noreferrer" class="btn-secondary no-tap-highlight">Get directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section-rule border-t border-white/10 px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-12">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        <div class="max-w-xl">
+          <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-amber-brand" data-reveal>Menu highlights</p>
+          <h2 class="mt-4 font-display text-[clamp(3rem,8vw,5.2rem)] leading-[0.9] text-white" data-reveal>Guest favorites worth crossing town for.</h2>
+          <p class="mt-5 text-base leading-7 text-muted sm:text-lg" data-reveal>Public reviews consistently point to Gold Cup's Spanish latte, V60 pour over, iced cortado with oat milk, French toast, chicken pesto sandwich, and chicken and mushroom rice.</p>
+        </div>
+
+        <div class="space-y-8" data-reveal>
+          <div>
+            <p class="gc-mono text-[0.7rem] uppercase tracking-[0.34em] text-white/55">Coffee picks</p>
+            <div class="mt-3">
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">Spanish Latte</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">A guest favorite when you want something smooth, sweet, and unmistakably coffee-led.</p>
+                </div>
+              </article>
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">V60 Pour Over</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">The cup travelers keep recommending when they want a cleaner, more focused brew.</p>
+                </div>
+              </article>
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">Iced Cortado with Oat Milk</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">A custom order that shows up again and again in reviews for its balance and texture.</p>
+                </div>
+              </article>
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">Affogato</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">A dessert-style finish for anyone who wants espresso with a softer edge.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div>
+            <p class="gc-mono text-[0.7rem] uppercase tracking-[0.34em] text-white/55">Food picks</p>
+            <div class="mt-3">
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">French Toast</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">A brunch staple that keeps appearing in customer recommendations.</p>
+                </div>
+              </article>
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">Chicken Pesto Sandwich</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">Savory, portable, and an easy match for a second cup.</p>
+                </div>
+              </article>
+              <article class="menu-row">
+                <div>
+                  <h3 class="font-display text-4xl leading-none text-white">Chicken and Mushroom Rice</h3>
+                  <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">A more filling plate for guests who stay through lunch or the late shift.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-rule border-t border-white/10 px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-12">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-amber-brand" data-reveal>About</p>
+          <h2 class="mt-4 max-w-sm font-display text-[clamp(3rem,8vw,5.2rem)] leading-[0.9] text-white" data-reveal>Built from coffee experience and Puerto Princesa grit.</h2>
+        </div>
+        <div class="lg:col-span-7 lg:pt-2">
+          <p class="max-w-3xl text-base leading-8 text-muted sm:text-lg" data-reveal>Gold Cup Coffee describes itself as the flagship brand of Gold Cup Ventures Inc., rooted in Puerto Princesa and shaped by more than a decade of coffee and hospitality experience. The brand launched in 2019 with a simple aim: make specialty coffee feel timeless, approachable, and worth slowing down for.</p>
+          <p class="mt-6 max-w-3xl text-base leading-8 text-muted sm:text-lg" data-reveal>That goal shows up in the room as much as in the cup. Guests come for careful espresso drinks, stay for breakfast and brunch, and often end up extending the visit because the shop is open late enough to hold a second round.</p>
+          <p class="mt-6 gc-mono text-sm uppercase tracking-[0.28em] text-white/60" data-reveal>"Discover a timeless experience."</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-rule border-t border-white/10 px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-xl">
+          <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-amber-brand" data-reveal>Gallery</p>
+          <h2 class="mt-4 font-display text-[clamp(3rem,8vw,5.2rem)] leading-[0.9] text-white" data-reveal>Warm light, steady steam, late-night comfort.</h2>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <figure class="overflow-hidden border border-white/10" data-reveal>
+            <img src="assets/img/gallery-espresso.svg" alt="Espresso and cup scene in Gold Cup Coffee colors" class="gallery-image" loading="lazy">
+            <figcaption class="border-t border-white/10 px-4 py-3 gc-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/60">Espresso pull</figcaption>
+          </figure>
+          <figure class="overflow-hidden border border-white/10" data-reveal>
+            <img src="assets/img/gallery-brunch.svg" alt="Brunch plate with French toast and a sandwich" class="gallery-image" loading="lazy">
+            <figcaption class="border-t border-white/10 px-4 py-3 gc-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/60">Brunch plate</figcaption>
+          </figure>
+          <figure class="overflow-hidden border border-white/10" data-reveal>
+            <img src="assets/img/gallery-interior.svg" alt="Cozy coffee shop interior with warm window light" class="gallery-image" loading="lazy">
+            <figcaption class="border-t border-white/10 px-4 py-3 gc-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/60">Evening atmosphere</figcaption>
+          </figure>
+          <figure class="overflow-hidden border border-white/10" data-reveal>
+            <img src="assets/img/location-map.svg" alt="Stylized location map for Gold Cup Coffee in Puerto Princesa" class="gallery-image" loading="lazy">
+            <figcaption class="border-t border-white/10 px-4 py-3 gc-mono text-[0.68rem] uppercase tracking-[0.28em] text-white/60">Rizal Avenue map</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section-rule border-t border-white/10 px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-12">
+      <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div>
+          <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-amber-brand" data-reveal>Hours + Location</p>
+          <h2 class="mt-4 font-display text-[clamp(3rem,8vw,5.2rem)] leading-[0.9] text-white" data-reveal>Rizal Avenue, Puerto Princesa.</h2>
+          <div class="mt-8 grid gap-0 border-t border-white/10" data-reveal>
+            <div class="grid grid-cols-[0.9fr_1.1fr] gap-4 border-b border-white/10 py-4 text-sm sm:text-base">
+              <span class="gc-mono uppercase tracking-[0.26em] text-white/60">Sunday</span>
+              <span>12:00 PM - 11:00 PM</span>
+            </div>
+            <div class="grid grid-cols-[0.9fr_1.1fr] gap-4 border-b border-white/10 py-4 text-sm sm:text-base">
+              <span class="gc-mono uppercase tracking-[0.26em] text-white/60">Monday - Saturday</span>
+              <span>10:00 AM - 11:00 PM</span>
+            </div>
+            <div class="grid grid-cols-[0.9fr_1.1fr] gap-4 border-b border-white/10 py-4 text-sm sm:text-base">
+              <span class="gc-mono uppercase tracking-[0.26em] text-white/60">Address</span>
+              <span>293 Rizal Avenue, opposite Pinoy Litson Manok, at the back of AP Cargo, Puerto Princesa, 5300 Palawan, Philippines</span>
+            </div>
+            <div class="grid grid-cols-[0.9fr_1.1fr] gap-4 border-b border-white/10 py-4 text-sm sm:text-base">
+              <span class="gc-mono uppercase tracking-[0.26em] text-white/60">Coordinates</span>
+              <span class="gc-mono text-[0.92rem] text-amber-brand">9.74025, 118.74203</span>
+            </div>
+            <div class="grid grid-cols-[0.9fr_1.1fr] gap-4 py-4 text-sm sm:text-base">
+              <span class="gc-mono uppercase tracking-[0.26em] text-white/60">Landmark</span>
+              <span>Puerto Princesa city center, near Rizal Avenue's main dining strip.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-shell overflow-hidden">
+          <div class="thin-grid flex min-h-[24rem] flex-col justify-between p-5 sm:p-6">
+            <div>
+              <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-white/55" data-reveal>Map view</p>
+              <h3 class="mt-3 font-display text-4xl leading-none text-white" data-reveal>Exact coordinates verified for Puerto Princesa.</h3>
+            </div>
+            <div class="mt-8 flex items-end justify-between gap-6">
+              <div class="max-w-xs space-y-3" data-reveal>
+                <p class="text-sm leading-7 text-muted">The pin sits at 9.74025, 118.74203, which places Gold Cup Coffee in Puerto Princesa City, not Manila.</p>
+                <a href="https://www.google.com/maps?q=9.74025,118.74203" target="_blank" rel="noopener noreferrer" class="btn-primary no-tap-highlight">Open in Maps</a>
+              </div>
+              <img src="assets/img/location-map.svg" alt="Map illustration showing Gold Cup Coffee in Puerto Princesa" class="hidden w-56 shrink-0 md:block" data-reveal>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="border-t border-white/10 px-5 py-10 sm:px-8 lg:px-12">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-xl">
+        <p class="gc-mono text-[0.72rem] uppercase tracking-[0.36em] text-amber-brand">Contact</p>
+        <h2 class="mt-4 font-display text-4xl leading-none text-white">Call Gold Cup Coffee and head straight to Rizal Avenue.</h2>
+        <div class="mt-5 flex flex-wrap gap-4 text-sm sm:text-base">
+          <a class="link-underline text-white/85" href="tel:+639479872865">+63 947 987 2865</a>
+          <a class="link-underline text-white/85" href="https://goldcup.coffee/" target="_blank" rel="noopener noreferrer">Official site</a>
+          <a class="link-underline text-white/85" href="https://www.google.com/maps?q=9.74025,118.74203" target="_blank" rel="noopener noreferrer">Directions</a>
+        </div>
+      </div>
+      <p class="gc-mono text-[0.68rem] uppercase tracking-[0.32em] text-white/50">Gold Cup Coffee <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!motionReduced && window.Lenis && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.08,
+        duration: 1.05,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+
+      gsap.from('[data-hero-reveal]', {
+        opacity: 0,
+        y: 28,
+        duration: 1.05,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.15
+      });
+
+      gsap.to('[data-hero-media]', {
+        yPercent: 7,
+        scale: 1.05,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        }
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 24,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.gallery-image').forEach((img) => {
+        gsap.from(img, {
+          opacity: 0,
+          y: 22,
+          scale: 0.98,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top 88%'
+          }
+        });
+      });
+    }
+  </script>
 </body>
 </html>
