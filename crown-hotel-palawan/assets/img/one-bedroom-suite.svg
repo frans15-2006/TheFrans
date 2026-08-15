@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title>One Bedroom Suite illustration</title>
+  <desc>Minimal room-layout inspired illustration for the One Bedroom Suite.</desc>
+  <rect width="1200" height="800" fill="#080808"/>
+  <rect x="72" y="72" width="1056" height="656" rx="18" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="2"/>
+  <path d="M132 132h936v536H132z" fill="none" stroke="#f0a500" stroke-opacity="0.65" stroke-width="4"/>
+  <path d="M132 430h936" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+  <path d="M610 132v536" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+  <rect x="160" y="176" width="370" height="202" rx="14" fill="#171717" stroke="#f0a500" stroke-opacity="0.4" stroke-width="3"/>
+  <rect x="186" y="202" width="190" height="74" rx="8" fill="#232323"/>
+  <rect x="186" y="294" width="276" height="52" rx="8" fill="#232323"/>
+  <rect x="646" y="176" width="372" height="360" rx="14" fill="#171717" stroke="#f0a500" stroke-opacity="0.36" stroke-width="3"/>
+  <rect x="682" y="210" width="188" height="96" rx="8" fill="#232323"/>
+  <rect x="682" y="326" width="246" height="136" rx="8" fill="#232323"/>
+  <rect x="160" y="470" width="370" height="118" rx="14" fill="#171717" stroke="#f0a500" stroke-opacity="0.36" stroke-width="3"/>
+  <rect x="182" y="496" width="140" height="52" rx="8" fill="#232323"/>
+  <rect x="344" y="496" width="142" height="52" rx="8" fill="#232323"/>
+  <rect x="160" y="610" width="858" height="42" rx="10" fill="#f0a500" fill-opacity="0.16"/>
+  <text x="600" y="735" text-anchor="middle" fill="#eaeaea" fill-opacity="0.8" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="4">ONE BEDROOM SUITE</text>
+</svg>

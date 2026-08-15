@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title>Crown Hotel Palawan social preview</title>
+  <desc>Editorial social image for Crown Hotel Palawan at Harbour Springs.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#151008"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f0a500"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M820 90h240l-40 430H780Z" fill="#111" stroke="#f0a500" stroke-opacity="0.48" stroke-width="2"/>
+  <path d="M845 150h190v290H845Z" fill="#171717"/>
+  <g stroke="#eaeaea" stroke-opacity="0.24" stroke-width="7">
+    <path d="M875 150v290"/>
+    <path d="M940 150v290"/>
+    <path d="M1005 150v290"/>
+  </g>
+  <path d="M785 520h350" stroke="url(#accent)" stroke-width="24" stroke-linecap="round"/>
+  <path d="M88 112h430" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+  <text x="88" y="202" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="108" letter-spacing="6">CROWN HOTEL</text>
+  <text x="88" y="300" fill="#f0a500" font-family="Bebas Neue, sans-serif" font-size="108" letter-spacing="6">PALAWAN</text>
+  <text x="90" y="362" fill="#eaeaea" fill-opacity="0.78" font-family="Space Grotesk, sans-serif" font-size="28" letter-spacing="1">Harbour Springs, Puerto Princesa</text>
+  <text x="90" y="430" fill="#eaeaea" fill-opacity="0.62" font-family="JetBrains Mono, monospace" font-size="20" letter-spacing="3">82 ROOMS . POOLS . DINING . FUNCTION ROOM</text>
+</svg>

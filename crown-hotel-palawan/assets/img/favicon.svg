@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title>Hôtel mark</title>
+  <desc>Abstract crown mark for Crown Hotel Palawan.</desc>
+  <rect width="64" height="64" rx="12" fill="#080808"/>
+  <path d="M13 39h38l-4-20-8 10-7-13-7 13-8-10-4 20Z" fill="none" stroke="#f0a500" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M18 46h28" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="20" r="2.5" fill="#f0a500"/>
+</svg>

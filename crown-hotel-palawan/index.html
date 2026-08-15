@@ -1,60 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crown Hotel Palawan</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crown Hotel Palawan at Harbour Springs | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Crown Hotel Palawan at Harbour Springs in Puerto Princesa, Palawan. 82 rooms, pool experiences, in-house dining, function room, and direct reservations at KM 12 National Highway.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Crown Hotel Palawan at Harbour Springs">
+  <meta property="og:description" content="Puerto Princesa stays with 82 rooms, swimming pools, dining, and direct reservations on KM 12 National Highway, Brgy. Sta. Lourdes.">
+  <meta property="og:image" content="assets/img/og.svg">
+  <meta property="og:image:alt" content="Crown Hotel Palawan at Harbour Springs">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crown Hotel Palawan at Harbour Springs">
+  <meta name="twitter:description" content="Puerto Princesa stays with 82 rooms, swimming pools, dining, and direct reservations.">
+  <meta name="twitter:image" content="assets/img/og.svg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(234, 234, 234, 0.04);
+      --panel-strong: rgba(234, 234, 234, 0.08);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.14);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(240, 165, 0, 0.08), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(240, 165, 0, 0.06), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    .display-font {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+    }
+
+    .mono-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .soft-border {
+      border-color: var(--line);
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .gold-line {
+      position: relative;
+    }
+
+    .gold-line::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.9rem;
+      width: 5.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber), transparent);
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+    }
+
+    .hero-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.48) 42%, rgba(8, 8, 8, 0.16) 100%),
+        linear-gradient(0deg, rgba(8, 8, 8, 0.72) 0%, rgba(8, 8, 8, 0.16) 36%, rgba(8, 8, 8, 0.04) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-image {
+      filter: saturate(0.95) contrast(1.04);
+    }
+
+    .section-wrap {
+      position: relative;
+      padding-block: clamp(4rem, 7vw, 7rem);
+    }
+
+    .section-rule {
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-link {
+      position: relative;
+      transition: color 180ms ease;
+    }
+
+    .menu-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .menu-link:hover,
+    .menu-link:focus-visible {
+      color: var(--text);
+    }
+
+    .menu-link:hover::after,
+    .menu-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 3rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--line);
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .button-primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: var(--amber);
+    }
+
+    .button-secondary {
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover,
+    .button-primary:focus-visible,
+    .button-secondary:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--amber);
+    }
+
+    .room-row {
+      display: grid;
+      gap: 1.4rem;
+      padding-block: clamp(1.4rem, 3vw, 2.4rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .room-row:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .room-row img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.04);
+    }
+
+    .room-specs li,
+    .detail-list li {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .room-specs li::before,
+    .detail-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 0.35rem;
+      height: 0.35rem;
+      background: var(--amber);
+      transform: translateY(-50%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.03);
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      display: block;
+    }
+
+    .gallery-grid figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.8rem 0.85rem;
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.86));
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.9);
+    }
+
+    .gallery-span-2 {
+      grid-column: span 2;
+      aspect-ratio: 16 / 10;
+    }
+
+    .quote-line {
+      border-left: 1px solid var(--amber);
+      padding-left: 1rem;
+    }
+
+    .map-frame {
+      min-height: 26rem;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.03);
+      overflow: hidden;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 26rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.1) brightness(0.9);
+    }
+
+    .ambient-grid {
+      background:
+        linear-gradient(180deg, rgba(240, 165, 0, 0.08), transparent 18%),
+        linear-gradient(90deg, transparent 49%, rgba(234, 234, 234, 0.08) 50%, transparent 51%);
+      background-size: 100% 100%, 2.5rem 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .room-row {
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .room-row.is-reversed {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+
+      .room-row.is-reversed .room-media {
+        order: 2;
+      }
+
+      .room-row.is-reversed .room-copy {
+        order: 1;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .gallery-grid figure {
+        min-height: 14rem;
+      }
+
+      .gallery-span-2 {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-span-3 {
+        grid-column: span 3;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-shell {
+        min-height: 100svh;
+      }
+
+      .menu-shell {
+        padding-inline: 1rem;
+      }
+
+      .gallery-grid figure,
+      .gallery-span-2,
+      .gallery-span-3 {
+        grid-column: span 2;
+      }
+    }
+  </style>
 </head>
-<body>
-    <h1>Crown Hotel Palawan</h1>
-    <span class="category">Hotel</span>
-    <p class="address">KM 12 National Highway, Puerto Princesa City</p>
-    <p class="phone">+63 916 625 6665</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+<body class="antialiased">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#080808]/78 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="assets/img/favicon.svg" alt="Crown Hotel Palawan mark" class="h-8 w-8">
+        <span class="display-font text-[1.15rem] tracking-[0.16em] text-[#eaeaea] sm:text-[1.35rem]">Crown Hotel Palawan</span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-[#eaeaea]/75 md:flex" aria-label="Primary">
+        <a class="menu-link" href="#rooms">Rooms</a>
+        <a class="menu-link" href="#amenities">Amenities</a>
+        <a class="menu-link" href="#location">Location</a>
+        <a class="menu-link" href="#gallery">Gallery</a>
+        <a class="menu-link" href="#contact">Contact</a>
+      </nav>
+      <a href="#book" class="button-primary rounded-none mono-font text-[0.78rem] uppercase tracking-[0.18em]">
+        Book Direct
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-shell relative flex items-end overflow-hidden">
+      <div class="hero-media absolute inset-0">
+        <img
+          src="https://crownhotelpalawan.com/wp-content/uploads/2023/09/Deluxe-Room-with-Pool-View-Crown-1024x683.jpg"
+          data-fallback="assets/img/hero-fallback.svg"
+          alt="Deluxe Room with Pool View at Crown Hotel Palawan"
+          class="hero-image h-full w-full object-cover"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 pt-28 sm:px-6 sm:pb-12 lg:px-8 lg:pb-14">
+        <div class="max-w-3xl">
+          <p class="mono-font mb-5 text-[0.72rem] uppercase tracking-[0.32em] text-[#eaeaea]/72" data-reveal>
+            Where your Palawan adventure begins
+          </p>
+          <h1 class="display-font max-w-3xl text-[4.1rem] leading-[0.84] text-[#eaeaea] sm:text-[6.2rem] lg:text-[8rem]" data-reveal>
+            Crown Hotel Palawan
+            <span class="block text-[#f0a500]">at Harbour Springs</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-[1rem] leading-7 text-[#eaeaea]/82 sm:text-[1.08rem]" data-reveal>
+            Set just a few minutes away from Honda Bay and the city center, this Puerto Princesa stay pairs contemporary comfort with a calm base for island days and city plans.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-reveal>
+            <a href="tel:+639166256665" class="button-primary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]">
+              Call Reservations
+            </a>
+            <a href="#rooms" class="button-secondary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]">
+              Explore Rooms
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms" class="section-wrap section-rule">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 max-w-3xl">
+          <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Accommodations</p>
+          <h2 class="display-font gold-line text-[3rem] leading-none text-[#eaeaea] sm:text-[4rem]" data-reveal>Rooms sized for easy island time</h2>
+          <p class="mt-8 text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+            Crown Hotel Palawan offers 82 beautifully appointed rooms. Every stay includes a flat screen TV, aircon, unlimited Wi-Fi access, a safety deposit box, a mini fridge, a writing desk and chair, coffee and tea making facilities, hot and cold shower, and complete bathroom amenities.
+          </p>
+        </div>
+        <div id="rooms-grid" class="space-y-0"></div>
+      </div>
+    </section>
+
+    <section id="amenities" class="section-wrap section-rule ambient-grid">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div class="max-w-2xl">
+            <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Amenities</p>
+            <h2 class="display-font gold-line text-[3rem] leading-none text-[#eaeaea] sm:text-[4rem]" data-reveal>Pool, dining, and event-ready spaces</h2>
+            <p class="mt-8 max-w-xl text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+              From the kiddie pool and spring pool to the lap pool with a poolside bar, the hotel balances relaxed leisure with practical comforts for longer stays and special gatherings.
+            </p>
+          </div>
+          <div class="grid gap-8 border border-white/10 bg-white/[0.02] p-5 sm:p-6 lg:grid-cols-3">
+            <div class="soft-border border-b pb-5 lg:border-b-0 lg:border-r lg:pr-5" data-reveal>
+              <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">Pools</p>
+              <ul class="detail-list space-y-3 text-[0.95rem] leading-7 text-[#eaeaea]/82">
+                <li>Kiddie pool</li>
+                <li>Spring pool</li>
+                <li>Lap pool</li>
+                <li>Poolside bar</li>
+              </ul>
+            </div>
+            <div class="soft-border border-b pb-5 lg:border-b-0 lg:border-r lg:px-5" data-reveal>
+              <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">Dining</p>
+              <ul class="detail-list space-y-3 text-[0.95rem] leading-7 text-[#eaeaea]/82">
+                <li>In-house restaurant</li>
+                <li>American, Asian, and Filipino cuisines</li>
+                <li>Room service from 6:00 AM to 10:00 PM</li>
+              </ul>
+            </div>
+            <div class="pt-1 lg:pl-5" data-reveal>
+              <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">Spaces</p>
+              <ul class="detail-list space-y-3 text-[0.95rem] leading-7 text-[#eaeaea]/82">
+                <li>Function room for family and corporate events</li>
+                <li>Unlimited Wi-Fi access</li>
+                <li>Safety deposit box and mini fridge in every room</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section-wrap section-rule">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+          <div>
+            <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Location</p>
+            <h2 class="display-font gold-line text-[3rem] leading-none text-[#eaeaea] sm:text-[4rem]" data-reveal>KM 12 on the Puerto Princesa side of Honda Bay</h2>
+            <p class="mt-8 max-w-xl text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+              The hotel address is verified as KM 12 National Highway, Brgy. Sta. Lourdes, Puerto Princesa City, 5300 Palawan, Philippines. The mapped pin below sits at the hotel coordinates used by public listings for Crown Hotel Palawan at Harbour Springs.
+            </p>
+            <address class="quote-line not-italic mt-8 space-y-3 text-[0.98rem] leading-7 text-[#eaeaea]/84" data-reveal>
+              <div>KM 12 National Highway, Brgy. Sta. Lourdes</div>
+              <div>Puerto Princesa City, 5300 Palawan, Philippines</div>
+              <div><a class="text-[#f0a500]" href="tel:+639166256665">+63 916 625 6665</a> / <a class="text-[#f0a500]" href="tel:+639284777884">+63 928 477 7884</a> / <a class="text-[#f0a500]" href="tel:+63484235925">(048) 423 5925</a></div>
+            </address>
+            <div class="mt-6 flex flex-wrap gap-3" data-reveal>
+              <a class="button-primary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]" href="https://www.openstreetmap.org/?mlat=9.844305&mlon=118.737015#map=17/9.844305/118.737015" target="_blank" rel="noopener noreferrer">Open Map</a>
+              <a class="button-secondary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]" href="https://crownhotelpalawan.com/" target="_blank" rel="noopener noreferrer">Official Site</a>
+            </div>
+          </div>
+          <div class="map-frame" data-reveal>
+            <iframe
+              title="Map of Crown Hotel Palawan at Harbour Springs"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.7315%2C9.8399%2C118.7426%2C9.8487&layer=mapnik&marker=9.844305%2C118.737015"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" class="section-wrap section-rule">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-6 border border-white/10 bg-white/[0.03] p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div class="max-w-2xl">
+            <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Booking CTA</p>
+            <h2 class="display-font text-[2.6rem] leading-none text-[#eaeaea] sm:text-[3.6rem]" data-reveal>Reserve directly for a steadier stay plan</h2>
+            <p class="mt-5 text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+              For bookings and inquiries, call the hotel or email reservations@crownhotelpalawan.com. The property is also set up for rooms, dining, and function-room use, so direct contact keeps the plans simple.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row lg:flex-col" data-reveal>
+            <a href="tel:+639166256665" class="button-primary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]">Call +63 916 625 6665</a>
+            <a href="mailto:reservations@crownhotelpalawan.com" class="button-secondary rounded-none mono-font text-[0.76rem] uppercase tracking-[0.18em]">Email Reservations</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-wrap section-rule">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 max-w-3xl">
+          <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Gallery</p>
+          <h2 class="display-font gold-line text-[3rem] leading-none text-[#eaeaea] sm:text-[4rem]" data-reveal>Rooms and details from the official hotel pages</h2>
+          <p class="mt-8 text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+            The images below are drawn from Crown Hotel Palawan's official accommodation pages so the room visuals match the real property.
+          </p>
+        </div>
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-wrap section-rule">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.32em] text-[#f0a500]" data-reveal>Contact</p>
+            <h2 class="display-font gold-line text-[3rem] leading-none text-[#eaeaea] sm:text-[4rem]" data-reveal>Plan the Palawan stay directly</h2>
+            <p class="mt-8 max-w-2xl text-[1rem] leading-7 text-[#eaeaea]/76" data-reveal>
+              Crown Hotel Palawan at Harbour Springs welcomes guests at KM 12 National Highway, Brgy. Sta. Lourdes, Puerto Princesa City, Palawan. For questions about room types, dining, or events, use the hotel's verified contact lines below.
+            </p>
+          </div>
+          <div class="space-y-3 text-[0.98rem] leading-7 text-[#eaeaea]/86" data-reveal>
+            <div class="mono-font text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">Reservations</div>
+            <div><a class="text-[#eaeaea] transition-colors hover:text-[#f0a500]" href="tel:+639166256665">+63 916 625 6665</a></div>
+            <div><a class="text-[#eaeaea] transition-colors hover:text-[#f0a500]" href="tel:+639284777884">+63 928 477 7884</a></div>
+            <div><a class="text-[#eaeaea] transition-colors hover:text-[#f0a500]" href="tel:+63484235925">(048) 423 5925</a></div>
+            <div><a class="text-[#eaeaea] transition-colors hover:text-[#f0a500]" href="mailto:reservations@crownhotelpalawan.com">reservations@crownhotelpalawan.com</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black/55">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+      <div class="max-w-xl">
+        <p class="display-font text-[1.6rem] tracking-[0.12em] text-[#eaeaea]">Crown Hotel Palawan</p>
+        <p class="mt-3 text-sm leading-7 text-[#eaeaea]/68">
+          KM 12 National Highway, Brgy. Sta. Lourdes, Puerto Princesa City, 5300 Palawan, Philippines.
+          In-house restaurant open from 6:00 AM to 10:00 PM, with room service available on the same schedule.
+        </p>
+      </div>
+      <p class="mono-font text-[0.72rem] uppercase tracking-[0.24em] text-[#eaeaea]/50">
+        © 2026 Crown Hotel Palawan at Harbour Springs
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const roomImageFallback = 'assets/img/hero-fallback.svg';
+
+    const roomData = [
+      {
+        name: 'Standard Room',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Standard-Room-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'Modern and stylish, the Standard Room covers the essentials in a calm 34 sqm layout.',
+        stats: ['34 SQM', '2 adults', '2 double beds', '1 en suite bathroom']
+      },
+      {
+        name: 'Deluxe Room',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Deluxe-Room-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'A spacious 34 sqm room with a veranda for guests who want a little extra breathing room.',
+        stats: ['34 SQM', '2 adults', '2 double beds', '1 en suite bathroom', 'Veranda']
+      },
+      {
+        name: 'Deluxe Room Pool View',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Deluxe-Room-with-Pool-View-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'The same spacious 34 sqm setup, with a veranda and a pool view to wake up to.',
+        stats: ['34 SQM', '2 adults', '2 double beds', '1 en suite bathroom', 'Veranda with pool view']
+      },
+      {
+        name: 'One Bedroom Suite',
+        image: 'assets/img/one-bedroom-suite.svg',
+        fallback: 'assets/img/one-bedroom-suite.svg',
+        blurb: 'A private 61 sqm suite with living and dining space for slower, longer stays.',
+        stats: ['61 SQM', '2 adults', 'Living room and dining area', '1 bedroom with queen bed', '1 en suite bathroom', 'Veranda']
+      },
+      {
+        name: 'Junior Penthouse',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Penthouse-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'A 91 sqm retreat with a kitchenette, veranda, and the hotel’s most relaxed pace.',
+        stats: ['91 SQM', '2 adults', 'Living room and dining area', '1 bedroom with king bed', 'Kitchenette', '1 en suite bathroom', 'Veranda']
+      },
+      {
+        name: 'Penthouse',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Penthouse-Crown-1-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'At 184 sqm, the Penthouse is built for group stays with three bedrooms and plenty of room to gather.',
+        stats: ['184 SQM', '6 adults', 'Living room and dining area', '3 bedrooms with king beds', '3 en suite bathrooms', 'Veranda']
+      },
+      {
+        name: 'Grand Penthouse',
+        image: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Grand-Penthouse-1024x683.jpg',
+        fallback: roomImageFallback,
+        blurb: 'The largest stay option at 197 sqm, designed for family and group time in a premium format.',
+        stats: ['197 SQM', '6 adults', 'Living room and dining area', '3 bedrooms with king beds', '3 en suite bathrooms', 'Veranda']
+      }
+    ];
+
+    const galleryData = [
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Standard-Room-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Standard Room'
+      },
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Deluxe-Room-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Deluxe Room'
+      },
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Deluxe-Room-with-Pool-View-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Deluxe Pool View'
+      },
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Penthouse-Crown-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Junior Penthouse'
+      },
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Penthouse-Crown-1-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Penthouse'
+      },
+      {
+        src: 'https://crownhotelpalawan.com/wp-content/uploads/2023/09/Grand-Penthouse-1024x683.jpg',
+        fallback: roomImageFallback,
+        label: 'Grand Penthouse'
+      }
+    ];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;');
+    }
+
+    function renderRooms() {
+      const container = document.getElementById('rooms-grid');
+      container.innerHTML = roomData.map((room, index) => `
+        <article class="room-row ${index % 2 === 1 ? 'is-reversed' : ''}" data-room>
+          <div class="room-media">
+            <img src="${room.image}" data-fallback="${room.fallback}" alt="${escapeHtml(room.name)} at Crown Hotel Palawan" loading="lazy" decoding="async">
+          </div>
+          <div class="room-copy max-w-2xl">
+            <p class="mono-font mb-3 text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">Stay type</p>
+            <h3 class="display-font text-[2.1rem] leading-none text-[#eaeaea] sm:text-[2.8rem]">${escapeHtml(room.name)}</h3>
+            <p class="mt-4 max-w-xl text-[1rem] leading-7 text-[#eaeaea]/78">${escapeHtml(room.blurb)}</p>
+            <ul class="room-specs mt-6 grid gap-3 text-[0.95rem] leading-7 text-[#eaeaea]/84 sm:grid-cols-2">
+              ${room.stats.map(stat => `<li>${escapeHtml(stat)}</li>`).join('')}
+            </ul>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderGallery() {
+      const container = document.getElementById('gallery-grid');
+      container.innerHTML = galleryData.map((item, index) => {
+        const spanClass = index === 0 ? 'gallery-span-3' : index === 3 ? 'gallery-span-2' : '';
+        return `
+          <figure class="${spanClass}" data-gallery-item>
+            <img src="${item.src}" data-fallback="${item.fallback}" alt="${escapeHtml(item.label)} at Crown Hotel Palawan" loading="lazy" decoding="async">
+            <figcaption>${escapeHtml(item.label)}</figcaption>
+          </figure>
+        `;
+      }).join('');
+    }
+
+    function wireImageFallbacks() {
+      document.querySelectorAll('img[data-fallback]').forEach((img) => {
+        img.addEventListener('error', () => {
+          const fallback = img.getAttribute('data-fallback');
+          if (fallback && img.src !== fallback) {
+            img.src = fallback;
+          }
+        }, { once: true });
+      });
+    }
+
+    function setupAnimations() {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduceMotion) {
+        gsap.set('[data-reveal]', { autoAlpha: 1, y: 0 });
+        return;
+      }
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+        smoothWheel: true,
+        lerp: 0.09
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      gsap.from('.hero-image', {
+        scale: 1.08,
+        opacity: 0.85,
+        duration: 1.5,
+        ease: 'power2.out'
+      });
+
+      gsap.from('[data-reveal]', {
+        autoAlpha: 0,
+        y: 28,
+        duration: 0.95,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.15
+      });
+
+      gsap.to('.hero-image', {
+        yPercent: 7,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero-shell',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      gsap.utils.toArray('[data-room]').forEach((row) => {
+        gsap.from(row.querySelectorAll('img, h3, p, li'), {
+          autoAlpha: 0,
+          y: 22,
+          duration: 0.8,
+          stagger: 0.04,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('[data-gallery-item]').forEach((item) => {
+        gsap.from(item, {
+          autoAlpha: 0,
+          y: 28,
+          duration: 0.75,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 88%'
+          }
+        });
+      });
+    }
+
+    renderRooms();
+    renderGallery();
+    wireImageFallbacks();
+    setupAnimations();
+  </script>
 </body>
 </html>
