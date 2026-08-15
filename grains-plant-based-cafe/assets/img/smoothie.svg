@@ -1,0 +1,32 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(890 260) rotate(140) scale(600 540)">
+      <stop stop-color="#F0A500" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F0A500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="340" y1="240" x2="780" y2="970" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171717"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="drink" x1="438" y1="424" x2="726" y2="812" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#95BE74"/>
+      <stop offset="1" stop-color="#5E7E3E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" rx="60" fill="#080808"/>
+  <rect width="1200" height="1200" rx="60" fill="url(#g)"/>
+  <ellipse cx="602" cy="912" rx="328" ry="118" fill="#060606"/>
+  <path d="M450 220H746L708 880C704 938 662 984 604 984H592C534 984 492 938 488 880L450 220Z" fill="url(#glass)" stroke="#EAEAEA" stroke-opacity="0.15" stroke-width="4"/>
+  <path d="M486 284H710L682 856C680 900 648 934 604 934H592C548 934 516 900 514 856L486 284Z" fill="#0C0C0C"/>
+  <path d="M516 338H678L654 770C652 814 620 848 576 848H618C574 848 542 814 540 770L516 338Z" fill="url(#drink)"/>
+  <path d="M536 382C584 364 620 364 670 378" stroke="#F0A500" stroke-opacity="0.85" stroke-width="24" stroke-linecap="round"/>
+  <path d="M530 492C580 470 632 468 688 484" stroke="#EAEAEA" stroke-opacity="0.14" stroke-width="24" stroke-linecap="round"/>
+  <path d="M532 602C584 582 638 582 690 598" stroke="#EAEAEA" stroke-opacity="0.12" stroke-width="24" stroke-linecap="round"/>
+  <path d="M570 204C594 156 622 134 660 120" stroke="#EAEAEA" stroke-opacity="0.45" stroke-width="14" stroke-linecap="round"/>
+  <path d="M658 194C690 150 720 124 760 108" stroke="#F0A500" stroke-opacity="0.42" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="340" cy="350" r="28" fill="#F0A500"/>
+  <circle cx="880" cy="300" r="22" fill="#EAEAEA" fill-opacity="0.7"/>
+  <circle cx="834" cy="710" r="24" fill="#F0A500" fill-opacity="0.8"/>
+  <path d="M812 708C854 676 904 670 954 682" stroke="#6F8A4A" stroke-width="16" stroke-linecap="round"/>
+  <path d="M814 752C850 740 878 738 916 744" stroke="#6F8A4A" stroke-width="16" stroke-linecap="round"/>
+</svg>

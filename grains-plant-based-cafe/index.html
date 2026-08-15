@@ -1,60 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grains Plant-based Cafe</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grains Plant-Based Cafe | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Grains Plant-Based Cafe is a plant-based cafe on 80 Roxas Street in Puerto Princesa, Palawan, serving vegan comfort food, bowls, sandwiches, smoothies, juices, and coffee daily from 8:00 AM to 9:00 PM.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Grains Plant-Based Cafe | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Plant-based comfort food on Roxas Street in Puerto Princesa, with bowls, sandwiches, coffee, juices, and all-day cafe fare.">
+  <meta property="og:image" content="assets/img/hero-scene.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Grains Plant-Based Cafe | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Plant-based comfort food on Roxas Street in Puerto Princesa, with bowls, sandwiches, coffee, juices, and all-day cafe fare.">
+  <meta name="twitter:image" content="assets/img/hero-scene.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Grains Plant-Based Cafe",
+    "url": "./",
+    "image": "assets/img/hero-scene.svg",
+    "telephone": "+63 956 913 1560",
+    "email": "grainsplwn@gmail.com",
+    "priceRange": "₱₱ - ₱₱₱",
+    "servesCuisine": ["Vegan", "Plant-based", "Cafe", "Healthy"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "80 Roxas Street",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.737568,
+      "longitude": 118.7325
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "08:00", "closes": "21:00"}
+    ],
+    "sameAs": ["https://www.facebook.com/grainsplwn/"]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.14);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.14);
+      --display: 'Bebas Neue', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --body: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.07), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #080808;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      position: relative;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.09);
+      background: rgba(8, 8, 8, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      white-space: nowrap;
+    }
+
+    .brand__mark {
+      font-family: var(--display);
+      letter-spacing: 0.08em;
+      font-size: 1.65rem;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .brand__sub {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transform: translateY(-0.2rem);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.8rem 1.1rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    .hero__art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      transform: scale(1.02);
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .hero__shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.25) 0%, rgba(8, 8, 8, 0.54) 42%, rgba(8, 8, 8, 0.84) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.36) 40%, rgba(8, 8, 8, 0.76) 100%);
+    }
+
+    .hero__inner {
+      padding: clamp(4rem, 10vw, 8rem) 0 3.8rem;
+    }
+
+    .hero__content {
+      max-width: 48rem;
+    }
+
+    .hero__brand {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(4.4rem, 11vw, 9.4rem);
+      line-height: 0.86;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 1rem;
+    }
+
+    .hero__copy {
+      max-width: 34rem;
+      font-size: clamp(1.03rem, 2vw, 1.25rem);
+      line-height: 1.65;
+      color: rgba(234, 234, 234, 0.88);
+      margin: 0 0 1.7rem;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: #080808;
+    }
+
+    .btn--ghost {
+      border-color: rgba(234, 234, 234, 0.22);
+      background: rgba(234, 234, 234, 0.04);
+      color: var(--text);
+    }
+
+    .btn--ghost:hover,
+    .btn--ghost:focus-visible {
+      border-color: var(--accent);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .section {
+      padding: clamp(4.5rem, 9vw, 7rem) 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .section__head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section h2 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .section__lede {
+      max-width: 46rem;
+      color: rgba(234, 234, 234, 0.74);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .menu-layout,
+    .about-layout,
+    .location-layout {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-item__name {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3.7vw, 3.1rem);
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .menu-item__desc {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.7;
+    }
+
+    .mono-note {
+      margin-top: 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.56);
+    }
+
+    .about-copy {
+      max-width: 42rem;
+      display: grid;
+      gap: 1rem;
+      color: rgba(234, 234, 234, 0.8);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .quote {
+      margin: 0;
+      padding-left: 1.1rem;
+      border-left: 1px solid rgba(240, 165, 0, 0.45);
+      color: var(--text);
+      font-size: clamp(1.3rem, 2.6vw, 1.95rem);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      max-width: 24rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .gallery-item {
+      margin: 0;
+      grid-column: span 12;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #0e0e0e;
+    }
+
+    .gallery-item figcaption {
+      margin-top: 0.65rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.58);
+    }
+
+    .gallery-item--wide {
+      aspect-ratio: 16 / 10;
+    }
+
+    .gallery-item--square {
+      aspect-ratio: 1 / 1;
+    }
+
+    .location-panel,
+    .contact-panel {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1.25rem 0;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: grid;
+      gap: 0.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .info-list li:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .info-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .info-value {
+      color: rgba(234, 234, 234, 0.9);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .map-frame {
+      min-height: 360px;
+      background: #0d0d0d;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      min-height: 360px;
+      filter: saturate(0.95) contrast(1.05) brightness(0.95);
+    }
+
+    .map-frame__caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: grid;
+      gap: 0.3rem;
+      max-width: calc(100% - 2rem);
+      pointer-events: none;
+    }
+
+    .map-frame__caption span {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.35rem 0.6rem;
+      background: rgba(8, 8, 8, 0.82);
+      border: 1px solid rgba(234, 234, 234, 0.15);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.86);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer {
+      padding: 1.5rem 0 2.25rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem 1.5rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      padding-top: 1rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @media (min-width: 720px) {
+      .menu-layout {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: start;
+      }
+
+      .about-layout {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.8fr);
+        align-items: start;
+      }
+
+      .location-layout {
+        grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+        align-items: start;
+      }
+
+      .gallery-item--wide {
+        grid-column: span 7;
+      }
+
+      .gallery-item--square {
+        grid-column: span 5;
+      }
+
+      .gallery-item--full {
+        grid-column: span 12;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .topbar__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero__inner {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .menu-item {
+        grid-template-columns: 1fr;
+      }
+
+      .section h2 {
+        font-size: clamp(2.6rem, 14vw, 4rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero__art {
+        transform: none;
+      }
+
+      .btn,
+      .nav a {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Grains Plant-based Cafe</h1>
-    <span class="category">Vegan Cafe</span>
-    <p class="address">80 Roxas St, Puerto Princesa City</p>
-    <p class="phone">+63 956 913 1560</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="#home" aria-label="Grains Plant-Based Cafe home">
+          <span class="brand__mark">Grains</span>
+          <span class="brand__sub">Plant-Based Cafe</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#story">Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-label="Grains Plant-Based Cafe introduction">
+        <img class="hero__art" src="assets/img/hero-scene.svg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <span class="eyebrow reveal" data-reveal>Puerto Princesa, Palawan</span>
+            <h1 class="hero__brand reveal" data-reveal>Grains Plant-Based Cafe</h1>
+            <p class="hero__copy reveal" data-reveal>
+              Plant-based comfort food on Roxas Street, with bowls, sandwiches, coffee, juices, and all-day vegan-friendly plates in Puerto Princesa.
+            </p>
+            <div class="cta-group reveal" data-reveal>
+              <a class="btn btn--primary" href="#location">Get directions</a>
+              <a class="btn btn--ghost" href="tel:+639569131560">Call +63 956 913 1560</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="container menu-layout">
+          <div class="section__head reveal" data-reveal>
+            <span class="eyebrow">Menu highlights</span>
+            <h2>Built Around Real Favourites</h2>
+            <p class="section__lede">
+              Public listings and guest reviews point to a broad plant-based menu: breakfast plates, rice bowls, pasta, smoothie blends, juices, and cafe drinks.
+            </p>
+          </div>
+          <div class="menu-list reveal" data-reveal>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">Sisig Bowl</p>
+                <p class="mono-note">Tofu, onions, green chilis, garlic, vegan mayo, red rice, cucumber, calamansi.</p>
+              </div>
+              <p class="menu-item__desc">A vegan take on a Filipino classic, highlighted in a recent cafe write-up for its bright, savory balance.</p>
+            </div>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">BBQ Tofu Rice Bowl</p>
+                <p class="mono-note">One of the most frequently praised bowls in public reviews.</p>
+              </div>
+              <p class="menu-item__desc">A hearty plant-based bowl that shows up again and again in traveler feedback for its generous portion and flavor.</p>
+            </div>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">Pesto Grilled Sandwich</p>
+                <p class="mono-note">Named on the cafe's menu highlight list.</p>
+              </div>
+              <p class="menu-item__desc">A simple, satisfying sandwich that pairs well with coffee, cold brews, or one of the cafe's fresh juices.</p>
+            </div>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">Acai Bowl</p>
+                <p class="mono-note">Cool, fruit-led, and well suited to the Palawan heat.</p>
+              </div>
+              <p class="menu-item__desc">Mentioned in reviews as a delicious and balanced bowl, especially for breakfast or a light afternoon stop.</p>
+            </div>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">Spirulina Latte</p>
+                <p class="mono-note">A standout drink from the public menu summary.</p>
+              </div>
+              <p class="menu-item__desc">An eye-catching cafe drink for guests looking for something more inventive than a standard espresso order.</p>
+            </div>
+            <div class="menu-item">
+              <div>
+                <p class="menu-item__name">Banana Buzz</p>
+                <p class="mono-note">Smooth, tropical, and quick to enjoy on the go.</p>
+              </div>
+              <p class="menu-item__desc">A fruit-forward blend that fits the cafe's relaxed, refreshment-first side.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="story">
+        <div class="container about-layout">
+          <div class="section__head reveal" data-reveal>
+            <span class="eyebrow">Story / about</span>
+            <h2>Comfort Food, Reworked</h2>
+            <div class="about-copy">
+              <p>
+                Grains is publicly described as plant-based comfort food by Eightynine Cafe Palawan, and it sits right on Roxas Street in Puerto Princesa City.
+              </p>
+              <p>
+                Recent coverage describes a simple, uncluttered room with greenery touches, friendly service, and a menu that reaches from breakfast plates to rice bowls, pasta, smoothies, juices, and acai bowls.
+              </p>
+              <p>
+                The result is a cafe that feels practical for locals and welcoming for travelers: easy to find, easy to settle into, and broad enough for a quick coffee stop or a full meal.
+              </p>
+            </div>
+          </div>
+          <blockquote class="quote reveal" data-reveal>
+            Plant-based dining in Puerto Princesa can be generous, relaxed, and genuinely satisfying.
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section__head reveal" data-reveal>
+            <span class="eyebrow">Gallery</span>
+            <h2>Visual Notes</h2>
+            <p class="section__lede">
+              Local, plant-led, and warm in tone. These illustrated scenes echo the dishes and atmosphere people mention most often about Grains.
+            </p>
+          </div>
+          <div class="gallery-grid">
+            <figure class="gallery-item gallery-item--wide reveal" data-reveal>
+              <img src="assets/img/bowl.svg" alt="Illustrated plant-based rice bowl with tofu and fresh garnish" loading="lazy" decoding="async">
+              <figcaption>Comfort bowl</figcaption>
+            </figure>
+            <figure class="gallery-item gallery-item--square reveal" data-reveal>
+              <img src="assets/img/smoothie.svg" alt="Illustrated green smoothie and cafe drink with tropical accents" loading="lazy" decoding="async">
+              <figcaption>Fresh blends</figcaption>
+            </figure>
+            <figure class="gallery-item gallery-item--full reveal" data-reveal>
+              <img src="assets/img/cafe-window.svg" alt="Illustrated cafe interior with greenery and warm light" loading="lazy" decoding="async">
+              <figcaption>Cafe mood</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="container location-layout">
+          <div class="section__head reveal" data-reveal>
+            <span class="eyebrow">Hours / location</span>
+            <h2>On Roxas Street</h2>
+            <p class="section__lede">
+              The cafe's public listings place it at 80 Roxas Street in Puerto Princesa City, Palawan, with coordinates around 9.737568, 118.7325 - firmly in Puerto Princesa, not Manila.
+            </p>
+          </div>
+          <div class="location-panel reveal" data-reveal>
+            <ul class="info-list">
+              <li>
+                <span class="info-label">Address</span>
+                <span class="info-value">80 Roxas Street, Puerto Princesa, Palawan 5300, Philippines</span>
+              </li>
+              <li>
+                <span class="info-label">Hours</span>
+                <span class="info-value">Open daily, 8:00 AM to 9:00 PM</span>
+              </li>
+              <li>
+                <span class="info-label">Phone</span>
+                <a class="info-value" href="tel:+639569131560">+63 956 913 1560</a>
+              </li>
+              <li>
+                <span class="info-label">Email</span>
+                <a class="info-value" href="mailto:grainsplwn@gmail.com">grainsplwn@gmail.com</a>
+              </li>
+              <li>
+                <span class="info-label">Coordinates</span>
+                <span class="info-value">9.737568, 118.7325</span>
+              </li>
+            </ul>
+          </div>
+          <div class="map-frame reveal" data-reveal>
+            <iframe
+              title="Map to Grains Plant-Based Cafe in Puerto Princesa"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.7278%2C9.7340%2C118.7378%2C9.7410&layer=mapnik&marker=9.737568%2C118.7325">
+            </iframe>
+            <div class="map-frame__caption">
+              <span>Puerto Princesa, Palawan, Philippines</span>
+              <span>Pin: 9.737568, 118.7325</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact-panel reveal" data-reveal>
+          <div class="section__head" style="margin-bottom: 1.25rem;">
+            <span class="eyebrow">Contact / footer</span>
+            <h2>Reach Grains</h2>
+            <p class="section__lede">
+              Call, email, or open the cafe's Facebook page if you want the latest updates before you head over.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a class="btn btn--primary" href="tel:+639569131560">Call now</a>
+            <a class="btn btn--ghost" href="mailto:grainsplwn@gmail.com">Email the cafe</a>
+            <a class="btn btn--ghost" href="https://www.facebook.com/grainsplwn/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="btn btn--ghost" href="https://www.google.com/maps?q=9.737568,118.7325" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>Grains Plant-Based Cafe, Puerto Princesa, Palawan</span>
+        <span>Plant-based comfort food by Eightynine Cafe Palawan</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lenis = !reducedMotion && window.Lenis
+      ? new Lenis({
+          autoRaf: true,
+          duration: 1.05,
+          lerp: 0.08,
+          smoothWheel: true,
+          smoothTouch: false
+        })
+      : null;
+
+    if (lenis) {
+      lenis.on('scroll', () => ScrollTrigger.update());
+    }
+
+    if (!reducedMotion && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to('.hero__art', {
+        scale: 1.08,
+        yPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      gsap.from('.hero .reveal', {
+        opacity: 0,
+        y: 28,
+        duration: 0.9,
+        ease: 'power3.out',
+        stagger: 0.14,
+        delay: 0.15
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((element) => {
+        if (element.closest('.hero')) return;
+
+        gsap.fromTo(element, {
+          opacity: 0,
+          y: 28
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.gallery-item img').forEach((img) => {
+        gsap.fromTo(img, { scale: 1.02 }, {
+          scale: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.6
+          }
+        });
+      });
+
+      ScrollTrigger.refresh();
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        if (lenis) {
+          lenis.scrollTo(target, { offset: -72 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const year = new Date().getFullYear();
+    const footer = document.querySelector('.footer__inner span:first-child');
+    if (footer) {
+      footer.textContent = `Grains Plant-Based Cafe, Puerto Princesa, Palawan - ${year}`;
+    }
+  </script>
 </body>
 </html>
