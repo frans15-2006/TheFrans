@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Studio Jessa D | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Beauty Studio Jessa D in Junction 1, Barangay San Miguel, Puerto Princesa, Palawan. Explore live services, selected starting prices, gallery, booking, and contact details.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Beauty Studio Jessa D | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Beauty Studio Jessa D in Junction 1, Barangay San Miguel, Puerto Princesa. Skin, nails, drips, and hair care with live booking details.">
+  <meta property="og:image" content="assets/img/hero.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Beauty Studio Jessa D | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Live services, prices, and contact details for Beauty Studio Jessa D in Puerto Princesa.">
+  <meta name="twitter:image" content="assets/img/hero.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.35);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.12);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--amber);
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .topnav a {
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    .topnav a:hover,
+    .topnav a:focus-visible {
+      color: var(--amber);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 6rem 0 2.25rem;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background: #060606;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.03);
+      filter: saturate(1.02) contrast(1.08);
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.56) 45%, rgba(8, 8, 8, 0.82) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.08) 0%, rgba(8, 8, 8, 0.78) 100%);
+      z-index: 1;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 44rem;
+      padding: 0 0 1rem;
+    }
+
+    .eyebrow,
+    .label,
+    .small-rail {
+      margin: 0 0 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--amber);
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+    }
+
+    h1 {
+      font-size: clamp(4.8rem, 12vw, 9rem);
+      color: var(--amber);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+    }
+
+    .hero-copy p,
+    .section-lede,
+    .cta-copy,
+    .footer-copy {
+      margin: 0;
+      max-width: 38rem;
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.82rem 1.1rem;
+      border: 1px solid var(--amber);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+      will-change: transform;
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: var(--bg);
+    }
+
+    .button.ghost {
+      background: rgba(8, 8, 8, 0.36);
+      color: var(--text);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .button.ghost:hover,
+    .button.ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.85);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    main {
+      position: relative;
+    }
+
+    section {
+      padding: clamp(4.5rem, 8vw, 8rem) 0;
+      position: relative;
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 2rem;
+      max-width: 48rem;
+    }
+
+    .section-head h2 {
+      color: var(--text);
+    }
+
+    .section-head .section-lede {
+      max-width: 42rem;
+    }
+
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240, 165, 0, 0.8), rgba(234, 234, 234, 0.12));
+      opacity: 0.6;
+      margin: 0.85rem 0 0;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .service-item {
+      min-height: 7.25rem;
+      padding: 1.15rem 1rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .service-item:hover {
+      border-color: rgba(240, 165, 0, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .service-item strong {
+      display: block;
+      font-size: 1.04rem;
+      line-height: 1.25;
+      max-width: 13ch;
+      font-weight: 500;
+    }
+
+    .service-item span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    .service-item span::before {
+      content: '';
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.12);
+      flex: none;
+    }
+
+    .pricing-wrap {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.04), rgba(255, 255, 255, 0));
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+    }
+
+    .pricing-table tr {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pricing-table tr:last-child {
+      border-bottom: 0;
+    }
+
+    .pricing-table td {
+      padding: 1rem 0;
+      vertical-align: top;
+    }
+
+    .pricing-table td:first-child {
+      padding-right: 1rem;
+      color: var(--text);
+    }
+
+    .pricing-table td:last-child {
+      text-align: right;
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .pricing-note {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #111;
+      transition: transform 280ms ease, border-color 280ms ease, filter 280ms ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.4);
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .gallery-grid figcaption {
+      margin-top: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.62);
+    }
+
+    .cta-band {
+      padding: clamp(2.25rem, 5vw, 4rem);
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.1), rgba(8, 8, 8, 0.04) 60%),
+        rgba(17, 17, 17, 0.48);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .contact-item {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-item span {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .contact-item a,
+    .contact-item address,
+    .contact-item p {
+      font-style: normal;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-item code {
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 360px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      filter: grayscale(1) contrast(1.05) brightness(0.96);
+    }
+
+    .footer {
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.68);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.4rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--amber);
+      outline: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    [data-reveal] {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 900px) {
+      .topnav {
+        gap: 1.25rem;
+      }
+
+      .hero {
+        padding-top: 5.75rem;
+      }
+
+      .hero-copy {
+        padding-bottom: 2rem;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topnav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .hero-media::after {
+        background:
+          linear-gradient(180deg, rgba(8, 8, 8, 0.78) 0%, rgba(8, 8, 8, 0.56) 45%, rgba(8, 8, 8, 0.84) 100%),
+          linear-gradient(90deg, rgba(8, 8, 8, 0.24), rgba(8, 8, 8, 0.68));
+      }
+
+      h1 {
+        font-size: clamp(4rem, 18vw, 5.6rem);
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .pricing-table td {
+        display: block;
+        padding: 0.85rem 0;
+      }
+
+      .pricing-table td:last-child {
+        text-align: left;
+        padding-top: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#hero" aria-label="Beauty Studio Jessa D home">
+        Beauty Studio <span>Jessa D</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a href="#book">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-media">
+        <img src="assets/img/hero.svg" alt="Stylized salon artwork with warm amber lighting and beauty tools" class="hero-art" data-parallax>
+      </div>
+      <div class="shell hero-copy" data-hero-copy>
+        <p class="eyebrow">Beauty Studio Aesthetic By: Jessa D</p>
+        <h1>Beauty Studio Jessa D</h1>
+        <p>Skin, nails, drips, and hair care at Junction 1, Barangay San Miguel, Puerto Princesa, Palawan.</p>
+        <div class="actions">
+          <a class="button primary" href="#book">Book now</a>
+          <a class="button ghost" href="https://www.fresha.com/a/beauty-studio-aesthetic-by-jessa-d-puerto-princesa-junction-1-3-puerto-princesa-north-road-nxn7zqbf" target="_blank" rel="noopener noreferrer">View live menu</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="label">Services</p>
+          <h2>Live categories from the booking profile</h2>
+          <p class="section-lede">The public Fresha listing groups the studio's menu into hair, nails, spa, facials, lashes, and broader aesthetic care.</p>
+          <div class="rule"></div>
+        </div>
+
+        <div class="service-grid">
+          <div class="service-item"><strong>Hair Cut &amp; Styling</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Hair Colouring</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Hair Treatments</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Nails</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Spa</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Paraffin wax</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Massage</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Wax</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Eyelashes</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Facial Treatments</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Laser Treatments</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Medical Aesthetic Procedures</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Warts Treatment</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Whitening Treatments</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Aesthetic Procedures</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Slimming Treatments</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Glutathione</strong><span>Live menu category</span></div>
+          <div class="service-item"><strong>Other Services</strong><span>Live menu category</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="label">Pricing</p>
+          <h2>Selected starting prices</h2>
+          <p class="section-lede">These prices come from the public booking listings. The studio's full menu stays live on Fresha and can change over time.</p>
+          <div class="rule"></div>
+        </div>
+
+        <div class="pricing-wrap" data-reveal>
+          <table class="pricing-table" aria-label="Selected starting prices">
+            <tbody>
+              <tr><td>Classic Gel Manicure</td><td>from ₱300</td></tr>
+              <tr><td>Classic Lacquer Pedicure</td><td>from ₱150</td></tr>
+              <tr><td>Classic Gel Pedicure</td><td>from ₱350</td></tr>
+              <tr><td>Basic Women's Haircut</td><td>from ₱150</td></tr>
+              <tr><td>Hand Paraffin</td><td>₱500</td></tr>
+              <tr><td>Foot paraffin</td><td>₱550</td></tr>
+              <tr><td>Hair Spa Loreal</td><td>from ₱800</td></tr>
+              <tr><td>Balayage Loreal</td><td>from ₱5,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pricing-note">Selected from the studio's public menu on Fresha.</p>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <p class="label">Gallery</p>
+          <h2>Studio mood in color and line</h2>
+          <p class="section-lede">These SVG scenes keep the site self-contained while reflecting the studio's hair, nail, and skincare focus.</p>
+          <div class="rule"></div>
+        </div>
+
+        <div class="gallery-grid">
+          <figure>
+            <img src="assets/img/gallery-1.svg" alt="Custom SVG illustration of a nail care station with amber accents" loading="lazy">
+            <figcaption>Nails and hand care</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/gallery-2.svg" alt="Custom SVG illustration of a hair styling station and mirror" loading="lazy">
+            <figcaption>Hair and styling</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/gallery-3.svg" alt="Custom SVG illustration of spa and facial treatment details" loading="lazy">
+            <figcaption>Spa and skin care</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="shell cta-band" data-reveal>
+        <p class="label">Booking</p>
+        <h2>Book the live menu or call the studio directly</h2>
+        <p class="cta-copy">Open the Fresha listing for availability and treatment details, or use the published phone number for quick questions.</p>
+        <div class="actions">
+          <a class="button primary" href="https://www.fresha.com/a/beauty-studio-aesthetic-by-jessa-d-puerto-princesa-junction-1-3-puerto-princesa-north-road-nxn7zqbf" target="_blank" rel="noopener noreferrer">Book on Fresha</a>
+          <a class="button ghost" href="tel:+639175999824">Call +63 917 599 9824</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell contact-grid">
+        <div data-reveal>
+          <p class="label">Contact</p>
+          <h2>Junction 1, Barangay San Miguel, Puerto Princesa</h2>
+          <p class="section-lede">Beauty Studio Aesthetic By: Jessa D is listed at Junction 1, 3 Puerto Princesa North Road, Barangay San Miguel, Puerto Princesa, Mimaropa.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <span>Address</span>
+              <address>Junction 1, 3 Puerto Princesa North Road, Barangay San Miguel, Puerto Princesa City, Palawan 5300</address>
+            </div>
+            <div class="contact-item">
+              <span>Phone</span>
+              <a href="tel:+639175999824">+63 917 599 9824</a>
+            </div>
+            <div class="contact-item">
+              <span>Hours</span>
+              <p>Daily, 9:00 AM to 9:00 PM</p>
+            </div>
+            <div class="contact-item">
+              <span>Coordinates</span>
+              <p><code>9.7409607, 118.7437598</code></p>
+            </div>
+            <div class="contact-item">
+              <span>Links</span>
+              <p>
+                <a href="https://www.openstreetmap.org/?mlat=9.7409607&mlon=118.7437598#map=17/9.7409607/118.7437598" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>
+                <span aria-hidden="true"> / </span>
+                <a href="https://www.facebook.com/BeautyStudioJessa/" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <iframe
+            class="map-frame"
+            title="OpenStreetMap location for Beauty Studio Jessa D in Puerto Princesa"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=118.7359607%2C9.7349607%2C118.7489607%2C9.7469607&layer=mapnik&marker=9.7409607%2C118.7437598">
+          </iframe>
+          <p class="pricing-note" style="margin-top:0.9rem;">Map pin set to the Puerto Princesa San Miguel coordinates verified from the public listing.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <p class="footer-copy">Beauty Studio Aesthetic By: Jessa D in Puerto Princesa, Palawan. <span data-year></span></p>
+      <div class="footer-links">
+        <a href="#hero">Back to top</a>
+        <a href="https://www.fresha.com/a/beauty-studio-aesthetic-by-jessa-d-puerto-princesa-junction-1-3-puerto-princesa-north-road-nxn7zqbf" target="_blank" rel="noopener noreferrer">Fresha booking</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.22/bundled/lenis.min.js"></script>
+  <script>
+    const year = document.querySelector('[data-year]');
+    year.textContent = new Date().getFullYear();
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealTargets = document.querySelectorAll('[data-reveal]');
+
+    if (!reduceMotion && window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.05,
+        smoothWheel: true,
+        smoothTouch: false,
+        lerp: 0.1
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+
+      gsap.from('[data-hero-copy] > *', {
+        opacity: 0,
+        y: 36,
+        duration: 1.05,
+        stagger: 0.12,
+        ease: 'power3.out',
+        delay: 0.15
+      });
+
+      gsap.from('.hero-art', {
+        scale: 1.08,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power2.out'
+      });
+
+      gsap.to('.hero-art', {
+        yPercent: 6,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      revealTargets.forEach((target) => {
+        gsap.from(target, {
+          opacity: 0,
+          y: 34,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: target,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.from('.service-item', {
+        opacity: 0,
+        y: 24,
+        duration: 0.65,
+        stagger: 0.05,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.service-grid',
+          start: 'top 80%'
+        }
+      });
+
+      gsap.from('.gallery-grid figure', {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.gallery-grid',
+          start: 'top 82%'
+        }
+      });
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Beauty Studio Aesthetic By: Jessa D",
+      "alternateName": "Beauty Studio Jessa D",
+      "url": "./",
+      "image": "assets/img/hero.svg",
+      "telephone": "+63 917 599 9824",
+      "priceRange": "From PHP 150",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Junction 1, 3 Puerto Princesa North Road, Barangay San Miguel",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7409607,
+        "longitude": 118.7437598
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "09:00", "closes": "21:00"}
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Puerto Princesa"
+      },
+      "sameAs": [
+        "https://www.facebook.com/BeautyStudioJessa/",
+        "https://www.fresha.com/a/beauty-studio-aesthetic-by-jessa-d-puerto-princesa-junction-1-3-puerto-princesa-north-road-nxn7zqbf"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Live service menu",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Classic Gel Manicure"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Classic Lacquer Pedicure"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Classic Gel Pedicure"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Basic Women's Haircut"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hair Spa Loreal"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Balayage Loreal"}}
+        ]
+      }
+    }
+  </script>
+</body>
+</html>

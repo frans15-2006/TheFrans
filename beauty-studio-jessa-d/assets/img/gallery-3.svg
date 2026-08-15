@@ -1,0 +1,27 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g3bg" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090909"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g3bg)"/>
+  <circle cx="300" cy="220" r="190" fill="#F0A500" fill-opacity="0.14"/>
+  <rect x="112" y="96" width="976" height="708" rx="36" fill="#0D0D0D" stroke="rgba(234,234,234,0.11)"/>
+  <path d="M252 240H950" stroke="#F0A500" stroke-opacity="0.38" stroke-width="6" stroke-linecap="round"/>
+  <path d="M252 282H874" stroke="#EAEAEA" stroke-opacity="0.16" stroke-width="4" stroke-linecap="round"/>
+  <path d="M252 324H806" stroke="#EAEAEA" stroke-opacity="0.12" stroke-width="4" stroke-linecap="round"/>
+  <rect x="158" y="380" width="308" height="280" rx="30" fill="#101010" stroke="rgba(240,165,0,0.22)"/>
+  <rect x="200" y="422" width="224" height="86" rx="22" fill="#0A0A0A" stroke="rgba(234,234,234,0.12)"/>
+  <circle cx="312" cy="552" r="48" fill="#F0A500" fill-opacity="0.12"/>
+  <path d="M272 548C284 518 300 504 312 504C324 504 340 518 352 548" stroke="#F0A500" stroke-width="8" stroke-linecap="round"/>
+  <rect x="548" y="378" width="380" height="282" rx="30" fill="#101010" stroke="rgba(234,234,234,0.11)"/>
+  <path d="M600 458C618 428 648 410 684 410C720 410 750 428 768 458" stroke="#F0A500" stroke-opacity="0.54" stroke-width="7" stroke-linecap="round"/>
+  <path d="M600 488H768" stroke="#EAEAEA" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+  <path d="M620 536C644 516 704 516 728 536" stroke="#EAEAEA" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+  <path d="M674 548C678 586 680 608 680 642" stroke="#F0A500" stroke-opacity="0.62" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="844" cy="550" r="44" fill="#F0A500" fill-opacity="0.12"/>
+  <path d="M826 550C826 532 838 520 856 520C874 520 886 532 886 550C886 568 874 580 856 580C838 580 826 568 826 550Z" stroke="#F0A500" stroke-width="6"/>
+  <path d="M244 736C368 690 482 664 600 656C732 646 838 656 954 694" stroke="#F0A500" stroke-opacity="0.18" stroke-width="3"/>
+  <path d="M302 704C356 686 418 676 484 674" stroke="#EAEAEA" stroke-opacity="0.1" stroke-width="2"/>
+</svg>
