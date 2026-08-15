@@ -1,5 +1,813 @@
 <!DOCTYPE html>
-<title>El Nido Boutique Artcafe</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Nido Boutique Artcafe | El Nido, Palawan cafe, boutique, and travel stop</title>
+  <meta name="description" content="El Nido Boutique Artcafe on Serena Street, Buena Suerte, El Nido, Palawan. Bay-view dining, farm-to-table dishes, boutique finds, and travel help in one stop.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Nido Boutique Artcafe">
+  <meta property="og:title" content="El Nido Boutique Artcafe">
+  <meta property="og:description" content="Bay-view dining, a boutique, and travel help in one stop on Serena Street, El Nido, Palawan.">
+  <meta property="og:image" content="assets/img/hero-bay.svg">
+  <meta property="og:url" content="https://elnidoboutiqueandartcafe.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="El Nido Boutique Artcafe">
+  <meta name="twitter:description" content="Bay-view dining, a boutique, and travel help in one stop on Serena Street, El Nido, Palawan.">
+  <meta name="twitter:image" content="assets/img/hero-bay.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.14);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.15);
+      --shadow: 0 0 0 1px rgba(234, 234, 234, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(240, 165, 0, 0.06), transparent 20%),
+        linear-gradient(180deg, #090909 0%, #080808 36%, #050505 100%);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 120px 120px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.18) 80%);
+      opacity: 0.18;
+      z-index: 0;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(4rem, 8vw, 8rem) 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .kicker {
+      margin: 0 0 0.8rem;
+      color: rgba(234, 234, 234, 0.62);
+      font: 600 0.74rem/1.2 "JetBrains Mono", monospace;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .accent {
+      color: var(--amber);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3.1rem;
+      padding: 0.85rem 1.05rem;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      font: 600 0.76rem/1.1 "JetBrains Mono", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(234, 234, 234, 0.3);
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #121212;
+      border-color: var(--amber);
+    }
+
+    .btn-primary:hover {
+      background: #ffb81f;
+    }
+
+    .btn-ghost {
+      background: rgba(234, 234, 234, 0.03);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.04);
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.84) 34%, rgba(8, 8, 8, 0.36) 70%, rgba(8, 8, 8, 0.12) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.44) 72%, rgba(8, 8, 8, 0.92) 100%);
+    }
+
+    .hero-inner {
+      padding: 6.5rem 0 3rem;
+    }
+
+    .hero-copy {
+      width: min(46rem, 100%);
+    }
+
+    .hero-title {
+      font-size: clamp(4.2rem, 12vw, 9rem);
+      max-width: 8.5ch;
+      color: var(--text);
+    }
+
+    .hero-title .accent {
+      display: block;
+    }
+
+    .hero-copy p {
+      margin: 1rem 0 0;
+      max-width: 34rem;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .intro-grid,
+    .story-grid,
+    .visit-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .section-head {
+      margin-bottom: 2rem;
+      max-width: 42rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      max-width: 14ch;
+      color: var(--text);
+    }
+
+    .section-lead,
+    .story-copy p,
+    .visit-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.08rem);
+      line-height: 1.8;
+    }
+
+    .menu-label {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.6);
+      font: 600 0.75rem/1.2 "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .menu-list {
+      border-top: 1px solid rgba(234, 234, 234, 0.09);
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.09);
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .menu-row:hover {
+      color: #fff;
+      border-bottom-color: rgba(240, 165, 0, 0.38);
+    }
+
+    .menu-name {
+      margin: 0;
+      font-size: clamp(1.18rem, 2vw, 1.45rem);
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .menu-desc {
+      margin: 0.4rem 0 0;
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.6;
+    }
+
+    .menu-price {
+      align-self: start;
+      color: var(--amber);
+      font: 700 0.82rem/1.1 "JetBrains Mono", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .menu-tail {
+      margin-top: 1.4rem;
+      max-width: 50rem;
+      color: rgba(234, 234, 234, 0.65);
+      line-height: 1.7;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .story-note {
+      color: var(--amber);
+      font: 600 0.75rem/1.2 "JetBrains Mono", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .story-media,
+    .visit-map {
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+    }
+
+    .story-media img,
+    .visit-map img,
+    .gallery-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-media {
+      min-height: 28rem;
+    }
+
+    .story-legend {
+      margin-top: 0.8rem;
+      color: rgba(234, 234, 234, 0.58);
+      font: 500 0.75rem/1.5 "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-figure {
+      margin: 0;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+      background: rgba(234, 234, 234, 0.02);
+    }
+
+    .gallery-media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-caption {
+      padding: 0.85rem 0 0;
+      color: rgba(234, 234, 234, 0.6);
+      font: 600 0.73rem/1.2 "JetBrains Mono", monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .visit-copy {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .visit-list {
+      display: grid;
+      gap: 1rem;
+      margin: 1.4rem 0 0;
+      padding: 0;
+    }
+
+    .visit-list div {
+      display: grid;
+      gap: 0.3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.09);
+    }
+
+    .visit-list dt {
+      color: rgba(234, 234, 234, 0.56);
+      font: 600 0.72rem/1.2 "JetBrains Mono", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .visit-list dd {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .visit-map {
+      min-height: 28rem;
+    }
+
+    .footer {
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.09);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.4rem;
+      align-items: start;
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .footer-links a {
+      color: var(--amber);
+    }
+
+    .footer small {
+      color: rgba(234, 234, 234, 0.5);
+      font: 500 0.72rem/1.4 "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 740px) {
+      .intro-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        align-items: end;
+      }
+
+      .story-grid,
+      .visit-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: stretch;
+      }
+
+      .gallery-large {
+        grid-column: span 7;
+      }
+
+      .gallery-slim {
+        grid-column: span 5;
+      }
+
+      .gallery-wide {
+        grid-column: span 7;
+      }
+
+      .visit-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .hero-inner {
+        padding-top: 7rem;
+        padding-bottom: 4rem;
+      }
+
+      .story-media,
+      .visit-map {
+        min-height: 34rem;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "El Nido Boutique Artcafe",
+    "url": "https://elnidoboutiqueandartcafe.com/",
+    "image": "assets/img/hero-bay.svg",
+    "telephone": "+63 917 560 4020",
+    "email": "info@elnidoboutiqueandartcafe.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Serena St, Buena Suerte",
+      "addressLocality": "El Nido",
+      "addressRegion": "Palawan",
+      "postalCode": "5313",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 11.180178,
+      "longitude": 119.38797
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "07:00",
+        "closes": "23:00"
+      }
+    ],
+    "servesCuisine": ["Breakfast", "Lunch", "Dinner", "Filipino", "European", "Italian", "Indian", "Greek", "American"],
+    "priceRange": "PHP 320 and up",
+    "sameAs": ["https://elnidoboutiqueandartcafe.com/"]
+  }
+  </script>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <div class="page">
+    <main>
+      <section class="hero" id="top" aria-label="El Nido Boutique Artcafe hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/img/hero-bay.svg" alt="Stylized sunset bay view of El Nido Boutique Artcafe">
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="kicker reveal">Serena Street, Buena Suerte, El Nido</p>
+            <h1 class="display hero-title reveal"><span>El Nido Boutique</span><span class="accent">Artcafe</span></h1>
+            <p class="reveal">A bay-view cafe, boutique, and travel stop in one familiar El Nido address, serving breakfast, lunch, and dinner with farm-to-table plates.</p>
+            <div class="btn-row reveal">
+              <a class="btn btn-primary" href="#menu">Explore menu</a>
+              <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=11.180178,119.38797" target="_blank" rel="noopener noreferrer">Get directions</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="container intro-grid">
+          <div class="section-head reveal" data-reveal>
+            <p class="kicker">Menu highlights</p>
+            <h2 class="display section-title">Farm-to-table plates with island range</h2>
+            <p class="section-lead">The cafe's published menu runs from breakfast to dinner, with house favorites that mix Filipino comfort, European classics, and island-friendly plates made with organic farm produce.</p>
+            <div class="menu-label">Breakfast / Lunch &amp; Dinner / Pizza &amp; Pasta / Desserts &amp; Fruit Shakes</div>
+          </div>
+
+          <div class="menu-list" aria-label="Highlighted dishes">
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">Seafood Basket</h3>
+                <p class="menu-desc">Fresh selection of seafood with homemade fries.</p>
+              </div>
+              <div class="menu-price">PHP 520</div>
+            </div>
+
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">French Toast with Bacon</h3>
+                <p class="menu-desc">A breakfast plate that leans sweet, salty, and easy to linger over.</p>
+              </div>
+              <div class="menu-price">PHP 320</div>
+            </div>
+
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">Indian Tikka Chicken Masala</h3>
+                <p class="menu-desc">One of the cafe's most popular lunch and dinner dishes.</p>
+              </div>
+              <div class="menu-price">PHP 480</div>
+            </div>
+
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">Fish Fillet with Mango Salsa</h3>
+                <p class="menu-desc">Light, bright, and built for a slow lunch in the island heat.</p>
+              </div>
+              <div class="menu-price">PHP 480</div>
+            </div>
+
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">Arugula Tomato Mozzarella Salad</h3>
+                <p class="menu-desc">An organic salad rooted in the cafe's own farm-to-table story.</p>
+              </div>
+              <div class="menu-price">PHP 380</div>
+            </div>
+
+            <div class="menu-row reveal" data-reveal>
+              <div>
+                <h3 class="menu-name">Pizza Pancetta Bacon Mozzarella</h3>
+                <p class="menu-desc">A crisp, shareable pizza for a longer table and a slower afternoon.</p>
+              </div>
+              <div class="menu-price">PHP 440</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <p class="menu-tail reveal" data-reveal>Also featured on the official site: Bruschetta, Arugula Pizza, Vienna Schnitzel, Seafood Paella, Vegetable Omelette, Spinach Quiche, and fruity cocktails.</p>
+        </div>
+      </section>
+
+      <section class="section" id="story">
+        <div class="container story-grid">
+          <div class="story-copy">
+            <p class="kicker reveal" data-reveal>Story / About</p>
+            <h2 class="display section-title reveal" data-reveal>Built as El Nido's one-stop shop</h2>
+            <p class="story-note reveal" data-reveal>One stop shop in El Nido for Food, Souvenirs and Travel needs.</p>
+            <p class="reveal" data-reveal>What started as a small T-shirt shop and island tour desk grew into a cafe, boutique, and travel center under one roof. Upstairs, the restaurant looks over El Nido Bay. Downstairs, the boutique carries local souvenirs, beachwear, snacks, cameras, accessories, and practical travel services.</p>
+            <p class="reveal" data-reveal>Freshly baked breads, live music, solar power, free purified drinking water, and bamboo straws are part of the cafe's everyday rhythm. The feeling is casual, but the intention is thoughtful: serve well, source locally where possible, and make it easy to stay a little longer.</p>
+          </div>
+
+          <div>
+            <div class="story-media reveal" data-reveal>
+              <img src="assets/img/gallery-interior.svg" alt="Open-air dining at El Nido Boutique Artcafe">
+            </div>
+            <div class="story-legend reveal" data-reveal>Open-air dining, bay views, live music, and a street-level boutique below.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-head reveal" data-reveal>
+            <p class="kicker">Gallery</p>
+            <h2 class="display section-title">Food, atmosphere, and the El Nido view</h2>
+            <p class="section-lead">A small visual snapshot of the cafe's bay-facing atmosphere, the warm dining room, and the practical boutique layer that makes it more than a restaurant.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-figure gallery-large reveal" data-reveal>
+              <div class="gallery-media">
+                <img src="assets/img/gallery-bay.svg" alt="Bay-facing terrace view with cliffs and sunset light">
+              </div>
+              <figcaption class="gallery-caption">Bay view and terrace mood</figcaption>
+            </figure>
+
+            <figure class="gallery-figure gallery-slim reveal" data-reveal>
+              <div class="gallery-media">
+                <img src="assets/img/gallery-food.svg" alt="Signature dishes and plated cafe food">
+              </div>
+              <figcaption class="gallery-caption">Signature plates</figcaption>
+            </figure>
+
+            <figure class="gallery-figure gallery-wide reveal" data-reveal>
+              <div class="gallery-media">
+                <img src="assets/img/gallery-boutique.svg" alt="Street-level boutique with souvenirs and travel goods">
+              </div>
+              <figcaption class="gallery-caption">Boutique and travel goods</figcaption>
+            </figure>
+
+            <figure class="gallery-figure gallery-slim reveal" data-reveal>
+              <div class="gallery-media">
+                <img src="assets/img/gallery-sunset.svg" alt="Warm sunset dining scene at the cafe">
+              </div>
+              <figcaption class="gallery-caption">Sunset service</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="visit">
+        <div class="container visit-grid">
+          <div class="visit-copy">
+            <p class="kicker reveal" data-reveal>Hours / Location</p>
+            <h2 class="display section-title reveal" data-reveal>Serena Street, facing El Nido Bay</h2>
+            <p class="reveal" data-reveal>El Nido Boutique Artcafe is on Serena Street in Buena Suerte, with the restaurant positioned above the boutique and looking toward the bay. The listed coordinates land in El Nido, Palawan, not Puerto Princesa or Manila.</p>
+
+            <div class="visit-list" aria-label="Hours and contact details">
+              <div class="reveal" data-reveal>
+                <dt>Address</dt>
+                <dd>Serena St, Buena Suerte, El Nido, 5313 Palawan, Philippines</dd>
+              </div>
+              <div class="reveal" data-reveal>
+                <dt>Coordinates</dt>
+                <dd>11.180178, 119.38797</dd>
+              </div>
+              <div class="reveal" data-reveal>
+                <dt>Hours</dt>
+                <dd>Daily, 7:00 AM - 11:00 PM</dd>
+              </div>
+              <div class="reveal" data-reveal>
+                <dt>Phone</dt>
+                <dd><a href="tel:+639175604020">+63 917 560 4020</a></dd>
+              </div>
+            </div>
+
+            <div class="btn-row reveal" data-reveal>
+              <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=11.180178,119.38797" target="_blank" rel="noopener noreferrer">Open map</a>
+              <a class="btn btn-ghost" href="https://elnidoboutiqueandartcafe.com/" target="_blank" rel="noopener noreferrer">Official website</a>
+            </div>
+          </div>
+
+          <div class="visit-map reveal" data-reveal>
+            <img src="assets/img/location-map.svg" alt="Stylized map showing El Nido Boutique Artcafe on Serena Street with a location pin">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container footer-grid">
+        <div>
+          <p class="kicker reveal" data-reveal>Contact</p>
+          <h2 class="display section-title reveal" data-reveal>Need food, a tour desk, or local help?</h2>
+        </div>
+        <div class="reveal" data-reveal>
+          <p class="section-lead">Call the team, send an email, or open the official website for reservations, takeaway, tour questions, and boutique details.</p>
+          <div class="footer-links" style="margin-top: 1rem;">
+            <a href="tel:+639175604020">Call</a>
+            <a href="mailto:info@elnidoboutiqueandartcafe.com">Email</a>
+            <a href="https://elnidoboutiqueandartcafe.com/" target="_blank" rel="noopener noreferrer">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=11.180178,119.38797" target="_blank" rel="noopener noreferrer">Directions</a>
+          </div>
+          <div style="margin-top: 1rem;">
+            <small>El Nido Boutique Artcafe - Serena St, Buena Suerte, El Nido, Palawan, Philippines. Coordinates verified at 11.180178, 119.38797.</small>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top: 2rem;">
+        <small>El Nido Boutique Artcafe and its image assets are presented as a single-page GitHub Pages site for the frans15-2006/TheFrans repo. <span id="year"></span></small>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lenis = new Lenis({
+      duration: prefersReducedMotion ? 0.01 : 1.15,
+      lerp: 0.08,
+      smoothWheel: !prefersReducedMotion,
+      smoothTouch: false
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -8 });
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    if (!prefersReducedMotion) {
+      gsap.from('.hero-copy > *', {
+        opacity: 0,
+        y: 28,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.15
+      });
+
+      gsap.fromTo('.hero-media img', {
+        scale: 1.09,
+        yPercent: 2
+      }, {
+        scale: 1,
+        yPercent: 0,
+        duration: 1.6,
+        ease: 'power2.out'
+      });
+
+      gsap.to('.hero-media img', {
+        yPercent: 8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.9
+        }
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el, index) => {
+        gsap.fromTo(el, {
+          opacity: 0,
+          y: 34
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          delay: index * 0.01,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 86%'
+          }
+        });
+      });
+
+    }
+  </script>
 </body>
+</html>
