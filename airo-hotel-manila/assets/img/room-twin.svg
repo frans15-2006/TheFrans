@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Twin room illustration</title>
+  <desc id="desc">A balanced twin room scene with two beds, a side table, and soft lighting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e0e0e"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="92" y="84" width="1416" height="832" rx="20" fill="#101010" stroke="#eaeaea12"/>
+  <rect x="126" y="118" width="350" height="286" rx="14" fill="#151515"/>
+  <circle cx="302" cy="262" r="152" fill="url(#lamp)"/>
+  <rect x="140" y="130" width="118" height="238" rx="12" fill="#0a0a0a" stroke="#eaeaea12"/>
+  <rect x="268" y="130" width="118" height="238" rx="12" fill="#0a0a0a" stroke="#eaeaea12"/>
+  <rect x="520" y="170" width="946" height="636" rx="16" fill="#131313"/>
+  <rect x="570" y="250" width="322" height="210" rx="18" fill="#f1f1f1"/>
+  <path d="M570 250 H892 V320 C848 344 775 366 731 366 C678 366 618 348 570 320 Z" fill="#f4f4f4"/>
+  <rect x="570" y="376" width="322" height="18" rx="9" fill="#f0a500" opacity="0.88"/>
+  <rect x="922" y="250" width="322" height="210" rx="18" fill="#f1f1f1"/>
+  <path d="M922 250 H1244 V320 C1198 344 1125 366 1080 366 C1028 366 968 348 922 320 Z" fill="#f4f4f4"/>
+  <rect x="922" y="376" width="322" height="18" rx="9" fill="#f0a500" opacity="0.88"/>
+  <rect x="766" y="508" width="150" height="112" rx="14" fill="#181818"/>
+  <rect x="794" y="530" width="94" height="60" rx="10" fill="#0b0b0b"/>
+  <rect x="680" y="650" width="540" height="70" rx="16" fill="#0a0a0a"/>
+  <rect x="722" y="676" width="180" height="16" rx="8" fill="#f0a500" opacity="0.85"/>
+  <rect x="918" y="676" width="180" height="16" rx="8" fill="#f0a500" opacity="0.85"/>
+  <rect x="1236" y="500" width="154" height="184" rx="14" fill="#171717"/>
+  <rect x="1260" y="528" width="106" height="72" rx="10" fill="#0b0b0b"/>
+  <rect x="1260" y="616" width="106" height="18" rx="9" fill="#f0a500" opacity="0.14"/>
+</svg>

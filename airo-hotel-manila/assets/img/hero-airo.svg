@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Airo Hotel Manila facade illustration</title>
+  <desc id="desc">A dark city stay scene with a glowing hotel facade in Ermita, Manila.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="55%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.96"/>
+      <stop offset="70%" stop-color="#f0a500" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#0e0e0e"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+  <circle cx="1240" cy="210" r="170" fill="url(#sun)"/>
+  <path d="M0 720 C220 660 350 680 490 620 C660 548 800 566 934 612 C1090 666 1230 706 1600 620 L1600 1100 L0 1100 Z" fill="url(#haze)"/>
+  <g opacity="0.78">
+    <path d="M0 860 L1600 860 L1600 1100 L0 1100 Z" fill="#0b0b0b"/>
+    <path d="M130 850 L130 760 L210 760 L210 850" fill="#121212"/>
+    <path d="M240 850 L240 690 L318 690 L318 850" fill="#111111"/>
+    <path d="M350 850 L350 730 L410 730 L410 850" fill="#151515"/>
+    <path d="M1200 850 L1200 640 L1290 640 L1290 850" fill="#121212"/>
+    <path d="M1310 850 L1310 710 L1380 710 L1380 850" fill="#151515"/>
+    <path d="M1430 850 L1430 680 L1510 680 L1510 850" fill="#111111"/>
+  </g>
+  <g transform="translate(736 170)">
+    <rect x="0" y="0" width="510" height="760" rx="8" fill="url(#tower)" stroke="#eaeaea1f"/>
+    <rect x="44" y="46" width="422" height="48" rx="4" fill="#f0a500"/>
+    <text x="255" y="80" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="42" letter-spacing="6" fill="#080808">AIRO HOTEL MANILA</text>
+    <g fill="#f0a500">
+      <rect x="58" y="132" width="116" height="84" rx="4" opacity="0.95"/>
+      <rect x="194" y="132" width="116" height="84" rx="4" opacity="0.85"/>
+      <rect x="330" y="132" width="116" height="84" rx="4" opacity="0.95"/>
+      <rect x="58" y="246" width="116" height="84" rx="4" opacity="0.82"/>
+      <rect x="194" y="246" width="116" height="84" rx="4" opacity="0.96"/>
+      <rect x="330" y="246" width="116" height="84" rx="4" opacity="0.84"/>
+      <rect x="58" y="360" width="116" height="84" rx="4" opacity="0.9"/>
+      <rect x="194" y="360" width="116" height="84" rx="4" opacity="0.78"/>
+      <rect x="330" y="360" width="116" height="84" rx="4" opacity="0.94"/>
+      <rect x="58" y="474" width="116" height="84" rx="4" opacity="0.88"/>
+      <rect x="194" y="474" width="116" height="84" rx="4" opacity="0.95"/>
+      <rect x="330" y="474" width="116" height="84" rx="4" opacity="0.8"/>
+      <rect x="58" y="588" width="388" height="44" rx="4" opacity="0.92"/>
+    </g>
+    <rect x="168" y="676" width="174" height="20" rx="10" fill="#f0a500" opacity="0.88"/>
+    <rect x="-60" y="710" width="620" height="24" fill="#080808" opacity="0.92"/>
+  </g>
+  <g opacity="0.65" stroke="#eaeaea22" stroke-width="2">
+    <path d="M80 1020 C280 960 420 960 580 992" fill="none"/>
+    <path d="M1000 1012 C1180 958 1360 964 1520 1010" fill="none"/>
+  </g>
+</svg>

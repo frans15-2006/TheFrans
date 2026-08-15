@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Lobby illustration</title>
+  <desc id="desc">A reception-style lobby scene with seating, a desk, and warm amber lighting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#181818"/>
+      <stop offset="100%" stop-color="#0c0c0c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="76" y="76" width="1448" height="848" rx="22" fill="#0f0f0f" stroke="#eaeaea12"/>
+  <rect x="120" y="118" width="136" height="350" rx="14" fill="#171717"/>
+  <rect x="142" y="146" width="92" height="288" rx="10" fill="#0a0a0a"/>
+  <rect x="290" y="118" width="1118" height="350" rx="16" fill="#121212"/>
+  <rect x="368" y="156" width="974" height="42" rx="21" fill="#f0a500" opacity="0.82"/>
+  <rect x="494" y="252" width="616" height="164" rx="20" fill="url(#desk)"/>
+  <rect x="532" y="280" width="540" height="96" rx="16" fill="#f2f2f2"/>
+  <rect x="566" y="308" width="168" height="18" rx="9" fill="#f0a500" opacity="0.88"/>
+  <rect x="784" y="308" width="180" height="18" rx="9" fill="#f0a500" opacity="0.56"/>
+  <rect x="408" y="294" width="72" height="86" rx="12" fill="#181818"/>
+  <rect x="1108" y="294" width="72" height="86" rx="12" fill="#181818"/>
+  <circle cx="310" cy="610" r="110" fill="#151515"/>
+  <circle cx="310" cy="610" r="66" fill="#0a0a0a"/>
+  <circle cx="1330" cy="620" r="110" fill="#151515"/>
+  <circle cx="1330" cy="620" r="66" fill="#0a0a0a"/>
+  <rect x="288" y="704" width="44" height="94" rx="16" fill="#f0a500" opacity="0.2"/>
+  <rect x="1308" y="704" width="44" height="94" rx="16" fill="#f0a500" opacity="0.2"/>
+  <rect x="462" y="650" width="676" height="132" rx="26" fill="#0c0c0c"/>
+  <rect x="516" y="680" width="168" height="70" rx="18" fill="#171717"/>
+  <rect x="724" y="680" width="168" height="70" rx="18" fill="#171717"/>
+  <rect x="932" y="680" width="168" height="70" rx="18" fill="#171717"/>
+  <rect x="550" y="702" width="96" height="12" rx="6" fill="#f0a500" opacity="0.82"/>
+  <rect x="758" y="702" width="96" height="12" rx="6" fill="#f0a500" opacity="0.82"/>
+  <rect x="966" y="702" width="96" height="12" rx="6" fill="#f0a500" opacity="0.82"/>
+</svg>

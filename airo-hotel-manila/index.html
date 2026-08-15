@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airo Hotel Manila | Official Stay in Ermita, Manila</title>
+  <meta name="description" content="Airo Hotel Manila at 427 Antonio Flores corner L. Guerrero St, Ermita, Manila 1000. Explore rooms, amenities, location, and direct reservation contacts.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Airo Hotel Manila | Official Stay in Ermita, Manila">
+  <meta property="og:description" content="Rooms, amenities, map, and direct booking details for Airo Hotel Manila in Ermita, Manila.">
+  <meta property="og:image" content="./assets/img/hero-airo.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #0d0d0d;
+      --surface: #111111;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: clip;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img,
+    svg,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 999;
+      padding: 0.75rem 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--amber);
+      color: #080808;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .site-shell {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.08), transparent 30%),
+        linear-gradient(180deg, #080808 0%, #0b0b0b 100%);
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.94), rgba(8, 8, 8, 0.72));
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 0.85rem;
+      height: 0.85rem;
+      border: 1px solid var(--amber);
+      background: linear-gradient(135deg, var(--amber), rgba(240, 165, 0, 0.18));
+      box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.08);
+    }
+
+    .brand span {
+      color: var(--amber);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--amber);
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(240, 165, 0, 0.34);
+      background: rgba(240, 165, 0, 0.1);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.65);
+      background: rgba(240, 165, 0, 0.18);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 72px);
+      display: grid;
+      align-items: end;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.7) 42%, rgba(8, 8, 8, 0.18) 100%),
+        linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.38) 100%);
+    }
+
+    .hero::after {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(240, 165, 0, 0.11), transparent 24%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0) 0%, rgba(8, 8, 8, 0.3) 100%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 1.1rem;
+      padding: 5rem 0 2rem;
+      max-width: 38rem;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .hero-title,
+    .section-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .hero-title {
+      font-size: clamp(4.5rem, 15vw, 9.5rem);
+      max-width: 6.5ch;
+    }
+
+    .hero-copy,
+    .section-copy,
+    .room-copy p,
+    .location-copy p,
+    .footer-copy,
+    .contact-line,
+    .gallery-copy,
+    .booking-copy {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .hero-actions,
+    .booking-actions,
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.15rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: var(--amber);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #ffb21f;
+      border-color: #ffb21f;
+    }
+
+    .btn-secondary {
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: rgba(234, 234, 234, 0.07);
+      border-color: rgba(234, 234, 234, 0.22);
+    }
+
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      max-width: 48rem;
+    }
+
+    .section-title {
+      font-size: clamp(3rem, 8vw, 5.4rem);
+    }
+
+    .section-copy {
+      max-width: 48ch;
+      margin: 0;
+    }
+
+    .rooms-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .room {
+      display: grid;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .room-media {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-copy {
+      display: grid;
+      gap: 0.75rem;
+      align-content: center;
+    }
+
+    .room-label {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .room-copy h3,
+    .location-copy h3,
+    .booking-title,
+    .gallery-title,
+    .footer-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .room-copy h3 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+    }
+
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+      color: rgba(234, 234, 234, 0.8);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .room-features span {
+      position: relative;
+      padding-left: 0.7rem;
+    }
+
+    .room-features span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 0.3rem;
+      height: 0.3rem;
+      background: var(--amber);
+      border-radius: 50%;
+    }
+
+    .amenities-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .amenity-item strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .amenity-item span {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .location-copy h3 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      max-width: 14ch;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-list a,
+    .contact-list span {
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .contact-list a:hover {
+      color: var(--amber);
+    }
+
+    .location-map {
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: var(--surface);
+    }
+
+    .location-map iframe {
+      display: block;
+      width: 100%;
+      min-height: 22rem;
+      border: 0;
+      filter: saturate(0.9) contrast(1.05);
+    }
+
+    .booking-band {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .booking-title {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      max-width: 10ch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: var(--surface);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .gallery-grid figcaption {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.7);
+    }
+
+    .footer {
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.75rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .footer-title {
+      font-size: clamp(3rem, 7vw, 5rem);
+    }
+
+    .footer-copy {
+      max-width: 34rem;
+      margin: 0;
+    }
+
+    .footer-meta {
+      display: grid;
+      gap: 0.7rem;
+      color: rgba(234, 234, 234, 0.82);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-meta a:hover {
+      color: var(--amber);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      color: rgba(234, 234, 234, 0.55);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .reveal,
+    .reveal-item {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 720px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .hero-content {
+        padding: 7rem 0 2.5rem;
+      }
+
+      .room {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+        gap: 1.35rem;
+        align-items: center;
+      }
+
+      .room:nth-child(even) .room-media {
+        order: 2;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.5rem;
+      }
+
+      .amenity-item {
+        padding: 1rem 0.25rem 1rem 0;
+      }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+        gap: 1.5rem;
+      }
+
+      .booking-band {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .gallery-grid figure:nth-child(1) {
+        grid-column: span 7;
+      }
+
+      .gallery-grid figure:nth-child(2) {
+        grid-column: span 5;
+      }
+
+      .gallery-grid figure:nth-child(3) {
+        grid-column: span 5;
+      }
+
+      .gallery-grid figure:nth-child(4) {
+        grid-column: span 7;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+        align-items: end;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-content {
+        max-width: 45rem;
+      }
+
+      .hero-copy,
+      .section-copy,
+      .footer-copy {
+        font-size: 1.06rem;
+      }
+
+      .section {
+        padding: 6rem 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="site-shell">
+    <header class="site-header">
+        <div class="container nav">
+        <a class="brand" href="#top" aria-label="Airo Hotel Manila home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          Airo Hotel Manila
+        </a>
+        <nav class="nav-links" aria-label="Section links">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#location">Location</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="tel:+639452596433">Call</a>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="top" aria-label="Airo Hotel Manila hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/img/hero-airo.svg" alt="" loading="eager" decoding="async">
+        </div>
+        <div class="container hero-content">
+          <p class="eyebrow reveal">Ermita, Manila</p>
+          <h1 class="hero-title reveal">Airo Hotel Manila</h1>
+          <p class="hero-copy reveal">A straightforward city stay at the corner of Antonio Flores and L. Guerrero, with practical rooms, direct reservation contacts, and a location built for Manila plans.</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="tel:+639452596433">Call reservations</a>
+            <a class="btn btn-secondary" href="mailto:reservations.airohospitality@gmail.com">Email the hotel</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rooms">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Rooms / accommodations</p>
+            <h2 class="section-title">Rooms for every pace</h2>
+            <p class="section-copy">From solo overnights to easy shared stays, Airo keeps the essentials close and the booking choice clear.</p>
+          </div>
+
+          <div class="rooms-list">
+            <article class="room reveal-item">
+              <div class="room-media">
+                <img src="assets/img/room-single.svg" alt="Stylized single room interior at Airo Hotel Manila" loading="lazy" decoding="async">
+              </div>
+              <div class="room-copy">
+                <p class="room-label">Standard Single</p>
+                <h3>Solo comfort with the essentials</h3>
+                <p>Standard Single Rooms are made for solo travelers looking for comfort and affordability, with a flat-screen TV, free Wi-Fi, desk, private bathroom, toiletries, vanity basin and mirror, and room slippers.</p>
+                <div class="room-features" aria-label="Room features">
+                  <span>Flat-screen TV</span>
+                  <span>Free Wi-Fi</span>
+                  <span>Desk</span>
+                  <span>Private bathroom</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="room reveal-item">
+              <div class="room-media">
+                <img src="assets/img/room-double.svg" alt="Stylized double room interior at Airo Hotel Manila" loading="lazy" decoding="async">
+              </div>
+              <div class="room-copy">
+                <p class="room-label">Standard Double</p>
+                <h3>Made for a comfortable couple's stay</h3>
+                <p>Standard Double Rooms are perfect for couples looking for a comfortable stay, with air-conditioning, toiletries, private bathroom, shower, free Wi-Fi, phone, desk, flat-screen TV, and TV.</p>
+                <div class="room-features" aria-label="Room features">
+                  <span>Air-conditioning</span>
+                  <span>Private bathroom</span>
+                  <span>Shower</span>
+                  <span>Free Wi-Fi</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="room reveal-item">
+              <div class="room-media">
+                <img src="assets/img/room-double.svg" alt="Stylized deluxe double room interior at Airo Hotel Manila" loading="lazy" decoding="async">
+              </div>
+              <div class="room-copy">
+                <p class="room-label">Deluxe Double</p>
+                <h3>More room to unwind</h3>
+                <p>Deluxe Double Rooms are ideal for couples who want more space, with free Wi-Fi, desk, coat hangers, and a flat-screen TV. Additional breakfast can be arranged at Estoria Manila, G/F Anex Hotel, from 6AM to 10AM.</p>
+                <div class="room-features" aria-label="Room features">
+                  <span>Free Wi-Fi</span>
+                  <span>Desk</span>
+                  <span>Coat hangers</span>
+                  <span>Flat-screen TV</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="room reveal-item">
+              <div class="room-media">
+                <img src="assets/img/room-twin.svg" alt="Stylized twin room interior at Airo Hotel Manila" loading="lazy" decoding="async">
+              </div>
+              <div class="room-copy">
+                <p class="room-label">Deluxe Twin</p>
+                <h3>Practical sharing for travel companions</h3>
+                <p>Deluxe Twin Rooms are perfect for sharing travelers looking for affordable accommodation, with a flat-screen TV, desk, room slippers, free Wi-Fi, shower, towels, toiletries, and hand soap. Breakfast can be arranged at Estoria Manila, G/F Anex Hotel.</p>
+                <div class="room-features" aria-label="Room features">
+                  <span>Flat-screen TV</span>
+                  <span>Room slippers</span>
+                  <span>Free Wi-Fi</span>
+                  <span>Shower</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="room reveal-item">
+              <div class="room-media">
+                <img src="assets/img/room-single.svg" alt="Stylized economy double room interior at Airo Hotel Manila" loading="lazy" decoding="async">
+              </div>
+              <div class="room-copy">
+                <p class="room-label">Economy Double</p>
+                <h3>Value-minded and easy to book</h3>
+                <p>Economy Double Rooms are a good fit for couples looking for a more affordable stay, with non-smoking comfort, flat-screen TV, linen, desk, phone, free Wi-Fi, shower, and private bathroom.</p>
+                <div class="room-features" aria-label="Room features">
+                  <span>Non-smoking</span>
+                  <span>Flat-screen TV</span>
+                  <span>Free Wi-Fi</span>
+                  <span>Private bathroom</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="amenities">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Amenities</p>
+            <h2 class="section-title">The essentials, handled</h2>
+            <p class="section-copy">The hotel focuses on what travelers use most: Wi-Fi, service, access, and a simple place to land between city plans.</p>
+          </div>
+
+          <div class="amenities-grid" role="list" aria-label="Hotel amenities">
+            <div class="amenity-item" role="listitem"><strong>Free Wi-Fi</strong><span>Available throughout the property.</span></div>
+            <div class="amenity-item" role="listitem"><strong>24-hour front desk</strong><span>Reception support for arrivals and requests.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Dining and cafe</strong><span>On-site food and coffee options for easy starts and late returns.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Room service</strong><span>Limited service when you want to keep the evening low-key.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Lift / elevator</strong><span>Simple access to guest floors.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Luggage storage</strong><span>Handy for early arrivals and late departures.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Conference / meeting facilities</strong><span>Useful for small business stays and local gatherings.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Parking</strong><span>Street parking and paid parking options are available.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Non-smoking property</strong><span>Non-smoking floors and a cleaner indoor feel.</span></div>
+            <div class="amenity-item" role="listitem"><strong>Linen provided</strong><span>Practical housekeeping details that keep the stay simple.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Location / map</p>
+            <h2 class="section-title">Find us in Ermita</h2>
+            <p class="section-copy">Airo Hotel Manila is at 427 Antonio Flores corner L. Guerrero St, Ermita, Manila 1000, Metro Manila, Philippines, near the US Embassy and within reach of Rizal Park, Intramuros, and Manila Bay.</p>
+          </div>
+
+          <div class="location-grid">
+            <div class="location-copy reveal">
+              <p class="room-label">Verified address</p>
+              <h3>427 Antonio Flores corner L. Guerrero St, Ermita, Manila 1000</h3>
+              <p class="contact-line">The hotel keeps you in central Manila, close to familiar city stops and an easy base for embassy errands, sightseeing, or a short overnight stay.</p>
+              <div class="contact-list">
+                <span>Phone: <a href="tel:+639452596433">+63 945 259 6433</a></span>
+                <span>Email: <a href="mailto:reservations.airohospitality@gmail.com">reservations.airohospitality@gmail.com</a></span>
+                <span>Near the US Embassy in Ermita</span>
+              </div>
+              <div class="contact-actions">
+                <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=427+Antonio+Flores+corner+L+Guerrero+St,+Ermita,+Manila+1000,+Philippines" target="_blank" rel="noopener noreferrer">Open directions</a>
+                <a class="btn btn-secondary" href="tel:+639452596433">Call now</a>
+              </div>
+            </div>
+
+            <div class="location-map reveal" aria-label="Map embed for Airo Hotel Manila">
+              <iframe
+                title="Map showing Airo Hotel Manila in Ermita, Manila"
+                src="https://www.google.com/maps?q=427+Antonio+Flores+corner+L+Guerrero+St,+Ermita,+Manila+1000,+Philippines&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="booking">
+        <div class="container">
+          <div class="booking-band reveal">
+            <div>
+              <p class="eyebrow">Direct booking</p>
+              <h2 class="booking-title">Reserve with the hotel.</h2>
+              <p class="booking-copy">For availability, rates, and reservation support, contact Airo Hotel Manila directly by phone or email.</p>
+            </div>
+            <div class="booking-actions">
+              <a class="btn btn-primary" href="tel:+639452596433">Call reservations</a>
+              <a class="btn btn-secondary" href="mailto:reservations.airohospitality@gmail.com">Email requests</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Gallery</p>
+            <h2 class="section-title">A closer look at the stay</h2>
+            <p class="section-copy">A visual trace of the hotel mood, from the facade to the rooms and the lobby atmosphere.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="reveal-item">
+              <img src="assets/img/hero-airo.svg" alt="Airo Hotel Manila facade illustration" loading="lazy" decoding="async">
+              <figcaption>Facade mood</figcaption>
+            </figure>
+            <figure class="reveal-item">
+              <img src="assets/img/lobby.svg" alt="Lobby illustration for Airo Hotel Manila" loading="lazy" decoding="async">
+              <figcaption>Lobby atmosphere</figcaption>
+            </figure>
+            <figure class="reveal-item">
+              <img src="assets/img/room-single.svg" alt="Single room illustration for Airo Hotel Manila" loading="lazy" decoding="async">
+              <figcaption>Solo room details</figcaption>
+            </figure>
+            <figure class="reveal-item">
+              <img src="assets/img/room-double.svg" alt="Double room illustration for Airo Hotel Manila" loading="lazy" decoding="async">
+              <figcaption>Comfort for two</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container footer-grid">
+        <div>
+          <p class="eyebrow reveal">Contact / footer</p>
+          <h2 class="footer-title reveal">Airo Hotel Manila</h2>
+          <p class="footer-copy reveal">427 Antonio Flores corner L. Guerrero St, Ermita, Manila 1000, Metro Manila, Philippines. A practical Manila base with direct contact details and a location built around the city.</p>
+        </div>
+
+        <div class="footer-meta reveal">
+          <a href="tel:+639452596433">+63 945 259 6433</a>
+          <a href="mailto:reservations.airohospitality@gmail.com">reservations.airohospitality@gmail.com</a>
+          <span>Check-in minimum age: 18</span>
+          <span>Children 11 years and above are considered adults</span>
+          <span>Official Ermita address, Manila, Philippines</span>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>Direct city stay for Manila plans.</p>
+        <p>Copyright 2026 Airo Hotel Manila.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion && window.Lenis && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetId = link.getAttribute("href");
+          if (!targetId || targetId === "#") return;
+
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          event.preventDefault();
+          lenis.scrollTo(target, {
+            offset: -72,
+            duration: 1.1,
+            easing: (t) => 1 - Math.pow(1 - t, 3)
+          });
+        });
+      });
+
+      gsap.from(".hero .reveal", {
+        opacity: 0,
+        y: 32,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: 0.15
+      });
+
+      gsap.to(".hero-media img", {
+        yPercent: 5,
+        scale: 1.08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1
+        }
+      });
+
+      gsap.utils.toArray(".section-head, .booking-band, .location-copy, .location-map, .footer-grid").forEach((block) => {
+        gsap.from(block, {
+          opacity: 0,
+          y: 42,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 78%"
+          }
+        });
+      });
+
+      gsap.utils.toArray(".room").forEach((room, index) => {
+        gsap.from(room, {
+          opacity: 0,
+          y: 36,
+          duration: 0.9,
+          ease: "power3.out",
+          delay: index * 0.04,
+          scrollTrigger: {
+            trigger: room,
+            start: "top 80%"
+          }
+        });
+      });
+
+      gsap.utils.toArray(".amenity-item").forEach((item, index) => {
+        gsap.from(item, {
+          opacity: 0,
+          x: index % 2 === 0 ? -18 : 18,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 84%"
+          }
+        });
+      });
+
+      gsap.utils.toArray(".gallery-grid figure").forEach((figure, index) => {
+        gsap.from(figure, {
+          opacity: 0,
+          y: 24,
+          scale: 0.98,
+          duration: 0.85,
+          ease: "power3.out",
+          delay: index * 0.06,
+          scrollTrigger: {
+            trigger: figure,
+            start: "top 85%"
+          }
+        });
+      });
+
+      window.addEventListener("load", () => ScrollTrigger.refresh());
+    }
+  </script>
+</body>
+</html>
