@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Golden Hour Cafe social preview">
+  <defs>
+    <linearGradient id="ogBg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#0f0f0f"/>
+    </linearGradient>
+    <radialGradient id="ogSun" cx="68%" cy="38%" r="34%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <rect width="1200" height="630" fill="url(#ogSun)"/>
+  <path d="M0 430C120 398 236 388 356 400c150 16 278 8 384-24 132-40 238-38 460 2v252H0z" fill="#121212"/>
+  <path d="M0 488C128 462 238 454 354 466c134 16 256 8 370-24 136-38 248-38 476 2v186H0z" fill="#080808"/>
+  <circle cx="880" cy="250" r="94" fill="#f0a500"/>
+  <path d="M176 505h236c0-42-8-86-22-132H202c-14 46-22 90-26 132Z" fill="#0e0e0e" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+  <rect x="108" y="372" width="112" height="70" rx="10" fill="#f0a500" opacity="0.22"/>
+  <text x="86" y="156" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="92" letter-spacing="6">Golden Hour Cafe</text>
+  <text x="88" y="222" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="4">Bacungan, Puerto Princesa, Palawan</text>
+  <text x="88" y="284" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="30" opacity="0.82">Guest-favorite Spanish latte, lomi soup, breakfast plates, and sunset-stop comfort.</text>
+</svg>

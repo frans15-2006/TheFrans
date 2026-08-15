@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Cafe facade at sunset">
+  <defs>
+    <linearGradient id="facadeSky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="55%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="facadeGlow" cx="70%" cy="36%" r="30%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#facadeSky)"/>
+  <rect width="1600" height="1200" fill="url(#facadeGlow)"/>
+
+  <path d="M0 860C220 820 420 808 610 832C820 858 1040 852 1260 814C1400 790 1510 792 1600 806V1200H0Z" fill="#0d0d0d"/>
+  <path d="M0 920C220 884 446 872 668 894C888 916 1092 914 1310 878C1444 858 1526 854 1600 866V1200H0Z" fill="#111"/>
+
+  <g transform="translate(240, 360)">
+    <path d="M80 452h740c18-104 18-214 0-322H80c-18 108-18 218 0 322Z" fill="#0b0b0b" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+    <path d="M48 168h808l-74-84H122z" fill="#141414" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+    <path d="M0 202h948v48H0z" fill="#f0a500" opacity="0.2"/>
+    <rect x="124" y="238" width="118" height="110" rx="6" fill="#eaeaea" opacity="0.08"/>
+    <rect x="284" y="238" width="118" height="110" rx="6" fill="#f0a500" opacity="0.28"/>
+    <rect x="444" y="238" width="118" height="110" rx="6" fill="#eaeaea" opacity="0.08"/>
+    <rect x="604" y="238" width="118" height="110" rx="6" fill="#f0a500" opacity="0.28"/>
+    <rect x="764" y="238" width="118" height="110" rx="6" fill="#eaeaea" opacity="0.08"/>
+    <path d="M94 388h762" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+    <path d="M102 452h746" stroke="#f0a500" stroke-opacity="0.28" stroke-width="5"/>
+    <path d="M214 452v-114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M374 452v-114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M534 452v-114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M694 452v-114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M854 452v-114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M-12 468c48-58 92-74 146-76" fill="none" stroke="#f0a500" stroke-opacity="0.26" stroke-width="8" stroke-linecap="round"/>
+    <path d="M960 468c-48-58-92-74-146-76" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.34" stroke="#f0a500" stroke-linecap="round" fill="none">
+    <path d="M134 940c76-44 142-62 198-52" stroke-width="5"/>
+    <path d="M1272 928c-74-46-138-66-194-60" stroke-width="5"/>
+  </g>
+</svg>

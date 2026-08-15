@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Lomi soup illustration">
+  <defs>
+    <radialGradient id="steamGlow" cx="50%" cy="42%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="#080808"/>
+  <rect width="1200" height="1200" fill="url(#steamGlow)"/>
+  <path d="M250 820h700c-20 140-112 232-350 232s-330-92-350-232Z" fill="#eaeaea"/>
+  <path d="M286 844h628c-16 108-98 178-314 178s-298-70-314-178Z" fill="#f0a500" opacity="0.95"/>
+  <path d="M334 866c0-48 114-94 266-94s266 46 266 94-114 84-266 84-266-36-266-84Z" fill="#111"/>
+  <path d="M340 858c20-30 78-53 150-60 36 3 67 10 86 21 20-11 52-18 88-21 73 7 130 30 150 60" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="11" stroke-linecap="round"/>
+  <path d="M420 768c28-90 78-136 176-136s148 46 176 136" fill="none" stroke="#eaeaea" stroke-opacity="0.9" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M444 748c22-66 58-100 152-100s130 34 152 100" fill="none" stroke="#111" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M482 690c18 18 46 28 80 30 34-2 62-12 80-30" fill="none" stroke="#f0a500" stroke-opacity="0.6" stroke-width="10" stroke-linecap="round"/>
+  <path d="M486 566c-8-34 0-66 20-96" fill="none" stroke="#eaeaea" stroke-opacity="0.35" stroke-width="10" stroke-linecap="round"/>
+  <path d="M564 538c-10-42-8-78 7-108" fill="none" stroke="#f0a500" stroke-opacity="0.34" stroke-width="10" stroke-linecap="round"/>
+  <path d="M640 566c-8-28-6-54 6-80" fill="none" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+  <path d="M806 630l124-62" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M834 648l126-62" stroke="#f0a500" stroke-opacity="0.5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M304 638l-102-62" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M270 658l-126-62" stroke="#f0a500" stroke-opacity="0.46" stroke-width="10" stroke-linecap="round"/>
+</svg>

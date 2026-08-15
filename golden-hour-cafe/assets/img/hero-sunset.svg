@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Amber sunset over a roadside cafe in Bacungan, Puerto Princesa">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="42%" stop-color="#0f0f10"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="44%" r="32%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.98"/>
+      <stop offset="35%" stop-color="#f0a500" stop-opacity="0.42"/>
+      <stop offset="70%" stop-color="#f0a500" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="roadGlow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0"/>
+      <stop offset="65%" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <rect width="1600" height="1200" fill="url(#sunGlow)"/>
+
+  <g fill="#f0a500" opacity="0.18">
+    <circle cx="350" cy="210" r="4"/>
+    <circle cx="455" cy="150" r="2.5"/>
+    <circle cx="1200" cy="120" r="3.5"/>
+    <circle cx="1320" cy="220" r="2.5"/>
+    <circle cx="1040" cy="180" r="2"/>
+    <circle cx="220" cy="340" r="2.4"/>
+    <circle cx="1440" cy="330" r="3.2"/>
+  </g>
+
+  <path d="M0 760C160 708 290 690 430 714C560 736 685 696 800 664C920 632 1030 646 1160 684C1290 722 1420 728 1600 700V1200H0Z" fill="#111"/>
+  <path d="M0 820C220 760 368 756 540 790C710 824 848 788 982 742C1120 694 1250 694 1600 760V1200H0Z" fill="#151515"/>
+  <path d="M0 900C210 844 350 836 520 868C694 900 876 856 1028 802C1184 748 1346 754 1600 828V1200H0Z" fill="#0c0c0c"/>
+
+  <ellipse cx="1115" cy="420" rx="255" ry="255" fill="#f0a500" opacity="0.1"/>
+  <circle cx="1115" cy="420" r="160" fill="#f0a500" opacity="0.28"/>
+  <circle cx="1115" cy="420" r="95" fill="#f0a500" opacity="0.92"/>
+
+  <path d="M180 860C350 792 520 770 760 806C990 842 1190 832 1460 780" fill="none" stroke="url(#roadGlow)" stroke-width="34" stroke-linecap="round" opacity="0.9"/>
+  <path d="M160 860C340 790 525 768 760 804C990 840 1194 830 1470 778" fill="none" stroke="#eaeaea" stroke-opacity="0.06" stroke-width="8" stroke-linecap="round"/>
+  <path d="M290 886C420 842 560 832 754 860C950 888 1164 880 1380 836" fill="none" stroke="#f0a500" stroke-opacity="0.25" stroke-width="4" stroke-linecap="round"/>
+
+  <g transform="translate(140, 640)">
+    <path d="M0 250h255c0-46-7-96-20-150H20c-12 50-20 100-20 150Z" fill="#0b0b0b" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+    <path d="M10 104h236l-36-50H48z" fill="#121212" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+    <rect x="38" y="130" width="62" height="60" rx="4" fill="#f0a500" opacity="0.28"/>
+    <rect x="118" y="130" width="62" height="60" rx="4" fill="#f0a500" opacity="0.22"/>
+    <rect x="198" y="130" width="22" height="120" rx="4" fill="#eaeaea" opacity="0.22"/>
+    <path d="M16 246h226" stroke="#f0a500" stroke-opacity="0.4" stroke-width="3"/>
+    <path d="M96 246v-90h62v90" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="2"/>
+    <path d="M96 164h62" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+    <path d="M-4 138c10-38 26-64 52-92" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="6" stroke-linecap="round"/>
+    <path d="M276 124c-9-32-26-58-49-82" fill="none" stroke="#f0a500" stroke-opacity="0.16" stroke-width="6" stroke-linecap="round"/>
+    <path d="M92 86c0-26 8-52 23-76" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(1130, 720)">
+    <path d="M0 230c28-20 47-45 57-73l18-52h110l17 52c10 28 29 53 57 73Z" fill="#0e0e0e" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+    <rect x="41" y="88" width="160" height="58" rx="10" fill="#f0a500" opacity="0.18"/>
+    <rect x="68" y="120" width="106" height="92" rx="14" fill="#eaeaea" opacity="0.08"/>
+    <path d="M60 174c18-20 43-30 80-30s62 10 80 30" fill="none" stroke="#f0a500" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round"/>
+    <path d="M61 192c18 10 43 15 79 15s62-5 80-15" fill="none" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="3" stroke-linecap="round"/>
+    <path d="M89 76c0-18 10-36 28-50" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="6" stroke-linecap="round"/>
+    <path d="M130 66c0-22 14-41 39-56" fill="none" stroke="#f0a500" stroke-opacity="0.12" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.28" stroke="#eaeaea" stroke-linecap="round" fill="none">
+    <path d="M510 510c18-18 31-45 38-80" stroke-width="3"/>
+    <path d="M540 514c16-15 30-39 42-72" stroke-width="2"/>
+    <path d="M1040 505c18-14 34-34 48-62" stroke-width="3"/>
+    <path d="M1070 510c17-12 32-28 45-48" stroke-width="2"/>
+  </g>
+</svg>

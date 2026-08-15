@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated map pin for Golden Hour Cafe in Bacungan, Puerto Princesa">
+  <defs>
+    <linearGradient id="mapBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#mapBg)"/>
+  <g opacity="0.16" stroke="#eaeaea" fill="none">
+    <path d="M140 160h1320"/>
+    <path d="M140 330h1320"/>
+    <path d="M140 500h1320"/>
+    <path d="M140 670h1320"/>
+    <path d="M140 840h1320"/>
+    <path d="M260 110v980"/>
+    <path d="M520 110v980"/>
+    <path d="M780 110v980"/>
+    <path d="M1040 110v980"/>
+    <path d="M1300 110v980"/>
+  </g>
+
+  <path d="M260 862C356 780 452 742 566 738c88-2 170 26 246 80 82 58 162 86 242 84 92-2 180-32 268-90" fill="none" stroke="#f0a500" stroke-width="30" stroke-linecap="round" opacity="0.58"/>
+  <path d="M266 862C362 780 458 742 572 738c88-2 170 26 246 80 82 58 162 86 242 84 92-2 180-32 268-90" fill="none" stroke="#eaeaea" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
+
+  <circle cx="996" cy="506" r="168" fill="#f0a500" opacity="0.08"/>
+  <path d="M996 458c-55 0-100 45-100 100 0 87 100 204 100 204s100-117 100-204c0-55-45-100-100-100Z" fill="#f0a500"/>
+  <circle cx="996" cy="558" r="42" fill="#080808"/>
+
+  <g font-family="JetBrains Mono, monospace" font-size="44" letter-spacing="6" fill="#eaeaea" opacity="0.78">
+    <text x="192" y="250">BACUNGAN</text>
+    <text x="1040" y="270">PUERTO PRINCESA</text>
+  </g>
+  <g font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="3" fill="#f0a500" opacity="0.9">
+    <text x="190" y="910">NORTH HIGHWAY</text>
+    <text x="1084" y="920">PALAWAN 5300</text>
+  </g>
+
+  <g opacity="0.32" stroke="#eaeaea" fill="none" stroke-linecap="round">
+    <path d="M378 554c44-52 98-84 164-98" stroke-width="7"/>
+    <path d="M1160 412c-36 30-62 66-76 108" stroke-width="7"/>
+    <path d="M1240 660c-40-18-82-28-126-30" stroke-width="7"/>
+  </g>
+</svg>
