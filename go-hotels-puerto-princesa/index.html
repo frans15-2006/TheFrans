@@ -1,5 +1,1039 @@
 <!DOCTYPE html>
-<title>Go Hotels Puerto Princesa</title>
+<html lang="en-PH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Hotels Puerto Princesa | Budget Stay Beside Robinsons Place Palawan</title>
+  <meta name="description" content="Go Hotels Puerto Princesa is a budget hotel in Brgy. San Manuel, Puerto Princesa, Palawan, beside Robinsons Place Palawan, with 108 rooms, free Wi-Fi, parking, and 24-hour security.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Go Hotels Puerto Princesa | Budget Stay Beside Robinsons Place Palawan">
+  <meta property="og:description" content="A practical Puerto Princesa base with 108 rooms, free Wi-Fi, parking, a restaurant, and easy access to Robinsons Place Palawan and the airport.">
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23080808'/%3E%3Cpath d='M0 470h1200' stroke='%23f0a500' stroke-width='2' opacity='.5'/%3E%3Cpath d='M90 155c180-90 405-90 585 0' fill='none' stroke='%23eaeaea' stroke-opacity='.16' stroke-width='4'/%3E%3Ctext x='90' y='210' fill='%23eaeaea' font-family='Arial' font-size='96'%3EGO%20HOTELS%3C/text%3E%3Ctext x='90' y='300' fill='%23f0a500' font-family='Arial' font-size='42'%3EPuerto%20Princesa%3C/text%3E%3Crect x='760' y='115' width='290' height='380' rx='10' fill='none' stroke='%23eaeaea' stroke-opacity='.24' stroke-width='4'/%3E%3Crect x='790' y='145' width='230' height='58' fill='%23f0a500' opacity='.95'/%3E%3Ctext x='905' y='185' text-anchor='middle' fill='%23080808' font-family='Arial' font-size='30'%3EBudget%20Hotel%3C/text%3E%3Cpath d='M790 235h230M790 295h230M790 355h230M790 415h230' stroke='%23eaeaea' stroke-opacity='.18' stroke-width='4'/%3E%3C/svg%3E">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Go Hotels Puerto Princesa | Budget Stay Beside Robinsons Place Palawan">
+  <meta property="twitter:description" content="Budget rooms, free Wi-Fi, parking, and a convenient location in Puerto Princesa, Palawan.">
+  <meta property="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23080808'/%3E%3Cpath d='M0 470h1200' stroke='%23f0a500' stroke-width='2' opacity='.5'/%3E%3Cpath d='M90 155c180-90 405-90 585 0' fill='none' stroke='%23eaeaea' stroke-opacity='.16' stroke-width='4'/%3E%3Ctext x='90' y='210' fill='%23eaeaea' font-family='Arial' font-size='96'%3EGO%20HOTELS%3C/text%3E%3Ctext x='90' y='300' fill='%23f0a500' font-family='Arial' font-size='42'%3EPuerto%20Princesa%3C/text%3E%3Crect x='760' y='115' width='290' height='380' rx='10' fill='none' stroke='%23eaeaea' stroke-opacity='.24' stroke-width='4'/%3E%3Crect x='790' y='145' width='230' height='58' fill='%23f0a500' opacity='.95'/%3E%3Ctext x='905' y='185' text-anchor='middle' fill='%23080808' font-family='Arial' font-size='30'%3EBudget%20Hotel%3C/text%3E%3Cpath d='M790 235h230M790 295h230M790 355h230M790 415h230' stroke='%23eaeaea' stroke-opacity='.18' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.22/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #0f0f0f;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(234, 234, 234, 0.2);
+      --soft: #eaeaea;
+      --amber: #f0a500;
+      --muted: rgba(234, 234, 234, 0.72);
+      --body: "Space Grotesk", system-ui, sans-serif;
+      --display: "Bebas Neue", system-ui, sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.12), transparent 32%),
+        radial-gradient(circle at 80% 20%, rgba(234, 234, 234, 0.05), transparent 24%),
+        var(--bg);
+      color: var(--soft);
+      font-family: var(--body);
+      overflow-x: hidden;
+      text-rendering: geometricPrecision;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    img, svg, iframe { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .display {
+      font-family: var(--display);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .rule {
+      border-top: 1px solid var(--line);
+    }
+
+    .section {
+      padding: clamp(4rem, 7vw, 7.5rem) 0;
+    }
+
+    .section-title {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+      max-width: 60ch;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2.3rem, 4.6vw, 4.8rem);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .section-title p {
+      margin: 0;
+      font-size: clamp(1rem, 1.3vw, 1.1rem);
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3.05rem;
+      padding: 0.85rem 1.15rem;
+      border: 1px solid var(--line-strong);
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.6);
+      background: rgba(240, 165, 0, 0.08);
+      color: #fff;
+      outline: none;
+    }
+
+    .btn--solid {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #080808;
+    }
+
+    .btn--solid:hover,
+    .btn--solid:focus-visible {
+      background: #ffb11a;
+      border-color: #ffb11a;
+      color: #080808;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.84) 44%, rgba(8, 8, 8, 0.18) 100%),
+        radial-gradient(circle at 16% 24%, rgba(240, 165, 0, 0.18), transparent 30%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.7), transparent);
+      opacity: 0.85;
+      z-index: 2;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      min-height: 100svh;
+      display: grid;
+      align-items: stretch;
+      gap: 1.5rem;
+      padding: 1.25rem 0 1.25rem;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.72);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.9rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 1.1rem;
+      align-items: stretch;
+      min-height: calc(100svh - 4rem);
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: center;
+      gap: 1.25rem;
+      padding: clamp(2rem, 5vw, 4.5rem) 0 1rem;
+      max-width: 34rem;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3.6rem, 10vw, 8.8rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 0.86;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+      color: rgba(234, 234, 234, 0.78);
+      max-width: 31ch;
+    }
+
+    .hero-notes {
+      display: grid;
+      gap: 0.45rem;
+      color: rgba(234, 234, 234, 0.63);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 42rem;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(234, 234, 234, 0.03), rgba(234, 234, 234, 0.01));
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      height: 100%;
+      min-height: 42rem;
+    }
+
+    .feature-line {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.66);
+    }
+
+    .room-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .room-item {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .room-item h3,
+    .split-title {
+      margin: 0;
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: clamp(1.8rem, 2.6vw, 2.8rem);
+      line-height: 0.92;
+    }
+
+    .room-spec {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.64);
+    }
+
+    .shared-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem 1rem;
+      margin-top: 1.3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .shared-list div {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .amenities-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .amenity-block {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .amenity-block h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .amenity-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .amenity-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .amenity-list li::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.4rem;
+      border: 1px solid rgba(240, 165, 0, 0.9);
+      background: rgba(240, 165, 0, 0.12);
+      transform: rotate(45deg);
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-panel {
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .map-frame {
+      position: relative;
+      border: 1px solid var(--line-strong);
+      background: var(--panel);
+      min-height: 22rem;
+      overflow: hidden;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.1) brightness(0.8);
+    }
+
+    .map-legend {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      background: rgba(8, 8, 8, 0.74);
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      padding: 0.8rem 0.9rem;
+      max-width: 18rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .map-legend strong {
+      display: block;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .map-legend span {
+      color: rgba(234, 234, 234, 0.74);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .cta-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(2rem, 4vw, 3rem) 0;
+      background: linear-gradient(180deg, rgba(234, 234, 234, 0.02), rgba(234, 234, 234, 0.01));
+    }
+
+    .cta-layout {
+      display: grid;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .cta-layout h2 {
+      margin: 0;
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 0.9;
+    }
+
+    .cta-layout p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.74);
+      max-width: 54ch;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .gallery-art {
+      border: 1px solid var(--line-strong);
+      background: rgba(234, 234, 234, 0.02);
+      min-height: 18rem;
+      overflow: hidden;
+    }
+
+    .gallery-item figcaption {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .gallery-item figcaption strong {
+      font-family: var(--display);
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-grid a {
+      color: var(--soft);
+    }
+
+    @media (max-width: 759px) {
+      .hero-brand {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0.35rem;
+      }
+
+      .hero-visual {
+        min-height: 30rem;
+      }
+
+      .hero-visual svg {
+        min-height: 30rem;
+      }
+    }
+
+    .fineprint {
+      color: rgba(234, 234, 234, 0.5);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 760px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+        gap: 1.4rem;
+      }
+
+      .hero-copy {
+        max-width: 40rem;
+      }
+
+      .room-grid,
+      .amenities-grid,
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-layout {
+        grid-template-columns: minmax(0, 1.2fr) auto;
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .hero-inner {
+        padding-top: 1.35rem;
+      }
+
+      .hero-grid {
+        min-height: calc(100svh - 4.5rem);
+      }
+
+      .room-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Go Hotels Puerto Princesa",
+    "description": "Budget hotel in Puerto Princesa, Palawan, beside Robinsons Place Palawan.",
+    "telephone": "+63-998-840-1637",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "North Road, Brgy. San Manuel",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.769745,
+      "longitude": 118.7482
+    },
+    "numberOfRooms": 108,
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Airport transportation", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "24-hour front desk", "value": true}
+    ]
+  }
+  </script>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <main>
+    <section class="hero" aria-label="Go Hotels Puerto Princesa introduction">
+      <div class="shell hero-inner">
+        <div class="hero-brand reveal" data-reveal>
+          <span>Go Hotels Puerto Princesa</span>
+          <span>North Road, Brgy. San Manuel, Puerto Princesa, Palawan</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy reveal" data-reveal>
+            <div class="eyebrow">Budget stay in Puerto Princesa</div>
+            <h1>Go Hotels Puerto Princesa</h1>
+            <p>Stay beside Robinsons Place Palawan with practical rooms, free Wi-Fi, parking, and quick access to the airport and city essentials.</p>
+            <div class="hero-notes">
+              <span>108 rooms across Twin and Queen configurations, with a maximum of 2 guests per room.</span>
+              <span>Built for simple overnights, work trips, and easy Palawan stopovers.</span>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn--solid" href="#rooms">See rooms</a>
+              <a class="btn" href="tel:+639988401637">Call reservations</a>
+              <a class="btn" href="https://gohotels.ph/branch/puerto-princesa" target="_blank" rel="noopener noreferrer">Official branch page</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" data-reveal aria-hidden="true">
+            <svg viewBox="0 0 960 1240" role="img" aria-label="Stylized illustration of Go Hotels Puerto Princesa">
+              <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0e0e0e"/>
+                  <stop offset="55%" stop-color="#111111"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </linearGradient>
+                <linearGradient id="glowGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#f0a500" stop-opacity="0.15"/>
+                </linearGradient>
+                <pattern id="dots" width="44" height="44" patternUnits="userSpaceOnUse">
+                  <circle cx="3" cy="3" r="1.2" fill="#eaeaea" fill-opacity="0.16"/>
+                </pattern>
+              </defs>
+              <rect width="960" height="1240" fill="url(#skyGrad)"/>
+              <rect width="960" height="1240" fill="url(#dots)" opacity="0.38"/>
+              <circle cx="760" cy="200" r="170" fill="url(#glowGrad)" opacity="0.22"/>
+              <path d="M135 310c120-88 265-116 422-84 90 19 162 59 216 120" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6" stroke-dasharray="12 18" id="routeLine"/>
+              <path d="M130 1020c122-30 238-44 358-44 150 0 286 24 436 72" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4"/>
+              <rect x="128" y="760" width="700" height="260" fill="#0b0b0b" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="4"/>
+              <rect x="182" y="700" width="58" height="320" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="250" y="640" width="58" height="380" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="318" y="680" width="58" height="340" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="386" y="612" width="60" height="408" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="456" y="660" width="58" height="360" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="524" y="638" width="58" height="382" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="592" y="694" width="58" height="326" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="660" y="706" width="58" height="314" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="728" y="744" width="58" height="276" fill="#111111" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+              <rect x="174" y="818" width="612" height="56" rx="6" fill="#f0a500"/>
+              <text x="480" y="858" text-anchor="middle" fill="#080808" font-family="JetBrains Mono, monospace" font-size="34" letter-spacing="4">GO HOTELS</text>
+              <text x="480" y="904" text-anchor="middle" fill="#eaeaea" fill-opacity="0.76" font-family="Space Grotesk, sans-serif" font-size="28" letter-spacing="1">Puerto Princesa</text>
+              <rect x="230" y="902" width="500" height="18" fill="#eaeaea" fill-opacity="0.08"/>
+              <rect x="220" y="926" width="520" height="14" fill="#eaeaea" fill-opacity="0.05"/>
+              <path d="M70 1038h820" stroke="#f0a500" stroke-opacity="0.55" stroke-width="5"/>
+              <path d="M92 1052h780" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+              <path d="M102 350c26-52 54-82 84-92 21-7 39-3 54 10-20 12-39 31-56 59l-2 5 30-4c26-2 48 3 66 16-27 7-49 17-64 31l-25 23c8 22 15 46 21 72-18-13-35-34-50-64-5-12-9-22-12-30-21 3-44 18-68 44 6-36 12-60 22-70z" fill="#f0a500" fill-opacity="0.22"/>
+              <path d="M858 286c16-42 39-74 68-97-8 32-14 69-18 111 20 0 38 5 54 14-31 5-56 17-76 34 9 23 16 48 20 74-18-17-35-40-50-70-3-7-6-15-10-26-18 7-35 21-52 42 3-33 9-60 18-82 6-13 11-25 16-36z" fill="#eaeaea" fill-opacity="0.12"/>
+              <circle cx="134" cy="170" r="3" fill="#eaeaea" fill-opacity="0.7"/>
+              <circle cx="210" cy="120" r="2.2" fill="#eaeaea" fill-opacity="0.56"/>
+              <circle cx="826" cy="112" r="2.5" fill="#f0a500" fill-opacity="0.8"/>
+              <circle cx="736" cy="236" r="2" fill="#eaeaea" fill-opacity="0.45"/>
+              <g id="buildingGlow">
+                <rect x="130" y="758" width="700" height="12" fill="#f0a500" fill-opacity="0.12"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="shell">
+        <div class="section-title reveal" data-reveal>
+          <div class="eyebrow">Rooms and accommodations</div>
+          <h2>Two room layouts, one straightforward stay.</h2>
+          <p>The property lists 108 rooms in total, split across 63 Twin and 45 Queen configurations, with a maximum of 2 guests per room.</p>
+        </div>
+
+        <div class="room-grid">
+          <article class="room-item reveal" data-reveal>
+            <div class="room-spec">Standard Twin Room</div>
+            <h3>Two single beds, ready for an easy overnight.</h3>
+            <p class="muted">Best for friends or workmates who want separate beds without paying for extra space they do not need.</p>
+          </article>
+
+          <article class="room-item reveal" data-reveal>
+            <div class="room-spec">Standard Queen Room</div>
+            <h3>One queen bed for solo stays or couples.</h3>
+            <p class="muted">A simple fit for a single traveler, a pair, or anyone who prefers a softer landing after a long travel day.</p>
+          </article>
+        </div>
+
+        <div class="shared-list reveal" data-reveal>
+          <div>16 to 22 sqm room inventory</div>
+          <div>Free Wi-Fi</div>
+          <div>In-room safe</div>
+          <div>Private bathroom with hot and cold rain shower</div>
+          <div>32" LCD TV with cable</div>
+          <div>In-room phone</div>
+          <div>Basic toiletries</div>
+          <div>Hairdryer and flat iron available upon request</div>
+          <div>100% cotton sheets with duvet covers</div>
+          <div>Standard 220V universal sockets</div>
+          <div>Individually controlled air conditioning</div>
+          <div>No smoking in rooms</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rule" id="amenities">
+      <div class="shell">
+        <div class="section-title reveal" data-reveal>
+          <div class="eyebrow">Amenities</div>
+          <h2>The practical basics are covered.</h2>
+          <p>Go Hotels keeps the stay focused on comfort, security, and the things that matter for short visits to Puerto Princesa.</p>
+        </div>
+
+        <div class="amenities-grid">
+          <div class="amenity-block reveal" data-reveal>
+            <h3>In-room essentials</h3>
+            <ul class="amenity-list">
+              <li><span>Free Wi-Fi throughout the property and room inventory.</span></li>
+              <li><span>In-room safe for small valuables.</span></li>
+              <li><span>Private bathroom with hot and cold rain shower.</span></li>
+              <li><span>32" LCD TV with cable.</span></li>
+              <li><span>In-room phone, basic toiletries, and cotton sheets with duvet covers.</span></li>
+              <li><span>Non-allergenic pillows, individually controlled air conditioning, and universal sockets.</span></li>
+              <li><span>Hairdryer and flat iron available upon request.</span></li>
+              <li><span>No smoking in rooms.</span></li>
+            </ul>
+          </div>
+
+          <div class="amenity-block reveal" data-reveal>
+            <h3>On-site services</h3>
+            <ul class="amenity-list">
+              <li><span>24-hour CCTV security and 24-hour front desk support.</span></li>
+              <li><span>Free parking.</span></li>
+              <li><span>Restaurant and baggage storage.</span></li>
+              <li><span>Airport transportation support.</span></li>
+              <li><span>Laundry service and express check-in/check-out.</span></li>
+              <li><span>Conference room for 15 to 20 persons.</span></li>
+              <li><span>Function room for 25 to 30 guests.</span></li>
+              <li><span>Courtyard venue for small parties.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rule" id="location">
+      <div class="shell">
+        <div class="section-title reveal" data-reveal>
+          <div class="eyebrow">Location and map</div>
+          <h2>Beside Robinsons Place Palawan.</h2>
+          <p>Find the hotel on North Road in Brgy. San Manuel, Puerto Princesa, Palawan, about 15 to 20 minutes from the airport.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-panel reveal" data-reveal>
+            <div>
+              <div class="feature-line">Address</div>
+              <p style="margin:0.55rem 0 0; color: rgba(234,234,234,0.82); line-height:1.6;">North Road, Brgy. San Manuel, Puerto Princesa, 5300 Palawan, Philippines</p>
+            </div>
+            <div>
+              <div class="feature-line">Why it works</div>
+              <p class="muted" style="margin:0.55rem 0 0; line-height:1.7;">The property sits beside Robinsons Place Palawan, making errands, meals, and transport easier before or after a flight.</p>
+            </div>
+            <div>
+              <div class="feature-line">Coordinates</div>
+              <p style="margin:0.55rem 0 0; font-family: var(--mono); font-size:0.9rem; letter-spacing:0.08em; color: rgba(234,234,234,0.76);">9.769745, 118.7482</p>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn--solid" href="https://www.openstreetmap.org/?mlat=9.769745&mlon=118.7482#map=16/9.769745/118.7482" target="_blank" rel="noopener noreferrer">Open map</a>
+              <a class="btn" href="https://gohotels.ph/branch/puerto-princesa" target="_blank" rel="noopener noreferrer">Visit official listing</a>
+            </div>
+          </div>
+
+          <div class="map-frame reveal" data-reveal>
+            <iframe
+              title="Map of Go Hotels Puerto Princesa"
+              loading="lazy"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.7382%2C9.759745%2C118.7582%2C9.779745&layer=mapnik&marker=9.769745%2C118.7482">
+            </iframe>
+            <div class="map-legend">
+              <strong>Puerto Princesa, not Manila</strong>
+              <span>The pin is set around 9.769745, 118.7482, which places the property in Puerto Princesa, Palawan.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="booking">
+      <div class="shell cta-layout reveal" data-reveal>
+        <div>
+          <div class="eyebrow">Booking CTA</div>
+          <h2>Need a practical base in Puerto Princesa?</h2>
+          <p>Call the desk, send an email, or open the official branch page to check the latest rates and availability for your travel dates.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--solid" href="tel:+639988401637">Call +63 998 840 1637</a>
+          <a class="btn" href="mailto:reservations@gohotels.ph">Email reservations</a>
+          <a class="btn" href="https://gohotels.ph/branch/puerto-princesa" target="_blank" rel="noopener noreferrer">Official branch page</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-title reveal" data-reveal>
+          <div class="eyebrow">Gallery</div>
+          <h2>A quick look at the property.</h2>
+          <p>These vector scenes echo the hotel facade, room layouts, and the nearby Robinsons Place Palawan setting without relying on broken external images.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal" data-reveal>
+            <svg class="gallery-art" viewBox="0 0 900 680" role="img" aria-label="Stylized facade view of Go Hotels Puerto Princesa">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#121212"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </linearGradient>
+              </defs>
+              <rect width="900" height="680" fill="url(#g1)"/>
+              <rect x="0" y="540" width="900" height="140" fill="#0b0b0b"/>
+              <rect x="140" y="170" width="620" height="330" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+              <rect x="185" y="120" width="530" height="72" fill="#f0a500"/>
+              <text x="450" y="168" text-anchor="middle" fill="#080808" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="4">GO HOTELS</text>
+              <g fill="#eaeaea" fill-opacity="0.12">
+                <rect x="190" y="220" width="70" height="70"/>
+                <rect x="280" y="220" width="70" height="70"/>
+                <rect x="370" y="220" width="70" height="70"/>
+                <rect x="460" y="220" width="70" height="70"/>
+                <rect x="550" y="220" width="70" height="70"/>
+                <rect x="640" y="220" width="70" height="70"/>
+                <rect x="190" y="310" width="70" height="70"/>
+                <rect x="280" y="310" width="70" height="70"/>
+                <rect x="370" y="310" width="70" height="70"/>
+                <rect x="460" y="310" width="70" height="70"/>
+                <rect x="550" y="310" width="70" height="70"/>
+                <rect x="640" y="310" width="70" height="70"/>
+              </g>
+              <path d="M70 520c82-24 151-32 230-28 88 5 165 24 238 57 67 30 135 45 207 45 48 0 91-7 130-21" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="5"/>
+              <path d="M84 500c30-46 59-73 87-82 22-7 43-5 63 5-25 15-44 37-57 66l-2 5 27-3c23-2 43 2 62 13-22 7-42 18-59 31l-17 15c10 23 18 49 24 78-20-13-38-34-52-63-3-7-6-14-10-24-19 5-39 20-59 44 4-31 10-56 20-75 6-14 12-25 15-35z" fill="#f0a500" fill-opacity="0.22"/>
+              <text x="450" y="460" text-anchor="middle" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="24" letter-spacing="1">beside Robinsons Place Palawan</text>
+            </svg>
+            <figcaption>
+              <strong>Facade and frontage</strong>
+              <span class="muted">Clean lines, clear signage, and easy access from the main road.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal" data-reveal>
+            <svg class="gallery-art" viewBox="0 0 900 680" role="img" aria-label="Stylized queen room layout">
+              <rect width="900" height="680" fill="#101010"/>
+              <rect x="80" y="92" width="740" height="496" fill="#0b0b0b" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <rect x="145" y="138" width="260" height="98" rx="12" fill="#f0a500" opacity="0.86"/>
+              <rect x="416" y="138" width="260" height="98" rx="12" fill="#f0a500" opacity="0.14" stroke="#f0a500" stroke-opacity="0.5" stroke-width="3"/>
+              <rect x="132" y="280" width="238" height="108" rx="14" fill="#1a1a1a" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <rect x="157" y="261" width="54" height="24" fill="#eaeaea" fill-opacity="0.28"/>
+              <rect x="204" y="261" width="32" height="18" fill="#eaeaea" fill-opacity="0.18"/>
+              <rect x="145" y="300" width="212" height="58" rx="8" fill="#f0a500" fill-opacity="0.12"/>
+              <rect x="150" y="456" width="110" height="52" fill="#2a2a2a"/>
+              <rect x="268" y="456" width="66" height="52" fill="#121212" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3"/>
+              <rect x="516" y="280" width="190" height="190" fill="#121212" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+              <rect x="538" y="302" width="146" height="146" fill="#0f0f0f" stroke="#f0a500" stroke-opacity="0.5" stroke-width="3"/>
+              <path d="M220 210h25M212 230h40" stroke="#080808" stroke-width="4"/>
+              <path d="M492 210h25M484 230h40" stroke="#080808" stroke-width="4"/>
+              <text x="450" y="596" text-anchor="middle" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="24">Standard Queen Room, up to 2 guests</text>
+            </svg>
+            <figcaption>
+              <strong>Queen layout</strong>
+              <span class="muted">A simple setup that keeps the room light, compact, and efficient.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal" data-reveal>
+            <svg class="gallery-art" viewBox="0 0 900 680" role="img" aria-label="Stylized twin room layout">
+              <rect width="900" height="680" fill="#0e0e0e"/>
+              <rect x="70" y="84" width="760" height="512" fill="#090909" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <rect x="120" y="150" width="220" height="150" rx="14" fill="#1a1a1a" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <rect x="360" y="150" width="220" height="150" rx="14" fill="#1a1a1a" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <rect x="145" y="121" width="80" height="26" fill="#eaeaea" fill-opacity="0.24"/>
+              <rect x="385" y="121" width="80" height="26" fill="#eaeaea" fill-opacity="0.24"/>
+              <rect x="120" y="328" width="460" height="84" fill="#f0a500" fill-opacity="0.12" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+              <rect x="610" y="150" width="150" height="262" fill="#121212" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+              <path d="M628 180h114M628 220h114M628 260h114M628 300h114" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+              <rect x="172" y="452" width="150" height="58" fill="#2a2a2a"/>
+              <rect x="351" y="452" width="150" height="58" fill="#2a2a2a"/>
+              <text x="450" y="596" text-anchor="middle" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="24">Standard Twin Room, two single beds</text>
+            </svg>
+            <figcaption>
+              <strong>Twin layout</strong>
+              <span class="muted">Straightforward sleeping space for two travelers who want separate beds.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal" data-reveal>
+            <svg class="gallery-art" viewBox="0 0 900 680" role="img" aria-label="Stylized map and nearby mall location">
+              <rect width="900" height="680" fill="#111111"/>
+              <path d="M90 130h720M90 240h720M90 350h720M90 460h720M90 570h720" stroke="#eaeaea" stroke-opacity="0.06" stroke-width="3"/>
+              <path d="M160 110v500M300 110v500M440 110v500M580 110v500M720 110v500" stroke="#eaeaea" stroke-opacity="0.06" stroke-width="3"/>
+              <path d="M160 530c90-52 176-86 258-102 93-19 183-16 270 8 49 14 96 35 144 64" fill="none" stroke="#f0a500" stroke-width="6" stroke-opacity="0.5"/>
+              <circle cx="582" cy="314" r="46" fill="#f0a500" fill-opacity="0.18"/>
+              <path d="M582 248c24 0 44 20 44 44 0 36-44 90-44 90s-44-54-44-90c0-24 20-44 44-44zm0 26c-10 0-18 8-18 18s8 18 18 18 18-8 18-18-8-18-18-18z" fill="#f0a500"/>
+              <rect x="110" y="150" width="220" height="110" fill="#0c0c0c" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+              <rect x="132" y="174" width="176" height="58" fill="#f0a500"/>
+              <text x="220" y="214" text-anchor="middle" fill="#080808" font-family="JetBrains Mono, monospace" font-size="24">ROBINSONS</text>
+              <text x="220" y="240" text-anchor="middle" fill="#080808" font-family="JetBrains Mono, monospace" font-size="18">PLACE PALAWAN</text>
+              <text x="690" y="572" text-anchor="middle" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="24">Puerto Princesa, Palawan</text>
+            </svg>
+            <figcaption>
+              <strong>Location cue</strong>
+              <span class="muted">A visual reminder that the hotel sits in Puerto Princesa, beside a major mall and transport routes.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="shell footer-grid">
+        <div class="reveal" data-reveal>
+          <strong>Go Hotels Puerto Princesa</strong>
+          <p class="muted" style="margin:0; line-height:1.7;">North Road, Brgy. San Manuel, Puerto Princesa, 5300 Palawan, Philippines</p>
+        </div>
+
+        <div class="reveal" data-reveal>
+          <div class="feature-line">Contact</div>
+          <p style="margin:0.55rem 0 0; line-height:1.7;">
+            <a href="tel:+639988401637">+63 998 840 1637</a><br>
+            <a href="mailto:reservations@gohotels.ph">reservations@gohotels.ph</a>
+          </p>
+        </div>
+
+        <div class="reveal" data-reveal>
+          <div class="feature-line">Hours</div>
+          <p style="margin:0.55rem 0 0; line-height:1.7;">Check-in 2:00 PM<br>Check-out 12:00 NN</p>
+        </div>
+
+        <div class="reveal" data-reveal>
+          <div class="feature-line">Notes</div>
+          <p class="fineprint" style="margin:0.55rem 0 0;">No smoking in rooms. Hairdryer and flat iron are available upon request. Coordinates are set to Puerto Princesa, Palawan, not Manila.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduceMotion && window.Lenis && window.ScrollTrigger) {
+        const lenis = new Lenis({
+          autoRaf: false,
+          lerp: 0.08,
+          smoothWheel: true,
+          smoothTouch: false,
+          anchors: true,
+          respectReducedMotion: true
+        });
+
+        lenis.on('scroll', window.ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      if (!reduceMotion && window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        intro.from('[data-reveal].hero-brand', { y: 16, opacity: 0, duration: 0.6 })
+             .from('[data-reveal].hero-copy .eyebrow', { y: 16, opacity: 0, duration: 0.5 }, '-=0.15')
+             .from('[data-reveal].hero-copy h1', { y: 34, opacity: 0, duration: 0.9 }, '-=0.1')
+             .from('[data-reveal].hero-copy p, .hero-notes, .hero-copy .btn-row', { y: 22, opacity: 0, duration: 0.7, stagger: 0.08 }, '-=0.45')
+             .from('[data-reveal].hero-visual', { scale: 0.985, opacity: 0, duration: 1 }, '-=0.85');
+
+        gsap.fromTo('#routeLine', { strokeDasharray: 1400, strokeDashoffset: 1400 }, { strokeDashoffset: 0, duration: 2.1, ease: 'power2.out', delay: 0.3 });
+        gsap.to('#buildingGlow', { y: -6, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+        gsap.utils.toArray('[data-reveal]').forEach((item) => {
+          if (item.classList.contains('hero-brand') || item.closest('.hero-grid')) return;
+          gsap.from(item, {
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 82%'
+            },
+            y: 28,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+          });
+        });
+
+        ScrollTrigger.refresh();
+      } else {
+        document.querySelectorAll('[data-reveal]').forEach((item) => {
+          item.style.opacity = '1';
+          item.style.transform = 'none';
+        });
+      }
+    });
+  </script>
 </body>
+</html>
