@@ -1,5 +1,880 @@
 <!DOCTYPE html>
-<title>Costa Palawan Resort</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Costa Palawan Resort | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Costa Palawan Resort in Puerto Princesa, Palawan offers classic rooms, pool access suites, dining, spa, meeting space, and a verified San Pedro location near the city and airport.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Costa Palawan Resort | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified resort details, room types, amenities, map location, and direct booking for Costa Palawan Resort in Puerto Princesa, Palawan.">
+  <meta property="og:image" content="https://www.costapalawanresort.com/images/misc/1.jpg">
+  <meta property="og:image:alt" content="Costa Palawan Resort official gallery image">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/costa-palawan-resort/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.7);
+      --muted-2: rgba(234, 234, 234, 0.5);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: rgba(240, 165, 0, 0.35); color: var(--text); }
+
+    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.06em; }
+    .mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+
+    .shell {
+      width: min(100% - 2rem, 1180px);
+      margin: 0 auto;
+    }
+
+    .thin-border { border-color: var(--line); }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      overflow: clip;
+      display: flex;
+      align-items: stretch;
+      background: radial-gradient(circle at top left, rgba(240, 165, 0, 0.13), transparent 32%), var(--bg);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.45) 45%, rgba(8, 8, 8, 0.82) 100%), linear-gradient(180deg, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.72) 100%);
+      z-index: 1;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+      filter: saturate(0.95) contrast(1.06);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.1rem 0 2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: end;
+      width: 100%;
+    }
+
+    .hero-copy {
+      max-width: 44rem;
+    }
+
+    .eyebrow {
+      color: var(--amber);
+      font-size: 0.74rem;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(4rem, 15vw, 9.7rem);
+      line-height: 0.84;
+      margin: 0.45rem 0 0.9rem;
+      text-wrap: balance;
+    }
+
+    .hero-copy p {
+      max-width: 36rem;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.84rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--amber);
+      color: #121212;
+    }
+    .btn-primary:hover { background: #ffb31a; }
+    .btn-secondary {
+      border-color: rgba(234, 234, 234, 0.18);
+      color: var(--text);
+      background: rgba(234, 234, 234, 0.04);
+    }
+    .btn-secondary:hover { border-color: rgba(240, 165, 0, 0.5); color: var(--amber); }
+
+    .hero-foot {
+      margin-top: 1.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.25rem;
+      color: var(--muted-2);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .section {
+      padding: 4.4rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+      max-width: 46rem;
+    }
+
+    .section-kicker {
+      color: var(--amber);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 44rem;
+    }
+
+    .split {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .room-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .room-tile {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1.35rem;
+      background: linear-gradient(180deg, rgba(234, 234, 234, 0.03), rgba(234, 234, 234, 0.01));
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+    }
+
+    .room-tile:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.38);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.07), rgba(234, 234, 234, 0.015));
+    }
+
+    .room-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #111;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .room-image img,
+    .gallery-item img,
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .room-content {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .room-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .room-name {
+      margin: 0;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.85rem;
+      color: var(--muted-2);
+      font-size: 0.8rem;
+    }
+
+    .room-description {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .room-rate {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .amenities-grid {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: 1fr;
+    }
+
+    .amenity-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.98rem;
+    }
+
+    .amenity-line span:last-child {
+      color: var(--muted-2);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .location-wrap {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .map-frame {
+      min-height: 24rem;
+      border: 1px solid var(--line);
+      border-radius: 1.35rem;
+      overflow: hidden;
+      background: #111;
+      box-shadow: var(--shadow);
+    }
+
+    .map-frame iframe {
+      min-height: 24rem;
+      border: 0;
+    }
+
+    .booking-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(240, 165, 0, 0.08), rgba(234, 234, 234, 0.02));
+    }
+
+    .booking-inner {
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.6rem 0;
+    }
+
+    .booking-title {
+      margin: 0;
+      font-size: clamp(2rem, 5.8vw, 4rem);
+      line-height: 0.95;
+    }
+
+    .booking-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 40rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1.1;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: #111;
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(4) {
+      aspect-ratio: 1 / 1.4;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 30%;
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.45));
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-line strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .contact-line a {
+      color: var(--text);
+      text-decoration-color: rgba(240, 165, 0, 0.45);
+      text-underline-offset: 0.18em;
+    }
+
+    footer {
+      padding: 2.5rem 0 3rem;
+      color: var(--muted-2);
+    }
+
+    .footer-row {
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.3rem;
+    }
+
+    .small-note {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      max-width: 52rem;
+    }
+
+    .underline-link {
+      text-decoration: none;
+      color: var(--amber);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.45);
+    }
+
+    .nav-shell {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      mix-blend-mode: normal;
+      pointer-events: none;
+    }
+
+    .nav-bar {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid transparent;
+      transition: background 200ms ease, border-color 200ms ease, backdrop-filter 200ms ease;
+    }
+
+    .nav-bar.is-scrolled {
+      background: rgba(8, 8, 8, 0.72);
+      backdrop-filter: blur(18px);
+      border-color: var(--line);
+    }
+
+    .brand-lockup {
+      display: grid;
+      gap: 0.1rem;
+      text-decoration: none;
+      color: var(--text);
+      min-width: 0;
+    }
+
+    .brand-lockup .brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+    }
+
+    .brand-lockup .sub {
+      color: var(--muted-2);
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1rem;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @media (min-width: 760px) {
+      .hero-content { padding-bottom: 2.8rem; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+      .split { grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+      .room-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .amenities-grid { grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
+      .location-wrap { grid-template-columns: 0.84fr 1.16fr; align-items: start; }
+      .booking-inner { grid-template-columns: 1.1fr 0.9fr; }
+      .gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .nav-links { display: flex; }
+      .footer-row { grid-template-columns: 1fr auto; align-items: end; }
+    }
+
+    @media (min-width: 1080px) {
+      .section { padding: 5.5rem 0; }
+      .room-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .room-tile { min-height: 100%; }
+      .room-image { aspect-ratio: 1 / 0.88; }
+      .gallery-grid { grid-template-columns: 1.15fr 0.85fr 0.85fr 1.15fr; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) { grid-row: span 2; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) { aspect-ratio: auto; }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <div class="nav-shell">
+    <div class="shell">
+      <header class="nav-bar" id="topbar">
+        <a href="#hero" class="brand-lockup">
+          <span class="brand">Costa Palawan Resort</span>
+          <span class="sub">Puerto Princesa, Palawan</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#location">Location</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="https://book-directonline.com/properties/CostaPalawanResortDirect" target="_blank" rel="noopener noreferrer">Book direct</a>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://www.costapalawanresort.com/images/misc/1.jpg" alt="Costa Palawan Resort official gallery image" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'">
+      </div>
+      <div class="hero-content shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow mono">Verified Puerto Princesa stay</div>
+            <h1 class="hero-title display">Costa Palawan Resort</h1>
+            <p>
+              A calm base in San Pedro with classic rooms, pool access suites, spa time, dining, and a verified Palawan location that keeps the city, airport, and the coast within reach.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#rooms">View rooms</a>
+              <a class="btn btn-secondary" href="https://book-directonline.com/properties/CostaPalawanResortDirect" target="_blank" rel="noopener noreferrer">Book direct</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div class="section-kicker mono">Rooms and accommodations</div>
+          <h2 class="section-title display">Four published room types, verified from the resort's official pages.</h2>
+          <p class="section-copy">The resort currently details four bookable room categories with published sizes, guest counts, facilities, and nightly rates on its room pages. Additional suite names also appear on the official site, but the four below are the clearest verified options.</p>
+        </div>
+
+        <div class="room-grid">
+          <a class="room-tile reveal" href="https://www.costapalawanresort.com/room-classic" target="_blank" rel="noopener noreferrer">
+            <div class="room-image"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260525021145-4d330397.jpg" alt="Costa Palawan Resort Classic Room" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></div>
+            <div class="room-content">
+              <div class="room-top">
+                <h3 class="room-name display">Classic Room</h3>
+                <div class="room-rate">P8,000 / night</div>
+              </div>
+              <div class="room-meta mono"><span>2 guests</span><span>32 sqm</span><span>Twin or queen beds</span></div>
+              <p class="room-description">Classic comfort with garden or pool views, a 48-inch TV, coffee and tea makers, hot and cold shower, safety deposit box, mini refrigerator, free Wi-Fi, and full air conditioning.</p>
+            </div>
+          </a>
+
+          <a class="room-tile reveal" href="https://www.costapalawanresort.com/room-pool" target="_blank" rel="noopener noreferrer">
+            <div class="room-image"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260525021527-efacad62.jpg" alt="Costa Palawan Resort Classic Pool Access room" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></div>
+            <div class="room-content">
+              <div class="room-top">
+                <h3 class="room-name display">Classic Pool Access</h3>
+                <div class="room-rate">P10,000 / night</div>
+              </div>
+              <div class="room-meta mono"><span>2 guests</span><span>32 sqm</span><span>Veranda to infinity pool</span></div>
+              <p class="room-description">A pool-adjacent room with the same verified comfort set as Classic Room, plus direct access to the resort's picturesque infinity pool right outside the veranda.</p>
+            </div>
+          </a>
+
+          <a class="room-tile reveal" href="https://www.costapalawanresort.com/room-deluxe" target="_blank" rel="noopener noreferrer">
+            <div class="room-image"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260528201132-046c5720.jpg" alt="Costa Palawan Resort Deluxe Suite Room" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></div>
+            <div class="room-content">
+              <div class="room-top">
+                <h3 class="room-name display">Deluxe Suite Room</h3>
+                <div class="room-rate">P12,000 / night</div>
+              </div>
+              <div class="room-meta mono"><span>2 guests</span><span>41 sqm</span><span>Living room area</span></div>
+              <p class="room-description">A larger suite with an elegant decor scheme, a private entertainment space, and verified room facilities that include a flat-screen TV, mini refrigerator, coffee and tea makers, and full air conditioning.</p>
+            </div>
+          </a>
+
+          <a class="room-tile reveal" href="https://www.costapalawanresort.com/room-premier" target="_blank" rel="noopener noreferrer">
+            <div class="room-image"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260528201601-f6c6a6fa.jpg" alt="Costa Palawan Resort Premier Suite Room" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></div>
+            <div class="room-content">
+              <div class="room-top">
+                <h3 class="room-name display">Premier Suite Room</h3>
+                <div class="room-rate">P15,000 / night</div>
+              </div>
+              <div class="room-meta mono"><span>2 guests</span><span>42 sqm</span><span>Pool or sea view</span></div>
+              <p class="room-description">The resort's most spacious published suite includes a private patio, a living area, and the same verified comfort essentials, with pool or sea-view orientation depending on the unit.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="shell split">
+        <div class="section-header reveal">
+          <div class="section-kicker mono">Amenities</div>
+          <h2 class="section-title display">Built for slow mornings, easy evenings, and practical stays.</h2>
+          <p class="section-copy">The resort's official pages highlight relaxation, dining, and working comforts for both leisure and business travelers. These are the verified property features that show up consistently across the resort site and booking references.</p>
+        </div>
+
+        <div class="amenities-grid reveal">
+          <div class="amenity-line"><span>Restaurant</span><span>Dining</span></div>
+          <div class="amenity-line"><span>Swimming pools</span><span>Leisure</span></div>
+          <div class="amenity-line"><span>Fitness area</span><span>Wellness</span></div>
+          <div class="amenity-line"><span>Pool bar</span><span>Dining</span></div>
+          <div class="amenity-line"><span>Spa</span><span>Wellness</span></div>
+          <div class="amenity-line"><span>Meeting room</span><span>Business</span></div>
+          <div class="amenity-line"><span>Laundry service</span><span>Service</span></div>
+          <div class="amenity-line"><span>Parking area</span><span>Access</span></div>
+          <div class="amenity-line"><span>24-hour service</span><span>Support</span></div>
+          <div class="amenity-line"><span>Free Wi-Fi</span><span>Connectivity</span></div>
+          <div class="amenity-line"><span>Airport shuttle</span><span>Transfer</span></div>
+          <div class="amenity-line"><span>Room service</span><span>In-room dining</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="shell location-wrap">
+        <div class="location-copy reveal">
+          <div class="section-kicker mono">Location</div>
+          <h2 class="section-title display">San Pedro, Puerto Princesa City.</h2>
+          <p class="section-copy">The resort's verified address is F. Ponce de Leon Road, Brgy San Pedro, Puerto Princesa City 5300, Palawan, Philippines. The published map point used here is centered on the resort's listed location in Puerto Princesa, not a generic island pin.</p>
+          <div class="contact-grid">
+            <div class="contact-line">
+              <div>
+                <strong>Address</strong>
+                <span>F. Ponce de Leon Road, Brgy San Pedro, Puerto Princesa City 5300 PH</span>
+              </div>
+            </div>
+            <div class="contact-line">
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+63487166029">+63 48 716 6029</a>
+              </div>
+            </div>
+            <div class="contact-line">
+              <div>
+                <strong>Reservations</strong>
+                <a href="tel:+639171301111">+63 917 130 1111</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map-frame reveal">
+          <iframe
+            title="Costa Palawan Resort map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=9.760709762573242,118.7719497680664&z=16&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-band" id="booking">
+      <div class="shell booking-inner">
+        <div class="reveal">
+          <div class="section-kicker mono">Booking</div>
+          <h2 class="booking-title display">Reserve direct with Costa Palawan Resort.</h2>
+        </div>
+        <div class="reveal">
+          <p class="booking-copy">Use the resort's direct booking page for room inquiries, published rates, and transfer requests. This keeps the contact path aligned with the official site and avoids third-party confusion.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://book-directonline.com/properties/CostaPalawanResortDirect" target="_blank" rel="noopener noreferrer">Book now</a>
+            <a class="btn btn-secondary" href="https://www.costapalawanresort.com/contact-room" target="_blank" rel="noopener noreferrer">Room inquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-header reveal">
+          <div class="section-kicker mono">Gallery</div>
+          <h2 class="section-title display">A closer look at the resort mood.</h2>
+          <p class="section-copy">The gallery mixes official property photography and room imagery so the visual story stays tied to the actual resort rather than generic Palawan stock.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/images/misc/1.jpg" alt="Costa Palawan Resort official exterior or landscape image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/images/misc/2.jpg" alt="Costa Palawan Resort official resort image" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260528201133-9ffc8d81.jpg" alt="Costa Palawan Resort Deluxe Suite Room interior" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260528201602-6a893588.jpg" alt="Costa Palawan Resort Premier Suite Room interior" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260528200711-68e640bc.jpg" alt="Costa Palawan Resort Classic Room interior" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+          <figure class="gallery-item reveal"><img src="https://www.costapalawanresort.com/uploads/rooms/room-gallery-20260525021529-8d272e92.jpg" alt="Costa Palawan Resort Classic Pool Access room" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/resort-fallback.svg'"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell footer-row">
+        <div class="reveal">
+          <div class="section-kicker mono">Contact</div>
+          <h2 class="section-title display">Costa Palawan Resort.</h2>
+          <p class="section-copy">For direct resort communication, use the verified phone lines below. The site copy and map pin are based on the resort's official pages and verified map coordinates for Puerto Princesa City.</p>
+        </div>
+        <div class="reveal" style="display:grid; gap:0.8rem; justify-items:start;">
+          <a class="btn btn-primary" href="tel:+639171301111">Call reservations</a>
+          <a class="btn btn-secondary" href="https://www.costapalawanresort.com/" target="_blank" rel="noopener noreferrer">Official site</a>
+        </div>
+      </div>
+
+      <div class="shell" style="margin-top:1.2rem;">
+        <div class="footer-row">
+          <div class="small-note">
+            Address: F. Ponce de Leon Road, Brgy San Pedro, Puerto Princesa City 5300, Palawan, Philippines.<br>
+            Phone: <a class="underline-link" href="tel:+63487166029">+63 48 716 6029</a> | Reservations: <a class="underline-link" href="tel:+639171301111">+63 917 130 1111</a><br>
+            Room details, address, and location were verified from the resort's official pages before copy was written. Room rates are published rates and may change.
+          </div>
+          <div class="mono text-[0.72rem] uppercase tracking-[0.08em] text-[rgba(234,234,234,0.45)]">
+            Puerto Princesa, Palawan
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div>© 2026 Costa Palawan Resort concept site</div>
+      <div>GSAP + Lenis, vanilla HTML/CSS/JS</div>
+    </div>
+  </footer>
+
+  <script>
+    const lenis = new Lenis({
+      duration: 1.08,
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.6
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const topbar = document.getElementById('topbar');
+    const syncNav = () => topbar.classList.toggle('is-scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    gsap.fromTo('.hero-media img', { scale: 1.09 }, {
+      scale: 1,
+      duration: 1.6,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-copy', {
+      y: 26,
+      opacity: 0,
+      duration: 1.1,
+      ease: 'power3.out',
+      delay: 0.12
+    });
+
+    gsap.utils.toArray('.reveal').forEach((el) => {
+      gsap.fromTo(el, {
+        y: 28,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 86%'
+        }
+      });
+    });
+
+    gsap.utils.toArray('.gallery-item img, .room-image img').forEach((img) => {
+      gsap.fromTo(img, { scale: 1.08 }, {
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    });
+
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -84 });
+      });
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  </script>
 </body>
+</html>

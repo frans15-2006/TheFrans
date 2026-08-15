@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Costa Palawan Resort fallback image</title>
+  <desc id="desc">Stylized tropical resort scene with dark water, palms, and amber light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="52%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="50%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#0b0b0b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="38%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="36%" stop-color="#f0a500" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <ellipse cx="820" cy="430" rx="430" ry="240" fill="url(#glow)"/>
+  <path d="M0 800 C240 760 420 770 610 792 C860 820 1090 876 1600 820 L1600 1200 L0 1200 Z" fill="url(#water)"/>
+  <path d="M0 766 C220 748 404 724 592 742 C818 764 1072 850 1600 794" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="8"/>
+  <path d="M1140 286 C1215 270 1294 288 1370 336 C1430 373 1470 418 1508 472 C1451 444 1390 434 1318 445 C1252 456 1185 494 1130 544 C1134 485 1137 396 1140 286 Z" fill="#121212"/>
+  <path d="M1180 240 C1183 360 1187 474 1192 613" stroke="#f0a500" stroke-opacity="0.32" stroke-width="4"/>
+  <path d="M1192 616 C1168 562 1136 516 1088 475" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="4" fill="none"/>
+  <path d="M1192 616 C1227 558 1267 520 1320 490" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="4" fill="none"/>
+  <path d="M1188 614 C1151 635 1118 667 1088 705" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="4" fill="none"/>
+  <path d="M1190 614 C1224 640 1260 670 1300 708" stroke="#eaeaea" stroke-opacity="0.15" stroke-width="4" fill="none"/>
+  <path d="M210 332 C290 280 396 253 494 250 C560 249 618 256 672 275 C606 307 548 345 497 396 C414 380 336 362 210 332 Z" fill="#151515"/>
+  <path d="M270 208 C278 276 282 342 283 412" stroke="#f0a500" stroke-opacity="0.24" stroke-width="4"/>
+  <path d="M280 412 C250 365 214 327 170 293" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4" fill="none"/>
+  <path d="M281 412 C320 362 361 329 418 300" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4" fill="none"/>
+  <path d="M277 412 C241 437 211 469 186 510" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4" fill="none"/>
+  <path d="M279 412 C324 438 365 470 396 512" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4" fill="none"/>
+  <rect x="92" y="912" width="308" height="18" rx="9" fill="#f0a500" fill-opacity="0.58"/>
+  <text x="92" y="1050" fill="#eaeaea" fill-opacity="0.82" font-family="Space Grotesk, Arial, sans-serif" font-size="54" letter-spacing="6">Costa Palawan Resort</text>
+</svg>
