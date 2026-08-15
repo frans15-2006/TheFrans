@@ -1,5 +1,924 @@
 <!DOCTYPE html>
-<title>Good Sht Coffee</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Sh*t Coffee | Poblacion, Makati</title>
+  <meta name="description" content="Good Sh*t Coffee in Poblacion, Makati, serving Spanish latte, cold brew by the liter, horchata, and pastries like guava cheese roll and kouign amann.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Good Sh*t Coffee | Poblacion, Makati">
+  <meta property="og:description" content="Spanish latte, cold brew by the liter, horchata, and pastries that keep the counter moving.">
+  <meta property="og:image" content="https://images.pexels.com/photos/18617712/pexels-photo-18617712.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <meta property="og:image:alt" content="Warm coffee shop counter with pastries and menu boards.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/good-sht-coffee/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Good Sh*t Coffee | Poblacion, Makati">
+  <meta name="twitter:description" content="Good Coffee Made Accessible.">
+  <meta name="twitter:image" content="https://images.pexels.com/photos/18617712/pexels-photo-18617712.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=627&amp;w=1200">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #101010;
+      --panel-soft: #141414;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    html.lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    html.lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    html.lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 1rem 0;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.88), rgba(8, 8, 8, 0.18));
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--amber);
+      flex: none;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .brand-text strong {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 1.45rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .brand-text span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 180ms ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      position: relative;
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      margin: 0;
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      max-width: 44rem;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 0;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+      overflow: clip;
+      background: #040404;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.05);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(240, 165, 0, 0.16), transparent 25%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.55) 42%, rgba(8, 8, 8, 0.2) 70%, rgba(8, 8, 8, 0.86) 100%),
+        linear-gradient(to top, rgba(8, 8, 8, 0.9), transparent 55%);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 8rem 0 clamp(2rem, 5vw, 4rem);
+      display: grid;
+      gap: 1.5rem;
+      align-self: end;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-name {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.8rem, 14vw, 11rem);
+      line-height: 0.84;
+      letter-spacing: 0.04em;
+      text-wrap: balance;
+      max-width: 8.5ch;
+    }
+
+    .hero-copy {
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.9);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: #111;
+      border-color: var(--amber);
+    }
+
+    .button.secondary {
+      background: rgba(234, 234, 234, 0.06);
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .menu-list {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-item {
+      display: grid;
+      gap: 0.5rem;
+      padding: 1.15rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-item:first-child {
+      border-top: 0;
+    }
+
+    .menu-item-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .menu-item h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+    }
+
+    .menu-item .note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      flex: none;
+    }
+
+    .menu-item p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 54rem;
+    }
+
+    .story-layout,
+    .location-layout,
+    .contact-layout {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .story-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .story-card {
+      border-top: 1px solid var(--line);
+      padding-top: 1.2rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1.35fr 0.85fr 0.85fr;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .gallery-figure {
+      position: relative;
+      overflow: hidden;
+      min-height: 18rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .gallery-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms ease;
+    }
+
+    .gallery-figure:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 0.7rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 0.55rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      color: var(--muted);
+    }
+
+    .location-meta strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .map-shell {
+      min-height: 26rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 26rem;
+      border: 0;
+      filter: grayscale(0.95) contrast(1.06) brightness(0.86);
+    }
+
+    .map-overlay {
+      position: absolute;
+      inset: 0 auto auto 0;
+      padding: 0.9rem 1rem;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.86), rgba(8, 8, 8, 0.18));
+      width: 100%;
+      pointer-events: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.28);
+      padding-bottom: 0.15rem;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .contact-link:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .source-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.6);
+    }
+
+    @media (min-width: 720px) {
+      .story-layout,
+      .location-layout,
+      .contact-layout {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+
+      .hours-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        gap: 0.7rem;
+      }
+
+      .nav a {
+        font-size: 0.66rem;
+      }
+
+      .hero-inner {
+        padding-top: 7rem;
+      }
+
+      .hero-name {
+        max-width: 7ch;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-figure {
+        min-height: 14rem;
+      }
+
+      .map-shell,
+      .map-shell iframe {
+        min-height: 18rem;
+      }
+
+      .map-overlay {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-lockup" href="#hero" aria-label="Go to top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4.25 7c0-1.45 1.43-2.62 3.2-2.62H12v3.56c0 1.73-1.4 3.13-3.13 3.13H7.35C5.58 11.07 4.25 9.72 4.25 8V7Z" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M12 6.9h.85c.75 0 1.35.6 1.35 1.35s-.6 1.35-1.35 1.35H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M4 13.2h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Good Sh*t Coffee</strong>
+          <span>Good Coffee Made Accessible</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <img
+        class="hero-media"
+        src="https://images.pexels.com/photos/18617712/pexels-photo-18617712.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=1200&amp;w=1600"
+        alt="Warm coffee shop interior with menu boards, croissants, and a dessert display."
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      >
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-inner shell">
+        <div class="hero-meta reveal">
+          <span>Poblacion, Makati</span>
+          <span>Espresso, pastries, cold brew</span>
+        </div>
+        <h1 class="hero-name reveal">Good Sh*t Coffee</h1>
+        <p class="hero-copy reveal">Good Coffee Made Accessible. The public menu keeps coming back to Spanish latte, cold brew by the liter, horchata, and pastries that regulars mention by name.</p>
+        <div class="actions reveal">
+          <a class="button primary" href="#menu">See the menu</a>
+          <a class="button secondary" href="#location">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="shell section-grid" data-reveal>
+        <div>
+          <div class="eyebrow">What lands on the counter</div>
+          <h2 class="section-title">Menu highlights</h2>
+          <p class="section-copy">The verified menu reads tight, not crowded. Coffee runs from by-the-liter pours to sweet espresso drinks, while the pastry case keeps the shop’s reputation moving just as hard as the grinder.</p>
+        </div>
+        <div class="menu-list" aria-label="Menu highlights">
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Spanish Latte by the Liter</h3>
+              <span class="note">Bestseller</span>
+            </div>
+            <p>A Good Sh*t Coffee bestseller sweetened with condensed milk and mixed with the house cold brew base.</p>
+          </article>
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Cold Brew by the Liter</h3>
+              <span class="note">Home-brewed 20 hours</span>
+            </div>
+            <p>The classic blend, brewed for a minimum of 20 hours for a clean, sturdy cup.</p>
+          </article>
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Horchata by the Liter</h3>
+              <span class="note">No caffeine</span>
+            </div>
+            <p>Jasmine rice, cinnamon bark, vanilla, and fresh milk for the non-caffeinated lane.</p>
+          </article>
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Guava Cheese Roll</h3>
+              <span class="note">Regular favorite</span>
+            </div>
+            <p>Repeatedly called out in reviews for its flaky pastry shell, guava filling, and cheese finish.</p>
+          </article>
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Kouign Amann</h3>
+              <span class="note">Pastry case star</span>
+            </div>
+            <p>A sweet, layered pastry that has shown up in the shop’s pastry mentions and curated roundups.</p>
+          </article>
+          <article class="menu-item">
+            <div class="menu-item-head">
+              <h3>Cereal Milk Latte</h3>
+              <span class="note">Worth a detour</span>
+            </div>
+            <p>A playful option often recommended alongside the house Spanish latte for something sweeter.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="shell story-layout" data-reveal>
+        <div>
+          <div class="eyebrow">Why people return</div>
+          <h2 class="section-title">Story</h2>
+        </div>
+        <div class="story-card">
+          <div class="story-note">Coffee first, pastry second, no fuss</div>
+          <p>Public listings, menu pages, and reviews paint the same picture: Good Sh*t Coffee keeps the offer focused and lets the drinks do the talking. The official line is simple, and the menu follows through with it.</p>
+          <p>Instead of trying to be everything at once, the shop leans into a few strong signatures. If you want the short version, start with Spanish latte or cold brew, then step into the pastry case for Guava Cheese Roll or Kouign Amann.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="shell section-grid" data-reveal>
+        <div>
+          <div class="eyebrow">Inside the frame</div>
+          <h2 class="section-title">Gallery</h2>
+          <p class="section-copy">Warm counters, espresso cups, and pastry-table moments carry the visual rhythm here. These images are for the mood of the shop, not a glossy fantasy.</p>
+        </div>
+        <div class="gallery-grid" aria-label="Gallery of coffee and pastry scenes">
+          <figure class="gallery-figure">
+            <img src="https://images.pexels.com/photos/8425194/pexels-photo-8425194.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=1000&amp;w=1400" alt="A barista reads an order in a cozy cafe with a pastry display and warm lighting." loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Counter flow</figcaption>
+          </figure>
+          <figure class="gallery-figure">
+            <img src="https://images.pexels.com/photos/414555/pexels-photo-414555.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=1000&amp;w=900" alt="A cappuccino with latte art next to a pastry on a wooden table." loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Coffee and pastry</figcaption>
+          </figure>
+          <figure class="gallery-figure">
+            <img src="https://images.pexels.com/photos/5427261/pexels-photo-5427261.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;h=1000&amp;w=900" alt="Top view of hands holding a latte with a pastry on a wooden table." loading="lazy" decoding="async">
+            <figcaption class="gallery-caption">Afternoon cup</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="shell location-layout" data-reveal>
+        <div class="hours-grid">
+          <div>
+            <div class="eyebrow">When to drop by</div>
+            <h2 class="section-title">Hours</h2>
+            <div class="hours-list" aria-label="Opening hours">
+              <div class="hours-row"><span>Sunday</span><span>6:00 AM - 10:00 PM</span></div>
+              <div class="hours-row"><span>Monday</span><span>6:00 AM - 10:00 PM</span></div>
+              <div class="hours-row"><span>Tuesday</span><span>6:00 AM - 10:00 PM</span></div>
+              <div class="hours-row"><span>Wednesday</span><span>6:00 AM - 10:00 PM</span></div>
+              <div class="hours-row"><span>Thursday</span><span>6:00 AM - 10:00 PM</span></div>
+              <div class="hours-row"><span>Friday</span><span>6:00 AM - 12:00 AM</span></div>
+              <div class="hours-row"><span>Saturday</span><span>6:00 AM - 12:00 AM</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">Verified public listing</div>
+            <h2 class="section-title">Location</h2>
+            <div class="location-meta">
+              <div><strong>Address</strong><br>5872 Enriquez St, Poblacion, Makati, Metro Manila</div>
+              <div><strong>Coordinates</strong><br>14.5641625, 121.0319369</div>
+              <div><strong>Notes</strong><br>Public sources place the shop in Poblacion, Makati. I did not find a verifiable Puerto Princesa branch, so this page stays factual to the public listing.</div>
+            </div>
+            <div class="actions" style="margin-top:1rem;">
+              <a class="button primary" href="https://www.openstreetmap.org/?mlat=14.5641625&amp;mlon=121.0319369#map=18/14.5641625/121.0319369">Open map</a>
+              <a class="button secondary" href="https://www.google.com/maps/search/?api=1&amp;query=14.5641625,121.0319369">Get directions</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-shell" aria-label="Map to Good Sh*t Coffee">
+          <div class="map-overlay">
+            <span>OpenStreetMap</span>
+            <span>14.5641625, 121.0319369</span>
+          </div>
+          <iframe
+            title="Good Sh*t Coffee location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=121.0308%2C14.5634%2C121.0331%2C14.5650&amp;layer=mapnik&amp;marker=14.5641625%2C121.0319369">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell contact-layout" data-reveal>
+        <div>
+          <div class="eyebrow">Reach the shop</div>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-copy">Order through the public number, check the socials, or message the page. The shop’s public footprint points to Instagram, Facebook, and a listed Gmail address for direct contact.</p>
+        </div>
+        <div>
+          <div class="contact-links">
+            <a class="contact-link" href="tel:+639959078070">+63 995 907 8070</a>
+            <a class="contact-link" href="mailto:coffeegoodsh.t@gmail.com">coffeegoodsh.t@gmail.com</a>
+            <a class="contact-link" href="https://instagram.com/goodshtcoffee">Instagram</a>
+            <a class="contact-link" href="https://facebook.com/goodshtcoffee">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <div>
+        <strong style="font-family:'Bebas Neue',sans-serif; letter-spacing:0.06em; font-size:1.5rem; color:var(--text); font-weight:400;">Good Sh*t Coffee</strong>
+        <div>Good Coffee Made Accessible.</div>
+        <div>© <span id="current-year"></span> Good Sh*t Coffee.</div>
+      </div>
+      <div class="source-note">Sources verified from official Facebook and Instagram snippets, Booky, Take App, and RestaurantGuru. Photography via Pexels.</div>
+    </div>
+  </footer>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let lenis = null;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!prefersReducedMotion && window.Lenis) {
+      lenis = new Lenis({
+        duration: 1.1,
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    const scrollToTarget = (target) => {
+      if (lenis && typeof lenis.scrollTo === 'function') {
+        lenis.scrollTo(target, { offset: -88 });
+      } else {
+        target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    };
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const selector = link.getAttribute('href');
+      const target = document.querySelector(selector);
+      if (!target) return;
+
+      event.preventDefault();
+      scrollToTarget(target);
+    });
+
+    gsap.from('.hero-media', {
+      scale: 1.08,
+      duration: 1.4,
+      ease: 'power2.out'
+    });
+
+    gsap.from('.hero-overlay', {
+      opacity: 0,
+      duration: 1.1,
+      ease: 'power2.out'
+    });
+
+    gsap.from('.hero .reveal', {
+      opacity: 0,
+      y: 28,
+      duration: 1,
+      ease: 'power3.out',
+      stagger: 0.08,
+      delay: 0.15
+    });
+
+    document.querySelectorAll('[data-reveal]').forEach((block) => {
+      const items = block.querySelectorAll('.menu-item, .gallery-figure, .story-card > *, .hours-grid > *, .contact-links > *, .map-shell');
+      gsap.fromTo(block, { opacity: 0 }, { opacity: 1, duration: 0.05, scrollTrigger: { trigger: block, start: 'top 82%' } });
+
+      if (items.length) {
+        gsap.from(items, {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power2.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: block,
+            start: 'top 80%'
+          }
+        });
+      } else {
+        gsap.from(block, {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: block,
+            start: 'top 80%'
+          }
+        });
+      }
+    });
+
+    const yearNode = document.getElementById('current-year');
+    if (yearNode) {
+      yearNode.textContent = new Date().getFullYear();
+    }
+  </script>
 </body>
+</html>
