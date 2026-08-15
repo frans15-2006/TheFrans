@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Family room illustration</title>
+  <desc id="desc">A warm, minimalist hotel room with a larger bed, sofa, desk, and window light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" x2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <linearGradient id="sheet" x1="0" x2="1">
+      <stop offset="0%" stop-color="#eaeaea"/>
+      <stop offset="100%" stop-color="#cfcfcf"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#ffd36b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="900" fill="url(#wall)"/>
+
+  <rect x="865" y="96" width="220" height="260" fill="#0c0c0c" stroke="#2a2a2a" stroke-width="6"/>
+  <rect x="905" y="136" width="140" height="180" fill="#111" stroke="#343434" stroke-width="4"/>
+  <circle cx="1035" cy="220" r="24" fill="url(#amber)" opacity="0.9"/>
+
+  <rect x="90" y="572" width="1020" height="190" fill="#0b0b0b"/>
+  <rect x="138" y="518" width="440" height="176" rx="12" fill="#131313" stroke="#2a2a2a" stroke-width="5"/>
+  <rect x="116" y="548" width="484" height="132" rx="16" fill="#171717"/>
+  <rect x="156" y="466" width="246" height="88" rx="14" fill="url(#sheet)"/>
+  <rect x="410" y="466" width="210" height="88" rx="14" fill="url(#sheet)" opacity="0.94"/>
+  <rect x="154" y="532" width="212" height="42" rx="8" fill="#d6d6d6"/>
+  <rect x="406" y="532" width="176" height="42" rx="8" fill="#d6d6d6"/>
+  <rect x="160" y="452" width="130" height="18" rx="8" fill="url(#amber)" opacity="0.6"/>
+  <rect x="408" y="452" width="112" height="18" rx="8" fill="url(#amber)" opacity="0.45"/>
+
+  <rect x="668" y="548" width="250" height="166" rx="14" fill="#141414" stroke="#2a2a2a" stroke-width="5"/>
+  <rect x="696" y="570" width="196" height="26" rx="6" fill="#212121"/>
+  <rect x="696" y="608" width="150" height="22" rx="6" fill="#1d1d1d"/>
+  <rect x="696" y="642" width="182" height="22" rx="6" fill="#1d1d1d"/>
+  <rect x="696" y="676" width="112" height="18" rx="6" fill="url(#amber)" opacity="0.65"/>
+
+  <rect x="104" y="334" width="180" height="156" rx="12" fill="#121212" stroke="#2c2c2c" stroke-width="4"/>
+  <rect x="128" y="362" width="132" height="98" rx="10" fill="#1b1b1b"/>
+  <rect x="112" y="348" width="164" height="16" rx="8" fill="url(#amber)" opacity="0.42"/>
+
+  <rect x="748" y="362" width="254" height="150" rx="12" fill="#111" stroke="#2c2c2c" stroke-width="4"/>
+  <rect x="778" y="390" width="192" height="86" rx="10" fill="#191919"/>
+  <rect x="792" y="404" width="164" height="12" rx="6" fill="#313131"/>
+  <rect x="792" y="426" width="118" height="12" rx="6" fill="#2b2b2b"/>
+  <rect x="792" y="448" width="142" height="12" rx="6" fill="#2b2b2b"/>
+
+  <path d="M0 816H1200V900H0Z" fill="#080808"/>
+  <path d="M60 810H1140" stroke="#f0a500" stroke-opacity="0.18" stroke-width="2"/>
+</svg>

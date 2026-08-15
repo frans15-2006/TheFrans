@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Bambu Suites dusk facade illustration</title>
+  <desc id="desc">A stylized near-black and amber resort scene with Palawan hills, palm leaves, and lit windows.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="48%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="78%" cy="18%" r="34%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#f0a500" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#f0a500" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="45%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="facade" x1="0" x2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="50%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#1d1d1d"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#fff0bd" stop-opacity="0.52"/>
+    </linearGradient>
+    <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+
+  <g opacity="0.9">
+    <path d="M0 455C140 410 250 436 385 424C547 410 626 362 770 380C912 398 1009 451 1160 446C1302 441 1416 409 1600 435V900H0Z" fill="#0f1311"/>
+    <path d="M0 495C150 470 249 484 395 470C523 457 638 430 765 438C892 447 1022 490 1182 487C1338 485 1458 460 1600 472V900H0Z" fill="#101614" opacity="0.9"/>
+  </g>
+
+  <g opacity="0.78">
+    <ellipse cx="268" cy="610" rx="320" ry="64" fill="url(#water)"/>
+    <ellipse cx="1080" cy="665" rx="420" ry="72" fill="url(#water)" opacity="0.7"/>
+  </g>
+
+  <g transform="translate(300 330)">
+    <path d="M0 190H675V430H0Z" fill="#0d0d0d"/>
+    <path d="M24 168H651V199H24Z" fill="#222"/>
+    <path d="M50 40H615L675 190H0Z" fill="url(#facade)"/>
+    <path d="M75 57H590L626 163H39Z" fill="#141414"/>
+    <path d="M116 85H242V160H116Z" fill="#1c1c1c"/>
+    <path d="M284 85H410V160H284Z" fill="#1a1a1a"/>
+    <path d="M452 85H578V160H452Z" fill="#181818"/>
+    <rect x="132" y="95" width="92" height="58" fill="url(#glass)" opacity="0.9"/>
+    <rect x="300" y="95" width="92" height="58" fill="url(#glass)" opacity="0.8"/>
+    <rect x="468" y="95" width="92" height="58" fill="url(#glass)" opacity="0.9"/>
+    <g opacity="0.42" stroke="#f0a500" stroke-width="2">
+      <path d="M132 126H224M300 126H392M468 126H560"/>
+    </g>
+    <path d="M0 430H675V456H0Z" fill="#0b0b0b"/>
+    <path d="M116 211H559" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+    <path d="M91 240H583" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M0 190H675" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+    <path d="M110 232H159V430H110Z" fill="#111"/>
+    <path d="M516 232H565V430H516Z" fill="#111"/>
+    <path d="M78 266H597" stroke="#f0a500" stroke-opacity="0.16" stroke-width="1.5"/>
+    <path d="M90 303H585" stroke="#f0a500" stroke-opacity="0.12" stroke-width="1.5"/>
+    <path d="M111 341H564" stroke="#f0a500" stroke-opacity="0.09" stroke-width="1.5"/>
+  </g>
+
+  <g transform="translate(1088 96)" filter="url(#blurGlow)">
+    <circle cx="152" cy="110" r="76" fill="#f0a500" fill-opacity="0.58"/>
+  </g>
+  <g transform="translate(1088 96)">
+    <circle cx="152" cy="110" r="70" fill="#f0a500" fill-opacity="0.82"/>
+    <circle cx="152" cy="110" r="104" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="24"/>
+  </g>
+
+  <g opacity="0.8">
+    <path d="M0 690C116 668 211 652 315 648C417 644 522 656 620 674C721 691 833 702 939 700C1063 699 1180 678 1290 659C1407 639 1509 632 1600 640V900H0Z" fill="#080808"/>
+  </g>
+
+  <g transform="translate(0 0)" fill="none" stroke="#f0a500" stroke-opacity="0.46" stroke-linecap="round">
+    <path d="M202 284C116 248 78 209 54 160" stroke-width="8"/>
+    <path d="M188 296C125 292 76 277 24 250" stroke-width="6"/>
+    <path d="M213 255C171 213 145 170 123 127" stroke-width="6"/>
+    <path d="M1480 316C1440 267 1420 215 1411 160" stroke-width="7"/>
+    <path d="M1464 331C1509 323 1545 311 1594 290" stroke-width="5"/>
+    <path d="M1449 286C1482 245 1517 204 1558 165" stroke-width="6"/>
+  </g>
+
+  <g transform="translate(1210 560)">
+    <path d="M0 290C35 244 61 208 79 174C100 134 106 84 106 0" stroke="#f0a500" stroke-opacity="0.4" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M103 6C136 35 163 74 188 115" stroke="#f0a500" stroke-opacity="0.26" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M104 14C72 48 46 86 17 140" stroke="#f0a500" stroke-opacity="0.18" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

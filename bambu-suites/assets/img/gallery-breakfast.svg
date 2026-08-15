@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Breakfast illustration</title>
+  <desc id="desc">A simple breakfast scene with coffee, fruit, and warm light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="plate" x1="0" x2="1">
+      <stop offset="0%" stop-color="#eaeaea"/>
+      <stop offset="100%" stop-color="#cfcfcf"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect x="120" y="140" width="960" height="1220" rx="28" fill="#111" stroke="#262626" stroke-width="6"/>
+  <rect x="170" y="190" width="860" height="1120" rx="20" fill="#161616"/>
+
+  <circle cx="850" cy="310" r="110" fill="#f0a500" opacity="0.28"/>
+  <circle cx="850" cy="310" r="72" fill="#f0a500" opacity="0.7"/>
+
+  <ellipse cx="610" cy="840" rx="360" ry="120" fill="#0f0f0f"/>
+  <ellipse cx="610" cy="856" rx="288" ry="78" fill="#131313"/>
+
+  <ellipse cx="430" cy="748" rx="130" ry="88" fill="url(#plate)"/>
+  <rect x="372" y="690" width="116" height="80" rx="20" fill="#f0a500" opacity="0.88"/>
+  <rect x="390" y="706" width="80" height="16" rx="8" fill="#fff" opacity="0.65"/>
+  <circle cx="430" cy="716" r="28" fill="#fff0c4"/>
+  <circle cx="470" cy="734" r="22" fill="#ffd36b"/>
+
+  <rect x="556" y="642" width="150" height="178" rx="26" fill="#1f1f1f" stroke="#2e2e2e" stroke-width="4"/>
+  <rect x="580" y="678" width="102" height="112" rx="16" fill="#0d0d0d"/>
+  <path d="M632 676C673 676 694 708 694 741C694 785 658 814 620 814C582 814 548 784 548 742C548 706 571 676 632 676Z" fill="#f0a500" opacity="0.75"/>
+  <path d="M575 704C584 674 603 650 628 628" stroke="#f0a500" stroke-opacity="0.38" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <rect x="748" y="678" width="150" height="140" rx="18" fill="#111" stroke="#2b2b2b" stroke-width="4"/>
+  <rect x="768" y="700" width="110" height="96" rx="12" fill="#eaeaea"/>
+  <rect x="784" y="722" width="78" height="14" rx="7" fill="#f0a500" opacity="0.56"/>
+  <rect x="784" y="748" width="58" height="14" rx="7" fill="#cfcfcf"/>
+
+  <rect x="280" y="514" width="640" height="84" rx="18" fill="#1c1c1c"/>
+  <rect x="312" y="532" width="576" height="14" rx="7" fill="#2d2d2d"/>
+  <rect x="312" y="558" width="452" height="14" rx="7" fill="#2d2d2d"/>
+
+  <rect x="170" y="1240" width="860" height="40" rx="20" fill="#080808"/>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Twin room illustration</title>
+  <desc id="desc">A calm twin-bed room with desk, lamp, and warm window light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0c0c0c"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" x2="1">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <linearGradient id="sheet" x1="0" x2="1">
+      <stop offset="0%" stop-color="#efefef"/>
+      <stop offset="100%" stop-color="#d5d5d5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#wall)"/>
+
+  <rect x="90" y="114" width="320" height="220" fill="#0d0d0d" stroke="#242424" stroke-width="5"/>
+  <rect x="118" y="144" width="264" height="160" fill="#111"/>
+  <circle cx="342" cy="186" r="24" fill="#f0a500" opacity="0.78"/>
+
+  <rect x="132" y="486" width="374" height="142" rx="14" fill="#131313" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="156" y="464" width="136" height="54" rx="10" fill="url(#sheet)"/>
+  <rect x="334" y="464" width="136" height="54" rx="10" fill="url(#sheet)"/>
+  <rect x="154" y="516" width="140" height="30" rx="6" fill="#d0d0d0"/>
+  <rect x="332" y="516" width="140" height="30" rx="6" fill="#d0d0d0"/>
+  <rect x="162" y="450" width="120" height="10" rx="5" fill="#f0a500" opacity="0.42"/>
+  <rect x="340" y="450" width="120" height="10" rx="5" fill="#f0a500" opacity="0.42"/>
+
+  <rect x="590" y="486" width="374" height="142" rx="14" fill="#131313" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="614" y="464" width="136" height="54" rx="10" fill="url(#sheet)"/>
+  <rect x="792" y="464" width="136" height="54" rx="10" fill="url(#sheet)"/>
+  <rect x="612" y="516" width="140" height="30" rx="6" fill="#d0d0d0"/>
+  <rect x="790" y="516" width="140" height="30" rx="6" fill="#d0d0d0"/>
+  <rect x="620" y="450" width="120" height="10" rx="5" fill="#f0a500" opacity="0.42"/>
+  <rect x="798" y="450" width="120" height="10" rx="5" fill="#f0a500" opacity="0.42"/>
+
+  <rect x="488" y="300" width="224" height="120" rx="10" fill="#111" stroke="#2e2e2e" stroke-width="4"/>
+  <rect x="514" y="328" width="168" height="70" rx="8" fill="#1d1d1d"/>
+  <rect x="532" y="340" width="132" height="12" rx="6" fill="#303030"/>
+  <rect x="532" y="364" width="94" height="12" rx="6" fill="#2a2a2a"/>
+  <rect x="846" y="300" width="106" height="140" rx="10" fill="#111" stroke="#2e2e2e" stroke-width="4"/>
+  <rect x="866" y="328" width="66" height="84" rx="8" fill="#1f1f1f"/>
+  <rect x="878" y="294" width="44" height="40" rx="8" fill="#f0a500" opacity="0.45"/>
+
+  <path d="M0 828H1200V900H0Z" fill="#080808"/>
+</svg>

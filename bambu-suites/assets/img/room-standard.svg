@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Standard room illustration</title>
+  <desc id="desc">A compact but comfortable room with desk, TV, lamp, and soft amber accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" x2="1">
+      <stop offset="0%" stop-color="#161616"/>
+      <stop offset="100%" stop-color="#0f0f0f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#wall)"/>
+
+  <rect x="96" y="126" width="290" height="230" rx="14" fill="#111" stroke="#2a2a2a" stroke-width="5"/>
+  <rect x="122" y="154" width="238" height="174" rx="10" fill="#1b1b1b"/>
+  <rect x="280" y="162" width="54" height="158" rx="8" fill="#0e0e0e"/>
+  <rect x="296" y="176" width="26" height="128" rx="12" fill="#f0a500" opacity="0.38"/>
+
+  <rect x="126" y="466" width="444" height="164" rx="14" fill="#121212" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="146" y="440" width="164" height="54" rx="10" fill="#e4e4e4"/>
+  <rect x="340" y="440" width="164" height="54" rx="10" fill="#dedede"/>
+  <rect x="154" y="518" width="142" height="18" rx="6" fill="#cfcfcf"/>
+  <rect x="348" y="518" width="142" height="18" rx="6" fill="#cfcfcf"/>
+  <rect x="154" y="548" width="144" height="16" rx="6" fill="#bdbdbd"/>
+  <rect x="346" y="548" width="144" height="16" rx="6" fill="#bdbdbd"/>
+
+  <rect x="658" y="166" width="398" height="158" rx="12" fill="#101010" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="688" y="194" width="200" height="96" rx="10" fill="#1d1d1d"/>
+  <rect x="688" y="194" width="200" height="12" rx="6" fill="#f0a500" opacity="0.42"/>
+  <rect x="900" y="194" width="120" height="96" rx="10" fill="#131313"/>
+  <rect x="918" y="222" width="84" height="44" rx="8" fill="#222"/>
+
+  <rect x="666" y="488" width="396" height="138" rx="12" fill="#101010" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="694" y="510" width="188" height="20" rx="6" fill="#2b2b2b"/>
+  <rect x="694" y="542" width="250" height="18" rx="6" fill="#242424"/>
+  <rect x="694" y="574" width="158" height="18" rx="6" fill="#242424"/>
+  <rect x="876" y="510" width="124" height="92" rx="10" fill="#1a1a1a"/>
+  <rect x="894" y="536" width="88" height="46" rx="8" fill="#f0a500" opacity="0.42"/>
+
+  <path d="M0 824H1200V900H0Z" fill="#080808"/>
+</svg>

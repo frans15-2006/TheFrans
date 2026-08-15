@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Facade at dusk illustration</title>
+  <desc id="desc">A narrow vertical resort facade with lit windows and dark Palawan sky.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#040404"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#ffe49d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <rect x="176" y="130" width="848" height="1220" rx="20" fill="#0e0e0e" stroke="#262626" stroke-width="6"/>
+  <rect x="226" y="180" width="748" height="1120" rx="14" fill="#141414"/>
+
+  <rect x="252" y="218" width="696" height="144" fill="#191919"/>
+  <rect x="252" y="388" width="696" height="144" fill="#171717"/>
+  <rect x="252" y="558" width="696" height="144" fill="#191919"/>
+  <rect x="252" y="728" width="696" height="144" fill="#171717"/>
+  <rect x="252" y="898" width="696" height="144" fill="#191919"/>
+  <rect x="252" y="1068" width="696" height="144" fill="#171717"/>
+
+  <g fill="url(#light)">
+    <rect x="306" y="250" width="116" height="76" opacity="0.9"/>
+    <rect x="478" y="250" width="116" height="76" opacity="0.84"/>
+    <rect x="650" y="250" width="116" height="76" opacity="0.9"/>
+    <rect x="822" y="250" width="72" height="76" opacity="0.8"/>
+    <rect x="306" y="420" width="116" height="76" opacity="0.82"/>
+    <rect x="478" y="420" width="116" height="76" opacity="0.94"/>
+    <rect x="650" y="420" width="116" height="76" opacity="0.82"/>
+    <rect x="822" y="420" width="72" height="76" opacity="0.9"/>
+    <rect x="306" y="590" width="116" height="76" opacity="0.9"/>
+    <rect x="478" y="590" width="116" height="76" opacity="0.82"/>
+    <rect x="650" y="590" width="116" height="76" opacity="0.94"/>
+    <rect x="822" y="590" width="72" height="76" opacity="0.82"/>
+    <rect x="306" y="760" width="116" height="76" opacity="0.82"/>
+    <rect x="478" y="760" width="116" height="76" opacity="0.9"/>
+    <rect x="650" y="760" width="116" height="76" opacity="0.82"/>
+    <rect x="822" y="760" width="72" height="76" opacity="0.94"/>
+    <rect x="306" y="930" width="116" height="76" opacity="0.9"/>
+    <rect x="478" y="930" width="116" height="76" opacity="0.82"/>
+    <rect x="650" y="930" width="116" height="76" opacity="0.94"/>
+    <rect x="822" y="930" width="72" height="76" opacity="0.82"/>
+    <rect x="306" y="1100" width="116" height="76" opacity="0.82"/>
+    <rect x="478" y="1100" width="116" height="76" opacity="0.94"/>
+    <rect x="650" y="1100" width="116" height="76" opacity="0.82"/>
+    <rect x="822" y="1100" width="72" height="76" opacity="0.9"/>
+  </g>
+
+  <rect x="226" y="180" width="748" height="1120" fill="none" stroke="#202020" stroke-width="4"/>
+  <rect x="0" y="1330" width="1200" height="170" fill="#080808"/>
+</svg>

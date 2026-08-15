@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bambu Suites | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Bambu Suites in Puerto Princesa, Palawan sits on B.M. Road, Barangay San Pedro, with family rooms, free parking, Wi-Fi, breakfast, and direct contact links.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bambu Suites | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A modern minimalist boutique stay on B.M. Road, Barangay San Pedro, Puerto Princesa City, Palawan.">
+  <meta property="og:image" content="assets/img/hero-visual.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bambu Suites | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Family rooms, breakfast, free parking, Wi-Fi, and a verified B.M. Road address in Puerto Princesa City.">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --line: rgba(234, 234, 234, 0.14);
+      --soft: rgba(240, 165, 0, 0.12);
+    }
+
+    html {
+      scroll-behavior: auto;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.12), transparent 28%),
+        linear-gradient(180deg, #080808 0%, #0b0b0b 55%, #080808 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(234,234,234,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(234,234,234,0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.35), transparent 80%);
+      opacity: 0.45;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    .section-shell {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+    }
+
+    .section-kicker {
+      font-size: 0.72rem;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      margin: 0;
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.15vw, 1.1rem);
+      line-height: 1.7;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.98) contrast(1.04);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.74) 44%, rgba(8, 8, 8, 0.12) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.12) 0%, rgba(8, 8, 8, 0.48) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(2rem, 6vw, 4rem);
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .brand-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: fit-content;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.18);
+    }
+
+    .brand-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(4.4rem, 14vw, 10.5rem);
+      max-width: 6.5ch;
+      margin: 0;
+    }
+
+    .hero-copy {
+      max-width: 32rem;
+      color: rgba(234, 234, 234, 0.86);
+      line-height: 1.72;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(234, 234, 234, 0.22);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+      will-change: transform;
+    }
+
+    .button-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.65);
+      color: #fff;
+    }
+
+    .button-link.primary {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #080808;
+      font-weight: 700;
+    }
+
+    .button-link.primary:hover {
+      background: #ffb51f;
+      border-color: #ffb51f;
+      color: #080808;
+    }
+
+    .content-grid {
+      display: grid;
+      gap: clamp(2rem, 4vw, 3rem);
+      grid-template-columns: 1fr;
+    }
+
+    .rooms-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      margin-top: 2.25rem;
+    }
+
+    .room-figure {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 1.15rem;
+    }
+
+    .room-figure img,
+    .gallery-figure img {
+      width: 100%;
+      display: block;
+      background: #111;
+    }
+
+    .room-figure img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-caption {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .room-name,
+    .mini-title {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      margin: 0;
+    }
+
+    .room-text {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+      max-width: 30ch;
+    }
+
+    .room-meta {
+      color: rgba(234, 234, 234, 0.88);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      will-change: transform, opacity;
+    }
+
+    .list-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: baseline;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .list-item b {
+      color: #fff;
+      min-width: 10rem;
+      flex-shrink: 0;
+    }
+
+    .list-item span {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .location-wrap {
+      display: grid;
+      gap: 2rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .address-block {
+      display: grid;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .address-block p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .map-frame {
+      position: relative;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: min(70vh, 560px);
+      border: 0;
+      display: block;
+      background: #111;
+    }
+
+    .booking-banner {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(2.25rem, 5vw, 3.5rem) 0;
+      margin: 0 auto;
+    }
+
+    .booking-inner {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: 1fr;
+      margin-top: 2rem;
+    }
+
+    .gallery-figure {
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .gallery-figure img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 320ms ease;
+    }
+
+    .gallery-figure:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 2.5rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.2rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.1rem;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: var(--amber);
+    }
+
+    .split {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .mono-note {
+      color: rgba(234, 234, 234, 0.6);
+      font-size: 0.8rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner {
+        min-height: 100svh;
+        align-content: end;
+      }
+
+      .content-grid {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      }
+
+      .rooms-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .location-wrap {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      }
+
+      .booking-inner {
+        grid-template-columns: minmax(0, 0.95fr) auto;
+      }
+
+      .split {
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 0.3fr);
+        align-items: end;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+      }
+
+      .list-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .rooms-grid {
+        gap: 2.5rem;
+      }
+
+      .room-figure img {
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <noscript>
+    <style>
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+</head>
+<body>
+  <main>
+    <section class="hero" id="top" aria-label="Bambu Suites hero">
+      <img class="hero-media" src="assets/img/hero-visual.svg" alt="Stylized dusk view of Bambu Suites in Puerto Princesa, Palawan">
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <div class="brand-line" data-reveal>
+          <div class="brand-mark">Bambu Suites</div>
+          <div class="mono text-[0.72rem] text-[#f0a500] uppercase">Puerto Princesa, Palawan</div>
+        </div>
+        <div class="max-w-[52rem] grid gap-5 hero-copy-wrap">
+          <h1 class="hero-title" data-reveal>Quiet Palawan stays with a city address that is easy to find.</h1>
+          <p class="hero-copy" data-reveal>Bambu Suites is a modern minimalist boutique stay on B.M. Road, Barangay San Pedro, Puerto Princesa City. The property is known for family rooms, free parking, Wi-Fi, breakfast, and a peaceful atmosphere inspired by Palawan.</p>
+          <div class="cta-row" data-reveal>
+            <a class="button-link primary" href="#rooms">See rooms</a>
+            <a class="button-link" href="#location">View location</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="rooms">
+      <div class="split">
+        <div>
+          <p class="section-kicker mono" data-reveal>Rooms / Accommodations</p>
+          <h2 class="section-title" data-reveal>Rooms shaped for restful city stops.</h2>
+        </div>
+        <p class="section-copy" data-reveal>Verified listings describe family rooms, non-smoking rooms, and practical in-room essentials such as air-conditioning, private bathrooms, desks, TVs, and free Wi-Fi.</p>
+      </div>
+
+      <div class="rooms-grid">
+        <figure class="room-figure" data-reveal>
+          <img src="assets/img/room-family.svg" alt="Illustrated family room interior at Bambu Suites">
+          <figcaption class="room-caption">
+            <h3 class="room-name">Family Rooms</h3>
+            <p class="room-text">A simple, flexible option for guests who want a calm base in Puerto Princesa with the essentials already in place.</p>
+            <p class="room-meta mono">Air-conditioning, private bathroom, desk, TV, and free Wi-Fi.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="room-figure" data-reveal>
+          <img src="assets/img/room-twin.svg" alt="Illustrated twin room interior at Bambu Suites">
+          <figcaption class="room-caption">
+            <h3 class="room-name">Twin Bed Stays</h3>
+            <p class="room-text">Guest reviews mention twin-bed layouts, clean spaces, and a comfortable setup for friends or short business trips.</p>
+            <p class="room-meta mono">Blackout curtains, cable TV, dining area, bidet, and toiletries.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="room-figure" data-reveal>
+          <img src="assets/img/room-standard.svg" alt="Illustrated standard room interior at Bambu Suites">
+          <figcaption class="room-caption">
+            <h3 class="room-name">Practical Standard Rooms</h3>
+            <p class="room-text">For travelers who want a straightforward place to sleep, work, and reset before the next Palawan stop.</p>
+            <p class="room-meta mono">Coffee and tea setup, work desk, private bath, and non-smoking room options.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-shell" id="amenities">
+      <div class="split">
+        <div>
+          <p class="section-kicker mono" data-reveal>Amenities</p>
+          <h2 class="section-title" data-reveal>Useful comforts without unnecessary noise.</h2>
+        </div>
+        <p class="section-copy" data-reveal>Public listings consistently mention the practical things that matter most on the road: parking, breakfast, Wi-Fi, transport help, and service touches for longer stays.</p>
+      </div>
+
+      <div class="list-grid" data-stagger>
+        <div class="list-item" data-reveal><b>Free parking</b><span>On-site parking is listed as a guest convenience.</span></div>
+        <div class="list-item" data-reveal><b>Breakfast</b><span>Breakfast is included or available, depending on the rate and listing.</span></div>
+        <div class="list-item" data-reveal><b>Free Wi-Fi</b><span>Room and business access are both referenced in public listings.</span></div>
+        <div class="list-item" data-reveal><b>Airport transport</b><span>Airport shuttle or airport transportation appears in published amenities.</span></div>
+        <div class="list-item" data-reveal><b>Meeting support</b><span>Conference facilities and meeting rooms are listed by review platforms.</span></div>
+        <div class="list-item" data-reveal><b>Laundry and ironing</b><span>Service options include laundry and ironing support for longer stays.</span></div>
+        <div class="list-item" data-reveal><b>Massage service</b><span>Full body massage and massage services are published as available amenities.</span></div>
+        <div class="list-item" data-reveal><b>24-hour coverage</b><span>Listings mention 24-hour check-in, front desk, and security support.</span></div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="location">
+      <div class="split">
+        <div>
+          <p class="section-kicker mono" data-reveal>Location / Map</p>
+          <h2 class="section-title" data-reveal>Verified on B.M. Road in Barangay San Pedro.</h2>
+        </div>
+        <p class="section-copy" data-reveal>The address used here matches public listings for Bambu Suites in Puerto Princesa City, Palawan: B.M. Road, Barangay San Pedro, 5300 Puerto Princesa, Philippines.</p>
+      </div>
+
+      <div class="location-wrap">
+        <div class="address-block" data-reveal>
+          <p class="mono text-[0.72rem] uppercase text-[#f0a500]">Verified address</p>
+          <p><strong class="text-white">Bambu Suites</strong><br>B.M. Road, Barangay San Pedro<br>5300 Puerto Princesa City, Palawan, Philippines</p>
+          <p class="mono-note">Map pin: 9.765031, 118.759910</p>
+          <div class="cta-row">
+            <a class="button-link primary" href="https://www.google.com/maps?q=9.765031,118.759910" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+            <a class="button-link" href="tel:+639155822114">Call +63 915 582 2114</a>
+          </div>
+        </div>
+
+        <div class="map-frame" data-reveal>
+          <iframe title="Bambu Suites map" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=118.74991%2C9.755031%2C118.76991%2C9.775031&layer=mapnik&marker=9.765031%2C118.759910"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-banner" id="booking">
+      <div class="booking-inner">
+        <div>
+          <p class="section-kicker mono" data-reveal>Booking CTA</p>
+          <h2 class="section-title" data-reveal>Plan the stay directly with the Bambu Suites team.</h2>
+          <p class="section-copy" data-reveal>If you are arranging a Palawan stopover, use the direct contact options below instead of a form. It keeps the path simple and matches how the property presents itself publicly.</p>
+        </div>
+        <div class="cta-row justify-self-start md:justify-self-end" data-reveal>
+          <a class="button-link primary" href="tel:+639155822114">Call now</a>
+          <a class="button-link" href="mailto:bambusuitesph@gmail.com">Email</a>
+          <a class="button-link" href="https://www.facebook.com/bambusuitespalawan/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="gallery">
+      <div class="split">
+        <div>
+          <p class="section-kicker mono" data-reveal>Gallery</p>
+          <h2 class="section-title" data-reveal>A closer look at the atmosphere.</h2>
+        </div>
+        <p class="section-copy" data-reveal>These local SVG visuals are built into the site so the page ships with real image assets and no broken references.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-figure" data-reveal>
+          <img src="assets/img/gallery-facade.svg" alt="Illustrated Bambu Suites facade at dusk">
+          <figcaption class="gallery-caption"><span>Facade at dusk</span><span class="mono">Palawan light</span></figcaption>
+        </figure>
+
+        <figure class="gallery-figure" data-reveal>
+          <img src="assets/img/gallery-breakfast.svg" alt="Illustrated breakfast setting at Bambu Suites">
+          <figcaption class="gallery-caption"><span>Breakfast service</span><span class="mono">Simple start</span></figcaption>
+        </figure>
+
+        <figure class="gallery-figure" data-reveal>
+          <img src="assets/img/gallery-details.svg" alt="Illustrated interior details at Bambu Suites">
+          <figcaption class="gallery-caption"><span>Interior details</span><span class="mono">Quiet textures</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div>
+        <p class="section-kicker mono" data-reveal>Contact / Footer</p>
+        <h2 class="mini-title" data-reveal>Bambu Suites, Puerto Princesa, Palawan.</h2>
+        <p class="section-copy" data-reveal>BM Road, Barangay San Pedro, 5300 Puerto Princesa City, Palawan, Philippines.</p>
+      </div>
+      <div class="footer-links mono text-[0.78rem] uppercase" data-reveal>
+        <a href="tel:+639155822114">+63 915 582 2114</a>
+        <a href="mailto:bambusuitesph@gmail.com">bambusuitesph@gmail.com</a>
+        <a href="https://www.facebook.com/bambusuitespalawan/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealTargets = Array.from(document.querySelectorAll('[data-reveal]'));
+
+  if (prefersReducedMotion) {
+    revealTargets.forEach((el) => {
+      el.style.opacity = 1;
+      el.style.transform = 'none';
+    });
+  } else {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      lerp: 0.09,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -64, duration: 1.1 });
+      });
+    });
+
+    const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTimeline
+      .from('.hero-media', { scale: 1.08, duration: 1.7, ease: 'power2.out' }, 0)
+      .from('.brand-line', { y: 18, autoAlpha: 0, duration: 0.8 }, 0.2)
+      .from('.hero-copy-wrap > *', { y: 26, autoAlpha: 0, duration: 0.9, stagger: 0.12 }, 0.32);
+
+    gsap.utils.toArray('[data-reveal]').forEach((el) => {
+      if (el.classList.contains('hero-copy-wrap') || el.closest('.hero')) return;
+      gsap.fromTo(el, {
+        autoAlpha: 0,
+        y: 28
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 86%'
+        }
+      });
+    });
+
+    gsap.utils.toArray('.room-figure img, .gallery-figure img').forEach((img) => {
+      gsap.fromTo(img, {
+        scale: 1.04,
+        y: 18
+      }, {
+        scale: 1,
+        y: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img,
+          start: 'top 90%',
+          end: 'bottom 20%',
+          scrub: true
+        }
+      });
+    });
+
+  }
+</script>
+</html>
