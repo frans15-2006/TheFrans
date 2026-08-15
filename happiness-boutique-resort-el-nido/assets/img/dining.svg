@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized restaurant and dining scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#090909"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="120" y="120" width="1360" height="760" rx="28" fill="#101010" stroke="#2a2a2a"/>
+  <rect x="182" y="188" width="1236" height="210" rx="20" fill="#151515"/>
+  <circle cx="398" cy="286" r="18" fill="#f0a500" opacity="0.88"/>
+  <circle cx="650" cy="286" r="18" fill="#f0a500" opacity="0.88"/>
+  <circle cx="902" cy="286" r="18" fill="#f0a500" opacity="0.88"/>
+  <circle cx="1154" cy="286" r="18" fill="#f0a500" opacity="0.88"/>
+  <rect x="190" y="422" width="1220" height="240" rx="24" fill="#111111"/>
+  <rect x="238" y="460" width="260" height="146" rx="18" fill="#1c1c1c"/>
+  <rect x="554" y="460" width="260" height="146" rx="18" fill="#1c1c1c"/>
+  <rect x="870" y="460" width="260" height="146" rx="18" fill="#1c1c1c"/>
+  <circle cx="368" cy="528" r="48" fill="#f0a500" opacity="0.16"/>
+  <circle cx="684" cy="528" r="48" fill="#f0a500" opacity="0.16"/>
+  <circle cx="1000" cy="528" r="48" fill="#f0a500" opacity="0.16"/>
+  <path d="M180 796 C 330 758, 500 752, 670 786 C 814 814, 968 818, 1130 792 C 1286 766, 1372 762, 1428 776 L 1428 900 L 180 900 Z" fill="#0a0a0a"/>
+  <rect x="232" y="724" width="108" height="58" rx="18" fill="#1f3940"/>
+  <rect x="400" y="724" width="108" height="58" rx="18" fill="#1f3940"/>
+  <rect x="1044" y="724" width="108" height="58" rx="18" fill="#1f3940"/>
+  <rect x="1212" y="724" width="108" height="58" rx="18" fill="#1f3940"/>
+</svg>

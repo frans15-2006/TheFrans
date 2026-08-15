@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized balcony room overlooking El Nido water">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10343a"/>
+      <stop offset="100%" stop-color="#1b4b4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="92" y="120" width="1416" height="760" rx="28" fill="#101010" stroke="#292929"/>
+  <rect x="180" y="180" width="720" height="560" rx="18" fill="#0f0f0f" stroke="#2a2a2a"/>
+  <rect x="220" y="224" width="248" height="348" rx="12" fill="#152126"/>
+  <rect x="486" y="224" width="354" height="348" rx="12" fill="url(#sea)"/>
+  <circle cx="760" cy="302" r="72" fill="#f0a500" opacity="0.78"/>
+  <path d="M486 356 C 560 332, 650 324, 840 356" stroke="#f0a500" stroke-opacity="0.18" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M486 438 C 574 416, 652 408, 840 438" stroke="#eaeaea" stroke-opacity="0.09" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <rect x="190" y="604" width="680" height="92" rx="18" fill="#1b1b1b"/>
+  <rect x="222" y="624" width="616" height="28" rx="12" fill="#2a2a2a"/>
+  <rect x="974" y="176" width="446" height="628" rx="20" fill="#131313" stroke="#2a2a2a"/>
+  <rect x="1008" y="214" width="376" height="150" rx="12" fill="#1e1e1e"/>
+  <rect x="1008" y="382" width="376" height="350" rx="12" fill="#0c1011"/>
+  <path d="M1008 382 C 1100 420, 1186 440, 1384 448" stroke="#f0a500" stroke-opacity="0.16" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <rect x="1090" y="470" width="220" height="50" rx="25" fill="#f0a500" opacity="0.1"/>
+  <rect x="1070" y="548" width="260" height="110" rx="22" fill="#161616"/>
+  <path d="M100 840 C 254 786, 456 784, 640 816 C 792 842, 952 848, 1124 820 C 1286 794, 1386 790, 1500 810 L 1500 920 L 100 920 Z" fill="#0a0a0a"/>
+</svg>

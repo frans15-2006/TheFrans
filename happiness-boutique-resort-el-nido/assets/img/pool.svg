@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized resort pool with tropical edges">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c474f"/>
+      <stop offset="100%" stop-color="#0c1f24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="120" y="120" width="1360" height="760" rx="28" fill="#101010" stroke="#282828"/>
+  <path d="M220 300 C 420 220, 740 220, 980 300 C 1114 345, 1240 356, 1380 326 L 1380 748 C 1212 792, 1070 790, 936 746 C 734 680, 492 676, 220 740 Z" fill="url(#pool)"/>
+  <path d="M248 396 C 466 330, 694 328, 916 388 C 1082 432, 1238 438, 1360 412" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="8" stroke-linecap="round"/>
+  <path d="M246 506 C 456 452, 678 452, 898 506 C 1066 548, 1220 548, 1354 526" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="6" stroke-linecap="round"/>
+  <rect x="210" y="210" width="166" height="78" rx="16" fill="#1b1b1b"/>
+  <rect x="216" y="284" width="154" height="18" rx="9" fill="#f0a500" opacity="0.25"/>
+  <rect x="1242" y="240" width="174" height="86" rx="16" fill="#1b1b1b"/>
+  <rect x="1248" y="316" width="162" height="18" rx="9" fill="#f0a500" opacity="0.24"/>
+  <path d="M146 834 C 290 786, 444 778, 604 812 C 764 846, 930 848, 1102 818 C 1260 790, 1370 788, 1518 810 L 1518 920 L 146 920 Z" fill="#0a0a0a"/>
+  <path d="M460 728 C 510 686, 576 664, 650 664 C 724 664, 792 686, 842 728 C 792 740, 726 748, 650 748 C 574 748, 510 740, 460 728 Z" fill="#0f1213"/>
+</svg>

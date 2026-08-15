@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized queen room interior">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="lamp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd36d"/>
+      <stop offset="100%" stop-color="#f0a500"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="90" y="120" width="1420" height="760" rx="26" fill="#101010" stroke="#262626"/>
+  <rect x="160" y="180" width="520" height="540" rx="20" fill="#151515" stroke="#2a2a2a"/>
+  <rect x="210" y="230" width="420" height="180" rx="14" fill="#0d0d0d"/>
+  <rect x="236" y="254" width="156" height="132" rx="8" fill="#1d1d1d"/>
+  <rect x="408" y="254" width="186" height="132" rx="8" fill="#1d1d1d"/>
+  <path d="M236 254 L392 386" stroke="#f0a500" stroke-opacity="0.24" stroke-width="10"/>
+  <path d="M408 254 L594 386" stroke="#f0a500" stroke-opacity="0.18" stroke-width="10"/>
+  <circle cx="523" cy="280" r="24" fill="url(#lamp)"/>
+  <rect x="130" y="730" width="1340" height="60" rx="18" fill="#0b0b0b"/>
+  <rect x="305" y="548" width="680" height="140" rx="28" fill="#1b1b1b"/>
+  <rect x="356" y="500" width="580" height="88" rx="24" fill="#202020"/>
+  <rect x="382" y="464" width="520" height="56" rx="18" fill="#2a2a2a"/>
+  <rect x="404" y="446" width="194" height="34" rx="8" fill="#f0a500" opacity="0.55"/>
+  <rect x="650" y="446" width="194" height="34" rx="8" fill="#eaeaea" opacity="0.12"/>
+  <rect x="338" y="586" width="120" height="48" rx="24" fill="#f0a500" opacity="0.18"/>
+  <rect x="1114" y="178" width="220" height="540" rx="18" fill="#131313" stroke="#2a2a2a"/>
+  <rect x="1140" y="206" width="168" height="292" rx="10" fill="#0f1416"/>
+  <path d="M1140 206 C 1180 260, 1220 314, 1308 498" stroke="#1f3940" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path d="M1160 236 C 1204 278, 1236 328, 1286 430" stroke="#f0a500" stroke-opacity="0.2" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <rect x="1180" y="554" width="108" height="112" rx="10" fill="#1b1b1b"/>
+  <rect x="1120" y="700" width="200" height="40" rx="12" fill="#f0a500" opacity="0.12"/>
+  <path d="M125 848 C 266 788, 470 780, 649 818 C 796 850, 959 856, 1134 824 C 1282 796, 1386 792, 1490 818 L 1490 920 L 125 920 Z" fill="#0a0a0a"/>
+</svg>

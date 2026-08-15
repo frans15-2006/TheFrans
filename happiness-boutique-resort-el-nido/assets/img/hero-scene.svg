@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Stylized tropical dusk scene for Happiness Boutique Resort">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="45%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#1b1b1b"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd36d"/>
+      <stop offset="100%" stop-color="#f0a500"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10222a"/>
+      <stop offset="100%" stop-color="#1f3940"/>
+    </linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#12333a"/>
+      <stop offset="100%" stop-color="#0b0f10"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1500" cy="220" r="190" fill="url(#sun)" opacity="0.9"/>
+  <circle cx="1500" cy="220" r="270" fill="#f0a500" opacity="0.08"/>
+
+  <path d="M0 560 C 210 470, 350 440, 530 500 C 680 550, 810 495, 980 420 C 1120 360, 1250 350, 1380 415 C 1530 490, 1680 495, 1920 420 L 1920 1080 L 0 1080 Z" fill="#111111"/>
+  <path d="M0 640 C 220 565, 420 560, 620 620 C 770 665, 950 642, 1080 590 C 1220 535, 1360 515, 1510 560 C 1670 605, 1770 620, 1920 580 L 1920 1080 L 0 1080 Z" fill="#171717"/>
+
+  <rect x="0" y="720" width="1920" height="360" fill="#0a0a0a"/>
+  <path d="M230 740 C 440 675, 700 670, 915 735 C 1040 774, 1210 780, 1360 745 C 1490 714, 1690 712, 1920 760 L 1920 1080 L 0 1080 L 0 790 C 90 770, 150 760, 230 740 Z" fill="url(#pool)"/>
+
+  <path d="M340 800 C 480 766, 640 770, 760 806 C 870 838, 1030 835, 1160 800 C 1260 771, 1410 770, 1560 804 L 1560 930 C 1410 962, 1260 962, 1140 930 C 1005 895, 860 892, 730 920 C 610 948, 480 945, 340 920 Z" fill="url(#water)" opacity="0.9"/>
+  <path d="M355 852 C 512 815, 640 812, 770 850 C 880 882, 1020 882, 1140 852 C 1270 819, 1390 816, 1540 850" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="7" stroke-linecap="round"/>
+  <path d="M390 885 C 545 852, 660 850, 780 879 C 900 908, 1010 906, 1140 877 C 1260 848, 1380 846, 1518 878" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="5" stroke-linecap="round"/>
+
+  <g opacity="0.95">
+    <rect x="1250" y="525" width="430" height="245" rx="10" fill="#1a1a1a"/>
+    <rect x="1308" y="578" width="116" height="120" fill="#0e0e0e"/>
+    <rect x="1440" y="562" width="108" height="136" fill="#0e0e0e"/>
+    <rect x="1562" y="578" width="80" height="120" fill="#0e0e0e"/>
+    <rect x="1290" y="500" width="360" height="40" fill="#242424"/>
+    <rect x="1328" y="602" width="50" height="50" fill="#f0a500" opacity="0.18"/>
+    <rect x="1450" y="592" width="48" height="66" fill="#f0a500" opacity="0.18"/>
+    <rect x="1580" y="606" width="30" height="54" fill="#f0a500" opacity="0.18"/>
+  </g>
+
+  <path d="M1170 445 C 1200 380, 1228 326, 1290 280 C 1338 245, 1398 220, 1460 210 C 1412 260, 1388 300, 1372 350 C 1354 404, 1356 458, 1378 515 C 1318 500, 1240 474, 1170 445 Z" fill="#0d0d0d"/>
+  <path d="M250 360 C 336 320, 420 290, 500 278 C 444 324, 420 362, 404 398 C 388 432, 386 466, 398 506 C 340 470, 288 422, 250 360 Z" fill="#0f0f0f"/>
+
+  <path d="M1800 820 C 1780 756, 1730 710, 1670 694 C 1710 732, 1736 770, 1744 815 C 1752 858, 1746 905, 1728 950 C 1774 915, 1805 874, 1800 820 Z" fill="#0a0a0a"/>
+  <path d="M1788 786 C 1815 742, 1850 710, 1894 696 C 1860 732, 1842 770, 1838 816 C 1834 858, 1840 900, 1858 944 C 1810 912, 1782 854, 1788 786 Z" fill="#0e0e0e"/>
+
+  <g fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.48">
+    <path d="M170 810 C 126 782, 92 756, 58 724"/>
+    <path d="M188 794 C 148 760, 116 728, 84 686"/>
+    <path d="M1736 304 C 1688 274, 1650 248, 1616 212"/>
+    <path d="M1728 328 C 1688 306, 1648 284, 1604 250"/>
+  </g>
+
+  <g opacity="0.9" fill="#0d0d0d">
+    <path d="M220 830 C 180 784, 156 744, 146 704 C 178 726, 204 756, 226 798 C 238 784, 248 770, 258 756 C 270 724, 278 692, 280 656 C 304 710, 300 764, 286 812 C 278 836, 256 846, 220 830 Z"/>
+    <path d="M158 766 C 140 740, 126 716, 116 688 C 150 702, 176 726, 194 756"/>
+    <path d="M166 726 C 138 698, 116 670, 100 638 C 140 650, 170 674, 192 704"/>
+  </g>
+</svg>

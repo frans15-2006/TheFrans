@@ -1,5 +1,1182 @@
 <!DOCTYPE html>
-<title>Happiness Boutique Resort El Nido</title>
-<body>
-<!-- placeholder: build pending -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <meta name="robots" content="index,follow">
+  <title>Happiness Boutique Resort El Nido | Corong-Corong Boutique Stay</title>
+  <meta name="description" content="Happiness Boutique Resort in Sitio Lugadia, Corong-Corong, El Nido, Palawan. Explore verified room types, pool and spa amenities, the map location, and direct booking details.">
+  <link rel="canonical" href="./">
+  <meta property="og:title" content="Happiness Boutique Resort El Nido">
+  <meta property="og:description" content="Verified rooms, amenities, and location for Happiness Boutique Resort in Corong-Corong, El Nido, Palawan.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/hero-scene.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Happiness Boutique Resort El Nido">
+  <meta name="twitter:description" content="Verified rooms, amenities, and location for Happiness Boutique Resort in Corong-Corong, El Nido, Palawan.">
+  <meta name="twitter:image" content="assets/img/hero-scene.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Happiness Boutique Resort El Nido",
+    "description": "Boutique resort in Sitio Lugadia, Barangay Corong-Corong, El Nido, Palawan, Philippines.",
+    "image": "assets/img/hero-scene.svg",
+    "telephone": "+63 919 595 8771",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sitio Lugadia, Barangay Corong-Corong",
+      "addressLocality": "El Nido",
+      "addressRegion": "Palawan",
+      "postalCode": "5313",
+      "addressCountry": "Philippines"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 11.1561,
+      "longitude": 119.3991
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Outdoor swimming pool", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Spa", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Sauna", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Bar", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Airport shuttle", "value": true}
+    ]
+  }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <noscript>
+    <style>
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --bg-panel: #0f0f0f;
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.28);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.08), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(240, 165, 0, 0.05), transparent 28%),
+        var(--bg);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.22);
+      color: var(--text);
+    }
+
+    .container {
+      width: min(1140px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 4.5rem 0;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.2;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .display,
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    h1 {
+      font-size: clamp(4rem, 13vw, 8.8rem);
+      max-width: 8.5ch;
+    }
+
+    h2 {
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      max-width: 10ch;
+    }
+
+    h3 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 1px solid rgba(240, 165, 0, 0.65);
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, rgba(240, 165, 0, 0.28), rgba(240, 165, 0, 0.04));
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.14) inset;
+      flex: none;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.9rem 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      color: rgba(234, 234, 234, 0.75);
+      transition: color 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--amber);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.05);
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.74) 36%, rgba(8, 8, 8, 0.28) 72%, rgba(8, 8, 8, 0.62) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.38) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 75% 20%, rgba(240, 165, 0, 0.15), transparent 28%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding-bottom: 1.6rem;
+    }
+
+    .hero-copy {
+      align-self: end;
+      max-width: 46rem;
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-copy p {
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.8);
+      font-size: 1rem;
+    }
+
+    .hero-kicker {
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      margin-top: 0.35rem;
+      text-wrap: balance;
+    }
+
+    .hero-copy .support {
+      margin-top: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.95rem;
+      padding: 0.9rem 1.15rem;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.4);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .button.primary {
+      border-color: var(--amber);
+      background: var(--amber);
+      color: var(--bg);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: #ffb41c;
+      color: var(--bg);
+    }
+
+    .hero-note {
+      margin-top: 0.95rem;
+      color: rgba(234, 234, 234, 0.62);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head p:last-child {
+      max-width: 36rem;
+      font-size: 0.98rem;
+    }
+
+    .rooms-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .room {
+      display: grid;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .room:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .room-media {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+    }
+
+    .room-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-copy {
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+      padding-bottom: 0.2rem;
+    }
+
+    .room-copy p {
+      max-width: 40rem;
+    }
+
+    .room-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .room-points {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.76);
+    }
+
+    .room-points li {
+      position: relative;
+      padding-left: 0.8rem;
+    }
+
+    .room-points li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.42rem;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+
+    .amenity-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .amenity-group {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-group h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.95rem;
+    }
+
+    .amenity-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .amenity-list li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.72rem 0;
+      border-bottom: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .amenity-list li::before {
+      content: '';
+      width: 0.45rem;
+      height: 0.45rem;
+      margin-top: 0.44rem;
+      border-radius: 50%;
+      background: var(--amber);
+      flex: none;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.8rem;
+      padding-top: 0.4rem;
+    }
+
+    .detail-row {
+      display: grid;
+      gap: 0.2rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    .detail-row span {
+      color: var(--text);
+    }
+
+    .map-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      aspect-ratio: 4 / 3;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(0.86) contrast(1.05);
+    }
+
+    .cta-band {
+      display: grid;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cta-band p {
+      max-width: 36rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      margin: 0;
+    }
+
+    .gallery-media {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .gallery-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .gallery-item:hover .gallery-media img,
+    .gallery-item:focus-within .gallery-media img {
+      transform: scale(1.03);
+    }
+
+    .gallery-item figcaption {
+      margin-top: 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .footer {
+      padding: 2.3rem 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid h3 {
+      margin-bottom: 0.55rem;
+      font-size: 2rem;
+    }
+
+    .footer-grid a {
+      color: var(--text);
+      transition: color 180ms ease;
+    }
+
+    .footer-grid a:hover,
+    .footer-grid a:focus-visible {
+      color: var(--amber);
+    }
+
+    .footer-note {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.5);
+      font-size: 0.78rem;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 720px) {
+      .section {
+        padding: 5.5rem 0;
+      }
+
+      .section-head {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: end;
+      }
+
+      .rooms-list {
+        gap: 1.2rem;
+      }
+
+      .room {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 1.25rem;
+        align-items: center;
+      }
+
+      .room:nth-child(even) .room-media {
+        order: 2;
+      }
+
+      .room:nth-child(even) .room-copy {
+        order: 1;
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+      }
+
+      .amenity-group {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .amenity-group:not(:first-child) {
+        border-left: 1px solid var(--line);
+        padding-left: 1rem;
+      }
+
+      .location-grid {
+        grid-template-columns: 0.96fr 1.04fr;
+        gap: 1.25rem;
+      }
+
+      .cta-band {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.15fr 0.7fr 0.9fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .gallery-item.big {
+        grid-column: span 7;
+      }
+
+      .gallery-item.mid {
+        grid-column: span 5;
+      }
+
+      .gallery-item.tall {
+        grid-column: span 4;
+      }
+
+      .gallery-item.short {
+        grid-column: span 8;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-copy {
+        padding: 3.25rem 0 2.4rem;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .gallery-media {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Happiness Boutique Resort El Nido home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Happiness Boutique Resort</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <img src="assets/img/hero-scene.svg" alt="">
+    </div>
+    <div class="container hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow hero-kicker" data-hero-line>El Nido, Palawan</p>
+        <h1 id="hero-title" class="hero-title" data-hero-line>Sunset pools, spa calm, and Corong-Corong stays.</h1>
+        <p class="support" data-hero-line>Formerly Blue Mango Resort, Happiness Boutique Resort sits in Sitio Lugadia, Barangay Corong-Corong, footsteps from Corong-Corong Beach and built for slow island days.</p>
+        <div class="cta-row" data-hero-line>
+          <a class="button primary" href="#booking">Book direct</a>
+          <a class="button" href="https://happinessphilippines.com/el-nido-boutique-resort/">View official rooms</a>
+        </div>
+        <p class="hero-note" data-hero-line>Verified address: Sitio Lugadia, Barangay Corong-Corong, El Nido, Palawan 5313, Philippines.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="rooms" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Rooms & Accommodations</p>
+            <h2>Private rooms made for couples, families, and longer stays.</h2>
+          </div>
+          <p>Room names and core features below are drawn from Happiness Philippines listings and public booking pages so the copy stays grounded in the real resort.</p>
+        </div>
+
+        <div class="rooms-list">
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-balcony.svg" alt="Illustrated balcony room with El Nido light">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Private room, for 2 guests</p>
+              <h3>Deluxe Room with Balcony</h3>
+              <p>For two travelers who want a quieter corner to land after island hopping, with a balcony or terrace, air conditioning, and complimentary Wi-Fi.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>Balcony or terrace</li>
+                <li>Air conditioning</li>
+                <li>Complimentary Wi-Fi</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-queen.svg" alt="Illustrated queen room interior at Happiness Boutique Resort">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Private room, for 2 guests</p>
+              <h3>Standard Queen Room</h3>
+              <p>The resort's simple couple room, confirmed with a queen bed, air conditioning, a Smart TV, and hot and cold shower facilities.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>Queen bed</li>
+                <li>Smart TV</li>
+                <li>Hot and cold shower</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-family.svg" alt="Illustrated family room interior with bunk beds">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Family room, private stay</p>
+              <h3>HBR Carabao</h3>
+              <p>A family-friendly room for four guests, listed with a bunk bed, air conditioning, and a patio or balcony for a little extra breathing room.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>Bunk bed</li>
+                <li>Patio or balcony</li>
+                <li>Family-friendly</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-balcony.svg" alt="Illustrated El Nido suite room with balcony view">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Private room, for 2 guests</p>
+              <h3>King Suite Room</h3>
+              <p>The suite option in the property mix, identified on public booking pages with a king bed and a larger footprint for more generous downtime.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>King bed</li>
+                <li>Suite layout</li>
+                <li>For 2 guests</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-family.svg" alt="Illustrated family suite interior with multiple beds">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Family room, for 3 guests</p>
+              <h3>Standard Family Room</h3>
+              <p>Designed for small families or friends traveling together, with public listings placing it in the resort's family-room category for three guests.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>For 3 guests</li>
+                <li>Family room</li>
+                <li>Private room</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-queen.svg" alt="Illustrated premier king room at the resort">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Private room, for 2 guests</p>
+              <h3>Premier King Room</h3>
+              <p>A pared-back king room for travelers who want a quieter landing spot without losing the resort's pool-and-spa setting.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>King room category</li>
+                <li>For 2 guests</li>
+                <li>Private room</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="room reveal">
+            <div class="room-media">
+              <img src="assets/img/room-balcony.svg" alt="Illustrated balcony room at Corong-Corong">
+            </div>
+            <div class="room-copy">
+              <p class="room-meta">Private room, for 4 guests</p>
+              <h3>HBR Deluxe Family Room</h3>
+              <p>The larger family-friendly option in the resort lineup, listed for four guests and suited to longer stays with more room to spread out.</p>
+              <ul class="room-points" aria-label="Verified room features">
+                <li>For 4 guests</li>
+                <li>Family room</li>
+                <li>Private room</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Amenities</p>
+            <h2>Pool, spa, and a low-key stay that still covers the essentials.</h2>
+          </div>
+          <p>The resort is publicly listed with outdoor pools, spa and sauna access, a restaurant and bar, free Wi-Fi, and arrival help such as parking and airport shuttle service.</p>
+        </div>
+
+        <div class="amenity-grid">
+          <div class="amenity-group reveal">
+            <p class="room-meta">Swim and reset</p>
+            <h3>Wellness</h3>
+            <ul class="amenity-list">
+              <li>2 outdoor swimming pools</li>
+              <li>Spa treatments and massage</li>
+              <li>Sauna access</li>
+              <li>Garden and terrace seating</li>
+            </ul>
+          </div>
+
+          <div class="amenity-group reveal">
+            <p class="room-meta">Eat and linger</p>
+            <h3>Food and drink</h3>
+            <ul class="amenity-list">
+              <li>On-site restaurant</li>
+              <li>Bar</li>
+              <li>Room service</li>
+              <li>Snack bar</li>
+              <li>Special diet meals on request</li>
+            </ul>
+          </div>
+
+          <div class="amenity-group reveal">
+            <p class="room-meta">Arrivals made easy</p>
+            <h3>Practical comforts</h3>
+            <ul class="amenity-list">
+              <li>Free Wi-Fi</li>
+              <li>Free parking</li>
+              <li>Airport shuttle</li>
+              <li>Family rooms</li>
+              <li>Non-smoking rooms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Location</p>
+            <h2>Corong-Corong on the map, El Nido in real coordinates.</h2>
+          </div>
+          <p>Verified public listings place the resort in Sitio Lugadia, Barangay Corong-Corong, El Nido, Palawan 5313, Philippines, with the map centered on the El Nido coastline rather than Puerto Princesa or Manila.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-copy reveal">
+            <p class="room-meta">Sitio Lugadia, Barangay Corong-Corong</p>
+            <h3>Footsteps from Corong-Corong Beach.</h3>
+            <p>Happiness Boutique Resort sits in the quieter pocket of Corong-Corong, close enough to the beach for sunset walks and anchored firmly in El Nido, Palawan.</p>
+
+            <div class="detail-list" aria-label="Verified location details">
+              <div class="detail-row">
+                <strong>Address</strong>
+                <span>Sitio Lugadia, Barangay Corong-Corong, El Nido, Palawan 5313, Philippines</span>
+              </div>
+              <div class="detail-row">
+                <strong>Coordinates</strong>
+                <span>11.1561, 119.3991</span>
+              </div>
+              <div class="detail-row">
+                <strong>Nearest area</strong>
+                <span>Corong-Corong Beach, El Nido</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-frame reveal" aria-label="Map of Happiness Boutique Resort El Nido">
+            <iframe
+              title="Happiness Boutique Resort El Nido map"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=119.3920%2C11.1525%2C119.4065%2C11.1597&layer=mapnik&marker=11.156076%2C119.39906"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <p class="eyebrow">Booking CTA</p>
+            <h2>Reserve a base that keeps El Nido's sunsets within easy reach.</h2>
+            <p>Use the official Happiness Philippines site for direct room details, or message the team if you need a quicker answer before arrival.</p>
+          </div>
+          <div class="cta-row" style="margin-top:0; justify-content:flex-start;">
+            <a class="button primary" href="https://happinessphilippines.com/el-nido-boutique-resort/">Book on official site</a>
+            <a class="button" href="mailto:office@happinessphilippines.com">Email the resort</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Gallery</p>
+            <h2>Scenes that match the stay: pool light, room calm, and tropical edges.</h2>
+          </div>
+          <p>These local SVG image assets are bundled with the page so the gallery remains deployable on GitHub Pages without broken external links.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item big reveal">
+            <div class="gallery-media">
+              <img src="assets/img/pool.svg" alt="Illustrated resort pool at dusk">
+            </div>
+            <figcaption>Poolside calm in the Corong-Corong light</figcaption>
+          </figure>
+
+          <figure class="gallery-item mid reveal">
+            <div class="gallery-media">
+              <img src="assets/img/spa.svg" alt="Illustrated spa and wellness scene">
+            </div>
+            <figcaption>Spa and sauna time</figcaption>
+          </figure>
+
+          <figure class="gallery-item tall reveal">
+            <div class="gallery-media">
+              <img src="assets/img/dining.svg" alt="Illustrated resort restaurant scene">
+            </div>
+            <figcaption>Restaurant evenings</figcaption>
+          </figure>
+
+          <figure class="gallery-item short reveal">
+            <div class="gallery-media">
+              <img src="assets/img/room-queen.svg" alt="Illustrated queen room with warm interior light">
+            </div>
+            <figcaption>Quiet rooms for slow mornings</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-grid reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h3>Happiness Boutique Resort</h3>
+        <p>Formerly Blue Mango Resort, this boutique stay is part of the Happiness Philippines family in El Nido, Palawan.</p>
+        <p class="footer-note">All room names and amenities on this page were checked against publicly available resort and booking listings before copy was written.</p>
+      </div>
+
+      <div>
+        <p class="eyebrow">Reach the team</p>
+        <p style="margin-top:0.65rem;"><a href="tel:+639195958771">+63 919 595 8771</a></p>
+        <p><a href="mailto:office@happinessphilippines.com">office@happinessphilippines.com</a></p>
+      </div>
+
+      <div>
+        <p class="eyebrow">Find us</p>
+        <p style="margin-top:0.65rem; color:var(--text);">Sitio Lugadia, Barangay Corong-Corong, El Nido, Palawan 5313, Philippines</p>
+        <p><a href="#location">View map and coordinates</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+
+      if (!reducedMotion && window.Lenis) {
+        const lenis = new Lenis({
+          lerp: 0.09,
+          smoothWheel: true,
+          wheelMultiplier: 0.95
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        navLinks.forEach((link) => {
+          link.addEventListener('click', (event) => {
+            const target = link.getAttribute('href');
+            if (!target || target === '#') return;
+            const element = document.querySelector(target);
+            if (!element) return;
+            event.preventDefault();
+            lenis.scrollTo(element, { offset: -76 });
+          });
+        });
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!reducedMotion) {
+        gsap.from('[data-hero-line]', {
+          opacity: 0,
+          y: 26,
+          duration: 1,
+          stagger: 0.11,
+          ease: 'power3.out',
+          delay: 0.18
+        });
+
+        gsap.to('.hero-media img', {
+          scale: 1.08,
+          yPercent: 2,
+          duration: 14,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true
+        });
+
+        gsap.to('.hero-media', {
+          yPercent: 3,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.utils.toArray('.reveal').forEach((el) => {
+          gsap.fromTo(el, {
+            opacity: 0,
+            y: 34
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 82%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.gallery-media img').forEach((img, index) => {
+          gsap.fromTo(img, {
+            scale: 1.04
+          }, {
+            scale: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.5 + index * 0.1
+            }
+          });
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => {
+          el.style.opacity = 1;
+          el.style.transform = 'none';
+        });
+      }
+    })();
+  </script>
 </body>
+</html>

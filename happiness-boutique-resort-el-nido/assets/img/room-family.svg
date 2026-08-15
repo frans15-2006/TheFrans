@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized family room interior with bunk beds">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="1380" height="760" rx="28" fill="#101010" stroke="#292929"/>
+  <rect x="168" y="170" width="520" height="620" rx="18" fill="#151515" stroke="#2a2a2a"/>
+  <rect x="220" y="226" width="420" height="140" rx="10" fill="#0d0d0d"/>
+  <rect x="244" y="250" width="160" height="96" rx="8" fill="#1f3940"/>
+  <rect x="418" y="250" width="176" height="96" rx="8" fill="#1b1b1b"/>
+  <rect x="246" y="402" width="430" height="110" rx="18" fill="#202020"/>
+  <rect x="280" y="300" width="370" height="24" rx="10" fill="#f0a500" opacity="0.22"/>
+  <rect x="280" y="438" width="370" height="24" rx="10" fill="#f0a500" opacity="0.14"/>
+  <rect x="300" y="548" width="140" height="84" rx="18" fill="#2d2d2d"/>
+  <rect x="458" y="548" width="140" height="84" rx="18" fill="#2d2d2d"/>
+  <rect x="676" y="198" width="720" height="600" rx="20" fill="#141414" stroke="#2a2a2a"/>
+  <rect x="724" y="244" width="248" height="92" rx="14" fill="#1f1f1f"/>
+  <rect x="724" y="350" width="248" height="92" rx="14" fill="#1f1f1f"/>
+  <rect x="724" y="456" width="248" height="92" rx="14" fill="#1f1f1f"/>
+  <rect x="724" y="244" width="248" height="26" rx="10" fill="#f0a500" opacity="0.3"/>
+  <rect x="724" y="350" width="248" height="26" rx="10" fill="#f0a500" opacity="0.2"/>
+  <rect x="724" y="456" width="248" height="26" rx="10" fill="#f0a500" opacity="0.16"/>
+  <rect x="1080" y="244" width="260" height="368" rx="18" fill="#0d0d0d"/>
+  <rect x="1110" y="274" width="200" height="132" rx="10" fill="#1f3940"/>
+  <rect x="1110" y="420" width="200" height="146" rx="10" fill="#1b1b1b"/>
+  <path d="M1110 274 C 1168 328, 1216 362, 1310 392" stroke="#f0a500" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M1110 420 C 1168 468, 1230 500, 1310 542" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <rect x="1080" y="648" width="260" height="46" rx="14" fill="#f0a500" opacity="0.12"/>
+  <path d="M180 832 C 318 792, 472 790, 620 820 C 752 846, 902 850, 1050 820 C 1210 788, 1338 782, 1488 812 L 1488 920 L 180 920 Z" fill="#0b0b0b"/>
+</svg>
