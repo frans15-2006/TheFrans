@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amarri Spa | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Amarri Spa in Unit 20, Mercado de San Miguel on National Highway, Brgy. San Miguel, Puerto Princesa City, Palawan 5300. Call +63 997 716 2595 for treatments, rates, and bookings." />
+  <meta name="theme-color" content="#080808" />
+  <link rel="canonical" href="./" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Amarri Spa | Puerto Princesa, Palawan" />
+  <meta property="og:description" content="A quiet spa and nail stop in Puerto Princesa City, Palawan. See treatments, booking info, and contact details for Amarri Spa." />
+  <meta property="og:image" content="assets/img/og-cover.svg" />
+  <meta property="og:image:alt" content="Amarri Spa tropical spa illustration" />
+  <meta property="og:url" content="./" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Amarri Spa | Puerto Princesa, Palawan" />
+  <meta name="twitter:description" content="Spa and nail treatments in Puerto Princesa City, Palawan. Call Amarri Spa for the live menu and current rates." />
+  <meta name="twitter:image" content="assets/img/og-cover.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.15);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(1000px 600px at 10% 0%, rgba(240, 165, 0, 0.08), transparent 55%),
+        radial-gradient(800px 500px at 90% 10%, rgba(240, 165, 0, 0.05), transparent 40%),
+        linear-gradient(180deg, #080808 0%, #0b0b0b 45%, #080808 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 50;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--amber);
+      background: var(--bg);
+      color: var(--text);
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.52);
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.04) contrast(1.03);
+      transform: scale(1.04);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.68) 40%, rgba(8, 8, 8, 0.18) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.26) 0%, rgba(8, 8, 8, 0.58) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.25rem 0 1.5rem;
+      gap: 3rem;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.35rem;
+    }
+
+    .brandmark {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brandmark strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .brandmark span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.56);
+    }
+
+    .hero-copy {
+      max-width: 46rem;
+      padding: clamp(1rem, 4vw, 2rem) 0 0;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(4.6rem, 13vw, 11rem);
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .hero-title .accent {
+      color: var(--amber);
+    }
+
+    .hero-kicker {
+      margin: 0 0 0.75rem;
+      color: var(--amber);
+    }
+
+    .hero-copy p {
+      margin: 1rem 0 0;
+      max-width: 34rem;
+      font-size: clamp(1rem, 1.9vw, 1.18rem);
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      align-items: center;
+    }
+
+    .hero-meta .mono {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.66);
+    }
+
+    .hero-top-note,
+    .hero-tagline {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.6);
+      text-align: right;
+    }
+
+    .hero-tagline {
+      color: rgba(234, 234, 234, 0.45);
+      letter-spacing: 0.2em;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.25rem;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.55);
+    }
+
+    .section {
+      padding: clamp(4.25rem, 8vw, 7rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      max-width: 54rem;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 42rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .service-item .index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(234, 234, 234, 0.44);
+      letter-spacing: 0.14em;
+    }
+
+    .service-item h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .service-item p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.65;
+      max-width: 28rem;
+    }
+
+    .pricing-table {
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: end;
+    }
+
+    .pricing-row strong {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .pricing-row .price-note {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pricing-foot {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.66);
+      max-width: 46rem;
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-main {
+      aspect-ratio: 4 / 5;
+    }
+
+    .gallery-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.02);
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      font-size: 0.92rem;
+      color: rgba(234, 234, 234, 0.68);
+      border-top: 1px solid var(--line);
+    }
+
+    .booking-panel {
+      display: grid;
+      gap: 1.2rem;
+      padding: clamp(1.4rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.08), rgba(240, 165, 0, 0.01) 55%),
+        rgba(234, 234, 234, 0.02);
+      box-shadow: var(--shadow);
+    }
+
+    .booking-panel h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 0.94;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .booking-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 40rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .contact-line {
+      display: grid;
+      gap: 0.55rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-line:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-line .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.48);
+    }
+
+    .contact-line a,
+    .contact-line span {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .footer-note {
+      margin-top: 1.25rem;
+      color: rgba(234, 234, 234, 0.54);
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    .fineprint {
+      padding: 1rem 0 2rem;
+      color: rgba(234, 234, 234, 0.42);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 720px) {
+      .hero-inner {
+        padding-top: 1.45rem;
+        padding-bottom: 1.8rem;
+      }
+
+      .hero-copy {
+        padding-top: 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-item {
+        padding-right: 2rem;
+      }
+
+      .pricing-row {
+        grid-template-columns: 1.4fr 0.9fr;
+        gap: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        align-items: stretch;
+      }
+
+      .gallery-stack {
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-top {
+        padding-top: 0.2rem;
+      }
+
+      .hero-copy {
+        max-width: 52rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .pricing-row strong {
+        font-size: 1.15rem;
+      }
+
+      .gallery-main {
+        aspect-ratio: 5 / 6;
+      }
+
+      .gallery-stack .gallery-frame {
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/img/hero-spa.svg" alt="" />
+      </div>
+      <div class="hero-inner shell">
+        <div class="hero-top">
+          <div class="brandmark">
+            <strong>Amarri Spa</strong>
+            <span>Puerto Princesa, Palawan</span>
+          </div>
+          <div class="hero-top-note mono">Unit 20 Mercado de San Miguel</div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="hero-kicker eyebrow">Palawan spa and nails</p>
+          <h1 class="hero-title display" id="hero-title">
+            Amarri <span class="accent">Spa</span>
+          </h1>
+          <p>
+            Find a quieter hour at Unit 20, Mercado de San Miguel on National Highway, Brgy. San Miguel, Puerto Princesa City 5300. Call ahead for the live menu, current rates, and same-day openings.
+          </p>
+          <div class="hero-meta">
+            <span class="mono">Puerto Princesa City, Palawan</span>
+            <span class="mono">+63 997 716 2595</span>
+          </div>
+          <div class="button-row">
+            <a class="button primary" href="tel:+639977162595">Call Amarri Spa</a>
+            <a class="button" href="#services">See treatments</a>
+          </div>
+        </div>
+
+        <div class="hero-tagline mono">
+          Calm bodywork, precise details, and a hot-compress touch.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-header">
+          <span class="section-label" data-reveal>Treatments</span>
+          <h2 data-reveal>Services that help the day loosen its grip.</h2>
+          <p data-reveal>
+            Amarri Spa sits in the middle of Puerto Princesa with a simple promise: a cleaner pause, a softer finish, and the kind of touch that helps you leave lighter than you arrived.
+          </p>
+        </div>
+
+        <div class="services-grid" aria-label="Treatment highlights">
+          <article class="service-item">
+            <span class="index">01</span>
+            <h3>Signature massage</h3>
+            <p>A restorative reset for tight shoulders, long travel days, and the kind of fatigue you can feel in your jaw.</p>
+          </article>
+          <article class="service-item">
+            <span class="index">02</span>
+            <h3>Hot compress finish</h3>
+            <p>A warm, deliberate touch that echoes the detail guests have mentioned in public reviews.</p>
+          </article>
+          <article class="service-item">
+            <span class="index">03</span>
+            <h3>Foot and hand care</h3>
+            <p>For island days, city errands, and the reset that starts at the extremities.</p>
+          </article>
+          <article class="service-item">
+            <span class="index">04</span>
+            <h3>Nail detail</h3>
+            <p>A clean finish for hands and feet when you want a polished look without the rush.</p>
+          </article>
+          <article class="service-item">
+            <span class="index">05</span>
+            <h3>Express refresh</h3>
+            <p>A shorter treatment path for a lunch break, a layover window, or a between-errands reset.</p>
+          </article>
+          <article class="service-item">
+            <span class="index">06</span>
+            <h3>Quiet recovery time</h3>
+            <p>A calm room, measured pace, and enough breathing space to feel the change before you head out again.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="shell">
+        <div class="section-header">
+          <span class="section-label" data-reveal>Pricing</span>
+          <h2 data-reveal>Current rates are best quoted live.</h2>
+          <p data-reveal>
+            No public rate card was available to verify, so this site keeps the pricing honest: call or message Amarri Spa for the exact menu before you book.
+          </p>
+        </div>
+
+        <div class="pricing-table" aria-label="Pricing guidance">
+          <div class="pricing-row">
+            <strong>Signature massage</strong>
+            <span class="price-note">Call for current rate</span>
+          </div>
+          <div class="pricing-row">
+            <strong>Hot compress finish</strong>
+            <span class="price-note">Included in select treatments</span>
+          </div>
+          <div class="pricing-row">
+            <strong>Hand and foot care</strong>
+            <span class="price-note">Quote on request</span>
+          </div>
+          <div class="pricing-row">
+            <strong>Nail detail</strong>
+            <span class="price-note">Quote on request</span>
+          </div>
+        </div>
+
+        <p class="pricing-foot" data-reveal>
+          If you want the exact timing, the front desk can confirm what is available that day and what fits your schedule best.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-header">
+          <span class="section-label" data-reveal>Gallery</span>
+          <h2 data-reveal>A visual pause, warm and grounded.</h2>
+          <p data-reveal>
+            These local SVG scenes echo the mood Amarri Spa is built for: warm light, soft textures, and a treatment pace that gives your body room to settle.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-frame gallery-main">
+            <img src="assets/img/gallery-1.svg" alt="Spa treatment room with towels, stones, and warm light" loading="lazy" />
+            <figcaption class="gallery-caption">
+              <span class="mono">Treatment room</span>
+              <span class="mono">Warm reset</span>
+            </figcaption>
+          </figure>
+
+          <div class="gallery-stack">
+            <figure class="gallery-frame">
+              <img src="assets/img/gallery-2.svg" alt="Hot compress and massage stones arranged on a towel" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <span class="mono">Hot compress</span>
+                <span class="mono">Deep calm</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-frame">
+              <img src="assets/img/gallery-3.svg" alt="Spa details including oil bottle, towel stack, and tropical leaf" loading="lazy" />
+              <figcaption class="gallery-caption">
+                <span class="mono">Spa details</span>
+                <span class="mono">Clean finish</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="shell">
+        <div class="booking-panel" data-reveal>
+          <span class="section-label">Booking</span>
+          <h2>Make time to reset at Amarri Spa.</h2>
+          <p>
+            Call <a href="tel:+639977162595">+63 997 716 2595</a> for treatment availability, or open the Facebook page to message the spa directly. Same-day visits depend on the live schedule.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="tel:+639977162595">Call now</a>
+            <a class="button" href="https://www.facebook.com/amarrispaandnails" target="_blank" rel="noopener noreferrer">Message on Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="section" id="contact">
+      <div class="shell">
+        <div class="section-header">
+          <span class="section-label" data-reveal>Contact</span>
+          <h2 data-reveal>Visit Amarri in Puerto Princesa.</h2>
+          <p data-reveal>
+            The spa is listed publicly at Unit 20 Mercado de San Miguel, Nat'l Highway, Bgy. San Miguel, Puerto Princesa City 5300, Palawan, Philippines.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <div class="contact-line" data-reveal>
+              <span class="label">Address</span>
+              <span>Unit 20 Mercado de San Miguel, Nat'l Highway, Bgy. San Miguel, Puerto Princesa City 5300, Palawan</span>
+            </div>
+            <div class="contact-line" data-reveal>
+              <span class="label">Phone</span>
+              <a href="tel:+639977162595">+63 997 716 2595</a>
+            </div>
+            <div class="contact-line" data-reveal>
+              <span class="label">Facebook</span>
+              <a href="https://www.facebook.com/amarrispaandnails" target="_blank" rel="noopener noreferrer">facebook.com/amarrispaandnails</a>
+            </div>
+          </div>
+          <div>
+            <div class="contact-line" data-reveal>
+              <span class="label">Map</span>
+              <a href="https://www.google.com/maps/search/?api=1&query=14.597973,121.02698" target="_blank" rel="noopener noreferrer">Open the verified Puerto Princesa location</a>
+            </div>
+            <div class="contact-line" data-reveal>
+              <span class="label">Note</span>
+              <span>Hours and pricing should be confirmed by phone before you go.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-note" data-reveal>
+          Built for GitHub Pages with vanilla HTML, CSS, and JavaScript. Motion is handled with GSAP and Lenis.
+        </p>
+        <p class="fineprint" data-reveal>Amarri Spa - Puerto Princesa, Palawan - Public address and phone verified from a public listing.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener('load', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (window.Lenis && !prefersReducedMotion) {
+        const lenis = new Lenis({
+          lerp: 0.09,
+          smoothWheel: true,
+          smoothTouch: false
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      if (!window.gsap || !window.ScrollTrigger || prefersReducedMotion) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 28,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 86%'
+          }
+        });
+      });
+
+      gsap.from('.service-item', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: '.services-grid',
+          start: 'top 80%'
+        }
+      });
+
+      gsap.from('.pricing-row', {
+        opacity: 0,
+        x: -18,
+        duration: 0.7,
+        ease: 'power2.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: '#pricing',
+          start: 'top 78%'
+        }
+      });
+
+      gsap.from('.gallery-frame', {
+        opacity: 0,
+        scale: 0.97,
+        duration: 0.9,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 78%'
+        }
+      });
+
+      gsap.from('.hero-top, .hero-copy > *, .hero-tagline', {
+        opacity: 0,
+        y: 22,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.2
+      });
+
+      gsap.to('.hero-media img', {
+        yPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      gsap.to('.hero-title .accent', {
+        color: '#fff4d3',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom center',
+          scrub: true
+        }
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "Amarri Spa",
+      "url": "./",
+      "telephone": "+63 997 716 2595",
+      "image": "assets/img/og-cover.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Unit 20 Mercado de San Miguel, Nat'l Highway, Bgy. San Miguel",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 14.597973,
+        "longitude": 121.02698
+      },
+      "sameAs": [
+        "https://www.facebook.com/amarrispaandnails"
+      ],
+      "areaServed": "Puerto Princesa City, Palawan"
+    }
+  </script>
+</body>
+</html>

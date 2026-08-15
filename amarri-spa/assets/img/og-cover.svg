@@ -1,0 +1,24 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#080808"/>
+  <rect width="1200" height="630" fill="url(#og)"/>
+  <path d="M120 445C216 408 328 416 428 453C533 492 638 516 782 490C885 471 991 426 1088 404" stroke="#F0A500" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+  <ellipse cx="438" cy="360" rx="178" ry="86" fill="#D7C4A7" opacity="0.96"/>
+  <ellipse cx="438" cy="360" rx="114" ry="52" fill="#F6EFE4"/>
+  <ellipse cx="438" cy="360" rx="52" ry="25" fill="#F0A500"/>
+  <rect x="654" y="210" width="132" height="274" rx="26" fill="#E7DDD2"/>
+  <rect x="680" y="168" width="80" height="72" rx="16" fill="#F0A500"/>
+  <path d="M717 150C729 134 731 117 727 102C711 108 700 122 696 138C694 147 694 155 695 164C703 161 710 157 717 150Z" fill="#FFE3A4"/>
+  <path d="M244 184C308 156 382 145 460 150C539 155 611 178 681 215" stroke="#6EA26D" stroke-width="14" stroke-linecap="round" opacity="0.78"/>
+  <path d="M234 206C304 176 382 168 461 174C539 180 608 202 672 238" stroke="#A9C97A" stroke-width="8" stroke-linecap="round" opacity="0.94"/>
+  <text x="96" y="138" fill="#EAEAEA" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="8">AMARRI SPA</text>
+  <text x="98" y="198" fill="#F0A500" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="5">PUERTO PRINCESA, PALAWAN</text>
+  <text x="98" y="258" fill="#EAEAEA" font-family="Space Grotesk, Arial, sans-serif" font-size="28">Calm treatments, hot-compress touches, and a quieter reset.</text>
+  <rect x="96" y="302" width="278" height="2" fill="#F0A500" opacity="0.75"/>
+  <defs>
+    <linearGradient id="og" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080808"/>
+      <stop offset="0.55" stop-color="#14100C"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+</svg>
