@@ -1,60 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CDC International Master Brows Aesthetics</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDC Master Brows | Palawan Brow and Beauty Studio</title>
+  <meta name="description" content="CDC Master Brows in Puerto Princesa, Palawan. Walk-ins open every day at Mariners Plaza beside City Coliseum. Call +63 960 073 1018 or get directions to the studio.">
+  <meta property="og:title" content="CDC Master Brows | Palawan Brow and Beauty Studio">
+  <meta property="og:description" content="Verified location, walk-in hours, and direct contact for CDC International Master Brows in Puerto Princesa, Palawan.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/cdc-master-brows/">
+  <meta property="og:image" content="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23080808'/%3E%3Ccircle cx='940' cy='200' r='220' fill='%23f0a500' opacity='.15'/%3E%3Cpath d='M118 388c140-86 228-124 324-124 97 0 164 52 243 52 80 0 140-39 252-39 64 0 126 16 187 49' fill='none' stroke='%23f0a500' stroke-width='18' stroke-linecap='round'/%3E%3Ctext x='118' y='160' fill='%23eaeaea' font-family='Bebas Neue, sans-serif' font-size='96'%3ECDC MASTER BROWS%3C/text%3E%3Ctext x='120' y='232' fill='%23f0a500' font-family='JetBrains Mono, monospace' font-size='28'%3EMaster kilay in Palawan%3C/text%3E%3C/svg%3E">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --fg: #eaeaea;
+      --amber: #f0a500;
+      --muted: rgba(234, 234, 234, 0.68);
+      --line: rgba(234, 234, 234, 0.13);
+      --wash: rgba(240, 165, 0, 0.14);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.12), transparent 28%),
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.05), transparent 18%),
+        var(--bg);
+      color: var(--fg);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.32);
+      color: var(--fg);
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .font-accent {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    .container-wrap {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .hairline {
+      border-color: var(--line);
+    }
+
+    .link-amber {
+      color: var(--fg);
+      transition: color 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    .link-amber:hover,
+    .link-amber:focus-visible {
+      color: var(--amber);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      border: 1px solid rgba(234, 234, 234, 0.18);
+      color: var(--fg);
+      background: rgba(234, 234, 234, 0.03);
+      padding: 0.9rem 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .btn-solid {
+      background: var(--amber);
+      color: #121212;
+      border-color: transparent;
+    }
+
+    .btn-solid:hover,
+    .btn-solid:focus-visible {
+      background: #ffc43c;
+      border-color: transparent;
+    }
+
+    .section-label {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2.8rem, 7vw, 5.3rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .copy-tight {
+      max-width: 42rem;
+    }
+
+    .grain::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mix-blend-mode: soft-light;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .hero-art {
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,.45));
+    }
+
+    .shot {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .dot-list li::before {
+      content: '•';
+      color: var(--amber);
+      margin-right: 0.55rem;
+    }
+
+    .map-frame {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .divider {
+      background: linear-gradient(90deg, transparent, rgba(240,165,0,0.35), transparent);
+      height: 1px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>CDC International Master Brows Aesthetics</h1>
-    <span class="category">Brow & Aesthetics Clinic</span>
-    <p class="address">Puerto Princesa North Road, Puerto Princesa City</p>
-    <p class="phone">+63 960 073 1018</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-[#080808] focus:px-4 focus:py-2 focus:text-[#eaeaea] focus:outline-none focus:ring-1 focus:ring-[#f0a500]">Skip to content</a>
+
+  <header class="fixed inset-x-0 top-0 z-40 border-b hairline bg-[#080808]/82 backdrop-blur-xl">
+    <div class="container-wrap flex items-center justify-between gap-4 py-4">
+      <a href="#top" class="group inline-flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center border border-[rgba(234,234,234,0.18)] text-[#f0a500]">
+          <span class="font-display text-2xl leading-none">C</span>
+        </span>
+        <span>
+          <span class="font-display block text-xl leading-none tracking-[0.08em]">CDC MASTER BROWS</span>
+          <span class="font-accent block text-[10px] uppercase tracking-[0.24em] text-[rgba(234,234,234,0.56)]">Puerto Princesa, Palawan</span>
+        </span>
+      </a>
+      <nav class="hidden items-center gap-6 text-xs uppercase tracking-[0.18em] text-[rgba(234,234,234,0.72)] md:flex">
+        <a class="link-amber" href="#services">Services</a>
+        <a class="link-amber" href="#pricing">Pricing</a>
+        <a class="link-amber" href="#gallery">Gallery</a>
+        <a class="link-amber" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="pt-20 md:pt-24">
+    <section id="top" class="relative overflow-hidden grain min-h-[100svh] border-b hairline">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(240,165,0,0.12),transparent_26%),radial-gradient(circle_at_15%_80%,rgba(240,165,0,0.06),transparent_22%)]"></div>
+        <div class="absolute left-1/2 top-1/2 h-[88vw] w-[88vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(240,165,0,0.12),transparent_68%)] blur-3xl lg:h-[46vw] lg:w-[46vw]"></div>
+      </div>
+
+      <div class="container-wrap relative grid hero-grid items-center gap-10 py-10 md:py-14 lg:min-h-[calc(100svh-6rem)] lg:py-0">
+        <div class="reveal relative z-10 max-w-2xl">
+          <p class="section-label mb-5">Verified Palawan brow studio</p>
+          <h1 class="font-display text-[clamp(4.5rem,14vw,9.75rem)] leading-[0.86] uppercase text-[#eaeaea]">
+            CDC Master Brows
+          </h1>
+          <p class="copy-tight mt-6 text-base leading-8 text-[rgba(234,234,234,0.82)] md:text-lg">
+            Master kilay in Palawan, based at the 2nd Floor of Mariners Plaza Building beside City Coliseum in San Pedro, Puerto Princesa.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn btn-solid" href="tel:+639600731018">Call +63 960 073 1018</a>
+            <a class="btn" href="#contact">Get directions</a>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t hairline pt-5 text-sm text-[rgba(234,234,234,0.72)]">
+            <span class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Walk-ins</span>
+            <span>Open every day</span>
+            <span>9:00 AM to 5:00 PM cutoff</span>
+            <span>San Pedro, Puerto Princesa, Palawan</span>
+          </div>
+        </div>
+
+        <div class="reveal relative flex items-center justify-center lg:justify-end">
+          <svg class="hero-art w-full max-w-[700px]" viewBox="0 0 760 760" role="img" aria-label="Stylized brow and beauty illustration" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="amberGlow" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f0a500" stop-opacity="0.92"/>
+                <stop offset="100%" stop-color="#ffe29b" stop-opacity="0.22"/>
+              </linearGradient>
+              <linearGradient id="skinTone" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#1d1d1d"/>
+                <stop offset="100%" stop-color="#0d0d0d"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="760" height="760" rx="32" fill="url(#skinTone)" opacity="0.9"/>
+            <circle cx="568" cy="220" r="178" fill="#f0a500" fill-opacity="0.12"/>
+            <circle cx="220" cy="590" r="116" fill="#f0a500" fill-opacity="0.08"/>
+            <path d="M112 506c60-66 128-106 215-106 101 0 178 67 271 67 44 0 95-10 150-35" fill="none" stroke="url(#amberGlow)" stroke-width="22" stroke-linecap="round"/>
+            <path d="M164 330c30-30 78-46 126-46 43 0 82 15 112 40" fill="none" stroke="#eaeaea" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round"/>
+            <path d="M407 322c26-22 62-35 102-35 46 0 87 16 119 47" fill="none" stroke="#eaeaea" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round"/>
+            <path d="M171 352c45 0 93 13 136 37" fill="none" stroke="#f0a500" stroke-opacity="0.9" stroke-width="8" stroke-linecap="round"/>
+            <path d="M423 352c48-16 95-19 140-7" fill="none" stroke="#f0a500" stroke-opacity="0.9" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="332" cy="383" r="40" fill="#eaeaea" fill-opacity="0.04" stroke="#eaeaea" stroke-opacity="0.45"/>
+            <circle cx="510" cy="383" r="40" fill="#eaeaea" fill-opacity="0.04" stroke="#eaeaea" stroke-opacity="0.45"/>
+            <path d="M320 512c28 26 60 38 96 38 57 0 103-25 140-75" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4"/>
+            <path d="M234 586h286" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="1"/>
+            <path d="M280 180c52-36 108-52 168-52 76 0 142 27 194 79" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="border-b hairline py-20 md:py-24">
+      <div class="container-wrap">
+        <div class="reveal flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="section-label mb-4">Services</p>
+            <h2 class="section-title font-display max-w-3xl">Public brow focus, with walk-in beauty support.</h2>
+          </div>
+          <p class="copy-tight text-[rgba(234,234,234,0.74)] md:text-right">
+            CDC's public profile centers on master kilay in Palawan, walk-in access, and direct studio contact. The exact in-studio menu should be confirmed before booking.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-0 md:grid-cols-2 xl:grid-cols-4">
+          <article class="reveal border-t hairline py-6 pr-6 md:border-r md:py-8 xl:py-10">
+            <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">01</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Master Kilay</h3>
+            <p class="mt-4 leading-7 text-[rgba(234,234,234,0.74)]">The studio's public identity is built around brows first, with master kilay positioned as the signature focus.</p>
+          </article>
+          <article class="reveal border-t hairline py-6 pr-6 md:border-r md:py-8 xl:py-10">
+            <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">02</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Walk-In Days</h3>
+            <p class="mt-4 leading-7 text-[rgba(234,234,234,0.74)]">Open every day with a 9:00 AM to 5:00 PM cut-off for walk-ins and same-day brow visits.</p>
+          </article>
+          <article class="reveal border-t hairline py-6 pr-6 md:py-8 xl:py-10 xl:border-r">
+            <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">03</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Brow + Beauty</h3>
+            <p class="mt-4 leading-7 text-[rgba(234,234,234,0.74)]">The page presents CDC as a brows and beauty center serving clients who want polished, camera-ready results.</p>
+          </article>
+          <article class="reveal border-t hairline py-6 pr-6 md:py-8 xl:py-10">
+            <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">04</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Direct Studio Contact</h3>
+            <p class="mt-4 leading-7 text-[rgba(234,234,234,0.74)]">Call or visit the studio to confirm the live menu, timing, and same-day availability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="border-b hairline py-20 md:py-24">
+      <div class="container-wrap grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+        <div class="reveal">
+          <p class="section-label mb-4">Pricing</p>
+          <h2 class="section-title font-display max-w-xl">Current rates are handled in-studio.</h2>
+          <p class="copy-tight mt-6 text-[rgba(234,234,234,0.76)]">
+            CDC's public profile does not show a public rate card, so this site keeps pricing truthful instead of inventing numbers. For the latest brow and beauty prices, call ahead or ask during a walk-in visit.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="divide-y divide-[rgba(234,234,234,0.12)] border-y hairline">
+            <div class="flex items-start justify-between gap-6 py-5">
+              <div>
+                <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Verified status</p>
+                <h3 class="mt-2 font-display text-3xl uppercase leading-none">Public price sheet</h3>
+              </div>
+              <p class="max-w-sm text-right leading-7 text-[rgba(234,234,234,0.74)]">Not listed on the live public profile or page intro.</p>
+            </div>
+            <div class="flex items-start justify-between gap-6 py-5">
+              <div>
+                <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Best next step</p>
+                <h3 class="mt-2 font-display text-3xl uppercase leading-none">Call or walk in</h3>
+              </div>
+              <p class="max-w-sm text-right leading-7 text-[rgba(234,234,234,0.74)]">Ask the team for the current menu before your visit so you can plan your appointment with confidence.</p>
+            </div>
+            <div class="flex items-start justify-between gap-6 py-5">
+              <div>
+                <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Studio rhythm</p>
+                <h3 class="mt-2 font-display text-3xl uppercase leading-none">Walk-in cutoff</h3>
+              </div>
+              <p class="max-w-sm text-right leading-7 text-[rgba(234,234,234,0.74)]">9:00 AM to 5:00 PM daily, based on the public page intro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="border-b hairline py-20 md:py-24">
+      <div class="container-wrap">
+        <div class="reveal flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="section-label mb-4">Gallery</p>
+            <h2 class="section-title font-display max-w-3xl">Mood pieces that mirror the studio's dark-and-gold presence.</h2>
+          </div>
+          <p class="copy-tight text-[rgba(234,234,234,0.74)] md:text-right">The gallery uses original SVG artwork so the page ships cleanly on GitHub Pages without broken image paths.</p>
+        </div>
+
+        <div class="mt-12 grid gap-0 lg:grid-cols-3">
+          <figure class="reveal group border-t hairline lg:border-r">
+            <svg viewBox="0 0 840 980" class="block h-full w-full" role="img" aria-label="Abstract brow artwork with golden linework" xmlns="http://www.w3.org/2000/svg">
+              <rect width="840" height="980" fill="#0b0b0b"/>
+              <rect x="70" y="70" width="700" height="840" rx="28" fill="#111111" stroke="rgba(234,234,234,0.08)"/>
+              <circle cx="620" cy="250" r="165" fill="#f0a500" fill-opacity="0.12"/>
+              <path d="M190 420c62-58 127-87 198-87 78 0 145 35 211 35 40 0 78-10 118-32" fill="none" stroke="#f0a500" stroke-width="18" stroke-linecap="round"/>
+              <path d="M240 318c40-20 83-29 128-29 53 0 99 13 138 40" fill="none" stroke="#eaeaea" stroke-opacity="0.78" stroke-width="6" stroke-linecap="round"/>
+              <path d="M410 318c35-26 76-39 122-39 52 0 95 17 127 50" fill="none" stroke="#eaeaea" stroke-opacity="0.78" stroke-width="6" stroke-linecap="round"/>
+              <path d="M334 560c38 31 79 47 123 47 67 0 121-31 162-93" fill="none" stroke="#f0a500" stroke-opacity="0.58" stroke-width="4"/>
+              <circle cx="310" cy="395" r="35" fill="#eaeaea" fill-opacity="0.04" stroke="#eaeaea" stroke-opacity="0.35"/>
+              <circle cx="512" cy="395" r="35" fill="#eaeaea" fill-opacity="0.04" stroke="#eaeaea" stroke-opacity="0.35"/>
+            </svg>
+            <figcaption class="border-t hairline px-5 py-4 text-sm text-[rgba(234,234,234,0.72)]">
+              <span class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Brow line</span><br>
+              Precision-first visual rhythm.
+            </figcaption>
+          </figure>
+
+          <figure class="reveal group border-t hairline lg:border-r">
+            <svg viewBox="0 0 840 980" class="block h-full w-full" role="img" aria-label="Abstract beauty tools artwork" xmlns="http://www.w3.org/2000/svg">
+              <rect width="840" height="980" fill="#0d0d0d"/>
+              <rect x="70" y="70" width="700" height="840" rx="28" fill="#101010" stroke="rgba(234,234,234,0.08)"/>
+              <path d="M246 680c-28-37-33-79-12-114 33-54 123-88 242-88 128 0 202 43 218 117 6 27 1 57-13 85" fill="none" stroke="#f0a500" stroke-width="18" stroke-linecap="round"/>
+              <path d="M335 286l120 120" stroke="#eaeaea" stroke-opacity="0.76" stroke-width="18" stroke-linecap="round"/>
+              <path d="M352 268l120 120" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+              <rect x="510" y="230" width="110" height="330" rx="54" transform="rotate(18 510 230)" fill="#1c1c1c" stroke="#eaeaea" stroke-opacity="0.12"/>
+              <rect x="204" y="230" width="100" height="72" rx="36" transform="rotate(-22 204 230)" fill="#1b1b1b" stroke="#eaeaea" stroke-opacity="0.12"/>
+              <circle cx="220" cy="234" r="10" fill="#f0a500"/>
+              <circle cx="596" cy="646" r="14" fill="#f0a500" fill-opacity="0.7"/>
+              <path d="M234 244h100" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <figcaption class="border-t hairline px-5 py-4 text-sm text-[rgba(234,234,234,0.72)]">
+              <span class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Tool detail</span><br>
+              Minimal, exact, and studio-ready.
+            </figcaption>
+          </figure>
+
+          <figure class="reveal group border-t hairline">
+            <svg viewBox="0 0 840 980" class="block h-full w-full" role="img" aria-label="Abstract Palawan location artwork" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="mapGlow" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.92"/>
+                  <stop offset="100%" stop-color="#eaeaea" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <rect width="840" height="980" fill="#090909"/>
+              <rect x="70" y="70" width="700" height="840" rx="28" fill="#101010" stroke="rgba(234,234,234,0.08)"/>
+              <path d="M180 312h480M180 468h480M180 624h480M180 780h480" stroke="#eaeaea" stroke-opacity="0.08"/>
+              <path d="M292 236c56 0 88 24 88 68 0 31-12 63-34 95l-54 81-56-81c-22-32-33-64-33-95 0-44 31-68 89-68Z" fill="url(#mapGlow)" fill-opacity="0.2"/>
+              <path d="M292 279c-30 0-54 24-54 54 0 30 24 54 54 54 30 0 54-24 54-54 0-30-24-54-54-54Z" fill="none" stroke="#f0a500" stroke-width="8"/>
+              <path d="M292 252c-49 0-88 39-88 88 0 31 12 60 36 95l52 78 52-78c24-35 36-64 36-95 0-49-39-88-88-88Z" fill="none" stroke="#f0a500" stroke-width="10" stroke-linejoin="round"/>
+              <circle cx="292" cy="342" r="20" fill="#eaeaea"/>
+              <path d="M470 286c56 0 106 17 150 49" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+              <path d="M470 390c60 0 108 14 145 43" fill="none" stroke="#f0a500" stroke-opacity="0.32" stroke-width="4" stroke-linecap="round"/>
+              <path d="M470 492c54 0 94 11 120 32" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <figcaption class="border-t hairline px-5 py-4 text-sm text-[rgba(234,234,234,0.72)]">
+              <span class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Location glow</span><br>
+              Puerto Princesa, Palawan, centered correctly.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="shot py-16 md:py-20">
+      <div class="container-wrap flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div class="reveal max-w-3xl">
+          <p class="section-label mb-4">Booking CTA</p>
+          <h2 class="section-title font-display">Walk in, call ahead, or find the studio at Mariners Plaza.</h2>
+        </div>
+        <div class="reveal flex flex-wrap gap-3 lg:justify-end">
+          <a class="btn btn-solid" href="tel:+639600731018">Call now</a>
+          <a class="btn" href="#contact">Open contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-b hairline py-20 md:py-24">
+      <div class="container-wrap grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+        <div class="reveal">
+          <p class="section-label mb-4">Contact</p>
+          <h2 class="section-title font-display max-w-2xl">Verified location and direct studio details.</h2>
+          <div class="mt-8 space-y-6 text-[rgba(234,234,234,0.78)]">
+            <p class="leading-8">CDC International Master Brows<br>2nd Floor, Mariners Plaza Building, beside City Coliseum<br>San Pedro, Puerto Princesa, Palawan, Philippines</p>
+            <p class="leading-8">Phone: <a class="link-amber" href="tel:+639600731018">+63 960 073 1018</a><br>Walk-ins: every day, 9:00 AM to 5:00 PM cutoff</p>
+            <p class="leading-8">Map coordinates: <span class="font-accent text-[#f0a500]">9.75480794, 118.748927268</span></p>
+          </div>
+        </div>
+
+        <div class="reveal space-y-4">
+          <div class="map-frame overflow-hidden">
+            <iframe
+              title="CDC Master Brows location map"
+              class="h-[360px] w-full md:h-[420px]"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.741927268%2C9.74880794%2C118.755927268%2C9.76080794&layer=mapnik&marker=9.75480794%2C118.748927268">
+            </iframe>
+          </div>
+          <div class="grid gap-4 border-t hairline pt-4 md:grid-cols-3">
+            <div>
+              <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">City</p>
+              <p class="mt-2 text-sm leading-6 text-[rgba(234,234,234,0.76)]">Puerto Princesa, Palawan</p>
+            </div>
+            <div>
+              <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Landmark</p>
+              <p class="mt-2 text-sm leading-6 text-[rgba(234,234,234,0.76)]">Beside City Coliseum</p>
+            </div>
+            <div>
+              <p class="font-accent text-[10px] uppercase tracking-[0.2em] text-[#f0a500]">Hours</p>
+              <p class="mt-2 text-sm leading-6 text-[rgba(234,234,234,0.76)]">Open every day, walk-ins until 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 text-sm text-[rgba(234,234,234,0.62)]">
+    <div class="container-wrap flex flex-col gap-3 border-t hairline pt-6 md:flex-row md:items-center md:justify-between">
+      <p>CDC International Master Brows, Puerto Princesa, Palawan.</p>
+      <p class="font-accent text-[10px] uppercase tracking-[0.18em] text-[rgba(234,234,234,0.48)]">Built for GitHub Pages deployment</p>
+    </div>
+  </footer>
+
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion && window.Lenis && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+
+      document.querySelectorAll('.reveal').forEach((item, index) => {
+        gsap.fromTo(item,
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            delay: index * 0.02,
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 84%',
+            },
+          }
+        );
+      });
+
+      document.querySelectorAll('.hero-art path').forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = length;
+        path.style.strokeDashoffset = length;
+      });
+
+      gsap.from('.hero-art', {
+        opacity: 0,
+        y: 28,
+        scale: 0.98,
+        duration: 1.1,
+        ease: 'power3.out',
+      });
+
+      gsap.to('.hero-art', {
+        y: -14,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to('.hero-art path', {
+        strokeDashoffset: 0,
+        duration: 2.2,
+        ease: 'power2.out',
+        stagger: 0.03,
+      });
+
+      document.querySelectorAll('figure svg').forEach((svg) => {
+        svg.style.transformOrigin = 'center center';
+        svg.parentElement.addEventListener('mouseenter', () => {
+          gsap.to(svg, { scale: 1.02, duration: 0.35, ease: 'power2.out' });
+        });
+        svg.parentElement.addEventListener('mouseleave', () => {
+          gsap.to(svg, { scale: 1, duration: 0.35, ease: 'power2.out' });
+        });
+      });
+    }
+  </script>
 </body>
 </html>
