@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Pizza Margherita illustration</title>
+  <desc id="desc">A dark tabletop with a pizza slice, melted cheese, and basil garnish in amber light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#18120a"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cheese" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7c65a"/>
+      <stop offset="100%" stop-color="#e18d1e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="470" cy="300" r="360" fill="url(#amber)"/>
+  <ellipse cx="620" cy="700" rx="350" ry="90" fill="#000" opacity="0.45"/>
+  <g transform="translate(600 455)">
+    <circle cx="0" cy="0" r="265" fill="#f3ede4"/>
+    <circle cx="0" cy="0" r="228" fill="#2c241b"/>
+    <path d="M-148 -90 L126 -20 L60 165 L-120 142 Z" fill="url(#cheese)"/>
+    <path d="M-125 -70 L104 -15 L49 135 L-95 119 Z" fill="#ffd892" opacity="0.78"/>
+    <circle cx="-65" cy="-56" r="15" fill="#b73d1e"/>
+    <circle cx="-5" cy="-33" r="15" fill="#b73d1e"/>
+    <circle cx="55" cy="-10" r="15" fill="#b73d1e"/>
+    <circle cx="20" cy="35" r="15" fill="#b73d1e"/>
+    <circle cx="-35" cy="62" r="15" fill="#b73d1e"/>
+    <path d="M-25 -110 C20 -125, 70 -110, 116 -88" stroke="#5a8e3a" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M-210 35 C-150 -50, 60 -75, 190 20" stroke="#f0a500" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.42"/>
+    <path d="M-200 105 C-110 35, 80 35, 195 88" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.22"/>
+  </g>
+  <g opacity="0.18" stroke="#eaeaea" stroke-width="2">
+    <path d="M110 175 H1090"/>
+    <path d="M90 785 H1110"/>
+  </g>
+</svg>

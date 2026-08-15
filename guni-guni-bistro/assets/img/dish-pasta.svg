@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Seafood pasta illustration</title>
+  <desc id="desc">A dark table with a bowl of seafood pasta under amber light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#17120a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4efe6"/>
+      <stop offset="100%" stop-color="#bfb2a0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="600" cy="310" r="360" fill="url(#glow)"/>
+  <ellipse cx="600" cy="700" rx="360" ry="95" fill="#000" opacity="0.45"/>
+  <g transform="translate(600 470)">
+    <ellipse cx="0" cy="160" rx="255" ry="55" fill="#000" opacity="0.45"/>
+    <ellipse cx="0" cy="0" rx="250" ry="145" fill="url(#bowl)"/>
+    <ellipse cx="0" cy="-8" rx="214" ry="110" fill="#f5eee2"/>
+    <ellipse cx="0" cy="-2" rx="180" ry="76" fill="#2d241b"/>
+    <path d="M-120 -24 C-70 -94, 50 -94, 105 -32 C40 -10, -28 14, -120 -24 Z" fill="#e7b25b"/>
+    <path d="M-112 -16 C-62 -76, 25 -84, 92 -39" stroke="#ffd996" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M-108 14 C-48 -20, 26 -22, 88 2" stroke="#d67312" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="-46" cy="-34" r="18" fill="#c88a56"/>
+    <circle cx="2" cy="-48" r="18" fill="#c88a56"/>
+    <circle cx="51" cy="-28" r="18" fill="#c88a56"/>
+    <circle cx="-18" cy="22" r="12" fill="#5e8f4c"/>
+    <circle cx="34" cy="18" r="12" fill="#5e8f4c"/>
+    <path d="M-140 42 C-80 8, 70 8, 130 35" stroke="#f0a500" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.35"/>
+    <path d="M-120 72 C-54 48, 44 44, 118 64" stroke="#eaeaea" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.24"/>
+  </g>
+</svg>

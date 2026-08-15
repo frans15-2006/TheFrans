@@ -1,60 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUNI GUNI Bistro</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guni Guni Bistro | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Guni Guni Bistro on 263 Manalo St Extension, Puerto Princesa, Palawan. Pizza, pasta, burgers, burritos, seafood plates, and sweets in a laid-back bistro setting.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/guni-guni-bistro/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Guni Guni Bistro | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Manalo Street Extension bistro in Puerto Princesa known for pizza, pasta, burgers, burritos, seafood plates, and sweets.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/guni-guni-bistro/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/guni-guni-bistro/assets/img/og-image.svg">
+  <meta property="og:image:alt" content="Guni Guni Bistro in Puerto Princesa, Palawan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guni Guni Bistro | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Manalo Street Extension bistro in Puerto Princesa known for pizza, pasta, burgers, burritos, seafood plates, and sweets.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/guni-guni-bistro/assets/img/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --max: 1180px;
+    }
+
+    html { background: var(--bg); color: var(--text); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(240, 165, 0, 0.07), transparent 26%),
+        linear-gradient(180deg, #090909 0%, #060606 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * { box-sizing: border-box; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    ::selection { background: var(--amber); color: #080808; }
+
+    .shell {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      color: var(--amber);
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .site-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 1rem 0;
+      pointer-events: none;
+    }
+
+    .site-bar .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1.15rem;
+    }
+
+    .wordmark::before {
+      content: '';
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 6px rgba(240, 165, 0, 0.14);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.9rem;
+      padding: 0.82rem 1.15rem;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.02);
+      color: var(--text);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.08);
+      color: #fff;
+    }
+
+    .button.primary {
+      border-color: rgba(240, 165, 0, 0.55);
+      background: var(--amber);
+      color: #080808;
+      font-weight: 700;
+    }
+
+    .button.primary:hover {
+      background: #ffbc2f;
+      color: #080808;
+    }
+
+    .section {
+      padding: clamp(4rem, 9vw, 8rem) 0;
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .section-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      font-size: clamp(2.9rem, 7vw, 5.4rem);
+      margin: 0;
+    }
+
+    .section-head p,
+    .lede {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+      max-width: 56ch;
+      margin: 0;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      overflow: clip;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+      transform: scale(1.04);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0.68) 45%, rgba(8, 8, 8, 0.2) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.26) 0%, rgba(8, 8, 8, 0.52) 100%);
+    }
+
+    .hero__inner {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 7rem 0 clamp(2rem, 4vw, 4rem);
+      display: grid;
+      gap: 1.35rem;
+      align-content: end;
+    }
+
+    .hero__brand {
+      font-size: clamp(4.7rem, 16vw, 9.5rem);
+      margin: 0;
+      max-width: 7ch;
+      text-wrap: balance;
+    }
+
+    .hero__copy {
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.82);
+      margin: 0;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .menu-item {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .menu-item h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #fff;
+    }
+
+    .menu-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 44ch;
+    }
+
+    .about-layout,
+    .cta-layout,
+    .location-layout {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .about-copy,
+    .cta-copy,
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .visual {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+
+    .visual img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .gallery-grid img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      transition: transform 300ms ease, border-color 300ms ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.015);
+      border-color: rgba(240, 165, 0, 0.5);
+    }
+
+    .gallery-grid figcaption {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin: 0;
+      border: 0;
+    }
+
+    .highlight {
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      margin: 0;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 0.5rem;
+      padding-top: 0.2rem;
+    }
+
+    .location-meta a,
+    .location-meta span {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .map-frame {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+    }
+
+    .map-frame img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    footer {
+      padding: 1.35rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.25rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-inner strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .float-tilt {
+      transform-origin: center;
+    }
+
+    @media (min-width: 760px) {
+      .section-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 2rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem 1.6rem;
+      }
+
+      .about-layout,
+      .cta-layout,
+      .location-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 759px) {
+      .site-bar {
+        padding-top: 0.75rem;
+      }
+
+      .site-bar .shell {
+        align-items: flex-start;
+      }
+
+      .hero__brand {
+        max-width: 6.5ch;
+      }
+
+      .hero__copy {
+        max-width: 31rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero__actions,
+      .contact-row {
+        display: grid;
+      }
+
+      .shell {
+        width: min(var(--max), calc(100% - 1.25rem));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
-<body>
-    <h1>GUNI GUNI Bistro</h1>
-    <span class="category">Bistro & Hostel</span>
-    <p class="address">263 Manalo St Extension, Puerto Princesa City</p>
-    <p class="phone">+63 917 771 3992</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+<body id="top">
+  <header class="site-bar" aria-label="Top bar">
+    <div class="shell">
+      <a class="wordmark" href="#top">Guni Guni Bistro</a>
+      <a class="button" href="tel:+639177713992">Call now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Guni Guni Bistro hero">
+      <img class="hero__media float-tilt" src="assets/img/hero-bistro.svg" alt="Guni Guni Bistro dining atmosphere with warm amber lighting and plated comfort food.">
+      <div class="hero__inner shell">
+        <p class="mono reveal">Puerto Princesa, Palawan</p>
+        <h1 class="display hero__brand reveal">Guni Guni Bistro</h1>
+        <p class="hero__copy reveal">263 Manalo St. Extension is the easy stop for pizza, pasta, burgers, burritos, seafood plates, and sweets when the island day slows down.</p>
+        <div class="hero__actions reveal">
+          <a class="button primary" href="tel:+639177713992">Call +63 917 771 3992</a>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&query=9.7357289,118.7513669" target="_blank" rel="noopener noreferrer">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="shell section-grid">
+        <div class="section-head reveal">
+          <p class="mono">Menu highlights</p>
+          <h2>What regulars order</h2>
+          <p>These dishes show up in live listings and recent guest mentions, which points to a kitchen that moves comfortably between Italian-leaning plates and easy island comfort food.</p>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-item reveal">
+            <h3>Pizza Margherita</h3>
+            <p>A steady name in public menu listings and guest orders, the simplest read on the bistro's pizza side.</p>
+          </div>
+          <div class="menu-item reveal">
+            <h3>Seafood Pasta</h3>
+            <p>Frequently cited by diners who want something richer and a little more shore-side for dinner.</p>
+          </div>
+          <div class="menu-item reveal">
+            <h3>Spicy Chicken Burger</h3>
+            <p>A delivery favorite that regulars mention when they want something bold and satisfying.</p>
+          </div>
+          <div class="menu-item reveal">
+            <h3>Burrito</h3>
+            <p>Another recurring order in review mentions, especially for guests who like a customizable plate.</p>
+          </div>
+          <div class="menu-item reveal">
+            <h3>Truffle Pasta</h3>
+            <p>Part of the comfort-food lane that keeps the menu broad enough for return visits.</p>
+          </div>
+          <div class="menu-item reveal">
+            <h3>Brownie a la Mode</h3>
+            <p>The dessert people keep coming back for when they want a soft landing after the main course.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="shell about-layout">
+        <div class="about-copy">
+          <div class="section-head reveal">
+            <p class="mono">About the kitchen</p>
+            <h2>The room keeps it easy</h2>
+          </div>
+          <p class="lede reveal">Guni Guni Bistro reads like a Puerto Princesa table built for long conversations: breakfast plates, burgers, pizza, pasta, seafood, and drinks that can carry the night without trying too hard.</p>
+          <p class="lede reveal">Recent mentions point to friendly service, a relaxed atmosphere, and a menu wide enough to satisfy both travelers looking for something familiar and locals who want a dependable stop on Manalo Street Extension.</p>
+        </div>
+        <figure class="visual reveal">
+          <img src="assets/img/dish-pasta.svg" alt="Stylized pasta bowl on a dark table with amber highlights.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head reveal">
+          <p class="mono">Gallery</p>
+          <h2>Three views of the bistro mood</h2>
+          <p>Visual notes drawn from the menu and the atmosphere that people keep describing online.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="reveal">
+            <img src="assets/img/dish-pizza.svg" alt="Stylized Margherita pizza with molten cheese and basil on a dark plate.">
+            <figcaption>Pizza night, built for an easy shared table.</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/dish-burger.svg" alt="Stylized spicy chicken burger with fries and amber lighting.">
+            <figcaption>Burger plates that feel right with cold drinks.</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/hero-bistro.svg" alt="Warm bistro atmosphere with plated dishes and evening lighting.">
+            <figcaption>The room after sunset, when the dining pace softens.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reservations">
+      <div class="shell cta-layout">
+        <div class="cta-copy">
+          <div class="section-head reveal">
+            <p class="mono">Reservations CTA</p>
+            <h2>Plan your table</h2>
+          </div>
+          <p class="lede reveal">For dinner plans, takeout, or a quick stop before the next island day, call the bistro directly or open the map and head to Manalo Street Extension.</p>
+          <div class="contact-row reveal">
+            <a class="button primary" href="tel:+639177713992">Call +63 917 771 3992</a>
+            <a class="button" href="https://www.google.com/maps/search/?api=1&query=Guni%20Guni%20Bistro%2C%20263%20Manalo%20St%20Extension%2C%20Puerto%20Princesa%2C%20Palawan" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+            <button class="button" type="button" id="copy-phone">Copy number</button>
+          </div>
+        </div>
+        <figure class="visual reveal">
+          <img src="assets/img/dish-burger.svg" alt="Stylized burger plate with fries and amber highlights.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="shell location-layout">
+        <div class="map-frame reveal">
+          <img src="assets/img/location-map.svg" alt="Stylized map for Guni Guni Bistro in Puerto Princesa, Palawan with a verified pin near Manalo Street Extension.">
+        </div>
+        <div class="location-copy">
+          <div class="section-head reveal">
+            <p class="mono">Location</p>
+            <h2>263 Manalo St. Extension</h2>
+          </div>
+          <div class="location-meta reveal">
+            <span>Puerto Princesa, Palawan 5300, Philippines</span>
+            <a href="tel:+639177713992">+63 917 771 3992</a>
+            <span>Verified coordinates: 9.7357289, 118.7513669</span>
+            <span>That pin sits in Puerto Princesa, not Manila.</span>
+          </div>
+          <div class="contact-row reveal">
+            <a class="button primary" href="https://www.google.com/maps/search/?api=1&query=9.7357289,118.7513669" target="_blank" rel="noopener noreferrer">View map pin</a>
+            <a class="button" href="#top">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <strong>Guni Guni Bistro</strong>
+      <span>Puerto Princesa, Palawan</span>
+      <span>263 Manalo St. Extension</span>
+      <span>+63 917 771 3992</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = prefersReducedMotion
+      ? null
+      : new Lenis({
+          lerp: 0.08,
+          smoothWheel: true,
+          smoothTouch: false,
+        });
+
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    const revealTargets = gsap.utils.toArray('.reveal');
+
+    if (prefersReducedMotion) {
+      gsap.set(revealTargets, { opacity: 1, y: 0, clearProps: 'transform' });
+      gsap.set('.hero__media', { scale: 1 });
+    } else {
+      gsap.set(revealTargets, { opacity: 0, y: 28 });
+      gsap.set('.hero__media', { scale: 1.08, y: 18 });
+
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .to('.hero__media', { scale: 1, y: 0, duration: 1.5 }, 0)
+        .to('.hero .reveal', { opacity: 1, y: 0, duration: 1, stagger: 0.13 }, 0.14);
+
+      revealTargets.forEach((element) => {
+        if (element.closest('.hero')) return;
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 82%',
+          },
+        });
+      });
+
+      gsap.to('.float-tilt', {
+        yPercent: 2,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      gsap.utils.toArray('.gallery-grid img, .visual img, .map-frame img').forEach((img) => {
+        gsap.fromTo(img, { scale: 1.05 }, {
+          scale: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top 90%',
+            end: 'bottom 60%',
+            scrub: true,
+          },
+        });
+      });
+    }
+
+    document.getElementById('copy-phone')?.addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      const value = '+63 917 771 3992';
+
+      try {
+        await navigator.clipboard.writeText(value);
+        button.textContent = 'Copied';
+        setTimeout(() => {
+          button.textContent = 'Copy number';
+        }, 1400);
+      } catch (error) {
+        button.textContent = 'Copy failed';
+        setTimeout(() => {
+          button.textContent = 'Copy number';
+        }, 1400);
+      }
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Guni Guni Bistro",
+    "url": "https://frans15-2006.github.io/TheFrans/guni-guni-bistro/",
+    "image": "https://frans15-2006.github.io/TheFrans/guni-guni-bistro/assets/img/og-image.svg",
+    "telephone": "+63 917 771 3992",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "263 Manalo St. Extension",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7357289,
+      "longitude": 118.7513669
+    },
+    "servesCuisine": ["Italian", "European", "Pizza", "Western", "Seafood"],
+    "priceRange": "$$"
+  }
+  </script>
 </body>
 </html>
