@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Corazon Travel Tours Palawan illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14100d"/>
+      <stop offset="55%" stop-color="#0c0c0c"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.24" cy="0.23" r="0.28">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d1510"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="290" cy="170" r="180" fill="url(#sun)"/>
+  <path d="M0 332C108 280 172 222 232 132C286 52 372 18 476 34C564 48 632 100 666 176C696 244 690 306 650 368C594 454 500 502 392 516C256 534 130 498 0 442Z" fill="#181311"/>
+  <path d="M1200 316C1106 304 1040 258 988 172C932 80 854 36 756 36C666 36 594 84 552 164C512 240 512 314 550 380C600 466 686 520 798 540C938 566 1088 534 1200 452Z" fill="#111111"/>
+  <path d="M0 428C190 392 356 384 520 392C704 402 850 430 1200 430V630H0Z" fill="url(#water)"/>
+  <path d="M186 440C382 414 540 416 684 434C826 452 1006 468 1200 446" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="4"/>
+  <path d="M560 404L608 404L592 424L544 424Z" fill="#eaeaea" opacity="0.92"/>
+  <path d="M582 378L582 404" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+  <path d="M582 378L608 396L582 396Z" fill="#f0a500"/>
+  <text x="74" y="590" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="74" letter-spacing="5">Corazon Travel Tours</text>
+  <text x="76" y="540" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">PALAWAN TOURS FROM PUERTO PRINCESA CITY</text>
+</svg>

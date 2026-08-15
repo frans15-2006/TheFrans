@@ -1,60 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corazon Travel & Tours</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corazon Travel Tours | Palawan Tours from Puerto Princesa</title>
+  <meta name="description" content="Corazon Travel Tours brings verified Palawan packages, day tours, transfers, and multi-day trips from GF PC Arcade, Junction 1, San Miguel, Puerto Princesa City, Palawan.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="./">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Corazon Travel Tours | Palawan Tours from Puerto Princesa">
+  <meta property="og:description" content="Verified Corazon Travel Tours packages, destinations, and contact details in Puerto Princesa City, Palawan.">
+  <meta property="og:image" content="assets/img/og.svg">
+  <meta property="og:image:alt" content="Corazon Travel Tours Palawan landscape illustration">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Corazon Travel Tours | Palawan Tours from Puerto Princesa">
+  <meta property="twitter:description" content="Verified Palawan packages, tours, transfers, and contact details for Corazon Travel Tours.">
+  <meta property="twitter:image" content="assets/img/og.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --off: #eaeaea;
+      --off-soft: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: auto;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--off);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    .font-label {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.25);
+      color: var(--off);
+    }
+
+    .hairline {
+      border-color: var(--line);
+    }
+
+    .grid-shell {
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px;
+      background-position: center;
+    }
+
+    .amber-line {
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.95), transparent);
+    }
+
+    .hero-art-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 22% 24%, rgba(240, 165, 0, 0.18), transparent 28%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.12) 0%, rgba(8, 8, 8, 0.3) 50%, rgba(8, 8, 8, 0.82) 100%);
+      pointer-events: none;
+    }
+
+    .image-shell {
+      position: relative;
+      overflow: hidden;
+      background: #101010;
+    }
+
+    .image-shell::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0) 45%, rgba(8, 8, 8, 0.42) 100%);
+      pointer-events: none;
+    }
+
+    .soft-link {
+      transition: color 180ms ease, border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .soft-link:hover {
+      color: var(--off);
+      border-color: rgba(240, 165, 0, 0.48);
+      transform: translateY(-1px);
+    }
+
+    .scene stroke,
+    .scene path,
+    .scene circle,
+    .scene rect,
+    .scene line {
+      vector-effect: non-scaling-stroke;
+    }
+
+    .package-card,
+    .quote-row,
+    .contact-panel {
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.02);
+    }
+
+    .package-card:hover {
+      border-color: rgba(240, 165, 0, 0.4);
+      background: rgba(234, 234, 234, 0.035);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Corazon Travel Tours",
+    "url": ".",
+    "telephone": "+639989947100",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "GF PC Arcade, 2 Junction 1, San Miguel",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.740535,
+      "longitude": 118.744125
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "areaServed": ["Puerto Princesa", "El Nido", "Coron", "Palawan"],
+    "sameAs": ["https://toursbycorazon.com/"]
+  }
+  </script>
 </head>
-<body>
-    <h1>Corazon Travel & Tours</h1>
-    <span class="category">Tour Agency</span>
-    <p class="address">PC Arcade 2 Junction 1, San Miguel, Puerto Princesa City</p>
-    <p class="phone">+63 927 685 5534</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+<body class="antialiased">
+  <header class="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#080808]/72 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#top" class="font-display text-2xl uppercase tracking-[0.16em] text-[#eaeaea]">Corazon Travel Tours</a>
+      <nav class="hidden items-center gap-8 text-sm text-[#eaeaea]/78 md:flex" aria-label="Primary">
+        <a class="soft-link" href="#packages">Packages</a>
+        <a class="soft-link" href="#destinations">Destinations</a>
+        <a class="soft-link" href="#reviews">Testimonials</a>
+        <a class="soft-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(240,165,0,0.12),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(240,165,0,0.06),transparent_26%),linear-gradient(180deg,#111 0%,#080808_54%,#060606_100%)]"></div>
+      <div class="hero-art-wrap absolute inset-0">
+        <svg class="hero-art absolute inset-0 h-full w-full" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#140f0a"/>
+              <stop offset="48%" stop-color="#0f0f0f"/>
+              <stop offset="100%" stop-color="#080808"/>
+            </linearGradient>
+            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#201511"/>
+              <stop offset="100%" stop-color="#090909"/>
+            </linearGradient>
+            <linearGradient id="cliffGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1b1410"/>
+              <stop offset="55%" stop-color="#0f0f0f"/>
+              <stop offset="100%" stop-color="#050505"/>
+            </linearGradient>
+            <linearGradient id="amberGlow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f6c14d" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="blur24">
+              <feGaussianBlur stdDeviation="24"/>
+            </filter>
+            <filter id="blur10">
+              <feGaussianBlur stdDeviation="10"/>
+            </filter>
+          </defs>
+
+          <rect width="1600" height="1000" fill="url(#skyGrad)"/>
+          <circle class="hero-sun" cx="360" cy="220" r="88" fill="#f0a500" opacity="0.18" filter="url(#blur24)"/>
+          <circle class="hero-sun" cx="360" cy="220" r="42" fill="#f0a500" opacity="0.92"/>
+
+          <path d="M0 470C120 420 186 360 262 220C318 116 410 70 532 92C612 106 680 164 712 234C744 304 734 368 694 438C636 544 548 612 434 634C286 662 136 624 0 562Z" fill="url(#cliffGrad)" opacity="0.96"/>
+          <path d="M1600 418C1488 406 1418 352 1352 242C1282 126 1196 76 1080 88C978 98 892 160 856 238C820 314 828 390 874 458C940 556 1048 620 1178 642C1332 668 1472 630 1600 560Z" fill="url(#cliffGrad)" opacity="0.92"/>
+          <path d="M0 640C260 600 468 552 678 550C854 548 1008 592 1266 602C1410 608 1520 588 1600 560V1000H0Z" fill="url(#waterGrad)"/>
+
+          <path class="hero-water" d="M0 696C172 682 348 676 532 682C690 688 812 706 984 710C1168 716 1372 704 1600 678" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="2"/>
+          <path class="hero-water" d="M0 724C170 712 336 708 514 716C700 726 838 744 1002 746C1182 748 1378 738 1600 716" fill="none" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+
+          <g class="hero-boat" transform="translate(1110 696)">
+            <path d="M0 38L78 38L62 56L18 56Z" fill="#eaeaea" opacity="0.9"/>
+            <path d="M42 4L42 38" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+            <path d="M42 4L66 24L42 24Z" fill="#f0a500" opacity="0.92"/>
+            <path d="M-8 62C24 74 56 78 90 72" fill="none" stroke="#f0a500" stroke-opacity="0.32" stroke-width="4" stroke-linecap="round"/>
+          </g>
+
+          <g opacity="0.35" filter="url(#blur10)">
+            <ellipse cx="500" cy="460" rx="180" ry="34" fill="#f0a500" opacity="0.18"/>
+            <ellipse cx="1180" cy="502" rx="210" ry="38" fill="#eaeaea" opacity="0.08"/>
+          </g>
+
+          <g opacity="0.9">
+            <path d="M108 620C136 566 154 514 168 452" stroke="#1d1d1d" stroke-width="10" stroke-linecap="round"/>
+            <path d="M134 620C156 566 164 508 176 448" stroke="#292929" stroke-width="8" stroke-linecap="round"/>
+            <path d="M130 456C98 460 76 480 56 516" fill="none" stroke="#f0a500" stroke-opacity="0.16" stroke-width="3"/>
+            <path d="M1490 610C1468 548 1448 502 1428 444" stroke="#1a1a1a" stroke-width="10" stroke-linecap="round"/>
+            <path d="M1466 610C1448 552 1436 498 1422 442" stroke="#262626" stroke-width="8" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-end px-5 pt-28 pb-12 lg:px-8 lg:pt-32 lg:pb-16">
+        <div class="max-w-3xl">
+          <p class="font-label text-[0.72rem] uppercase tracking-[0.3em] text-[#f0a500]" data-hero-kicker>Puerto Princesa City, Palawan</p>
+          <h1 class="mt-3 max-w-4xl font-display text-7xl uppercase leading-[0.9] text-[#eaeaea] sm:text-[6.5rem] lg:text-[9.5rem]" data-hero-brand>Corazon Travel Tours</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-[#eaeaea]/80 sm:text-xl" data-hero-copy>
+            Verified Palawan tours, transfers, and multi-day trips from GF PC Arcade, Junction 1, San Miguel, Puerto Princesa City.
+          </p>
+          <p class="mt-3 max-w-2xl text-sm leading-7 text-[#eaeaea]/64" data-hero-note>
+            Underground River, Honda Bay, El Nido, and Coron itineraries are all part of the live Corazon catalog.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3" data-hero-cta>
+            <a href="tel:+639989947100" class="soft-link inline-flex items-center justify-center border border-[#f0a500]/55 bg-[#f0a500] px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-[#080808]">
+              Call +63 998 994 7100
+            </a>
+            <a href="mailto:palawan@toursbycorazon.com?subject=Corazon%20Travel%20Tours%20Inquiry" class="soft-link inline-flex items-center justify-center border border-white/15 bg-white/0 px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-[#eaeaea]">
+              Email Palawan Desk
+            </a>
+          </div>
+          <p class="mt-4 font-label text-[0.7rem] uppercase tracking-[0.26em] text-[#eaeaea]/48" data-hero-hours>Open 24/7 daily</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="border-t border-white/10 py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <p class="font-label text-[0.72rem] uppercase tracking-[0.3em] text-[#f0a500]">Packages and tours</p>
+          <h2 class="mt-3 font-display text-5xl uppercase leading-none text-[#eaeaea] sm:text-6xl">Verified options from the Corazon catalog</h2>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-[#eaeaea]/72">
+            These listings reflect the live tour menu: Puerto Princesa, El Nido, and Coron packages plus the signature day tours people book most often.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-stagger>
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">Puerto Princesa</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Puerto Princesa 4D/3N Tour Package</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">Corazon Tourist Inn or equivalent, Underground River, Honda Bay, airport transfers, breakfast, and tour-day lunches.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱10,990</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=Puerto%20Princesa%204D%2F3N%20Tour%20Package" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this package</a>
+          </article>
+
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">El Nido</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">El Nido 3D/2N Tour Package</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">Angelic Tourist Inn, Puerto Princesa to El Nido transfers, breakfast, picnic lunch, and Island Hopping Tour A stops.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱6,990</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=El%20Nido%203D%2F2N%20Tour%20Package" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this package</a>
+          </article>
+
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">Coron</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Coron 4D/3N Tour Package</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">Cebuanas Traveler's Inn, Island Hopping Tours A and B, and round-trip airport transfers for a fuller Coron stay.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱11,990</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=Coron%204D%2F3N%20Tour%20Package" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this package</a>
+          </article>
+
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">Day tour</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">PPS: Underground River Tour</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">A 7-hour guided trip with lunch, park permits, audio device rental, air-conditioned van transfers, and boat transfers.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱2,750</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=PPS%20Underground%20River%20Tour" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this tour</a>
+          </article>
+
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">Puerto Princesa</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">PPS: Honda Bay Island Hopping</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">Island-hopping around Honda Bay with the style and logistics Corazon uses across its Puerto Princesa tours.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱2,190</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=PPS%20Honda%20Bay%20Island%20Hopping" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this tour</a>
+          </article>
+
+          <article class="package-card group p-6 transition duration-300">
+            <p class="font-label text-[0.65rem] uppercase tracking-[0.28em] text-[#f0a500]/90">Coron</p>
+            <h3 class="mt-4 font-display text-4xl uppercase leading-none text-[#eaeaea]">Coron: Island Hopping Tour A</h3>
+            <p class="mt-4 text-sm leading-7 text-[#eaeaea]/72">Kayangan Lake, Twin Lagoon, Siete Pecados, CYC Beach, picnic lunch, and the classic Coron route.</p>
+            <p class="mt-5 font-mono text-lg font-semibold text-[#f0a500]">₱1,200</p>
+            <a href="mailto:palawan@toursbycorazon.com?subject=Coron%20Island%20Hopping%20Tour%20A" class="mt-5 inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea] soft-link">Ask about this tour</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="destinations" class="border-t border-white/10 py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <p class="font-label text-[0.72rem] uppercase tracking-[0.3em] text-[#f0a500]">Destinations</p>
+          <h2 class="mt-3 font-display text-5xl uppercase leading-none text-[#eaeaea] sm:text-6xl">Places featured in the live tours</h2>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-[#eaeaea]/72">
+            The gallery below reflects destinations named on Corazon's official listings, from Puerto Princesa's Underground River to El Nido and Coron highlights.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-stagger>
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <defs>
+                <linearGradient id="u-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#111"/><stop offset="100%" stop-color="#090909"/></linearGradient>
+                <linearGradient id="u-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1d1510"/><stop offset="100%" stop-color="#060606"/></linearGradient>
+              </defs>
+              <rect width="960" height="720" fill="url(#u-sky)"/>
+              <circle cx="168" cy="130" r="58" fill="#f0a500" opacity="0.9"/>
+              <path d="M0 520C120 430 194 314 252 202C304 102 382 54 474 66C558 76 620 136 646 216C674 304 654 392 602 470C540 562 446 626 330 648C214 670 106 642 0 586Z" fill="#171311"/>
+              <path d="M960 504C850 462 776 396 726 282C692 206 622 162 534 158C460 156 396 186 354 244C310 304 300 374 320 444C350 542 428 618 540 650C676 688 812 660 960 584Z" fill="#101010"/>
+              <path d="M90 560C220 528 364 506 500 508C642 510 760 534 870 566V720H90Z" fill="url(#u-water)"/>
+              <path d="M320 454C392 428 478 420 578 428C682 436 770 458 860 490" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="5"/>
+              <path d="M320 454C392 428 478 420 578 428C682 436 770 458 860 490" fill="none" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+              <rect x="406" y="502" width="92" height="28" rx="14" fill="#eaeaea" opacity="0.88"/>
+              <path d="M452 462L452 502" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+              <path d="M452 462L486 482L452 482Z" fill="#f0a500"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Puerto Princesa</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Underground River, the longest navigable underground river in the world.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <defs>
+                <linearGradient id="h-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#17120f"/><stop offset="100%" stop-color="#090909"/></linearGradient>
+              </defs>
+              <rect width="960" height="720" fill="url(#h-sky)"/>
+              <circle cx="820" cy="130" r="44" fill="#f0a500" opacity="0.9"/>
+              <path d="M140 580C212 522 286 500 360 502C428 504 494 530 562 576C634 624 710 646 792 646C848 646 898 638 960 622V720H140Z" fill="#0f0f0f"/>
+              <path d="M102 508C194 454 278 398 352 326C418 262 472 210 528 194C602 172 660 190 700 232C738 272 736 328 706 370C670 420 614 462 542 494C460 530 374 552 284 558C222 562 160 550 102 528Z" fill="#171717"/>
+              <path d="M210 508C252 478 302 456 358 446C426 434 494 440 560 460C624 480 678 512 724 548" fill="none" stroke="#f0a500" stroke-opacity="0.25" stroke-width="4"/>
+              <path d="M210 508C252 478 302 456 358 446C426 434 494 440 560 460C624 480 678 512 724 548" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+              <rect x="488" y="470" width="114" height="28" rx="14" fill="#eaeaea" opacity="0.88"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Puerto Princesa</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Honda Bay island hopping, one of the city's signature day trips.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <rect width="960" height="720" fill="#0d0d0d"/>
+              <path d="M0 612C106 540 192 460 260 368C328 276 392 212 468 192C560 166 642 182 706 228C772 274 814 338 842 416C872 498 886 586 960 660V720H0Z" fill="#161311"/>
+              <path d="M114 520C214 500 314 494 414 500C536 508 650 534 754 574" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="5"/>
+              <path d="M620 218L700 208L734 278L676 320L624 290Z" fill="#eaeaea" opacity="0.84"/>
+              <path d="M470 300L538 292L572 350L520 388L470 362Z" fill="#eaeaea" opacity="0.86"/>
+              <path d="M312 384L382 378L414 438L360 474L310 448Z" fill="#eaeaea" opacity="0.84"/>
+              <path d="M692 528C656 452 632 392 620 340C600 260 618 208 676 188C732 168 794 192 828 242C864 294 866 360 836 420C806 480 762 520 692 528Z" fill="#121212"/>
+              <path d="M346 556C428 526 516 512 612 516C714 520 804 542 892 582" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">El Nido</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Big Lagoon, a premium stop in Island Hopping Tour A.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <rect width="960" height="720" fill="#0f0f0f"/>
+              <path d="M0 644C92 610 176 566 250 512C326 456 408 404 498 382C588 360 670 370 736 404C804 440 858 494 960 548V720H0Z" fill="#16110f"/>
+              <path d="M122 514C214 470 306 446 404 440C514 434 616 448 708 486C790 520 862 570 960 632" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="5"/>
+              <rect x="608" y="334" width="92" height="26" rx="13" fill="#eaeaea" opacity="0.9"/>
+              <rect x="706" y="354" width="70" height="20" rx="10" fill="#eaeaea" opacity="0.78"/>
+              <path d="M210 400C258 374 308 360 360 360C418 360 468 372 518 394C574 418 624 446 668 486" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="3"/>
+              <path d="M410 310C410 276 434 250 468 250C502 250 526 276 526 310C526 344 502 370 468 370C434 370 410 344 410 310Z" fill="#f0a500" opacity="0.24"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">El Nido</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Seven Commandos Beach, a white-sand stop in Bacuit Bay.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <rect width="960" height="720" fill="#090909"/>
+              <path d="M0 602C84 548 160 500 232 430C300 364 372 302 450 280C536 256 616 272 686 320C762 372 820 446 888 520C916 552 940 580 960 598V720H0Z" fill="#171717"/>
+              <path d="M126 514C220 474 316 454 414 452C514 450 612 468 708 506C796 540 872 588 960 646" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="5"/>
+              <path d="M614 224C656 204 700 202 742 218C788 236 822 268 842 314C862 360 864 414 846 468C824 526 784 572 728 598C676 622 618 626 556 614C492 602 446 576 416 532C384 486 378 430 392 376C408 318 452 262 514 240Z" fill="#111"/>
+              <path d="M324 534C366 510 414 494 466 488C532 480 594 486 652 504C710 524 764 552 816 588" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="3"/>
+              <path d="M188 332C216 282 256 248 306 230C352 214 396 214 438 228C476 240 506 264 532 302C484 312 450 336 430 374C408 416 402 456 410 496C372 488 338 470 310 444C272 408 230 374 188 332Z" fill="#1a1a1a"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Coron</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Kayangan Lake, the clear-water icon of Coron Island hopping.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="image-shell border border-white/10">
+            <svg class="scene h-72 w-full" viewBox="0 0 960 720" aria-hidden="true">
+              <rect width="960" height="720" fill="#0d0d0d"/>
+              <path d="M0 614C84 560 162 506 232 446C296 390 360 336 426 310C504 278 578 282 644 316C712 350 764 406 812 470C860 534 910 606 960 682V720H0Z" fill="#151515"/>
+              <path d="M220 602C248 548 256 500 248 452C240 402 218 360 186 324" stroke="#1f1f1f" stroke-width="12" stroke-linecap="round"/>
+              <path d="M316 586C344 530 352 478 346 432C340 384 322 346 292 312" stroke="#262626" stroke-width="10" stroke-linecap="round"/>
+              <path d="M400 578C430 530 440 488 436 446C432 402 418 368 394 334" stroke="#232323" stroke-width="10" stroke-linecap="round"/>
+              <path d="M552 560C560 510 584 468 624 430C664 392 714 366 774 354" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="5"/>
+              <circle cx="290" cy="560" r="58" fill="#f0a500" opacity="0.12"/>
+              <circle cx="304" cy="560" r="32" fill="#eaeaea" opacity="0.8"/>
+              <path d="M282 596C302 586 322 586 342 596" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+            </svg>
+            <figcaption class="p-4">
+              <p class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Coron</p>
+              <p class="mt-2 text-sm leading-6 text-[#eaeaea]/80">Maquinit Hot Spring, a warm finish after Coron town touring.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="border-t border-white/10 py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <p class="font-label text-[0.72rem] uppercase tracking-[0.3em] text-[#f0a500]">Testimonials</p>
+          <h2 class="mt-3 font-display text-5xl uppercase leading-none text-[#eaeaea] sm:text-6xl">What travelers said</h2>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-[#eaeaea]/72">
+            Excerpts below come from Tripadvisor guest reviews surfaced in the Corazon listing.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-3" data-stagger>
+          <blockquote class="quote-row p-6">
+            <p class="text-base leading-8 text-[#eaeaea]/86">"Everything was perfectly organized by Corazon Travels and Tours, and Mia was very helpful and responsive throughout the whole process."</p>
+            <footer class="mt-5 font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Tripadvisor guest review, March 2026</footer>
+          </blockquote>
+          <blockquote class="quote-row p-6">
+            <p class="text-base leading-8 text-[#eaeaea]/86">"Overall, I was very satisfied with how they communicated with me during my trip and I would highly recommend them to my friends and families..."</p>
+            <footer class="mt-5 font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Tripadvisor guest review, June 2017</footer>
+          </blockquote>
+          <blockquote class="quote-row p-6">
+            <p class="text-base leading-8 text-[#eaeaea]/86">"Corazon travel and tours staff are very hospitable. Most especially yung mga tourist guide..."</p>
+            <footer class="mt-5 font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Tripadvisor guest review, May 2017</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-white/10 py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="contact-panel overflow-hidden px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div data-reveal>
+              <p class="font-label text-[0.72rem] uppercase tracking-[0.3em] text-[#f0a500]">Booking CTA</p>
+              <h2 class="mt-3 font-display text-5xl uppercase leading-none text-[#eaeaea] sm:text-6xl">Send your dates and we will build the route</h2>
+              <p class="mt-4 max-w-2xl text-base leading-7 text-[#eaeaea]/72">
+                Share your travel dates, number of guests, and preferred city. The Palawan team can match tours, transfers, and overnight stays around the live Corazon lineup.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="tel:+639989947100" class="soft-link inline-flex items-center justify-center border border-[#f0a500]/55 bg-[#f0a500] px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-[#080808]">
+                  Call the Palawan desk
+                </a>
+                <a href="mailto:palawan@toursbycorazon.com?subject=Booking%20Request%20for%20Corazon%20Travel%20Tours" class="soft-link inline-flex items-center justify-center border border-white/15 px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-[#eaeaea]">
+                  Email booking details
+                </a>
+              </div>
+              <p class="mt-4 font-label text-[0.7rem] uppercase tracking-[0.26em] text-[#eaeaea]/50">Customer service is available 24/7.</p>
+            </div>
+
+            <figure class="relative">
+              <svg class="w-full max-w-full" viewBox="0 0 760 500" aria-hidden="true">
+                <defs>
+                  <linearGradient id="mapBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#111"/><stop offset="100%" stop-color="#080808"/></linearGradient>
+                  <linearGradient id="palawanShore" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/><stop offset="100%" stop-color="#f0a500" stop-opacity="0.12"/></linearGradient>
+                </defs>
+                <rect width="760" height="500" rx="24" fill="url(#mapBg)"/>
+                <path d="M164 66C200 44 252 46 298 68C350 92 382 128 396 170C412 220 404 266 386 310C372 344 346 376 304 406C262 434 214 450 166 448C120 446 82 424 62 388C42 352 44 310 60 266C78 218 116 160 164 66Z" fill="#161616" stroke="rgba(234,234,234,0.12)" stroke-width="2"/>
+                <path d="M174 112C202 98 236 102 260 120C288 140 300 170 298 202C296 236 282 266 262 294C246 316 222 334 192 344C162 354 132 350 116 330C100 310 98 278 106 246C114 214 134 176 174 112Z" fill="url(#palawanShore)" opacity="0.55"/>
+                <circle cx="231" cy="246" r="18" fill="#f0a500"/>
+                <circle cx="231" cy="246" r="42" fill="#f0a500" opacity="0.12"/>
+                <path d="M231 168V246" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+                <path d="M231 168L256 198L231 198Z" fill="#f0a500"/>
+                <text x="470" y="166" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700">Puerto Princesa City</text>
+                <text x="470" y="204" fill="rgba(234,234,234,0.72)" font-family="JetBrains Mono, monospace" font-size="14">9.740535, 118.744125</text>
+                <text x="470" y="248" fill="rgba(234,234,234,0.72)" font-family="Space Grotesk, sans-serif" font-size="18">GF PC Arcade, 2 Junction 1, San Miguel</text>
+                <text x="470" y="280" fill="rgba(234,234,234,0.72)" font-family="Space Grotesk, sans-serif" font-size="18">Puerto Princesa City, Palawan 5300</text>
+                <path d="M470 336H676" stroke="rgba(240,165,0,0.65)" stroke-width="2"/>
+                <text x="470" y="372" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2">OPEN 24/7 DAILY</text>
+              </svg>
+              <figcaption class="mt-4 flex flex-wrap items-center gap-3 text-sm text-[#eaeaea]/70">
+                <span class="font-label text-[0.62rem] uppercase tracking-[0.26em] text-[#f0a500]">Exact coordinates</span>
+                <a href="https://www.google.com/maps?q=9.740535,118.744125" target="_blank" rel="noopener noreferrer" class="soft-link border-b border-white/15 pb-1 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Open Google Maps</a>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-10">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-3 lg:px-8">
+      <div>
+        <p class="font-display text-3xl uppercase tracking-[0.14em] text-[#eaeaea]">Corazon Travel Tours</p>
+        <p class="mt-3 max-w-sm text-sm leading-7 text-[#eaeaea]/68">Established in 2014. Verified Palawan tours, transfers, and island itineraries from Puerto Princesa City.</p>
+      </div>
+      <div id="contact" class="space-y-4">
+        <p class="font-label text-[0.68rem] uppercase tracking-[0.28em] text-[#f0a500]">Contact</p>
+        <p class="text-sm leading-7 text-[#eaeaea]/78">GF PC Arcade, 2 Junction 1, San Miguel, Puerto Princesa City, Palawan 5300</p>
+        <div class="flex flex-wrap gap-3 text-sm">
+          <a class="soft-link border-b border-white/15 pb-1 text-[#eaeaea]" href="tel:+639989947100">+63 998 994 7100</a>
+          <a class="soft-link border-b border-white/15 pb-1 text-[#eaeaea]" href="tel:+639276855534">+63 927 685 5534</a>
+          <a class="soft-link border-b border-white/15 pb-1 text-[#eaeaea]" href="mailto:palawan@toursbycorazon.com">palawan@toursbycorazon.com</a>
+          <a class="soft-link border-b border-white/15 pb-1 text-[#eaeaea]" href="mailto:support@toursbycorazon.com">support@toursbycorazon.com</a>
+          <a class="soft-link border-b border-white/15 pb-1 text-[#eaeaea]" href="mailto:b2b@toursbycorazon.com">b2b@toursbycorazon.com</a>
+        </div>
+      </div>
+      <div class="space-y-4 lg:text-right">
+        <p class="font-label text-[0.68rem] uppercase tracking-[0.28em] text-[#f0a500]">Location</p>
+        <p class="text-sm leading-7 text-[#eaeaea]/78">9.740535, 118.744125</p>
+        <p class="text-sm leading-7 text-[#eaeaea]/78">Open 24/7 daily</p>
+        <a href="https://www.google.com/maps?q=9.740535,118.744125" target="_blank" rel="noopener noreferrer" class="soft-link inline-flex border-b border-white/15 pb-1 font-mono text-xs uppercase tracking-[0.24em] text-[#eaeaea]">Directions on Google Maps</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
+    if (window.Lenis && !reducedMotion) {
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    if (!reducedMotion && window.gsap) {
+      gsap.from('[data-hero-kicker]', { opacity: 0, y: 18, duration: 0.9, ease: 'power3.out' });
+      gsap.from('[data-hero-brand]', { opacity: 0, y: 46, duration: 1.1, ease: 'power3.out', delay: 0.08 });
+      gsap.from('[data-hero-copy], [data-hero-note], [data-hero-cta], [data-hero-hours]', {
+        opacity: 0,
+        y: 16,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.22
+      });
+
+      gsap.to('.hero-sun', { y: -14, duration: 6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      gsap.to('.hero-boat', { x: 16, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      gsap.to('.hero-water', { scaleX: 1.02, transformOrigin: 'center', duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.fromTo(el, {
+          autoAlpha: 0,
+          y: 36
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('[data-stagger]').forEach((group) => {
+        const children = Array.from(group.children);
+        gsap.from(children, {
+          autoAlpha: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power3.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: group,
+            start: 'top 78%'
+          }
+        });
+      });
+    }
+  </script>
 </body>
 </html>
