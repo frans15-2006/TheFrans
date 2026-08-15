@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Zero-waste essentials</title>
+  <desc id="desc">A still life of bamboo straws, reusable utensils, and a tumbler in the AraPilak palette.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#d08b00"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0f0f0"/>
+      <stop offset="100%" stop-color="#9a9a9a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="970" cy="220" r="180" fill="#f0a500" fill-opacity="0.08"/>
+  <circle cx="220" cy="940" r="220" fill="#eaeaea" fill-opacity="0.04"/>
+  <g transform="translate(148 170)">
+    <rect x="90" y="120" width="110" height="640" rx="42" fill="#1b1b1b" stroke="#4d4d4d" stroke-width="4"/>
+    <rect x="112" y="155" width="66" height="100" rx="28" fill="url(#amber)" fill-opacity="0.35"/>
+    <rect x="112" y="286" width="66" height="100" rx="28" fill="url(#amber)" fill-opacity="0.27"/>
+    <rect x="112" y="417" width="66" height="100" rx="28" fill="url(#amber)" fill-opacity="0.2"/>
+    <rect x="112" y="548" width="66" height="100" rx="28" fill="url(#amber)" fill-opacity="0.14"/>
+    <rect x="112" y="679" width="66" height="50" rx="20" fill="url(#amber)" fill-opacity="0.12"/>
+    <rect x="248" y="92" width="72" height="720" rx="28" fill="#d6b58a" stroke="#7b5d34" stroke-width="4" transform="rotate(12 284 452)"/>
+    <rect x="286" y="115" width="12" height="676" rx="6" fill="#f3dfb8" fill-opacity="0.55" transform="rotate(12 292 453)"/>
+    <rect x="334" y="84" width="72" height="740" rx="28" fill="#d1aa7a" stroke="#7b5d34" stroke-width="4" transform="rotate(18 370 454)"/>
+    <rect x="368" y="118" width="12" height="668" rx="6" fill="#f3dfb8" fill-opacity="0.5" transform="rotate(18 374 452)"/>
+    <rect x="448" y="198" width="266" height="470" rx="110" fill="#121212" stroke="#595959" stroke-width="4"/>
+    <rect x="486" y="240" width="190" height="374" rx="88" fill="#eaeaea" fill-opacity="0.08"/>
+    <rect x="470" y="178" width="222" height="36" rx="18" fill="url(#amber)" fill-opacity="0.55"/>
+    <path d="M513 315H654" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <path d="M513 390H640" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+    <path d="M513 462H630" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+    <path d="M513 534H646" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.48"/>
+    <path d="M110 846C212 758 335 720 458 724C561 728 661 763 742 828" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="8" stroke-linecap="round"/>
+    <rect x="760" y="296" width="156" height="154" rx="76" fill="url(#metal)" opacity="0.92"/>
+    <rect x="794" y="330" width="88" height="48" rx="18" fill="#151515"/>
+    <path d="M830 458V640" stroke="url(#metal)" stroke-width="20" stroke-linecap="round"/>
+    <path d="M900 466C934 456 969 456 1002 467" fill="none" stroke="#eaeaea" stroke-opacity="0.45" stroke-width="8" stroke-linecap="round"/>
+    <path d="M895 520C923 511 951 511 978 520" fill="none" stroke="#eaeaea" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="992" cy="286" r="74" fill="#f0a500" fill-opacity="0.16"/>
+    <path d="M946 246C972 226 1014 226 1040 246" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

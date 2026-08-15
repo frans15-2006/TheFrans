@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Ba'law clothing</title>
+  <desc id="desc">A flour-sack dress illustration with stitch lines and subtle patterning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="cloth" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f4f4f4"/>
+      <stop offset="100%" stop-color="#cbcbcb"/>
+    </linearGradient>
+    <pattern id="pattern" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M0 54L54 0" stroke="#bcbcbc" stroke-opacity="0.35" stroke-width="2"/>
+      <path d="M27 0V54M0 27H54" stroke="#bcbcbc" stroke-opacity="0.12" stroke-width="1.4"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="960" cy="280" r="220" fill="#f0a500" fill-opacity="0.1"/>
+  <circle cx="232" cy="972" r="236" fill="#eaeaea" fill-opacity="0.05"/>
+  <g transform="translate(220 150)">
+    <path d="M224 100C256 74 302 68 340 85L422 122C449 134 468 160 473 190L521 500C528 544 509 587 472 611L345 696C304 723 252 723 211 696L84 611C47 587 28 544 35 500L83 190C88 160 107 134 134 122Z" fill="url(#cloth)" stroke="#5b5b5b" stroke-width="4"/>
+    <path d="M157 182L271 262L383 182" fill="none" stroke="#9c9c9c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M146 270C176 247 208 240 245 245C281 249 313 264 340 289" fill="none" stroke="#f0a500" stroke-opacity="0.7" stroke-width="5" stroke-linecap="round"/>
+    <path d="M128 343C163 319 201 313 242 319C282 325 319 342 352 370" fill="none" stroke="#9c9c9c" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+    <path d="M115 421C161 392 208 384 258 391C307 398 352 417 393 446" fill="none" stroke="#9c9c9c" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+    <rect x="141" y="256" width="252" height="262" fill="url(#pattern)" opacity="0.82"/>
+    <path d="M81 560C118 517 152 495 205 484C237 477 260 477 292 483C340 492 375 517 411 560" fill="none" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+    <path d="M271 694V756" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+    <path d="M271 69V122" stroke="#666" stroke-width="4" stroke-linecap="round"/>
+    <path d="M232 92C245 106 255 123 271 152C287 123 297 106 310 92" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

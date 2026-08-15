@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AraPilak | Zero-Waste Products in Puerto Princesa, Palawan</title>
+  <meta name="description" content="AraPilak is a Puerto Princesa, Palawan zero-waste lifestyle brand offering low-waste essentials and Ba'law clothing made from flour sacks (katsa).">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AraPilak | Zero-Waste Products in Puerto Princesa, Palawan">
+  <meta property="og:description" content="Low-waste essentials, Ba'law clothing, and repurposed pieces from a Palawan-based brand built around care for the Earth.">
+  <meta property="og:image" content="assets/img/hero-arapilak.svg">
+  <meta property="og:image:alt" content="AraPilak zero-waste brand illustration">
+  <meta property="og:site_name" content="AraPilak">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AraPilak | Zero-Waste Products in Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Low-waste essentials, Ba'law clothing, and repurposed pieces from a Palawan-based brand built around care for the Earth.">
+  <meta name="twitter:image" content="assets/img/hero-arapilak.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --fg: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.42);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Space Grotesk', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--fg);
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 0.92;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(240, 165, 0, 0.12), transparent 26%),
+        linear-gradient(180deg, #080808 0%, #090909 45%, #080808 100%);
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      padding: 1rem 0;
+      pointer-events: none;
+    }
+
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      pointer-events: auto;
+    }
+
+    .brandmark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      color: var(--fg);
+      white-space: nowrap;
+    }
+
+    .brandmark strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    .brandmark span {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: none;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .nav a {
+      font-size: 0.7rem;
+      color: var(--muted);
+      transition: color 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--fg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero__image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.04);
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.32) 0%, rgba(8, 8, 8, 0.28) 46%, rgba(8, 8, 8, 0.9) 100%),
+        radial-gradient(circle at 20% 30%, rgba(240, 165, 0, 0.16), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(234, 234, 234, 0.08), transparent 20%);
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 7rem 0 2rem;
+    }
+
+    .hero__copy {
+      width: min(780px, 100%);
+    }
+
+    .hero__kicker {
+      margin: 0 0 1rem;
+      font-size: 0.72rem;
+      color: var(--amber);
+    }
+
+    .hero__title {
+      margin: 0;
+      font-size: clamp(4.6rem, 15vw, 9.6rem);
+      color: var(--fg);
+      text-wrap: balance;
+    }
+
+    .hero__subtitle {
+      max-width: 38rem;
+      margin: 1rem 0 0;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.62;
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 2.95rem;
+      padding: 0.82rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button--primary {
+      background: var(--amber);
+      color: #111111;
+    }
+
+    .button--primary:hover,
+    .button--primary:focus-visible {
+      background: #ffc43d;
+    }
+
+    .button--ghost {
+      border-color: rgba(234, 234, 234, 0.18);
+      color: var(--fg);
+      background: rgba(234, 234, 234, 0.03);
+    }
+
+    .button--ghost:hover,
+    .button--ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.5);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .section {
+      padding: 4.75rem 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section__head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .section__label {
+      margin: 0;
+      color: var(--amber);
+      font-size: 0.72rem;
+    }
+
+    .section__title {
+      margin: 0;
+      font-size: clamp(2.6rem, 8vw, 5.2rem);
+      line-height: 0.93;
+      text-wrap: balance;
+    }
+
+    .section__lead {
+      max-width: 44rem;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1rem;
+    }
+
+    .about__grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .about__note {
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line-strong);
+      color: rgba(234, 234, 234, 0.86);
+      line-height: 1.72;
+    }
+
+    .offerings {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .offering {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: minmax(0, 1fr);
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .offering__name {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      letter-spacing: 0.06em;
+      line-height: 0.95;
+    }
+
+    .offering__desc {
+      margin: 0;
+      max-width: 56rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery__item {
+      margin: 0;
+    }
+
+    .gallery__frame {
+      aspect-ratio: 1 / 1;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .gallery__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease;
+    }
+
+    .gallery__item:hover .gallery__frame img,
+    .gallery__item:focus-within .gallery__frame img {
+      transform: scale(1.02);
+    }
+
+    .gallery__caption {
+      display: grid;
+      gap: 0.25rem;
+      margin-top: 0.8rem;
+      color: var(--muted);
+    }
+
+    .gallery__caption strong {
+      color: var(--fg);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .contact__grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .contact__list {
+      display: grid;
+      gap: 1rem;
+      padding-top: 0.3rem;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .contact__row {
+      display: grid;
+      gap: 0.3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact__row span {
+      color: var(--amber);
+      font-size: 0.72rem;
+    }
+
+    .contact__row a,
+    .contact__row p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.86);
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .contact__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 1.5rem 0 2rem;
+      border-top: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.56);
+      font-size: 0.82rem;
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer__inner a {
+      color: rgba(234, 234, 234, 0.74);
+      transition: color 180ms ease;
+    }
+
+    .footer__inner a:hover,
+    .footer__inner a:focus-visible {
+      color: var(--fg);
+    }
+
+    @media (min-width: 760px) {
+      .nav {
+        display: inline-flex;
+      }
+
+      .hero__content {
+        padding-bottom: 2.6rem;
+      }
+
+      .about__grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+
+      .offering {
+        grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+        align-items: start;
+        gap: 1.2rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .contact__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="shell topbar__inner">
+        <a class="brandmark" href="#hero" aria-label="AraPilak home">
+          <strong>AraPilak</strong>
+          <span>Palawan</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#offerings">Offerings</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <img class="hero__image" src="assets/img/hero-arapilak.svg" alt="Illustration of AraPilak zero-waste essentials and katsa clothing" loading="eager" decoding="async">
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="shell hero__content">
+          <div class="hero__copy">
+            <p class="hero__kicker mono">Puerto Princesa City, Palawan</p>
+            <h1 class="hero__title display">AraPilak</h1>
+            <p class="hero__subtitle">
+              A Palawan-based zero-waste lifestyle brand rooted in care for the Earth, with low-waste essentials and Ba'law clothing made from flour sacks, or katsa.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="mailto:arapilakpalawan@gmail.com">Email AraPilak</a>
+              <a class="button button--ghost" href="#offerings">See offerings</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="shell">
+          <div class="section__head">
+            <p class="section__label mono" data-reveal>About</p>
+            <h2 class="section__title display" data-reveal>Low-waste living, shaped in Palawan.</h2>
+          </div>
+          <div class="about__grid">
+            <p class="section__lead" data-reveal>
+              AraPilak takes its name from the Cuyonon words ara and pilak, meaning no waste. Founded by Jude Rivera in 2018, the brand grew in Puerto Princesa around a simple idea: make sustainable choices easier to reach.
+            </p>
+            <p class="about__note" data-reveal>
+              The shop began with reusable, low-waste goods and expanded into Ba'law, a clothing line that brings flour sacks back into everyday life through modern, handcrafted pieces.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="offerings" class="section">
+        <div class="shell">
+          <div class="section__head">
+            <p class="section__label mono" data-reveal>Offerings</p>
+            <h2 class="section__title display" data-reveal>Useful pieces with a lighter footprint.</h2>
+            <p class="section__lead" data-reveal>
+              AraPilak offers practical alternatives for everyday routines, plus clothing and home goods that reuse what already has value.
+            </p>
+          </div>
+          <div class="offerings">
+            <article class="offering" data-reveal>
+              <h3 class="offering__name">Zero-waste essentials</h3>
+              <p class="offering__desc">Bamboo straws, stainless straws, bamboo utensils, tumblers, menstrual cups, and other low-waste basics designed to replace single-use items.</p>
+            </article>
+            <article class="offering" data-reveal>
+              <h3 class="offering__name">Ba'law clothing</h3>
+              <p class="offering__desc">Handcrafted tops, shorts, skirts, and dresses made from katsa or flour sacks, carrying the meaning of awareness in Cuyonon.</p>
+            </article>
+            <article class="offering" data-reveal>
+              <h3 class="offering__name">Repurposed home goods</h3>
+              <p class="offering__desc">Practical pieces such as repurposed coconut planters, created to keep materials in use and support a slower, more thoughtful kind of making.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section">
+        <div class="shell">
+          <div class="section__head">
+            <p class="section__label mono" data-reveal>Gallery</p>
+            <h2 class="section__title display" data-reveal>Three ways AraPilak turns reuse into design.</h2>
+          </div>
+          <div class="gallery">
+            <figure class="gallery__item" data-reveal>
+              <div class="gallery__frame">
+                <img src="assets/img/essentials.svg" alt="Illustration of bamboo straws, reusable utensils, and a tumbler" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery__caption">
+                <strong>Everyday essentials</strong>
+                <span>Low-waste replacements for simple daily routines.</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery__item" data-reveal>
+              <div class="gallery__frame">
+                <img src="assets/img/balaw-clothing.svg" alt="Illustration of a flour-sack dress from the Ba'law clothing line" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery__caption">
+                <strong>Ba'law clothing</strong>
+                <span>Flour-sack pieces with a vintage line and modern finish.</span>
+              </figcaption>
+            </figure>
+            <figure class="gallery__item" data-reveal>
+              <div class="gallery__frame">
+                <img src="assets/img/planter.svg" alt="Illustration of a repurposed coconut planter with a young plant" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery__caption">
+                <strong>Repurposed goods</strong>
+                <span>Home pieces that give reclaimed materials another useful life.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="shell">
+          <div class="section__head">
+            <p class="section__label mono" data-reveal>Contact</p>
+            <h2 class="section__title display" data-reveal>Visit or reach out from Puerto Princesa.</h2>
+            <p class="section__lead" data-reveal>
+              AraPilak is listed in Barangay Bancao-Bancao, Puerto Princesa City, Palawan. Use the links below to call, email, or open the address in Maps.
+            </p>
+          </div>
+          <div class="contact__grid">
+            <div class="contact__list">
+              <div class="contact__row" data-reveal>
+                <span>Address</span>
+                <p>158 Manalo Street, Barangay Bancao-Bancao, Puerto Princesa City, Palawan, Philippines</p>
+              </div>
+              <div class="contact__row" data-reveal>
+                <span>Email</span>
+                <a href="mailto:arapilakpalawan@gmail.com">arapilakpalawan@gmail.com</a>
+              </div>
+              <div class="contact__row" data-reveal>
+                <span>Phone</span>
+                <a href="tel:+639168642928">+63 916 864 2928</a>
+              </div>
+            </div>
+            <div data-reveal>
+              <p class="section__lead" style="margin-bottom: 1rem;">
+                Follow the brand on social for product updates and catalog posts.
+              </p>
+              <div class="contact__links">
+                <a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=158+Manalo+Street,+Barangay+Bancao-Bancao,+Puerto+Princesa+City,+Palawan" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+                <a class="button button--ghost" href="https://www.facebook.com/arapilak/" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="button button--ghost" href="https://www.instagram.com/arapilak" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer__inner">
+        <span>AraPilak, Puerto Princesa City, Palawan</span>
+        <span>Zero-waste products and Ba'law clothing</span>
+        <a href="#hero">Back to top</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "AraPilak",
+      "description": "Palawan-based zero-waste lifestyle brand offering low-waste essentials and Ba'law clothing made from flour sacks (katsa).",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "158 Manalo Street, Barangay Bancao-Bancao",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "addressCountry": "PH"
+      },
+      "email": "arapilakpalawan@gmail.com",
+      "telephone": "+639168642928",
+      "sameAs": [
+        "https://www.facebook.com/arapilak/",
+        "https://www.instagram.com/arapilak"
+      ]
+    }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.05,
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+      lenis.on('scroll', ScrollTrigger.update);
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const targetId = anchor.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (!target) return;
+          event.preventDefault();
+          lenis.scrollTo(target, { offset: -12, duration: 1.1 });
+        });
+      });
+
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro.from('.topbar', { y: -12, opacity: 0, duration: 0.7 })
+        .from('.hero__kicker', { y: 16, opacity: 0, duration: 0.6 }, 0.1)
+        .from('.hero__title', { y: 28, opacity: 0, duration: 0.9 }, 0.15)
+        .from('.hero__subtitle', { y: 18, opacity: 0, duration: 0.7 }, 0.35)
+        .from('.hero__actions > *', { y: 16, opacity: 0, stagger: 0.08, duration: 0.6 }, 0.45);
+
+      gsap.to('.hero__image', {
+        yPercent: -2,
+        scale: 1.08,
+        duration: 7,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((element) => {
+        gsap.fromTo(element, {
+          y: 24,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 84%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.gallery__frame').forEach((frame) => {
+        gsap.fromTo(frame, {
+          clipPath: 'inset(10% 10% 10% 10%)',
+          scale: 0.98
+        }, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          scale: 1,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: frame,
+            start: 'top 82%'
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Repurposed coconut planter</title>
+  <desc id="desc">A coconut shell planter with a young plant in the AraPilak palette.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#181818"/>
+    </linearGradient>
+    <linearGradient id="shell" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5e4327"/>
+      <stop offset="100%" stop-color="#2f2015"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#84a944"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="890" cy="260" r="190" fill="#f0a500" fill-opacity="0.08"/>
+  <circle cx="250" cy="940" r="260" fill="#eaeaea" fill-opacity="0.04"/>
+  <g transform="translate(190 170)">
+    <path d="M134 570C194 484 289 434 400 430C509 426 614 461 691 532C725 563 749 600 763 642C773 670 755 699 726 705L156 822C125 828 96 804 96 773C96 699 110 629 134 570Z" fill="url(#shell)" stroke="#8b6642" stroke-width="4"/>
+    <path d="M182 570C233 508 309 471 390 467C473 463 549 489 607 543C629 563 646 588 656 617L180 709C166 667 163 616 182 570Z" fill="#1d1d1d" fill-opacity="0.18"/>
+    <path d="M134 570C208 620 282 647 383 652C496 657 596 635 691 595" fill="none" stroke="#9d734b" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+    <path d="M307 445C319 374 348 320 393 283" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+    <path d="M393 283C415 263 444 248 475 239" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+    <path d="M393 283C378 246 370 208 370 169" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+    <path d="M393 283C430 271 471 271 509 283" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M395 283C371 256 344 236 313 221" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M393 283C405 339 419 384 441 430" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M390 279C360 248 327 225 291 212" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M432 248C440 212 454 183 475 160" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M464 237C501 213 537 200 574 199" fill="none" stroke="#84a944" stroke-width="8" stroke-linecap="round"/>
+    <path d="M305 711L371 856" stroke="#6f5133" stroke-width="6" stroke-linecap="round"/>
+    <path d="M428 699L482 844" stroke="#6f5133" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="481" cy="183" r="24" fill="#f0a500" fill-opacity="0.16"/>
+  </g>
+</svg>

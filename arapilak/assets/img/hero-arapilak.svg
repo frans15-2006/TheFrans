@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">AraPilak hero illustration</title>
+  <desc id="desc">A dark brand illustration featuring katsa clothing, reusable essentials, and natural materials in amber and off-white tones.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cloth" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#eaeaea"/>
+      <stop offset="100%" stop-color="#cfcfcf"/>
+    </linearGradient>
+    <linearGradient id="straw" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#c47f00"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <pattern id="katsaPattern" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M0 52L52 0" stroke="#b8b8b8" stroke-opacity="0.36" stroke-width="2"/>
+      <path d="M-12 20L20 -12M32 64L64 32" stroke="#b8b8b8" stroke-opacity="0.18" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)"/>
+  <circle cx="1250" cy="250" r="260" fill="url(#amberGlow)" filter="url(#blur)"/>
+  <circle cx="250" cy="980" r="230" fill="#f0a500" fill-opacity="0.06" filter="url(#blur)"/>
+
+  <g opacity="0.92">
+    <path d="M190 790C330 675 510 630 683 646C846 661 998 721 1122 816C1199 876 1268 962 1310 1080H150V930C150 873 166 833 190 790Z" fill="#0f0f0f" stroke="#2f2f2f" stroke-width="2"/>
+    <path d="M236 783C369 690 514 649 660 661C803 673 940 730 1055 815C1119 862 1182 926 1222 1000H196V875C196 839 209 804 236 783Z" fill="#121212" stroke="#303030" stroke-width="2"/>
+
+    <g transform="translate(340 360)">
+      <path d="M160 150C190 130 232 128 262 148L334 196C349 206 356 223 352 240L300 474C293 507 267 534 234 540L160 554C133 559 104 549 86 529L36 471C23 455 18 434 22 413L74 218C79 195 94 175 116 162Z" fill="url(#cloth)" stroke="#5b5b5b" stroke-width="3"/>
+      <path d="M120 204C155 186 198 186 232 204L286 232" fill="none" stroke="#9e9e9e" stroke-width="4" stroke-linecap="round"/>
+      <path d="M112 252C152 230 208 229 248 252" fill="none" stroke="#9e9e9e" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+      <path d="M107 300C156 277 208 278 256 300" fill="none" stroke="#9e9e9e" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+      <rect x="102" y="210" width="167" height="262" fill="url(#katsaPattern)" opacity="0.82"/>
+      <path d="M90 468C106 433 122 414 157 402C188 392 219 392 251 404C286 416 302 435 316 470" fill="none" stroke="#7c7c7c" stroke-width="3"/>
+    </g>
+
+    <g transform="translate(1030 320)">
+      <path d="M85 0H152L122 430H50L20 52C17 31 33 11 54 4Z" fill="#151515" stroke="#5d5d5d" stroke-width="3"/>
+      <rect x="42" y="24" width="138" height="28" rx="12" fill="#f0a500" fill-opacity="0.18"/>
+      <path d="M68 104H166" stroke="#f0a500" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+      <path d="M66 176H162" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
+      <path d="M61 250H156" stroke="#eaeaea" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+      <path d="M56 322H150" stroke="#f0a500" stroke-opacity="0.32" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(940 686)">
+      <path d="M70 56C107 21 165 15 210 39L278 76C304 90 320 117 320 147V291C320 326 302 358 272 377L221 408C180 433 129 436 86 417L27 391C-4 376 -22 344 -22 309V161C-22 110 17 70 70 56Z" fill="#141414" stroke="#5c5c5c" stroke-width="3"/>
+      <path d="M58 83C91 62 136 57 173 73L228 97C252 107 265 130 265 155V282C265 308 251 332 228 345L187 368C154 386 112 387 78 373L41 357C17 347 2 324 2 298V171C2 133 22 100 58 83Z" fill="#eaeaea" fill-opacity="0.06"/>
+      <path d="M48 141C77 124 112 117 145 122C175 126 202 139 220 160" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+      <path d="M106 118C126 83 151 59 187 43" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+      <path d="M127 102C131 153 118 201 92 246" fill="none" stroke="#eaeaea" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(214 844)">
+      <path d="M0 160C36 142 68 132 99 128C147 122 195 134 234 162L190 242C151 269 110 287 58 298L0 290Z" fill="#111111" stroke="#4d4d4d" stroke-width="3"/>
+      <path d="M24 173C59 160 93 157 127 163C155 168 181 179 205 196" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4" stroke-linecap="round"/>
+      <path d="M42 209C73 198 102 196 130 201C151 205 171 213 190 225" fill="none" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <g transform="translate(1220 836)">
+      <path d="M42 28C62 12 92 12 112 28L150 58C162 68 168 85 165 100L142 221C139 238 124 252 107 254L71 258C55 260 40 252 32 238L10 198C3 185 0 170 3 155L24 51C27 39 33 31 42 28Z" fill="#eaeaea" fill-opacity="0.08" stroke="#5d5d5d" stroke-width="3"/>
+      <path d="M58 78C76 65 98 65 116 78" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+      <path d="M66 117C82 109 100 109 116 117" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.72"/>
+      <path d="M74 156C87 148 100 148 113 156" fill="none" stroke="#eaeaea" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>
