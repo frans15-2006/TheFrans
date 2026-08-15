@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Triple room illustration</title>
+  <desc id="desc">A practical room scene with a double bed and a twin bed for a shared stay.</desc>
+  <rect width="1200" height="900" fill="#090909"/>
+  <rect x="104" y="120" width="992" height="660" rx="34" fill="#101010" stroke="#eaeaea" stroke-opacity="0.11"/>
+  <rect x="162" y="182" width="330" height="250" rx="22" fill="#080808" stroke="#f0a500" stroke-opacity="0.24"/>
+  <rect x="552" y="182" width="330" height="250" rx="22" fill="#080808" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="212" y="260" width="120" height="44" rx="12" fill="#eaeaea" fill-opacity="0.94"/>
+  <rect x="346" y="260" width="92" height="44" rx="12" fill="#f0a500" fill-opacity="0.86"/>
+  <rect x="612" y="260" width="124" height="44" rx="12" fill="#eaeaea" fill-opacity="0.94"/>
+  <rect x="748" y="260" width="94" height="44" rx="12" fill="#f0a500" fill-opacity="0.86"/>
+  <rect x="206" y="328" width="222" height="22" rx="11" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="600" y="328" width="206" height="22" rx="11" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="274" y="468" width="248" height="110" rx="18" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="546" y="468" width="248" height="110" rx="18" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="272" y="476" width="102" height="18" rx="9" fill="#080808" fill-opacity="0.84"/>
+  <rect x="274" y="506" width="192" height="30" rx="15" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="546" y="476" width="102" height="18" rx="9" fill="#080808" fill-opacity="0.84"/>
+  <rect x="548" y="506" width="192" height="30" rx="15" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="394" y="600" width="404" height="26" rx="13" fill="#eaeaea" fill-opacity="0.18"/>
+  <path d="M144 772 C326 735, 523 737, 677 766 C866 800, 1002 805, 1098 790" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="5"/>
+</svg>

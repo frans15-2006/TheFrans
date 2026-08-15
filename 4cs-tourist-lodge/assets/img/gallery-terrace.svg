@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Terrace scene illustration</title>
+  <desc id="desc">A quiet terrace with palm leaves, an amber sky, and calm horizon tones.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <circle cx="866" cy="260" r="110" fill="#f0a500" fill-opacity="0.92"/>
+  <path d="M0 632 C184 598, 364 610, 596 638 C835 666, 1018 672, 1200 645 L1200 900 L0 900 Z" fill="#101010"/>
+  <path d="M0 688 C218 654, 408 676, 614 703 C842 733, 1008 733, 1200 708" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="5"/>
+  <rect x="96" y="458" width="524" height="90" rx="18" fill="#eaeaea" fill-opacity="0.9"/>
+  <rect x="102" y="382" width="32" height="192" rx="2" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="560" y="382" width="32" height="192" rx="2" fill="#f0a500" fill-opacity="0.84"/>
+  <path d="M96 380 L578 380 L578 418 L96 418 Z" fill="#080808" fill-opacity="0.9"/>
+  <path d="M120 352 C172 286, 232 252, 280 220" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M220 362 C300 286, 364 236, 474 182" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M1010 418 C962 346, 950 306, 946 252" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M1018 418 C1044 350, 1098 314, 1166 280" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M118 578 C230 534, 358 534, 466 574" fill="none" stroke="#f0a500" stroke-opacity="0.34" stroke-width="5"/>
+</svg>

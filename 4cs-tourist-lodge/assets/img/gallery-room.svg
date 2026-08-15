@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Room comfort illustration</title>
+  <desc id="desc">A quiet interior with a bed, desk, and window glow for a simple stay.</desc>
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="110" y="126" width="980" height="648" rx="34" fill="#101010" stroke="#eaeaea" stroke-opacity="0.11"/>
+  <rect x="168" y="186" width="360" height="236" rx="20" fill="#080808" stroke="#f0a500" stroke-opacity="0.24"/>
+  <rect x="574" y="186" width="454" height="236" rx="20" fill="#080808" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="218" y="258" width="124" height="48" rx="13" fill="#eaeaea" fill-opacity="0.94"/>
+  <rect x="358" y="258" width="82" height="48" rx="13" fill="#f0a500" fill-opacity="0.86"/>
+  <rect x="616" y="258" width="154" height="48" rx="13" fill="#eaeaea" fill-opacity="0.94"/>
+  <rect x="790" y="258" width="112" height="48" rx="13" fill="#f0a500" fill-opacity="0.86"/>
+  <rect x="206" y="344" width="250" height="20" rx="10" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="610" y="344" width="280" height="20" rx="10" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="254" y="462" width="298" height="160" rx="22" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="586" y="444" width="232" height="178" rx="22" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="840" y="462" width="170" height="160" rx="22" fill="#101010" stroke="#f0a500" stroke-opacity="0.3"/>
+  <rect x="286" y="492" width="118" height="18" rx="9" fill="#080808" fill-opacity="0.84"/>
+  <rect x="286" y="524" width="206" height="30" rx="15" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="612" y="478" width="160" height="18" rx="9" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="612" y="510" width="142" height="18" rx="9" fill="#eaeaea" fill-opacity="0.12"/>
+  <rect x="612" y="542" width="178" height="18" rx="9" fill="#eaeaea" fill-opacity="0.12"/>
+  <path d="M138 772 C334 736, 548 738, 764 768 C904 788, 1020 792, 1090 786" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="5"/>
+</svg>

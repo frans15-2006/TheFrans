@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">4C's Tourist Lodge social preview</title>
+  <desc id="desc">A bold social image with the lodge name, Palawan location, and tropical lodge artwork.</desc>
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="940" cy="150" r="118" fill="#f0a500" fill-opacity="0.9"/>
+  <path d="M0 438 C192 404, 392 416, 596 444 C824 476, 1026 480, 1200 456 L1200 630 L0 630 Z" fill="#101010"/>
+  <g fill="#eaeaea" fill-opacity="0.94">
+    <path d="M96 454 h226 l40 44 H62 Z"/>
+    <rect x="140" y="372" width="30" height="82" rx="2"/>
+    <rect x="314" y="378" width="30" height="76" rx="2"/>
+    <path d="M86 380 L208 312 L334 380 Z" fill="#f0a500" fill-opacity="0.86"/>
+    <path d="M128 319 H286 L310 356 H104 Z" fill="#080808" fill-opacity="0.92"/>
+  </g>
+  <text x="560" y="212" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="96" letter-spacing="6" fill="#eaeaea">4C'S TOURIST LODGE</text>
+  <text x="560" y="278" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="8" fill="#f0a500">PUERTO PRINCESA, PALAWAN</text>
+  <text x="560" y="336" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="28" fill="#eaeaea" opacity="0.88">A calm, practical base for island days and city nights.</text>
+  <path d="M730 458 C810 382, 858 328, 942 272" stroke="#f0a500" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <path d="M910 460 C980 392, 1042 352, 1130 324" stroke="#eaeaea" stroke-opacity="0.65" stroke-width="12" stroke-linecap="round" fill="none"/>
+</svg>

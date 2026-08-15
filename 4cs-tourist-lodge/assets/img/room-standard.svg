@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Standard twin room illustration</title>
+  <desc id="desc">A dark, clean room scene with twin beds, a desk, and a tropical window.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="120" y="140" width="960" height="620" rx="34" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="168" y="196" width="352" height="232" rx="20" fill="#080808" stroke="#f0a500" stroke-opacity="0.28"/>
+  <rect x="668" y="196" width="292" height="232" rx="20" fill="#080808" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="220" y="272" width="130" height="56" rx="14" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="366" y="272" width="82" height="56" rx="14" fill="#f0a500" fill-opacity="0.84"/>
+  <rect x="214" y="348" width="248" height="24" rx="12" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="704" y="256" width="160" height="144" rx="16" fill="#101010" stroke="#f0a500" stroke-opacity="0.42"/>
+  <path d="M696 258 L877 398" stroke="#f0a500" stroke-opacity="0.42" stroke-width="8"/>
+  <path d="M877 258 L696 398" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="6"/>
+  <rect x="582" y="440" width="300" height="120" rx="18" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="598" y="452" width="118" height="18" rx="9" fill="#080808" fill-opacity="0.85"/>
+  <rect x="598" y="480" width="246" height="32" rx="16" fill="#f0a500" fill-opacity="0.82"/>
+  <rect x="580" y="566" width="332" height="30" rx="15" fill="#eaeaea" fill-opacity="0.18"/>
+  <rect x="242" y="452" width="194" height="150" rx="18" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="280" y="470" width="118" height="18" rx="9" fill="#f0a500" fill-opacity="0.82"/>
+  <rect x="280" y="502" width="92" height="18" rx="9" fill="#eaeaea" fill-opacity="0.16"/>
+  <rect x="280" y="534" width="156" height="18" rx="9" fill="#eaeaea" fill-opacity="0.12"/>
+  <path d="M0 774 C210 733, 435 733, 648 770 C850 805, 1035 813, 1200 782" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="5"/>
+</svg>

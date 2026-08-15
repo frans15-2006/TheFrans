@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">City-facing lodge scene illustration</title>
+  <desc id="desc">A street-side lodge front with signage, windows, and an urban Palawan backdrop.</desc>
+  <rect width="1200" height="900" fill="#090909"/>
+  <rect x="104" y="126" width="992" height="636" rx="34" fill="#101010" stroke="#eaeaea" stroke-opacity="0.11"/>
+  <rect x="202" y="196" width="520" height="420" rx="22" fill="#080808" stroke="#f0a500" stroke-opacity="0.22"/>
+  <rect x="748" y="196" width="220" height="420" rx="22" fill="#080808" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="244" y="248" width="432" height="54" rx="18" fill="#f0a500" fill-opacity="0.86"/>
+  <text x="460" y="286" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="42" fill="#080808">4C'S TOURIST LODGE</text>
+  <rect x="252" y="336" width="152" height="146" rx="16" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="424" y="336" width="172" height="146" rx="16" fill="#eaeaea" fill-opacity="0.92"/>
+  <rect x="778" y="246" width="132" height="326" rx="14" fill="#101010" stroke="#f0a500" stroke-opacity="0.36"/>
+  <path d="M742 198 L966 198 L966 242 L742 242 Z" fill="#080808" fill-opacity="0.92"/>
+  <path d="M730 612 C836 582, 916 580, 1016 606" fill="none" stroke="#f0a500" stroke-opacity="0.32" stroke-width="5"/>
+  <rect x="252" y="514" width="384" height="22" rx="11" fill="#eaeaea" fill-opacity="0.14"/>
+  <rect x="770" y="618" width="180" height="24" rx="12" fill="#f0a500" fill-opacity="0.78"/>
+  <path d="M0 756 C180 720, 380 714, 598 744 C828 776, 1002 790, 1200 768" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="5"/>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Tropical lodge scene for 4C's Tourist Lodge</title>
+  <desc id="desc">A moody Palawan-inspired illustration with a lodge silhouette, palms, sunrise, and water.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="55%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="76%" cy="24%" r="16%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <rect width="1600" height="1200" fill="url(#sun)"/>
+  <path d="M0 760 C250 725, 430 775, 650 748 C880 718, 1120 705, 1600 742 L1600 1200 L0 1200 Z" fill="url(#sea)"/>
+  <path d="M0 801 C235 770, 427 832, 664 805 C927 775, 1155 772, 1600 803" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="5"/>
+  <path d="M0 854 C280 832, 506 900, 751 873 C1035 842, 1267 848, 1600 876" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+
+  <g fill="#eaeaea" fill-opacity="0.94">
+    <path d="M230 909 h280 l50 58 H180 Z"/>
+    <rect x="292" y="806" width="44" height="103" rx="2"/>
+    <rect x="512" y="814" width="44" height="95" rx="2"/>
+    <path d="M212 818 L370 720 L560 818 Z" fill="#f0a500" fill-opacity="0.88"/>
+    <path d="M272 737 H466 L500 791 H238 Z" fill="#080808" fill-opacity="0.92"/>
+    <rect x="345" y="840" width="90" height="68" rx="4" fill="#080808" fill-opacity="0.9"/>
+    <rect x="252" y="845" width="52" height="44" rx="3" fill="#080808" fill-opacity="0.85"/>
+    <rect x="478" y="845" width="52" height="44" rx="3" fill="#080808" fill-opacity="0.85"/>
+    <path d="M638 884 h245 l44 46 H598 Z" opacity="0.72"/>
+    <rect x="678" y="768" width="32" height="116" rx="2"/>
+    <rect x="849" y="777" width="32" height="107" rx="2"/>
+    <path d="M624 774 L790 675 L892 774 Z" fill="#f0a500" fill-opacity="0.7"/>
+    <path d="M676 694 H842 L862 742 H655 Z" fill="#080808" fill-opacity="0.88"/>
+  </g>
+
+  <g stroke="#f0a500" stroke-opacity="0.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1270 565 C1218 492, 1188 438, 1180 362" stroke-width="12"/>
+    <path d="M1276 561 C1298 476, 1346 412, 1420 364" stroke-width="12"/>
+    <path d="M1274 564 C1308 504, 1374 462, 1448 442" stroke-width="10"/>
+    <path d="M1269 563 C1226 500, 1160 464, 1078 448" stroke-width="10"/>
+    <path d="M1280 564 C1312 520, 1322 476, 1320 418" stroke-width="8"/>
+  </g>
+
+  <g fill="#eaeaea" fill-opacity="0.92">
+    <path d="M1094 902 C1080 844, 1088 784, 1106 726 C1128 658, 1175 616, 1236 602 C1184 642, 1156 699, 1148 767 C1140 835, 1160 882, 1188 929 C1137 922, 1106 920, 1094 902 Z"/>
+    <path d="M1296 922 C1320 874, 1328 822, 1322 778 C1314 716, 1277 660, 1218 618 C1290 630, 1344 675, 1372 742 C1400 808, 1398 877, 1370 942 Z" fill-opacity="0.16"/>
+  </g>
+
+  <g stroke="#eaeaea" stroke-opacity="0.22" fill="none">
+    <path d="M160 655 C340 610, 505 600, 686 630" stroke-width="4"/>
+    <path d="M900 640 C1070 612, 1240 620, 1460 665" stroke-width="4"/>
+  </g>
+</svg>
