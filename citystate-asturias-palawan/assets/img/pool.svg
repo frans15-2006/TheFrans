@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated pool and jacuzzi with palms">
+  <rect width="1600" height="1200" fill="#080808"/>
+  <path d="M0 190H1600V1200H0Z" fill="#101010"/>
+  <circle cx="256" cy="236" r="120" fill="#f0a500" opacity="0.3"/>
+  <circle cx="256" cy="236" r="64" fill="#f0a500" opacity="0.9"/>
+  <path d="M180 670C340 620 540 606 800 620C1040 634 1242 620 1424 572V1200H180Z" fill="#0d0d0d"/>
+  <rect x="180" y="600" width="1240" height="350" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <path d="M240 870C390 820 520 796 680 802C846 808 980 860 1162 868C1272 872 1360 852 1420 830V1120H240Z" fill="#131313"/>
+  <path d="M258 746C374 700 510 684 658 692C838 702 976 760 1142 770C1264 776 1350 748 1420 720V900H258Z" fill="#151515"/>
+  <path d="M250 740C390 706 530 694 688 704C832 712 950 750 1116 758C1262 764 1350 742 1420 720" fill="none" stroke="#f0a500" stroke-opacity="0.52" stroke-width="3"/>
+  <path d="M260 808C396 770 538 758 688 766C850 776 982 818 1142 826C1266 832 1350 812 1412 792" fill="none" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+
+  <rect x="540" y="580" width="520" height="120" fill="#080808" stroke="#f0a500" stroke-opacity="0.45"/>
+  <rect x="580" y="610" width="160" height="60" fill="#1d1d1d"/>
+  <rect x="760" y="610" width="160" height="60" fill="#1d1d1d"/>
+  <rect x="940" y="610" width="88" height="60" fill="#1d1d1d"/>
+  <rect x="1120" y="560" width="50" height="150" fill="#f0a500" opacity="0.12"/>
+  <rect x="1180" y="560" width="50" height="150" fill="#f0a500" opacity="0.12"/>
+  <rect x="1240" y="560" width="50" height="150" fill="#f0a500" opacity="0.12"/>
+
+  <path d="M180 620C190 470 226 390 270 320L326 342C284 396 256 470 242 620Z" fill="#0b0b0b"/>
+  <path d="M270 322C224 272 188 220 164 168L206 146C228 194 260 248 314 306Z" fill="#0b0b0b"/>
+  <path d="M274 320C322 292 370 286 420 298C372 322 324 332 274 320Z" fill="#f0a500" opacity="0.36"/>
+
+  <path d="M1408 620C1398 470 1362 390 1318 320L1262 342C1304 396 1332 470 1346 620Z" fill="#0b0b0b"/>
+  <path d="M1318 322C1364 272 1400 220 1424 168L1382 146C1360 194 1328 248 1274 306Z" fill="#0b0b0b"/>
+  <path d="M1316 320C1268 292 1220 286 1170 298C1218 322 1266 332 1316 320Z" fill="#f0a500" opacity="0.36"/>
+
+  <circle cx="456" cy="912" r="58" fill="#080808" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <circle cx="456" cy="912" r="24" fill="#f0a500" opacity="0.88"/>
+  <circle cx="1150" cy="900" r="58" fill="#080808" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <circle cx="1150" cy="900" r="24" fill="#f0a500" opacity="0.88"/>
+</svg>

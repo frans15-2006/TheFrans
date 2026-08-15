@@ -1,5 +1,970 @@
 <!DOCTYPE html>
-<title>Citystate Asturias Palawan</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citystate Asturias Hotel Palawan | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Citystate Asturias Hotel Palawan in Puerto Princesa, Palawan. Verified address on South National Highway, 62 guestrooms, pool and jacuzzi, airport transfer, meeting facilities, and direct booking links.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Citystate Asturias Hotel Palawan">
+  <meta property="og:description" content="Verified hotel details for Citystate Asturias Hotel Palawan in Puerto Princesa, Palawan: address, room types, amenities, location map, gallery, and direct booking links.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/citystate-asturias-palawan/assets/img/hero.svg">
+  <meta property="og:image:alt" content="Citystate Asturias Hotel Palawan exterior illustration">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/citystate-asturias-palawan/">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/citystate-asturias-palawan/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --off: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --hairline: rgba(234, 234, 234, 0.12);
+      --soft: rgba(240, 165, 0, 0.14);
+      --container: 1180px;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--off);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(calc(100% - 2rem), var(--container));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--amber);
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.05em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .hairline {
+      border-top: 1px solid var(--hairline);
+    }
+
+    .link-underline {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .link-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.15rem;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .link-underline:hover::after,
+    .link-underline:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.95rem 1.25rem;
+      border: 1px solid var(--hairline);
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--off);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      min-height: 3rem;
+      white-space: nowrap;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.5);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .btn--amber {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: #080808;
+      font-weight: 700;
+    }
+
+    .btn--amber:hover,
+    .btn--amber:focus-visible {
+      background: #ffd36b;
+      border-color: #ffd36b;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.94), rgba(8, 8, 8, 0.55));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .nav__inner {
+      min-height: 4.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .nav__brand strong {
+      font-size: 1rem;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1rem;
+      justify-content: flex-end;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: clip;
+      padding-top: 4.25rem;
+      isolation: isolate;
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.95) contrast(1.04);
+      transform: scale(1.03);
+    }
+
+    .hero__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.08) 0%, rgba(8, 8, 8, 0.48) 42%, rgba(8, 8, 8, 0.88) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.44) 40%, rgba(8, 8, 8, 0.08) 100%);
+    }
+
+    .hero__inner {
+      width: min(calc(100% - 2rem), 1200px);
+      margin: 0 auto;
+      padding: 4rem 0 1.5rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .hero__title {
+      margin: 0;
+      font-size: clamp(4rem, 13vw, 8.75rem);
+      max-width: 10ch;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero__title span {
+      display: block;
+    }
+
+    .hero__copy {
+      max-width: 38rem;
+      display: grid;
+      gap: 1rem;
+      color: rgba(234, 234, 234, 0.88);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .hero__facts {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: rgba(234, 234, 234, 0.68);
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+
+    .section__head {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .section__title {
+      margin: 0;
+      font-size: clamp(2.75rem, 8vw, 5.25rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      max-width: 10ch;
+    }
+
+    .section__desc {
+      margin: 0;
+      max-width: 56rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .room-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .room-item {
+      display: grid;
+      gap: 1rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .room-item__top {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .room-item__title {
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .room-item__meta,
+    .room-item__notes {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .room-item__meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .room-item__details {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: 1fr;
+    }
+
+    .room-item__notes strong {
+      color: var(--off);
+      font-weight: 500;
+    }
+
+    .room-item__tail {
+      margin-top: 0.2rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      color: rgba(234, 234, 234, 0.6);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .amenities-grid {
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .amenities-col {
+      padding: 1.1rem 0 1.2rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .amenities-col h3 {
+      margin: 0 0 0.8rem;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .amenities-col ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .amenities-col li {
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .amenities-col li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 999px;
+      background: var(--amber);
+    }
+
+    .amenities__note {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.7;
+      max-width: 56rem;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .map-shell {
+      border: 1px solid var(--hairline);
+      background: rgba(234, 234, 234, 0.02);
+      overflow: hidden;
+      min-height: 22rem;
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      display: block;
+      filter: grayscale(1) contrast(1.05) brightness(0.9);
+    }
+
+    .location__panel {
+      display: grid;
+      gap: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .location__panel strong {
+      color: var(--off);
+      font-weight: 500;
+    }
+
+    .location__meta {
+      display: grid;
+      gap: 0.65rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .cta {
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.14), transparent 42%),
+        linear-gradient(180deg, rgba(234, 234, 234, 0.02), rgba(234, 234, 234, 0.01));
+    }
+
+    .cta__inner {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .cta__title {
+      margin: 0;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      max-width: 11ch;
+    }
+
+    .cta__text {
+      margin: 0;
+      max-width: 44rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border-top: 1px solid var(--hairline);
+      padding-top: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: rgba(234, 234, 234, 0.03);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .gallery-grid figcaption {
+      margin-top: 0.6rem;
+      color: rgba(234, 234, 234, 0.72);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    .footer {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .footer__grid {
+      display: grid;
+      gap: 1.35rem;
+      border-top: 1px solid var(--hairline);
+      padding-top: 1.35rem;
+    }
+
+    .footer__brand {
+      display: grid;
+      gap: 0.55rem;
+      max-width: 26rem;
+    }
+
+    .footer__brand h2 {
+      margin: 0;
+      font-size: 2.5rem;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .footer__brand p,
+    .footer__links {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer__links {
+      display: grid;
+      gap: 0.5rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .footer__small {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.5);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 720px) {
+      .hero__inner {
+        padding-bottom: 2.25rem;
+      }
+
+      .room-item {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .amenities-col {
+        border-bottom: 0;
+        border-right: 1px solid var(--hairline);
+        padding-right: 1rem;
+      }
+
+      .amenities-col:last-child {
+        border-right: 0;
+        padding-right: 0;
+      }
+
+      .location-grid {
+        grid-template-columns: 1.35fr 0.65fr;
+      }
+
+      .footer__grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .gallery-grid figure:nth-child(1) { grid-column: span 7; }
+      .gallery-grid figure:nth-child(2) { grid-column: span 5; }
+      .gallery-grid figure:nth-child(3) { grid-column: span 4; }
+      .gallery-grid figure:nth-child(4) { grid-column: span 4; }
+      .gallery-grid figure:nth-child(5) { grid-column: span 4; }
+    }
+
+    @media (min-width: 980px) {
+      .section__head {
+        grid-template-columns: 0.7fr 1.3fr;
+        align-items: end;
+      }
+
+      .hero__inner {
+        padding-top: 5.5rem;
+      }
+
+      .hero__copy {
+        font-size: 1.1rem;
+      }
+
+      .cta__inner {
+        grid-template-columns: 1fr 0.95fr;
+        align-items: end;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="#top" aria-label="Citystate Asturias Hotel Palawan home">
+        <strong>Citystate Asturias</strong>
+        <span class="mono" style="font-size:.6rem;color:rgba(234,234,234,.68);">Hotel Palawan</span>
+      </a>
+      <nav class="nav__links" aria-label="Site sections">
+        <a class="link-underline" href="#rooms">Rooms</a>
+        <a class="link-underline" href="#amenities">Amenities</a>
+        <a class="link-underline" href="#location">Location</a>
+        <a class="link-underline" href="#gallery">Gallery</a>
+        <a class="link-underline" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img src="assets/img/hero.svg" alt="">
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="mono reveal">Puerto Princesa, Palawan</p>
+        <h1 class="hero__title display reveal">
+          <span>Citystate Asturias</span>
+          <span>Hotel Palawan</span>
+        </h1>
+        <div class="hero__copy reveal">
+          <p>A verified city base on South National Highway in Tiniguiban, Puerto Princesa, with 62 guestrooms, airport transfer, a swimming pool and jacuzzi, meeting spaces, and on-site dining at Pescados Restaurant, Scenario Bar, and The Lobby Cafe.</p>
+          <p class="hero__facts">Verified address: South National Highway, Tiniguiban, Puerto Princesa, Palawan 5300, Philippines. Public listings place the hotel near Puerto Princesa International Airport.</p>
+        </div>
+        <div class="hero__actions reveal">
+          <a class="btn btn--amber" href="https://asturiashotel.reserve-online.net/?adults=1" target="_blank" rel="noopener noreferrer">Check availability</a>
+          <a class="btn" href="tel:+63484349744">Call reservations</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="mono">Verified room types</p>
+          <h2 class="section__title display">Rooms and accommodations</h2>
+        </div>
+        <p class="section__desc reveal">The official site confirms 62 guest rooms. Public listings verify these room formats and the bed-and-size details below, while the hotel also publishes additional room categories including Executive Suite, Junior Suite, Executive Deluxe King Premium, Executive Deluxe Queen Premium, Executive Deluxe Twin, and Superior Twin Premium One.</p>
+        <div class="room-list">
+          <article class="room-item reveal">
+            <div class="room-item__top">
+              <p class="room-item__meta">Verified public listing</p>
+              <h3 class="room-item__title display">Standard Room</h3>
+            </div>
+            <div class="room-item__details">
+              <p class="room-item__notes"><strong>21 m2</strong> with <strong>2 Twin Beds</strong> and space for up to 3 guests. Verified features include air conditioning, free Wi-Fi, cable channels, minibar, safe, desk, and daily housekeeping.</p>
+              <p class="room-item__tail">Confirmed from public room listings.</p>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-item__top">
+              <p class="room-item__meta">Verified public listing</p>
+              <h3 class="room-item__title display">Superior Room</h3>
+            </div>
+            <div class="room-item__details">
+              <p class="room-item__notes"><strong>26 m2</strong> with <strong>1 Double Bed and 1 Twin Bed</strong>, sized for up to 3 guests. The room listings confirm Wi-Fi, cable TV, minibar, air conditioning, desk, safe, and private bath.</p>
+              <p class="room-item__tail">Confirmed from public room listings.</p>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-item__top">
+              <p class="room-item__meta">Verified public listing</p>
+              <h3 class="room-item__title display">Deluxe Room</h3>
+            </div>
+            <div class="room-item__details">
+              <p class="room-item__notes"><strong>33 m2</strong> with <strong>1 Queen Bed or 2 Queen Beds</strong>, sized for up to 4 guests. Public listings confirm the same core comforts: Wi-Fi, cable TV, minibar, safe, desk, and air conditioning.</p>
+              <p class="room-item__tail">Confirmed from public room listings.</p>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-item__top">
+              <p class="room-item__meta">Verified public listing</p>
+              <h3 class="room-item__title display">Executive Room (Deluxe)</h3>
+            </div>
+            <div class="room-item__details">
+              <p class="room-item__notes"><strong>33 m2</strong> with <strong>1 King Bed</strong>, also listed as a deluxe executive option. Verified features include free Wi-Fi, cable channels, 24-hour room service, minibar, safe, desk, and air conditioning.</p>
+              <p class="room-item__tail">Confirmed from public room listings.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="mono">On-site services</p>
+          <h2 class="section__title display">Amenities</h2>
+        </div>
+        <p class="section__desc reveal">The hotel is set up for quick business stops, family trips, and longer Palawan stays, with leisure spaces, practical services, and a dining lineup that includes Pescados Restaurant, Scenario Bar, and The Lobby Cafe.</p>
+
+        <div class="amenities-grid">
+          <div class="amenities-col reveal">
+            <h3>Arrival and support</h3>
+            <ul>
+              <li>Airport transfer</li>
+              <li>Valet parking</li>
+              <li>Business center</li>
+              <li>Conference rooms</li>
+              <li>On-site travel agency</li>
+              <li>Room service</li>
+            </ul>
+          </div>
+          <div class="amenities-col reveal">
+            <h3>Leisure and recreation</h3>
+            <ul>
+              <li>Swimming pool</li>
+              <li>Jacuzzi</li>
+              <li>KTV room</li>
+              <li>Table tennis</li>
+              <li>Billiards</li>
+              <li>Massage services</li>
+            </ul>
+          </div>
+          <div class="amenities-col reveal">
+            <h3>Room comforts</h3>
+            <ul>
+              <li>Air conditioning</li>
+              <li>Wi-Fi internet access</li>
+              <li>Cable television</li>
+              <li>Minibar refrigerator</li>
+              <li>Telephone with direct dialing</li>
+              <li>Electronic door lock and private bath</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="amenities__note reveal">The official site states that all guest rooms include air conditioning, cable TV, telephone facility with national and international direct distance dialing, Wi-Fi internet access, minibar refrigerator, electronic door lock system, private toilet, and shower.</p>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="mono">Verified location</p>
+          <h2 class="section__title display">Location and map</h2>
+        </div>
+        <div class="location-grid">
+          <div class="map-shell reveal">
+            <iframe
+              title="Citystate Asturias Hotel Palawan map"
+              src="https://www.google.com/maps?q=9.765680313110352,118.7454605102539&z=16&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="location__panel reveal">
+            <p><strong>South National Highway, Tiniguiban, Puerto Princesa, Palawan 5300, Philippines.</strong> That is the address published on the hotel's contact page and on major public listings.</p>
+            <div class="location__meta">
+              <span>About 3 km from Puerto Princesa International Airport on public listings</span>
+              <span>Useful base for city access and island outings</span>
+              <span>Nearby names published by the hotel include Palawan Museum, Honda Bay, Cowrie Island, Snake Island, and Bat Island</span>
+            </div>
+            <a class="btn btn--amber" href="https://www.google.com/maps/search/?api=1&query=9.765680313110352,118.7454605102539" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="booking">
+      <div class="wrap cta__inner">
+        <div class="reveal">
+          <p class="mono">Direct booking</p>
+          <h2 class="cta__title display">Reserve direct.</h2>
+        </div>
+        <div class="reveal">
+          <p class="cta__text">Use the hotel's reservation engine for live availability, or contact the property team for questions about rooms, airport transfers, and events.</p>
+          <div class="cta__actions">
+            <a class="btn btn--amber" href="https://asturiashotel.reserve-online.net/?adults=1" target="_blank" rel="noopener noreferrer">Check availability</a>
+            <a class="btn" href="mailto:palawansales@asturiashotel.ph">Email reservations</a>
+            <a class="btn" href="tel:+63484343852">Call trunkline</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="mono">Hotel atmosphere</p>
+          <h2 class="section__title display">Gallery</h2>
+        </div>
+        <p class="section__desc reveal">A visual mix of the hotel facade, room mood, pool side, lobby dining, and the wider Palawan setting.</p>
+        <div class="gallery-grid">
+          <figure class="reveal">
+            <img src="assets/img/hero.svg" alt="Citystate Asturias Hotel Palawan illustrated exterior with pool and palms" loading="lazy" decoding="async">
+            <figcaption>Hotel exterior and poolside mood</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/room.svg" alt="Illustrated room interior at Citystate Asturias Hotel Palawan" loading="lazy" decoding="async">
+            <figcaption>Room comfort and layout</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/pool.svg" alt="Illustrated swimming pool and jacuzzi at Citystate Asturias Hotel Palawan" loading="lazy" decoding="async">
+            <figcaption>Swimming pool and jacuzzi</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/lobby.svg" alt="Illustrated lobby and dining scene at Citystate Asturias Hotel Palawan" loading="lazy" decoding="async">
+            <figcaption>Lobby, coffee, and dining</figcaption>
+          </figure>
+          <figure class="reveal">
+            <img src="assets/img/palawan.svg" alt="Illustrated Palawan seascape and island view" loading="lazy" decoding="async">
+            <figcaption>Palawan coast and island context</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="wrap footer__grid">
+        <div class="footer__brand reveal">
+          <p class="mono">Contact</p>
+          <h2 class="display">Citystate Asturias Hotel Palawan</h2>
+          <p>South National Highway, Tiniguiban, Puerto Princesa, Palawan 5300, Philippines.</p>
+          <p>Reservations and sales: <a class="link-underline" href="tel:+63484349744">+63 48 433 9744</a> and <a class="link-underline" href="tel:+63484343852">+63 48 434 3852</a>.</p>
+        </div>
+        <div class="footer__links reveal">
+          <a class="link-underline" href="tel:+63484343747">Direct line: +63 48 434 3747</a>
+          <a class="link-underline" href="mailto:palawansales@asturiashotel.ph">palawansales@asturiashotel.ph</a>
+          <a class="link-underline" href="https://asturiashotel.reserve-online.net/?adults=1" target="_blank" rel="noopener noreferrer">Official reservation engine</a>
+          <span>Official contact page also lists fax +63 48 434 3750 and Manila sales office support.</span>
+        </div>
+      </div>
+      <div class="wrap footer__small">Verified with official hotel pages and public room/location listings. Built for GitHub Pages deployment.</div>
+    </footer>
+  </main>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      smoothWheel: true,
+      smoothTouch: false,
+      lerp: 0.08
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    gsap.ticker.lagSmoothing(0);
+
+    gsap.to('.hero__media img', {
+      scale: 1.08,
+      duration: 16,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1
+    });
+
+    gsap.from('.nav', { y: -18, opacity: 0, duration: 0.8, ease: 'power2.out' });
+    gsap.from('.hero .reveal', {
+      y: 26,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.14,
+      delay: 0.25,
+      ease: 'power3.out'
+    });
+
+    document.querySelectorAll('.section').forEach((section) => {
+      const elements = section.querySelectorAll('.reveal');
+      if (!elements.length) return;
+
+      gsap.from(elements, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 72%'
+        },
+        y: 28,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power2.out'
+      });
+    });
+
+    gsap.utils.toArray('.gallery-grid figure').forEach((figure, index) => {
+      gsap.fromTo(figure, {
+        y: 18
+      }, {
+        y: -18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: figure,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.6
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Citystate Asturias Hotel Palawan",
+    "description": "Hotel in Puerto Princesa, Palawan with 62 guestrooms, airport transfer, pool and jacuzzi, meeting spaces, and direct booking links.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "South National Highway, Tiniguiban",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.765680313110352,
+      "longitude": 118.7454605102539
+    },
+    "telephone": "+63 48 433 9744",
+    "email": "palawansales@asturiashotel.ph",
+    "numberOfRooms": 62,
+    "url": "./",
+    "hasMap": "https://www.google.com/maps?q=9.765680313110352,118.7454605102539&z=16&output=embed"
+  }
+  </script>
 </body>
+</html>

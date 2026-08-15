@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated Palawan seascape and island view">
+  <rect width="1600" height="1200" fill="#080808"/>
+  <path d="M0 210H1600V1200H0Z" fill="#101010"/>
+  <circle cx="1230" cy="236" r="150" fill="#f0a500" opacity="0.28"/>
+  <circle cx="1230" cy="236" r="88" fill="#f0a500" opacity="0.88"/>
+  <path d="M0 700C180 640 336 614 504 626C674 638 824 704 980 720C1166 738 1358 682 1600 638V1200H0Z" fill="#0d0d0d"/>
+  <path d="M0 820C220 760 418 744 592 756C766 768 900 836 1080 852C1252 868 1428 826 1600 792V1200H0Z" fill="#111111"/>
+
+  <path d="M120 760C250 690 386 668 520 682C632 694 740 736 842 760C952 786 1060 790 1180 772C1302 754 1416 716 1512 676" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+  <path d="M120 846C250 792 388 782 520 794C632 804 740 836 842 858C952 884 1060 886 1180 872C1302 858 1416 826 1512 794" fill="none" stroke="#f0a500" stroke-opacity="0.5" stroke-width="3"/>
+
+  <path d="M250 540C278 492 318 452 370 420C404 400 444 386 492 378C440 406 404 442 378 482C350 526 334 584 326 660L258 650C266 612 274 574 250 540Z" fill="#0b0b0b"/>
+  <path d="M642 576C676 530 720 492 770 464C826 432 888 414 956 408C892 448 842 490 806 544C774 592 752 650 744 720L670 714C680 668 678 622 642 576Z" fill="#0b0b0b"/>
+  <path d="M980 516C1018 472 1062 438 1114 416C1172 392 1232 382 1294 388C1238 424 1192 466 1158 516C1124 566 1100 626 1092 694L1020 684C1030 642 1028 578 980 516Z" fill="#0b0b0b"/>
+
+  <path d="M282 654H344V1200H282Z" fill="#0f0f0f"/>
+  <path d="M720 712H782V1200H720Z" fill="#0f0f0f"/>
+  <path d="M1058 690H1120V1200H1058Z" fill="#0f0f0f"/>
+
+  <circle cx="164" cy="910" r="18" fill="#f0a500" opacity="0.9"/>
+  <circle cx="420" cy="940" r="18" fill="#f0a500" opacity="0.9"/>
+  <circle cx="840" cy="920" r="18" fill="#f0a500" opacity="0.9"/>
+  <circle cx="1210" cy="946" r="18" fill="#f0a500" opacity="0.9"/>
+
+  <g opacity="0.55">
+    <path d="M1380 424l28-22 26 20-24 20z" fill="#eaeaea"/>
+    <path d="M1328 474l20-16 18 14-16 14z" fill="#eaeaea"/>
+    <path d="M1260 412l20-16 18 14-16 14z" fill="#eaeaea"/>
+  </g>
+</svg>

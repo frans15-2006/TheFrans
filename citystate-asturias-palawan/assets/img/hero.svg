@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Illustrated exterior of Citystate Asturias Hotel Palawan at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#110f0b"/>
+      <stop offset="58%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f1b17"/>
+      <stop offset="100%" stop-color="#0f0f0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1280" cy="220" r="180" fill="url(#glow)" opacity="0.9"/>
+  <circle cx="1280" cy="220" r="92" fill="#f0a500" opacity="0.84"/>
+  <path d="M0 730C160 660 300 652 430 690C560 728 682 780 800 760C939 736 1064 638 1216 658C1382 680 1502 784 1600 830V1200H0Z" fill="#0d0d0d"/>
+  <path d="M0 810C162 758 348 752 492 792C650 838 762 904 892 892C1030 880 1162 784 1322 792C1458 798 1540 850 1600 890V1200H0Z" fill="#101010"/>
+
+  <g opacity="0.96">
+    <rect x="280" y="420" width="1060" height="350" rx="2" fill="#0f1011" stroke="#eaeaea" stroke-opacity="0.12"/>
+    <rect x="330" y="470" width="960" height="56" fill="#181818"/>
+    <rect x="330" y="530" width="960" height="56" fill="#141414"/>
+    <rect x="330" y="590" width="960" height="56" fill="#181818"/>
+    <rect x="330" y="650" width="960" height="56" fill="#141414"/>
+    <rect x="330" y="710" width="960" height="20" fill="#0b0b0b"/>
+    <rect x="320" y="370" width="980" height="72" fill="#080808" stroke="#f0a500" stroke-opacity="0.7"/>
+    <rect x="350" y="392" width="180" height="18" fill="#eaeaea" opacity="0.86"/>
+    <rect x="1210" y="392" width="58" height="18" fill="#f0a500"/>
+
+    <g fill="#eaeaea" opacity="0.88">
+      <rect x="392" y="494" width="70" height="26"/>
+      <rect x="494" y="494" width="70" height="26"/>
+      <rect x="596" y="494" width="70" height="26"/>
+      <rect x="698" y="494" width="70" height="26"/>
+      <rect x="800" y="494" width="70" height="26"/>
+      <rect x="902" y="494" width="70" height="26"/>
+      <rect x="1004" y="494" width="70" height="26"/>
+      <rect x="1106" y="494" width="70" height="26"/>
+      <rect x="392" y="554" width="70" height="26"/>
+      <rect x="494" y="554" width="70" height="26"/>
+      <rect x="596" y="554" width="70" height="26"/>
+      <rect x="698" y="554" width="70" height="26"/>
+      <rect x="800" y="554" width="70" height="26"/>
+      <rect x="902" y="554" width="70" height="26"/>
+      <rect x="1004" y="554" width="70" height="26"/>
+      <rect x="1106" y="554" width="70" height="26"/>
+      <rect x="392" y="614" width="70" height="26"/>
+      <rect x="494" y="614" width="70" height="26"/>
+      <rect x="596" y="614" width="70" height="26"/>
+      <rect x="698" y="614" width="70" height="26"/>
+      <rect x="800" y="614" width="70" height="26"/>
+      <rect x="902" y="614" width="70" height="26"/>
+      <rect x="1004" y="614" width="70" height="26"/>
+      <rect x="1106" y="614" width="70" height="26"/>
+    </g>
+  </g>
+
+  <path d="M170 872H1430V1180H170Z" fill="url(#pool)" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <path d="M260 980C360 950 470 942 580 962C703 985 802 1040 932 1040C1059 1040 1160 979 1284 948" fill="none" stroke="#f0a500" stroke-opacity="0.55" stroke-width="3"/>
+  <path d="M255 1032C360 1005 470 999 582 1018C704 1040 804 1090 934 1090C1061 1090 1160 1036 1286 1004" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="2"/>
+
+  <g>
+    <path d="M142 820C170 696 204 646 236 612C266 580 292 570 330 562L350 604C322 610 305 626 286 652C262 686 238 742 218 826Z" fill="#0f0f0f"/>
+    <path d="M220 604C186 546 154 478 142 416L186 408C194 462 218 522 258 586Z" fill="#0f0f0f"/>
+    <path d="M144 412C184 390 225 392 270 410C228 430 186 438 144 412Z" fill="#f0a500" opacity="0.35"/>
+
+    <path d="M1430 812C1404 704 1370 648 1340 618C1306 584 1280 572 1242 566L1222 608C1250 614 1269 632 1288 656C1310 686 1335 740 1356 824Z" fill="#0f0f0f"/>
+    <path d="M1352 604C1386 548 1418 480 1430 418L1386 410C1378 464 1354 524 1314 588Z" fill="#0f0f0f"/>
+    <path d="M1430 412C1390 390 1349 392 1304 410C1346 430 1388 438 1430 412Z" fill="#f0a500" opacity="0.35"/>
+  </g>
+
+  <g opacity="0.55">
+    <circle cx="460" cy="264" r="3" fill="#eaeaea"/>
+    <circle cx="520" cy="204" r="2.5" fill="#eaeaea"/>
+    <circle cx="610" cy="250" r="2.5" fill="#eaeaea"/>
+    <circle cx="700" cy="186" r="2.5" fill="#eaeaea"/>
+    <circle cx="780" cy="246" r="2.5" fill="#eaeaea"/>
+    <circle cx="900" cy="214" r="2.5" fill="#eaeaea"/>
+  </g>
+</svg>
