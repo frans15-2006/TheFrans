@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Coastal path with palms and shoreline">
+  <defs>
+    <linearGradient id="walkSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111a25"/>
+      <stop offset="55%" stop-color="#1a2940"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="walkSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fced7"/>
+      <stop offset="70%" stop-color="#0e3852"/>
+      <stop offset="100%" stop-color="#07111b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#walkSky)"/>
+  <circle cx="1260" cy="250" r="80" fill="#f0a500" opacity="0.95"/>
+  <circle cx="1260" cy="250" r="162" fill="#f0a500" opacity="0.12"/>
+  <rect x="0" y="500" width="1600" height="230" fill="url(#walkSea)"/>
+  <rect x="0" y="704" width="1600" height="296" fill="#1b140d"/>
+  <path d="M0 612 C180 582 286 628 452 612 C612 596 734 566 904 576 C1080 588 1194 642 1382 628 C1476 622 1540 616 1600 612 L1600 816 L0 816 Z" fill="#0a2432" opacity="0.88"/>
+  <path d="M0 694 C188 676 316 714 486 702 C654 690 768 656 934 666 C1092 676 1200 726 1388 716 C1482 710 1544 704 1600 702 L1600 886 L0 886 Z" fill="#08171f" opacity="0.94"/>
+  <path d="M266 900 C348 824 418 770 486 724 C512 702 538 680 570 658 L962 658 C996 680 1024 706 1050 736 C992 754 932 772 862 796 C768 828 688 862 590 900 Z" fill="#d0a76c" opacity="0.65"/>
+  <path d="M240 920 C390 842 520 786 664 748 C806 712 940 706 1108 716" stroke="#9b7337" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M354 442 C310 388 272 330 240 268 C290 302 340 342 384 396 C372 408 362 424 354 442Z" fill="#16100a"/>
+  <path d="M378 408 C424 376 474 350 530 330 C498 382 462 430 416 474 C402 454 392 430 378 408Z" fill="#16100a"/>
+  <path d="M1268 880 C1296 796 1338 740 1390 694 C1428 660 1472 636 1520 618" stroke="#16100a" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <path d="M1322 744 C1368 714 1414 694 1468 684" stroke="#16100a" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M1344 694 C1384 670 1428 652 1482 640" stroke="#16100a" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <circle cx="700" cy="760" r="22" fill="#f0a500" opacity="0.9"/>
+  <circle cx="750" cy="744" r="6" fill="#eaeaea" opacity="0.8"/>
+  <circle cx="780" cy="712" r="4" fill="#eaeaea" opacity="0.55"/>
+</svg>

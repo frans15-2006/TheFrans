@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Standard room with desk and sea view window">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#1e1a16"/>
+    </linearGradient>
+    <linearGradient id="sea3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#71d6d6"/>
+      <stop offset="55%" stop-color="#1b5971"/>
+      <stop offset="100%" stop-color="#07131d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#base)"/>
+  <rect x="110" y="120" width="1380" height="760" fill="#201c17" stroke="#f0a500" stroke-opacity="0.18"/>
+  <rect x="150" y="160" width="620" height="680" fill="#151515"/>
+  <rect x="770" y="160" width="660" height="680" fill="url(#sea3)"/>
+  <rect x="770" y="160" width="660" height="158" fill="#83e6de" opacity="0.32"/>
+  <circle cx="1220" cy="288" r="88" fill="#f0a500" opacity="0.9"/>
+  <path d="M770 412 C958 388 1100 432 1272 420 C1352 414 1410 410 1430 414 L1430 546 C1344 544 1264 538 1188 542 C1052 548 946 574 770 566 Z" fill="#103243" opacity="0.88"/>
+  <path d="M770 570 C960 548 1108 586 1280 574 C1352 570 1410 568 1430 570 L1430 840 L770 840 Z" fill="#082130" opacity="0.95"/>
+  <rect x="230" y="588" width="410" height="154" rx="10" fill="#2d241b"/>
+  <rect x="256" y="616" width="356" height="100" rx="10" fill="#0d0d0d"/>
+  <rect x="282" y="596" width="304" height="46" rx="8" fill="#e7d5b7"/>
+  <rect x="620" y="554" width="126" height="188" rx="10" fill="#3d3020"/>
+  <rect x="648" y="576" width="72" height="134" rx="8" fill="#111"/>
+  <rect x="228" y="348" width="204" height="24" fill="#f0a500" opacity="0.6"/>
+  <rect x="186" y="250" width="292" height="200" rx="14" fill="#221c16"/>
+  <rect x="220" y="284" width="224" height="142" rx="8" fill="#0f0f0f"/>
+  <path d="M220 356 C252 344 282 338 326 340 C370 342 402 346 444 358" stroke="#8ddfe0" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M446 286 C482 242 512 216 552 196 C538 250 524 304 494 350 C474 334 460 312 446 286Z" fill="#1c1208"/>
+  <path d="M534 240 C574 214 610 202 658 194 C628 228 596 260 554 290 C546 272 540 256 534 240Z" fill="#1c1208"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Night beach scene with bonfire, moon, and palms">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#081019"/>
+      <stop offset="100%" stop-color="#020304"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3b4f"/>
+      <stop offset="100%" stop-color="#05131c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <circle cx="1220" cy="210" r="84" fill="#f7e7b8" opacity="0.95"/>
+  <circle cx="1220" cy="210" r="160" fill="#f7e7b8" opacity="0.11"/>
+  <circle cx="256" cy="182" r="4" fill="#f0a500"/>
+  <circle cx="332" cy="126" r="3" fill="#eaeaea" opacity="0.8"/>
+  <circle cx="430" cy="204" r="3" fill="#eaeaea" opacity="0.7"/>
+  <circle cx="560" cy="110" r="4" fill="#f0a500"/>
+  <rect x="0" y="500" width="1600" height="240" fill="url(#wave)"/>
+  <rect x="0" y="700" width="1600" height="300" fill="#1f180f"/>
+  <path d="M0 560 C190 530 304 584 474 568 C646 552 754 512 922 526 C1090 540 1188 590 1378 574 C1468 568 1532 560 1600 556 L1600 760 L0 760 Z" fill="#0f2b3a" opacity="0.82"/>
+  <path d="M0 626 C192 604 328 642 510 628 C688 614 796 584 962 596 C1116 606 1228 650 1412 638 C1486 634 1542 628 1600 626 L1600 840 L0 840 Z" fill="#08171f" opacity="0.94"/>
+  <path d="M208 860 C292 770 328 712 342 628 C356 550 368 494 388 424" stroke="#1a1008" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <path d="M386 462 C440 420 486 388 536 360 C500 424 462 480 426 530 C412 520 398 500 386 462Z" fill="#1a1008"/>
+  <path d="M386 420 C350 386 310 352 272 304 C320 330 364 360 410 404 C402 412 396 418 386 420Z" fill="#1a1008"/>
+  <path d="M1210 870 C1254 804 1296 756 1348 716 C1388 686 1430 666 1480 652 L1500 734 C1442 744 1394 768 1354 800 C1318 828 1286 864 1260 910 Z" fill="#100b07"/>
+  <path d="M710 838 L780 718 L860 838 Z" fill="#f0a500" opacity="0.9"/>
+  <path d="M782 752 L832 648 L882 752 Z" fill="#fff1c4" opacity="0.92"/>
+  <path d="M818 720 C830 694 842 672 854 650" stroke="#ff8f1f" stroke-width="10" stroke-linecap="round"/>
+  <path d="M802 726 C790 694 782 670 772 650" stroke="#ffcf61" stroke-width="8" stroke-linecap="round"/>
+  <path d="M796 744 C774 706 762 680 748 658" stroke="#ff6f1a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M690 842 C740 828 778 822 860 836" stroke="#f8d58d" stroke-opacity="0.24" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg>

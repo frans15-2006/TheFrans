@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Beachside dining table with lantern light and sea view">
+  <defs>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16222f"/>
+      <stop offset="100%" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a3421"/>
+      <stop offset="100%" stop-color="#1a120b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#dusk)"/>
+  <rect x="0" y="534" width="1600" height="254" fill="#0f2b3b"/>
+  <rect x="0" y="750" width="1600" height="250" fill="#1d170f"/>
+  <circle cx="1260" cy="264" r="86" fill="#f0a500" opacity="0.92"/>
+  <circle cx="1260" cy="264" r="170" fill="#f0a500" opacity="0.12"/>
+  <path d="M0 604 C204 582 322 620 492 606 C654 592 760 558 926 570 C1092 582 1210 630 1400 618 C1480 612 1540 606 1600 604 L1600 806 L0 806 Z" fill="#091922" opacity="0.92"/>
+  <path d="M114 860 C252 786 408 752 576 752 C742 752 902 790 1068 784 C1228 778 1372 748 1508 730 L1508 1000 L114 1000 Z" fill="url(#table)"/>
+  <rect x="332" y="610" width="954" height="102" rx="16" fill="#20160e"/>
+  <rect x="378" y="568" width="860" height="92" rx="14" fill="#3f2c1d"/>
+  <rect x="426" y="584" width="132" height="62" rx="10" fill="#0e0e0e"/>
+  <rect x="584" y="584" width="132" height="62" rx="10" fill="#f7ead8"/>
+  <rect x="742" y="584" width="132" height="62" rx="10" fill="#0e0e0e"/>
+  <rect x="900" y="584" width="132" height="62" rx="10" fill="#f7ead8"/>
+  <rect x="1058" y="584" width="132" height="62" rx="10" fill="#0e0e0e"/>
+  <path d="M270 564 C338 540 400 514 470 494 C452 534 430 572 404 612 C366 596 318 582 270 564Z" fill="#1a1008"/>
+  <path d="M1126 498 C1172 532 1212 576 1240 622 C1192 602 1140 586 1092 578 C1106 548 1116 522 1126 498Z" fill="#1a1008"/>
+  <path d="M1322 532 C1378 560 1426 600 1466 646 C1414 640 1364 634 1318 622 C1318 592 1318 562 1322 532Z" fill="#1a1008"/>
+  <path d="M200 336 C232 304 266 280 304 256 C278 314 252 366 220 414 C212 396 204 372 200 336Z" fill="#1a1008"/>
+  <path d="M296 300 C336 276 378 262 430 254 C402 290 370 324 328 354 C320 336 310 318 296 300Z" fill="#1a1008"/>
+  <rect x="1192" y="382" width="72" height="110" rx="10" fill="#25190f"/>
+  <circle cx="1228" cy="348" r="46" fill="#f0a500" opacity="0.9"/>
+  <circle cx="1228" cy="348" r="90" fill="#f0a500" opacity="0.15"/>
+</svg>

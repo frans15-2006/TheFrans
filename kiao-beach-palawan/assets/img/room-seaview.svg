@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Sea-view room with bed and a coastal window">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131313"/>
+      <stop offset="100%" stop-color="#23211b"/>
+    </linearGradient>
+    <linearGradient id="windowSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4fb1c5"/>
+      <stop offset="62%" stop-color="#10324b"/>
+      <stop offset="100%" stop-color="#06111b"/>
+    </linearGradient>
+    <linearGradient id="linen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2e2c5"/>
+      <stop offset="100%" stop-color="#b78d4c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#wall)"/>
+  <rect x="0" y="664" width="1600" height="336" fill="#090909"/>
+  <rect x="186" y="180" width="1268" height="474" rx="18" fill="#1d1a16" stroke="#f0a500" stroke-opacity="0.22"/>
+  <rect x="214" y="208" width="1212" height="418" fill="url(#windowSea)"/>
+  <rect x="214" y="208" width="1212" height="142" fill="#67c8d3" opacity="0.28"/>
+  <rect x="214" y="340" width="1212" height="286" fill="#12283b" opacity="0.75"/>
+  <circle cx="1180" cy="286" r="90" fill="#f0a500" opacity="0.92"/>
+  <circle cx="1180" cy="286" r="176" fill="#f0a500" opacity="0.14"/>
+  <path d="M214 426 C392 396 548 442 740 424 C910 408 1010 378 1236 396 C1320 402 1380 408 1426 416 L1426 504 L214 504 Z" fill="#16344a" opacity="0.86"/>
+  <path d="M214 462 C398 438 556 476 742 464 C934 452 1034 430 1220 442 C1320 448 1380 454 1426 462 L1426 610 L214 610 Z" fill="#0a1b27" opacity="0.9"/>
+  <path d="M1200 210 C1185 236 1172 262 1160 291" stroke="#1c1210" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1240 210 C1255 232 1270 260 1282 287" stroke="#1c1210" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1140 266 C1200 252 1240 250 1294 268" stroke="#1c1210" stroke-width="16" stroke-linecap="round"/>
+  <path d="M320 742 C350 704 374 674 406 652 L960 652 C986 674 1004 706 1018 742" fill="#1b1814"/>
+  <rect x="332" y="642" width="650" height="120" rx="14" fill="#251e19"/>
+  <rect x="362" y="612" width="598" height="90" rx="10" fill="url(#linen)"/>
+  <rect x="362" y="592" width="598" height="40" rx="10" fill="#f7edd9"/>
+  <rect x="944" y="586" width="164" height="172" rx="10" fill="#453424"/>
+  <rect x="982" y="610" width="84" height="128" rx="10" fill="#151515"/>
+  <rect x="1108" y="658" width="168" height="128" rx="12" fill="#3a2e1f"/>
+  <rect x="1124" y="672" width="136" height="96" rx="10" fill="#0d0d0d"/>
+  <rect x="1100" y="700" width="196" height="20" rx="10" fill="#f0a500" opacity="0.82"/>
+  <rect x="196" y="180" width="20" height="474" fill="#0a0a0a"/>
+  <rect x="1384" y="180" width="20" height="474" fill="#0a0a0a"/>
+  <rect x="214" y="180" width="1212" height="20" fill="#0a0a0a"/>
+  <rect x="214" y="602" width="1212" height="20" fill="#0a0a0a"/>
+  <path d="M398 762 C484 732 554 722 646 734" stroke="#f0a500" stroke-opacity="0.24" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

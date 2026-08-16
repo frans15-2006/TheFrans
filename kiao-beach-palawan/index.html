@@ -1,5 +1,962 @@
 <!DOCTYPE html>
-<title>Kiao Beach Palawan</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiao Beach Palawan | Beachfront Stay in Sitio Labtay, Napsan</title>
+  <meta name="description" content="Kiao Beach Palawan is a solar-powered beachfront retreat in Sitio Labtay, Brgy. Napsan, Puerto Princesa City. Explore sea-view rooms, fresh beachside dining, and a quiet Palawan escape." />
+  <meta name="theme-color" content="#080808" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kiao Beach Palawan | Beachfront Stay in Sitio Labtay, Napsan" />
+  <meta property="og:description" content="A quiet solar-powered beachfront retreat in Puerto Princesa, Palawan, with sea-view rooms, beachside dining, and direct access to the shore." />
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/kiao-beach-palawan/" />
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/kiao-beach-palawan/assets/img/hero-beach.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kiao Beach Palawan | Beachfront Stay in Sitio Labtay, Napsan" />
+  <meta name="twitter:description" content="Solar-powered beachfront retreat in Puerto Princesa, Palawan, with sea-view rooms and beachside dining." />
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/kiao-beach-palawan/assets/img/hero-beach.svg" />
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/kiao-beach-palawan/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.18);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --display: 'Bebas Neue', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --body: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    html.lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    html.lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.12), transparent 35%),
+        linear-gradient(180deg, #060606 0%, #090909 100%);
+      color: var(--text);
+      font-family: var(--body);
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .page-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .frame {
+      width: min(1180px, calc(100vw - 2rem));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    .section-tight {
+      padding-block: clamp(3rem, 6vw, 5rem);
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .headline {
+      font-family: var(--display);
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .subhead {
+      max-width: 34rem;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.56);
+    }
+
+    .line {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 3.15rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.1);
+      color: #fff;
+      outline: none;
+    }
+
+    .button-accent {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+    }
+
+    .button-accent:hover,
+    .button-accent:focus-visible {
+      background: #ffc12e;
+      color: #080808;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 1rem 0;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.82), rgba(8, 8, 8, 0.22));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100vw - 2rem));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      font-family: var(--display);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .brand-mark span {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.18em;
+      color: var(--amber);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding-top: 5rem;
+      overflow: clip;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.05);
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.85) 0%, rgba(8, 8, 8, 0.56) 45%, rgba(8, 8, 8, 0.2) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.18) 0%, rgba(8, 8, 8, 0.64) 100%);
+    }
+
+    .hero-inner {
+      padding: clamp(1.25rem, 4vw, 3rem) 0 clamp(1.5rem, 5vw, 3.5rem);
+      display: grid;
+      gap: 1.5rem;
+      max-width: 44rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .hero-kicker::before {
+      content: '';
+      width: 2.8rem;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(4rem, 12vw, 8.8rem);
+      line-height: 0.88;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+      max-width: 9ch;
+    }
+
+    .hero-copy {
+      max-width: 34rem;
+      font-size: clamp(1rem, 1.9vw, 1.15rem);
+      line-height: 1.75;
+      color: rgba(234, 234, 234, 0.84);
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.25rem;
+      color: rgba(234, 234, 234, 0.72);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-note span {
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .hero-note span::before {
+      content: '';
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 16px rgba(240, 165, 0, 0.65);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+      max-width: 44rem;
+    }
+
+    .section-head p {
+      margin: 0;
+    }
+
+    .rooms-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .room-tile {
+      display: grid;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-top: 1px solid var(--line);
+      transition: border-color 220ms ease, transform 220ms ease;
+    }
+
+    .room-tile:hover {
+      border-top-color: rgba(240, 165, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .room-image,
+    .gallery-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--bg-soft);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .room-meta {
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .room-name {
+      margin: 0;
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 0.95;
+    }
+
+    .room-desc,
+    .copy-block {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 40rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0.6rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .feature-list li {
+      display: grid;
+      grid-template-columns: 1rem 1fr;
+      gap: 0.5rem;
+      align-items: start;
+    }
+
+    .feature-list li::before {
+      content: '•';
+      color: var(--amber);
+      line-height: 1;
+      transform: translateY(0.1rem);
+    }
+
+    .amenity-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .amenity-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .amenity-row:first-child {
+      border-top: 0;
+    }
+
+    .amenity-row strong {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    .amenity-row span {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 52rem;
+    }
+
+    .location-wrap {
+      display: grid;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 24rem;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #111;
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-meta address {
+      font-style: normal;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-stack {
+      display: grid;
+      gap: 0.8rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-stack a {
+      color: var(--text);
+      width: fit-content;
+    }
+
+    .contact-stack a:hover,
+    .contact-stack a:focus-visible {
+      color: var(--amber);
+      outline: none;
+    }
+
+    .booking-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.1), transparent 45%),
+        rgba(255, 255, 255, 0.02);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .gallery-item figcaption {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.62);
+    }
+
+    .footer {
+      padding-top: 0;
+      padding-bottom: 2.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.25rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.25rem;
+    }
+
+    .fineprint {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.45);
+    }
+
+    @media (min-width: 760px) {
+      .hero-inner {
+        padding-bottom: 4.25rem;
+      }
+
+      .rooms-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .room-tile {
+        padding-right: 0.5rem;
+      }
+
+      .amenity-row {
+        grid-template-columns: minmax(14rem, 24rem) 1fr;
+        gap: 1.5rem;
+      }
+
+      .location-wrap {
+        grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.85fr);
+        gap: 1.4rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-row: span 2;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .topbar {
+        padding: 1.15rem 0;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-inner {
+        max-width: 48rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-row: span 2;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-none focus:border focus:border-[#f0a500] focus:bg-[#080808] focus:px-4 focus:py-3 focus:font-mono focus:text-xs focus:uppercase focus:tracking-[0.18em]">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand-mark" href="#hero" aria-label="Kiao Beach Palawan home">
+          KIAO BEACH
+          <span>PALAWAN</span>
+        </a>
+        <a class="button button-accent" href="tel:+639524433651">Call +63 952 443 3651</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero">
+        <div class="hero-media">
+          <img src="assets/img/hero-beach.svg" alt="Illustrated beachfront scene with palms, shoreline, and sunset light at Kiao Beach Palawan" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="frame hero-inner">
+          <div class="hero-kicker" data-reveal>Beachfront retreat in Sitio Labtay, Napsan</div>
+          <h1 class="hero-title" data-reveal>Kiao Beach Palawan</h1>
+          <p class="hero-copy" data-reveal>KIAO Beach is a solar-powered beachfront hideaway in Puerto Princesa City, Palawan, framed by white sand, turquoise water, and a quiet off-grid pace made for slow mornings and sea air.</p>
+          <div class="hero-actions" data-reveal>
+            <a class="button button-accent" href="#booking">Plan a direct stay</a>
+            <a class="button" href="#location">Open the map</a>
+          </div>
+          <div class="hero-note" data-reveal>
+            <span>Solar-powered retreat</span>
+            <span>Beachside restaurant</span>
+            <span>Sea-view rooms</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rooms">
+        <div class="frame">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Rooms and accommodations</div>
+            <h2 class="headline">Rustic rooms shaped by the shore</h2>
+            <p class="subhead">The stay experience is simple and grounded in place: local mahogany, natural stone, private bathrooms, clean linens, and terraces that keep the sea in view.</p>
+          </div>
+
+          <div class="rooms-grid">
+            <article class="room-tile" data-reveal>
+              <img class="room-image" src="assets/img/room-seaview.svg" alt="Illustration of a sea-view room with a bed, window, and coastal light" loading="lazy" />
+              <div class="room-meta">
+                <div class="label">Room type</div>
+                <h3 class="room-name">Deluxe Room Sea View</h3>
+                <p class="room-desc">Private bathroom, dining area, wardrobe, terrace, sea view, and a ground-floor layout that stays close to the beach.</p>
+                <ul class="feature-list">
+                  <li>Sea-facing terrace</li>
+                  <li>Dining area and dining table</li>
+                  <li>Wardrobe, towels, and linen</li>
+                  <li>Entire unit on the ground floor</li>
+                </ul>
+                <a class="button" href="#booking">Ask about this room</a>
+              </div>
+            </article>
+
+            <article class="room-tile" data-reveal>
+              <img class="room-image" src="assets/img/room-balcony.svg" alt="Illustration of a balcony room facing the sea at dusk" loading="lazy" />
+              <div class="room-meta">
+                <div class="label">Room type</div>
+                <h3 class="room-name">Deluxe Room View Sea with Balcony</h3>
+                <p class="room-desc">A quieter upper-edge stay with a balcony feel, sea outlook, private bathroom, wardrobe, and linens prepared for easy island days.</p>
+                <ul class="feature-list">
+                  <li>Sea view with balcony access</li>
+                  <li>Private bathroom and towels</li>
+                  <li>Wardrobe and linen</li>
+                  <li>Ground-floor unit listing</li>
+                </ul>
+                <a class="button" href="#booking">Check direct availability</a>
+              </div>
+            </article>
+
+            <article class="room-tile" data-reveal>
+              <img class="room-image" src="assets/img/room-standard.svg" alt="Illustration of a standard sea-view room with a desk and coastal window" loading="lazy" />
+              <div class="room-meta">
+                <div class="label">Room type</div>
+                <h3 class="room-name">Standard Room Sea View</h3>
+                <p class="room-desc">A practical seafront base with a desk, private bathroom, terrace, sea view, wardrobe, and the same low-key beach rhythm.</p>
+                <ul class="feature-list">
+                  <li>Desk and private bathroom</li>
+                  <li>Sea-view terrace</li>
+                  <li>Wardrobe, towels, and linen</li>
+                  <li>Ground-floor unit listing</li>
+                </ul>
+                <a class="button" href="#booking">Request details</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight" id="amenities">
+        <div class="frame">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Amenities</div>
+            <h2 class="headline">Comfort that stays close to nature</h2>
+            <p class="subhead">Every feature here follows the same idea: keep the experience honest, quiet, and connected to the shoreline rather than overbuilt.</p>
+          </div>
+
+          <div class="amenity-grid">
+            <div class="amenity-row" data-reveal>
+              <strong>Solar and off-grid</strong>
+              <span>The property is powered entirely by solar energy, with a peaceful pace that supports a proper digital detox. Wi-Fi and air-conditioning are not available.</span>
+            </div>
+            <div class="amenity-row" data-reveal>
+              <strong>Dining</strong>
+              <span>A beachside restaurant serves freshly prepared meals with locally sourced ingredients, organic produce from the farm, fresh seafood, craft beer, and island coffee.</span>
+            </div>
+            <div class="amenity-row" data-reveal>
+              <strong>Wellness and firelight</strong>
+              <span>Guests can book a massage, gather for a beach BBQ, or end the day around a bonfire under the stars.</span>
+            </div>
+            <div class="amenity-row" data-reveal>
+              <strong>Nature-led stays</strong>
+              <span>Snorkeling, nature walks, island runs, and coconut-oil making are part of the resort's quiet island rhythm.</span>
+            </div>
+            <div class="amenity-row" data-reveal>
+              <strong>Practical comforts</strong>
+              <span>Free private parking is available on site, and the rooms include private bathrooms, clean linens, terraces, and sea views.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="frame">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Location and map</div>
+            <h2 class="headline">Sitio Labtay, Brgy. Napsan</h2>
+            <p class="subhead">The official resort pin centers on Puerto Princesa City, Palawan at 9.7856257, 118.626479, which places Kiao Beach well away from Manila and directly within the Napsan coast.</p>
+          </div>
+
+          <div class="location-wrap">
+            <iframe
+              class="map-frame"
+              title="Map showing Kiao Beach Palawan in Sitio Labtay, Napsan, Puerto Princesa City"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.616479%2C9.7756257%2C118.636479%2C9.7956257&amp;layer=mapnik&amp;marker=9.7856257%2C118.626479"
+              loading="lazy"
+            ></iframe>
+
+            <div class="location-meta" data-reveal>
+              <div>
+                <div class="label">Published address</div>
+                <address>
+                  Kiao Beach Palawan<br />
+                  Sitio Labtay, Brgy. Napsan<br />
+                  Puerto Princesa City, Palawan 5300<br />
+                  Philippines
+                </address>
+              </div>
+              <div class="line"></div>
+              <div class="contact-stack">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=9.7856257,118.626479" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                <a href="tel:+639524433651">+63 952 443 3651</a>
+                <a href="mailto:kiaobeachpalawan@gmail.com">kiaobeachpalawan@gmail.com</a>
+              </div>
+              <p class="copy-block">The resort is described by the property as being just over an hour from Puerto Princesa City, making it a quiet coastside stay with an intentionally remote feel.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section booking-band" id="booking">
+        <div class="frame">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Booking call to action</div>
+            <h2 class="headline">Let the sea set the schedule</h2>
+            <p class="subhead">For direct inquiries, call the resort or email the team. Office hours are 8:00 am to 10:00 pm daily.</p>
+          </div>
+
+          <div class="hero-actions" data-reveal>
+            <a class="button button-accent" href="tel:+639524433651">Call now</a>
+            <a class="button" href="mailto:kiaobeachpalawan@gmail.com">Email the resort</a>
+            <a class="button" href="#contact">View contact details</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="frame">
+          <div class="section-head" data-reveal>
+            <div class="eyebrow">Gallery</div>
+            <h2 class="headline">Shoreline moments in full light</h2>
+            <p class="subhead">A small set of visual scenes shaped to echo the resort's beach, room, dining, and evening atmosphere.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item" data-reveal>
+              <img class="gallery-image" src="assets/img/gallery-bonfire.svg" alt="Illustrated bonfire scene on the beach under the night sky" loading="lazy" />
+              <figcaption>Beach fire and night breeze</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img class="gallery-image" src="assets/img/gallery-dining.svg" alt="Illustrated beachside dining scene with lantern light and sea views" loading="lazy" />
+              <figcaption>Beachside dining</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img class="gallery-image" src="assets/img/gallery-walk.svg" alt="Illustrated coastal path with palms and a quiet shoreline" loading="lazy" />
+              <figcaption>Quiet coastal walk</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img class="gallery-image" src="assets/img/room-seaview.svg" alt="Sea-view room illustration reused to show the accommodation mood" loading="lazy" />
+              <figcaption>Sea-view room mood</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <footer class="section footer" id="contact">
+        <div class="frame footer-grid">
+          <div>
+            <div class="eyebrow">Contact and footer</div>
+            <h2 class="headline" style="font-size: clamp(2.6rem, 7vw, 5.2rem);">Kiao Beach Palawan</h2>
+            <p class="copy-block">Sitio Labtay, Brgy. Napsan, Puerto Princesa City, Palawan 5300, Philippines. Quiet shore, solar power, fresh meals, and a small family-run welcome.</p>
+          </div>
+
+          <div class="contact-stack">
+            <a href="tel:+639524433651">+63 952 443 3651</a>
+            <a href="mailto:kiaobeachpalawan@gmail.com">kiaobeachpalawan@gmail.com</a>
+            <span>Office hours: 8:00 am to 10:00 pm daily</span>
+          </div>
+        </div>
+        <div class="frame" style="margin-top: 1.4rem;">
+          <div class="line" style="margin-bottom: 1rem;"></div>
+          <div class="fineprint">Published location verified from the resort's official site. Coordinates used on this page: 9.7856257, 118.626479.</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: !prefersReducedMotion,
+      smoothTouch: !prefersReducedMotion,
+      duration: 1.1,
+      autoRaf: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      ScrollTrigger.batch('[data-reveal]', {
+        start: 'top 86%',
+        once: true,
+        onEnter: batch => gsap.from(batch, {
+          opacity: 0,
+          y: 28,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+          overwrite: true
+        })
+      });
+
+      gsap.to('.hero-media img', {
+        yPercent: 4,
+        scale: 1.1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      ScrollTrigger.batch('.room-tile', {
+        start: 'top 78%',
+        once: true,
+        onEnter: batch => gsap.from(batch, {
+          opacity: 0,
+          y: 38,
+          duration: 0.8,
+          ease: 'power3.out',
+          stagger: 0.12,
+          overwrite: true
+        })
+      });
+
+      ScrollTrigger.batch('.gallery-item', {
+        start: 'top 80%',
+        once: true,
+        onEnter: batch => gsap.from(batch, {
+          opacity: 0,
+          y: 32,
+          duration: 0.8,
+          ease: 'power3.out',
+          stagger: 0.12,
+          overwrite: true
+        })
+      });
+
+      ScrollTrigger.refresh();
+    }
+
+    window.addEventListener('load', () => {
+      if (window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -84, duration: prefersReducedMotion ? 0 : 1.1 });
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Kiao Beach Palawan",
+    "url": "https://frans15-2006.github.io/TheFrans/kiao-beach-palawan/",
+    "telephone": "+63 952 443 3651",
+    "email": "kiaobeachpalawan@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sitio Labtay, Brgy. Napsan",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7856257,
+      "longitude": 118.626479
+    },
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "sameAs": ["https://www.kiaobeachpalawan.com/"]
+  }
+  </script>
 </body>
+</html>
