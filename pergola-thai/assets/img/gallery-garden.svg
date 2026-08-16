@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101010"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="600" cy="420" r="320" fill="url(#warm)"/>
+  <path d="M180 280C300 210 448 180 600 180C754 180 902 212 1020 280" stroke="#f0a500" stroke-opacity="0.18" stroke-width="18" stroke-linecap="round"/>
+  <path d="M240 310C350 250 472 220 600 220C730 220 852 250 960 310" stroke="#f0a500" stroke-opacity="0.08" stroke-width="28" stroke-linecap="round"/>
+  <path d="M250 310V760M950 310V760" stroke="#2b1e12" stroke-width="18" stroke-linecap="round"/>
+  <path d="M250 378H950" stroke="#2b1e12" stroke-width="18" stroke-linecap="round"/>
+  <path d="M250 450H950" stroke="#2b1e12" stroke-width="10" stroke-linecap="round"/>
+  <path d="M250 520H950" stroke="#2b1e12" stroke-width="10" stroke-linecap="round" opacity="0.9"/>
+  <path d="M250 592H950" stroke="#2b1e12" stroke-width="10" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="600" cy="360" r="32" fill="#f0a500"/>
+  <circle cx="600" cy="360" r="14" fill="#080808"/>
+  <path d="M600 392V462" stroke="#f0a500" stroke-opacity="0.26" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#223220" opacity="0.95">
+    <path d="M180 620C214 586 262 570 312 572C300 604 280 630 248 648C216 666 180 672 140 668C146 642 158 630 180 620Z"/>
+    <path d="M950 624C920 586 876 570 826 572C834 604 852 630 882 648C914 666 948 672 990 668C986 642 972 630 950 624Z"/>
+    <path d="M360 214C392 182 438 164 488 164C476 196 456 220 424 238C392 256 356 262 320 258C326 234 338 224 360 214Z"/>
+    <path d="M840 214C808 182 762 164 712 164C724 196 744 220 776 238C808 256 844 262 880 258C874 234 862 224 840 214Z"/>
+  </g>
+</svg>

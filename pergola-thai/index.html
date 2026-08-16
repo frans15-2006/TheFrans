@@ -1,60 +1,1140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pergola Thai and European Restaurant</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pergola Thai | Thai and European Restaurant in Puerto Princesa</title>
+  <meta name="description" content="Pergola Thai in Puerto Princesa, Palawan serves Thai and European favorites on Rizal Avenue. Explore verified hours, address, coordinates, and guest-favorite dishes.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pergola Thai | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Guest-favorite Thai dishes, verified hours, and the Rizal Avenue location for Pergola Thai in Puerto Princesa.">
+  <meta property="og:image" content="assets/img/hero-pergola.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.19/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --bg-mid: #121212;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --border: rgba(240, 165, 0, 0.22);
+      --border-strong: rgba(240, 165, 0, 0.45);
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.38);
+      --display: 'Bebas Neue', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --body: 'Space Grotesk', sans-serif;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      overflow-x: hidden;
+      scroll-behavior: auto;
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: clip;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    .font-display { font-family: var(--display); letter-spacing: 0.04em; }
+    .font-mono { font-family: var(--mono); }
+
+    .shell {
+      width: min(100%, 1400px);
+      margin: 0 auto;
+      padding-left: 1.1rem;
+      padding-right: 1.1rem;
+    }
+
+    @media (min-width: 768px) {
+      .shell { padding-left: 1.75rem; padding-right: 1.75rem; }
+    }
+
+    .topbar {
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.66));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .nav-link {
+      position: relative;
+      color: rgba(234, 234, 234, 0.8);
+      transition: color 220ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .focus-ring:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(240, 165, 0, 0.5), 0 0 0 8px rgba(240, 165, 0, 0.12);
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      border-radius: 999px;
+      padding: 0.95rem 1.45rem;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-solid {
+      background: var(--accent);
+      color: #080808;
+      box-shadow: 0 16px 34px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-solid:hover,
+    .btn-solid:focus-visible {
+      background: #f6b820;
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(240, 165, 0, 0.45);
+      background: rgba(240, 165, 0, 0.05);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.8);
+      background: rgba(240, 165, 0, 0.11);
+    }
+
+    .btn .ripple {
+      position: absolute;
+      border-radius: 999px;
+      transform: scale(0);
+      background: rgba(255, 255, 255, 0.28);
+      animation: ripple 600ms ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.14), transparent 26%),
+        radial-gradient(circle at 78% 22%, rgba(240, 165, 0, 0.12), transparent 26%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.86), rgba(8, 8, 8, 0.97));
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 36rem;
+      height: 36rem;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: -8rem;
+      left: -10rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.26), transparent 60%);
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      right: -8rem;
+      bottom: -12rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18), transparent 64%);
+      animation: drift 22s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(1.8rem, 1.3rem, 0) scale(1.08); }
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.98;
+      filter: saturate(0.9) contrast(1.04);
+      transform-origin: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.55) 42%, rgba(8, 8, 8, 0.18) 100%), linear-gradient(180deg, rgba(8, 8, 8, 0.1), rgba(8, 8, 8, 0.56));
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      align-content: center;
+      min-height: 100svh;
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(234, 234, 234, 0.92);
+    }
+
+    .brand-mark-badge {
+      width: 2.1rem;
+      height: 2.1rem;
+      border: 1px solid rgba(240, 165, 0, 0.5);
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: var(--accent);
+      box-shadow: inset 0 0 0 1px rgba(240, 165, 0, 0.08);
+      background: rgba(240, 165, 0, 0.06);
+    }
+
+    .hero-title {
+      font-size: clamp(4.6rem, 14vw, 10.4rem);
+      line-height: 0.88;
+      max-width: 9.5ch;
+      text-wrap: balance;
+      text-shadow: 0 8px 34px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgba(240, 165, 0, 0.26);
+      border-radius: 999px;
+      background: rgba(8, 8, 8, 0.36);
+      color: rgba(234, 234, 234, 0.86);
+      width: fit-content;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 1.15rem;
+      transform: translateX(-50%);
+      z-index: 3;
+      color: rgba(234, 234, 234, 0.76);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: floaty 2.8s ease-in-out infinite;
+    }
+
+    .scroll-indicator .line {
+      width: 1px;
+      height: 2.65rem;
+      background: linear-gradient(to bottom, rgba(240, 165, 0, 0.85), transparent);
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    .section {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding-top: 6.5rem;
+        padding-bottom: 6.5rem;
+      }
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240, 165, 0, 0.92);
+      font-size: 0.72rem;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      letter-spacing: 0.05em;
+      line-height: 0.92;
+      font-size: clamp(2.6rem, 8vw, 5.4rem);
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 62ch;
+      line-height: 1.7;
+    }
+
+    .grid-menu {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1280px) {
+      .grid-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .menu-card {
+      position: relative;
+      min-height: 100%;
+      padding: 1.15rem;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(16, 16, 16, 0.92), rgba(8, 8, 8, 0.92));
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.6);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.1), 0 24px 64px rgba(0, 0, 0, 0.38), 0 0 34px rgba(240, 165, 0, 0.08);
+    }
+
+    .menu-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 1.15rem 1.15rem 1.15rem;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240, 165, 0, 0.74), transparent);
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    .menu-card:hover::after { opacity: 1; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.68rem;
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.08);
+      border: 1px solid rgba(240, 165, 0, 0.26);
+      color: rgba(234, 234, 234, 0.82);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .price {
+      color: var(--accent);
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+    }
+
+    .about-split {
+      display: grid;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .about-split { grid-template-columns: 1.1fr 0.9fr; gap: 2rem; }
+    }
+
+    .motif {
+      position: relative;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: linear-gradient(180deg, rgba(16, 16, 16, 0.92), rgba(8, 8, 8, 0.96));
+      overflow: hidden;
+      min-height: 20rem;
+    }
+
+    .motif img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: minmax(10rem, 1fr);
+        grid-auto-flow: dense;
+      }
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: linear-gradient(180deg, rgba(16, 16, 16, 0.88), rgba(8, 8, 8, 0.95));
+      min-height: 14rem;
+      isolation: isolate;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform 320ms ease;
+      display: block;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.08), rgba(8, 8, 8, 0.72));
+      opacity: 0.72;
+      transition: opacity 220ms ease;
+      display: flex;
+      align-items: end;
+      padding: 1rem;
+    }
+
+    .gallery-tile:hover .gallery-overlay { opacity: 1; }
+
+    .cta-band {
+      border-top: 1px solid rgba(240, 165, 0, 0.28);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.18);
+      background:
+        radial-gradient(circle at 12% 25%, rgba(240, 165, 0, 0.16), transparent 28%),
+        radial-gradient(circle at 88% 75%, rgba(240, 165, 0, 0.12), transparent 24%),
+        linear-gradient(180deg, rgba(16, 16, 16, 0.94), rgba(8, 8, 8, 0.98));
+    }
+
+    .map-shell {
+      border: 1px solid rgba(240, 165, 0, 0.16);
+      background: linear-gradient(180deg, rgba(16, 16, 16, 0.92), rgba(8, 8, 8, 0.98));
+      overflow: hidden;
+      min-height: 22rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr + tr td {
+      border-top: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .hours-table td {
+      padding: 0.92rem 0;
+      vertical-align: top;
+    }
+
+    .hours-table td:first-child {
+      color: rgba(234, 234, 234, 0.9);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hours-table td:last-child {
+      color: rgba(234, 234, 234, 0.72);
+      font-family: var(--mono);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      background: #070707;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.3fr 0.7fr 0.8fr 0.8fr;
+      }
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: rgba(240, 165, 0, 0.05);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.6);
+      background: rgba(240, 165, 0, 0.12);
+    }
+
+    .soft-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.34), transparent);
+    }
+
+    .reveal-ready {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal-ready { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Pergola Thai and European Restaurant</h1>
-    <span class="category">Thai & European Restaurant</span>
-    <p class="address">Rizal Avenue, San Miguel, Puerto Princesa City</p>
-    <p class="phone">+63 915 498 1498</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar fixed inset-x-0 top-0 z-50">
+    <div class="shell">
+      <div class="flex items-center justify-between gap-4 py-4 md:py-5">
+        <a href="#home" class="brand-mark focus-ring">
+          <span class="brand-mark-badge font-mono text-xs">PT</span>
+          <span>
+            <span class="font-display text-2xl tracking-[0.1em] block leading-none">Pergola Thai</span>
+            <span class="font-mono text-[0.65rem] tracking-[0.24em] uppercase text-white/55">Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-sm font-mono uppercase tracking-[0.16em]">
+          <a class="nav-link focus-ring" href="#menu">Menu</a>
+          <a class="nav-link focus-ring" href="#about">About</a>
+          <a class="nav-link focus-ring" href="#gallery">Gallery</a>
+          <a class="nav-link focus-ring" href="#visit">Visit</a>
+        </nav>
+
+        <a class="btn btn-ghost font-mono text-[0.72rem] uppercase tracking-[0.18em] focus-ring" href="tel:+639165696031">
+          Call to Reserve
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <img class="hero-art" src="assets/img/hero-pergola.svg" alt="Illustrated pergola scene with Thai dishes, tropical foliage, and warm amber light" />
+      <div class="hero-overlay"></div>
+
+      <div class="shell hero-copy">
+        <div class="max-w-4xl">
+          <div class="hero-meta reveal-ready mb-6 md:mb-8">
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/55">Thai and European Food</span>
+            <span class="h-3 w-px bg-white/20"></span>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/78">Rizal Avenue, Puerto Princesa</span>
+          </div>
+
+          <h1 class="hero-title font-display reveal-ready">Thai Heat Under A Palawan Pergola</h1>
+
+          <p class="section-copy mt-5 md:mt-6 reveal-ready" style="max-width: 40rem;">
+            A small, made-to-order room on Rizal Avenue where guest favorites keep circling back to pad thai, tom yam goong, green curry, and other Thai staples alongside European comfort plates.
+          </p>
+
+          <div class="mt-8 md:mt-10 flex flex-wrap gap-3 md:gap-4 reveal-ready">
+            <a href="#menu" class="btn btn-solid font-mono text-[0.72rem] uppercase tracking-[0.18em] focus-ring ripple-btn">View Menu</a>
+            <a href="tel:+639165696031" class="btn btn-ghost font-mono text-[0.72rem] uppercase tracking-[0.18em] focus-ring ripple-btn">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#menu" class="scroll-indicator focus-ring">
+        <span>Scroll</span>
+        <span class="line"></span>
+      </a>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="shell">
+        <!-- Public review sources surface these dishes; only the pad thai review clearly surfaced a published price. -->
+        <div class="max-w-3xl mb-8 md:mb-12">
+          <div class="section-label reveal-ready">Menu Highlights</div>
+          <h2 class="section-title mt-3 reveal-ready">Guest-Favorite Thai Plates</h2>
+          <p class="section-copy mt-4 reveal-ready">
+            These dishes are drawn from public reviews and listing snippets for Pergola Thai. Prices are shown only where a public source surfaced them; otherwise, the card says so instead of guessing.
+          </p>
+        </div>
+
+        <div class="grid-menu">
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Noodles</span>
+              <span class="price">PHP 280</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Pad Thai</h3>
+            <p class="section-copy mt-3">Reviewers describe a generous, zesty plate with calamansi already worked through the noodles. One public note listed it at PHP 280.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Soup</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Tom Yam Goong</h3>
+            <p class="section-copy mt-3">Mentioned in multiple reviews as a satisfying, fragrant bowl with enough heat to stand beside the noodles.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Curry</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Green Chicken Curry</h3>
+            <p class="section-copy mt-3">Guest memories call it fresh, flavorful, and not greasy, with the spice level adjustable to taste.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Soup</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Tom Kha Gai</h3>
+            <p class="section-copy mt-3">Regulars mention this coconut soup alongside the restaurant's strongest Thai dishes and good value.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Salad</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Pomelo Salad</h3>
+            <p class="section-copy mt-3">Called the MVP by one review, this bright salad shows up as a favorite for guests who like something lighter before the curries.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Starter</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Spring Rolls</h3>
+            <p class="section-copy mt-3">Mentioned in review notes alongside curry and noodles as a go-to first bite with the Thai menu.</p>
+          </article>
+
+          <article class="menu-card reveal-ready">
+            <div class="flex items-start justify-between gap-4">
+              <span class="tag">Curry</span>
+              <span class="price">Price not listed online</span>
+            </div>
+            <h3 class="font-display text-4xl md:text-5xl mt-5">Thai Red Beef Curry</h3>
+            <p class="section-copy mt-3">A repeat mention in older reviews, especially from diners looking for a stronger curry profile and a bigger plate.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="shell">
+        <div class="about-split">
+          <div>
+            <div class="section-label">About</div>
+            <h2 class="section-title mt-3">Small Room, Big Heat</h2>
+            <p class="section-copy mt-4">
+              Public reviews paint Pergola Thai as a compact, personal restaurant on Rizal Avenue, with dishes cooked to order and staff who happily steer guests toward the better bowls and curries.
+            </p>
+            <p class="section-copy mt-4">
+              The Thai side of the menu gets the most love, but the house also serves European comfort food. That mix is part of the appeal: a place where pad thai can sit next to steak, pomelo salad, and a very direct green curry.
+            </p>
+            <div class="mt-7 soft-rule"></div>
+            <p class="font-mono text-[0.74rem] uppercase tracking-[0.18em] text-white/50 mt-5">
+              Review signal: made-to-order cooking, friendly service, and a menu that leans Thai first.
+            </p>
+          </div>
+
+          <div class="motif" aria-hidden="true">
+            <img src="assets/img/about-cook.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="shell">
+        <div class="max-w-3xl mb-8 md:mb-12">
+          <div class="section-label reveal-ready">Gallery</div>
+          <h2 class="section-title mt-3 reveal-ready">Atmosphere, Plates, and Garden Light</h2>
+          <p class="section-copy mt-4 reveal-ready">
+            The gallery is illustrated, but every label is tied to the restaurant's Thai-and-European identity or the Rizal Avenue setting.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-tile reveal-ready md:col-span-5 md:row-span-2">
+            <img src="assets/img/gallery-padthai.svg" alt="Illustrated pad thai plate with lime, herbs, and noodles" loading="lazy">
+            <figcaption class="gallery-overlay">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/58">Signature Noodles</p>
+                <h3 class="font-display text-4xl mt-1">Pad Thai</h3>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile reveal-ready md:col-span-4 md:row-span-1">
+            <img src="assets/img/gallery-tomyum.svg" alt="Illustrated tom yam goong bowl with steam and herbs" loading="lazy">
+            <figcaption class="gallery-overlay">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/58">Hot Bowl</p>
+                <h3 class="font-display text-3xl mt-1">Tom Yam Goong</h3>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile reveal-ready md:col-span-3 md:row-span-1">
+            <img src="assets/img/gallery-garden.svg" alt="Illustrated pergola garden canopy with hanging light" loading="lazy">
+            <figcaption class="gallery-overlay">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/58">Garden Mood</p>
+                <h3 class="font-display text-3xl mt-1">Pergola Glow</h3>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile reveal-ready md:col-span-4 md:row-span-1">
+            <img src="assets/img/gallery-interior.svg" alt="Illustrated dining room with warm lamps and dark wood" loading="lazy">
+            <figcaption class="gallery-overlay">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/58">Dining Room</p>
+                <h3 class="font-display text-3xl mt-1">Warm Table</h3>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile reveal-ready md:col-span-8 md:row-span-1">
+            <img src="assets/img/about-cook.svg" alt="Illustrated cooking scene with wok, herbs, and steam" loading="lazy">
+            <figcaption class="gallery-overlay">
+              <div>
+                <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/58">Kitchen Energy</p>
+                <h3 class="font-display text-3xl mt-1">Cooked to Order</h3>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="section cta-band">
+      <div class="shell">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div class="max-w-3xl">
+            <div class="section-label reveal-ready">Reservations</div>
+            <h2 class="section-title mt-3 reveal-ready">Call Ahead For A Table</h2>
+            <p class="section-copy mt-4 reveal-ready">
+              Phone the restaurant to check space before dinner. The public listings we verified point to a phone-first booking flow rather than an online form.
+            </p>
+          </div>
+
+          <div class="reveal-ready">
+            <a href="tel:+639165696031" class="btn btn-solid font-mono text-[0.72rem] uppercase tracking-[0.18em] focus-ring ripple-btn">Call +63 916 569 6031</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="section">
+      <div class="shell">
+        <!-- Hours follow the latest public listing snapshot we verified (Sluurpy, updated 2025-06-05). -->
+        <div class="max-w-3xl mb-8 md:mb-12">
+          <div class="section-label reveal-ready">Hours and Location</div>
+          <h2 class="section-title mt-3 reveal-ready">Rizal Avenue, Puerto Princesa</h2>
+          <p class="section-copy mt-4 reveal-ready">
+            Verified public listing details place Pergola Thai at Rizal Avenue, San Miguel, Puerto Princesa City, 5300 Palawan, Philippines, with coordinates at 9.74007, 118.74273.
+          </p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2 items-start">
+          <div class="reveal-ready">
+            <div class="mb-5">
+              <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/50">Latest public hours listing</p>
+              <p class="font-mono text-[0.86rem] text-white/68 mt-1">Updated 2025-06-05 on Sluurpy, matching the open-now hours surfaced in search snippets.</p>
+            </div>
+            <table class="hours-table">
+              <tbody>
+                <tr><td>Monday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Thursday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Friday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+                <tr><td>Sunday</td><td>11:00 AM - 11:00 PM</td></tr>
+              </tbody>
+            </table>
+
+            <div class="mt-6 border border-white/8 bg-white/[0.02] p-4 md:p-5">
+              <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/50">Address</p>
+              <p class="mt-2 text-white/80">Rizal Avenue, San Miguel, Puerto Princesa City, 5300 Palawan, Philippines</p>
+              <p class="mt-3 font-mono text-[0.86rem] text-white/72">Coordinates: 9.74007, 118.74273</p>
+            </div>
+          </div>
+
+          <div class="map-shell reveal-ready">
+            <div class="flex items-center justify-between gap-3 border-b border-white/8 px-4 py-3">
+              <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/55">Map</p>
+              <a href="https://www.openstreetmap.org/?mlat=9.74007&mlon=118.74273#map=18/9.74007/118.74273" target="_blank" rel="noopener noreferrer" class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[#f0a500] focus-ring">Open OSM</a>
+            </div>
+            <svg viewBox="0 0 1200 900" class="w-full h-[24rem] md:h-[28rem] block" role="img" aria-label="Stylized map of Puerto Princesa showing Pergola Thai on Rizal Avenue">
+              <defs>
+                <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#151515"/>
+                  <stop offset="100%" stop-color="#090909"/>
+                </linearGradient>
+                <linearGradient id="road" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#2b2b2b"/>
+                  <stop offset="100%" stop-color="#181818"/>
+                </linearGradient>
+                <radialGradient id="pinGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="1200" height="900" fill="url(#mapBg)"/>
+              <g opacity="0.34" stroke="#f0a500" stroke-width="1">
+                <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200M0 720H1200M120 0V900M240 0V900M360 0V900M480 0V900M600 0V900M720 0V900M840 0V900M960 0V900M1080 0V900" />
+              </g>
+              <path d="M-40 520C210 420 420 430 640 500C855 568 990 570 1240 455" fill="none" stroke="url(#road)" stroke-width="56" stroke-linecap="round" opacity="0.92"/>
+              <path d="M120 675C300 590 454 560 610 566C742 570 892 615 1040 705" fill="none" stroke="#1d1d1d" stroke-width="28" stroke-linecap="round" opacity="0.94"/>
+              <path d="M400 160C470 195 540 230 610 260C685 292 752 320 820 354" fill="none" stroke="#1d1d1d" stroke-width="18" stroke-linecap="round" opacity="0.9"/>
+              <circle cx="760" cy="464" r="110" fill="url(#pinGlow)" opacity="0.38"/>
+              <g transform="translate(736 438)">
+                <path d="M24 0C11 0 0 11 0 24C0 42 24 72 24 72C24 72 48 42 48 24C48 11 37 0 24 0Z" fill="#f0a500"/>
+                <circle cx="24" cy="24" r="9" fill="#080808"/>
+              </g>
+              <text x="82" y="140" fill="#eaeaea" fill-opacity="0.78" font-family="JetBrains Mono, monospace" font-size="30" letter-spacing="2">PUERTO PRINCESA</text>
+              <text x="82" y="182" fill="#eaeaea" fill-opacity="0.58" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="1.5">Rizal Avenue, San Miguel</text>
+              <text x="796" y="450" fill="#eaeaea" fill-opacity="0.88" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="1.5">PERGOLA THAI</text>
+              <text x="796" y="480" fill="#eaeaea" fill-opacity="0.5" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="1">9.74007, 118.74273</text>
+            </svg>
+            <div class="px-4 pb-4">
+              <a href="https://www.google.com/maps/search/?api=1&query=9.74007,118.74273" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-[#f0a500] focus-ring">Open Google Maps <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section pb-8 md:pb-10">
+    <div class="shell">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-mark mb-4">
+            <span class="brand-mark-badge font-mono text-xs">PT</span>
+            <span>
+              <span class="font-display text-2xl tracking-[0.1em] block leading-none">Pergola Thai</span>
+              <span class="font-mono text-[0.65rem] tracking-[0.24em] uppercase text-white/55">Thai and European Food</span>
+            </span>
+          </div>
+          <p class="section-copy">
+            A Rizal Avenue dining room in Puerto Princesa, built around guest-loved Thai dishes and a warm, small-restaurant feel.
+          </p>
+        </div>
+
+        <div>
+          <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/50 mb-4">Quick Links</p>
+          <ul class="space-y-3 text-white/78">
+            <li><a class="nav-link focus-ring" href="#menu">Menu</a></li>
+            <li><a class="nav-link focus-ring" href="#about">About</a></li>
+            <li><a class="nav-link focus-ring" href="#gallery">Gallery</a></li>
+            <li><a class="nav-link focus-ring" href="#visit">Hours and Location</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/50 mb-4">Contact</p>
+          <ul class="space-y-3 text-white/78 font-mono text-[0.86rem]">
+            <li><a class="focus-ring" href="tel:+639165696031">+63 916 569 6031</a></li>
+            <li>Rizal Avenue, San Miguel, Puerto Princesa City</li>
+            <li>9.74007, 118.74273</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/50 mb-4">Social</p>
+          <div class="flex items-center gap-3">
+            <a class="social-link focus-ring" href="https://www.facebook.com/people/Pergola-Restaurant/100054291649652/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-[#f0a500]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8c0-.6.4-1 1-1Z"/></svg>
+            </a>
+            <a class="social-link focus-ring" href="https://www.openstreetmap.org/?mlat=9.74007&mlon=118.74273#map=18/9.74007/118.74273" target="_blank" rel="noopener noreferrer" aria-label="OpenStreetMap">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-[#f0a500]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17.5 9 20l6-3.5 6 2.5V6l-6-2.5L9 7 3 4.5Z"/><path d="M9 7v13M15 4.5v12.5"/></svg>
+            </a>
+            <a class="social-link focus-ring" href="#home" aria-label="Back to top">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 text-[#f0a500]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/><path d="M12 8v12"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="soft-rule my-8 md:my-10"></div>
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-white/46 font-mono text-[0.7rem] uppercase tracking-[0.18em]">
+        <p>Verifiable public listing details used for address, hours, and coordinates.</p>
+        <p>Built for Pergola Thai, Puerto Princesa.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.4,
+      anchors: true,
+      syncTouch: false,
+      respectReducedMotion: true
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .from('.hero .hero-meta', { autoAlpha: 0, y: 20, duration: 0.7 })
+      .from('.hero-title', { autoAlpha: 0, y: 28, duration: 0.9 }, '-=0.45')
+      .from('.hero .section-copy', { autoAlpha: 0, y: 18, duration: 0.8 }, '-=0.55')
+      .from('.hero .ripple-btn', { autoAlpha: 0, y: 18, stagger: 0.12, duration: 0.75 }, '-=0.5')
+      .from('.scroll-indicator', { autoAlpha: 0, y: 10, duration: 0.7 }, '-=0.45');
+
+    gsap.to('.hero-art', {
+      scale: 1.05,
+      yPercent: 3,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    const revealItems = gsap.utils.toArray('.reveal-ready').filter((item) => !item.closest('.hero'));
+    revealItems.forEach((item) => {
+      gsap.fromTo(item, {
+        autoAlpha: 0,
+        y: 22
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 84%',
+          once: true
+        }
+      });
+    });
+
+    gsap.utils.toArray('.menu-card').forEach((card, index) => {
+      gsap.from(card, {
+        autoAlpha: 0,
+        y: 28,
+        duration: 0.75,
+        ease: 'power3.out',
+        delay: index * 0.03,
+        scrollTrigger: {
+          trigger: '#menu',
+          start: 'top 72%',
+          once: true
+        }
+      });
+    });
+
+    gsap.utils.toArray('.gallery-tile').forEach((tile, index) => {
+      gsap.from(tile, {
+        autoAlpha: 0,
+        scale: 0.96,
+        y: 22,
+        duration: 0.85,
+        ease: 'power3.out',
+        delay: index * 0.05,
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 75%',
+          once: true
+        }
+      });
+    });
+
+    gsap.from('.motif', {
+      autoAlpha: 0,
+      x: 48,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 72%',
+        once: true
+      }
+    });
+
+    gsap.from('.about-split > div:first-child', {
+      autoAlpha: 0,
+      x: -48,
+      duration: 0.95,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 72%',
+        once: true
+      }
+    });
+
+    gsap.to('.btn-solid', {
+      boxShadow: '0 0 0 0 rgba(240,165,0,0.22)',
+      repeat: -1,
+      yoyo: true,
+      duration: 1.9,
+      ease: 'sine.inOut'
+    });
+
+    const buttons = document.querySelectorAll('.ripple-btn');
+    buttons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 620);
+      });
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        document.activeElement?.blur();
+      }
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Pergola Thai",
+    "description": "Thai and European restaurant on Rizal Avenue in Puerto Princesa, Palawan.",
+    "url": "./",
+    "telephone": "+63 916 569 6031",
+    "servesCuisine": ["Thai", "European"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rizal Avenue, San Miguel",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.74007,
+      "longitude": 118.74273
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Monday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Tuesday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Wednesday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Thursday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Friday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Saturday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["https://schema.org/Sunday"], "opens": "11:00", "closes": "23:00"}
+    ]
+  }
+  </script>
 </body>
 </html>
