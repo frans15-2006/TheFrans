@@ -1,0 +1,3 @@
+## 2025-05-15 - DOM Update Optimization in Vanilla JS
+**Learning:** In high-frequency UI updates or loops (like cart rendering or particle systems), using `innerHTML +=` inside a loop or multiple `appendChild` calls to the same container causes significant layout thrashing and O(n²) re-parsing overhead. Batching updates using string concatenation or `DocumentFragment` reduces this to a single reflow/repaint cycle. Caching DOM elements in a `DOMContentLoaded` listener prevents redundant lookups on every interaction.
+**Action:** Always batch DOM updates and cache elements in vanilla JS projects. Use `DocumentFragment` for element-based batching and string joining for `innerHTML` updates.
