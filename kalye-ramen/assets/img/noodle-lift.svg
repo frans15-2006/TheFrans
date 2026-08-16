@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ramen noodles lifted with chopsticks</title>
+  <desc id="desc">Dark background with chopsticks, noodles, steam, and amber broth highlights.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="50%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.54"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="610" cy="360" r="310" fill="url(#halo)"/>
+  <g fill="none" stroke-linecap="round" stroke-width="10">
+    <path d="M310 250l540 190" stroke="#f0a500"/>
+    <path d="M330 212l500 176" stroke="#eaeaea" opacity="0.72"/>
+  </g>
+  <g fill="none" stroke="#f5e8c4" stroke-width="5" stroke-linecap="round" opacity="0.85">
+    <path d="M462 314c-8 48 10 94 44 126"/>
+    <path d="M524 336c-8 48 12 99 46 130"/>
+    <path d="M586 358c-8 48 12 99 46 130"/>
+    <path d="M648 381c-8 48 12 99 46 130"/>
+    <path d="M710 403c-8 48 12 99 46 130"/>
+    <path d="M772 425c-8 48 12 99 46 130"/>
+  </g>
+  <g>
+    <ellipse cx="630" cy="684" rx="260" ry="48" fill="#000" opacity="0.6"/>
+    <path d="M400 498c0 152 104 252 230 252s230-100 230-252" fill="#f2eee8"/>
+    <path d="M426 512c0 121 82 204 204 204s204-83 204-204" fill="#101010"/>
+    <path d="M432 504h394c0 28-18 50-41 50H473c-23 0-41-22-41-50z" fill="#f0a500"/>
+    <path d="M470 550c60 21 113 30 159 30 48 0 107-10 180-31" stroke="#f0a500" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <g fill="#f7f0e7">
+      <path d="M480 555c36-20 74-28 114-24" stroke="#f7f0e7" stroke-width="4" fill="none" opacity="0.6"/>
+      <path d="M530 576c44-18 86-24 126-18" stroke="#f7f0e7" stroke-width="4" fill="none" opacity="0.6"/>
+      <path d="M588 590c40-14 82-18 124-13" stroke="#f7f0e7" stroke-width="4" fill="none" opacity="0.6"/>
+    </g>
+    <circle cx="712" cy="575" r="22" fill="#c63" opacity="0.95"/>
+    <circle cx="744" cy="564" r="14" fill="#f2eee8" opacity="0.9"/>
+    <circle cx="540" cy="579" r="18" fill="#d9b07f" opacity="0.96"/>
+    <circle cx="600" cy="598" r="16" fill="#f2eee8" opacity="0.9"/>
+    <circle cx="660" cy="583" r="12" fill="#d9b07f" opacity="0.96"/>
+  </g>
+  <g opacity="0.18" fill="#f0a500">
+    <circle cx="960" cy="686" r="16"/>
+    <circle cx="240" cy="694" r="11"/>
+    <circle cx="920" cy="176" r="10"/>
+  </g>
+</svg>

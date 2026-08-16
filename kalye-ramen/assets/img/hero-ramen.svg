@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Kalye Ramen hero illustration</title>
+  <desc id="desc">Dark ramen scene with steam, bowl, and amber glow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070707"/>
+      <stop offset="0.58" stop-color="#101010"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.7"/>
+      <stop offset="0.38" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0a500"/>
+      <stop offset="1" stop-color="#a86400"/>
+    </linearGradient>
+    <linearGradient id="ceramic" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2eee8"/>
+      <stop offset="1" stop-color="#b4ada1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="820" cy="420" r="360" fill="url(#glow)"/>
+  <g opacity="0.22" stroke="#eaeaea" stroke-width="2" fill="none">
+    <path d="M210 180h350M220 220h290M1230 180h170M1210 220h220M1250 600h130M1320 650h80"/>
+  </g>
+  <g transform="translate(0 18)">
+    <ellipse cx="820" cy="624" rx="295" ry="52" fill="#000" opacity="0.62"/>
+    <path d="M585 450c0 155 100 256 235 256s235-101 235-256" fill="url(#ceramic)"/>
+    <path d="M615 462c0 120 84 196 205 196s205-76 205-196" fill="#161616"/>
+    <path d="M620 474c0 96 76 164 200 164s200-68 200-164" fill="#0e0e0e"/>
+    <path d="M614 449h412c0 27-18 49-42 49H656c-24 0-42-22-42-49z" fill="url(#bowl)"/>
+    <path d="M615 500c52 25 124 39 205 39s153-14 205-39" stroke="#f6d58a" stroke-width="5" opacity="0.28" fill="none"/>
+    <path d="M715 435c20-42 58-64 104-64 48 0 87 20 111 57" stroke="#f7f0e7" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M737 421c18-35 51-53 86-53 37 0 69 15 90 43" stroke="#f0a500" stroke-width="4" opacity="0.7" stroke-linecap="round" fill="none"/>
+    <path d="M725 408c-8-46 14-93 58-123" stroke="#eaeaea" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.8"/>
+    <path d="M820 395c6-52 30-93 70-126" stroke="#eaeaea" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.82"/>
+    <path d="M896 417c22-32 49-49 84-57" stroke="#eaeaea" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.82"/>
+    <g stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.9">
+      <path d="M604 352l160 85"/>
+      <path d="M1000 356l-162 85"/>
+    </g>
+    <g fill="#f1e9dd">
+      <ellipse cx="720" cy="548" rx="32" ry="14" opacity="0.95"/>
+      <ellipse cx="790" cy="540" rx="32" ry="14" opacity="0.95"/>
+      <ellipse cx="861" cy="537" rx="32" ry="14" opacity="0.95"/>
+      <ellipse cx="930" cy="548" rx="32" ry="14" opacity="0.95"/>
+    </g>
+    <path d="M674 532c64-23 111-34 150-34 36 0 88 11 158 35" stroke="#f0a500" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.88"/>
+    <path d="M700 564c66 18 133 26 199 23 37-1 65-7 84-15" stroke="#f3e5b6" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.38"/>
+  </g>
+  <g opacity="0.16" fill="#f0a500">
+    <circle cx="370" cy="760" r="18"/>
+    <circle cx="1240" cy="732" r="14"/>
+    <circle cx="1270" cy="210" r="8"/>
+  </g>
+</svg>

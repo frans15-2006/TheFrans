@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Kalye Ramen storefront illustration</title>
+  <desc id="desc">A dark storefront with an amber sign, windows, and street glow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="50%" cy="35%" r="42%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="1000" fill="url(#bg)"/>
+  <circle cx="710" cy="340" r="340" fill="url(#lamp)"/>
+  <rect x="200" y="230" width="1000" height="560" rx="24" fill="#0d0d0d" stroke="#f2eee8" stroke-opacity="0.16"/>
+  <rect x="245" y="280" width="910" height="76" rx="12" fill="#f0a500"/>
+  <text x="700" y="334" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="64" letter-spacing="5" fill="#101010">KALYE RAMEN</text>
+  <rect x="270" y="384" width="372" height="322" rx="20" fill="#121212" stroke="#f2eee8" stroke-opacity="0.1"/>
+  <rect x="758" y="384" width="372" height="322" rx="20" fill="#121212" stroke="#f2eee8" stroke-opacity="0.1"/>
+  <path d="M510 706v-86" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M888 706v-86" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <rect x="228" y="824" width="944" height="22" rx="11" fill="#f0a500" opacity="0.45"/>
+  <g opacity="0.42" fill="#f2eee8">
+    <rect x="304" y="446" width="48" height="110" rx="24"/>
+    <rect x="370" y="446" width="48" height="110" rx="24"/>
+    <rect x="436" y="446" width="48" height="110" rx="24"/>
+    <rect x="794" y="446" width="48" height="110" rx="24"/>
+    <rect x="860" y="446" width="48" height="110" rx="24"/>
+    <rect x="926" y="446" width="48" height="110" rx="24"/>
+  </g>
+  <g fill="#f0a500" opacity="0.92">
+    <rect x="300" y="566" width="142" height="18" rx="9"/>
+    <rect x="856" y="566" width="142" height="18" rx="9"/>
+  </g>
+  <g opacity="0.22" fill="#eaeaea">
+    <circle cx="285" cy="884" r="18"/>
+    <circle cx="1110" cy="878" r="15"/>
+    <circle cx="100" cy="744" r="13"/>
+  </g>
+</svg>

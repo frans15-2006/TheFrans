@@ -1,60 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalye Ramen and Sushi Bar</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalye Ramen | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Kalye Ramen in Puerto Princesa, Palawan serves ramen, sushi, and crowd-favorite Japanese comfort food on F. Ponce de Leon Rd.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kalye Ramen | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Street roots elevated Japanese flavors in Puerto Princesa, with ramen, sushi, and fast comfort on F. Ponce de Leon Rd.">
+  <meta property="og:image" content="assets/img/hero-ramen.svg">
+  <meta property="og:image:alt" content="Stylized ramen bowl illustration for Kalye Ramen">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalye Ramen | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Ramen, sushi, and Japanese comfort food in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="assets/img/hero-ramen.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.2);
+      --shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.11), transparent 28%),
+        radial-gradient(circle at 80% 15%, rgba(240, 165, 0, 0.08), transparent 18%),
+        linear-gradient(180deg, #080808 0%, #0c0c0c 52%, #080808 100%);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.35);
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topline {
+      position: fixed;
+      inset: 16px 16px auto 16px;
+      z-index: 50;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      mix-blend-mode: screen;
+    }
+
+    .brand-mini {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font: 500 0.78rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 7px rgba(240, 165, 0, 0.16);
+    }
+
+    .topline a {
+      pointer-events: auto;
+      font: 500 0.78rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      isolation: isolate;
+      display: grid;
+      align-items: end;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.12) 0%, rgba(8, 8, 8, 0.35) 45%, rgba(8, 8, 8, 0.92) 100%),
+        radial-gradient(circle at 72% 30%, rgba(240, 165, 0, 0.18), transparent 22%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.62) 0%, rgba(8, 8, 8, 0.18) 58%, rgba(8, 8, 8, 0.55) 100%);
+      z-index: 1;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.02) saturate(1.04);
+      transform: scale(1.02);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 128px 0 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.18);
+      color: rgba(234, 234, 234, 0.84);
+      font: 500 0.78rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero h1,
+    .section-title,
+    .cta-title,
+    .footer-brand {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 0.94;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 8ch;
+      font-size: clamp(4.7rem, 16vw, 10.5rem);
+      color: var(--text);
+      text-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      max-width: 44rem;
+      font-size: clamp(1rem, 2.4vw, 1.24rem);
+      line-height: 1.6;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      background: rgba(234, 234, 234, 0.04);
+      color: var(--text);
+      font: 500 0.82rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, color 220ms ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: #111;
+      border-color: transparent;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.35);
+      outline: none;
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: #ffba1a;
+      color: #060606;
+    }
+
+    .scroll-cue {
+      position: relative;
+      z-index: 2;
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 0 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(234, 234, 234, 0.62);
+      font: 500 0.72rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::before {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: rgba(234, 234, 234, 0.34);
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(72px, 10vw, 128px) 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 14px;
+      margin-bottom: clamp(28px, 5vw, 46px);
+    }
+
+    .section-title {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      color: var(--text);
+    }
+
+    .section-lead {
+      max-width: 56rem;
+      margin: 0;
+      font-size: clamp(1rem, 2.2vw, 1.1rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .highlights-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    details.highlight {
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      padding-top: 14px;
+    }
+
+    details.highlight:last-child {
+      border-bottom: 1px solid rgba(234, 234, 234, 0.12);
+      padding-bottom: 14px;
+    }
+
+    details.highlight > summary {
+      list-style: none;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+    }
+
+    details.highlight > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .dish-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      letter-spacing: 0.05em;
+      line-height: 0.95;
+    }
+
+    .dish-tag {
+      color: rgba(234, 234, 234, 0.58);
+      font: 500 0.72rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .highlight-body {
+      max-width: 54rem;
+      padding-top: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .story-grid {
+      display: grid;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 16px;
+    }
+
+    .story-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .mono-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(234, 234, 234, 0.76);
+      font: 500 0.74rem/1.2 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mono-note::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: rgba(240, 165, 0, 0.72);
+    }
+
+    .story-visual {
+      position: relative;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      padding-top: 16px;
+    }
+
+    .story-visual img {
+      width: 100%;
+      height: auto;
+      box-shadow: var(--shadow);
+      transform-origin: center;
+      transition: transform 380ms ease;
+    }
+
+    .story-visual:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    .gallery-main,
+    .gallery-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    figure.gallery-item {
+      margin: 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      padding-top: 14px;
+    }
+
+    figure.gallery-item img {
+      width: 100%;
+      height: auto;
+      box-shadow: var(--shadow);
+      transition: transform 380ms ease;
+    }
+
+    figure.gallery-item:hover img {
+      transform: scale(1.015);
+    }
+
+    figcaption {
+      padding-top: 10px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      color: rgba(234, 234, 234, 0.68);
+      font: 500 0.72rem/1.3 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .cta-band {
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.12);
+      padding: clamp(34px, 5vw, 52px) 0;
+      display: grid;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-title {
+      font-size: clamp(2.5rem, 8vw, 5.2rem);
+    }
+
+    .cta-copy {
+      max-width: 52rem;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .location-card {
+      display: grid;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+    }
+
+    .location-card p,
+    .location-card address {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: normal;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 4px;
+    }
+
+    .contact-links a,
+    .footer-links a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: rgba(240, 165, 0, 0.5);
+      text-underline-offset: 0.2em;
+    }
+
+    .map-shell {
+      position: relative;
+      min-height: 300px;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .map-shell iframe {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border: 0;
+      filter: grayscale(1) contrast(1.05) brightness(0.9);
+    }
+
+    .footer {
+      padding: 18px 0 30px;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 10px;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      padding-top: 16px;
+    }
+
+    .footer-brand {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--text);
+    }
+
+    .footer-copy,
+    .footer-links {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    [data-reveal] {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 760px) {
+      .wrap {
+        width: min(1180px, calc(100% - 48px));
+      }
+
+      .hero-copy,
+      .scroll-cue {
+        width: min(860px, calc(100% - 48px));
+      }
+
+      .story-grid {
+        grid-template-columns: 1.02fr 0.98fr;
+      }
+
+      .gallery-layout {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+      }
+
+      .gallery-stack {
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .location-grid {
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: 26px;
+      }
+
+      .cta-band {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .topline {
+        inset: 18px 24px auto 24px;
+      }
+
+      .hero-copy {
+        padding-top: 160px;
+      }
+
+      .section {
+        padding: 112px 0;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr 0.95fr;
+        gap: 42px;
+      }
+
+      .gallery-layout {
+        grid-template-columns: 1.22fr 0.78fr;
+        gap: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Kalye Ramen and Sushi Bar</h1>
-    <span class="category">Japanese Restaurant</span>
-    <p class="address">F. Ponce de Leon Rd, Puerto Princesa City</p>
-    <p class="phone">+63 935 681 9387</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="topline wrap" aria-hidden="true">
+    <div class="brand-mini"><span class="brand-mark"></span>Kalye Ramen</div>
+    <a href="#location">Puerto Princesa, Palawan</a>
+  </div>
+
+  <main>
+    <section class="hero" id="top">
+      <img class="hero-media" src="assets/img/hero-ramen.svg" alt="Illustrated ramen bowl and warm restaurant glow for Kalye Ramen">
+      <div class="hero-copy wrap">
+        <div class="eyebrow" data-reveal>Street roots elevated Japanese flavors</div>
+        <h1 data-reveal>Kalye Ramen</h1>
+        <p data-reveal>Verified from public listings and reviews, Kalye Ramen is a Puerto Princesa stop for ramen, sushi, and Japanese comfort food on F. Ponce de Leon Rd. Locals and travelers keep calling out Tan Tan Ramen, the Philadelphia Salmon Roll, sushi burritos, and bowls that arrive fast when the room is full.</p>
+        <div class="hero-actions" data-reveal>
+          <a class="button primary" href="tel:+639356819387">Call +63 935 681 9387</a>
+          <a class="button" href="#highlights">See menu highlights</a>
+        </div>
+      </div>
+      <div class="scroll-cue wrap" data-reveal>Scroll for the menu, the story, and the map</div>
+    </section>
+
+    <section class="section" id="highlights">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div class="mono-note">Menu highlights</div>
+          <h2 class="section-title">The bowls and rolls people keep naming</h2>
+          <p class="section-lead">Public reviews and menu summaries point to a broad Japanese lineup: ramen, sushi, sashimi, donburi, bento meals, and at least 16 ramen options. These are the names that surface again and again.</p>
+        </div>
+
+        <div class="highlights-grid">
+          <details class="highlight" data-reveal open>
+            <summary>
+              <span class="dish-name">Tan Tan Ramen</span>
+              <span class="dish-tag">review favorite</span>
+            </summary>
+            <div class="highlight-body">Repeatedly praised in public reviews for a rich broth, a bold sesame-spice profile, and a bowl size that feels worth the stop.</div>
+          </details>
+
+          <details class="highlight" data-reveal>
+            <summary>
+              <span class="dish-name">Philadelphia Salmon Roll</span>
+              <span class="dish-tag">standout roll</span>
+            </summary>
+            <div class="highlight-body">A specific roll name that shows up in review quotes from travelers who came back more than once just to order it again.</div>
+          </details>
+
+          <details class="highlight" data-reveal>
+            <summary>
+              <span class="dish-name">Sushi Burrito</span>
+              <span class="dish-tag">public listing pick</span>
+            </summary>
+            <div class="highlight-body">Highlighted in public listing notes as one of the dishes to try, sitting alongside Uramaki, Sashimi, Donburi, and Bento meals.</div>
+          </details>
+
+          <details class="highlight" data-reveal>
+            <summary>
+              <span class="dish-name">Salmon Sushi and Dragon Roll</span>
+              <span class="dish-tag">menu range</span>
+            </summary>
+            <div class="highlight-body">The public menu and review trail points to fresh sushi, including salmon sushi, dragon rolls, and a wide ramen selection for mixed tables.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="wrap story-grid">
+        <div class="story-copy" data-reveal>
+          <div class="mono-note">About and kitchen story</div>
+          <h2 class="section-title">Built for the neighborhood, not the showroom</h2>
+          <p>Kalye Ramen presents itself with a clear line: street roots, elevated Japanese flavors. The public story around the place is consistent too. Reviews mention fast service, friendly staff, plenty of seating, and bowls that land hot and generous without much waiting.</p>
+          <p>A public post tied to the restaurant describes an Overload Ramen built with fresh noodles made daily and broth cooked for about 16 hours. That tracks with the restaurant's larger impression: a ramen-first kitchen that values depth, speed, and regulars who know what they want.</p>
+          <p>That is why Kalye Ramen reads like a local favorite rather than a one-off stop. It feels tuned to Puerto Princesa's pace, with the comfort of a late lunch, a casual dinner, or a post-day-out craving that wants something filling and warm.</p>
+        </div>
+
+        <div class="story-visual" data-reveal>
+          <img src="assets/img/noodle-lift.svg" alt="Illustrated chopsticks lifting ramen noodles for Kalye Ramen">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <div class="mono-note">Gallery</div>
+          <h2 class="section-title">The room, the rolls, the bowl</h2>
+          <p class="section-lead">Local flavor lives in the details: the storefront, the steam, the plate spread. These SVG scenes are built into the site so the page stays deployable without broken image links.</p>
+        </div>
+
+        <div class="gallery-layout">
+          <figure class="gallery-item gallery-main" data-reveal>
+            <img src="assets/img/storefront.svg" alt="Stylized storefront scene for Kalye Ramen in Puerto Princesa">
+            <figcaption><span>Storefront</span><span>F. Ponce de Leon Rd</span></figcaption>
+          </figure>
+
+          <div class="gallery-stack">
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/sushi-platter.svg" alt="Stylized sushi platter inspired by Kalye Ramen menu highlights">
+              <figcaption><span>Sushi spread</span><span>rolls and sashimi</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/hero-ramen.svg" alt="Stylized ramen bowl scene used as the site hero art">
+              <figcaption><span>Ramen bowl</span><span>broth and steam</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reservations">
+      <div class="wrap cta-band" data-reveal>
+        <div>
+          <div class="mono-note">Reservations CTA</div>
+          <h2 class="cta-title">Save a table for your next Puerto Princesa craving.</h2>
+        </div>
+        <p class="cta-copy">No form needed here. Use the phone number or email from the public page, then head in for ramen, sushi, or a quick neighborhood dinner.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="tel:+639356819387">Call now</a>
+          <a class="button" href="mailto:kalyeramen3@gmail.com">Email the shop</a>
+          <a class="button" href="#location">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="wrap location-grid">
+        <div class="location-card" data-reveal>
+          <div class="mono-note">Location and footer</div>
+          <h2 class="section-title">F. Ponce de Leon Rd, Puerto Princesa City</h2>
+          <address>Kalye Ramen and Sushi Bar<br>F. Ponce de Leon Rd, San Pedro, Puerto Princesa City, 5300 Palawan, Philippines</address>
+          <p>Map coordinates used on this page: 9.7591254, 118.7580556. That pin points to F. Ponce de Leon Rd in Puerto Princesa City, Palawan, not Manila.</p>
+          <p>Phone: <a href="tel:+639356819387">+63 935 681 9387</a><br>Email: <a href="mailto:kalyeramen3@gmail.com">kalyeramen3@gmail.com</a></p>
+          <p class="footer-copy">Public listings also show Monday, Wednesday through Sunday service from 11:00 AM to 9:00 PM, with Tuesday closed.</p>
+          <div class="contact-links">
+            <a href="https://www.google.com/maps?q=9.7591254,118.7580556" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            <a href="https://www.waze.com/live-map/directions?to=place.Ej9GLiBQb25jZSBkZSBMZW9uIFJkLCBQdWVydG8gUHJpbmNlc2EgQ2l0eSwgUGFsYXdhbiwgUGhpbGlwcGluZXMiLiosChQKEgkLnguNjmO1MxGrN72R9bsxehIUChIJWet4GJJjtTMRnjufSarpEv8" target="_blank" rel="noopener noreferrer">Open in Waze</a>
+          </div>
+        </div>
+
+        <div class="map-shell" data-reveal>
+          <iframe title="Kalye Ramen location map in Puerto Princesa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=118.7525%2C9.7540%2C118.7637%2C9.7638&layer=mapnik&marker=9.7591254%2C118.7580556"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">Kalye Ramen</div>
+      <p class="footer-copy">Verified against public listings, review summaries, and map coordinates tied to Puerto Princesa City, Palawan.</p>
+      <p class="footer-links"><a href="#top">Back to top</a><a href="#highlights">Menu</a><a href="#story">About</a><a href="#location">Location</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.16/dist/lenis.min.js"></script>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (window.gsap && window.ScrollTrigger && window.Lenis) {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.config({ ignoreMobileResize: true });
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        smoothWheel: true,
+        lerp: 0.08,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      const fadeItems = gsap.utils.toArray('main section:not(.hero) [data-reveal]');
+
+      if (!reduceMotion) {
+        gsap.set(fadeItems, { autoAlpha: 0, y: 24 });
+
+        fadeItems.forEach((item) => {
+          gsap.to(item, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 82%',
+              once: true,
+            },
+          });
+        });
+
+        gsap.from('.hero [data-reveal]', {
+          y: 18,
+          autoAlpha: 0,
+          duration: 0.95,
+          stagger: 0.08,
+          ease: 'power3.out',
+          delay: 0.12,
+        });
+
+        gsap.to('.hero-media', {
+          y: -12,
+          scale: 1.05,
+          duration: 8,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+      } else {
+        gsap.set(fadeItems, { autoAlpha: 1, y: 0 });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (!target) return;
+          event.preventDefault();
+          lenis.scrollTo(target, { offset: -12 });
+        });
+      });
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    }
+  </script>
 </body>
 </html>
