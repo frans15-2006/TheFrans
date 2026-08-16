@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Abstract reef illustration">
+  <rect width="1200" height="900" fill="#080808"/>
+  <path d="M120 742c78-97 174-151 301-151 109 0 196 48 268 128 87-70 159-104 260-104 83 0 158 31 231 92" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M210 708c12-94 43-181 92-261 26 88 31 173 14 261" fill="none" stroke="#f0a500" stroke-width="14" stroke-linecap="round"/>
+  <path d="M356 722c20-103 53-181 98-246 10 88 1 169-21 246" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round"/>
+  <path d="M875 720c18-96 48-177 90-245 12 83 6 164-13 245" fill="none" stroke="#f0a500" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1010 721c15-96 45-171 88-237 9 82 1 161-23 237" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="494" cy="258" r="168" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="2"/>
+  <circle cx="756" cy="258" r="134" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M426 410c70-40 142-48 216-22 67 24 135 34 204 24" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M500 342c28-38 56-58 87-60 26-1 49 10 70 34" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M468 282c-4-46 16-79 59-99" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M738 285c16-49 46-79 90-91" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M518 442c31 38 73 56 125 56 54 0 102-19 143-56" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.65"/>
+  <path d="M110 858h980" stroke="#f0a500" stroke-opacity="0.2" stroke-width="2"/>
+</svg>

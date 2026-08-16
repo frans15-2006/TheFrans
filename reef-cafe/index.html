@@ -1,60 +1,1050 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reef Cafe Puerto Princesa</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reef Cafe Puerto Princesa, Palawan | Cafe, Pizza, Burgers, Coffee</title>
+  <meta name="description" content="Reef Cafe in Puerto Princesa, Palawan at Badjao Inn on Rizal Avenue. Verified public listings show pizza, burgers, pasta, chicken plates, and coffee with a cozy coastal vibe.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reef Cafe Puerto Princesa, Palawan">
+  <meta property="og:description" content="Reef Cafe in Puerto Princesa, Palawan at Badjao Inn, Rizal Avenue. A verified public-listing snapshot of menu highlights, hours, location, and social links.">
+  <meta property="og:image" content="assets/img/og-reef-cafe.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/reef-cafe/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reef Cafe Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Reef Cafe in Puerto Princesa, Palawan at Badjao Inn on Rizal Avenue.">
+  <meta name="twitter:image" content="assets/img/og-reef-cafe.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.68);
+      --line: rgba(240, 165, 0, 0.22);
+      --line-strong: rgba(240, 165, 0, 0.44);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(240, 165, 0, 0.10), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(240, 165, 0, 0.08), transparent 26%),
+        radial-gradient(circle at 70% 82%, rgba(240, 165, 0, 0.06), transparent 24%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.88), rgba(8, 8, 8, 0.34));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 240ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn-ripple {
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .btn-ripple .ripple {
+      position: absolute;
+      border-radius: 999px;
+      transform: scale(0);
+      animation: ripple 720ms ease-out;
+      background: rgba(240, 165, 0, 0.35);
+      pointer-events: none;
+      inset: auto;
+      z-index: -1;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-family: var(--font-display);
+      letter-spacing: 0.03em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+    }
+
+    .section {
+      position: relative;
+      padding: 5rem 0;
+    }
+
+    .section-head {
+      max-width: 44rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .hero-inner {
+      min-height: 100svh;
+    }
+
+    .hero-orb {
+      position: absolute;
+      inset: auto auto -18% -10%;
+      width: min(88vw, 58rem);
+      aspect-ratio: 1;
+      background:
+        radial-gradient(circle at 40% 38%, rgba(240, 165, 0, 0.3), transparent 25%),
+        radial-gradient(circle at 58% 60%, rgba(240, 165, 0, 0.18), transparent 28%),
+        radial-gradient(circle at 52% 52%, rgba(240, 165, 0, 0.08), transparent 56%);
+      filter: blur(16px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-orb::after {
+      content: '';
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.2);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 38rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual img,
+    .story-art img,
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-float {
+      position: absolute;
+      right: -4%;
+      top: 50%;
+      width: min(52vw, 42rem);
+      transform: translateY(-50%);
+      opacity: 0.94;
+      pointer-events: none;
+    }
+
+    .cta {
+      min-height: 3rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.1), 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-primary {
+      background: var(--accent);
+      color: #080808;
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.25), 0 12px 28px rgba(240, 165, 0, 0.12);
+    }
+
+    .cta-ghost {
+      border-color: rgba(234, 234, 234, 0.22);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 1.5rem;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.26em;
+      color: rgba(234, 234, 234, 0.72);
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator span {
+      width: 3rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: pulseLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseLine {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .menu-card {
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding: 1.15rem;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      min-height: 15rem;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.52);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.34);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 1.7rem;
+      padding: 0 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.3);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .menu-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 2.2vw, 2.45rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .menu-desc {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .menu-price {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+    }
+
+    .story-layout {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .story-art {
+      min-height: 22rem;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      overflow: hidden;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      min-height: 15rem;
+      background: #101010;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 240ms ease, filter 240ms ease;
+    }
+
+    .gallery-tile:hover img,
+    .gallery-tile:focus-within img {
+      transform: scale(1.03);
+      filter: brightness(0.9);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(8,8,8,0.96), rgba(8,8,8,0.1));
+      transform: translateY(14px);
+      opacity: 0;
+      transition: transform 240ms ease, opacity 240ms ease;
+    }
+
+    .gallery-tile:hover .gallery-caption,
+    .gallery-tile:focus-within .gallery-caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hours-table td {
+      padding: 0.88rem 0;
+      vertical-align: top;
+    }
+
+    .hours-table td:first-child {
+      color: rgba(234, 234, 234, 0.72);
+      width: 38%;
+    }
+
+    .map-frame {
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      min-height: 24rem;
+      overflow: hidden;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .footer-link,
+    .social-link {
+      color: rgba(234, 234, 234, 0.82);
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible,
+    .social-link:hover,
+    .social-link:focus-visible {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .social-link svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .js [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .js .menu-card,
+    .js .gallery-tile {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .js .hero-visual,
+    .js .hero-copy-wrap,
+    .js .hero-actions,
+    .js .hero-location,
+    .js .hero-title,
+    .js .hero-eyebrow {
+      opacity: 0;
+    }
+
+    .js .scroll-indicator {
+      opacity: 0;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 12rem;
+      }
+
+      .gallery-tile:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .gallery-tile:nth-child(2) { grid-column: span 2; }
+      .gallery-tile:nth-child(3) { grid-column: span 1; }
+      .gallery-tile:nth-child(4) { grid-column: span 1; }
+      .gallery-tile:nth-child(5) { grid-column: span 2; }
+
+      .story-layout,
+      .hours-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.4fr 0.9fr 1fr 0.9fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-visual {
+        min-height: 100svh;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Reef Cafe Puerto Princesa</h1>
-    <span class="category">Restaurant & Hotel</span>
-    <p class="address">350 Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 968 751 8403</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="site-header">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#home" class="display text-[1.8rem] tracking-[0.08em] text-[#eaeaea]">Reef Cafe</a>
+      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em] text-[#eaeaea]/75" href="#menu">Menu</a>
+        <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em] text-[#eaeaea]/75" href="#story">Story</a>
+        <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em] text-[#eaeaea]/75" href="#gallery">Gallery</a>
+        <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em] text-[#eaeaea]/75" href="#location">Location</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="shell">
+    <main>
+      <section id="home" class="hero relative">
+        <div class="hero-orb" aria-hidden="true"></div>
+        <div class="mx-auto grid hero-layout min-h-[100svh] w-full max-w-7xl items-stretch gap-10 px-4 pt-28 pb-16 sm:px-6 lg:px-8">
+          <div class="hero-copy-wrap flex items-center">
+            <div class="max-w-2xl">
+              <p class="hero-eyebrow eyebrow mb-4">Newest Reef Cafe branch in Palawan</p>
+              <h1 class="hero-title display max-w-3xl text-[clamp(4.9rem,12vw,11rem)] text-[#eaeaea]">Reef Cafe</h1>
+              <p class="hero-location mono mt-3 text-[0.78rem] uppercase tracking-[0.22em] text-[#f0a500]">Puerto Princesa, Palawan</p>
+              <p class="hero-copy mt-6 max-w-xl text-[1rem] leading-[1.85] text-[#eaeaea]/72 sm:text-[1.05rem]">
+                Verified public listings place Reef Cafe at Badjao Inn on Rizal Avenue, with reviewers consistently calling out pizza, burgers, pasta, chicken dishes, and coffee.
+              </p>
+              <div class="hero-actions mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a class="cta cta-primary btn-ripple inline-flex items-center justify-center" href="#menu">Explore Menu</a>
+                <a class="cta cta-ghost btn-ripple inline-flex items-center justify-center" href="https://www.openstreetmap.org/?mlat=9.7397375&mlon=118.7462031#map=18/9.7397375/118.7462031" target="_blank" rel="noopener noreferrer">Find Us</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual relative flex items-center justify-center">
+            <img class="hero-float" src="assets/img/hero-reef.svg" alt="Abstract Reef Cafe ocean illustration" loading="eager" decoding="async">
+          </div>
+        </div>
+        <a class="scroll-indicator" href="#menu" aria-label="Scroll to menu highlights">
+          <span aria-hidden="true"></span>
+          <span>Scroll</span>
+        </a>
+      </section>
+
+      <section id="menu" class="section">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow mb-4">Menu Highlights</p>
+            <h2 class="section-title">Public favorites, verified from reviews</h2>
+            <p class="section-copy mt-5">
+              These highlights are pulled from public listings and review mentions, so the menu stays anchored to what guests actually order and remember.
+            </p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Chicken</span>
+                <span class="menu-price">₱370</span>
+              </div>
+              <h3 class="menu-name">Chicken All Pesto</h3>
+              <p class="menu-desc mt-4">Named in Foodpanda reviews as a repeat-order favorite, with the exact price surfaced in the public review feed.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Pizza</span>
+                <span class="menu-price">₱550</span>
+              </div>
+              <h3 class="menu-name">Le Bleu Pizza</h3>
+              <p class="menu-desc mt-4">Another Foodpanda-reviewed pick, called out by name and exact price in delivery feedback.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Chicken</span>
+                <span class="menu-price">₱500-₱1,000</span>
+              </div>
+              <h3 class="menu-name">Chicken Parmigiana</h3>
+              <p class="menu-desc mt-4">Repeated in TripAdvisor and delivery reviews for a generous shareable portion and a cozy dinner stop.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Beef</span>
+                <span class="menu-price">₱500-₱1,000</span>
+              </div>
+              <h3 class="menu-name">Beef Kofta</h3>
+              <p class="menu-desc mt-4">Reviewers mention beef kofta with rice and garlic sauce, making it one of the most specific repeat mentions online.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Chicken</span>
+                <span class="menu-price">₱500-₱1,000</span>
+              </div>
+              <h3 class="menu-name">Jamaican Jerk Chicken</h3>
+              <p class="menu-desc mt-4">Public reviews describe it as juicy and tender over yellow rice, with a strong island-style following.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Pizza</span>
+                <span class="menu-price">₱200-₱400</span>
+              </div>
+              <h3 class="menu-name">Meat Lover's Pizza</h3>
+              <p class="menu-desc mt-4">Recommended on Restaurant Guru and echoed in reviews that praise Reef Cafe for pizza and burgers.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Lunch</span>
+                <span class="menu-price">₱200-₱400</span>
+              </div>
+              <h3 class="menu-name">Taco Pizza</h3>
+              <p class="menu-desc mt-4">Mentioned in a TripAdvisor lunch review as a standout order from a broad, varied menu.</p>
+            </article>
+
+            <article class="menu-card">
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <span class="pill">Melt</span>
+                <span class="menu-price">₱200-₱400</span>
+              </div>
+              <h3 class="menu-name">Bacon Mushroom Melt</h3>
+              <p class="menu-desc mt-4">Paired with Taco Pizza in a review that called Reef Cafe a favorite lunch stop near Kinabuch.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="section">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow mb-4">Story / About</p>
+            <h2 class="section-title">A relaxed stop in the middle of Puerto Princesa</h2>
+            <p class="section-copy mt-5">
+              Reef Cafe appears across Instagram, Facebook, Tripadvisor, Restaurant Guru, and Foodpanda as a cafe-meets-bistro with friendly service, cozy interiors, and a menu that stretches from wood-fired pizza to coffee and heavier dinner plates.
+            </p>
+          </div>
+
+          <div class="story-layout">
+            <div class="story-copy" data-reveal>
+              <p class="section-copy">
+                Reviews consistently mention generous portions, warm service, comfortable seating, and a place people return to multiple times during a stay in Puerto Princesa. That makes the cafe feel less like a quick stop and more like a reliable local anchor on Rizal Avenue.
+              </p>
+              <p class="section-copy mt-4">
+                The public address and social profile details point to Badjao Inn on Rizal Avenue, which matches the cafe's position in the heart of the city rather than on the outskirts.
+              </p>
+              <div class="mt-6 space-y-2 mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">
+                <div>Badjao Inn, Rizal Avenue, Puerto Princesa City</div>
+                <div>Verified social presence: Instagram and Facebook</div>
+              </div>
+            </div>
+
+            <div class="story-art" data-reveal>
+              <img src="assets/img/story-reef.svg" alt="Abstract reef illustration in Reef Cafe colors" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow mb-4">Gallery</p>
+            <h2 class="section-title">Illustrated mood from reef to table</h2>
+            <p class="section-copy mt-5">
+              Since the brief calls for deployable assets without broken image links, these tiles are original SVG scenes that echo food, ocean light, and the Puerto Princesa setting.
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-tile">
+              <img src="assets/img/gallery-pizza.svg" alt="Illustrated pizza tile" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Wood-fired pizza</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="assets/img/gallery-coffee.svg" alt="Illustrated coffee tile" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Coffee break</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="assets/img/gallery-reef.svg" alt="Illustrated reef tile" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Reef texture</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="assets/img/gallery-map.svg" alt="Illustrated location tile" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Rizal Avenue</figcaption>
+            </figure>
+            <figure class="gallery-tile">
+              <img src="assets/img/gallery-food.svg" alt="Illustrated plate tile" loading="lazy" decoding="async">
+              <figcaption class="gallery-caption mono text-[0.72rem] uppercase tracking-[0.22em] text-[#eaeaea]">Coastal plates</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="section">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow mb-4">Hours / Location</p>
+            <h2 class="section-title">Public listings, address, and coordinates</h2>
+            <p class="section-copy mt-5">
+              The strongest public address match is 350 Rizal Avenue, Badjao Inn Building, Barangay Bancao Banca, Puerto Princesa Palawan 5300, Philippines, with coordinates verified from delivery and directory listings.
+            </p>
+          </div>
+
+          <div class="hours-grid">
+            <div data-reveal>
+              <div class="border border-[rgba(234,234,234,0.08)] bg-[rgba(255,255,255,0.02)] p-6">
+                <table class="hours-table" aria-label="Public hours listing">
+                  <tbody>
+                    <tr><td>Sunday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Monday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Tuesday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Wednesday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Thursday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Friday</td><td>10:30 AM-10:00 PM</td></tr>
+                    <tr><td>Saturday</td><td>5:00 PM-11:00 PM</td></tr>
+                  </tbody>
+                </table>
+                <p class="mt-5 text-sm leading-7 text-[#eaeaea]/68">
+                  Public directories disagree slightly on hours, so this table reflects the most detailed weekly listing verified from Tripadvisor. Foodpanda and Restaurant Guru currently show different published schedules.
+                </p>
+                <div class="mt-5 space-y-2">
+                  <div class="mono text-[0.78rem] uppercase tracking-[0.18em] text-[#f0a500]">Address</div>
+                  <p class="text-sm leading-7 text-[#eaeaea]/80">350 Rizal Avenue, Badjao Inn Building, Barangay Bancao Banca, Puerto Princesa Palawan 5300, Philippines</p>
+                  <div class="mono text-[0.78rem] uppercase tracking-[0.18em] text-[#f0a500]">Coordinates</div>
+                  <p class="mono text-[0.88rem] text-[#eaeaea]/78">9.7397375, 118.7462031</p>
+                  <div class="mono text-[0.78rem] uppercase tracking-[0.18em] text-[#f0a500]">Phone</div>
+                  <a class="footer-link mono text-[0.88rem]" href="tel:+639687518403">+63 968 751 8403</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="map-frame" data-reveal>
+              <img src="assets/img/location-map.svg" alt="Static map illustration for Reef Cafe Puerto Princesa" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer section pb-10 pt-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="footer-grid">
+          <div data-reveal>
+            <a href="#home" class="display text-[2.2rem] tracking-[0.08em] text-[#eaeaea]">Reef Cafe</a>
+            <p class="mt-4 max-w-md text-sm leading-7 text-[#eaeaea]/70">
+              Puerto Princesa, Palawan cafe with public listings across Instagram, Facebook, Tripadvisor, Restaurant Guru, and Foodpanda.
+            </p>
+          </div>
+
+          <div data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Quick Links</p>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li><a class="footer-link" href="#menu">Menu</a></li>
+              <li><a class="footer-link" href="#story">Story</a></li>
+              <li><a class="footer-link" href="#gallery">Gallery</a></li>
+              <li><a class="footer-link" href="#location">Location</a></li>
+            </ul>
+          </div>
+
+          <div data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Hours</p>
+            <ul class="mt-4 space-y-2 text-sm leading-7 text-[#eaeaea]/72">
+              <li>Sun-Fri: 10:30 AM-10:00 PM</li>
+              <li>Saturday: 5:00 PM-11:00 PM</li>
+              <li class="text-[#eaeaea]/52">Public listings vary slightly by platform.</li>
+            </ul>
+          </div>
+
+          <div data-reveal>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Socials</p>
+            <div class="mt-4 space-y-3">
+              <a class="social-link flex items-center gap-3 text-sm" href="https://www.instagram.com/reefcafe.puertoprincesa/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+                <span>Instagram</span>
+              </a>
+              <a class="social-link flex items-center gap-3 text-sm" href="https://www.facebook.com/ReefCafe.PuertoPrincesa/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.5V5.8H14c-2.1 0-3.8 1.7-3.8 3.8V12H7.5v2.8h2.7V19h3V14.8H16l.5-2.8h-2.8v-2.1c0-.8.6-1.4 1.3-1.4Z"></path></svg>
+                <span>Facebook</span>
+              </a>
+              <a class="social-link flex items-center gap-3 text-sm" href="https://www.openstreetmap.org/?mlat=9.7397375&mlon=118.7462031#map=18/9.7397375/118.7462031" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"></path><circle cx="12" cy="10" r="2.1"></circle></svg>
+                <span>Map</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3 border-t border-[rgba(234,234,234,0.08)] pt-6 md:flex-row md:items-center md:justify-between">
+          <p class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#eaeaea]/56">&copy; 2026 Reef Cafe Puerto Princesa</p>
+          <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#f0a500]">9.7397375, 118.7462031</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && window.Lenis) {
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        autoRaf: false,
+        anchors: true,
+        duration: 1.1
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      function raf(time) {
+        lenis.raf(time * 1000);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set(['.hero-eyebrow', '.hero-title', '.hero-location', '.hero-copy', '.hero-actions', '.hero-visual', '.scroll-indicator'], {
+      y: 24
+    });
+
+    const heroTL = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    heroTL
+      .to('.hero-copy-wrap', { opacity: 1, duration: 0.8 }, 0)
+      .to('.hero-eyebrow', { opacity: 1, y: 0, duration: 0.75 }, 0)
+      .to('.hero-title', { opacity: 1, y: 0, duration: 0.9 }, 0.08)
+      .to('.hero-location', { opacity: 1, y: 0, duration: 0.65 }, 0.18)
+      .to('.hero-copy', { opacity: 1, y: 0, duration: 0.8 }, 0.24)
+      .to('.hero-actions', { opacity: 1, y: 0, duration: 0.85 }, 0.34)
+      .to('.hero-visual', { opacity: 1, y: 0, duration: 1 }, 0.1)
+      .to('.scroll-indicator', { opacity: 1, y: 0, duration: 0.7 }, 0.7);
+
+    gsap.to('.hero-float', {
+      y: '-=24',
+      x: '+=12',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#home',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.to('.hero-orb', {
+      scale: 1.08,
+      x: 40,
+      y: -50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#home',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.utils.toArray('[data-reveal]').forEach((element, index) => {
+      gsap.fromTo(element, {
+        opacity: 0,
+        y: 28
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        delay: index * 0.01,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%'
+        }
+      });
+    });
+
+    gsap.from('.menu-card', {
+      opacity: 0,
+      y: 28,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#menu',
+        start: 'top 70%'
+      }
+    });
+
+    gsap.from('.gallery-tile', {
+      opacity: 0,
+      scale: 0.96,
+      y: 24,
+      duration: 0.75,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#gallery',
+        start: 'top 72%'
+      }
+    });
+
+    gsap.from('.story-copy', {
+      opacity: 0,
+      x: -36,
+      duration: 0.85,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#story',
+        start: 'top 70%'
+      }
+    });
+
+    gsap.from('.story-art', {
+      opacity: 0,
+      x: 36,
+      duration: 0.85,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#story',
+        start: 'top 70%'
+      }
+    });
+
+    gsap.from('.map-frame', {
+      opacity: 0,
+      x: 24,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#location',
+        start: 'top 70%'
+      }
+    });
+
+    gsap.from('.footer-grid > *', {
+      opacity: 0,
+      y: 20,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.footer',
+        start: 'top 82%'
+      }
+    });
+
+    document.querySelectorAll('.btn-ripple').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        ripple.className = 'ripple';
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        button.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => ScrollTrigger.refresh());
+      }
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Reef Cafe Puerto Princesa",
+    "url": "https://frans15-2006.github.io/TheFrans/reef-cafe/",
+    "image": "assets/img/og-reef-cafe.svg",
+    "telephone": "+63 968 751 8403",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "350 Rizal Avenue, Badjao Inn Building, Barangay Bancao Banca",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7397375,
+      "longitude": 118.7462031
+    },
+    "sameAs": [
+      "https://www.instagram.com/reefcafe.puertoprincesa/",
+      "https://www.facebook.com/ReefCafe.PuertoPrincesa/"
+    ],
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Sunday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Monday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Tuesday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Wednesday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Thursday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Friday", "opens": "10:30", "closes": "22:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Saturday", "opens": "17:00", "closes": "23:00"}
+    ]
+  }
+  </script>
 </body>
 </html>

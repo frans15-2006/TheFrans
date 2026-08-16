@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Reef Cafe Puerto Princesa preview image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#111111"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="940" cy="170" r="170" fill="none" stroke="#f0a500" stroke-opacity="0.3" stroke-width="4"/>
+  <circle cx="220" cy="510" r="150" fill="none" stroke="#f0a500" stroke-opacity="0.26" stroke-width="4"/>
+  <path d="M100 520c90-68 178-98 267-93 83 5 160 37 229 95 70-58 148-90 236-95 90-5 178 25 268 93" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <text x="82" y="210" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="122" letter-spacing="5">REEF CAFE</text>
+  <text x="86" y="282" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="30" letter-spacing="6">PUERTO PRINCESA, PALAWAN</text>
+  <text x="86" y="356" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="30" letter-spacing="0.5">Badjao Inn, Rizal Avenue. Pizza, burgers, pasta, coffee.</text>
+  <text x="86" y="422" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">9.7397375, 118.7462031</text>
+</svg>

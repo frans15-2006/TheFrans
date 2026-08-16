@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Illustrated food plate tile">
+  <rect width="900" height="900" fill="#101010"/>
+  <circle cx="450" cy="450" r="250" fill="#080808" stroke="#f0a500" stroke-width="6"/>
+  <circle cx="450" cy="450" r="170" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="4"/>
+  <path d="M298 460c36-112 88-170 154-170 74 0 125 59 154 170" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M300 495c46 68 103 102 165 102 68 0 125-34 165-102" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="362" cy="422" r="24" fill="#f0a500"/>
+  <circle cx="438" cy="388" r="24" fill="#f0a500"/>
+  <circle cx="515" cy="425" r="24" fill="#f0a500"/>
+  <circle cx="468" cy="500" r="24" fill="#f0a500"/>
+  <path d="M382 300c20 40 48 62 86 66 37 4 66-8 89-36" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Static map illustration for Reef Cafe Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#101010"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <path d="M120 180h960v560H120z" fill="none" stroke="#f0a500" stroke-opacity="0.34" stroke-width="4"/>
+  <path d="M160 250h880M160 340h880M160 430h880M160 520h880M160 610h880M300 180v560M450 180v560M600 180v560M750 180v560M900 180v560" stroke="#f0a500" stroke-opacity="0.16" stroke-width="2"/>
+  <path d="M220 620c120-80 226-120 318-122 109-2 204 18 310 64 73 31 132 41 198 26" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="690" cy="420" r="90" fill="none" stroke="#f0a500" stroke-width="8"/>
+  <path d="M690 338c-45 0-82 37-82 82 0 61 82 162 82 162s82-101 82-162c0-45-37-82-82-82Z" fill="#080808" stroke="#f0a500" stroke-width="8"/>
+  <circle cx="690" cy="420" r="28" fill="#f0a500"/>
+  <text x="180" y="760" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30" letter-spacing="3">BADJAO INN, RIZAL AVE.</text>
+  <text x="180" y="812" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="2">9.7397375 N  118.7462031 E</text>
+</svg>

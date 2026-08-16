@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Illustrated coffee tile">
+  <rect width="900" height="900" fill="#080808"/>
+  <path d="M250 520h290c0 114-77 190-178 190s-112-76-112-190Z" fill="#101010" stroke="#f0a500" stroke-width="6"/>
+  <path d="M540 548h74c34 0 62-28 62-62 0-35-28-63-62-63h-74" fill="none" stroke="#f0a500" stroke-width="6"/>
+  <path d="M316 293c0 39-30 70-30 110" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M396 263c0 39-30 70-30 110" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M476 293c0 39-30 70-30 110" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M318 460c30 28 72 42 131 42 53 0 99-13 134-39" fill="none" stroke="#f0a500" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M278 734h346" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+</svg>

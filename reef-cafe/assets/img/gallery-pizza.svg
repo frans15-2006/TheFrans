@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Illustrated pizza tile">
+  <rect width="900" height="900" fill="#101010"/>
+  <circle cx="450" cy="470" r="260" fill="#080808" stroke="#f0a500" stroke-width="6"/>
+  <path d="M450 210 650 630 250 630Z" fill="#080808" stroke="#f0a500" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M450 210 650 630 500 610 450 470 380 610 250 630Z" fill="none" stroke="#f0a500" stroke-opacity="0.7" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="426" cy="392" r="22" fill="#f0a500"/>
+  <circle cx="532" cy="446" r="22" fill="#f0a500"/>
+  <circle cx="360" cy="500" r="22" fill="#f0a500"/>
+  <circle cx="500" cy="548" r="20" fill="#f0a500"/>
+  <path d="M390 304c30 10 61 10 93-2" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+  <path d="M310 710c50-30 113-45 190-45 81 0 145 15 191 45" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+</svg>

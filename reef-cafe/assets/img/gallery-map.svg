@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Illustrated location tile">
+  <rect width="900" height="900" fill="#080808"/>
+  <path d="M160 200h580v430H160z" fill="#101010" stroke="#f0a500" stroke-width="6"/>
+  <path d="M160 300h580M160 400h580M160 500h580M300 200v430M450 200v430M600 200v430" stroke="#f0a500" stroke-opacity="0.18" stroke-width="2"/>
+  <path d="M235 552c80-70 157-107 233-111 85-4 152 14 227 58" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M450 272c-29 0-53 24-53 53 0 37 53 103 53 103s53-66 53-103c0-29-24-53-53-53Z" fill="#080808" stroke="#f0a500" stroke-width="6"/>
+  <circle cx="450" cy="327" r="20" fill="#f0a500"/>
+  <text x="190" y="680" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="3">RIZAL AVE</text>
+  <text x="190" y="725" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="2">9.7397375, 118.7462031</text>
+</svg>

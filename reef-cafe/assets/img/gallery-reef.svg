@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Illustrated reef tile">
+  <rect width="900" height="900" fill="#101010"/>
+  <path d="M120 720c95-56 176-88 255-96 82-8 168 5 257 39 65 25 107 35 148 24" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M210 705c18-88 45-162 81-222 20 59 26 129 18 210" fill="none" stroke="#f0a500" stroke-width="12" stroke-linecap="round"/>
+  <path d="M376 717c14-101 37-171 70-214 12 73 7 150-10 214" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round"/>
+  <path d="M626 720c14-86 38-152 74-198 13 63 10 133-7 198" fill="none" stroke="#f0a500" stroke-width="11" stroke-linecap="round"/>
+  <path d="M780 716c10-77 31-140 63-188 9 63 7 130-6 188" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="456" cy="322" r="153" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="2"/>
+  <path d="M363 338c56-48 120-48 191 0" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M387 384c36-18 74-18 114 0" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+</svg>
