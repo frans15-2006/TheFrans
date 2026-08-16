@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Spa room illustration with warm lighting and calm towels">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <radialGradient id="g2" cx="72%" cy="28%" r="52%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.34"/>
+      <stop offset="50%" stop-color="#f0a500" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="b"><feGaussianBlur stdDeviation="16"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <rect width="1200" height="900" fill="url(#g2)"/>
+  <rect x="90" y="130" width="470" height="550" rx="36" fill="#111" stroke="#2b2b2b"/>
+  <rect x="120" y="160" width="410" height="56" rx="28" fill="#1d1d1d"/>
+  <rect x="126" y="250" width="382" height="18" rx="9" fill="#f0a500" opacity="0.82"/>
+  <rect x="126" y="288" width="300" height="18" rx="9" fill="#eaeaea" opacity="0.12"/>
+  <rect x="126" y="328" width="356" height="18" rx="9" fill="#eaeaea" opacity="0.08"/>
+  <rect x="126" y="368" width="328" height="18" rx="9" fill="#eaeaea" opacity="0.08"/>
+  <rect x="126" y="466" width="346" height="120" rx="28" fill="#181818" stroke="#333"/>
+  <circle cx="220" cy="516" r="24" fill="#f0a500" opacity="0.86"/>
+  <circle cx="280" cy="516" r="24" fill="#2d2d2d"/>
+  <circle cx="340" cy="516" r="24" fill="#3a3a3a"/>
+  <rect x="616" y="180" width="470" height="500" rx="36" fill="#0f0f0f" stroke="#2b2b2b"/>
+  <rect x="652" y="216" width="398" height="18" rx="9" fill="#f0a500" opacity="0.72"/>
+  <rect x="652" y="260" width="320" height="18" rx="9" fill="#eaeaea" opacity="0.08"/>
+  <rect x="652" y="300" width="346" height="18" rx="9" fill="#eaeaea" opacity="0.08"/>
+  <rect x="652" y="340" width="288" height="18" rx="9" fill="#eaeaea" opacity="0.08"/>
+  <rect x="684" y="426" width="245" height="148" rx="74" fill="#191919"/>
+  <ellipse cx="1048" cy="476" rx="40" ry="80" fill="#2a1c0b"/>
+  <ellipse cx="1016" cy="472" rx="34" ry="76" fill="#b06f00" opacity="0.58"/>
+  <circle cx="180" cy="780" r="118" fill="#f0a500" opacity="0.18" filter="url(#b)"/>
+  <rect x="0" y="0" width="1200" height="900" fill="#000" opacity="0.12"/>
+</svg>

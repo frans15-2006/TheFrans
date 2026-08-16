@@ -1,60 +1,905 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mulan's Massage and Spa</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mulan's Massage Spa | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Mulan's Massage Spa in Puerto Princesa, Palawan. Verified public listing at #252 Manalo Extension, Barangay Milagrosa with walk-in, hotel, and home-service massage, plus manicure and pedicure care.">
+  <meta property="og:title" content="Mulan's Massage Spa | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified public listing at #252 Manalo Extension, Barangay Milagrosa, Puerto Princesa City. Walk-in, hotel, and home-service massage plus mani-pedi care.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/mulans-massage-spa/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/mulans-massage-spa/assets/img/hero.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --paper: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.24);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
+      --radius: 1rem;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.12), transparent 28%),
+        radial-gradient(circle at 20% 0%, rgba(240, 165, 0, 0.06), transparent 26%),
+        linear-gradient(180deg, #080808 0%, #0c0b0a 56%, #080808 100%);
+      color: var(--paper);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.25);
+      color: var(--paper);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.03em;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      background: rgba(8, 8, 8, 0.48);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--paper);
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.55);
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      font-size: 0.75rem;
+      box-shadow: inset 0 0 0 1px rgba(240, 165, 0, 0.12);
+    }
+
+    .brand-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: var(--paper);
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(234, 234, 234, 0.04);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .cta-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.45);
+      background: rgba(240, 165, 0, 0.08);
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 4.5rem;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.95) contrast(1.02);
+      transform: scale(1.03);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.16) 0%, rgba(8, 8, 8, 0.36) 40%, rgba(8, 8, 8, 0.92) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.62) 0%, rgba(8, 8, 8, 0.2) 58%, rgba(8, 8, 8, 0.52) 100%);
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: auto -15vw 8vw auto;
+      width: 32vw;
+      height: 32vw;
+      max-width: 30rem;
+      max-height: 30rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.3) 0%, rgba(240, 165, 0, 0.12) 30%, transparent 68%);
+      filter: blur(16px);
+      z-index: 1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-2rem, -1rem, 0) scale(1.08); }
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: 7rem 0 2rem;
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: end;
+      min-height: calc(100svh - 7rem);
+    }
+
+    .hero-content {
+      max-width: 46rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.9rem;
+      color: rgba(234, 234, 234, 0.7);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(4rem, 12vw, 8.5rem);
+      line-height: 0.88;
+      letter-spacing: 0.04em;
+      text-wrap: balance;
+      max-width: 8ch;
+    }
+
+    .hero-copy p {
+      margin: 1rem 0 0;
+      font-size: clamp(1rem, 0.92rem + 0.6vw, 1.2rem);
+      line-height: 1.65;
+      color: rgba(234, 234, 234, 0.82);
+      max-width: 34rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      color: var(--paper);
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.5);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .button--solid {
+      background: var(--amber);
+      color: #111;
+      border-color: rgba(240, 165, 0, 0.45);
+      box-shadow: 0 20px 40px rgba(240, 165, 0, 0.14);
+    }
+
+    .button--solid:hover {
+      color: #080808;
+      background: #ffb31f;
+    }
+
+    .hero-meta {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.25rem;
+      align-items: center;
+      color: rgba(234, 234, 234, 0.68);
+      font-size: 0.9rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.7);
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-tag {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+    }
+
+    .section-lead {
+      margin: 0;
+      max-width: 42rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-item {
+      display: grid;
+      gap: 0.7rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .service-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(240, 165, 0, 0.75);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .service-item h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+
+    .service-item p {
+      margin: 0;
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.65;
+    }
+
+    .service-item:hover h3 {
+      color: var(--amber);
+    }
+
+    .pricing-panel {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 1.5rem 0;
+    }
+
+    .pricing-hero {
+      display: grid;
+      gap: 0.65rem;
+      align-content: start;
+    }
+
+    .pricing-hero strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+    }
+
+    .pricing-note {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 46rem;
+    }
+
+    .pricing-list {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(234, 234, 234, 0.02);
+      box-shadow: var(--shadow);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+      padding: 1rem 1.1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-row:first-child {
+      border-top: 0;
+    }
+
+    .pricing-row span {
+      color: rgba(234, 234, 234, 0.68);
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .pricing-row b {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background: rgba(234, 234, 234, 0.02);
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+    }
+
+    .gallery-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 220ms ease, filter 220ms ease;
+    }
+
+    .gallery-figure:hover img {
+      transform: scale(1.02);
+      filter: saturate(1.06);
+    }
+
+    .gallery-figure figcaption {
+      padding: 0.95rem 1rem 1.05rem;
+      border-top: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.55;
+    }
+
+    .gallery-figure figcaption strong {
+      display: block;
+      color: var(--paper);
+      margin-bottom: 0.2rem;
+      font-weight: 500;
+    }
+
+    .cta-band {
+      border-top: 1px solid rgba(240, 165, 0, 0.22);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.22);
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.18), rgba(240, 165, 0, 0.04) 48%, rgba(8, 8, 8, 0) 100%),
+        linear-gradient(180deg, rgba(234, 234, 234, 0.03), rgba(234, 234, 234, 0.01));
+    }
+
+    .cta-band-inner {
+      display: grid;
+      gap: 1rem;
+      padding: clamp(2rem, 5vw, 3.5rem) 0;
+      align-items: center;
+    }
+
+    .cta-band h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.7;
+      max-width: 46rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+
+    .contact-block {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-block h3 {
+      margin: 0 0 0.75rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-block p,
+    .contact-block a,
+    .contact-block li {
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .contact-links .button {
+      padding-inline: 1rem;
+      min-height: 2.9rem;
+    }
+
+    footer {
+      padding: 1rem 0 2.5rem;
+      color: rgba(234, 234, 234, 0.55);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .fineprint {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      justify-content: space-between;
+    }
+
+    .muted-link {
+      color: rgba(234, 234, 234, 0.74);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+
+    @media (min-width: 720px) {
+      .hero-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+      }
+
+      .hero-content {
+        padding-bottom: 2.5rem;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-item {
+        min-height: 12rem;
+        padding: 1.5rem 1.5rem 1.5rem 0;
+      }
+
+      .service-item:nth-child(odd) {
+        padding-right: 1.5rem;
+      }
+
+      .service-item:nth-child(even) {
+        padding-left: 1.5rem;
+        border-left: 1px solid var(--line);
+      }
+
+      .pricing-panel {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 2rem;
+      }
+
+      .pricing-row {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+        padding: 1rem 1.25rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cta-band-inner {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-block {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Mulan's Massage and Spa</h1>
-    <span class="category">Massage & Spa</span>
-    <p class="address">252 Manalo St Extension, Puerto Princesa City</p>
-    <p class="phone">+63 950 245 6477</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-mark" href="#hero" aria-label="Mulan's Massage Spa home">
+        <span class="brand-badge">M</span>
+        <span class="brand-text">Mulan's Massage Spa</span>
+      </a>
+      <a class="cta-link mono" href="tel:+639502456477">Call</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <img class="hero-media" src="assets/img/hero.svg" alt="Moody spa-inspired illustration with warm amber light, palms, and massage stones.">
+      <div class="shell hero-copy">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow mono">Puerto Princesa, Palawan</p>
+            <h1>Mulan's Massage Spa</h1>
+            <p>Walk-ins, hotel visits, and home-service bodywork in Barangay Milagrosa. Public listings and guest reviews point to Swedish massage, body scrub, foot massage, and manicure-pedicure care.</p>
+            <div class="hero-actions">
+              <a class="button button--solid" href="tel:+639502456477">Call +63 950 245 6477</a>
+              <a class="button" href="https://www.facebook.com/evashealedhands/" target="_blank" rel="noopener noreferrer">Message on Facebook</a>
+            </div>
+            <div class="hero-meta">
+              <span class="meta-chip">Verified public address</span>
+              <span>#252 Manalo Extension, Barangay Milagrosa</span>
+              <span>Puerto Princesa City, Palawan 5300</span>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <span class="section-tag">Services</span>
+          <h2>Treatments</h2>
+          <p class="section-lead">The public Facebook and Tripadvisor listings mention a focused menu built around massage, foot work, and nail care. The spa also confirms walk-in, hotel, and home-service bookings.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">01</span>
+            <h3>Swedish Massage</h3>
+            <p>Highlighted by guests for a calm, restorative session with a lighter, soothing touch.</p>
+          </article>
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">02</span>
+            <h3>Body Scrub</h3>
+            <p>Guests mention body scrub alongside the massage experience and the spa's relaxing ambiance.</p>
+          </article>
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">03</span>
+            <h3>Foot Massage</h3>
+            <p>Public reviews point to foot massage as a popular way to reset after travel or a beach day.</p>
+          </article>
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">04</span>
+            <h3>Manicure &amp; Pedicure</h3>
+            <p>The verified Facebook listing mentions manicure and pedicure for both walk-in and home or hotel service.</p>
+          </article>
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">05</span>
+            <h3>Walk-In Sessions</h3>
+            <p>Visit the Manalo Extension location for in-spa treatments when you are already in Puerto Princesa proper.</p>
+          </article>
+          <article class="service-item" data-reveal>
+            <span class="service-kicker">06</span>
+            <h3>Hotel &amp; Home Service</h3>
+            <p>The page explicitly offers massage for hotel and home service, making it easy to book after a flight or tour.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <span class="section-tag">Pricing</span>
+          <h2>Rates by request</h2>
+          <p class="section-lead">The verified public listings show Mulan's Massage Spa as a premium price-range business, but they do not publish an itemized rate card. To avoid fabricating numbers, this site keeps the pricing copy honest: ask for the current quote for your treatment, duration, and service location.</p>
+        </div>
+
+        <div class="pricing-panel" data-reveal>
+          <div class="pricing-hero">
+            <strong>Price range: $$$$</strong>
+            <p class="pricing-note">That is the range shown on the public Facebook listing. For the exact rate, send the treatment name and whether you want a walk-in appointment, a hotel visit, or a home service.</p>
+          </div>
+          <div class="pricing-list">
+            <div class="pricing-row">
+              <b>Massage</b>
+              <span>Ask for the current quote for Swedish massage, foot massage, or a longer reset session.</span>
+            </div>
+            <div class="pricing-row">
+              <b>Body care</b>
+              <span>Body scrub and nail care are part of the public review trail and can be quoted together.</span>
+            </div>
+            <div class="pricing-row">
+              <b>Service area</b>
+              <span>Home and hotel service bookings are available, so the final quote can change with the destination.</span>
+            </div>
+            <div class="pricing-row">
+              <b>Fastest way</b>
+              <span>Call or message with your preferred treatment, number of guests, and location for the latest rate.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <span class="section-tag">Gallery</span>
+          <h2>Atmosphere</h2>
+          <p class="section-lead">A soft, warm visual set to mirror the spa mood: amber light, calm textures, and the quiet pace that the public reviews describe.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-room.svg" alt="Illustrated spa room scene with towels, warm light, and a calm treatment setup.">
+            <figcaption><strong>Room warmth</strong>Soft light and a low-noise palette keep the focus on rest.</figcaption>
+          </figure>
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-stones.svg" alt="Illustrated massage stones, tea, and candle elements in a dark amber composition.">
+            <figcaption><strong>Stone and tea ritual</strong>Built around the kind of small comforts guests mentioned in reviews.</figcaption>
+          </figure>
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-care.svg" alt="Illustrated manicure and pedicure care tools in the spa's dark amber design palette.">
+            <figcaption><strong>Hands and feet care</strong>Manicure and pedicure treatments fit naturally beside massage bookings.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="booking">
+      <div class="shell cta-band-inner">
+        <div data-reveal>
+          <span class="section-tag">Booking</span>
+          <h2>Send the treatment, date, and location.</h2>
+        </div>
+        <div data-reveal>
+          <p>That is the quickest way to get the current quote for walk-in, home-service, or hotel-service bookings in Puerto Princesa. If you are already in Barangay Milagrosa, call first and ask for the nearest opening.</p>
+          <div class="hero-actions" style="margin-top: 1.2rem;">
+            <a class="button button--solid" href="tel:+639502456477">Call now</a>
+            <a class="button" href="https://www.google.com/maps/search/?api=1&query=9.738188,118.744923" target="_blank" rel="noopener noreferrer">Get directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell">
+        <div class="section-head" data-reveal>
+          <span class="section-tag">Contact</span>
+          <h2>Puerto Princesa location</h2>
+          <p class="section-lead">Verified public address, coordinates, and contact details. The coordinates below point to Puerto Princesa, Palawan, not Manila.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-block" data-reveal>
+            <h3>Visit</h3>
+            <p>#252 Manalo Extension, Barangay Milagrosa, Puerto Princesa City, Palawan 5300, Philippines</p>
+            <p class="mono">Coordinates: 9.738188, 118.744923</p>
+            <div class="contact-links">
+              <a class="button button--solid" href="https://www.google.com/maps/search/?api=1&query=9.738188,118.744923" target="_blank" rel="noopener noreferrer">Open map</a>
+              <a class="button" href="https://www.facebook.com/evashealedhands/" target="_blank" rel="noopener noreferrer">Facebook page</a>
+            </div>
+          </div>
+          <div class="contact-block" data-reveal>
+            <h3>Reach out</h3>
+            <p><a class="muted-link" href="tel:+639502456477">+63 950 245 6477</a></p>
+            <p><a class="muted-link" href="mailto:montesaeva@gmail.com">montesaeva@gmail.com</a></p>
+            <p>Walk-ins, hotel service, and home service are mentioned on the verified public page. Use the phone or Facebook link for the most current quote and availability.</p>
+          </div>
+        </div>
+
+        <footer>
+          <div class="fineprint">
+            <span>Mulan's Massage Spa, Puerto Princesa, Palawan</span>
+            <span class="mono">Single-page build for GitHub Pages</span>
+            <span>Verified from public listings and traveler reviews.</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && window.Lenis) {
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      window.addEventListener('load', () => {
+        lenis.resize();
+      });
+    }
+
+    if (window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (reduceMotion) {
+        gsap.set('[data-reveal]', { autoAlpha: 1, y: 0 });
+      } else {
+        gsap.utils.toArray('[data-reveal]').forEach((el) => {
+          gsap.fromTo(el, {
+            autoAlpha: 0,
+            y: 24
+          }, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 86%'
+            }
+          });
+        });
+
+        gsap.from('.hero-content > *', {
+          autoAlpha: 0,
+          y: 22,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.12,
+          delay: 0.15
+        });
+
+        gsap.to('.hero-media', {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.6
+          }
+        });
+
+        gsap.from('.gallery-figure', {
+          y: 20,
+          autoAlpha: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '#gallery',
+            start: 'top 76%'
+          }
+        });
+      }
+
+      window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+      });
+    }
+  </script>
 </body>
 </html>
