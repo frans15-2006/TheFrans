@@ -1,60 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rage Room and Restobar Palawan</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rage Room Palawan | Puerto Princesa Stress Relief</title>
+  <meta name="description" content="Rage Room Palawan in Puerto Princesa, Palawan, Philippines. High-energy stress relief experience with transparent fallback notes for unverified address, rates, and hours.">
+  <meta property="og:title" content="Rage Room Palawan">
+  <meta property="og:description" content="High-energy rage room landing page for Puerto Princesa, Palawan with transparent fallback notes where public business details were not verifiable.">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta property="og:url" content=".">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#080808">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: #a6a6a6;
+      --line: rgba(234, 234, 234, 0.12);
+      --panel: rgba(255, 255, 255, 0.03);
+    }
+
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.25);
+      color: var(--text);
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
+      opacity: 0.18;
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(240,165,0,0.18), transparent 22%),
+        radial-gradient(circle at 80% 25%, rgba(240,165,0,0.08), transparent 30%),
+        linear-gradient(180deg, rgba(8,8,8,0.2), rgba(8,8,8,0.92));
+      z-index: -3;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 14vh;
+      background: linear-gradient(180deg, transparent, rgba(8,8,8,0.96));
+      z-index: 1;
+    }
+
+    .fracture {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-repeat: no-repeat;
+      background-position: right -8vw center;
+      background-size: min(74vw, 980px);
+      opacity: 0.95;
+      filter: drop-shadow(0 0 48px rgba(240,165,0,0.22));
+      transform: translate3d(0,0,0) scale(1.02);
+    }
+
+    .scanline {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0 48%, rgba(240,165,0,0.06) 50%, transparent 52% 100%);
+      background-size: 100% 8px;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: -1;
+    }
+
+    .hero-copy {
+      max-width: 44rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(4.6rem, 13vw, 11.25rem);
+      line-height: 0.86;
+      text-wrap: balance;
+      text-shadow: 0 0 26px rgba(240,165,0,0.08);
+    }
+
+    .type-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      padding: .55rem .9rem;
+      border-radius: 999px;
+      color: var(--accent);
+    }
+
+    .button-amber,
+    .button-ghost,
+    .button-text {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      min-height: 3.35rem;
+      padding: 0 1.25rem;
+      border-radius: 999px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: .86rem;
+      letter-spacing: .04em;
+      transition: transform .24s ease, border-color .24s ease, background-color .24s ease, box-shadow .24s ease, color .24s ease;
+      will-change: transform;
+    }
+
+    .button-amber {
+      background: var(--accent);
+      color: #0b0b0b;
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.2), 0 16px 44px rgba(240,165,0,0.18);
+    }
+
+    .button-ghost {
+      border: 1px solid rgba(234,234,234,0.24);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .button-text {
+      padding-inline: 0;
+      min-height: auto;
+      border-radius: 0;
+      color: var(--muted);
+    }
+
+    .button-amber:hover,
+    .button-ghost:hover,
+    .button-text:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-ghost:hover {
+      border-color: rgba(240,165,0,0.7);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.18), 0 0 32px rgba(240,165,0,0.12);
+    }
+
+    .section {
+      position: relative;
+      padding: 5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: .85rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+      font-size: .8rem;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(2.9rem, 8vw, 6rem);
+      line-height: 0.88;
+      max-width: 16ch;
+    }
+
+    .section-copy {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.65;
+    }
+
+    .package-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+        rgba(10,10,10,0.8);
+      min-height: 100%;
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, background-color .28s ease;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset;
+    }
+
+    .package-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border: 1px solid transparent;
+      background: linear-gradient(145deg, rgba(240,165,0,0.8), transparent 30%, transparent 70%, rgba(240,165,0,0.8));
+      opacity: 0;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      padding: 1px;
+      pointer-events: none;
+      transition: opacity .28s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(240,165,0,0.45);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.42), 0 0 0 1px rgba(240,165,0,0.2), 0 0 40px rgba(240,165,0,0.12);
+    }
+
+    .package-card:hover::before {
+      opacity: 1;
+    }
+
+    .package-card .price {
+      color: var(--accent);
+      font-size: .95rem;
+    }
+
+    .dur-pill,
+    .mono-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      border: 1px solid rgba(240,165,0,0.22);
+      color: var(--accent);
+      padding: .42rem .7rem;
+      font-size: .74rem;
+      border-radius: 999px;
+      background: rgba(240,165,0,0.06);
+      white-space: nowrap;
+    }
+
+    .step-row {
+      border-top: 1px solid var(--line);
+    }
+
+    .step-item {
+      position: relative;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-number {
+      font-size: clamp(3.8rem, 11vw, 8rem);
+      line-height: 0.8;
+      color: rgba(240,165,0,0.9);
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 14rem;
+      border: 1px solid rgba(240,165,0,0.18);
+      background: rgba(255,255,255,0.02);
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) saturate(0.95);
+      transform: scale(1.01);
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .gallery-tile:hover {
+      transform: scale(1.02);
+      border-color: rgba(240,165,0,0.65);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.2), 0 0 36px rgba(240,165,0,0.18);
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.06);
+      filter: contrast(1.15) saturate(1.1);
+    }
+
+    .gallery-tile::after {
+      content: attr(data-label);
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: .95rem 1rem;
+      background: linear-gradient(180deg, transparent, rgba(8,8,8,0.88));
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: .74rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity .28s ease;
+    }
+
+    .gallery-tile:hover::after { opacity: 1; }
+
+    .cta-band {
+      border-top: 1px solid rgba(240,165,0,0.18);
+      border-bottom: 1px solid rgba(240,165,0,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(240,165,0,0.18), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+
+    .cta-band .display {
+      font-size: clamp(3.4rem, 10vw, 7.8rem);
+    }
+
+    .data-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: .96rem;
+    }
+
+    .data-table tr + tr td,
+    .data-table tr + tr th {
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 1rem 0;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .data-table th {
+      color: var(--muted);
+      font-weight: 400;
+      width: 38%;
+    }
+
+    .map-frame {
+      position: relative;
+      border: 1px solid rgba(240,165,0,0.2);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      min-height: 24rem;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 58%;
+      top: 52%;
+      width: 2.65rem;
+      height: 2.65rem;
+      transform: translate(-50%, -100%);
+      filter: drop-shadow(0 0 18px rgba(240,165,0,0.3));
+      animation: pinPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pinPulse {
+      0%, 100% { transform: translate(-50%, -100%) scale(1); }
+      50% { transform: translate(-50%, -100%) scale(1.08); }
+    }
+
+    @keyframes jitter {
+      0% { transform: translate(0,0); }
+      20% { transform: translate(-1px,0.5px); }
+      40% { transform: translate(1px,-0.5px); }
+      60% { transform: translate(-1px,-0.5px); }
+      80% { transform: translate(1px,0.5px); }
+      100% { transform: translate(0,0); }
+    }
+
+    .is-jittering { animation: jitter .22s linear 2; }
+
+    .anchor-offset { scroll-margin-top: 7rem; }
+
+    .footer-link {
+      color: var(--muted);
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .footer-link:hover { color: var(--text); }
+
+    @media (max-width: 767px) {
+      .fracture {
+        background-position: center 12vh;
+        background-size: 110vw;
+      }
+
+      .hero-shell::after {
+        height: 9vh;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      .gallery-tile {
+        min-height: 11rem;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EntertainmentBusiness",
+    "name": "Rage Room Palawan",
+    "description": "High-energy rage room and stress relief entertainment concept for Puerto Princesa, Palawan.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Public business address not verified online",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7400,
+      "longitude": 118.7400
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Puerto Princesa City"
+    },
+    "image": "assets/img/og-image.svg"
+  }
+  </script>
 </head>
 <body>
-    <h1>Rage Room and Restobar Palawan</h1>
-    <span class="category">Rage Room & Bar</span>
-    <p class="address">Roxas St, Puerto Princesa City</p>
-    <p class="phone">+63 916 684 3182</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <main>
+    <section id="hero" class="hero-shell">
+      <div class="fracture" aria-hidden="true" style="background-image:url('assets/img/fractured-orb.svg')"></div>
+      <div class="scanline" aria-hidden="true"></div>
+      <div class="grid-overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
+      <header class="relative z-20 mx-auto flex w-full max-w-7xl items-start justify-between gap-6 px-4 py-5 sm:px-6 lg:px-8">
+        <div class="space-y-2">
+          <div class="display text-[1.7rem] leading-none tracking-[0.08em] text-[#eaeaea] sm:text-[2rem]">Rage Room Palawan</div>
+          <p class="mono max-w-[20rem] text-[0.72rem] uppercase tracking-[0.18em] text-[#f0a500] sm:text-[0.8rem]">Puerto Princesa, Palawan // stress relief entertainment</p>
+        </div>
+        <nav class="hidden items-center gap-4 md:flex" aria-label="Primary">
+          <a class="button-text" href="#packages">Packages</a>
+          <a class="button-text" href="#how">How It Works</a>
+          <a class="button-text" href="#gallery">Gallery</a>
+          <a class="button-text" href="#location">Location</a>
+        </nav>
+      </header>
+
+      <div class="relative z-10 mx-auto flex min-h-[calc(100svh-5.5rem)] w-full max-w-7xl items-end px-4 pb-10 sm:px-6 sm:pb-14 lg:px-8 lg:pb-12">
+        <div class="hero-copy">
+          <div class="type-label mono mb-5 text-[0.72rem] uppercase tracking-[0.18em] sm:text-[0.78rem]">
+            <span class="inline-block h-2 w-2 rounded-full bg-[#f0a500] shadow-[0_0_18px_rgba(240,165,0,0.85)]"></span>
+            Public rate sheet not verified online
+          </div>
+          <h1 class="display hero-title text-[#eaeaea]" data-hero-line>SMASH.<br>RELEASE.<br>REPEAT.</h1>
+          <p class="mt-5 max-w-[34rem] text-[1.02rem] leading-[1.75] text-[#c6c6c6] sm:text-[1.08rem]">
+            Rage Room Palawan is positioned as a hard-hitting Puerto Princesa stress-release stop, with verified city-level coordinates only. Exact venue address, live rates, and current session hours were not found in reliable public listings at build time.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a class="button-amber" href="mailto:?subject=Rage%20Room%20Palawan%20booking%20inquiry&body=Please%20share%20your%20current%20location,%20session%20packages,%20pricing,%20and%20hours.">
+              Book a Session
+            </a>
+            <a class="button-ghost" href="#packages">See Packages</a>
+          </div>
+          <p class="mt-5 max-w-[36rem] mono text-[0.74rem] uppercase tracking-[0.16em] text-[#9a9a9a] sm:text-[0.78rem]">
+            <!-- Fallback: no reliable public tel/WhatsApp or exact venue pin was verifiable during research. -->
+            Verified fallback coordinates point to Puerto Princesa city center: 9.7400, 118.7400.
+          </p>
+        </div>
+      </div>
+
+      <div class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 text-[#eaeaea] sm:bottom-6">
+        <span class="mono text-[0.68rem] uppercase tracking-[0.26em] text-[#9a9a9a]">Scroll</span>
+        <div class="relative h-10 w-6 rounded-full border border-[#eaeaea]/20">
+          <div data-scroll-dot class="absolute left-1/2 top-2 h-2 w-2 -translate-x-1/2 rounded-full bg-[#f0a500] shadow-[0_0_20px_rgba(240,165,0,0.9)]"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="section anchor-offset">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="section-head">
+          <div class="section-kicker mono">Packages / Sessions</div>
+          <h2 class="display section-title">ON-BRAND SESSION GRID, WITH FALLBACK PRICING STATUS.</h2>
+          <p class="section-copy">
+            Public price sheets for Rage Room Palawan were not verifiable in reliable sources, so the grid below uses on-brand session names and transparent inquiry labels instead of invented amounts.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <article class="package-card p-6 sm:p-7" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none">Solo Smash</h3>
+              <span class="dur-pill mono">Inquire</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">A stripped-down release for one person, built for loud exits and clean resets.</p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Public rate not verified</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Session code A1</span>
+            </div>
+          </article>
+
+          <article class="package-card p-6 sm:p-7" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none">Duo Detonation</h3>
+              <span class="dur-pill mono">Inquire</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">A two-person session for friends, dates, or synchronized chaos.</p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Public rate not verified</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Session code A2</span>
+            </div>
+          </article>
+
+          <article class="package-card p-6 sm:p-7" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none">Barkada Break</h3>
+              <span class="dur-pill mono">Inquire</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">Built for groups that want the volume up and the tension out.</p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Public rate not verified</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Session code A3</span>
+            </div>
+          </article>
+
+          <article class="package-card p-6 sm:p-7" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none">Corporate Reset</h3>
+              <span class="dur-pill mono">Inquire</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">A team-building format for offices that need a sharper release than another meeting.</p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Public rate not verified</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Session code C1</span>
+            </div>
+          </article>
+
+          <article class="package-card p-6 sm:p-7" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none">Custom Crush</h3>
+              <span class="dur-pill mono">Inquire</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">For special requests, unusual breakables, or a session built around the mood of the day.</p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Public rate not verified</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Session code X</span>
+            </div>
+          </article>
+
+          <article class="package-card p-6 sm:p-7 border-[#f0a500]/35 bg-[rgba(240,165,0,0.05)]" data-hover-jitter>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="display text-[2.5rem] leading-none text-[#f0a500]">Verify Live</h3>
+              <span class="dur-pill mono">Required</span>
+            </div>
+            <p class="mt-4 max-w-[28ch] text-[#c7c7c7] leading-[1.7]">Use this site as the first pass, then swap in the venue's live rate card and current booking info once confirmed.
+            </p>
+            <div class="mt-8 flex items-center justify-between gap-4">
+              <span class="mono price">Pending verification</span>
+              <span class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#9a9a9a]">Status note</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section anchor-offset">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="section-head">
+          <div class="section-kicker mono">About / How It Works</div>
+          <h2 class="display section-title">BOOK. GEAR UP. SMASH.</h2>
+          <p class="section-copy">
+            The site keeps the flow simple: inquiry first, safety second, impact third. Since the public listing was not fully verifiable, this section stays brand-led and easy to replace with official venue copy.
+          </p>
+        </div>
+
+        <div class="step-row grid gap-6 md:grid-cols-3">
+          <div class="step-item">
+            <div class="step-number display">01</div>
+            <h3 class="display mt-3 text-[2.3rem] leading-none">Book</h3>
+            <p class="mt-3 max-w-[22rem] text-[#c7c7c7] leading-[1.7]">Send an inquiry first, then confirm the live room schedule and any available add-ons before you show up ready to go hard.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number display">02</div>
+            <h3 class="display mt-3 text-[2.3rem] leading-none">Gear Up</h3>
+            <p class="mt-3 max-w-[22rem] text-[#c7c7c7] leading-[1.7]">Get the safety briefing, put on protective gear, and lock in the mindset before anything starts flying.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number display">03</div>
+            <h3 class="display mt-3 text-[2.3rem] leading-none">Smash</h3>
+            <p class="mt-3 max-w-[22rem] text-[#c7c7c7] leading-[1.7]">Break the bottles, clear the noise, and leave with a lighter head and a louder story.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section anchor-offset">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="section-head">
+          <div class="section-kicker mono">Gallery</div>
+          <h2 class="display section-title">BREAKROOM MOTIFS, CUT FOR MOTION.</h2>
+          <p class="section-copy">
+            SVG tiles keep the zip self-contained and the page deployable, while still giving the layout the same fractured energy the venue needs.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-12 auto-rows-[minmax(10rem,1fr)]">
+          <figure class="gallery-tile md:col-span-5 md:row-span-2" data-label="Broken Glass Field">
+            <img src="assets/img/broken-glass.svg" alt="Abstract broken glass shards on a dark background">
+          </figure>
+          <figure class="gallery-tile md:col-span-4" data-label="Protective Gear">
+            <img src="assets/img/gear-mask.svg" alt="Stylized protective gear icon with hard edges">
+          </figure>
+          <figure class="gallery-tile md:col-span-3" data-label="Impact Wave">
+            <img src="assets/img/smash-wave.svg" alt="Impact wave and burst lines on a dark background">
+          </figure>
+          <figure class="gallery-tile md:col-span-3" data-label="Room Grid">
+            <img src="assets/img/room-grid.svg" alt="Industrial room grid illustration with sparks">
+          </figure>
+          <figure class="gallery-tile md:col-span-4" data-label="Shatter Burst">
+            <img src="assets/img/shatter-burst.svg" alt="Shatter burst illustration with amber highlights">
+          </figure>
+          <figure class="gallery-tile md:col-span-5" data-label="Map Marker">
+            <img src="assets/img/map-pin.svg" alt="Map marker icon and coordinate motif for Puerto Princesa">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band section">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.3fr_0.7fr] lg:px-8 lg:items-end">
+        <div>
+          <div class="section-kicker mono">Booking CTA</div>
+          <h2 class="display text-[#f0a500]">LET THE ROOM TAKE THE HIT.</h2>
+          <p class="mt-4 max-w-[44rem] text-[#d7d7d7] leading-[1.75]">
+            If you want the final live version, replace the fallback note with the venue's confirmed contact details, then push this page straight to GitHub Pages.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 lg:items-end">
+          <a class="button-amber w-full lg:w-auto" href="mailto:?subject=Rage%20Room%20Palawan%20booking%20inquiry&body=Please%20share%20your%20current%20location,%20session%20packages,%20pricing,%20and%20hours.">Open Email Draft</a>
+          <a class="button-ghost w-full lg:w-auto" href="#location">Check verified fallback details</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section anchor-offset">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="section-head">
+          <div class="section-kicker mono">Hours / Location / Footer</div>
+          <h2 class="display section-title">PUERTO PRINCESA, WITH HONEST FALLBACKS.</h2>
+          <p class="section-copy">
+            Exact public business details were not verifiable in reliable sources during research, so this section shows what is confirmed and flags the rest.
+          </p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <div class="space-y-6">
+            <div class="border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+              <table class="data-table">
+                <tbody>
+                  <tr>
+                    <th class="mono">Operating hours</th>
+                    <td class="text-[#cfcfcf]">Not publicly verified in reliable sources at build time.</td>
+                  </tr>
+                  <tr>
+                    <th class="mono">Street address</th>
+                    <td class="text-[#cfcfcf]">Public business address not verified online.</td>
+                  </tr>
+                  <tr>
+                    <th class="mono">Coordinates</th>
+                    <td class="text-[#cfcfcf]">Puerto Princesa city center fallback: 9.7400, 118.7400</td>
+                  </tr>
+                  <tr>
+                    <th class="mono">Booking contact</th>
+                    <td class="text-[#cfcfcf]">No verified tel or WhatsApp listing was found; use the email draft CTA above to request the live details.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="border border-white/10 bg-white/[0.03] p-6 sm:p-7">
+              <div class="mono mb-3 text-[0.74rem] uppercase tracking-[0.18em] text-[#f0a500]">Notes</div>
+              <p class="text-[#c7c7c7] leading-[1.75]">
+                <!-- Fallback: The build intentionally avoids inventing address, pricing, or operating hours. -->
+                This page is ready for the verified venue data to be swapped in without changing the visual system.
+              </p>
+            </div>
+          </div>
+
+          <div class="map-frame">
+            <img src="assets/img/puerto-princesa-map.svg" alt="Stylized map of Puerto Princesa with a fallback coordinate pin">
+            <img class="map-pin" src="assets/img/map-pin.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-white/10 bg-[#060606]">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_auto_auto] lg:px-8">
+        <div class="space-y-3">
+          <div class="display text-[2rem] leading-none">Rage Room Palawan</div>
+          <p class="max-w-[34rem] text-[0.95rem] leading-[1.75] text-[#b9b9b9]">
+            Puerto Princesa stress relief branding with transparent fallback notes until the venue's exact public listing is confirmed.
+          </p>
+        </div>
+        <div>
+          <div class="mono mb-3 text-[0.74rem] uppercase tracking-[0.18em] text-[#f0a500]">Quick Links</div>
+          <ul class="space-y-2 text-[0.95rem]">
+            <li><a class="footer-link" href="#packages">Packages</a></li>
+            <li><a class="footer-link" href="#how">How It Works</a></li>
+            <li><a class="footer-link" href="#gallery">Gallery</a></li>
+            <li><a class="footer-link" href="#location">Location</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="mono mb-3 text-[0.74rem] uppercase tracking-[0.18em] text-[#f0a500]">Socials</div>
+          <div class="flex gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-[#eaeaea]" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5h16M4 12h16M4 16.5h10"/></svg>
+            </span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-[#eaeaea]" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/></svg>
+            </span>
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-[#eaeaea]" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10H7z"/><path d="M10 10h4v4h-4z"/></svg>
+            </span>
+          </div>
+          <p class="mt-4 max-w-[18rem] text-[0.82rem] leading-[1.6] text-[#8f8f8f]">Social handles were not publicly verified during research.</p>
+        </div>
+      </div>
+      <div class="border-t border-white/10 px-4 py-4 text-center mono text-[0.72rem] uppercase tracking-[0.18em] text-[#808080] sm:px-6 lg:px-8">
+        Rage Room Palawan // Puerto Princesa, Palawan, Philippines
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let lenis = null;
+
+      if (!reduceMotion && window.Lenis) {
+        lenis = new Lenis({
+          duration: 1.05,
+          easing: t => 1 - Math.pow(1 - t, 3),
+          smoothWheel: true,
+          wheelMultiplier: 1.05,
+          touchMultiplier: 1.6
+        });
+
+        if (window.ScrollTrigger) {
+          lenis.on('scroll', () => ScrollTrigger.update());
+        }
+
+        const raf = (time) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+
+        requestAnimationFrame(raf);
+
+        window.addEventListener('beforeunload', () => lenis.destroy());
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const target = anchor.getAttribute('href');
+          if (!target || target === '#') return;
+          const el = document.querySelector(target);
+          if (!el) return;
+          event.preventDefault();
+          if (lenis) {
+            lenis.scrollTo(el, { offset: -96 });
+          } else {
+            el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const hero = document.querySelector('#hero');
+      const fracture = hero.querySelector('.fracture');
+      const title = hero.querySelector('[data-hero-line]');
+      const tag = hero.querySelector('.type-label');
+      const copy = hero.querySelector('.hero-copy p');
+      const buttons = hero.querySelectorAll('.hero-copy a, .hero-copy .type-label');
+
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .from(tag, { y: 24, opacity: 0, duration: 0.65 })
+        .from(title, { y: 70, skewY: 7, opacity: 0, duration: 1 }, '-=0.1')
+        .from(copy, { y: 26, opacity: 0, duration: 0.7 }, '-=0.4')
+        .from(buttons, { y: 20, opacity: 0, stagger: 0.12, duration: 0.5 }, '-=0.35');
+
+      gsap.from(fracture, {
+        scale: 1.12,
+        xPercent: 8,
+        opacity: 0,
+        duration: 1.3,
+        ease: 'power4.out'
+      });
+
+      gsap.to(fracture, {
+        y: 18,
+        x: -12,
+        rotation: -0.6,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.05
+        }
+      });
+
+      const revealTargets = document.querySelectorAll('.section-head, .step-item, .gallery-tile, .map-frame, .package-card, .cta-band h2, .cta-band p, .cta-band a, footer > div');
+      revealTargets.forEach((el) => {
+        gsap.from(el, {
+          y: 40,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.from('.package-card', {
+        scrollTrigger: {
+          trigger: '#packages',
+          start: 'top 70%'
+        },
+        y: 28,
+        opacity: 0,
+        stagger: 0.11,
+        duration: 0.8,
+        ease: 'back.out(1.4)'
+      });
+
+      gsap.from('.step-item', {
+        scrollTrigger: {
+          trigger: '#how',
+          start: 'top 70%'
+        },
+        x: -42,
+        opacity: 0,
+        stagger: 0.14,
+        duration: 0.9,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.gallery-tile', {
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 72%'
+        },
+        scale: 0.9,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.7,
+        ease: 'power2.out'
+      });
+
+      document.querySelectorAll('[data-hover-jitter]').forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+          if (reduceMotion) return;
+          gsap.fromTo(card, { x: 0 }, { x: -2, duration: 0.08, repeat: 5, yoyo: true, ease: 'none' });
+        });
+      });
+
+      const scrollDot = document.querySelector('[data-scroll-dot]');
+      if (scrollDot) {
+        gsap.to(scrollDot, {
+          y: 16,
+          opacity: 0.25,
+          duration: 1.2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    });
+  </script>
 </body>
 </html>

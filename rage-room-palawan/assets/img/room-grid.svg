@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#080808"/>
+  <g stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2">
+    <path d="M0 150H1200"/>
+    <path d="M0 300H1200"/>
+    <path d="M0 450H1200"/>
+    <path d="M0 600H1200"/>
+    <path d="M0 750H1200"/>
+    <path d="M180 0V900"/>
+    <path d="M360 0V900"/>
+    <path d="M540 0V900"/>
+    <path d="M720 0V900"/>
+    <path d="M900 0V900"/>
+    <path d="M1080 0V900"/>
+  </g>
+  <path d="M192 670H1000" stroke="#f0a500" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M168 674L320 408L498 492L672 262L872 354L1050 180" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M214 618L364 520L530 600L700 472L896 560L1108 430" stroke="#f0a500" stroke-opacity="0.58" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="972" cy="204" r="42" stroke="#f0a500" stroke-opacity="0.5" stroke-width="8"/>
+  <path d="M972 146V98M972 310V262M870 204H822M1122 204H1074M902 134L868 100M1042 134L1076 100M902 274L868 308M1042 274L1076 308" stroke="#eaeaea" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round"/>
+</svg>

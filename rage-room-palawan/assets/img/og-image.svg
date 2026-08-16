@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="930" cy="290" r="180" fill="#f0a500" fill-opacity="0.18"/>
+  <circle cx="930" cy="290" r="130" stroke="#f0a500" stroke-opacity="0.4" stroke-width="10"/>
+  <path d="M210 180L590 322L832 160" stroke="#eaeaea" stroke-opacity="0.9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M248 300L612 402L924 286" stroke="#f0a500" stroke-opacity="0.9" stroke-width="10" stroke-linecap="round"/>
+  <text x="86" y="118" fill="#f0a500" font-family="Bebas Neue, sans-serif" font-size="80" letter-spacing="4">RAGE ROOM PALAWAN</text>
+  <text x="86" y="198" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">PUERTO PRINCESA, PALAWAN, PHILIPPINES</text>
+  <text x="86" y="262" fill="#9a9a9a" font-family="Space Grotesk, sans-serif" font-size="28">High-energy landing page with transparent fallback notes for unverified live details.</text>
+</svg>
