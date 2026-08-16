@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Nook Cafe og image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="rgba(240,165,0,0.34)"/>
+      <stop offset="100%" stop-color="rgba(240,165,0,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="890" cy="248" r="210" fill="url(#orb)"/>
+  <path d="M150 420h420" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="8" stroke-linecap="round"/>
+  <path d="M730 180h180" stroke="#f0a500" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>
+  <path d="M720 265c0-42 34-76 76-76h20c42 0 76 34 76 76v20c0 36-29 66-66 66h-40c-37 0-66-30-66-66z" fill="#ffffff" fill-opacity="0.03" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="4"/>
+  <path d="M714 295h40c0 24-12 38-36 38-18 0-31-13-31-28 0-6 1-10 4-10z" fill="none" stroke="#f0a500" stroke-opacity="0.32" stroke-width="8" stroke-linecap="round"/>
+  <text x="90" y="190" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="106" letter-spacing="2">Nook Cafe</text>
+  <text x="92" y="260" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="28">Puerto Princesa, Palawan</text>
+  <text x="92" y="320" fill="#eaeaea" fill-opacity="0.72" font-family="Space Grotesk, Arial, sans-serif" font-size="34">Cozy cups, verified corners, and a calm amber glow.</text>
+  <text x="92" y="382" fill="#eaeaea" fill-opacity="0.56" font-family="JetBrains Mono, monospace" font-size="22">Abad Santos St. cor. Burgos St. | 9:00 AM - 10:00 PM daily</text>
+</svg>

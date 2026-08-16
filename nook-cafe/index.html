@@ -1,60 +1,1426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nook Cafe</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nook Cafe | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Nook Cafe is a cozy independent cafe in Puerto Princesa, Palawan, at Abad Santos St. cor. Burgos St., open daily 9:00 AM to 10:00 PM.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nook Cafe | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A cozy independent cafe in Puerto Princesa, Palawan, with verified public listings for Spanish pasta, matcha, coffee, and all-day service.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/nook-cafe/assets/img/og-nook-cafe.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/nook-cafe/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/nook-cafe/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(255, 255, 255, 0.03);
+      --panel-strong: rgba(255, 255, 255, 0.05);
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 1.4rem;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.12), transparent 18%),
+        radial-gradient(circle at 80% 0%, rgba(240, 165, 0, 0.06), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.35);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .page-shell::before {
+      content: '';
+      position: fixed;
+      inset: -20vh -10vw auto -10vw;
+      height: 52vh;
+      background:
+        radial-gradient(circle at 28% 42%, rgba(240, 165, 0, 0.18), transparent 22%),
+        radial-gradient(circle at 75% 15%, rgba(240, 165, 0, 0.08), transparent 20%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.9;
+    }
+
+    .nav-link {
+      position: relative;
+      color: rgba(234, 234, 234, 0.82);
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.03em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 0.88;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      color: rgba(234, 234, 234, 0.6);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-size: clamp(2.7rem, 5vw, 5.2rem);
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.05rem, 1.05rem);
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      overflow: clip;
+      padding-top: 5.25rem;
+    }
+
+    .hero-grid {
+      min-height: calc(100svh - 5.25rem);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .hero-orb.one {
+      width: clamp(18rem, 26vw, 34rem);
+      height: clamp(18rem, 26vw, 34rem);
+      left: -8rem;
+      top: 12vh;
+      background: radial-gradient(circle at 35% 35%, rgba(240, 165, 0, 0.38), rgba(240, 165, 0, 0.04) 68%, transparent 72%);
+      mix-blend-mode: screen;
+    }
+
+    .hero-orb.two {
+      width: clamp(14rem, 22vw, 24rem);
+      height: clamp(14rem, 22vw, 24rem);
+      right: 4vw;
+      top: 18vh;
+      background: radial-gradient(circle at 35% 35%, rgba(234, 234, 234, 0.14), rgba(234, 234, 234, 0.02) 70%, transparent 75%);
+    }
+
+    .hero-card {
+      display: grid;
+      gap: 1.5rem;
+      align-content: center;
+      max-width: 42rem;
+      padding: 1rem 0 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(4.5rem, 11vw, 9rem);
+      max-width: 7.8ch;
+      margin: 0;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      border-radius: 999px;
+      color: rgba(234, 234, 234, 0.76);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.78rem;
+    }
+
+    .hero-copy {
+      max-width: 31rem;
+      color: rgba(234, 234, 234, 0.78);
+      font-size: clamp(1rem, 1.2vw, 1.08rem);
+      line-height: 1.8;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .cta {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      overflow: hidden;
+      font-weight: 700;
+    }
+
+    .cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.18) 45%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform 520ms ease;
+      z-index: -1;
+    }
+
+    .cta:hover::after,
+    .cta:focus-visible::after {
+      transform: translateX(120%);
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .cta-primary {
+      background: var(--accent);
+      color: #111;
+    }
+
+    .cta-primary:hover,
+    .cta-primary:focus-visible {
+      background: #ffc84d;
+    }
+
+    .cta-ghost {
+      color: var(--text);
+      border-color: rgba(234, 234, 234, 0.22);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .cta-ghost:hover,
+    .cta-ghost:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 1.75rem;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: rgba(234, 234, 234, 0.68);
+      font-size: 0.78rem;
+    }
+
+    .hero-scroll .track {
+      width: 2rem;
+      height: 3.1rem;
+      border: 1px solid rgba(234, 234, 234, 0.18);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .hero-scroll .track::after {
+      content: '';
+      position: absolute;
+      width: 0.45rem;
+      height: 0.45rem;
+      left: 50%;
+      top: 0.45rem;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 22px rgba(240, 165, 0, 0.55);
+      animation: drift 2.1s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.65; }
+      50% { transform: translate(-50%, 1.35rem); opacity: 1; }
+    }
+
+    .section {
+      padding: clamp(5rem, 8vw, 8rem) 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .menu-card {
+      grid-column: span 4;
+      display: grid;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025)),
+        rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background 200ms ease;
+      min-height: 14rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      inset: auto -20% -30% auto;
+      width: 11rem;
+      height: 11rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18), transparent 68%);
+      opacity: 0;
+      transition: opacity 200ms ease;
+      pointer-events: none;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-5px);
+      border-color: rgba(240, 165, 0, 0.45);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(240, 165, 0, 0.12), 0 0 30px rgba(240, 165, 0, 0.08);
+    }
+
+    .menu-card:hover::before,
+    .menu-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .menu-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .menu-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .menu-pill {
+      flex-shrink: 0;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.08);
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      color: var(--accent);
+      font-size: 0.76rem;
+    }
+
+    .menu-desc {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.7;
+    }
+
+    .menu-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 0.3rem;
+    }
+
+    .price-tag {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .price-note {
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(234, 234, 234, 0.46);
+      font-size: 0.75rem;
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: center;
+    }
+
+    .story-figure {
+      position: relative;
+      padding: 1rem;
+      border-radius: calc(var(--radius) + 0.25rem);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .story-figure::before {
+      content: '';
+      position: absolute;
+      inset: auto auto -25% -18%;
+      width: 14rem;
+      height: 14rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18), transparent 68%);
+    }
+
+    .story-figure svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .story-large {
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.9;
+      font-size: clamp(3.4rem, 6vw, 6.5rem);
+      margin: 0 0 1.25rem;
+      max-width: 8ch;
+    }
+
+    .story-large em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(240, 165, 0, 0.34);
+      background: rgba(255, 255, 255, 0.02);
+      min-height: 12rem;
+      isolation: isolate;
+    }
+
+    .gallery-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(8,8,8,0.72) 100%);
+      opacity: 0.88;
+      pointer-events: none;
+    }
+
+    .gallery-tile:hover .gallery-art,
+    .gallery-tile:focus-within .gallery-art {
+      transform: scale(1.03);
+    }
+
+    .gallery-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+    }
+
+    .gallery-label span {
+      display: block;
+    }
+
+    .gallery-label .title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .gallery-label .tag {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+
+    .gallery-wide {
+      grid-column: span 7;
+      min-height: 16rem;
+    }
+
+    .gallery-tall {
+      grid-column: span 5;
+      min-height: 16rem;
+    }
+
+    .gallery-mid {
+      grid-column: span 4;
+      min-height: 14rem;
+    }
+
+    .gallery-short {
+      grid-column: span 3;
+      min-height: 14rem;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .hours-table tr + tr {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hours-table td {
+      padding: 0.95rem 1rem;
+      vertical-align: top;
+      font-size: 0.88rem;
+    }
+
+    .hours-table td:first-child {
+      color: rgba(234, 234, 234, 0.72);
+      width: 36%;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .map-shell {
+      border-radius: calc(var(--radius) + 0.2rem);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      position: relative;
+      min-height: 24rem;
+    }
+
+    .map-shell .map-copy {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      z-index: 2;
+      display: grid;
+      gap: 0.35rem;
+      max-width: 24rem;
+    }
+
+    .map-shell .map-copy .label {
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .map-shell .map-copy .title {
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.9;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      margin: 0;
+    }
+
+    .map-shell .map-copy .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .map-shell svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 24rem;
+    }
+
+    .visit-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .visit-list a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: rgba(234, 234, 234, 0.82);
+      padding: 0.65rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .visit-list a:hover,
+    .visit-list a:focus-visible {
+      color: var(--accent);
+      border-color: rgba(240, 165, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      padding: 2.5rem 0 1.2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr 0.85fr 1fr;
+      gap: 1rem;
+    }
+
+    .footer-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+    }
+
+    .footer-copy {
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.7;
+      max-width: 28rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.65rem;
+      justify-items: start;
+    }
+
+    .footer-links a,
+    .footer-links button {
+      color: rgba(234, 234, 234, 0.84);
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible,
+    .footer-links button:hover,
+    .footer-links button:focus-visible {
+      color: var(--accent);
+    }
+
+    .icon-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .icon-link {
+      width: 2.9rem;
+      height: 2.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+      color: rgba(234, 234, 234, 0.86);
+    }
+
+    .icon-link:hover,
+    .icon-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.42);
+      color: var(--accent);
+    }
+
+    .icon-link svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      fill: currentColor;
+    }
+
+    .smallprint {
+      margin-top: 1.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.06);
+      color: rgba(234, 234, 234, 0.45);
+      font-size: 0.76rem;
+    }
+
+    .fade-line {
+      overflow: hidden;
+    }
+
+    .reduced-motion * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .story-grid,
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        min-height: calc(100svh - 5.25rem);
+      }
+
+      .hero-card {
+        padding-top: 3rem;
+      }
+
+      .gallery-wide,
+      .gallery-tall,
+      .gallery-mid,
+      .gallery-short,
+      .menu-card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .menu-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-card,
+      .gallery-wide,
+      .gallery-tall,
+      .gallery-mid,
+      .gallery-short {
+        grid-column: span 1;
+      }
+
+      .hero-title {
+        max-width: 6.8ch;
+      }
+
+      .hero {
+        padding-top: 4.8rem;
+      }
+
+      .site-nav {
+        gap: 0.9rem;
+      }
+
+      .site-nav .links {
+        gap: 0.85rem;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Nook Cafe</h1>
-    <span class="category">Cafe</span>
-    <p class="address">Abad Santos corner Burgos St, Puerto Princesa City</p>
+  <div class="page-shell">
+    <header class="fixed left-0 top-0 z-50 w-full border-b border-white/5 bg-[#080808]/80 backdrop-blur-xl">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8 site-nav">
+        <a href="#top" class="display text-[1.65rem] tracking-[0.06em] text-[#eaeaea]">Nook Cafe</a>
+        <nav class="links flex items-center gap-5 text-[0.82rem] sm:gap-7">
+          <a class="nav-link" href="#menu">Menu</a>
+          <a class="nav-link" href="#story">Story</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#visit">Visit</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+    <main id="top">
+      <section class="hero px-4 sm:px-6 lg:px-8">
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-orb one"></div>
+          <div class="hero-orb two"></div>
+          <svg viewBox="0 0 1440 900" preserveAspectRatio="none" class="absolute inset-0 h-full w-full">
+            <defs>
+              <linearGradient id="heroGlow" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="rgba(240,165,0,0.12)"/>
+                <stop offset="100%" stop-color="rgba(240,165,0,0)"/>
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="900" fill="transparent"></rect>
+            <ellipse cx="1010" cy="350" rx="390" ry="270" fill="url(#heroGlow)" opacity="0.85"></ellipse>
+            <path d="M920 150 C1040 120, 1160 175, 1225 290 C1285 396, 1268 530, 1190 628 C1110 726, 972 760, 860 722 C732 678, 674 580, 674 474 C674 335, 772 183, 920 150 Z" fill="rgba(255,255,255,0.02)" stroke="rgba(240,165,0,0.1)" stroke-width="2"></path>
+            <path d="M900 270 h145 c16 0 28 13 28 28 v22 c0 16-13 28-28 28 H900 z" fill="none" stroke="rgba(234,234,234,0.18)" stroke-width="3"></path>
+            <path d="M905 343 h125 c20 0 34 17 31 37 l-18 120 c-4 25-25 43-50 43 h-62 c-25 0-46-18-50-43 l-18-120 c-3-20 11-37 31-37z" fill="rgba(240,165,0,0.05)" stroke="rgba(240,165,0,0.16)" stroke-width="3"></path>
+            <path d="M1090 345 c36 0 67 31 67 69 c0 38-31 69-67 69" fill="none" stroke="rgba(240,165,0,0.22)" stroke-width="6" stroke-linecap="round"></path>
+            <path d="M880 525 h184" stroke="rgba(234,234,234,0.18)" stroke-width="4" stroke-linecap="round"></path>
+            <path d="M825 616 H1310" stroke="rgba(234,234,234,0.08)" stroke-width="2"></path>
+            <path d="M842 550 C888 522, 968 510, 1060 510 C1154 510, 1228 525, 1278 553" fill="none" stroke="rgba(240,165,0,0.16)" stroke-width="2"></path>
+            <circle cx="1060" cy="510" r="9" fill="#f0a500" opacity="0.84"></circle>
+            <circle cx="1060" cy="510" r="24" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="2"></circle>
+            <path d="M802 236 C838 214, 890 200, 946 200" stroke="rgba(234,234,234,0.08)" stroke-width="2" fill="none" stroke-dasharray="8 10"></path>
+            <path d="M1270 210 C1320 248, 1350 310, 1350 380" stroke="rgba(234,234,234,0.08)" stroke-width="2" fill="none" stroke-dasharray="8 10"></path>
+          </svg>
+        </div>
+
+        <div class="mx-auto grid w-full max-w-7xl hero-grid">
+          <div class="hero-card">
+            <div class="hero-kicker mono">Abad Santos St. cor. Burgos St. | Puerto Princesa, Palawan</div>
+            <h1 class="display hero-title" aria-label="Nook Cafe Puerto Princesa">
+              <span class="hero-line">Nook Cafe</span>
+              <span class="hero-line">Slow cups</span>
+              <span class="hero-line">Quiet corners</span>
+              <span class="hero-line text-[#f0a500]">Palawan</span>
+            </h1>
+            <p class="hero-copy">A cozy independent cafe in Puerto Princesa, grounded in the public details that could be verified: open daily, tucked at the Abad Santos and Burgos corner, and known online for Spanish pasta, matcha, coffee, and a quiet bookish mood.</p>
+            <div class="cta-row">
+              <a class="cta cta-primary" href="#menu">View Menu</a>
+              <a class="cta cta-ghost" href="#visit">Find Us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-scroll mono" aria-hidden="true">
+          <span class="track"></span>
+          <span>Scroll down</span>
+        </div>
+      </section>
+
+      <section id="menu" class="section px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto w-full max-w-7xl">
+          <div class="mb-8 max-w-3xl">
+            <div class="section-label mono">Verified public highlights</div>
+            <h2 class="section-title">Menu Highlights</h2>
+            <p class="section-copy">The public web only surfaced a few named dishes and drinks for this Puerto Princesa cafe, so this grid stays faithful to what was actually visible online. Prices were not publicly listed, so each price row is marked honestly instead of guessed.</p>
+          </div>
+
+          <div class="menu-grid" data-stagger="menu">
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Spanish Pasta</h3>
+                <span class="menu-pill mono">Verified dish</span>
+              </div>
+              <p class="menu-desc">Named directly in the public Tripadvisor review and described there as a standout dish. This is the clearest savory signal in the live public listing.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Tripadvisor review<br>menu name confirmed</div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Matcha</h3>
+                <span class="menu-pill mono">Verified drink</span>
+              </div>
+              <p class="menu-desc">Also called out in the review as smooth, creamy, and not overly sweet. Publicly visible, but no exact recipe or price was posted in the sources I could verify.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Tripadvisor review<br>menu name confirmed</div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Coffee</h3>
+                <span class="menu-pill mono">Verified drink</span>
+              </div>
+              <p class="menu-desc">The review mentions enjoying food and coffee in a fresh, open setting. It is a verified part of the cafe experience even though the public listing did not surface a named drink lineup.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Mentioned in review<br>as part of the experience</div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Breakfast</h3>
+                <span class="menu-pill mono">Verified service</span>
+              </div>
+              <p class="menu-desc">Tripadvisor lists breakfast among the cafe's service periods, confirming that it is publicly positioned as a morning stop as well as a lunch and dinner spot.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Listing-confirmed<br>service period</div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Lunch</h3>
+                <span class="menu-pill mono">Verified service</span>
+              </div>
+              <p class="menu-desc">Lunch is explicitly listed on the public profile, which matches the cafe's relaxed all-day rhythm and the daytime food-and-coffee setup described in reviews.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Listing-confirmed<br>service period</div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-stagger-item>
+              <div class="menu-head">
+                <h3 class="menu-name">Dinner</h3>
+                <span class="menu-pill mono">Verified service</span>
+              </div>
+              <p class="menu-desc">Dinner is also publicly listed, keeping the cafe in the late-day conversation rather than just a breakfast-only stop.</p>
+              <div class="menu-meta">
+                <div class="price-tag">Public price not listed</div>
+                <div class="price-note">Listing-confirmed<br>service period</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="section px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto w-full max-w-7xl story-grid" data-reveal-group>
+          <div>
+            <div class="section-label mono">About the place</div>
+            <h2 class="story-large">A <em>cozy</em> room for slow hours</h2>
+            <p class="section-copy">The public review picture is simple and inviting: a cozy interior, an outdoor seating area, and a small book corner that makes the cafe feel like a place to stay a little longer. That is the story this page leans on, rather than filling in unverified details from nowhere.</p>
+          </div>
+          <div class="story-figure">
+            <svg viewBox="0 0 720 560" role="img" aria-label="Illustrated coffee cup, window light, and books inside a cozy cafe">
+              <defs>
+                <linearGradient id="storyBg" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(240,165,0,0.12)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.02)"/>
+                </linearGradient>
+              </defs>
+              <rect x="24" y="24" width="672" height="512" rx="34" fill="url(#storyBg)" stroke="rgba(240,165,0,0.16)" stroke-width="2"></rect>
+              <path d="M104 116 h370" stroke="rgba(234,234,234,0.18)" stroke-width="6" stroke-linecap="round"></path>
+              <path d="M104 168 h184" stroke="rgba(234,234,234,0.09)" stroke-width="4" stroke-linecap="round"></path>
+              <path d="M520 120 h84" stroke="rgba(240,165,0,0.38)" stroke-width="5" stroke-linecap="round"></path>
+              <path d="M520 158 h58" stroke="rgba(240,165,0,0.18)" stroke-width="3" stroke-linecap="round"></path>
+              <circle cx="560" cy="178" r="36" fill="rgba(240,165,0,0.08)" stroke="rgba(240,165,0,0.28)" stroke-width="4"></circle>
+              <path d="M243 302 c0-56 44-102 102-102 h18 c56 0 102 46 102 102 v28 c0 48-38 88-86 88 h-50 c-48 0-86-40-86-88z" fill="rgba(255,255,255,0.03)" stroke="rgba(234,234,234,0.22)" stroke-width="4"></path>
+              <path d="M220 322 h46 c0 38-18 60-44 60 c-24 0-42-20-42-46 c0-10 3-14 7-14z" fill="none" stroke="rgba(240,165,0,0.38)" stroke-width="8" stroke-linecap="round"></path>
+              <path d="M362 238 c-14 18-18 37-18 65 c0 24 7 50 18 70" fill="none" stroke="rgba(240,165,0,0.42)" stroke-width="4" stroke-linecap="round"></path>
+              <path d="M328 275 c0 0 26-14 52 0" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="4" stroke-linecap="round"></path>
+              <rect x="170" y="428" width="132" height="24" rx="12" fill="rgba(234,234,234,0.18)"></rect>
+              <rect x="186" y="398" width="116" height="24" rx="12" fill="rgba(240,165,0,0.18)"></rect>
+              <rect x="206" y="366" width="96" height="24" rx="12" fill="rgba(234,234,234,0.12)"></rect>
+              <rect x="330" y="386" width="198" height="156" rx="20" fill="rgba(255,255,255,0.02)" stroke="rgba(234,234,234,0.12)" stroke-width="3"></rect>
+              <path d="M352 402 h154" stroke="rgba(240,165,0,0.24)" stroke-width="5" stroke-linecap="round"></path>
+              <path d="M352 434 h120" stroke="rgba(234,234,234,0.15)" stroke-width="4" stroke-linecap="round"></path>
+              <path d="M352 466 h140" stroke="rgba(234,234,234,0.09)" stroke-width="4" stroke-linecap="round"></path>
+              <path d="M352 498 h86" stroke="rgba(234,234,234,0.13)" stroke-width="4" stroke-linecap="round"></path>
+              <circle cx="520" cy="458" r="18" fill="rgba(240,165,0,0.16)"></circle>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto w-full max-w-7xl">
+          <div class="mb-8 max-w-3xl">
+            <div class="section-label mono">Atmosphere study</div>
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-copy">These are intentionally stylized SVG tiles rather than fake photos. They keep the visual language grounded in the cafe's dark, amber-lit mood without inventing imagery that was never publicly available.</p>
+          </div>
+
+          <div class="gallery-grid" data-stagger="gallery">
+            <figure class="gallery-tile gallery-wide" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 960 560" aria-hidden="true">
+                <rect width="960" height="560" fill="#101010"></rect>
+                <circle cx="720" cy="160" r="170" fill="rgba(240,165,0,0.13)"></circle>
+                <path d="M170 400 h340" stroke="rgba(234,234,234,0.16)" stroke-width="10" stroke-linecap="round"></path>
+                <path d="M330 150 v220" stroke="rgba(234,234,234,0.08)" stroke-width="8"></path>
+                <path d="M520 130 v300" stroke="rgba(240,165,0,0.18)" stroke-width="10"></path>
+                <rect x="548" y="236" width="180" height="154" rx="26" fill="rgba(255,255,255,0.03)" stroke="rgba(240,165,0,0.2)" stroke-width="3"></rect>
+                <path d="M580 270 h116" stroke="rgba(240,165,0,0.36)" stroke-width="8" stroke-linecap="round"></path>
+                <path d="M580 310 h84" stroke="rgba(234,234,234,0.18)" stroke-width="6" stroke-linecap="round"></path>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Warm Counter</span>
+                <span class="tag">amber glow / dark room</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile gallery-tall" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 720 560" aria-hidden="true">
+                <rect width="720" height="560" fill="#0f0f0f"></rect>
+                <circle cx="158" cy="130" r="150" fill="rgba(240,165,0,0.12)"></circle>
+                <circle cx="560" cy="120" r="72" fill="rgba(234,234,234,0.05)" stroke="rgba(234,234,234,0.1)" stroke-width="2"></circle>
+                <path d="M130 360 c82-52 193-52 288 0" stroke="rgba(234,234,234,0.18)" stroke-width="8" fill="none" stroke-linecap="round"></path>
+                <path d="M154 388 h212" stroke="rgba(240,165,0,0.42)" stroke-width="8" stroke-linecap="round"></path>
+                <path d="M198 204 h126" stroke="rgba(234,234,234,0.12)" stroke-width="6" stroke-linecap="round"></path>
+                <path d="M198 240 h78" stroke="rgba(234,234,234,0.08)" stroke-width="4" stroke-linecap="round"></path>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Window Light</span>
+                <span class="tag">soft beam / quiet seat</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile gallery-mid" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 640 560" aria-hidden="true">
+                <rect width="640" height="560" fill="#111"></rect>
+                <rect x="94" y="104" width="452" height="32" rx="16" fill="rgba(240,165,0,0.12)"></rect>
+                <rect x="136" y="170" width="368" height="220" rx="22" fill="rgba(255,255,255,0.02)" stroke="rgba(234,234,234,0.12)" stroke-width="3"></rect>
+                <path d="M184 212 h270" stroke="rgba(234,234,234,0.12)" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M184 256 h184" stroke="rgba(240,165,0,0.32)" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M184 300 h210" stroke="rgba(234,234,234,0.09)" stroke-width="6" stroke-linecap="round"></path>
+                <circle cx="450" cy="290" r="38" fill="rgba(240,165,0,0.11)"></circle>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Reading Corner</span>
+                <span class="tag">bookish / unhurried</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-mid" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 640 560" aria-hidden="true">
+                <rect width="640" height="560" fill="#0d0d0d"></rect>
+                <path d="M136 134 h268" stroke="rgba(240,165,0,0.26)" stroke-width="7" stroke-linecap="round"></path>
+                <path d="M136 184 h168" stroke="rgba(234,234,234,0.12)" stroke-width="5" stroke-linecap="round"></path>
+                <path d="M170 360 c28-72 74-106 152-106 c84 0 132 38 160 106" fill="none" stroke="rgba(234,234,234,0.18)" stroke-width="9" stroke-linecap="round"></path>
+                <circle cx="328" cy="350" r="72" fill="rgba(240,165,0,0.1)" stroke="rgba(240,165,0,0.14)" stroke-width="3"></circle>
+                <path d="M238 286 h180" stroke="rgba(234,234,234,0.08)" stroke-width="6" stroke-linecap="round"></path>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Espresso Mood</span>
+                <span class="tag">dark roast / bright accent</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-short" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 500 560" aria-hidden="true">
+                <rect width="500" height="560" fill="#111"></rect>
+                <circle cx="250" cy="250" r="124" fill="rgba(240,165,0,0.1)" stroke="rgba(240,165,0,0.2)" stroke-width="3"></circle>
+                <path d="M170 250 h160" stroke="rgba(234,234,234,0.15)" stroke-width="9" stroke-linecap="round"></path>
+                <path d="M208 210 h80" stroke="rgba(234,234,234,0.08)" stroke-width="5" stroke-linecap="round"></path>
+                <path d="M208 292 h66" stroke="rgba(240,165,0,0.34)" stroke-width="6" stroke-linecap="round"></path>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Palawan Night</span>
+                <span class="tag">amber haze / near-black</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-short" data-stagger-item>
+              <svg class="gallery-art" viewBox="0 0 500 560" aria-hidden="true">
+                <rect width="500" height="560" fill="#101010"></rect>
+                <path d="M96 430 h308" stroke="rgba(234,234,234,0.13)" stroke-width="8" stroke-linecap="round"></path>
+                <path d="M132 384 h194" stroke="rgba(240,165,0,0.28)" stroke-width="6" stroke-linecap="round"></path>
+                <rect x="168" y="170" width="138" height="150" rx="30" fill="rgba(255,255,255,0.03)" stroke="rgba(234,234,234,0.12)" stroke-width="3"></rect>
+                <path d="M190 208 h96" stroke="rgba(234,234,234,0.13)" stroke-width="6" stroke-linecap="round"></path>
+                <path d="M190 246 h70" stroke="rgba(234,234,234,0.09)" stroke-width="5" stroke-linecap="round"></path>
+              </svg>
+              <figcaption class="gallery-label">
+                <span class="title">Amber Detail</span>
+                <span class="tag">glass / steel / warm light</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit" class="section px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto w-full max-w-7xl location-grid" data-reveal-group>
+          <div>
+            <div class="section-label mono">Verified location</div>
+            <h2 class="section-title">Hours and Location</h2>
+            <p class="section-copy">The public listing and Tripadvisor snippet agree on the same corner location in Puerto Princesa and on daily hours from 9:00 AM to 10:00 PM. The map below uses the verified Puerto Princesa coordinates rather than a generic pin.</p>
+
+            <table class="hours-table mt-6" aria-label="Operating hours">
+              <tbody>
+                <tr><td>Sunday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Monday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Thursday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Friday</td><td>9:00 AM - 10:00 PM</td></tr>
+                <tr><td>Saturday</td><td>9:00 AM - 10:00 PM</td></tr>
+              </tbody>
+            </table>
+
+            <div class="mt-5 rounded-[var(--radius)] border border-white/8 bg-white/[0.02] p-4">
+              <div class="mono text-[0.75rem] uppercase tracking-[0.16em] text-[#f0a500]">Verified address</div>
+              <p class="mt-3 text-[1.02rem] leading-7 text-white/80">Abad Santos St. cor. Burgos St., Puerto Princesa, Palawan Island 5300 Philippines</p>
+              <p class="mono mt-2 text-[0.78rem] text-white/50">Coordinates: 9.734515, 118.74387</p>
+            </div>
+
+            <div class="visit-list">
+              <a href="https://www.google.com/maps?q=9.734515,118.74387" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+              <a href="https://www.tripadvisor.com/Restaurant_Review-g294257-d34100033-Reviews-Nook_Cafe-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimaropa.html" target="_blank" rel="noopener noreferrer">Tripadvisor Listing</a>
+              <a href="tel:+639272704532">Call +63 927 270 4532</a>
+            </div>
+          </div>
+
+          <div class="map-shell glass">
+            <div class="map-copy">
+              <div class="label mono">Puerto Princesa map</div>
+              <h3 class="title">Corner of Abad Santos and Burgos</h3>
+              <div class="subtitle">9.734515°N, 118.74387°E</div>
+            </div>
+            <svg viewBox="0 0 960 720" role="img" aria-label="Stylized map of Puerto Princesa with a pinned cafe location">
+              <defs>
+                <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+                  <path d="M 72 0 L 0 0 0 72" fill="none" stroke="rgba(234,234,234,0.06)" stroke-width="1"></path>
+                </pattern>
+                <radialGradient id="mapGlow" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="rgba(240,165,0,0.12)"/>
+                  <stop offset="100%" stop-color="rgba(240,165,0,0)"/>
+                </radialGradient>
+              </defs>
+              <rect width="960" height="720" fill="#0b0b0b"></rect>
+              <rect width="960" height="720" fill="url(#grid)"></rect>
+              <ellipse cx="530" cy="276" rx="300" ry="220" fill="url(#mapGlow)"></ellipse>
+              <path d="M120 482 C180 444, 230 436, 300 414 C372 392, 416 342, 504 326 C620 304, 682 348, 746 372 C826 402, 860 468, 860 530" fill="none" stroke="rgba(234,234,234,0.18)" stroke-width="12" stroke-linecap="round"></path>
+              <path d="M176 616 C244 560, 298 528, 388 498 C472 470, 560 460, 632 430 C700 402, 746 360, 836 330" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="6" stroke-dasharray="18 18" stroke-linecap="round"></path>
+              <path d="M372 198 C430 184, 490 186, 550 202" fill="none" stroke="rgba(234,234,234,0.08)" stroke-width="4" stroke-linecap="round"></path>
+              <circle cx="602" cy="404" r="40" fill="rgba(240,165,0,0.14)"></circle>
+              <circle cx="602" cy="404" r="18" fill="#f0a500"></circle>
+              <circle cx="602" cy="404" r="60" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="3"></circle>
+              <path d="M602 454 C578 488, 548 519, 548 552 C548 603, 573 634, 602 634 C631 634, 656 603, 656 552 C656 519, 626 488, 602 454 Z" fill="rgba(240,165,0,0.14)" stroke="rgba(240,165,0,0.28)" stroke-width="3"></path>
+              <path d="M606 492 C630 530, 632 566, 602 600 C574 568, 572 530, 596 492" fill="rgba(255,255,255,0.04)" stroke="rgba(234,234,234,0.1)" stroke-width="2"></path>
+              <text x="76" y="86" fill="rgba(234,234,234,0.8)" font-family="JetBrains Mono, monospace" font-size="22">Puerto Princesa, Palawan</text>
+              <text x="76" y="116" fill="rgba(234,234,234,0.45)" font-family="JetBrains Mono, monospace" font-size="16">coords anchored to the public listing</text>
+              <text x="684" y="646" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="16">Nook Cafe</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto w-full max-w-7xl footer-grid">
+        <div>
+          <h2 class="footer-title">Nook Cafe</h2>
+          <p class="footer-copy">A cozy independent cafe in Puerto Princesa, Palawan, built from publicly verified facts only: the corner address, daily hours, and the few public menu names that surfaced online.</p>
+        </div>
+
+        <div>
+          <div class="mono text-[0.8rem] uppercase tracking-[0.16em] text-white/45">Quick Links</div>
+          <div class="footer-links mt-4">
+            <a href="#menu">Menu</a>
+            <a href="#story">Story</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#visit">Hours and Location</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="mono text-[0.8rem] uppercase tracking-[0.16em] text-white/45">Hours</div>
+          <div class="mt-4 grid gap-2 text-[0.92rem] text-white/78">
+            <div class="flex items-center justify-between gap-4"><span>Daily</span><span class="mono text-[0.78rem] text-[#f0a500]">9:00 AM - 10:00 PM</span></div>
+            <div class="flex items-center justify-between gap-4"><span>Location</span><span class="mono text-[0.78rem] text-[#f0a500]">Puerto Princesa</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mono text-[0.8rem] uppercase tracking-[0.16em] text-white/45">Connect</div>
+          <div class="icon-row mt-4">
+            <a class="icon-link" href="tel:+639272704532" aria-label="Call Nook Cafe">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.3.6 1.3 1.3v3.4c0 .7-.6 1.3-1.3 1.3C9.3 21.4 2.6 14.7 2.6 6.9 2.6 6.2 3.2 5.6 3.9 5.6h3.4c.7 0 1.3.6 1.3 1.3 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.2z"/></svg>
+            </a>
+            <a class="icon-link" href="mailto:?subject=Nook%20Cafe%20Inquiry" aria-label="Open an email draft for Nook Cafe">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18c.6 0 1 .4 1 1v11c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1v-11c0-.6.4-1 1-1zm1.3 2L12 12l7.7-4.5H4.3zM4 17h16V9.2l-8 4.7-8-4.7V17z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.google.com/maps?q=9.734515,118.74387" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.3c3.2 0 5.8 2.6 5.8 5.8 0 4.4-5.8 13.6-5.8 13.6S6.2 12.5 6.2 8.1c0-3.2 2.6-5.8 5.8-5.8zm0 8.5a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.tripadvisor.com/Restaurant_Review-g294257-d34100033-Reviews-Nook_Cafe-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimaropa.html" target="_blank" rel="noopener noreferrer" aria-label="Open Tripadvisor listing">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.2c2.2 0 4.1.8 5.4 2.1l1.6-1.4 1.2 1.4-1.7 1.5c.5.8.8 1.8.8 2.8 0 3.1-2.8 5.6-6.3 5.6-1.5 0-3-.5-4.1-1.2L6 18.6 4.8 17l2.9-2.5c-.6-.9-1-2-1-3.1 0-3.1 2.8-5.6 6.3-5.6zm0 2.1c-2.2 0-4 1.6-4 3.5s1.8 3.5 4 3.5 4-1.6 4-3.5-1.8-3.5-4-3.5z"/></svg>
+            </a>
+          </div>
+          <p class="mt-4 text-[0.78rem] leading-6 text-white/48">No public email was verified in the available listings, so the email button opens a draft instead of pretending an address exists.</p>
+        </div>
+      </div>
+
+      <div class="mx-auto w-full max-w-7xl smallprint mono">
+        <div>Copyright 2026 Nook Cafe. All verified business details sourced from public listings and review snippets.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.documentElement.classList.toggle('reduced-motion', reducedMotion);
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!reducedMotion && window.Lenis) {
+        const lenis = new Lenis({
+          lerp: 0.08,
+          wheelMultiplier: 0.9,
+          smoothWheel: true,
+          smoothTouch: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+      }
+
+      if (!reducedMotion) {
+        gsap.from('.hero-line', {
+          opacity: 0,
+          y: 30,
+          duration: 0.9,
+          stagger: 0.08,
+          ease: 'power3.out',
+          delay: 0.2,
+        });
+
+        gsap.from('.hero-kicker', {
+          opacity: 0,
+          y: 12,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.1,
+        });
+
+        gsap.from('.hero-copy, .cta-row', {
+          opacity: 0,
+          y: 18,
+          duration: 0.85,
+          stagger: 0.1,
+          ease: 'power3.out',
+          delay: 0.55,
+        });
+
+        gsap.from('.hero-scroll', {
+          opacity: 0,
+          y: 14,
+          duration: 0.85,
+          ease: 'power3.out',
+          delay: 0.9,
+        });
+
+        gsap.to('.hero-orb.one', {
+          x: 60,
+          y: 40,
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+
+        gsap.to('.hero-orb.two', {
+          x: -40,
+          y: 20,
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+
+        gsap.utils.toArray('[data-reveal-group]').forEach((group) => {
+          const parts = group.querySelectorAll('.section-label, .section-title, .section-copy, .hours-table, .story-figure, .map-shell, .visit-list, .footer-copy, .footer-links, .icon-row');
+          gsap.from(parts, {
+            opacity: 0,
+            y: 28,
+            duration: 0.9,
+            ease: 'power3.out',
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: group,
+              start: 'top 78%',
+            },
+          });
+        });
+
+        gsap.from('.menu-card', {
+          opacity: 0,
+          y: 30,
+          scale: 0.98,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '[data-stagger="menu"]',
+            start: 'top 74%',
+          },
+        });
+
+        gsap.from('.gallery-tile', {
+          opacity: 0,
+          y: 34,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '[data-stagger="gallery"]',
+            start: 'top 76%',
+          },
+        });
+      }
+    });
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Nook Cafe",
+      "url": "https://frans15-2006.github.io/TheFrans/nook-cafe/",
+      "image": "https://frans15-2006.github.io/TheFrans/nook-cafe/assets/img/og-nook-cafe.svg",
+      "telephone": "+63 927 270 4532",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Abad Santos St. cor. Burgos St.",
+        "addressLocality": "Puerto Princesa",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.734515,
+        "longitude": 118.74387
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "09:00", "closes": "22:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:00", "closes": "22:00"}
+      ],
+      "servesCuisine": ["American", "Filipino", "Cafe", "Asian", "Fusion"],
+      "sameAs": [
+        "https://www.tripadvisor.com/Restaurant_Review-g294257-d34100033-Reviews-Nook_Cafe-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimaropa.html",
+        "https://www.google.com/maps?q=9.734515,118.74387"
+      ]
+    }
+  </script>
 </body>
 </html>
