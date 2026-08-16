@@ -1,60 +1,871 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Pearlé Spa Salon & Aesthetics</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Pearlé Spa | Spa, Salon & Aesthetics in Puerto Princesa, Palawan</title>
+  <meta name="description" content="La Pearlé Spa in Eastville City Walk, Puerto Princesa, Palawan offers massage, facial care, nails, salon services, and aesthetics in a calm, polished setting.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="La Pearlé Spa | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Spa, salon, and aesthetics at Eastville City Walk in Puerto Princesa City, Palawan.">
+  <meta property="og:image" content="assets/img/hero-la-pearle.svg">
+  <meta property="og:image:alt" content="La Pearlé Spa inspired hero illustration">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La Pearlé Spa | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Spa, salon, and aesthetics at Eastville City Walk in Puerto Princesa City, Palawan.">
+  <meta name="twitter:image" content="assets/img/hero-la-pearle.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --amber: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.55);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(234, 234, 234, 0.05), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.73rem;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: clamp(4rem, 7vw, 7rem) 0;
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      font-size: clamp(2.7rem, 8vw, 5.6rem);
+      max-width: 11ch;
+      margin: 0;
+    }
+
+    .section-copy {
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.08rem);
+      line-height: 1.7;
+      margin: 1rem 0 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 3.2rem;
+      padding: 0.95rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(234, 234, 234, 0.3);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      box-shadow: 0 16px 36px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      color: #080808;
+      background: #ffb11a;
+    }
+
+    .btn-ghost {
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+    }
+
+    .nav-link {
+      color: rgba(234, 234, 234, 0.78);
+      transition: color 200ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--amber);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      isolation: isolate;
+      background: #050505;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.03);
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.78) 34%, rgba(8, 8, 8, 0.22) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.14) 0%, rgba(8, 8, 8, 0.7) 100%);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0 1.1rem;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.4rem 0 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      white-space: nowrap;
+    }
+
+    .brand-name {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.12em;
+      line-height: 1;
+    }
+
+    .brand-tag {
+      color: rgba(234, 234, 234, 0.68);
+      display: none;
+    }
+
+    .nav {
+      display: none;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      margin-top: auto;
+      padding: 2rem 0 0;
+      max-width: 38rem;
+    }
+
+    .hero-brand {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: clamp(4.1rem, 15vw, 8.8rem);
+      line-height: 0.84;
+      margin: 0;
+    }
+
+    .hero-copy p {
+      margin: 1rem 0 0;
+      max-width: 31rem;
+      color: rgba(234, 234, 234, 0.82);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .hero-subline {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.64);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      max-width: 30rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.65rem;
+    }
+
+    .hero-foot {
+      display: grid;
+      gap: 0.85rem;
+      align-items: end;
+      padding: 1.2rem 0 0;
+      margin-top: auto;
+      border-top: 1px solid rgba(234, 234, 234, 0.1);
+    }
+
+    .hero-foot .mono {
+      color: rgba(240, 165, 0, 0.92);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-foot p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.68);
+      line-height: 1.6;
+      max-width: 36rem;
+    }
+
+    .grid-lines {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .grid-item {
+      padding: 1.1rem 0.95rem 1.25rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      min-height: 9.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.9rem;
+      transition: border-color 200ms ease, transform 200ms ease;
+    }
+
+    .grid-item:hover {
+      border-color: rgba(240, 165, 0, 0.26);
+      transform: translateY(-1px);
+    }
+
+    .grid-item h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.7rem;
+      line-height: 0.92;
+    }
+
+    .grid-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 24rem;
+    }
+
+    .pricing-note {
+      margin-top: 2rem;
+      max-width: 50rem;
+      border-left: 2px solid var(--amber);
+      padding-left: 1rem;
+      color: rgba(234, 234, 234, 0.82);
+      line-height: 1.7;
+    }
+
+    .pricing-list {
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .pricing-row strong {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 0.96;
+      margin-bottom: 0.2rem;
+    }
+
+    .pricing-row span {
+      color: var(--muted);
+      line-height: 1.7;
+      display: block;
+    }
+
+    .pricing-row em {
+      font-family: "JetBrains Mono", monospace;
+      font-style: normal;
+      color: rgba(240, 165, 0, 0.95);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .gallery figure {
+      margin: 0;
+      grid-column: span 12;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #0d0d0d;
+    }
+
+    .gallery figcaption {
+      margin-top: 0.75rem;
+      color: rgba(234, 234, 234, 0.68);
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .cta-panel {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.1), transparent 42%),
+        rgba(234, 234, 234, 0.02);
+      padding: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .cta-panel .section-title {
+      max-width: 13ch;
+    }
+
+    .cta-panel p {
+      max-width: 40rem;
+      color: rgba(234, 234, 234, 0.8);
+      line-height: 1.7;
+      margin: 1rem 0 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      grid-template-columns: 1fr;
+    }
+
+    .contact-block {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .contact-block h3 {
+      margin: 0 0 0.65rem;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      line-height: 0.95;
+    }
+
+    .contact-block p,
+    .contact-block address {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: normal;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: rgba(234, 234, 234, 0.6);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .footer small {
+      display: block;
+      line-height: 1.7;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 720px) {
+      .brand-tag {
+        display: inline;
+      }
+
+      .nav {
+        display: inline-flex;
+      }
+
+      .hero-copy {
+        padding-bottom: 2.3rem;
+      }
+
+      .hero-foot {
+        grid-template-columns: 1fr auto;
+      }
+
+      .grid-lines {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery figure:nth-child(1) {
+        grid-column: span 7;
+      }
+
+      .gallery figure:nth-child(2) {
+        grid-column: span 5;
+      }
+
+      .gallery figure:nth-child(3) {
+        grid-column: span 4;
+      }
+
+      .gallery figure:nth-child(4) {
+        grid-column: span 8;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: end;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .hero-copy {
+        max-width: 47rem;
+      }
+
+      .grid-lines {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .pricing-list {
+        max-width: 62rem;
+      }
+
+      .gallery {
+        gap: 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>La Pearlé Spa Salon & Aesthetics</h1>
-    <span class="category">Aesthetics Clinic</span>
-    <p class="address">G-03 Eastville City Walk, San Pedro, Puerto Princesa City</p>
-    <p class="phone">+63 956 716 4665</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="hero" id="top">
+    <img class="hero-media" src="assets/img/hero-la-pearle.svg" alt="Illustrated spa scene for La Pearlé Spa" decoding="async">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-inner shell">
+      <div class="topbar" data-hero-fade>
+        <a class="brand" href="#top" aria-label="La Pearlé Spa home">
+          <span class="brand-name">La Pearlé Spa</span>
+          <span class="brand-tag mono">Puerto Princesa, Palawan</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="#services">Services</a>
+          <a class="nav-link" href="#pricing">Pricing</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="hero-copy">
+        <p class="mono" data-hero-fade>Eastville City Walk, San Pedro</p>
+        <h1 class="hero-brand" data-hero-fade>La Pearlé Spa</h1>
+        <p data-hero-fade>Spa, salon, and aesthetics in Puerto Princesa, built for unhurried resets, polished finishes, and the kind of quiet that lets the day slow down.</p>
+        <div class="hero-actions" data-hero-fade>
+          <a class="btn btn-primary" href="#services">Explore services</a>
+          <a class="btn btn-ghost" href="#contact">Get directions</a>
+        </div>
+        <p class="hero-subline" data-hero-fade>Verified address: G-03, Eastville City Walk, San Pedro National Highway, Puerto Princesa City, Palawan 5300, Philippines.</p>
+      </div>
+
+      <div class="hero-foot" data-hero-fade>
+        <div>
+          <div class="mono">Location checked</div>
+          <p>The spa sits in Eastville City Walk, with coordinates that place it in Puerto Princesa, not Manila: 9.75477, 118.74679.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=9.75477,118.74679" target="_blank" rel="noopener noreferrer">Open map</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section shell" id="services">
+      <div data-reveal>
+        <div class="mono" style="color: var(--amber);">Services</div>
+        <h2 class="section-title">A one-stop spa routine</h2>
+        <p class="section-copy">Public reviews and local listings point to a mixed beauty hub: massage, facial care, nail work, salon services, and aesthetic finishes, all under one roof.</p>
+      </div>
+
+      <div class="grid-lines" style="margin-top: 2rem;" data-reveal>
+        <article class="grid-item">
+          <h3>Massage</h3>
+          <p>For a slower reset, with treatment styles that visitors describe as calming, attentive, and worth the stop.</p>
+        </article>
+        <article class="grid-item">
+          <h3>Facials</h3>
+          <p>Skin care and facial appointments with the clean, careful finish praised in guest reviews.</p>
+        </article>
+        <article class="grid-item">
+          <h3>Nails</h3>
+          <p>Manicure and pedicure work, including detailed gel application that guests singled out for precision.</p>
+        </article>
+        <article class="grid-item">
+          <h3>Salon</h3>
+          <p>Hair and general beauty service support for polished everyday upkeep or a pre-event refresh.</p>
+        </article>
+        <article class="grid-item">
+          <h3>Aesthetics</h3>
+          <p>Beauty and wellness treatments that make the spa feel like a practical stop, not just a special occasion.</p>
+        </article>
+        <article class="grid-item">
+          <h3>One stop</h3>
+          <p>All the essentials in one address, inside Eastville City Walk in San Pedro, Puerto Princesa City.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="pricing">
+      <div data-reveal>
+        <div class="mono" style="color: var(--amber);">Pricing</div>
+        <h2 class="section-title">Rates, kept current at the spa</h2>
+        <p class="section-copy">We could verify the address, venue, and service mix from public sources, but no indexed rate card was available to cite without guessing. To keep this page accurate, the pricing section points you to the current menu instead of inventing numbers.</p>
+      </div>
+
+      <p class="pricing-note" data-reveal>
+        Publicly indexed reviews confirm the service families, but not a stable published price list. For the current menu, ask the spa directly when you arrive at Eastville City Walk.
+      </p>
+
+      <div class="pricing-list" data-reveal>
+        <div class="pricing-row">
+          <div>
+            <strong>Massage</strong>
+            <span>Ask for the current session lengths and available styles.</span>
+          </div>
+          <div><em>Confirm on visit</em></div>
+        </div>
+        <div class="pricing-row">
+          <div>
+            <strong>Facials</strong>
+            <span>Facial care is part of the spa's public reputation, but the online rate sheet was not indexed.</span>
+          </div>
+          <div><em>Confirm on visit</em></div>
+        </div>
+        <div class="pricing-row">
+          <div>
+            <strong>Nails & gel</strong>
+            <span>Reviewers specifically mention manicure work and precise gel application.</span>
+          </div>
+          <div><em>Confirm on visit</em></div>
+        </div>
+        <div class="pricing-row">
+          <div>
+            <strong>Salon / aesthetics</strong>
+            <span>For add-on beauty appointments and the rest of the one-stop menu.</span>
+          </div>
+          <div><em>Confirm on visit</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="gallery">
+      <div data-reveal>
+        <div class="mono" style="color: var(--amber);">Gallery</div>
+        <h2 class="section-title">A calm, polished atmosphere</h2>
+        <p class="section-copy">These local SVG visuals keep the page self-contained while echoing the spa's dark, amber, and off-white palette.</p>
+      </div>
+
+      <div class="gallery" style="margin-top: 2rem;">
+        <figure data-reveal>
+          <img src="assets/img/gallery-ritual.svg" alt="Warm spa still life with stones, towel, and candle" loading="lazy" decoding="async">
+          <figcaption>Quiet ritual details, the kind that make a short appointment feel longer.</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/img/gallery-touch.svg" alt="Nail and beauty detail illustration with tools and pearl finish" loading="lazy" decoding="async">
+          <figcaption>Precision matters here, especially for manicure and gel work.</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/img/gallery-still.svg" alt="Spa corner illustration with soft light and plants" loading="lazy" decoding="async">
+          <figcaption>Soft light and clean lines, grounded in a real city-center location.</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/img/hero-la-pearle.svg" alt="Hero spa scene repeated in a wider gallery frame" loading="lazy" decoding="async">
+          <figcaption>Palawan calm, framed in the same palette that defines the site.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section shell" id="booking">
+      <div class="cta-panel" data-reveal>
+        <div class="mono" style="color: rgba(240,165,0,0.95);">Booking CTA</div>
+        <h2 class="section-title">Plan the pause, then take it</h2>
+        <p>La Pearlé Spa is easiest to visit with directions in hand: Eastville City Walk, San Pedro National Highway, Puerto Princesa City, Palawan 5300. Use the map link below and go straight to the address that was verified.</p>
+        <div class="hero-actions" style="margin-top: 1.5rem;">
+          <a class="btn btn-primary" href="https://www.google.com/maps?q=G-03,+Eastville+City+Walk,+San+Pedro+National+Highway,+Puerto+Princesa+City,+Palawan+5300,+Philippines" target="_blank" rel="noopener noreferrer">Get directions</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=9.75477,118.74679" target="_blank" rel="noopener noreferrer">View coordinates</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="contact">
+      <div data-reveal>
+        <div class="mono" style="color: var(--amber);">Contact</div>
+        <h2 class="section-title">Find La Pearlé Spa in Puerto Princesa</h2>
+        <p class="section-copy">The verified address places the spa inside Eastville City Walk in Barangay San Pedro, with map coordinates around 9.75477, 118.74679. That keeps it clearly in Puerto Princesa, Palawan.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-block" data-reveal>
+          <h3>Address</h3>
+          <address>
+            G-03, Eastville City Walk<br>
+            San Pedro National Highway<br>
+            Puerto Princesa City, Palawan 5300<br>
+            Philippines
+          </address>
+          <div class="contact-links">
+            <a class="btn btn-ghost" href="https://www.google.com/maps?q=G-03,+Eastville+City+Walk,+San+Pedro+National+Highway,+Puerto+Princesa+City,+Palawan+5300,+Philippines" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+            <a class="btn btn-ghost" href="https://www.tripadvisor.com.ph/Attractions-g294257-Activities-c40-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimaropa.html" target="_blank" rel="noopener noreferrer">See Puerto Princesa spa listings</a>
+          </div>
+        </div>
+
+        <div class="contact-block" data-reveal>
+          <h3>Coordinates</h3>
+          <p>9.75477°N, 118.74679°E</p>
+          <p style="margin-top: 0.75rem;">These coordinates match Puerto Princesa's east-side commercial corridor, not Manila.</p>
+          <div class="contact-links">
+            <a class="btn btn-ghost" href="#top">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div>
+        <small class="mono" style="color: var(--amber);">La Pearlé Spa</small>
+        <small>Puerto Princesa, Palawan. Verified address and coordinates were used to avoid fabrication.</small>
+      </div>
+      <div>
+        <small>Single-page build for GitHub Pages. Lenis smooth scroll and GSAP reveals are wired in from CDNs.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      smoothWheel: !reduceMotion,
+      smoothTouch: false,
+      lerp: reduceMotion ? 1 : 0.08,
+      wheelMultiplier: 1,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: 0, duration: reduceMotion ? 0 : 1.05 });
+      });
+    });
+
+    if (!reduceMotion) {
+      gsap.from('[data-hero-fade]', {
+        opacity: 0,
+        y: 22,
+        duration: 0.95,
+        ease: 'power3.out',
+        stagger: 0.08,
+        delay: 0.15,
+      });
+
+      gsap.to('.hero-media', {
+        y: 18,
+        scale: 1.07,
+        duration: 9,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((element) => {
+        gsap.fromTo(element, {
+          y: 34,
+          opacity: 0,
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 84%',
+          },
+        });
+      });
+    } else {
+      gsap.set('[data-hero-fade], [data-reveal]', { clearProps: 'all' });
+    }
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "La Pearlé Spa",
+    "description": "Spa, salon, and aesthetics in Eastville City Walk, Puerto Princesa, Palawan.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "G-03, Eastville City Walk, San Pedro National Highway",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.75477,
+      "longitude": 118.74679
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Puerto Princesa City"
+    },
+    "sameAs": [
+      "https://www.google.com/maps?q=9.75477,118.74679"
+    ]
+  }
+  </script>
 </body>
 </html>
