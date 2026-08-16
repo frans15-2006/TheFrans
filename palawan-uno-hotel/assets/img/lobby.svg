@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized hotel lobby scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#111"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1240" cy="170" r="210" fill="url(#glow)"/>
+  <rect x="120" y="140" width="1360" height="720" rx="28" fill="#0d0d0d" stroke="#262626" stroke-width="2"/>
+  <rect x="210" y="220" width="1180" height="80" rx="18" fill="#171717"/>
+  <rect x="520" y="300" width="560" height="260" rx="22" fill="#131313" stroke="#262626"/>
+  <rect x="560" y="340" width="170" height="170" rx="18" fill="#1d1d1d"/>
+  <rect x="770" y="340" width="260" height="70" rx="16" fill="#232323"/>
+  <rect x="770" y="428" width="260" height="60" rx="16" fill="#202020"/>
+  <rect x="770" y="504" width="260" height="24" rx="12" fill="#f0a500" fill-opacity="0.14"/>
+  <rect x="348" y="560" width="320" height="92" rx="18" fill="#161616"/>
+  <rect x="932" y="560" width="320" height="92" rx="18" fill="#161616"/>
+  <rect x="382" y="582" width="108" height="50" rx="14" fill="#f0a500" fill-opacity="0.14"/>
+  <rect x="1064" y="582" width="108" height="50" rx="14" fill="#f0a500" fill-opacity="0.14"/>
+  <rect x="246" y="700" width="1108" height="110" rx="22" fill="#101010"/>
+  <path d="M286 764 C390 732 488 732 592 764 C696 796 792 796 896 764 C1000 732 1098 732 1202 764" stroke="#f0a500" stroke-opacity="0.18" stroke-width="5" fill="none"/>
+  <path d="M560 220V140" stroke="#f0a500" stroke-opacity="0.2" stroke-width="6"/>
+  <path d="M800 220V120" stroke="#f0a500" stroke-opacity="0.2" stroke-width="6"/>
+  <path d="M1040 220V140" stroke="#f0a500" stroke-opacity="0.2" stroke-width="6"/>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized outdoor pool scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#0f0f0f"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2532"/>
+      <stop offset="50%" stop-color="#183547"/>
+      <stop offset="100%" stop-color="#0b1820"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1280" cy="170" r="200" fill="url(#glow)"/>
+  <rect x="120" y="146" width="1360" height="708" rx="28" fill="#0d0d0d" stroke="#242424" stroke-width="2"/>
+  <rect x="182" y="210" width="1236" height="540" rx="22" fill="url(#water)" stroke="#1b2d36" stroke-width="2"/>
+  <path d="M226 350 C350 314 466 314 590 350 C714 386 830 386 954 350 C1078 314 1194 314 1318 350" stroke="#f0a500" stroke-opacity="0.18" stroke-width="6" fill="none"/>
+  <path d="M226 454 C350 418 466 418 590 454 C714 490 830 490 954 454 C1078 418 1194 418 1318 454" stroke="#ffffff" stroke-opacity="0.07" stroke-width="4" fill="none"/>
+  <path d="M226 558 C350 522 466 522 590 558 C714 594 830 594 954 558 C1078 522 1194 522 1318 558" stroke="#f0a500" stroke-opacity="0.12" stroke-width="4" fill="none"/>
+  <rect x="182" y="210" width="1236" height="76" rx="20" fill="#151515"/>
+  <rect x="204" y="228" width="296" height="40" rx="14" fill="#232323"/>
+  <rect x="532" y="228" width="296" height="40" rx="14" fill="#232323"/>
+  <rect x="860" y="228" width="296" height="40" rx="14" fill="#232323"/>
+  <rect x="1188" y="228" width="208" height="40" rx="14" fill="#232323"/>
+  <g transform="translate(220 724)">
+    <rect x="0" y="0" width="250" height="110" rx="18" fill="#141414"/>
+    <rect x="18" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.16"/>
+    <rect x="78" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.08"/>
+    <rect x="138" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.16"/>
+  </g>
+  <g transform="translate(1108 724)">
+    <rect x="0" y="0" width="250" height="110" rx="18" fill="#141414"/>
+    <rect x="18" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.16"/>
+    <rect x="78" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.08"/>
+    <rect x="138" y="18" width="46" height="74" rx="10" fill="#f0a500" fill-opacity="0.16"/>
+  </g>
+  <g transform="translate(560 650)">
+    <path d="M0 120 C40 58 94 22 166 0 C216 -16 276 -18 342 0 C414 20 472 56 510 118" stroke="#f0a500" stroke-opacity="0.3" stroke-width="8" fill="none"/>
+  </g>
+</svg>

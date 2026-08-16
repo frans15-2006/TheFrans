@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized map of Puerto Princesa with Palawan Uno Hotel marker">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1250" cy="170" r="220" fill="url(#glow)"/>
+  <g opacity="0.9" stroke="#202020" stroke-width="3" fill="none">
+    <path d="M160 180H1440"/>
+    <path d="M160 300H1440"/>
+    <path d="M160 420H1440"/>
+    <path d="M160 540H1440"/>
+    <path d="M160 660H1440"/>
+    <path d="M160 780H1440"/>
+    <path d="M240 110V890"/>
+    <path d="M400 110V890"/>
+    <path d="M560 110V890"/>
+    <path d="M720 110V890"/>
+    <path d="M880 110V890"/>
+    <path d="M1040 110V890"/>
+    <path d="M1200 110V890"/>
+    <path d="M1360 110V890"/>
+  </g>
+  <path d="M280 740 C390 640 540 600 680 580 C860 556 1000 620 1112 546 C1208 484 1300 420 1360 320" stroke="#f0a500" stroke-opacity="0.32" stroke-width="10" fill="none"/>
+  <path d="M300 760 C420 690 542 664 678 648 C854 628 980 688 1094 638 C1200 592 1300 520 1370 432" stroke="#f0a500" stroke-opacity="0.12" stroke-width="6" fill="none"/>
+  <g transform="translate(860 470)">
+    <path d="M0 0c0-46 36-82 82-82s82 36 82 82c0 74-82 150-82 150S0 74 0 0Z" fill="#f0a500" fill-opacity="0.92"/>
+    <circle cx="82" cy="0" r="28" fill="#080808"/>
+    <circle cx="82" cy="0" r="12" fill="#f0a500"/>
+  </g>
+  <g fill="#f0a500" fill-opacity="0.12">
+    <rect x="210" y="210" width="56" height="22" rx="11"/>
+    <rect x="1320" y="718" width="74" height="22" rx="11"/>
+    <rect x="1068" y="176" width="94" height="22" rx="11"/>
+    <rect x="466" y="548" width="108" height="22" rx="11"/>
+  </g>
+  <rect x="128" y="840" width="1344" height="56" rx="18" fill="#0d0d0d" stroke="#282828"/>
+  <text x="160" y="876" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="2">PALAWAN UNO HOTEL</text>
+  <text x="920" y="876" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="1.5">9.755269, 118.747086</text>
+</svg>

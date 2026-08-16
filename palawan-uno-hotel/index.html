@@ -1,196 +1,1299 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Palawan Uno Hotel — Puerto Princesa</title>
-<meta name="description" content="Palawan Uno Hotel — a 50-room full-service hotel in Barangay San Pedro, Puerto Princesa. Restaurant, spa, gym, pool, function halls, and a free hourly airport shuttle.">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0a0a0a;
-  --ink:#f0ead6;
-  --ink-dim:#a8a195;
-  --ink-faint:#5c574c;
-  --gold:#f0a500;
-  --line:rgba(240,234,214,0.1);
-  --line-strong:rgba(240,234,214,0.2);
-  --ff-display:'Bricolage Grotesque', sans-serif;
-  --ff-mono:'DM Mono', monospace;
-  --ease:cubic-bezier(.16,.84,.32,1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);font-family:var(--ff-display);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5;}
-a{color:inherit;text-decoration:none;}
-img{display:block;max-width:100%;}
-::selection{background:var(--gold);color:#0a0a0a;}
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palawan Uno Hotel | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Palawan Uno Hotel in Puerto Princesa, Palawan. Verified 3-star city stay on National Highway, Bgy. San Pedro with pool, restaurant, WiFi, parking, and 24-hour front desk service.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Palawan Uno Hotel | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified 3-star stay on National Highway, Bgy. San Pedro with pool, restaurant, WiFi, parking, and 24-hour front desk service.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/palawan-uno-hotel/assets/img/og-image.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/palawan-uno-hotel/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/palawan-uno-hotel/">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #101010;
+      --panel-2: #0f0f0f;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.45);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --faint: rgba(234, 234, 234, 0.54);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.16);
+      --accent-glow: rgba(240, 165, 0, 0.24);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius: 1.35rem;
+      --radius-sm: 0.85rem;
+      --container: min(1200px, calc(100% - 1.5rem));
+    }
 
-.wrap{max-width:980px;margin:0 auto;padding:0 6vw;}
-.eyebrow{font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.7em;margin-bottom:1.2em;}
-.eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
-h1,h2{font-family:var(--ff-display);font-weight:600;letter-spacing:-.01em;line-height:1.05;}
-h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;}
-h2{font-size:clamp(1.6rem,3.4vw,2.4rem);}
-p{color:var(--ink-dim);font-size:1rem;max-width:38em;}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
-/* ---- nav ---- */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 6vw;font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);backdrop-filter:blur(6px);background:linear-gradient(to bottom, rgba(10,10,10,.7), transparent);}
-.topbar b{color:var(--ink);font-family:var(--ff-display);letter-spacing:0;text-transform:none;font-weight:700;}
-.topbar .call{color:var(--gold);}
+    .mono { font-family: "JetBrains Mono", monospace; }
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 0.92;
+      font-weight: 400;
+    }
 
-/* ---- hero ---- */
-#hero{min-height:92vh;display:flex;align-items:center;padding-top:80px;position:relative;}
-#hero::before{
-  content:'';position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(ellipse at 75% 20%, rgba(240,165,0,.10), transparent 55%),
-             radial-gradient(ellipse at 10% 90%, rgba(240,165,0,.06), transparent 50%);
-}
-.hero-sub{margin-top:1.4em;}
-.hero-meta{display:flex;gap:2em;flex-wrap:wrap;margin-top:2.6em;font-family:var(--ff-mono);font-size:.78rem;color:var(--ink-faint);}
-.hero-meta b{color:var(--gold);display:block;font-size:1rem;font-family:var(--ff-display);font-weight:700;}
-.btn-row{display:flex;gap:1em;margin-top:2.4em;flex-wrap:wrap;}
-.btn{font-family:var(--ff-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.95em 1.6em;border-radius:2px;transition:transform .3s var(--ease),background .3s var(--ease);}
-.btn--solid{background:var(--gold);color:#0a0a0a;}
-.btn--solid:hover{transform:translateY(-2px);}
-.btn--ghost{border:1px solid var(--line-strong);color:var(--ink);}
-.btn--ghost:hover{border-color:var(--gold);color:var(--gold);}
+    .container { width: var(--container); margin: 0 auto; }
 
-/* ---- sections ---- */
-.section{padding:clamp(4rem,10vh,6.5rem) 0;border-top:1px solid var(--line);}
-.section-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);}
-@media (max-width:760px){.section-grid{grid-template-columns:1fr;}}
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.9), rgba(8, 8, 8, 0.48));
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+    .nav-row {
+      min-height: 4.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-lockup {
+      font-family: "Bebas Neue", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .site-nav {
+      display: none;
+      align-items: center;
+      gap: 1.25rem;
+      color: var(--muted);
+    }
+    .site-nav a {
+      position: relative;
+      padding: 0.35rem 0;
+      transition: color 0.25s ease;
+    }
+    .site-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.05rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s ease;
+    }
+    .site-nav a:hover,
+    .site-nav a:focus-visible { color: var(--text); }
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after { transform: scaleX(1); }
+    .nav-call {
+      border: 1px solid rgba(240, 165, 0, 0.35);
+      color: var(--text);
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-family: "JetBrains Mono", monospace;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      background: rgba(240, 165, 0, 0.05);
+    }
+    .nav-call:hover,
+    .nav-call:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.85);
+      background: rgba(240, 165, 0, 0.1);
+    }
 
-.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.5em;}
-.amenity{background:var(--bg);padding:1.6em 1.4em;}
-.amenity .ic{color:var(--gold);font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
-.amenity .lbl{margin-top:.5em;font-size:.95rem;}
-@media (max-width:760px){.amenity-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:480px){.amenity-grid{grid-template-columns:1fr;}}
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      isolation: isolate;
+      padding-top: 4.8rem;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-visual {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.92) brightness(0.72) contrast(1.04);
+      transform: scale(1.03);
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.56) 66%, rgba(8, 8, 8, 0.92) 100%),
+        radial-gradient(circle at 50% 18%, rgba(240, 165, 0, 0.18), transparent 28%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.85;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+    .orb-a {
+      width: 22rem;
+      height: 22rem;
+      right: -4rem;
+      top: 4rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.32) 0%, rgba(240, 165, 0, 0.08) 48%, transparent 72%);
+    }
+    .orb-b {
+      width: 14rem;
+      height: 14rem;
+      left: -2rem;
+      bottom: 12%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18) 0%, rgba(240, 165, 0, 0.04) 58%, transparent 74%);
+      animation-delay: -4s;
+    }
+    .orb-c {
+      width: 18rem;
+      height: 18rem;
+      left: 28%;
+      top: 14%;
+      background: radial-gradient(circle, rgba(234, 234, 234, 0.11) 0%, rgba(240, 165, 0, 0.07) 48%, transparent 70%);
+      animation-delay: -8s;
+    }
 
-.quote{border-left:2px solid var(--gold);padding-left:1.4em;margin-top:1.8em;font-style:italic;color:var(--ink);font-size:1.05rem;max-width:34em;}
-.quote cite{display:block;margin-top:.7em;font-style:normal;font-family:var(--ff-mono);font-size:.75rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
+    .hero-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(3.5rem, 8vw, 6.5rem) 0 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-copy {
+      max-width: 42rem;
+      display: grid;
+      gap: 1.2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-copy .kicker {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+      font-size: clamp(4.2rem, 12vw, 9rem);
+      text-wrap: balance;
+    }
+    .hero-title .hook {
+      color: rgba(234, 234, 234, 0.84);
+      font-size: 0.42em;
+      line-height: 0.9;
+    }
+    .hero-lede {
+      margin: 0;
+      max-width: 34rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.35vw, 1.14rem);
+    }
+    .hero-ctas,
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3.2rem;
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      letter-spacing: 0.04em;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+      will-change: transform;
+    }
+    .btn:hover,
+    .btn:focus-visible { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(180deg, #f4b628, #e69900);
+      color: #110b00;
+      box-shadow: 0 10px 24px rgba(240, 165, 0, 0.25);
+      font-weight: 700;
+    }
+    .btn-ghost {
+      border: 1px solid rgba(234, 234, 234, 0.2);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.62);
+      background: rgba(240, 165, 0, 0.08);
+    }
+    .pulse {
+      animation: pulseGlow 3.3s ease-in-out infinite;
+    }
 
-.near-list{margin-top:1.6em;display:flex;flex-direction:column;gap:.7em;font-family:var(--ff-mono);font-size:.85rem;}
-.near-list div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:.6em;color:var(--ink-dim);}
-.near-list div span:last-child{color:var(--ink);}
+    .scroll-hint {
+      position: absolute;
+      right: 0;
+      bottom: 1.35rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bob 2.6s ease-in-out infinite;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 4.2rem;
+      background: linear-gradient(180deg, transparent, rgba(240, 165, 0, 0.85), transparent);
+    }
 
-.contact-card{border:1px solid var(--line-strong);padding:2.2em;margin-top:1.6em;}
-.contact-card .row{display:flex;justify-content:space-between;align-items:baseline;padding:.7em 0;border-bottom:1px solid var(--line);font-family:var(--ff-mono);font-size:.85rem;}
-.contact-card .row:last-child{border-bottom:none;}
-.contact-card .row span:first-child{color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
-.contact-card .row span:last-child{color:var(--gold);}
+    .section {
+      padding: clamp(4.75rem, 8vw, 7.5rem) 0;
+      position: relative;
+    }
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1.9rem;
+      max-width: 43rem;
+    }
+    .section-label {
+      margin: 0;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.74rem;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2.7rem, 7vw, 5rem);
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 34rem;
+    }
 
-footer{padding:3em 6vw 3em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;font-family:var(--ff-mono);font-size:.72rem;color:var(--ink-faint);border-top:1px solid var(--line);}
+    .room-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    .room-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.012));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      min-height: 100%;
+    }
+    .room-card:hover,
+    .room-card:focus-within {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.08), var(--shadow);
+    }
+    .room-media {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      background: #0e0e0e;
+    }
+    .room-media img,
+    .gallery-item img,
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .room-card:hover .room-media img,
+    .gallery-item:hover img,
+    .gallery-item:focus-within img {
+      transform: scale(1.03);
+    }
+    .room-media img {
+      transform: scale(1.001);
+      transition: transform 0.45s ease;
+    }
+    .room-body {
+      padding: 1.15rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .room-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .room-name {
+      margin: 0;
+      font-size: 2.25rem;
+      line-height: 0.9;
+    }
+    .room-rate {
+      margin: 0;
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.86rem;
+      white-space: nowrap;
+    }
+    .room-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.38rem 0.62rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      background: rgba(240, 165, 0, 0.08);
+      color: rgba(234, 234, 234, 0.96);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .room-link {
+      width: fit-content;
+      padding: 0.62rem 0.92rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    }
+    .room-link:hover,
+    .room-link:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.65);
+      background: rgba(240, 165, 0, 0.08);
+    }
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
-@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
-</style>
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+    .amenity-block {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1rem;
+      display: grid;
+      gap: 0.7rem;
+      min-height: 100%;
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+    .amenity-block:hover,
+    .amenity-block:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.5);
+    }
+    .amenity-icon {
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(240, 165, 0, 0.08);
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      color: var(--accent);
+    }
+    .amenity-icon svg { width: 1.32rem; height: 1.32rem; }
+    .amenity-category {
+      margin: 0;
+      color: var(--faint);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .amenity-label {
+      margin: 0;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.95rem;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: #0c0c0c;
+      min-height: 18rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .gallery-item img {
+      transition: transform 0.45s ease, filter 0.45s ease;
+      filter: saturate(0.95) brightness(0.88);
+    }
+    .gallery-item:hover,
+    .gallery-item:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.62);
+    }
+    .gallery-item:hover img,
+    .gallery-item:focus-within img {
+      transform: scale(1.03);
+      filter: saturate(1) brightness(0.78);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.02) 35%, rgba(8, 8, 8, 0.82) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay,
+    .gallery-item:focus-within .gallery-overlay { opacity: 1; }
+    .gallery-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+    }
+    .gallery-note {
+      margin: 0.2rem 0 0;
+      color: rgba(234, 234, 234, 0.78);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .gallery-pill {
+      align-self: flex-start;
+      justify-self: end;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      background: rgba(240, 165, 0, 0.12);
+      color: rgba(234, 234, 234, 0.95);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+    .location-copy {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012));
+      padding: 1.15rem;
+      display: grid;
+      gap: 0.95rem;
+    }
+    .location-head {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .location-head h2 { margin: 0; font-size: clamp(2.6rem, 7vw, 4.5rem); }
+    .location-address {
+      margin: 0;
+      padding: 0.95rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      background: rgba(240, 165, 0, 0.05);
+      color: rgba(234, 234, 234, 0.94);
+      word-break: break-word;
+    }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 0;
+    }
+    .facts div {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      padding-top: 0.7rem;
+    }
+    .facts dt {
+      color: var(--faint);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+    .facts dd {
+      margin: 0;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .contact-stack {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .contact-stack a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: fit-content;
+      color: rgba(234, 234, 234, 0.96);
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .contact-stack a::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.35);
+    }
+    .contact-stack a:hover,
+    .contact-stack a:focus-visible {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .map-frame {
+      position: relative;
+      overflow: hidden;
+      min-height: 22rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      background: #0b0b0b;
+      box-shadow: var(--shadow);
+    }
+    .map-caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(8, 8, 8, 0.72);
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    .booking-cta {
+      padding: clamp(4.5rem, 8vw, 7rem) 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(240, 165, 0, 0.08), rgba(8, 8, 8, 0.94));
+      border-top: 1px solid rgba(240, 165, 0, 0.2);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.16);
+    }
+    .booking-inner {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+    .booking-inner h2 {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+    }
+    .booking-inner p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.82);
+      max-width: 36rem;
+    }
+
+    .site-footer {
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 1.4rem;
+      grid-template-columns: 1fr;
+    }
+    .footer-col {
+      display: grid;
+      gap: 0.85rem;
+      align-content: start;
+    }
+    .footer-brand {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+    .footer-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 22rem;
+    }
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+      display: grid;
+      gap: 0.6rem;
+    }
+    .footer-title {
+      margin: 0;
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .footer-links a,
+    .footer-contact a,
+    .footer-social a {
+      width: fit-content;
+      color: rgba(234, 234, 234, 0.88);
+      transition: color 0.24s ease, transform 0.24s ease;
+    }
+    .footer-links a:hover,
+    .footer-links a:focus-visible,
+    .footer-contact a:hover,
+    .footer-contact a:focus-visible,
+    .footer-social a:hover,
+    .footer-social a:focus-visible {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+    .social-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.62rem 0.86rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.78rem;
+    }
+    .social-link svg {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 auto;
+      color: var(--accent);
+    }
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.56);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ripple-wave {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.34);
+      transform: translate(-50%, -50%) scale(0);
+      pointer-events: none;
+      animation: ripple 0.65s ease-out forwards;
+    }
+
+    .reveal-item { will-change: transform, opacity; }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    @keyframes drift {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(10px, -12px, 0) scale(1.05); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 10px 24px rgba(240, 165, 0, 0.24); }
+      50% { box-shadow: 0 18px 38px rgba(240, 165, 0, 0.36); }
+    }
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(18);
+        opacity: 0;
+      }
+    }
+
+    @media (min-width: 700px) {
+      .site-nav { display: flex; }
+      .room-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .amenity-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1.35fr 0.8fr 0.95fr 0.9fr; }
+      .location-grid { grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr); }
+      .booking-inner { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+      .booking-inner .cta-row { justify-content: flex-end; }
+    }
+    @media (min-width: 1120px) {
+      .room-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .amenity-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: 116px;
+        grid-auto-flow: dense;
+      }
+      .booking-inner p { max-width: 32rem; }
+    }
+    @media (max-width: 1119px) {
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-item {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        min-height: 16rem;
+      }
+    }
+    @media (max-width: 699px) {
+      .hero-inner { padding-top: 3rem; }
+      .scroll-hint { right: 0.35rem; bottom: 0.9rem; }
+      .facts { grid-template-columns: 1fr; }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .hero-title { font-size: clamp(3.7rem, 20vw, 5.1rem); }
+      .hero-ctas, .cta-row { width: 100%; }
+      .btn { width: 100%; }
+      .amenity-grid { grid-template-columns: 1fr; }
+      .room-name { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
-
-<nav class="topbar">
-  <b>Palawan Uno Hotel</b>
-  <a class="call" href="tel:+639175999666">+63 917 599 9666</a>
-</nav>
-
-<main>
-<section id="hero">
-  <div class="wrap">
-    <span class="eyebrow">Hotel · Brgy. San Pedro, Puerto Princesa</span>
-    <h1>Comfort and value,<br>five minutes from the runway.</h1>
-    <p class="hero-sub">Fifty rooms, a full restaurant, a spa, a gym, and a pool — all under one roof in Barangay San Pedro. Palawan Uno has run the same playbook since 2009: hotel-grade comfort near the airport, without the resort markup, plus a shuttle that runs to and from the terminal every hour.</p>
-    <div class="hero-meta">
-      <div><b>50</b>Rooms &amp; suites</div>
-      <div><b>5 min</b>From the airport</div>
-      <div><b>Since 2009</b>Open and operating</div>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand-lockup" href="#top">Palawan Uno Hotel</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#booking">Book</a>
+      </nav>
+      <a class="nav-call ripple" href="tel:+63484339999">Call</a>
     </div>
-    <div class="btn-row">
-      <a class="btn btn--solid" href="tel:+639175999666">Call to Book</a>
-      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Palawan+Uno+Hotel%2C+National+Highway%2C+Barangay+San+Pedro%2C+Puerto+Princesa+City%2C+Palawan" target="_blank" rel="noopener">Get Directions</a>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" id="about">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">The Stay</span><h2>Full-service,<br>without the resort price.</h2></div>
-    <div>
-      <p>Most budget stays near an airport mean a bed and not much else. Palawan Uno runs the opposite playbook — an on-site restaurant, a working spa, a gym, function halls for events, even a karaoke room — built into a property designed specifically for travelers passing through Puerto Princesa, not just somewhere to lodge them.</p>
-      <div class="quote reveal">Clean, comfortable rooms and staff that actually go out of their way to help — exactly what you want for a stop near the airport.<cite>Guest impression, paraphrased from recent reviews</cite></div>
-    </div>
-  </div>
-</section>
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-visual" src="assets/img/hero-scene.svg" alt="">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="orb orb-c"></div>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="kicker mono reveal-item">Verified 3-star hotel on National Highway, Bgy. San Pedro</p>
+          <h1 class="hero-title display reveal-item"><span>Palawan Uno Hotel</span><span class="hook">Puerto Princesa, Palawan</span></h1>
+          <p class="hero-lede reveal-item">A city-center base with outdoor pool, restaurant, WiFi, parking, elevator access, and 24-hour front desk service.</p>
+          <div class="hero-ctas reveal-item">
+            <a class="btn btn-primary ripple pulse" href="tel:+63484339999">Book Now</a>
+            <a class="btn btn-ghost ripple" href="#rooms">Explore Rooms</a>
+          </div>
+        </div>
+        <a class="scroll-hint mono" href="#rooms" aria-label="Scroll to rooms">
+          <span class="scroll-hint-line"></span>
+          <span>Scroll</span>
+        </a>
+      </div>
+    </section>
 
-<section class="section" id="amenities">
-  <div class="wrap">
-    <span class="eyebrow">What's Included</span>
-    <h2>Everything a resort<br>has, minus the markup.</h2>
-    <div class="amenity-grid reveal">
-      <div class="amenity"><div class="ic">Connectivity</div><div class="lbl">Free WiFi throughout</div></div>
-      <div class="amenity"><div class="ic">Comfort</div><div class="lbl">Air-conditioned rooms</div></div>
-      <div class="amenity"><div class="ic">Dining</div><div class="lbl">UNO Resto on-site</div></div>
-      <div class="amenity"><div class="ic">Wellness</div><div class="lbl">Full-service spa</div></div>
-      <div class="amenity"><div class="ic">Recreation</div><div class="lbl">Outdoor swimming pool</div></div>
-      <div class="amenity"><div class="ic">Recreation</div><div class="lbl">Karaoke rooms</div></div>
-      <div class="amenity"><div class="ic">Fitness</div><div class="lbl">Gym access</div></div>
-      <div class="amenity"><div class="ic">Events</div><div class="lbl">Function halls</div></div>
-      <div class="amenity"><div class="ic">Transport</div><div class="lbl">Free hourly airport shuttle</div></div>
-    </div>
-  </div>
-</section>
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label mono reveal-item">Rooms</p>
+          <h2 class="display reveal-item">Verified room snapshots</h2>
+          <p class="reveal-item">Rates below reflect current comparison-site snapshots and can shift by date and provider.</p>
+        </div>
+        <div class="room-grid" id="roomGrid"></div>
+      </div>
+    </section>
 
-<section class="section" id="location">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">Getting Here</span><h2>Central, and five<br>minutes from the gate.</h2></div>
-    <div>
-      <p>National Highway, Barangay San Pedro — close enough to the airport that the hotel runs its own shuttle on the hour, and central enough that the city's main landmarks are a short drive away.</p>
-      <div class="near-list reveal">
-        <div><span>Puerto Princesa Airport</span><span>~1.6 km</span></div>
-        <div><span>Baywalk Park</span><span>~2 km</span></div>
-        <div><span>Mendoza City Park</span><span>~2.8 km</span></div>
-        <div><span>Immaculate Conception Cathedral</span><span>~3.1 km</span></div>
-        <div><span>Palawan Butterfly Garden</span><span>~3.9 km</span></div>
+    <section class="section" id="amenities">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label mono reveal-item">Amenities</p>
+          <h2 class="display reveal-item">Connectivity, dining, recreation, services</h2>
+          <p class="reveal-item">Amenities below are verified from current hotel and booking-site listings.</p>
+        </div>
+        <div class="amenity-grid" id="amenityGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label mono reveal-item">Gallery</p>
+          <h2 class="display reveal-item">Property details in motion</h2>
+          <p class="reveal-item">Stylized SVG views of the hotel, rooms, and on-site atmosphere.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container location-grid">
+        <div class="location-copy">
+          <div class="location-head">
+            <p class="section-label mono reveal-item">Location</p>
+            <h2 class="display reveal-item">National Highway, Bgy. San Pedro</h2>
+          </div>
+          <p class="location-address mono reveal-item">National Highway Bgy San Pedro, Puerto Princesa, Palawan, 5300, Philippines</p>
+          <dl class="facts reveal-item">
+            <div>
+              <dt>Coordinates</dt>
+              <dd>9.755269, 118.747086</dd>
+            </div>
+            <div>
+              <dt>Check-in</dt>
+              <dd>14:00</dd>
+            </div>
+            <div>
+              <dt>Check-out</dt>
+              <dd>12:00</dd>
+            </div>
+            <div>
+              <dt>Front desk</dt>
+              <dd>24 hours</dd>
+            </div>
+          </dl>
+          <div class="contact-stack reveal-item">
+            <a href="tel:+63484339999">+63 48 433 9999</a>
+            <a href="mailto:onlinepalawanunohotel@gmail.com">onlinepalawanunohotel@gmail.com</a>
+            <a href="mailto:sales.palawanunohotel@gmail.com">sales.palawanunohotel@gmail.com</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/palawanunohotelofficial/">Official Facebook</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/?mlat=9.755269&mlon=118.747086#map=17/9.755269/118.747086">OpenStreetMap</a>
+          </div>
+          <p class="reveal-item" style="margin:0;color:var(--faint);font-family:'JetBrains Mono', monospace;font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;">Free airport pickup is available by arrangement from 5:00 am to 7:00 pm.</p>
+        </div>
+        <div class="map-frame reveal-item">
+          <img src="assets/img/map.svg" alt="Stylized map of Puerto Princesa locating Palawan Uno Hotel">
+          <div class="map-caption mono">9.755269, 118.747086</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-cta" id="booking">
+      <div class="container booking-inner">
+        <div>
+          <p class="section-label mono reveal-item">Booking</p>
+          <h2 class="display reveal-item">Reserve your Puerto Princesa base</h2>
+          <p class="reveal-item">Call the hotel directly for current rates, airport pickup, and room availability.</p>
+        </div>
+        <div class="cta-row reveal-item">
+          <a class="btn btn-primary ripple pulse" href="tel:+63484339999">Call +63 48 433 9999</a>
+          <a class="btn btn-ghost ripple" href="mailto:onlinepalawanunohotel@gmail.com">Email Reservations</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Palawan Uno Hotel</div>
+        <p class="footer-copy">Puerto Princesa city stay verified along National Highway, Bgy. San Pedro, with pool, dining, and direct booking contact points.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Quick Links</p>
+        <div class="footer-links">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a href="#booking">Book</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Contact</p>
+        <div class="footer-contact mono">
+          <a href="tel:+63484339999">+63 48 433 9999</a>
+          <a href="mailto:onlinepalawanunohotel@gmail.com">onlinepalawanunohotel@gmail.com</a>
+          <a href="mailto:sales.palawanunohotel@gmail.com">sales.palawanunohotel@gmail.com</a>
+          <span>National Highway Bgy San Pedro, Puerto Princesa, Palawan 5300, Philippines</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Connect</p>
+        <div class="social-list">
+          <a class="social-link" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/palawanunohotelofficial/" aria-label="Palawan Uno Hotel on Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2h-3a4 4 0 0 0-4 4v3H7v4h3v9h4v-9h3.2l.8-4H14V6a1 1 0 0 1 1-1h2Z"></path></svg>
+            Facebook
+          </a>
+          <a class="social-link" target="_blank" rel="noopener noreferrer" href="https://www.openstreetmap.org/?mlat=9.755269&mlon=118.747086#map=17/9.755269/118.747086" aria-label="Open map location in OpenStreetMap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>
+            Map
+          </a>
+          <a class="social-link" href="mailto:onlinepalawanunohotel@gmail.com" aria-label="Send an email to Palawan Uno Hotel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            Email
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="container footer-bottom mono">© 2026 Palawan Uno Hotel. Verified Puerto Princesa copy and coordinates.</div>
+  </footer>
 
-<section class="section" id="contact">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">Book Direct</span><h2>Skip the OTA<br>markup. Call ahead.</h2><p>Booking direct means no third-party commission baked into the rate — and it means the shuttle has your flight details before you land, not after.</p></div>
-    <div>
-      <div class="contact-card reveal">
-        <div class="row"><span>Mobile</span><span><a href="tel:+639175999666">+63 917 599 9666</a></span></div>
-        <div class="row"><span>Landline</span><span><a href="tel:+63484339999">(048) 433-9999</a></span></div>
-        <div class="row"><span>Address</span><span>National Highway, Brgy. San Pedro</span></div>
-        <div class="row"><span>Facebook</span><span><a href="https://www.facebook.com/palawanunohotel/" target="_blank" rel="noopener">palawanunohotel</a></span></div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <script>
+    const phone = "+63484339999";
+    const email = "onlinepalawanunohotel@gmail.com";
+
+    const icon = {
+      wifi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9a12 12 0 0 1 14 0"></path><path d="M8.5 12.5a7 7 0 0 1 7 0"></path><path d="M12 16h0"></path></svg>',
+      signal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h3"></path><path d="M7 12a5 5 0 0 1 10 0"></path><path d="M10.5 12a1.5 1.5 0 0 1 3 0"></path></svg>',
+      plate: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"></circle><path d="M12 5v14"></path><path d="M9 8h6"></path></svg>',
+      coffee: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h10a3 3 0 0 1 0 6H6z"></path><path d="M6 15a4 4 0 0 0 8 0"></path><path d="M17 9h1a2 2 0 0 1 0 4h-1"></path><path d="M8 4c0 1 1 1 1 2s-1 1-1 2"></path><path d="M12 4c0 1 1 1 1 2s-1 1-1 2"></path></svg>',
+      room: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-4 8 4v11"></path><path d="M9 20v-6h6v6"></path><path d="M8 12h8"></path></svg>',
+      pool: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18"></path><path d="M5 14c1.2 0 1.8-1 3-1s1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1"></path><path d="M8 7a4 4 0 0 1 8 0"></path></svg>',
+      dumbbell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg>',
+      bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Z"></path><path d="M5 17h14l-1.3-2.5A8 8 0 0 1 17 11V9a5 5 0 1 0-10 0v2a8 8 0 0 1-.7 3.5L5 17Z"></path></svg>',
+      car: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14h16l-1.4-5.2A2 2 0 0 0 16.7 7H7.3a2 2 0 0 0-1.9 1.8L4 14Z"></path><path d="M5 14v4"></path><path d="M19 14v4"></path><circle cx="7.5" cy="18" r="1.2"></circle><circle cx="16.5" cy="18" r="1.2"></circle></svg>',
+      plane: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 16 20-5-20-5 5 5-5 5Z"></path><path d="M7 11h6"></path></svg>',
+      elevator: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 9l3-3 3 3"></path><path d="M9 15l3 3 3-3"></path></svg>'
+    };
+
+    const rooms = [
+      {
+        name: "Standard Room",
+        rate: "From $27/night",
+        tag: "2 twin beds",
+        image: "assets/img/room-standard.svg",
+        desc: "Momondo lists the entry room at $27 per night with no inclusions shown."
+      },
+      {
+        name: "Double Room",
+        rate: "From $33/night",
+        tag: "double",
+        image: "assets/img/room-standard.svg",
+        desc: "Momondo lists a double option at $33 per night."
+      },
+      {
+        name: "Queen Room",
+        rate: "From $37/night",
+        tag: "1 queen bed",
+        image: "assets/img/room-superior.svg",
+        desc: "Momondo lists a queen option at $37 per night."
+      },
+      {
+        name: "Standard Twin Room",
+        rate: "Inquire",
+        tag: "2 twin beds",
+        image: "assets/img/room-standard.svg",
+        desc: "Reservations.com lists 2 twin beds, 258 sq ft, city views, free WiFi, a 32-inch LED TV, a mini fridge, minibar, electric kettle, and room service with restricted hours."
+      },
+      {
+        name: "Superior Room",
+        rate: "Inquire",
+        tag: "2 large twin beds",
+        image: "assets/img/room-superior.svg",
+        desc: "Reservations.com lists 301 sq ft, a balcony with garden views, free WiFi, a 32-inch LED TV, fridge, minibar, electric kettle, and room service with restricted hours."
+      },
+      {
+        name: "Superior Premium Room",
+        rate: "Inquire",
+        tag: "1 queen or 2 double beds",
+        image: "assets/img/room-superior.svg",
+        desc: "Reservations.com lists 301 sq ft, a balcony with city views, free WiFi, premium channels, refrigerator, minibar, coffee or tea maker, and electric kettle."
+      }
+    ];
+
+    const amenities = [
+      { category: "Connectivity", label: "Free WiFi", icon: icon.wifi },
+      { category: "Connectivity", label: "WiFi in public areas", icon: icon.signal },
+      { category: "Dining", label: "Restaurant", icon: icon.plate },
+      { category: "Dining", label: "Breakfast available", icon: icon.coffee },
+      { category: "Dining", label: "Room service", icon: icon.room },
+      { category: "Recreation", label: "Outdoor pool", icon: icon.pool },
+      { category: "Recreation", label: "Fitness center", icon: icon.dumbbell },
+      { category: "Services", label: "24-hour front desk", icon: icon.bell },
+      { category: "Services", label: "Free parking", icon: icon.car },
+      { category: "Services", label: "Free airport pickup", icon: icon.plane },
+      { category: "Services", label: "Elevator access", icon: icon.elevator }
+    ];
+
+    const gallery = [
+      { title: "Arrival", note: "Full-bleed hero scene", pill: "Puerto Princesa", image: "assets/img/hero-scene.svg", c: 6, r: 3 },
+      { title: "Pool Deck", note: "Outdoor recreation", pill: "Pool", image: "assets/img/pool.svg", c: 3, r: 2 },
+      { title: "Guest Room", note: "Standard twin layout", pill: "Room", image: "assets/img/room-standard.svg", c: 3, r: 2 },
+      { title: "Lobby", note: "Check-in space", pill: "Lobby", image: "assets/img/lobby.svg", c: 4, r: 2 },
+      { title: "Dining", note: "Restaurant setting", pill: "Food", image: "assets/img/dining.svg", c: 4, r: 3 },
+      { title: "Superior View", note: "Balcony room mood", pill: "Upgrade", image: "assets/img/room-superior.svg", c: 4, r: 2 }
+    ];
+
+    const roomGrid = document.getElementById('roomGrid');
+    roomGrid.innerHTML = rooms.map((room, index) => `
+      <article class="room-card" tabindex="0" data-index="${index}">
+        <div class="room-media">
+          <img src="${room.image}" alt="${room.name} illustration" loading="lazy">
+        </div>
+        <div class="room-body">
+          <div class="room-top">
+            <h3 class="room-name display">${room.name}</h3>
+            <p class="room-rate">${room.rate}</p>
+          </div>
+          <p class="room-desc">${room.desc}</p>
+          <div class="tag-row">
+            <span class="chip">${room.tag}</span>
+          </div>
+          <a class="room-link ripple" href="tel:${phone}">Call to book</a>
+        </div>
+      </article>
+    `).join('');
+
+    const amenityGrid = document.getElementById('amenityGrid');
+    amenityGrid.innerHTML = amenities.map((item) => `
+      <div class="amenity-block">
+        <div class="amenity-icon">${item.icon}</div>
+        <p class="amenity-category">${item.category}</p>
+        <p class="amenity-label">${item.label}</p>
       </div>
-    </div>
-  </div>
-</section>
-</main>
+    `).join('');
 
-<footer>
-  <span>Palawan Uno Hotel · Puerto Princesa City, Palawan</span>
-  <span>Built by francis.dev</span>
-</footer>
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = gallery.map((item, index) => `
+      <figure class="gallery-item" tabindex="0" style="grid-column: span ${item.c}; grid-row: span ${item.r};">
+        <img src="${item.image}" alt="${item.title} image" loading="lazy">
+        <figcaption class="gallery-overlay">
+          <div>
+            <p class="gallery-title">${item.title}</p>
+            <p class="gallery-note">${item.note}</p>
+          </div>
+          <span class="gallery-pill">${item.pill}</span>
+        </figcaption>
+      </figure>
+    `).join('');
 
-<script>
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io = new IntersectionObserver(function(entries,obs){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    document.querySelectorAll('.ripple').forEach((element) => {
+      element.addEventListener('pointerdown', (event) => {
+        const rect = element.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple-wave';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height) * 0.18}px`;
+        element.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+      });
     });
-  }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
-</script>
+
+    document.querySelectorAll('.room-card').forEach((card) => {
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          const link = card.querySelector('.room-link');
+          if (link) {
+            event.preventDefault();
+            link.click();
+          }
+        }
+      });
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      lerp: 0.09,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    gsap.defaults({ ease: 'power3.out' });
+
+    const heroTl = gsap.timeline({ delay: 0.15 });
+    heroTl.from('.hero .reveal-item', {
+      y: 36,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.12
+    });
+
+    gsap.to('.hero-visual', {
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    gsap.utils.toArray('.section').forEach((section) => {
+      const items = section.querySelectorAll('.reveal-item');
+      if (!items.length) return;
+      gsap.from(items, {
+        y: 34,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 76%'
+        }
+      });
+    });
+
+    gsap.from('#roomGrid .room-card', {
+      y: 42,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: '#rooms',
+        start: 'top 72%'
+      }
+    });
+
+    gsap.from('#amenityGrid .amenity-block', {
+      y: 28,
+      opacity: 0,
+      stagger: 0.07,
+      duration: 0.85,
+      scrollTrigger: {
+        trigger: '#amenities',
+        start: 'top 74%'
+      }
+    });
+
+    gsap.from('#galleryGrid .gallery-item', {
+      y: 36,
+      opacity: 0,
+      stagger: 0.09,
+      duration: 0.95,
+      scrollTrigger: {
+        trigger: '#gallery',
+        start: 'top 74%'
+      }
+    });
+
+    ScrollTrigger.refresh();
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Palawan Uno Hotel",
+    "url": "https://frans15-2006.github.io/TheFrans/palawan-uno-hotel/",
+    "image": "https://frans15-2006.github.io/TheFrans/palawan-uno-hotel/assets/img/og-image.svg",
+    "telephone": "+63 48 433 9999",
+    "email": "onlinepalawanunohotel@gmail.com",
+    "priceRange": "From $27/night",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "National Highway Bgy San Pedro",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.755269,
+      "longitude": 118.747086
+    },
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "3"
+    },
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Outdoor pool", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "24-hour front desk", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Fitness center", "value": true}
+    ]
+  }
+  </script>
 </body>
 </html>

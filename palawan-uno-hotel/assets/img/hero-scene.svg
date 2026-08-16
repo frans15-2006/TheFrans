@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized Palawan Uno Hotel scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="60%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#242424"/>
+      <stop offset="100%" stop-color="#0f0f0f"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#171717"/>
+      <stop offset="50%" stop-color="#202020"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1245" cy="165" r="210" fill="url(#sun)"/>
+  <path d="M0 760 C160 720 250 724 380 754 C500 782 620 822 760 800 C915 775 1040 715 1190 740 C1320 760 1450 802 1600 782 L1600 1000 L0 1000 Z" fill="#0c0c0c"/>
+  <path d="M120 800 H1480 L1570 1000 H30 Z" fill="#090909"/>
+  <g opacity="0.8">
+    <path d="M154 790 C280 760 334 762 448 790" stroke="#f0a500" stroke-opacity="0.26" stroke-width="3" fill="none"/>
+    <path d="M1060 780 C1180 750 1300 752 1452 786" stroke="#f0a500" stroke-opacity="0.16" stroke-width="3" fill="none"/>
+  </g>
+  <g transform="translate(530 250)">
+    <rect x="0" y="0" width="540" height="460" rx="16" fill="url(#glass)" stroke="#2b2b2b" stroke-width="2"/>
+    <rect x="28" y="30" width="484" height="400" rx="12" fill="#111" stroke="#2f2f2f" stroke-width="2"/>
+    <rect x="28" y="30" width="484" height="48" rx="12" fill="#161616"/>
+    <g fill="#f0a500">
+      <rect x="68" y="108" width="56" height="34" rx="4" opacity="0.92"/>
+      <rect x="154" y="108" width="56" height="34" rx="4" opacity="0.7"/>
+      <rect x="240" y="108" width="56" height="34" rx="4" opacity="0.92"/>
+      <rect x="326" y="108" width="56" height="34" rx="4" opacity="0.7"/>
+      <rect x="412" y="108" width="56" height="34" rx="4" opacity="0.92"/>
+      <rect x="68" y="168" width="56" height="34" rx="4" opacity="0.62"/>
+      <rect x="154" y="168" width="56" height="34" rx="4" opacity="0.85"/>
+      <rect x="240" y="168" width="56" height="34" rx="4" opacity="0.62"/>
+      <rect x="326" y="168" width="56" height="34" rx="4" opacity="0.85"/>
+      <rect x="412" y="168" width="56" height="34" rx="4" opacity="0.62"/>
+      <rect x="68" y="228" width="56" height="34" rx="4" opacity="0.92"/>
+      <rect x="154" y="228" width="56" height="34" rx="4" opacity="0.7"/>
+      <rect x="240" y="228" width="56" height="34" rx="4" opacity="0.92"/>
+      <rect x="326" y="228" width="56" height="34" rx="4" opacity="0.7"/>
+      <rect x="412" y="228" width="56" height="34" rx="4" opacity="0.92"/>
+    </g>
+    <rect x="62" y="308" width="416" height="84" rx="12" fill="#191919" stroke="#292929"/>
+    <rect x="78" y="324" width="110" height="52" rx="10" fill="#2a2a2a"/>
+    <rect x="212" y="324" width="110" height="52" rx="10" fill="#2a2a2a"/>
+    <rect x="346" y="324" width="110" height="52" rx="10" fill="#2a2a2a"/>
+  </g>
+  <g transform="translate(210 530)">
+    <path d="M0 140 C70 78 144 78 228 140" stroke="#f0a500" stroke-opacity="0.42" stroke-width="8" fill="none"/>
+    <path d="M700 140 C780 78 856 78 940 140" stroke="#f0a500" stroke-opacity="0.42" stroke-width="8" fill="none"/>
+    <rect x="100" y="80" width="760" height="130" rx="22" fill="url(#water)" stroke="#252525" stroke-width="2"/>
+    <path d="M134 118 C192 98 250 98 308 118 C366 138 424 138 482 118 C540 98 598 98 656 118 C714 138 772 138 830 118" stroke="#f0a500" stroke-opacity="0.15" stroke-width="4" fill="none"/>
+    <path d="M150 160 C208 140 264 140 322 160 C380 180 438 180 496 160 C554 140 610 140 668 160 C726 180 784 180 842 160" stroke="#ffffff" stroke-opacity="0.06" stroke-width="3" fill="none"/>
+  </g>
+  <g transform="translate(122 356) scale(1.02)">
+    <path d="M0 530 C40 470 86 420 150 390 C184 374 228 366 270 356 C290 352 310 344 326 330 C352 306 366 268 376 238 C386 206 396 170 416 144 C434 120 458 104 492 98 C516 94 534 96 552 100 C580 106 602 120 620 142 C642 168 650 196 652 228 C652 250 650 272 648 294 C644 336 636 380 616 414 C590 458 548 484 506 504 C460 526 406 540 352 552 C240 576 114 586 0 572 Z" fill="#0d0d0d" opacity="0.88"/>
+    <path d="M70 550 C102 518 138 486 184 466" stroke="#f0a500" stroke-opacity="0.45" stroke-width="6" fill="none"/>
+    <path d="M620 520 C680 490 736 462 796 454" stroke="#f0a500" stroke-opacity="0.38" stroke-width="6" fill="none"/>
+    <path d="M120 546 C154 512 186 482 232 458" stroke="#f0a500" stroke-opacity="0.24" stroke-width="5" fill="none"/>
+    <path d="M664 530 C716 496 770 474 822 468" stroke="#f0a500" stroke-opacity="0.22" stroke-width="5" fill="none"/>
+  </g>
+  <g transform="translate(1360 330)">
+    <rect x="0" y="0" width="34" height="520" rx="17" fill="#0b0b0b" stroke="#2b2b2b"/>
+    <circle cx="17" cy="50" r="18" fill="#f0a500" fill-opacity="0.36"/>
+    <circle cx="17" cy="182" r="18" fill="#f0a500" fill-opacity="0.2"/>
+    <circle cx="17" cy="314" r="18" fill="#f0a500" fill-opacity="0.36"/>
+    <circle cx="17" cy="446" r="18" fill="#f0a500" fill-opacity="0.2"/>
+  </g>
+</svg>
