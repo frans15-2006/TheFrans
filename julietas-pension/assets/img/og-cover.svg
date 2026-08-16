@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title>Julieta's Pension House social preview</title>
+  <desc>Dark amber hotel-style preview with the property name and Puerto Princesa location.</desc>
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="990" cy="144" r="110" fill="#f0a500" fill-opacity="0.22"/>
+  <circle cx="990" cy="144" r="46" fill="#eaeaea"/>
+  <path d="M0 430 C160 392 286 394 410 412 C558 432 682 436 830 400 C956 370 1072 370 1200 404 L1200 630 L0 630 Z" fill="#111111"/>
+  <path d="M104 126 H680 L744 226 L104 226 Z" fill="#141414" stroke="#2a2a2a" stroke-width="4"/>
+  <rect x="146" y="172" width="92" height="54" rx="9" fill="#f0a500"/>
+  <rect x="264" y="172" width="92" height="54" rx="9" fill="#f0a500"/>
+  <rect x="382" y="172" width="92" height="54" rx="9" fill="#f0a500"/>
+  <rect x="500" y="172" width="92" height="54" rx="9" fill="#f0a500"/>
+  <rect x="620" y="172" width="20" height="54" rx="9" fill="#f0a500"/>
+  <rect x="314" y="276" width="188" height="58" rx="11" fill="#f0a500"/>
+  <text x="408" y="313" text-anchor="middle" fill="#080808" font-family="Bebas Neue, sans-serif" font-size="34" letter-spacing="2">JULIETA'S PENSION HOUSE</text>
+  <text x="120" y="510" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700">Puerto Princesa, Palawan</text>
+  <text x="120" y="554" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="16" letter-spacing="3">BUDGET STAY NEAR PPS AIRPORT</text>
+  <path d="M915 246 C865 214 820 196 758 186 C792 234 800 286 778 344 C822 318 866 306 916 310 C936 274 950 258 972 240 C956 242 938 244 915 246 Z" fill="#0f2417"/>
+</svg>

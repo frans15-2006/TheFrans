@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" role="img" aria-labelledby="title desc">
+  <title>Julieta's Pension House hero illustration</title>
+  <desc>A stylized night scene of a budget guesthouse in Puerto Princesa with warm windows, palms, and an airport shuttle.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="55%" stop-color="#0f1012"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#2b2b2b"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <ellipse cx="1390" cy="250" rx="150" ry="150" fill="#f0a500" fill-opacity="0.22" filter="url(#softBlur)"/>
+  <circle cx="1390" cy="250" r="68" fill="#eaeaea" fill-opacity="0.92"/>
+  <circle cx="1372" cy="232" r="20" fill="#080808"/>
+  <g fill="#eaeaea" fill-opacity="0.75">
+    <circle cx="102" cy="114" r="3"/>
+    <circle cx="174" cy="198" r="2"/>
+    <circle cx="318" cy="110" r="2.6"/>
+    <circle cx="568" cy="182" r="2"/>
+    <circle cx="782" cy="90" r="2.4"/>
+    <circle cx="1170" cy="180" r="2"/>
+    <circle cx="1540" cy="112" r="3"/>
+  </g>
+
+  <path d="M0 820 C220 760 390 780 610 816 C868 858 1030 850 1230 804 C1390 768 1540 772 1800 830 L1800 1200 L0 1200 Z" fill="#0a0a0a"/>
+  <path d="M0 892 C220 850 410 866 620 908 C844 952 1022 962 1230 920 C1400 887 1550 884 1800 930 L1800 1200 L0 1200 Z" fill="#101010"/>
+
+  <g transform="translate(470 395)">
+    <rect x="0" y="120" width="760" height="430" rx="18" fill="#111111" stroke="#2b2b2b" stroke-width="3"/>
+    <path d="M-40 150 L380 0 L800 150 Z" fill="url(#roof)" stroke="#2b2b2b" stroke-width="3"/>
+    <rect x="84" y="222" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="238" y="222" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="392" y="222" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="546" y="222" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="84" y="362" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="238" y="362" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="392" y="362" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="546" y="362" width="110" height="92" rx="10" fill="#1c1c1c" stroke="#373737" stroke-width="3"/>
+    <rect x="248" y="472" width="260" height="76" rx="12" fill="#1a1a1a" stroke="#424242" stroke-width="3"/>
+    <rect x="286" y="492" width="184" height="18" rx="9" fill="#f0a500"/>
+    <text x="378" y="506" text-anchor="middle" fill="#080808" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700">JULIETA'S PENSION HOUSE</text>
+    <rect x="128" y="542" width="522" height="8" rx="4" fill="#f0a500" fill-opacity="0.45"/>
+    <g>
+      <rect x="126" y="232" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="280" y="232" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="434" y="232" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="588" y="232" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="126" y="372" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="280" y="372" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="434" y="372" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+      <rect x="588" y="372" width="18" height="72" fill="#f0a500" fill-opacity="0.92" class="window-glow"/>
+    </g>
+  </g>
+
+  <g transform="translate(152 560)">
+    <path d="M0 250 C44 182 76 144 116 128 C174 106 212 122 246 142 C196 156 172 180 154 230 C142 266 124 288 74 314 C34 286 10 268 0 250 Z" fill="#0f2417"/>
+    <path d="M110 152 C164 120 210 92 270 58 C286 86 288 118 274 154 C242 156 210 162 178 178 C150 192 132 216 114 248 C98 222 92 184 110 152 Z" fill="#112d1d"/>
+    <path d="M238 70 C306 44 376 28 448 22 C418 58 388 90 362 124 C334 112 304 110 272 116 C258 94 248 82 238 70 Z" fill="#10301c"/>
+  </g>
+  <g transform="translate(1360 542) scale(1.05)">
+    <path d="M0 0 C-40 28 -76 58 -102 94 C-74 88 -42 92 -10 108 C14 122 36 142 54 170 C68 132 86 98 112 66 C88 52 60 36 0 0 Z" fill="#112d1d"/>
+    <path d="M52 64 C120 36 186 20 250 14 C226 48 202 84 180 124 C144 116 112 118 80 134 C64 104 54 84 52 64 Z" fill="#0f2417"/>
+  </g>
+
+  <g transform="translate(1140 868)">
+    <rect x="0" y="30" width="310" height="92" rx="20" fill="#111111" stroke="#343434" stroke-width="3"/>
+    <rect x="42" y="20" width="82" height="64" rx="16" fill="#d7d7d7"/>
+    <rect x="132" y="18" width="120" height="68" rx="16" fill="#f0a500"/>
+    <rect x="158" y="32" width="44" height="34" rx="10" fill="#111111"/>
+    <circle cx="61" cy="116" r="17" fill="#080808"/>
+    <circle cx="238" cy="116" r="17" fill="#080808"/>
+    <path d="M78 46 L121 46" stroke="#080808" stroke-width="5" stroke-linecap="round"/>
+    <path d="M160 32 L232 32" stroke="#080808" stroke-width="5" stroke-linecap="round"/>
+    <path d="M282 52 L344 52" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <ellipse cx="900" cy="1090" rx="760" ry="72" fill="#f0a500" opacity="0.08"/>
+</svg>

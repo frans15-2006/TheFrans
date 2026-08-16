@@ -1,60 +1,1125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julieta's Pension House</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julieta's Pension House | Puerto Princesa Budget Stay</title>
+  <meta name="description" content="Budget-friendly pension house in Brgy. San Miguel, Puerto Princesa, with air-conditioned rooms, free WiFi, airport shuttle, and easy access to PPS Airport.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Julieta's Pension House | Puerto Princesa Budget Stay">
+  <meta property="og:description" content="Air-conditioned rooms, free WiFi, airport shuttle, and a practical base near Puerto Princesa Airport in Palawan.">
+  <meta property="og:image" content="assets/img/og-cover.svg">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.04), transparent 18%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.92;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      transition: background 180ms ease, border-color 180ms ease, backdrop-filter 180ms ease;
+    }
+
+    .topbar.is-scrolled {
+      background: rgba(8, 8, 8, 0.82);
+      backdrop-filter: blur(16px);
+      border-color: rgba(234, 234, 234, 0.08);
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 1.6rem;
+      height: 1.6rem;
+      display: grid;
+      place-items: center;
+      color: #080808;
+      background: var(--amber);
+      clip-path: polygon(50% 0%, 100% 18%, 100% 82%, 50% 100%, 0% 82%, 0% 18%);
+      box-shadow: 0 0 28px rgba(240, 165, 0, 0.35);
+      flex: none;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.1rem;
+    }
+
+    .brand-copy strong {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.84rem;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--amber);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: stretch;
+      padding-top: 5.5rem;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 26%;
+      background: linear-gradient(to top, rgba(8,8,8,0.98), rgba(8,8,8,0));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-shell {
+      position: relative;
+      display: grid;
+      align-items: center;
+      min-height: calc(100svh - 5.5rem);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.04) contrast(1.02);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.74) 36%, rgba(8,8,8,0.18) 100%),
+        linear-gradient(0deg, rgba(8,8,8,0.5), transparent 52%);
+      z-index: 1;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: min(660px, 100%);
+      padding: 0 0 3.5rem;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .hero-copy .eyebrow {
+      color: var(--amber);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: clamp(4.2rem, 13vw, 8.8rem);
+      line-height: 0.88;
+      margin: 0;
+      max-width: 10ch;
+      text-wrap: balance;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 46ch;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.7;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 0.4rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      color: var(--text);
+      text-decoration: none;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.5);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      box-shadow: 0 18px 50px rgba(240, 165, 0, 0.22);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: #ffb31a;
+      color: #080808;
+    }
+
+    .section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: 1.75rem;
+      max-width: 52rem;
+    }
+
+    .section-head .label {
+      color: var(--amber);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      line-height: 0.94;
+      letter-spacing: 0.06em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.7;
+    }
+
+    .room-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .room-item {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .room-item:hover {
+      transform: translateX(4px);
+      border-color: rgba(240, 165, 0, 0.22);
+    }
+
+    .room-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .room-index {
+      font-family: "JetBrains Mono", monospace;
+      color: var(--amber);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+    }
+
+    .room-item h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      letter-spacing: 0.05em;
+    }
+
+    .room-item p,
+    .room-item ul,
+    .amenity-group p,
+    .location-copy p,
+    .contact-block p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .room-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 1rem;
+      padding: 0;
+      list-style: none;
+      font-size: 0.92rem;
+    }
+
+    .room-specs li {
+      position: relative;
+      padding-left: 0.85rem;
+    }
+
+    .room-specs li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.34rem;
+      height: 0.34rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.4);
+    }
+
+    .section-note {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.8;
+    }
+
+    .amenities-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .amenity-group {
+      grid-column: span 12;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-group h3 {
+      margin: 0 0 0.7rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .amenity-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 0.9rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .amenity-list li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .amenity-list li::before {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.35);
+      flex: none;
+    }
+
+    .location-layout {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .map-frame {
+      position: relative;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      background: var(--bg-soft);
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      display: block;
+      filter: grayscale(1) contrast(1.05) brightness(0.9);
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+      padding-top: 0.25rem;
+    }
+
+    .location-copy strong,
+    .contact-block strong {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+
+    .location-details {
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .location-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .booking-band {
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(240,165,0,0.08), rgba(240,165,0,0.02));
+    }
+
+    .booking-shell {
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .booking-shell h2 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+    }
+
+    .booking-shell p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .gallery-item {
+      grid-column: span 12;
+      margin: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .gallery-item figcaption {
+      padding-top: 0.55rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.62);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      padding-top: 1.25rem;
+    }
+
+    .contact-block {
+      grid-column: span 12;
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 0.35rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-lines a {
+      color: var(--text);
+      text-decoration: none;
+      width: fit-content;
+      transition: color 180ms ease;
+    }
+
+    .contact-lines a:hover,
+    .contact-lines a:focus-visible {
+      color: var(--amber);
+    }
+
+    .footer {
+      padding: 1.5rem 0 2.5rem;
+      color: rgba(234, 234, 234, 0.48);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-reveal,
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .hero-visual-flare {
+      position: absolute;
+      inset: 12% 4% auto auto;
+      width: min(22vw, 240px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,0.36), rgba(240,165,0,0.02) 60%, transparent 72%);
+      filter: blur(2px);
+      z-index: 1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    @media (min-width: 720px) {
+      .hero-copy {
+        padding-bottom: 4.5rem;
+      }
+
+      .room-grid,
+      .amenities-grid,
+      .gallery-grid,
+      .contact-grid {
+        gap: 1.25rem;
+      }
+
+      .amenity-group:nth-child(1),
+      .amenity-group:nth-child(2),
+      .amenity-group:nth-child(3) {
+        grid-column: span 4;
+      }
+
+      .gallery-item {
+        grid-column: span 6;
+      }
+
+      .contact-block:nth-child(1) {
+        grid-column: span 5;
+      }
+
+      .contact-block:nth-child(2) {
+        grid-column: span 3;
+      }
+
+      .contact-block:nth-child(3) {
+        grid-column: span 4;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero-shell {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .booking-shell {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.5rem;
+      }
+
+      .location-layout {
+        grid-template-columns: 0.95fr 1.05fr;
+        align-items: start;
+      }
+
+      .room-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .room-item {
+        padding: 1.35rem 1.2rem 1.35rem 0;
+        border-bottom: 0;
+        border-right: 1px solid var(--line);
+      }
+
+      .room-item:last-child {
+        border-right: 0;
+      }
+
+      .room-grid {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-media img {
+        object-position: right center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Julieta's Pension House</h1>
-    <span class="category">Pension House</span>
-    <p class="address">Wescom Rd, Puerto Princesa City</p>
+  <div class="page">
+    <header class="topbar" id="topbar">
+      <div class="wrap nav-shell">
+        <a class="brand" href="#hero" aria-label="Julieta's Pension House home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Julieta's Pension</strong>
+            <span>Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#location">Location</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-shell wrap">
+          <div class="hero-media" aria-hidden="true">
+            <img src="assets/img/hero-scene.svg" alt="" loading="eager">
+            <div class="hero-overlay"></div>
+            <div class="hero-visual-flare"></div>
+          </div>
+          <div class="hero-copy hero-reveal">
+            <div class="eyebrow">Budget stay near PPS Airport</div>
+            <h1>Julieta's Pension House</h1>
+            <p>Simple, practical rooms in Brgy. San Miguel with air conditioning, free WiFi, and airport shuttle service. A calm base for early departures, island tours, and nights in Puerto Princesa.</p>
+            <div class="cta-row">
+              <a class="button primary" href="https://www.booking.com/hotel/ph/julieta-pension-house.html" target="_blank" rel="noopener noreferrer">Check live rates</a>
+              <a class="button" href="#rooms">See room types</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rooms">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="label">Rooms / Accommodations</div>
+            <h2>Built for easy nights and early flights.</h2>
+            <p>Public listings show a small set of straightforward room types with private bathrooms, air-conditioning, and the basics that make a budget stopover feel sorted.</p>
+          </div>
+
+          <div class="room-grid">
+            <article class="room-item reveal">
+              <div class="room-meta">
+                <span class="room-index">01</span>
+              </div>
+              <h3>Double Room with Private Bathroom</h3>
+              <p>1 double bed. Air conditioning, private bathroom, desk, wardrobe, and flat-screen TV are listed among the room features.</p>
+              <ul class="room-specs">
+                <li>Private bathroom</li>
+                <li>Flat-screen TV</li>
+                <li>Desk</li>
+              </ul>
+            </article>
+            <article class="room-item reveal">
+              <div class="room-meta">
+                <span class="room-index">02</span>
+              </div>
+              <h3>Twin Room with Private Bathroom</h3>
+              <p>2 single beds. The listed setup keeps the same practical essentials: air conditioning, private bath, and room basics for a short stay.</p>
+              <ul class="room-specs">
+                <li>2 single beds</li>
+                <li>Private bathroom</li>
+                <li>Wardrobe</li>
+              </ul>
+            </article>
+            <article class="room-item reveal">
+              <div class="room-meta">
+                <span class="room-index">03</span>
+              </div>
+              <h3>Family Rooms</h3>
+              <p>Family rooms are listed among the property's public booking options. Check live inventory on your booking channel for what is available on your dates.</p>
+              <ul class="room-specs">
+                <li>Family-friendly option</li>
+                <li>Air-conditioned stays</li>
+                <li>Private bathroom</li>
+              </ul>
+            </article>
+          </div>
+          <div class="section-note reveal">Verified from public listings: double and twin private-bathroom rooms, plus family rooms shown on booking pages. Availability can vary by channel and date.</div>
+        </div>
+      </section>
+
+      <section class="section" id="amenities">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="label">Amenities</div>
+            <h2>The essentials travelers actually use.</h2>
+            <p>These are the recurring amenities shown across public listings and reviews, grouped to make scan-and-book decisions faster.</p>
+          </div>
+
+          <div class="amenities-grid">
+            <div class="amenity-group reveal">
+              <h3>Connection</h3>
+              <ul class="amenity-list">
+                <li>Free WiFi</li>
+                <li>Free airport shuttle</li>
+                <li>Free parking</li>
+                <li>Luggage storage</li>
+              </ul>
+            </div>
+            <div class="amenity-group reveal">
+              <h3>In Room</h3>
+              <ul class="amenity-list">
+                <li>Air conditioning</li>
+                <li>Private bathroom</li>
+                <li>Desk</li>
+                <li>Flat-screen TV</li>
+                <li>Cable channels</li>
+                <li>Wardrobe</li>
+                <li>Hair dryer</li>
+              </ul>
+            </div>
+            <div class="amenity-group reveal">
+              <h3>Service</h3>
+              <ul class="amenity-list">
+                <li>24-hour front desk</li>
+                <li>Express check-in/out</li>
+                <li>Tour desk</li>
+                <li>Daily housekeeping</li>
+                <li>Breakfast available</li>
+                <li>Massage</li>
+                <li>Non-smoking rooms</li>
+                <li>Family rooms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="label">Location / Map</div>
+            <h2>Brgy. San Miguel, close to the airport corridor.</h2>
+            <p>Julieta's Pension House sits on TM Palanca Road and Wescom Road in Puerto Princesa. The map below is centered on the verified property coordinates, not Manila.</p>
+          </div>
+
+          <div class="location-layout">
+            <div class="location-copy reveal">
+              <strong>TM Palanca Road, Wescom Road, Bgy. San Miguel</strong>
+              <div class="location-details">
+                <span>5300 Puerto Princesa, Palawan, Philippines</span>
+                <span>Coordinates: 9.7506955, 118.7534449</span>
+                <span>Near Puerto Princesa Airport, City Coliseum, Mendoza Park, and the city center.</span>
+              </div>
+              <div class="location-meta">
+                <span>Puerto Princesa</span>
+                <span>Palawan</span>
+                <span>Philippines</span>
+              </div>
+              <div class="cta-row">
+                <a class="button primary" href="https://www.openstreetmap.org/?mlat=9.7506955&mlon=118.7534449#map=17/9.7506955/118.7534449" target="_blank" rel="noopener noreferrer">Open map</a>
+                <a class="button" href="https://www.google.com/maps?q=9.7506955,118.7534449" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+              </div>
+            </div>
+            <div class="map-frame reveal">
+              <iframe
+                title="Map of Julieta's Pension House in Puerto Princesa"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=118.7484449%2C9.7466955%2C118.7584449%2C9.7546955&layer=mapnik&marker=9.7506955%2C118.7534449"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="booking-band" id="booking">
+        <div class="wrap booking-shell reveal">
+          <div>
+            <div class="label mono" style="color: var(--amber);">Booking CTA</div>
+            <h2>Lock in the practical base for your Palawan stopover.</h2>
+          </div>
+          <div>
+            <p>Rates and availability change across booking channels, so check live inventory before you finalize your stay. If you need a quick answer, call the front desk directly.</p>
+            <div class="cta-row" style="padding-top: 1rem;">
+              <a class="button primary" href="https://www.booking.com/hotel/ph/julieta-pension-house.html" target="_blank" rel="noopener noreferrer">Book on Booking.com</a>
+              <a class="button" href="tel:+63484330374">Call +63 48 433 0374</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="label">Gallery</div>
+            <h2>Scene-setting views from a budget guesthouse stay.</h2>
+            <p>These SVG assets are built locally so the page stays deployable as-is while still giving the site a visual anchor.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-exterior.svg" alt="Illustrated exterior scene inspired by Julieta's Pension House">
+              <figcaption>Exterior</figcaption>
+            </figure>
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-double.svg" alt="Illustrated double room scene with private bathroom in a budget pension house">
+              <figcaption>Double room</figcaption>
+            </figure>
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-twin.svg" alt="Illustrated twin room scene with two single beds and a simple desk">
+              <figcaption>Twin room</figcaption>
+            </figure>
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-breakfast.svg" alt="Illustrated breakfast scene with coffee and plated food">
+              <figcaption>Breakfast</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <div class="label">Contact / Footer</div>
+            <h2>Reach the front desk, then get moving.</h2>
+            <p>Everything here is built for a quick check: address, phone number, and map link. No form, no friction.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-block reveal">
+              <strong>Julieta's Pension House</strong>
+              <p>Budget guesthouse in Puerto Princesa, Palawan, Philippines.</p>
+            </div>
+            <div class="contact-block reveal">
+              <strong>Contact</strong>
+              <div class="contact-lines">
+                <a href="tel:+63484330374">+63 48 433 0374</a>
+                <a href="https://www.openstreetmap.org/?mlat=9.7506955&mlon=118.7534449#map=17/9.7506955/118.7534449" target="_blank" rel="noopener noreferrer">OpenStreetMap directions</a>
+              </div>
+            </div>
+            <div class="contact-block reveal">
+              <strong>Address</strong>
+              <div class="contact-lines">
+                <span>TM Palanca Road, Wescom Road, Bgy. San Miguel</span>
+                <span>5300 Puerto Princesa, Palawan, Philippines</span>
+                <span>Verified coordinates: 9.7506955, 118.7534449</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">Public details checked against booking and travel listings for Julieta's Pension House in Puerto Princesa. Availability, pricing, and policies should always be confirmed on the live booking page before travel.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis/dist/lenis.min.js"></script>
+  <script>
+    const topbar = document.getElementById('topbar');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setTopbarState = () => topbar.classList.toggle('is-scrolled', window.scrollY > 12);
+
+    window.addEventListener('scroll', setTopbarState, { passive: true });
+    setTopbarState();
+
+    if (reducedMotion) {
+      document.querySelectorAll('.hero-reveal, .reveal').forEach((element) => {
+        element.style.opacity = '1';
+        element.style.transform = 'none';
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'auto', block: 'start' });
+          }
+        });
+      });
+    } else {
+      const lenis = new Lenis({
+        duration: 1.15,
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            event.preventDefault();
+            lenis.scrollTo(target, { offset: -88 });
+          }
+        });
+      });
+
+      const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTimeline
+        .to('.hero-reveal', { opacity: 1, y: 0, duration: 1 }, 0.15)
+        .from('.hero-media img', { scale: 1.08, opacity: 0.35, duration: 1.4 }, 0.05)
+        .from('.hero-visual-flare', { opacity: 0, scale: 0.75, duration: 1.5 }, 0.1);
+
+      gsap.to('.hero-visual-flare', {
+        y: -18,
+        x: 10,
+        duration: 3.2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('.hero-media img', {
+        yPercent: 1.5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      gsap.utils.toArray('.reveal').forEach((element) => {
+        gsap.to(element, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Julieta's Pension House",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "TM Palanca Road, Wescom Road, Bgy. San Miguel",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7506955,
+      "longitude": 118.7534449
+    },
+    "telephone": "+63 48 433 0374",
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free airport shuttle", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Private bathroom", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Express check-in/check-out", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "24-hour front desk", "value": true}
+    ]
+  }
+  </script>
 </body>
 </html>
