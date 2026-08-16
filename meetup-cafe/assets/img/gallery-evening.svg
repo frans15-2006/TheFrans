@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Illustrated evening cafe table">
+  <defs>
+    <linearGradient id="eBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#101010"/>
+    </linearGradient>
+    <radialGradient id="eGlow" cx="50%" cy="28%" r="65%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaeaea" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#eaeaea" stop-opacity="0.14"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1100" fill="url(#eBg)"/>
+  <rect width="900" height="1100" fill="url(#eGlow)"/>
+  <rect x="0" y="720" width="900" height="380" fill="#080808"/>
+  <ellipse cx="450" cy="828" rx="260" ry="52" fill="#000" opacity="0.44"/>
+  <rect x="126" y="618" width="648" height="34" rx="17" fill="#f0a500" opacity="0.14"/>
+  <rect x="160" y="646" width="580" height="12" rx="6" fill="#eaeaea" opacity="0.08"/>
+
+  <g transform="translate(240 260)">
+    <path d="M84 176c0-46 37-83 83-83h126c46 0 83 37 83 83v148c0 46-37 83-83 83H167c-46 0-83-37-83-83z" fill="#171717" stroke="#f0a500" stroke-opacity="0.16" stroke-width="6"/>
+    <path d="M136 176c0-17 14-31 31-31h122c17 0 31 14 31 31v82c0 17-14 31-31 31H167c-17 0-31-14-31-31z" fill="#f0a500" opacity="0.8"/>
+    <path d="M162 206h108" stroke="#080808" stroke-opacity="0.22" stroke-width="8"/>
+    <path d="M180 138c-14 26-16 49-6 69" fill="none" stroke="#eaeaea" stroke-opacity="0.36" stroke-width="6" stroke-linecap="round"/>
+    <path d="M218 138c14 26 16 49 6 69" fill="none" stroke="#eaeaea" stroke-opacity="0.36" stroke-width="6" stroke-linecap="round"/>
+
+    <g transform="translate(40 280)">
+      <path d="M122 0c19 0 34 15 34 34 0 28-34 70-34 70s-34-42-34-70c0-19 15-34 34-34Z" fill="#f0a500"/>
+      <circle cx="122" cy="34" r="15" fill="#080808" opacity="0.9"/>
+      <path d="M230 13c0-7 5-13 13-13h34c8 0 13 6 13 13v36c0 8-5 13-13 13h-34c-8 0-13-5-13-13z" fill="url(#glass)"/>
+      <path d="M250 9v66" stroke="#eaeaea" stroke-opacity="0.28" stroke-width="6"/>
+      <path d="M24 38h76" stroke="#f0a500" stroke-opacity="0.4" stroke-width="6" stroke-linecap="round"/>
+      <path d="M24 60h110" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(145 866)">
+    <path d="M0 0h610" stroke="#f0a500" stroke-opacity="0.42" stroke-width="6" stroke-linecap="round"/>
+    <path d="M650 0h110" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(610 846)">
+    <path d="M130 0c64 0 116 52 116 116 0 86-116 186-116 186S14 202 14 116C14 52 66 0 130 0Z" fill="#f0a500" opacity="0.95"/>
+    <circle cx="130" cy="118" r="49" fill="#080808" opacity="0.88"/>
+    <circle cx="130" cy="118" r="24" fill="#eaeaea" opacity="0.18"/>
+  </g>
+</svg>

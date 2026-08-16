@@ -1,60 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeetUp Cafe and Bar</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeetUp Cafe | Puerto Princesa, Palawan</title>
+  <meta name="description" content="MeetUp Cafe in Puerto Princesa, Palawan serves Filipino, American, and Italian comfort food, coffee, smoothies, and late-night tables near the airport.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MeetUp Cafe | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified local details for MeetUp Cafe: Mercado de San Miguel in Puerto Princesa, daily hours, airport-side location, and menu highlights from public listings and reviews.">
+  <meta property="og:image" content="./assets/img/og.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MeetUp Cafe | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Verified local details for MeetUp Cafe in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="./assets/img/og.svg">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(234, 234, 234, 0.04);
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(240, 165, 0, 0.13), transparent 25%),
+        radial-gradient(circle at 20% 5%, rgba(240, 165, 0, 0.08), transparent 20%),
+        linear-gradient(180deg, #080808 0%, #0b0b0b 45%, #080808 100%);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(234, 234, 234, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(234, 234, 234, 0.02) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 95%);
+      opacity: 0.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      transform: translateY(-180%);
+      padding: 0.75rem 1rem;
+      background: var(--accent);
+      color: #080808;
+      font: 700 0.88rem/1 "JetBrains Mono", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      z-index: 50;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0 0;
+    }
+
+    .brand-lockup {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .brand-mark {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.9rem;
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .topbar-link {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.25);
+      padding-bottom: 0.2rem;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .topbar-link:hover,
+    .topbar-link:focus-visible {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .hero {
+      min-height: calc(100svh - 3.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 7vw, 5rem);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 42rem;
+    }
+
+    .hero-kicker {
+      margin: 0 0 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.5rem, 14vw, 9.8rem);
+      line-height: 0.84;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .hero-lede {
+      margin: 1.25rem 0 0;
+      max-width: 34rem;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid var(--line);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform 200ms ease, border-color 200ms ease, background 200ms ease, color 200ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.8);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #080808;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #ffbb27;
+      color: #080808;
+    }
+
+    .btn-secondary {
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: clamp(26rem, 62vw, 46rem);
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      pointer-events: none;
+      filter: blur(18px);
+    }
+
+    .hero-visual::before {
+      width: 13rem;
+      height: 13rem;
+      top: 8%;
+      right: 2%;
+      background: rgba(240, 165, 0, 0.16);
+    }
+
+    .hero-visual::after {
+      width: 9rem;
+      height: 9rem;
+      left: 14%;
+      bottom: 16%;
+      background: rgba(234, 234, 234, 0.07);
+    }
+
+    .hero-visual img,
+    .gallery-shot img,
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #101010;
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.65rem;
+      max-width: 52rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.8rem, 6.8vw, 5.4rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 45rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .menu-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: 4rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .menu-row:hover {
+      background: rgba(234, 234, 234, 0.02);
+    }
+
+    .menu-index {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240, 165, 0, 0.96);
+      padding-top: 0.35rem;
+    }
+
+    .menu-row h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3.1rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .menu-row p {
+      margin: 0.45rem 0 0;
+      max-width: 54rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .story-grid,
+    .location-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .story-note {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(240, 165, 0, 0.92);
+      max-width: 12ch;
+    }
+
+    .story-body,
+    .location-copy {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-shot {
+      position: relative;
+      margin: 0;
+      grid-column: span 4;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(234, 234, 234, 0.03);
+      box-shadow: var(--shadow);
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .gallery-shot:nth-child(2) { grid-column: span 5; }
+    .gallery-shot:nth-child(3) { grid-column: span 3; }
+
+    .gallery-shot:hover {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.55);
+    }
+
+    .gallery-shot img {
+      aspect-ratio: 4 / 5;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .gallery-shot figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1rem 0.9rem;
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.9));
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.92);
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-meta dl {
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .location-meta .meta-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .location-meta dt {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .location-meta dd {
+      margin: 0.35rem 0 0;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .map-frame {
+      min-height: 26rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #101010;
+      box-shadow: var(--shadow);
+    }
+
+    .map-frame iframe {
+      display: block;
+      min-height: 26rem;
+      width: 100%;
+      border: 0;
+      box-shadow: none;
+      filter: grayscale(0.15) contrast(1.02) saturate(0.85);
+    }
+
+    .location-actions,
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 2.2rem 0 2.5rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      margin: 0;
+      max-width: 42rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .fineprint {
+      margin: 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.52);
+    }
+
+    .footer-links a {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.22);
+      padding-bottom: 0.18rem;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .story-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 2rem;
+      }
+
+      .hero-visual {
+        min-height: min(74vw, 34rem);
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-shot,
+      .gallery-shot:nth-child(2),
+      .gallery-shot:nth-child(3) {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 1.2rem, 1180px); }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .topbar-link {
+        font-size: 0.66rem;
+        line-height: 1.4;
+        text-align: right;
+      }
+
+      .hero-title {
+        font-size: clamp(4rem, 19vw, 6rem);
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .menu-row {
+        grid-template-columns: 3rem minmax(0, 1fr);
+        gap: 0.8rem;
+      }
+
+      .map-frame,
+      .map-frame iframe {
+        min-height: 20rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>MeetUp Cafe and Bar</h1>
-    <span class="category">Cafe & Bar</span>
-    <p class="address">Mercado de San Miguel, Puerto Princesa City</p>
-    <p class="phone">+63 927 634 5487</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar wrap">
+    <a class="brand-lockup" href="#home" aria-label="MeetUp Cafe home">
+      <span class="brand-mark">MeetUp Cafe</span>
+      <span class="brand-sub">Puerto Princesa, Palawan</span>
+    </a>
+    <a class="topbar-link" href="tel:+639276345487">Call +63 927 634 5487</a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="home">
+      <div class="hero-copy">
+        <p class="hero-kicker">MeetUp Cafe and Bar</p>
+        <h1 class="hero-title">MeetUp Cafe</h1>
+        <p class="hero-lede">A Puerto Princesa cafe and bar near the airport, known for Filipino, American, and Italian comfort food, coffee, smoothies, and a table that runs late.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">Explore the highlights</a>
+          <a class="btn btn-secondary" href="tel:+639276345487">Call the cafe</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="./assets/img/hero-scene.svg" alt="Illustrated MeetUp Cafe scene with coffee, breakfast, and warm evening light" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="section wrap" id="menu">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Menu highlights</p>
+        <h2>What guests keep coming back for</h2>
+        <p>Public listings describe a fusion of Filipino, American, and Italian plates, while guest reviews repeatedly call out the breakfast dishes, hearty mains, and drinks that make this a reliable airport-side stop.</p>
+      </div>
+
+      <div class="menu-list">
+        <div class="menu-row reveal" data-reveal>
+          <p class="menu-index">01</p>
+          <div>
+            <h3>Breakfast plates with local roots</h3>
+            <p>Home-made tapa with egg and rice, plus Palawan lamayo made with rabbitfish, egg, and rice, show up in guest photos and review notes for a reason.</p>
+          </div>
+        </div>
+        <div class="menu-row reveal" data-reveal>
+          <p class="menu-index">02</p>
+          <div>
+            <h3>Comfort food for longer stays</h3>
+            <p>Reviewers highlight fish steak, burgers, stuffed squid, pizza, wings, and fried chicken, with generous portions that suit travelers and families alike.</p>
+          </div>
+        </div>
+        <div class="menu-row reveal" data-reveal>
+          <p class="menu-index">03</p>
+          <div>
+            <h3>Coffee, matcha, and cold drinks</h3>
+            <p>Guests mention amazing coffee, matcha, mango shakes, smoothies, mocktails, and cocktails, making the cafe side just as important as the food.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="story">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Story</p>
+        <h2>A calm landing spot near the airport</h2>
+      </div>
+
+      <div class="story-grid">
+        <p class="story-body reveal" data-reveal>MeetUp Cafe and Bar sits in Mercado de San Miguel in Puerto Princesa City, close to Puerto Princesa International Airport. Public listings describe a cozy interior, free wifi, and a menu that blends Filipino, American, and Italian flavors with coffee and bar drinks. Reviews consistently point to friendly staff, generous servings, and an easy place to settle in before a flight, after a landing, or between plans in the city.</p>
+        <p class="story-note reveal" data-reveal>Good food, good company, and room to breathe.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="gallery">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Gallery</p>
+        <h2>Scenes from a MeetUp table</h2>
+        <p>The visuals below are original SVG illustrations built for this site, tuned to the cafe's dark, amber, and off-white palette.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-shot reveal" data-reveal>
+          <img src="./assets/img/gallery-breakfast.svg" alt="Illustrated breakfast plate with tapa, rice, and coffee">
+          <figcaption>Breakfast favorites</figcaption>
+        </figure>
+        <figure class="gallery-shot reveal" data-reveal>
+          <img src="./assets/img/gallery-evening.svg" alt="Illustrated evening table with coffee, cocktails, and warm lights">
+          <figcaption>Late-night table</figcaption>
+        </figure>
+        <figure class="gallery-shot reveal" data-reveal>
+          <img src="./assets/img/gallery-map.svg" alt="Illustrated map marker for Puerto Princesa with route lines">
+          <figcaption>Puerto Princesa location</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap" id="hours">
+      <div class="section-head reveal" data-reveal>
+        <p class="eyebrow">Hours and location</p>
+        <h2>Verified on the Puerto Princesa side of the map</h2>
+        <p>Coordinates listed publicly for MeetUp Cafe and Bar place it in Puerto Princesa, Palawan, not Manila.</p>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-meta reveal" data-reveal>
+          <dl>
+            <div class="meta-item">
+              <dt>Address</dt>
+              <dd>Mercado de San Miguel, Puerto Princesa City, 5300 Palawan, Philippines</dd>
+            </div>
+            <div class="meta-item">
+              <dt>Hours</dt>
+              <dd>Open daily from 7:00 AM to 12:00 AM, according to public listings.</dd>
+            </div>
+            <div class="meta-item">
+              <dt>Coordinates</dt>
+              <dd>9.747966, 118.74746</dd>
+            </div>
+            <div class="meta-item">
+              <dt>Phone</dt>
+              <dd><a href="tel:+639276345487">+63 927 634 5487</a></dd>
+            </div>
+          </dl>
+
+          <div class="location-actions">
+            <a class="btn btn-primary" href="https://www.google.com/maps?q=9.747966,118.74746" target="_blank" rel="noopener noreferrer">Open in maps</a>
+            <a class="btn btn-secondary" href="https://www.facebook.com/MUCafeAndBar/" target="_blank" rel="noopener noreferrer">View Facebook page</a>
+          </div>
+        </div>
+
+        <div class="map-frame reveal" data-reveal>
+          <iframe title="MeetUp Cafe and Bar map in Puerto Princesa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=118.7428%2C9.7445%2C118.7521%2C9.7515&amp;layer=mapnik&amp;marker=9.747966%2C118.74746"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap" id="contact">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <p class="footer-copy">For calls, directions, or a quick check before you head over, use the links below. The public listing points to Puerto Princesa City, Palawan, with the cafe running daily from morning until midnight.</p>
+      </div>
+      <p class="fineprint">MeetUp Cafe, Puerto Princesa, Palawan</p>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+639276345487">+63 927 634 5487</a>
+      <a href="#menu">Menu highlights</a>
+      <a href="#hours">Hours and location</a>
+      <a href="https://www.facebook.com/MUCafeAndBar/" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion && window.Lenis) {
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    if (prefersReducedMotion) {
+      document.documentElement.classList.add("reduced-motion");
+    } else {
+      gsap.from(".topbar", { autoAlpha: 0, y: -14, duration: 0.7, ease: "power2.out" });
+
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTl
+        .from(".brand-mark", { autoAlpha: 0, y: 16, duration: 0.7 })
+        .from(".brand-sub", { autoAlpha: 0, y: 12, duration: 0.55 }, "<0.05")
+        .from(".hero-kicker", { autoAlpha: 0, y: 14, duration: 0.6 }, "<0.08")
+        .from(".hero-title", { autoAlpha: 0, y: 32, duration: 0.9 }, "<0.05")
+        .from(".hero-lede", { autoAlpha: 0, y: 18, duration: 0.65 }, "<0.08")
+        .from(".hero-actions .btn", { autoAlpha: 0, y: 18, stagger: 0.08, duration: 0.6 }, "<0.06")
+        .from(".hero-visual", { autoAlpha: 0, scale: 0.98, duration: 1 }, "<0.12");
+
+      gsap.utils.toArray("[data-reveal]").forEach((section) => {
+        gsap.fromTo(section, {
+          autoAlpha: 0,
+          y: 24,
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 82%",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".menu-row").forEach((row, index) => {
+        gsap.fromTo(row, {
+          autoAlpha: 0,
+          x: -18,
+        }, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+          delay: index * 0.02,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: row,
+            start: "top 84%",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".gallery-shot").forEach((shot, index) => {
+        gsap.fromTo(shot, {
+          autoAlpha: 0,
+          y: 28,
+          scale: 0.97,
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.85,
+          delay: index * 0.04,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: shot,
+            start: "top 84%",
+          },
+        });
+      });
+
+      gsap.to(".hero-visual img", {
+        y: -10,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "MeetUp Cafe and Bar",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Mercado de San Miguel",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.747966,
+      "longitude": 118.74746
+    },
+    "telephone": "+63 927 634 5487",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "07:00", "closes": "00:00"}
+    ],
+    "servesCuisine": ["Filipino", "American", "Italian"],
+    "image": "./assets/img/og.svg"
+  }
+  </script>
 </body>
 </html>

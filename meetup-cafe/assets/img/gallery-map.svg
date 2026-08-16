@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Illustrated location map for Puerto Princesa">
+  <defs>
+    <linearGradient id="mBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b0b"/>
+      <stop offset="1" stop-color="#131313"/>
+    </linearGradient>
+    <radialGradient id="mGlow" cx="68%" cy="22%" r="58%">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1100" fill="url(#mBg)"/>
+  <rect width="900" height="1100" fill="url(#mGlow)"/>
+
+  <g opacity="0.9">
+    <path d="M120 210h660M120 330h660M120 450h660M120 570h660M120 690h660M120 810h660" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="4"/>
+    <path d="M180 150v780M300 150v780M420 150v780M540 150v780M660 150v780M780 150v780" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="4"/>
+  </g>
+
+  <path d="M180 350c90-74 196-104 318-90 130 14 236 70 292 166 24 41 35 82 35 124 0 62-22 121-67 177-48 60-121 117-219 171-72 40-140 67-205 82-92 21-165 11-219-30-62-47-74-130-36-244 42-126 72-214 101-256Z" fill="#f0a500" opacity="0.12"/>
+
+  <path d="M270 668c84-70 172-110 264-121 112-13 194 18 247 93" fill="none" stroke="#f0a500" stroke-opacity="0.45" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 18"/>
+  <path d="M243 732c59 32 115 47 168 47 86 0 151-23 199-69" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="8" stroke-linecap="round"/>
+
+  <g transform="translate(348 420)">
+    <path d="M102 0c56 0 102 46 102 102 0 75-102 162-102 162S0 177 0 102C0 46 46 0 102 0Z" fill="#f0a500"/>
+    <circle cx="102" cy="102" r="42" fill="#080808" opacity="0.86"/>
+    <circle cx="102" cy="102" r="20" fill="#eaeaea" opacity="0.16"/>
+  </g>
+
+  <g transform="translate(152 872)">
+    <path d="M0 0h210" stroke="#f0a500" stroke-opacity="0.4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M260 0h140" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="6" stroke-linecap="round"/>
+    <path d="M430 0h180" stroke="#f0a500" stroke-opacity="0.28" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(152 200)" opacity="0.95">
+    <text x="0" y="0" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="34" letter-spacing="6">9.747966, 118.74746</text>
+    <text x="0" y="56" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="5">PUERTO PRINCESA, PALAWAN</text>
+  </g>
+</svg>
