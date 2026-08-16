@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Garden and lounge area at Hotel Centro Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f0f0f"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="0" y="640" width="1600" height="360" fill="#0a0a0a"/>
+  <path d="M0 720c210-56 394-67 570-27 144 33 254 51 376 51 136 0 254-20 400-61 111-31 192-36 254-26v343H0z" fill="#0c0c0c"/>
+  <path d="M250 720c180-70 382-70 562 0" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M866 720c184-72 390-72 574 0" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="18" stroke-linecap="round"/>
+  <g fill="#101010" stroke="rgba(234,234,234,0.12)" stroke-width="3">
+    <rect x="314" y="560" width="180" height="34" rx="17"/>
+    <rect x="1080" y="560" width="180" height="34" rx="17"/>
+    <rect x="360" y="592" width="80" height="18" rx="9"/>
+    <rect x="1126" y="592" width="80" height="18" rx="9"/>
+  </g>
+  <g>
+    <path d="M218 160c62-23 96-18 148 14-16 34-34 65-56 95-24-29-61-66-92-109z" fill="#0f0f0f"/>
+    <path d="M304 208c72-29 117-26 172 11-18 33-36 62-57 90-30-25-81-62-115-101z" fill="#111111"/>
+    <path d="M1260 154c64-24 98-19 152 12-15 35-32 66-54 96-24-29-60-63-98-108z" fill="#0f0f0f"/>
+    <path d="M1348 206c72-28 115-24 174 12-19 33-37 61-58 88-30-24-82-61-116-100z" fill="#111111"/>
+  </g>
+  <rect x="620" y="368" width="360" height="184" rx="28" fill="#151515" stroke="rgba(240,165,0,0.35)" stroke-width="4"/>
+  <rect x="688" y="402" width="224" height="16" rx="8" fill="#f0a500"/>
+  <rect x="690" y="438" width="180" height="16" rx="8" fill="#2a2a2a"/>
+  <rect x="730" y="474" width="116" height="16" rx="8" fill="#2a2a2a"/>
+  <circle cx="800" cy="280" r="46" fill="rgba(240,165,0,0.2)"/>
+  <circle cx="800" cy="280" r="24" fill="#f0a500"/>
+</svg>

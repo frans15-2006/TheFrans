@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Pool deck at Hotel Centro Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101010"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#102233"/>
+      <stop offset="1" stop-color="#173248"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="0" y="620" width="1600" height="380" fill="#0b0b0b"/>
+  <rect x="120" y="420" width="1360" height="300" rx="34" fill="url(#water)" stroke="rgba(240,165,0,0.35)" stroke-width="6"/>
+  <path d="M155 490c98-34 193-35 283 0 80 31 150 32 228 2 92-35 174-35 262-1 79 31 154 31 228 0 90-37 187-39 299-2" fill="none" stroke="rgba(234,234,234,0.08)" stroke-width="10"/>
+  <path d="M155 550c98-34 193-35 283 0 80 31 150 32 228 2 92-35 174-35 262-1 79 31 154 31 228 0 90-37 187-39 299-2" fill="none" stroke="rgba(234,234,234,0.08)" stroke-width="10"/>
+  <g fill="#f0a500" opacity="0.9">
+    <ellipse cx="300" cy="360" rx="88" ry="24"/>
+    <ellipse cx="1260" cy="360" rx="88" ry="24"/>
+    <path d="M247 330h106v80H247z" fill="#151515"/>
+    <path d="M1207 330h106v80h-106z" fill="#151515"/>
+    <path d="M520 330h60l22 80h-104z" fill="#151515"/>
+    <path d="M1010 330h60l22 80h-104z" fill="#151515"/>
+  </g>
+  <g opacity="0.9">
+    <path d="M395 250c28 0 51 23 51 51v214h-102V301c0-28 23-51 51-51z" fill="#0f0f0f" stroke="#f0a500" stroke-width="4"/>
+    <path d="M1205 250c28 0 51 23 51 51v214h-102V301c0-28 23-51 51-51z" fill="#0f0f0f" stroke="#f0a500" stroke-width="4"/>
+  </g>
+  <g fill="#101010" stroke="rgba(234,234,234,0.12)" stroke-width="3">
+    <rect x="160" y="760" width="250" height="26" rx="13"/>
+    <rect x="210" y="790" width="200" height="26" rx="13"/>
+    <rect x="1170" y="760" width="250" height="26" rx="13"/>
+    <rect x="1120" y="790" width="200" height="26" rx="13"/>
+  </g>
+  <path d="M0 620c240-46 402-52 590-12 108 23 202 32 294 32 138 0 227-17 356-52 114-31 221-33 360 2v110H0z" fill="#090909" opacity="0.86"/>
+  <g opacity="0.82">
+    <path d="M1340 190c36-13 56-10 91 3-12 22-29 47-45 69-20-22-36-47-46-72z" fill="#0e0e0e"/>
+    <path d="M1460 214c32-12 52-11 86 2-13 22-26 45-43 67-17-21-29-44-43-69z" fill="#111"/>
+    <path d="M220 208c34-13 53-11 88 2-12 22-27 46-43 68-18-21-32-44-45-70z" fill="#0e0e0e"/>
+  </g>
+</svg>

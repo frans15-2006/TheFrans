@@ -1,196 +1,692 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hotel Centro — Puerto Princesa</title>
-<meta name="description" content="Hotel Centro — a 111-room business and leisure hotel on the National Highway in Puerto Princesa. Restaurant, poolside bar, gym, spa, and five conference venues.">
-<meta name="theme-color" content="#0a0a0a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0a0a0a;
-  --ink:#f0ead6;
-  --ink-dim:#a8a195;
-  --ink-faint:#5c574c;
-  --gold:#f0a500;
-  --line:rgba(240,234,214,0.1);
-  --line-strong:rgba(240,234,214,0.2);
-  --ff-display:'Bricolage Grotesque', sans-serif;
-  --ff-mono:'DM Mono', monospace;
-  --ease:cubic-bezier(.16,.84,.32,1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--ink);font-family:var(--ff-display);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.5;}
-a{color:inherit;text-decoration:none;}
-img{display:block;max-width:100%;}
-::selection{background:var(--gold);color:#0a0a0a;}
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Centro Puerto Princesa | San Pedro National Highway, Puerto Princesa</title>
+  <meta name="description" content="Hotel Centro Puerto Princesa is a 4-star city hotel on San Pedro National Highway in Puerto Princesa, Palawan, with verified room types, pool, restaurant, fitness centre, and airport shuttle access.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/hotel-centro-puerto-princesa/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hotel Centro Puerto Princesa | San Pedro National Highway, Puerto Princesa">
+  <meta property="og:description" content="Verified hotel details, room types, amenities, location map, gallery, and booking links for Hotel Centro Puerto Princesa in Puerto Princesa, Palawan.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/hotel-centro-puerto-princesa/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/hotel-centro-puerto-princesa/assets/img/hero-facade.svg">
+  <meta property="og:image:alt" content="Illustrated facade of Hotel Centro Puerto Princesa at dusk">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hotel Centro Puerto Princesa">
+  <meta name="twitter:description" content="Verified hotel details for Hotel Centro Puerto Princesa in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/hotel-centro-puerto-princesa/assets/img/hero-facade.svg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.3/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.12);
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    }
 
-.wrap{max-width:980px;margin:0 auto;padding:0 6vw;}
-.eyebrow{font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.7em;margin-bottom:1.2em;}
-.eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);}
-h1,h2{font-family:var(--ff-display);font-weight:600;letter-spacing:-.01em;line-height:1.05;}
-h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;}
-h2{font-size:clamp(1.6rem,3.4vw,2.4rem);}
-p{color:var(--ink-dim);font-size:1rem;max-width:38em;}
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-padding-top: 5.5rem;
+    }
 
-/* ---- nav ---- */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 6vw;font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);backdrop-filter:blur(6px);background:linear-gradient(to bottom, rgba(10,10,10,.7), transparent);}
-.topbar b{color:var(--ink);font-family:var(--ff-display);letter-spacing:0;text-transform:none;font-weight:700;}
-.topbar .call{color:var(--gold);}
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.12), transparent 34%),
+        radial-gradient(circle at 18% 25%, rgba(240, 165, 0, 0.08), transparent 26%),
+        linear-gradient(180deg, #0a0a0a 0%, #080808 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-/* ---- hero ---- */
-#hero{min-height:92vh;display:flex;align-items:center;padding-top:80px;position:relative;}
-#hero::before{
-  content:'';position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(ellipse at 75% 20%, rgba(240,165,0,.10), transparent 55%),
-             radial-gradient(ellipse at 10% 90%, rgba(240,165,0,.06), transparent 50%);
-}
-.hero-sub{margin-top:1.4em;}
-.hero-meta{display:flex;gap:2em;flex-wrap:wrap;margin-top:2.6em;font-family:var(--ff-mono);font-size:.78rem;color:var(--ink-faint);}
-.hero-meta b{color:var(--gold);display:block;font-size:1rem;font-family:var(--ff-display);font-weight:700;}
-.btn-row{display:flex;gap:1em;margin-top:2.4em;flex-wrap:wrap;}
-.btn{font-family:var(--ff-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.95em 1.6em;border-radius:2px;transition:transform .3s var(--ease),background .3s var(--ease);}
-.btn--solid{background:var(--gold);color:#0a0a0a;}
-.btn--solid:hover{transform:translateY(-2px);}
-.btn--ghost{border:1px solid var(--line-strong);color:var(--ink);}
-.btn--ghost:hover{border-color:var(--gold);color:var(--gold);}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 72%);
+      opacity: 0.08;
+    }
 
-/* ---- sections ---- */
-.section{padding:clamp(4rem,10vh,6.5rem) 0;border-top:1px solid var(--line);}
-.section-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,4rem);}
-@media (max-width:760px){.section-grid{grid-template-columns:1fr;}}
+    ::selection {
+      background: var(--accent);
+      color: #080808;
+    }
 
-.amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:.5em;}
-.amenity{background:var(--bg);padding:1.6em 1.4em;}
-.amenity .ic{color:var(--gold);font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
-.amenity .lbl{margin-top:.5em;font-size:.95rem;}
-@media (max-width:760px){.amenity-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:480px){.amenity-grid{grid-template-columns:1fr;}}
+    .display {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 0.92;
+    }
 
-.quote{border-left:2px solid var(--gold);padding-left:1.4em;margin-top:1.8em;font-style:italic;color:var(--ink);font-size:1.05rem;max-width:34em;}
-.quote cite{display:block;margin-top:.7em;font-style:normal;font-family:var(--ff-mono);font-size:.75rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+    }
 
-.near-list{margin-top:1.6em;display:flex;flex-direction:column;gap:.7em;font-family:var(--ff-mono);font-size:.85rem;}
-.near-list div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:.6em;color:var(--ink-dim);}
-.near-list div span:last-child{color:var(--ink);}
+    .section-shell {
+      width: min(1200px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
 
-.contact-card{border:1px solid var(--line-strong);padding:2.2em;margin-top:1.6em;}
-.contact-card .row{display:flex;justify-content:space-between;align-items:baseline;padding:.7em 0;border-bottom:1px solid var(--line);font-family:var(--ff-mono);font-size:.85rem;}
-.contact-card .row:last-child{border-bottom:none;}
-.contact-card .row span:first-child{color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
-.contact-card .row span:last-child{color:var(--gold);}
+    .section-pad {
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
 
-footer{padding:3em 6vw 3em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1em;font-family:var(--ff-mono);font-size:.72rem;color:var(--ink-faint);border-top:1px solid var(--line);}
+    .hairline {
+      border-color: var(--line);
+    }
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
-@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none;}}
-</style>
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      border: 1px solid var(--line);
+      padding: 0.95rem 1.15rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #080808;
+      border-color: transparent;
+    }
+
+    .button.primary:hover {
+      background: #ffbb1e;
+    }
+
+    .fine-link {
+      color: var(--muted);
+      transition: color 180ms ease;
+    }
+
+    .fine-link:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.06);
+      filter: saturate(0.92) contrast(1.04) brightness(0.84);
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.76) 42%, rgba(8, 8, 8, 0.28) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.18) 0%, rgba(8, 8, 8, 0.72) 100%);
+    }
+
+    .hero-orb {
+      position: absolute;
+      inset: auto auto 12% 58%;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.28), rgba(240, 165, 0, 0.04) 52%, transparent 72%);
+      filter: blur(12px);
+      opacity: 0.58;
+      animation: drift 14s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(-2%, 0, 0) scale(0.96); }
+      to { transform: translate3d(4%, -3%, 0) scale(1.04); }
+    }
+
+    .section-title {
+      font-size: clamp(3.1rem, 7vw, 6.4rem);
+      line-height: 0.9;
+    }
+
+    .room-row {
+      display: grid;
+      gap: 1rem;
+      padding-block: 1.35rem;
+      border-top: 1px solid var(--line);
+      transition: background-color 180ms ease;
+    }
+
+    .room-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .room-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .room-media {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #101010;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+    }
+
+    .ambient-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .ambient-item {
+      border-top: 1px solid var(--line);
+      padding-top: 0.9rem;
+    }
+
+    .ambient-item:last-child {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.9rem;
+    }
+
+    .gallery-frame {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      background: #101010;
+    }
+
+    .gallery-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms ease;
+      display: block;
+    }
+
+    .gallery-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .map-shell {
+      border: 1px solid var(--line);
+      background: #0e0e0e;
+      overflow: hidden;
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      min-height: 22rem;
+      border: 0;
+      display: block;
+      filter: saturate(0.88) contrast(1.04);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .room-row {
+        grid-template-columns: 0.8fr 1fr 1fr auto;
+        align-items: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-orb {
+        inset: auto auto 20% 44%;
+        width: 18rem;
+        height: 18rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "Hotel Centro Puerto Princesa",
+    "url": "https://frans15-2006.github.io/TheFrans/hotel-centro-puerto-princesa/",
+    "telephone": "+63 48 434 1110",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "San Pedro National Highway",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.762085,
+      "longitude": 118.74745
+    },
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Outdoor pool", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Fitness centre", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Airport shuttle", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free parking", "value": true}
+    ]
+  }
+  </script>
 </head>
 <body>
-
-<nav class="topbar">
-  <b>Hotel Centro</b>
-  <a class="call" href="tel:+639175991912">+63 917 599 1912</a>
-</nav>
-
-<main>
-<section id="hero">
-  <div class="wrap">
-    <span class="eyebrow">Hotel · Brgy. San Pedro, Puerto Princesa</span>
-    <h1>Business by day,<br>poolside by evening.</h1>
-    <p class="hero-sub">Hotel Centro sits on the National Highway in Barangay San Pedro — 111 rooms and five conference venues, built for travelers who need to run a meeting in the morning and unwind by the pool before dinner.</p>
-    <div class="hero-meta">
-      <div><b>111</b>Rooms &amp; suites</div>
-      <div><b>5</b>Conference venues</div>
-      <div><b>10 min</b>From the airport</div>
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/65 backdrop-blur-md">
+    <div class="section-shell flex items-center justify-between gap-4 py-4">
+      <a href="#top" class="group inline-flex items-baseline gap-3">
+        <span class="display text-2xl tracking-[0.08em] text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">Hotel Centro</span>
+        <span class="mono text-[10px] tracking-[0.35em] text-white/60">PUERTO PRINCESA</span>
+      </a>
+      <nav aria-label="Primary" class="hidden items-center gap-5 md:flex">
+        <a class="fine-link mono text-[11px] tracking-[0.22em] uppercase" href="#rooms">Rooms</a>
+        <a class="fine-link mono text-[11px] tracking-[0.22em] uppercase" href="#amenities">Amenities</a>
+        <a class="fine-link mono text-[11px] tracking-[0.22em] uppercase" href="#location">Location</a>
+        <a class="fine-link mono text-[11px] tracking-[0.22em] uppercase" href="#gallery">Gallery</a>
+        <a class="button primary px-4 py-3" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check availability</a>
+      </nav>
     </div>
-    <div class="btn-row">
-      <a class="btn btn--solid" href="tel:+639175991912">Call to Book</a>
-      <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=Hotel+Centro%2C+National+Highway%2C+Barangay+San+Pedro%2C+Puerto+Princesa+City%2C+Palawan" target="_blank" rel="noopener">Get Directions</a>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section class="section" id="about">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">The Stay</span><h2>Built for business,<br>not just transit.</h2></div>
-    <div>
-      <p>Most hotels along the highway are built for one kind of guest. Hotel Centro tries to cover both: five conference venues and a business concierge for the morning, then a poolside bar, spa, and gym for everything after — a 111-room property that doesn't ask you to choose between a work trip and a Palawan trip.</p>
-      <div class="quote reveal">Clean rooms, a pool that's genuinely worth the stay, and staff who go out of their way to help.<cite>Guest impression, paraphrased from recent reviews</cite></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="amenities">
-  <div class="wrap">
-    <span class="eyebrow">What's Included</span>
-    <h2>A business hotel<br>with a leisure side.</h2>
-    <div class="amenity-grid reveal">
-      <div class="amenity"><div class="ic">Connectivity</div><div class="lbl">Free WiFi throughout</div></div>
-      <div class="amenity"><div class="ic">Comfort</div><div class="lbl">Air-conditioned rooms</div></div>
-      <div class="amenity"><div class="ic">Dining</div><div class="lbl">Expressions Cafe on-site</div></div>
-      <div class="amenity"><div class="ic">Leisure</div><div class="lbl">Outdoor pool &amp; poolside bar</div></div>
-      <div class="amenity"><div class="ic">Wellness</div><div class="lbl">Spa &amp; treatment room</div></div>
-      <div class="amenity"><div class="ic">Fitness</div><div class="lbl">24-hour gym</div></div>
-      <div class="amenity"><div class="ic">Business</div><div class="lbl">Five conference venues</div></div>
-      <div class="amenity"><div class="ic">Events</div><div class="lbl">Banquet hall &amp; ballroom</div></div>
-      <div class="amenity"><div class="ic">Transport</div><div class="lbl">Airport shuttle service</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="location">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">Getting Here</span><h2>National Highway,<br>at the city's edge.</h2></div>
-    <div>
-      <p>Hotel Centro runs along the National Highway connecting the city center to the San Jose Transport Terminal — a short walk from Robinsons Place Palawan and a quick drive to most of the city's landmarks.</p>
-      <div class="near-list reveal">
-        <div><span>Robinsons Place Palawan</span><span>~700 m</span></div>
-        <div><span>Puerto Princesa Airport</span><span>~5 km</span></div>
-        <div><span>Palawan Museum</span><span>~2.8 km</span></div>
-        <div><span>Immaculate Conception Cathedral</span><span>~3.1 km</span></div>
-        <div><span>Palawan Butterfly Garden</span><span>~4 km</span></div>
+  <main id="top">
+    <section class="hero">
+      <img class="hero-media" src="assets/img/hero-facade.svg" alt="Illustrated facade of Hotel Centro Puerto Princesa at dusk">
+      <div class="hero-overlay"></div>
+      <div class="hero-orb"></div>
+      <div class="relative z-10 flex min-h-[100svh] items-end">
+        <div class="section-shell w-full pb-10 pt-28 sm:pb-14 lg:pb-16">
+          <div class="max-w-3xl" data-reveal-group>
+            <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]" data-reveal-item>San Pedro National Highway, Puerto Princesa</p>
+            <h1 class="display section-title mt-4 max-w-4xl text-[var(--text)]" data-reveal-item>Hotel Centro Puerto Princesa</h1>
+            <p class="mt-6 max-w-2xl text-pretty text-[1.03rem] leading-7 text-white/78 sm:text-[1.08rem]" data-reveal-item>
+              A polished city stay in Puerto Princesa, Palawan, with verified room types, an outdoor pool, a restaurant, a fitness centre, and paid airport shuttle access near Robinsons Place Palawan.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3" data-reveal-item>
+              <a class="button primary" href="#rooms">View rooms</a>
+              <a class="button" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check rates</a>
+              <a class="button" href="tel:+63484341110">Call hotel</a>
+            </div>
+            <p class="mt-6 max-w-2xl border-t border-white/10 pt-5 mono text-[11px] uppercase tracking-[0.28em] text-white/58" data-reveal-item>
+              Verified address: San Pedro National Highway, Puerto Princesa, Palawan 5300, Philippines
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="section" id="contact">
-  <div class="wrap section-grid">
-    <div><span class="eyebrow">Book Direct</span><h2>Skip the OTA<br>markup. Call ahead.</h2><p>Booking direct means no third-party commission baked into the rate — and a faster line to the front desk if your plans change.</p></div>
-    <div>
-      <div class="contact-card reveal">
-        <div class="row"><span>Mobile</span><span><a href="tel:+639175991912">+63 917 599 1912</a></span></div>
-        <div class="row"><span>Landline</span><span><a href="tel:+63484341110">(048) 434-1110</a></span></div>
-        <div class="row"><span>Address</span><span>National Highway, Brgy. San Pedro</span></div>
-        <div class="row"><span>Facebook</span><span><a href="https://www.facebook.com/HotelCentro/" target="_blank" rel="noopener">HotelCentro</a></span></div>
+    <section id="rooms" class="section-pad border-t border-white/10">
+      <div class="section-shell">
+        <div class="max-w-3xl" data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Accommodations</p>
+          <h2 class="display section-title mt-4">Verified room types</h2>
+          <p class="mt-5 max-w-2xl text-white/72 leading-7">
+            Bookable listings surface these room configurations for Hotel Centro Puerto Princesa. All verified listings describe air-conditioning, a flat-screen TV, a minibar or mini-bar, and a private bathroom.
+          </p>
+        </div>
+
+        <div class="mt-10">
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">01</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">Deluxe Double Room</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">30 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">1 full bed</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">02</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">Superior Double Room</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">23 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">1 full bed</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">03</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">Superior Twin Room</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">21 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">2 twin beds</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">04</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">Deluxe Twin Room</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">23 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">2 twin beds</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">05</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">Family Suite</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">44 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">1 twin bed and 1 queen bed</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+
+          <article class="room-row" data-reveal>
+            <div>
+              <p class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">06</p>
+              <h3 class="mt-2 text-2xl text-[var(--text)]">King Room</h3>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Published size</p>
+              <p class="mt-2 text-lg">54 m²</p>
+            </div>
+            <div class="text-white/72">
+              <p class="mono text-[11px] uppercase tracking-[0.3em] text-white/45">Bed setup</p>
+              <p class="mt-2 text-lg">1 king bed</p>
+            </div>
+            <a class="button justify-self-start md:justify-self-end" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check booking</a>
+          </article>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
 
-<footer>
-  <span>Hotel Centro · Puerto Princesa City, Palawan</span>
-  <span>Built by francis.dev</span>
-</footer>
+    <section id="amenities" class="section-pad border-t border-white/10">
+      <div class="section-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Amenities</p>
+          <h2 class="display section-title mt-4 max-w-lg">Built for easy city stays</h2>
+          <p class="mt-5 max-w-xl text-white/72 leading-7">
+            The verified facilities lean toward practical comfort: pool time, fitness, dining, parking, shuttle access, and spaces for work or family travel.
+          </p>
+        </div>
 
-<script>
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var io = new IntersectionObserver(function(entries,obs){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+        <div class="ambient-list" data-reveal>
+          <div class="ambient-item grid gap-2 md:grid-cols-[0.45fr_0.55fr] md:gap-6">
+            <h3 class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Stay</h3>
+            <p class="text-white/80 leading-7">Free Wi-Fi in public areas, air-conditioned rooms, non-smoking rooms, wheelchair access, rooms and facilities for disabled guests.</p>
+          </div>
+          <div class="ambient-item grid gap-2 md:grid-cols-[0.45fr_0.55fr] md:gap-6">
+            <h3 class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Move</h3>
+            <p class="text-white/80 leading-7">Outdoor pool, children's pool, fitness centre, spa centre, sun terrace, garden area, loungers, umbrellas, and karaoke.</p>
+          </div>
+          <div class="ambient-item grid gap-2 md:grid-cols-[0.45fr_0.55fr] md:gap-6">
+            <h3 class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Dine</h3>
+            <p class="text-white/80 leading-7">Restaurant, snack bar, bar and lounge area, breakfast service, electric kettle, room service during limited hours.</p>
+          </div>
+          <div class="ambient-item grid gap-2 md:grid-cols-[0.45fr_0.55fr] md:gap-6">
+            <h3 class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Ease</h3>
+            <p class="text-white/80 leading-7">24-hour reception, luggage storage, business centre, meeting and banquet facilities, paid airport shuttle, free parking, car hire, laundry and dry cleaning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section-pad border-t border-white/10">
+      <div class="section-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Location</p>
+          <h2 class="display section-title mt-4 max-w-lg">San Pedro National Highway</h2>
+          <p class="mt-5 max-w-xl text-white/72 leading-7">
+            Hotel Centro Puerto Princesa is mapped in Puerto Princesa, Palawan, near Robinsons Place Palawan and the city center. The coordinates below are set to 9.762085, 118.74745, which places the property in Puerto Princesa and not Manila.
+          </p>
+          <div class="mt-8 space-y-4 text-white/78">
+            <p><span class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Address</span><br>San Pedro National Highway, Puerto Princesa, Palawan 5300, Philippines</p>
+            <p><span class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Nearby</span><br>Robinsons Place Palawan, City Coliseum Park, Puerto Princesa City Baywalk Park, and the Puerto Princesa International Airport corridor.</p>
+          </div>
+          <a class="button mt-8" href="https://www.google.com/maps/search/?api=1&query=9.762085,118.74745" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+
+        <div class="map-shell" data-reveal data-lenis-prevent>
+          <iframe
+            title="Map of Hotel Centro Puerto Princesa"
+            loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=118.73645%2C9.75378%2C118.75845%2C9.77045&layer=mapnik&marker=9.762085%2C118.74745">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad border-t border-white/10">
+      <div class="section-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end" data-reveal>
+        <div>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Booking CTA</p>
+          <h2 class="display section-title mt-4 max-w-3xl">Reserve your Puerto Princesa base</h2>
+          <p class="mt-5 max-w-2xl text-white/72 leading-7">
+            Use the verified booking listing to check dates, or call the hotel directly for a faster read on room availability, airport transfer options, and current rates.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a class="button primary" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Check availability</a>
+          <a class="button" href="tel:+63484341110">Call +63 48 434 1110</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-pad border-t border-white/10">
+      <div class="section-shell">
+        <div class="max-w-3xl" data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Gallery</p>
+          <h2 class="display section-title mt-4">A visual read of the property</h2>
+          <p class="mt-5 max-w-2xl text-white/72 leading-7">
+            The gallery uses original SVG artwork to represent the hotel facade, pool deck, guest rooms, lobby, dining, and garden atmosphere without relying on broken external image paths.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-12">
+          <figure class="gallery-frame md:col-span-2 xl:col-span-7 xl:row-span-2" data-reveal>
+            <img class="gallery-shot" src="assets/img/hero-facade.svg" alt="Illustrated exterior of Hotel Centro Puerto Princesa">
+          </figure>
+          <figure class="gallery-frame xl:col-span-5" data-reveal>
+            <img class="gallery-shot" src="assets/img/pool.svg" alt="Pool deck at Hotel Centro Puerto Princesa">
+          </figure>
+          <figure class="gallery-frame xl:col-span-5" data-reveal>
+            <img class="gallery-shot" src="assets/img/room.svg" alt="Guest room at Hotel Centro Puerto Princesa">
+          </figure>
+          <figure class="gallery-frame xl:col-span-4" data-reveal>
+            <img class="gallery-shot" src="assets/img/lobby.svg" alt="Lobby interior at Hotel Centro Puerto Princesa">
+          </figure>
+          <figure class="gallery-frame xl:col-span-3" data-reveal>
+            <img class="gallery-shot" src="assets/img/dining.svg" alt="Dining area at Hotel Centro Puerto Princesa">
+          </figure>
+          <figure class="gallery-frame xl:col-span-4" data-reveal>
+            <img class="gallery-shot" src="assets/img/garden.svg" alt="Garden and lounge area at Hotel Centro Puerto Princesa">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="section-pad border-t border-white/10">
+      <div class="section-shell footer-grid">
+        <div>
+          <p class="mono text-[11px] uppercase tracking-[0.45em] text-[var(--accent)]">Contact</p>
+          <h2 class="display section-title mt-4">Hotel Centro Puerto Princesa</h2>
+          <p class="mt-5 max-w-2xl text-white/72 leading-7">
+            San Pedro National Highway, Puerto Princesa, Palawan 5300, Philippines.
+            Check-in starts at 2:00 PM and check-out is by 12:00 PM, based on verified listing data.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="button primary" href="tel:+63484341110">Call front desk</a>
+            <a class="button" href="https://www.booking.com/hotel/ph/centro.html" target="_blank" rel="noopener noreferrer">Booking listing</a>
+          </div>
+        </div>
+        <div class="grid gap-4 self-end text-white/72">
+          <p><span class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Phone</span><br><a class="fine-link" href="tel:+63484341110">+63 48 434 1110</a></p>
+          <p><span class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Map pin</span><br>9.762085, 118.74745</p>
+          <p><span class="mono text-[11px] uppercase tracking-[0.35em] text-white/45">Location</span><br>Puerto Princesa, Palawan, Philippines</p>
+        </div>
+      </div>
+      <div class="section-shell mt-8 border-t border-white/10 pt-5 text-[11px] uppercase tracking-[0.28em] text-white/38">
+        Hotel Centro Puerto Princesa • Vanilla HTML/CSS/JS • GSAP + Lenis • Ready for GitHub Pages
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const smoothLinks = document.querySelectorAll('a[href^="#"]');
+    smoothLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
     });
-  }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-})();
-</script>
+
+    if (!reduceMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      gsap.set('.hero-media', { scale: 1.08 });
+      gsap.to('.hero-media', {
+        scale: 1.01,
+        duration: 12,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
+
+      gsap.from('[data-reveal-item]', {
+        autoAlpha: 0,
+        y: 22,
+        duration: 0.9,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.2
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.fromTo(el, {
+          autoAlpha: 0,
+          y: 24
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.gallery-shot').forEach((img, index) => {
+        gsap.fromTo(img, {
+          yPercent: 0
+        }, {
+          yPercent: index % 2 === 0 ? -6 : 6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.7
+          }
+        });
+      });
+
+      window.addEventListener('load', () => ScrollTrigger.refresh());
+    }
+  </script>
 </body>
 </html>

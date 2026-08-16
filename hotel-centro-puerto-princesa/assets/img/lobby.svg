@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Lobby interior at Hotel Centro Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="0" y="730" width="1600" height="270" fill="#0a0a0a"/>
+  <rect x="220" y="260" width="1160" height="420" rx="28" fill="#141414" stroke="rgba(234,234,234,0.12)" stroke-width="4"/>
+  <rect x="300" y="366" width="1000" height="178" rx="20" fill="#1a1a1a"/>
+  <rect x="356" y="392" width="888" height="48" rx="24" fill="#f0a500"/>
+  <rect x="356" y="456" width="520" height="18" rx="9" fill="#313131"/>
+  <rect x="356" y="486" width="360" height="18" rx="9" fill="#313131"/>
+  <circle cx="800" cy="214" r="54" fill="rgba(240,165,0,0.2)"/>
+  <circle cx="800" cy="214" r="32" fill="#f0a500"/>
+  <rect x="430" y="212" width="70" height="164" rx="18" fill="#121212" stroke="rgba(234,234,234,0.09)" stroke-width="3"/>
+  <rect x="1100" y="212" width="70" height="164" rx="18" fill="#121212" stroke="rgba(234,234,234,0.09)" stroke-width="3"/>
+  <path d="M260 714h1080" stroke="rgba(234,234,234,0.1)" stroke-width="4"/>
+  <rect x="204" y="710" width="120" height="18" rx="9" fill="#f0a500"/>
+  <rect x="1276" y="710" width="120" height="18" rx="9" fill="#f0a500"/>
+  <g opacity="0.9">
+    <rect x="246" y="600" width="140" height="40" rx="20" fill="#0f0f0f" stroke="#f0a500" stroke-width="2"/>
+    <rect x="1214" y="600" width="140" height="40" rx="20" fill="#0f0f0f" stroke="#f0a500" stroke-width="2"/>
+  </g>
+</svg>

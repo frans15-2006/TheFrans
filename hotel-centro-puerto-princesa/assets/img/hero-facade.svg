@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Illustrated Hotel Centro Puerto Princesa facade at dusk">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="0.5" stop-color="#101010"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c1c1c"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="pool" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0d1720"/>
+      <stop offset="0.5" stop-color="#142737"/>
+      <stop offset="1" stop-color="#0b131a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1240" cy="190" r="250" fill="url(#sun)"/>
+  <path d="M0 700C160 648 280 650 420 684c88 21 150 49 246 49 102 0 171-26 254-53 104-35 174-37 266-12 88 24 160 72 414 72v260H0z" fill="url(#pool)"/>
+  <path d="M0 748c188-36 351-37 515 8 98 27 186 43 280 43 125 0 205-19 316-54 118-37 217-42 489 1v254H0z" fill="#0a0f14" opacity="0.92"/>
+  <g opacity="0.75">
+    <path d="M180 180c36-12 58-12 94 0-13 24-28 48-47 71-19-23-34-47-47-71z" fill="#0e0e0e"/>
+    <path d="M104 216c38-14 65-15 103-2-17 28-31 52-52 77-19-25-34-49-51-75z" fill="#101010"/>
+    <path d="M1390 170c34-13 56-12 92 1-14 23-30 46-48 69-19-22-35-46-44-70z" fill="#0e0e0e"/>
+    <path d="M1492 212c32-12 54-12 88 1-13 23-28 46-44 69-18-22-31-45-44-70z" fill="#101010"/>
+  </g>
+  <g transform="translate(420 150)">
+    <rect x="0" y="60" width="760" height="460" rx="26" fill="#131313" stroke="rgba(234,234,234,0.14)" stroke-width="4"/>
+    <rect x="34" y="94" width="692" height="392" rx="18" fill="url(#glass)"/>
+    <rect x="302" y="16" width="156" height="92" rx="12" fill="#181818" stroke="#f0a500" stroke-width="3"/>
+    <text x="380" y="72" text-anchor="middle" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="48" letter-spacing="4">HOTEL CENTRO</text>
+    <g fill="#1f1f1f" stroke="rgba(240,165,0,0.55)" stroke-width="2">
+      <rect x="66" y="132" width="92" height="92"/>
+      <rect x="174" y="132" width="92" height="92"/>
+      <rect x="282" y="132" width="92" height="92"/>
+      <rect x="390" y="132" width="92" height="92"/>
+      <rect x="498" y="132" width="92" height="92"/>
+      <rect x="606" y="132" width="92" height="92"/>
+      <rect x="66" y="244" width="92" height="92"/>
+      <rect x="174" y="244" width="92" height="92"/>
+      <rect x="282" y="244" width="92" height="92"/>
+      <rect x="390" y="244" width="92" height="92"/>
+      <rect x="498" y="244" width="92" height="92"/>
+      <rect x="606" y="244" width="92" height="92"/>
+      <rect x="66" y="356" width="92" height="92"/>
+      <rect x="174" y="356" width="92" height="92"/>
+      <rect x="282" y="356" width="92" height="92"/>
+      <rect x="390" y="356" width="92" height="92"/>
+      <rect x="498" y="356" width="92" height="92"/>
+      <rect x="606" y="356" width="92" height="92"/>
+    </g>
+    <g fill="#f0a500" opacity="0.82">
+      <rect x="83" y="149" width="58" height="58"/>
+      <rect x="191" y="149" width="58" height="58"/>
+      <rect x="299" y="149" width="58" height="58"/>
+      <rect x="407" y="149" width="58" height="58"/>
+      <rect x="515" y="149" width="58" height="58"/>
+      <rect x="623" y="149" width="58" height="58"/>
+      <rect x="83" y="261" width="58" height="58"/>
+      <rect x="191" y="261" width="58" height="58"/>
+      <rect x="299" y="261" width="58" height="58"/>
+      <rect x="407" y="261" width="58" height="58"/>
+      <rect x="515" y="261" width="58" height="58"/>
+      <rect x="623" y="261" width="58" height="58"/>
+      <rect x="83" y="373" width="58" height="58"/>
+      <rect x="191" y="373" width="58" height="58"/>
+      <rect x="299" y="373" width="58" height="58"/>
+      <rect x="407" y="373" width="58" height="58"/>
+      <rect x="515" y="373" width="58" height="58"/>
+      <rect x="623" y="373" width="58" height="58"/>
+    </g>
+    <rect x="330" y="462" width="100" height="54" rx="9" fill="#f0a500"/>
+    <rect x="222" y="470" width="48" height="42" rx="4" fill="#242424"/>
+    <rect x="486" y="470" width="48" height="42" rx="4" fill="#242424"/>
+  </g>
+  <g opacity="0.95">
+    <rect x="0" y="640" width="1600" height="26" fill="#121212"/>
+    <rect x="220" y="612" width="240" height="36" rx="18" fill="#151515"/>
+    <rect x="1100" y="606" width="260" height="42" rx="21" fill="#151515"/>
+  </g>
+</svg>
