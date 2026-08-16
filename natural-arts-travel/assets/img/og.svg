@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Natural Arts Travel OG image</title>
+  <desc id="desc">Dark brand card with amber accents for Natural Arts Travel and Tours.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="18%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#f0a500" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="985" cy="165" r="118" fill="#f0a500" fill-opacity="0.12"/>
+  <path d="M118 458c92-58 202-82 330-77 108 4 202 32 292 67 100 39 184 57 278 53 76-3 142-17 200-43v172H118Z" fill="#111"/>
+  <path d="M118 500c89-37 183-52 281-46 111 6 204 35 293 63 91 29 178 46 266 43 82-3 159-21 242-52" fill="none" stroke="#eaeaea" stroke-opacity="0.25" stroke-width="4"/>
+  <text x="112" y="188" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="84" letter-spacing="4">NATURAL ARTS TRAVEL</text>
+  <text x="112" y="248" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="6">PUERTO PRINCESA, PALAWAN</text>
+  <text x="112" y="334" fill="#eaeaea" font-family="Space Grotesk, Arial, sans-serif" font-size="34">Travel More, Worry Less</text>
+  <text x="112" y="382" fill="#eaeaea" fill-opacity="0.72" font-family="Space Grotesk, Arial, sans-serif" font-size="24">Verified Palawan tours, transfers, ticketing, and select international packages.</text>
+</svg>

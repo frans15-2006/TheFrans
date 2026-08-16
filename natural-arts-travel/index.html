@@ -1,60 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natural Arts Travel and Tours</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Arts Travel and Tours | Puerto Princesa Palawan Tours & Packages</title>
+  <meta name="description" content="Natural Arts Travel and Tours in Puerto Princesa, Palawan for verified Palawan tours, hotel booking, transfers, and select international packages." />
+  <meta name="theme-color" content="#080808" />
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/natural-arts-travel/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Natural Arts Travel and Tours | Puerto Princesa Palawan Tours & Packages" />
+  <meta property="og:description" content="Verified Puerto Princesa travel and tours from Natural Arts Travel: Palawan routes, ticketing, hotel booking, transfers, and more." />
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/natural-arts-travel/assets/img/og.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Natural Arts Travel and Tours | Puerto Princesa Palawan Tours & Packages" />
+  <meta name="twitter:description" content="Verified Puerto Princesa travel and tours from Natural Arts Travel: Palawan routes, ticketing, hotel booking, transfers, and more." />
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/natural-arts-travel/assets/img/og.svg" />
+  <link rel="icon" href="assets/img/og.svg" type="image/svg+xml" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.45/bundled/lenis.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080808;
+      --fg: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(240, 165, 0, 0.26);
+      --line-soft: rgba(234, 234, 234, 0.12);
+      --accent: #f0a500;
+      --panel: rgba(234, 234, 234, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--fg);
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      background:
+        radial-gradient(circle at 80% 12%, rgba(240, 165, 0, 0.16), transparent 22%),
+        radial-gradient(circle at 12% 8%, rgba(240, 165, 0, 0.08), transparent 18%),
+        linear-gradient(180deg, #080808 0%, #0a0a0a 50%, #080808 100%);
+      overflow-x: hidden;
+      color: var(--fg);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.025) 1px, transparent 1px);
+      background-size: 100% 96px, 96px 100%;
+      opacity: 0.14;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 88%);
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    .btn:focus-visible,
+    .package:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1200px, calc(100vw - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      opacity: 0.92;
+      transform: scale(1.04);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.48) 42%, rgba(8, 8, 8, 0.2) 74%, rgba(8, 8, 8, 0.52) 100%),
+        linear-gradient(0deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.16) 40%, rgba(8, 8, 8, 0.48) 100%);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.2rem;
+      color: rgba(234, 234, 234, 0.82);
+      position: relative;
+      z-index: 2;
+    }
+
+    .topbar a {
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    .topbar a:hover {
+      color: var(--accent);
+    }
+
+    .hero-copy-wrap {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100svh - 4rem);
+      display: flex;
+      align-items: flex-end;
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-copy {
+      max-width: 46rem;
+    }
+
+    .hero-kicker {
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title {
+      font-size: clamp(4.2rem, 16vw, 9rem);
+      margin: 0;
+      color: var(--fg);
+    }
+
+    .hero-text {
+      margin-top: 1rem;
+      font-size: clamp(1rem, 2vw, 1.24rem);
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 39rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 3rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.7);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #080808;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #ffd15c;
+      color: #080808;
+    }
+
+    .btn-ghost {
+      background: rgba(234, 234, 234, 0.02);
+      color: var(--fg);
+    }
+
+    .hero-note {
+      margin-top: 1.35rem;
+      max-width: 42rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line-soft);
+      color: rgba(234, 234, 234, 0.68);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      line-height: 1.7;
+    }
+
+    .section {
+      padding: clamp(4rem, 10vw, 8rem) 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 2rem;
+      max-width: 52rem;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 5rem);
+      color: var(--fg);
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 48rem;
+    }
+
+    .packages-meta {
+      margin-bottom: 1.5rem;
+      color: rgba(234, 234, 234, 0.7);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .package-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .package {
+      position: relative;
+      padding: 1rem 0.2rem 1.1rem 0;
+      border-top: 1px solid var(--line);
+      min-height: 11.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .package:hover {
+      transform: translateY(-4px);
+      border-top-color: rgba(240, 165, 0, 0.68);
+    }
+
+    .package h3 {
+      margin: 0.45rem 0 0.7rem;
+      font-size: clamp(2rem, 4.2vw, 2.8rem);
+      color: var(--fg);
+    }
+
+    .package p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 20rem;
+    }
+
+    .package .action {
+      margin-top: 1.3rem;
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .gallery-item {
+      grid-column: span 12;
+      border-top: 1px solid var(--line-soft);
+      padding-top: 0.8rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 0;
+      filter: saturate(0.95) contrast(1.02);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      transition: transform 260ms ease, border-color 260ms ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.01);
+      border-color: rgba(240, 165, 0, 0.32);
+    }
+
+    .gallery-item figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin-top: 0.75rem;
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.5;
+    }
+
+    .gallery-item figcaption strong {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg);
+    }
+
+    .gallery-item.small {
+      grid-column: span 12;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .testimonial {
+      padding: 1rem 0 0.8rem;
+      border-top: 1px solid var(--line);
+      min-height: 12rem;
+    }
+
+    .testimonial p {
+      margin: 0 0 1rem;
+      color: var(--fg);
+      line-height: 1.8;
+      font-size: 1.04rem;
+    }
+
+    .testimonial footer {
+      color: rgba(234, 234, 234, 0.64);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .booking {
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.06), rgba(240, 165, 0, 0.01));
+    }
+
+    .booking-row {
+      display: grid;
+      gap: 1.2rem;
+      align-items: end;
+    }
+
+    .booking-row p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 44rem;
+    }
+
+    .footer {
+      padding: clamp(3rem, 7vw, 5rem) 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      align-items: start;
+    }
+
+    .contact-block {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-block h3 {
+      margin: 0 0 0.75rem;
+      font-size: 2rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1rem;
+      margin: 0;
+    }
+
+    .contact-list dt {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-list dd {
+      margin: 0;
+      color: var(--fg);
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.25rem;
+    }
+
+    .map-check {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .map-check svg {
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: #050505;
+    }
+
+    .map-check .coords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      color: rgba(234, 234, 234, 0.68);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fineprint {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.54);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 760px) {
+      .hero-copy-wrap {
+        padding-bottom: 3rem;
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) {
+        grid-column: span 7;
+      }
+
+      .gallery-item:nth-child(2),
+      .gallery-item:nth-child(5) {
+        grid-column: span 5;
+      }
+
+      .gallery-item:nth-child(3),
+      .gallery-item:nth-child(6) {
+        grid-column: span 4;
+      }
+
+      .booking-row {
+        grid-template-columns: 1.35fr 0.65fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero-media img,
+      .package,
+      .gallery-item img,
+      .btn {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Natural Arts Travel and Tours</h1>
-    <span class="category">Tour Agency</span>
-    <p class="address">Rizal Ave Bancao-Bancao, Puerto Princesa City</p>
-    <p class="phone">+63 920 828 6308</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="shell">
+    <header class="hero" id="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-scene" src="assets/img/hero-pc.svg" alt="" decoding="async" fetchpriority="high" />
+        <div class="hero-glow"></div>
+      </div>
+
+      <div class="container">
+        <div class="topbar" data-reveal>
+          <a href="#hero" class="mono">Natural Arts Travel and Tours</a>
+          <a href="#contact" class="mono">Puerto Princesa, Palawan</a>
+        </div>
+
+        <div class="hero-copy-wrap">
+          <div class="hero-copy" data-reveal>
+            <p class="mono hero-kicker">Travel More, Worry Less</p>
+            <h1 class="display hero-title">Natural Arts Travel and Tours</h1>
+            <p class="hero-text">A Puerto Princesa travel and tours agency for verified Palawan routes, hotel and resort booking, land and ferry transfers, and select international packages listed on the site.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#packages">View verified packages</a>
+              <a class="btn btn-ghost" href="#contact">Open contact details</a>
+            </div>
+            <p class="hero-note">Based at Victoria Building, Purok Katarungan, Runway corner Baltan, Barangay San Miguel, Puerto Princesa City, Palawan 5300. Public listings show the office in Puerto Princesa, not Manila, with coordinates at 9.743004, 118.74471.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="packages" class="section">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <span class="mono">Packages / Tours</span>
+            <h2 class="display section-title">Routes that are actually listed</h2>
+            <p class="section-copy">Natural Arts Travel publishes Palawan Tours, Domestic Travel, and International Package categories. The public listings include Puerto Princesa day tours and longer island routes, plus international trips such as Bangkok Thailand Pattaya, Bangkok Thailand, Bangkok Hanoi, Bali Iconic, and Tricity Country Singapore/Malaysia/Indonesia.</p>
+          </div>
+
+          <p class="packages-meta mono" data-reveal>Verified examples from the agency and TripAdvisor listings include private Underground River, Honda Bay, Firefly Watching, Balabac 4D3N, El Nido, and Coron routes.</p>
+
+          <div class="package-grid">
+            <a class="package" href="#contact" data-reveal aria-label="Plan Private Underground River Tour">
+              <span class="mono">Puerto Princesa</span>
+              <h3 class="display">Private Underground River Tour</h3>
+              <p>A verified Puerto Princesa route for the UNESCO cave system, with operator support from the city base.</p>
+              <span class="action">Open details</span>
+            </a>
+
+            <a class="package" href="#contact" data-reveal aria-label="Plan Joiners Firefly Watching Tour">
+              <span class="mono">Night Tour</span>
+              <h3 class="display">Joiners Firefly Watching Tour</h3>
+              <p>An evening river cruise in Iwahig with dinner, pickup and drop-off, and a slower finish to the day.</p>
+              <span class="action">Open details</span>
+            </a>
+
+            <a class="package" href="#contact" data-reveal aria-label="Plan Joiners Honda Bay Tour">
+              <span class="mono">Island Hopping</span>
+              <h3 class="display">Joiners Honda Bay Tour</h3>
+              <p>Close-to-city island time for snorkeling and beach-hopping without leaving Puerto Princesa behind.</p>
+              <span class="action">Open details</span>
+            </a>
+
+            <a class="package" href="#contact" data-reveal aria-label="Plan PRIVATE Balabac Tours 4D3N">
+              <span class="mono">Long Stay</span>
+              <h3 class="display">PRIVATE Balabac Tours 4D3N</h3>
+              <p>A longer southbound Palawan circuit for travelers who want deeper water, sandbars, and a slower pace.</p>
+              <span class="action">Open details</span>
+            </a>
+
+            <a class="package" href="#contact" data-reveal aria-label="Plan El Nido Tour A plus accommodation">
+              <span class="mono">El Nido</span>
+              <h3 class="display">El Nido Tour A + accommodation</h3>
+              <p>Island-hopping coordination with stay planning, built around one of Palawan's best-known routes.</p>
+              <span class="action">Open details</span>
+            </a>
+
+            <a class="package" href="#contact" data-reveal aria-label="Plan Private Coron Tour B">
+              <span class="mono">Coron</span>
+              <h3 class="display">Private Coron Tour B</h3>
+              <p>Limestone views and northern Palawan island days, with the agency handling the trip pieces behind the scenes.</p>
+              <span class="action">Open details</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="destinations" class="section">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <span class="mono">Destinations / Gallery</span>
+            <h2 class="display section-title">Palawan places the agency already works with</h2>
+            <p class="section-copy">From the city proper to the far south, the agency's public listings point to Puerto Princesa, Honda Bay, Underground River, El Nido, Coron, Balabac, and San Vicente as core destinations.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/hero-pc.svg" alt="Stylized Puerto Princesa coastal scene" loading="lazy" />
+              <figcaption><strong>Puerto Princesa</strong><span>City base and launch point for tours.</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/honda-bay.svg" alt="Stylized Honda Bay island hopping scene" loading="lazy" />
+              <figcaption><strong>Honda Bay</strong><span>Island hopping close to the city.</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/underground-river.svg" alt="Stylized Underground River cave scene" loading="lazy" />
+              <figcaption><strong>Underground River</strong><span>UNESCO cave route from Puerto Princesa.</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/el-nido.svg" alt="Stylized El Nido limestone and lagoon scene" loading="lazy" />
+              <figcaption><strong>El Nido</strong><span>Accommodations and island days.</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/balabac.svg" alt="Stylized Balabac sandbar and island scene" loading="lazy" />
+              <figcaption><strong>Balabac</strong><span>Far-south sandbars and long stays.</span></figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-reveal>
+              <img src="assets/img/coron.svg" alt="Stylized Coron and island route scene" loading="lazy" />
+              <figcaption><strong>Coron</strong><span>Northern Palawan route coordination.</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <span class="mono">Testimonials</span>
+            <h2 class="display section-title">What travelers keep repeating</h2>
+            <p class="section-copy">These quotes come from public TripAdvisor reviews and product listings tied to Natural Arts Travel and Tours.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            <blockquote class="testimonial" data-reveal>
+              <p>“They were quick to answer all our inquiries and assisted all our concerns.”</p>
+              <footer>TripAdvisor reviewer, Puerto Princesa package review</footer>
+            </blockquote>
+
+            <blockquote class="testimonial" data-reveal>
+              <p>“The agency was flawless in organizing and handling our pick ups and drops.”</p>
+              <footer>TripAdvisor reviewer, Palawan travel review</footer>
+            </blockquote>
+
+            <blockquote class="testimonial" data-reveal>
+              <p>“Very friendly, helpful and organised. With many contacts they get the best deals and tour operators.”</p>
+              <footer>TripAdvisor reviewer, Natural Arts Travel and Tours</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="section booking">
+        <div class="container">
+          <div class="booking-row" data-reveal>
+            <div>
+              <span class="mono">Booking CTA</span>
+              <h2 class="display section-title">Send the route, the date, and the headcount.</h2>
+              <p>Natural Arts Travel can line up tours, transfers, hotel or resort booking, ticketing, and visa support from its Puerto Princesa base. The site's own line says it best: travel is not just about the places you visit, it is about the journey that leads you to the pieces of yourself you did not know were missing.</p>
+            </div>
+            <a class="btn btn-primary" href="#contact">Open contact details</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="contact-block" data-reveal>
+            <span class="mono">Contact / Footer</span>
+            <h3 class="display">Natural Arts Travel and Tours</h3>
+            <p class="section-copy">Puerto Princesa based, with public listings showing the office at Victoria Building, Purok Katarungan, Runway corner Baltan, Barangay San Miguel, Puerto Princesa City, Palawan 5300.</p>
+
+            <dl class="contact-list">
+              <div>
+                <dt>Address</dt>
+                <dd>Victoria Building, Purok Katarungan, Runway corner Baltan, Barangay San Miguel, Puerto Princesa City, Palawan 5300, Philippines</dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:naturalartstravelandtours@gmail.com">naturalartstravelandtours@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt>Phone</dt>
+                <dd><a href="tel:+639208286308">+63 920 828 6308</a></dd>
+              </div>
+              <div>
+                <dt>Hours</dt>
+                <dd>Monday to Saturday, 9:00 AM to 6:00 PM. Sunday closed.</dd>
+              </div>
+            </dl>
+
+            <div class="contact-links">
+              <a class="btn btn-ghost" href="mailto:naturalartstravelandtours@gmail.com">Email the team</a>
+              <a class="btn btn-ghost" href="tel:+639208286308">Call now</a>
+            </div>
+          </div>
+
+          <div class="contact-block" data-reveal>
+            <span class="mono">Location Check</span>
+            <h3 class="display">Verified Puerto Princesa pin</h3>
+            <p class="section-copy">Public coordinates associated with the office place it in Puerto Princesa at roughly 9.743004, 118.74471, matching the city and not Manila.</p>
+
+            <div class="map-check" aria-label="Map coordinate verification">
+              <svg viewBox="0 0 760 420" role="img" aria-labelledby="map-title map-desc">
+                <title id="map-title">Puerto Princesa coordinate check</title>
+                <desc id="map-desc">Abstract map with a pin at the Puerto Princesa coordinate range.</desc>
+                <defs>
+                  <linearGradient id="map-bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#0d0d0d" />
+                    <stop offset="100%" stop-color="#050505" />
+                  </linearGradient>
+                  <linearGradient id="map-glow" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f0a500" stop-opacity="0.7" />
+                    <stop offset="100%" stop-color="#f0a500" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <rect width="760" height="420" fill="url(#map-bg)" />
+                <path d="M118 318C150 276 188 257 226 220C259 188 292 168 333 146C364 130 389 114 427 116C468 118 500 140 533 162C570 187 608 204 640 239C662 263 677 289 690 320L690 362H118Z" fill="#111" stroke="#f0a500" stroke-opacity="0.26" stroke-width="2"/>
+                <path d="M183 286C212 253 246 241 282 209C321 174 345 166 384 167C429 168 470 188 503 214C535 239 571 253 607 284" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="3" stroke-dasharray="8 10"/>
+                <circle cx="386" cy="214" r="78" fill="url(#map-glow)" opacity="0.54" />
+                <circle cx="386" cy="214" r="16" fill="#f0a500" />
+                <circle cx="386" cy="214" r="28" fill="none" stroke="#f0a500" stroke-width="2" stroke-opacity="0.9" />
+                <path d="M386 144c-23 0-42 19-42 42 0 31 42 74 42 74s42-43 42-74c0-23-19-42-42-42zm0 58a16 16 0 1 1 0-32 16 16 0 0 1 0 32z" fill="#f0a500" opacity="0.92" />
+                <text x="42" y="54" fill="#eaeaea" fill-opacity="0.78" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="3">PUERTO PRINCESA, PALAWAN</text>
+                <text x="42" y="84" fill="#f0a500" fill-opacity="0.9" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2">9.743004 N 118.74471 E</text>
+              </svg>
+              <div class="coords">
+                <span>Puerto Princesa city base</span>
+                <span>9.743004 N</span>
+                <span>118.74471 E</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fineprint" data-reveal>
+          Services listed publicly by the agency include air ticketing, hotel and resort booking, land and ferry transfer, domestic and international packages, and visa support.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && window.Lenis) {
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    }
+
+    if (!reduceMotion && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from('.hero-copy', {
+        opacity: 0,
+        y: 36,
+        duration: 1.1,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+
+      gsap.from('.hero-scene', {
+        scale: 1.08,
+        y: 40,
+        duration: 1.6,
+        ease: 'power2.out',
+        delay: 0.05
+      });
+
+      gsap.to('.hero-scene', {
+        yPercent: 8,
+        scale: 1.08,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      gsap.utils.toArray('[data-reveal]:not(.hero-copy)').forEach((el) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 84%'
+          }
+        });
+      });
+
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+  </script>
 </body>
 </html>

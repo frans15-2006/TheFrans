@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Coron island and lake scene</title>
+  <desc id="desc">Stylized limestone islands and quiet water for Coron.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="58%" cy="18%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.76"/>
+      <stop offset="42%" stop-color="#f0a500" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+  <rect width="1600" height="1100" fill="url(#glow)"/>
+  <path d="M0 725c132-40 259-62 380-62 117 0 213 21 310 57 98 36 189 53 292 50 117-4 227-29 329-63 95-32 191-53 289-61v494H0Z" fill="#0b0b0b"/>
+  <path d="M0 810c126-29 241-39 345-28 100 10 188 34 281 63 97 31 193 49 301 47 109-1 211-21 314-50 107-31 215-58 359-57v325H0Z" fill="#070707"/>
+  <g fill="#111" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2">
+    <path d="M177 680c24-96 68-166 136-219 71-55 154-82 246-89 96-7 184 8 264 48 73 37 134 88 190 131 71 56 145 87 231 94 93 8 182-12 264-43 93-36 179-76 282-82 69-4 129 6 210 39-35 52-81 97-137 136-89 62-197 101-321 118-121 17-229 8-326-25-92-32-168-71-239-115-56-35-117-58-189-66-77-8-149 5-222 30-88 31-175 68-257 92-63 18-127 22-192 15z"/>
+  </g>
+  <path d="M98 896c105-20 201-21 289-3 85 17 158 43 242 57 98 17 190 10 283-13 111-28 211-58 326-62 106-4 202 7 300 37 81 24 163 52 262 54" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/>
+  <path d="M168 948c114-7 220 3 324 29 99 25 215 39 346 35 121-4 223-24 318-56 90-31 184-55 322-55" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+</svg>

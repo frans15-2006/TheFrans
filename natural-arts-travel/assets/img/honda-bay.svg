@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Honda Bay island hopping scene</title>
+  <desc id="desc">Stylized island-hopping scene with water, islets, and a banca boat for Honda Bay.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e0e0e"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="68%" cy="18%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.78"/>
+      <stop offset="40%" stop-color="#f0a500" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+  <rect width="1600" height="1100" fill="url(#glow)"/>
+  <path d="M0 689c115-44 231-66 342-64 111 2 191 30 292 63 122 40 237 58 375 52 149-6 266-32 389-70 86-26 155-42 202-46v476H0Z" fill="#0d0d0d"/>
+  <path d="M0 762c104-30 197-48 279-50 74-2 161 8 242 29 116 31 208 45 308 40 95-6 183-23 257-46 95-29 188-55 327-51 73 2 126 10 187 26v390H0Z" fill="#080808"/>
+  <path d="M114 690c58-53 130-92 213-107 94-18 164-4 233 23 73 29 131 69 188 117 63 53 120 82 194 89 83 8 161-18 227-49 78-36 153-82 247-97 98-16 200 1 268 41-42 31-95 57-152 78-101 36-212 58-337 63-136 6-255-9-379-46-104-31-194-71-276-120-53-31-107-54-173-64-60-8-128-1-193 19-61 20-125 52-180 83-52 29-100 57-160 70-10 3-20 4-30 5z" fill="#121212" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <g opacity="0.9">
+    <path d="M329 895c0-34 20-70 56-104 30-29 68-54 112-73 52-22 104-31 158-28 72 4 126 27 181 54 66 32 130 56 199 62 88 7 180-12 265-44 68-26 133-59 201-81 61-20 116-28 164-22-21 18-41 39-60 58-58 56-125 101-196 134-90 42-190 64-302 66-118 3-231-19-336-52-88-28-158-56-221-83-49-21-102-32-168-31-42 1-81 6-123 17z" fill="#f0a500" fill-opacity="0.08"/>
+    <path d="M213 842c97-47 191-68 280-62 102 7 178 49 255 96 57 35 121 59 197 71 69 11 141 11 210 3 93-12 180-39 262-79" fill="none" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round"/>
+    <path d="M235 902c101-33 195-41 286-22 90 19 163 46 249 54 98 9 194-7 288-35 76-22 151-46 226-49" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 12"/>
+  </g>
+  <g transform="translate(650 755)">
+    <path d="M0 80h210" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round"/>
+    <path d="M105 28v52" stroke="#eaeaea" stroke-opacity="0.34" stroke-width="4" stroke-linecap="round"/>
+    <path d="M16 76c36-13 76-19 121-17 23 1 46 5 68 11" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
