@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Colonial arch motif</title>
+  <desc id="desc">An amber line illustration of an arch, stone blocks, and a quiet cafe interior nod.</desc>
+  <rect width="1200" height="900" fill="#111"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="905" cy="195" r="170" stroke="#f0a500" stroke-opacity="0.12" stroke-width="34"/>
+    <path d="M250 684V356c0-144 118-262 262-262h176c144 0 262 118 262 262v328" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="10"/>
+    <path d="M330 684V374c0-101 82-183 183-183h174c101 0 183 82 183 183v310" stroke="#f0a500" stroke-opacity="0.42" stroke-width="8"/>
+    <path d="M436 684V404c0-41 33-74 74-74h180c41 0 74 33 74 74v280" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="8"/>
+    <path d="M284 684h632" stroke="#f0a500" stroke-opacity="0.32" stroke-width="6"/>
+    <path d="M190 770h820" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="5"/>
+    <path d="M432 482h336" stroke="#f0a500" stroke-opacity="0.28" stroke-width="6"/>
+    <path d="M600 482v202" stroke="#f0a500" stroke-opacity="0.24" stroke-width="5"/>
+    <path d="M392 560h416" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+    <rect x="486" y="642" width="228" height="88" rx="20" stroke="#f0a500" stroke-opacity="0.38" stroke-width="6"/>
+    <path d="M514 684h172" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="6"/>
+    <path d="M528 636v-74" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="5"/>
+    <path d="M672 636v-74" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="5"/>
+    <path d="M360 300l72-58M840 300l-72-58" stroke="#f0a500" stroke-opacity="0.18" stroke-width="5"/>
+    <path d="M292 390h48M860 390h48M292 438h48M860 438h48" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="5"/>
+  </g>
+</svg>

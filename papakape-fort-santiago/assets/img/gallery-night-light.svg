@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Night light study</title>
+  <desc id="desc">A dark atmospheric study with amber reflections and low lights around the fort cafe.</desc>
+  <rect width="900" height="700" fill="#0b0b0b"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 604c126-80 202-122 308-122s182 42 308 122" stroke="#f0a500" stroke-opacity="0.26" stroke-width="7"/>
+    <path d="M132 560c104-56 164-84 268-84s164 28 268 84" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="5"/>
+    <path d="M226 450c0 82 60 146 224 146s224-64 224-146" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="7"/>
+    <circle cx="450" cy="286" r="92" stroke="#f0a500" stroke-opacity="0.32" stroke-width="16"/>
+    <circle cx="450" cy="286" r="36" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="8"/>
+    <path d="M336 176h228" stroke="#f0a500" stroke-opacity="0.18" stroke-width="6"/>
+    <path d="M390 214h120" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="5"/>
+  </g>
+</svg>

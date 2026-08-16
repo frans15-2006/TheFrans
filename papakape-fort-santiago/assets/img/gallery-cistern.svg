@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Cistern room study</title>
+  <desc id="desc">A circular cistern interior with layered stone rings and soft amber reflections.</desc>
+  <rect width="900" height="700" fill="#0f0f0f"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="450" cy="350" r="238" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="8"/>
+    <circle cx="450" cy="350" r="182" stroke="#f0a500" stroke-opacity="0.3" stroke-width="8"/>
+    <circle cx="450" cy="350" r="120" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="8"/>
+    <circle cx="450" cy="350" r="58" stroke="#f0a500" stroke-opacity="0.42" stroke-width="7"/>
+    <path d="M212 350h476M450 112v476" stroke="#eaeaea" stroke-opacity="0.09" stroke-width="4"/>
+    <path d="M270 194c56 46 120 68 180 68s124-22 180-68" stroke="#f0a500" stroke-opacity="0.18" stroke-width="5"/>
+    <path d="M270 506c56-46 120-68 180-68s124 22 180 68" stroke="#f0a500" stroke-opacity="0.18" stroke-width="5"/>
+    <path d="M332 242c39 26 74 39 118 39s79-13 118-39" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="4"/>
+    <path d="M332 458c39-26 74-39 118-39s79 13 118 39" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="4"/>
+  </g>
+</svg>

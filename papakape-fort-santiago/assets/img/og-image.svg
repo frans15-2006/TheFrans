@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Papakape Fort Santiago share image</title>
+  <desc id="desc">A dark social image for Papakape Fort Santiago with amber accents and a fort silhouette.</desc>
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="280" cy="150" r="180" fill="#f0a500" fill-opacity="0.12"/>
+  <circle cx="1012" cy="160" r="220" fill="#f0a500" fill-opacity="0.08"/>
+  <g transform="translate(110 108) scale(0.82)">
+    <path d="M92 612h716" stroke="#f0a500" stroke-opacity="0.22" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M130 600V352l62-40h110l43 24 25-24h103l40 28h121l51 38v242" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M130 600h640" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M202 600V476h122v124" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M522 600V456h130v144" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M346 600V404h208v196" stroke="#eaeaea" stroke-opacity="0.3" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M386 404c0-36 30-66 67-66s67 30 67 66" stroke="#f0a500" stroke-opacity="0.4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="658" y="236" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="88" letter-spacing="4">PAPAKAPE</text>
+  <text x="658" y="314" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="3">FORT SANTIAGO</text>
+  <text x="658" y="368" fill="#eaeaea" font-family="Space Grotesk, Arial, sans-serif" font-size="23" opacity="0.84">Intramuros, Manila cafe with Filipino-forward coffee</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-labelledby="title desc">
+  <title id="title">Fort Santiago silhouette</title>
+  <desc id="desc">A stylized silhouette of Fort Santiago walls and archways with amber highlights.</desc>
+  <rect width="900" height="760" fill="none"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 612h716" stroke="#f0a500" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M130 600V352l62-40h110l43 24 25-24h103l40 28h121l51 38v242" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M130 600h640" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="4"/>
+    <path d="M202 600V476h122v124" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4"/>
+    <path d="M522 600V456h130v144" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4"/>
+    <path d="M346 600V404h208v196" stroke="#eaeaea" stroke-opacity="0.3" stroke-width="4"/>
+    <path d="M386 404c0-36 30-66 67-66s67 30 67 66" stroke="#f0a500" stroke-opacity="0.4" stroke-width="4"/>
+    <path d="M400 404v-46h100v46" stroke="#eaeaea" stroke-opacity="0.34" stroke-width="4"/>
+    <path d="M180 352v-78h74v78" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+    <path d="M626 380v-86h76v86" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+    <path d="M180 274h74M626 294h76" stroke="#f0a500" stroke-opacity="0.25" stroke-width="3"/>
+    <path d="M217 500h92M557 500h98" stroke="#f0a500" stroke-opacity="0.28" stroke-width="3"/>
+    <path d="M114 652c92-18 166-22 288-18s232 18 406 8" stroke="#f0a500" stroke-opacity="0.22" stroke-width="2"/>
+    <path d="M160 170c20 11 33 30 33 51" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+    <path d="M708 174c-18 9-30 27-34 48" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+    <circle cx="184" cy="214" r="6" fill="#f0a500" fill-opacity="0.7"/>
+    <circle cx="720" cy="214" r="6" fill="#f0a500" fill-opacity="0.7"/>
+  </g>
+</svg>

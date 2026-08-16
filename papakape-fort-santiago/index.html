@@ -1,5 +1,1172 @@
 <!DOCTYPE html>
-<title>Papakape Fort Santiago</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papakape Fort Santiago | Intramuros, Manila Cafe</title>
+  <meta name="description" content="Papakape Fort Santiago is a coffee stop inside Aljibe de la Fuerza at Fort Santiago, Intramuros, Manila. Explore verified menu highlights, hours, location, and contact details.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="Papakape Fort Santiago | Intramuros, Manila Cafe">
+  <meta property="og:description" content="A heritage coffee stop inside Fort Santiago, Intramuros, Manila, with verified menu highlights, hours, location, and contact details.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/papakape-fort-santiago/assets/img/og-image.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/papakape-fort-santiago/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --bg-panel: rgba(255, 255, 255, 0.03);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.14);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.18);
+      --accent-glow: rgba(240, 165, 0, 0.32);
+      --max: 1200px;
+      --radius: 1.35rem;
+      --radius-lg: 1.75rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(240, 165, 0, 0.06), transparent 20%),
+        linear-gradient(180deg, #0b0b0b 0%, #080808 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', impact, sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.94;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.35) inset;
+      backdrop-filter: blur(14px);
+    }
+
+    .section-heading {
+      font-size: clamp(2.6rem, 6vw, 4.75rem);
+      margin: 0;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--muted);
+      transition: color 220ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3.45rem;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      overflow: hidden;
+      transform: translateZ(0);
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #120b00;
+      box-shadow: 0 14px 35px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 18px 42px rgba(240, 165, 0, 0.25), 0 0 0 1px rgba(240, 165, 0, 0.14) inset;
+    }
+
+    .btn-ghost {
+      border-color: rgba(234, 234, 234, 0.18);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.4);
+      background: rgba(240, 165, 0, 0.06);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.12) inset;
+    }
+
+    .ripple {
+      position: absolute;
+      inset: auto;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: rgba(255,255,255,0.55);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+      animation: ripple 650ms ease-out forwards;
+    }
+
+    @keyframes ripple {
+      from {
+        opacity: 0.65;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(18);
+      }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 18%, rgba(240, 165, 0, 0.12), transparent 24%),
+        radial-gradient(circle at 82% 30%, rgba(240, 165, 0, 0.11), transparent 28%),
+        linear-gradient(90deg, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.78) 45%, rgba(8,8,8,0.34) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-top: 6.5rem;
+      padding-bottom: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+    }
+
+    .hero-title {
+      font-size: clamp(4.5rem, 13vw, 9.6rem);
+      margin: 0.3rem 0 1rem;
+      display: grid;
+      gap: 0;
+      text-wrap: balance;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-text {
+      max-width: 34rem;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      line-height: 1.72;
+      color: var(--muted);
+      margin: 0 0 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 22rem;
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      width: min(100%, 38rem);
+      pointer-events: none;
+    }
+
+    .hero-art img {
+      width: 100%;
+      max-width: 38rem;
+      filter: drop-shadow(0 24px 40px rgba(0,0,0,0.42));
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(12px);
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: pulseOrb 8s ease-in-out infinite;
+    }
+
+    .orb-one {
+      width: 22rem;
+      height: 22rem;
+      left: -4rem;
+      top: 2rem;
+      background: radial-gradient(circle, rgba(240,165,0,0.28) 0%, rgba(240,165,0,0.08) 44%, transparent 72%);
+    }
+
+    .orb-two {
+      width: 16rem;
+      height: 16rem;
+      right: 6%;
+      bottom: 8%;
+      animation-delay: -3s;
+      background: radial-gradient(circle, rgba(240,165,0,0.2) 0%, rgba(240,165,0,0.06) 50%, transparent 75%);
+    }
+
+    @keyframes pulseOrb {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(0, -0.9rem, 0) scale(1.05); }
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+
+    .scroll-track {
+      width: 1.7rem;
+      height: 2.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234,234,234,0.22);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-dot {
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: scrollDot 1.7s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { transform: translateY(-0.55rem); opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { transform: translateY(0.6rem); opacity: 0; }
+    }
+
+    section {
+      position: relative;
+      padding: 4rem 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .lede {
+      max-width: 44rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .menu-card {
+      position: relative;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+      min-height: 100%;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(240,165,0,0.1), transparent 34%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.45);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(240,165,0,0.1) inset;
+    }
+
+    .menu-card:hover::before,
+    .menu-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 0.9rem;
+    }
+
+    .menu-name {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin: 0;
+      line-height: 0.95;
+    }
+
+    .menu-desc {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .menu-price {
+      color: var(--accent);
+      font-size: 0.95rem;
+      white-space: nowrap;
+      padding-top: 0.35rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      background: rgba(240,165,0,0.08);
+      color: rgba(240, 201, 112, 0.98);
+      border: 1px solid rgba(240,165,0,0.18);
+      font-size: 0.74rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .story-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      max-width: 36rem;
+    }
+
+    .story-art {
+      position: relative;
+      min-height: 18rem;
+      border-radius: 1.75rem;
+      overflow: hidden;
+      border: 1px solid rgba(234,234,234,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+
+    .story-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.98;
+    }
+
+    .story-art .caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 1rem;
+      background: rgba(8,8,8,0.64);
+      border: 1px solid rgba(240,165,0,0.16);
+      color: var(--muted);
+      backdrop-filter: blur(12px);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      grid-auto-flow: dense;
+    }
+
+    .gallery-tile {
+      position: relative;
+      min-height: 14rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.1);
+      background: #121212;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .gallery-tile:hover {
+      transform: translateY(-5px) scale(1.01);
+      border-color: rgba(240,165,0,0.45);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.34);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform 280ms ease;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(8,8,8,0.72);
+      border: 1px solid rgba(240,165,0,0.18);
+      color: var(--text);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .info-block {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(234,234,234,0.08);
+    }
+
+    .detail-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .detail-row span:first-child {
+      color: var(--muted);
+    }
+
+    .detail-row span:last-child {
+      color: var(--text);
+      text-align: right;
+    }
+
+    .map-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(234,234,234,0.1);
+      min-height: 22rem;
+      background: #101010;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      display: block;
+      filter: grayscale(0.18) contrast(1.08) brightness(0.92);
+    }
+
+    .map-note {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(8,8,8,0.72);
+      border: 1px solid rgba(240,165,0,0.18);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    footer {
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(234,234,234,0.08);
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+
+    .footer-col {
+      display: grid;
+      gap: 0.8rem;
+      align-content: start;
+    }
+
+    .footer-title {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.5rem;
+      color: var(--muted);
+    }
+
+    .footer-links a {
+      width: fit-content;
+      transition: color 200ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .copyright {
+      padding-top: 1.2rem;
+      margin-top: 1.2rem;
+      border-top: 1px solid rgba(234,234,234,0.08);
+      color: rgba(234,234,234,0.58);
+      font-size: 0.82rem;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 640px) {
+      .menu-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        min-height: 100svh;
+      }
+
+      .story-grid,
+      .hours-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.25fr 1fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: 9.25rem;
+      }
+
+      .gallery-tile:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+      .gallery-tile:nth-child(2) { grid-column: span 4; grid-row: span 1; }
+      .gallery-tile:nth-child(3) { grid-column: span 3; grid-row: span 2; }
+      .gallery-tile:nth-child(4) { grid-column: span 4; grid-row: span 1; }
+      .gallery-tile:nth-child(5) { grid-column: span 5; grid-row: span 1; }
+
+      .hero-art {
+        justify-self: end;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-shell {
+        gap: 0.75rem;
+      }
+
+      .nav-shell nav {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <div class="shell">
+      <div class="nav-shell panel mt-4 flex items-center justify-between rounded-full px-4 py-3 md:px-5">
+        <a href="#top" class="display text-xl tracking-[0.14em] text-[var(--text)]">PAPAKAPE</a>
+        <nav class="flex items-center gap-6 text-sm mono">
+          <a class="nav-link" href="#menu">Menu</a>
+          <a class="nav-link" href="#story">Story</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#visit">Visit</a>
+        </nav>
+        <a class="btn btn-ghost mono text-xs uppercase tracking-[0.18em]" href="#visit">Find Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="orb orb-one"></div>
+      <div class="orb orb-two"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="mono text-xs uppercase tracking-[0.24em] text-[var(--accent)] mb-3">Papakape Fort Santiago</p>
+          <h1 class="display hero-title"><span>Papakape</span><span>Fort Santiago</span></h1>
+          <p class="hero-text">Inside Aljibe de la Fuerza in Intramuros, this branch serves Filipino-forward coffee, native sweets, and a quiet pause beneath historic stone walls.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary ripple-btn mono text-xs uppercase tracking-[0.18em]" href="#menu">View Menu</a>
+            <a class="btn btn-ghost ripple-btn mono text-xs uppercase tracking-[0.18em]" href="#visit">Find Us</a>
+          </div>
+          <div class="scroll-indicator mono text-xs uppercase tracking-[0.18em]">
+            <div class="scroll-track" aria-hidden="true"><div class="scroll-dot"></div></div>
+            <span>Scroll for the menu</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <img src="assets/img/fort-silhouette.svg" alt="Stylized silhouette of Fort Santiago and Papakape's heritage setting">
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="shell">
+        <div class="section-head">
+          <p class="section-kicker mono">Menu Highlights</p>
+          <h2 class="display section-heading">Filipino twists, verified staples</h2>
+          <p class="lede">Public listings for the Fort Santiago branch feature signature coffee drinks, tea, and local sweets. These highlights are drawn from recent menu and feature coverage for Papakape in Intramuros.</p>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="shell story-grid">
+        <div class="story-copy reveal-left">
+          <div class="section-head" style="margin-bottom:0;">
+            <p class="section-kicker mono">Story</p>
+            <h2 class="display section-heading">Coffee inside a 400-year-old cistern</h2>
+          </div>
+          <p>Papakape Fort Santiago is housed in the Aljibe de la Fuerza, a former water cistern within the grounds of Fort Santiago. The space keeps its stone character intact while serving coffee built around Filipino flavors and familiar local desserts.</p>
+          <p>That mix of old walls and modern cups gives the branch its pull: it feels rooted in Intramuros, but the menu keeps moving forward with espresso, malunggay, black gulaman, taho-inspired coffee, and native kakanin.</p>
+        </div>
+        <div class="story-art reveal-right">
+          <img src="assets/img/arch-motif.svg" alt="Illustrated colonial arch and stonework motif for Fort Santiago">
+          <div class="caption mono text-xs uppercase tracking-[0.16em]">
+            <span>Aljibe de la Fuerza</span>
+            <span>Fort Santiago, Intramuros</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <p class="section-kicker mono">Gallery</p>
+          <h2 class="display section-heading">Stone, shadow, and amber light</h2>
+          <p class="lede">A small visual set inspired by the fort walls, cobblestones, and cafe interior atmosphere around Papakape Fort Santiago.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="shell">
+        <div class="section-head">
+          <p class="section-kicker mono">Hours / Location</p>
+          <h2 class="display section-heading">Intramuros, Manila only</h2>
+          <p class="lede">Verified public listings place Papakape at 18 Sta. Clara St, Fort Santiago, Intramuros, Manila, with daily hours listed as 9:00 AM to 9:00 PM on recent guides and menu listings. Coordinates below are for Manila, not Puerto Princesa.</p>
+        </div>
+        <div class="hours-grid">
+          <div class="info-block panel rounded-[1.75rem] p-5 md:p-6 reveal-up">
+            <div>
+              <p class="mono text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-2">Address</p>
+              <p class="text-[1.05rem] leading-8 text-[var(--text)] m-0">18 Sta. Clara St, Fort Santiago, Intramuros, Manila, 1002 Metro Manila, Philippines</p>
+            </div>
+            <div class="detail-list mono text-sm">
+              <div class="detail-row"><span>Monday - Sunday</span><span>9:00 AM - 9:00 PM</span></div>
+              <div class="detail-row"><span>Coordinates</span><span>14.5945344, 120.9695853</span></div>
+              <div class="detail-row"><span>Branch setting</span><span>Aljibe de la Fuerza, Fort Santiago</span></div>
+            </div>
+            <a class="btn btn-primary ripple-btn mono text-xs uppercase tracking-[0.18em] w-fit" href="https://www.openstreetmap.org/?mlat=14.5945344&mlon=120.9695853#map=19/14.5945344/120.9695853" target="_blank" rel="noopener noreferrer">Open Map</a>
+          </div>
+          <div class="map-wrap reveal-up">
+            <div class="map-note mono">Manila Coordinates</div>
+            <iframe title="OpenStreetMap view of Papakape Fort Santiago in Intramuros, Manila" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=120.9664%2C14.5929%2C120.9728%2C14.5962&layer=mapnik&marker=14.5945344%2C120.9695853"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="display text-[2.6rem] leading-none m-0">Papakape Fort Santiago</p>
+          <p class="lede max-w-md">A heritage cafe in Intramuros, Manila, built around Filipino-forward coffee and native sweets inside Fort Santiago.</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-title mono">Visit</p>
+          <div class="footer-links mono text-sm">
+            <span>18 Sta. Clara St</span>
+            <span>Fort Santiago, Intramuros</span>
+            <span>Manila 1002, Philippines</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-title mono">Contact</p>
+          <div class="footer-links mono text-sm">
+            <a href="tel:+639178986268">+63 917 898 6268</a>
+            <a href="mailto:coffee@papakape.com">coffee@papakape.com</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-title mono">Connect</p>
+          <div class="footer-links mono text-sm">
+            <a href="https://papakape.com/fort-santiago" target="_blank" rel="noopener noreferrer">Official page</a>
+            <a href="https://www.facebook.com/papakape" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/papakape/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.openstreetmap.org/?mlat=14.5945344&mlon=120.9695853#map=19/14.5945344/120.9695853" target="_blank" rel="noopener noreferrer">Map link</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright mono">
+        <span>Copyright 2026 Papakape Fort Santiago. Coordinates locked to Manila: 14.5945344, 120.9695853.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuItems = [
+      {
+        name: 'Black Gulaman Americano',
+        price: 'P230',
+        category: 'Fort Santiago Signature',
+        desc: 'Espresso, pandan arnibal, grass jelly, and basil seeds.',
+      },
+      {
+        name: 'Tahoat',
+        price: 'P250',
+        category: 'Fort Santiago Signature',
+        desc: 'Espresso with oatmilk, soy curds, and tapioca pearls.',
+      },
+      {
+        name: 'Kape Cerves',
+        price: 'P220',
+        category: 'Fort Santiago Signature',
+        desc: 'Espresso, premium malt beer, and ginger or pandan syrup.',
+      },
+      {
+        name: 'Bibingkaccino',
+        price: 'P230',
+        category: 'Fort Santiago Signature',
+        desc: 'Espresso with coconut milk froth and torched queso.',
+      },
+      {
+        name: 'Mango Sampalok Iced Tea',
+        price: 'P220',
+        category: 'Tea',
+        desc: 'Mango, tamarind, and black tea in one chilled glass.',
+      },
+      {
+        name: 'Americano',
+        price: 'P160',
+        category: 'Standard Coffee',
+        desc: 'Espresso and water, served hot or iced.',
+      },
+      {
+        name: 'Red Bean Suman',
+        price: 'P80',
+        category: 'Native Sweet',
+        desc: 'Soft rice cake with red bean filling and latik sauce.',
+      },
+      {
+        name: 'Kesong Puti Pretzel',
+        price: 'P60',
+        category: 'Pastry',
+        desc: 'Savory pretzel bite listed among the branch pastries.',
+      },
+    ];
+
+    const galleryItems = [
+      {
+        src: 'assets/img/gallery-fort-wall.svg',
+        label: 'Fort walls',
+      },
+      {
+        src: 'assets/img/gallery-cobblestone.svg',
+        label: 'Cobblestones',
+      },
+      {
+        src: 'assets/img/gallery-cistern.svg',
+        label: 'Cistern room',
+      },
+      {
+        src: 'assets/img/gallery-counter.svg',
+        label: 'Cafe counter',
+      },
+      {
+        src: 'assets/img/gallery-night-light.svg',
+        label: 'Amber light',
+      },
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+    const galleryGrid = document.getElementById('galleryGrid');
+
+    menuGrid.innerHTML = menuItems.map((item) => `
+      <article class="menu-card" tabindex="0">
+        <div class="menu-top">
+          <div>
+            <div class="pill mono">${item.category}</div>
+            <h3 class="display menu-name mt-3">${item.name}</h3>
+          </div>
+          <div class="menu-price mono">${item.price}</div>
+        </div>
+        <p class="menu-desc">${item.desc}</p>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = galleryItems.map((item) => `
+      <figure class="gallery-tile">
+        <img src="${item.src}" alt="${item.label} inspired Papakape Fort Santiago scene">
+        <figcaption class="gallery-label mono">${item.label}</figcaption>
+      </figure>
+    `).join('');
+
+    document.querySelectorAll('.ripple-btn').forEach((button) => {
+      button.addEventListener('pointerdown', (event) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+      });
+    });
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion && window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl.from('.nav-shell', { y: -20, opacity: 0, duration: 0.8 })
+        .from('.hero-copy .section-kicker, .hero-copy .hero-title, .hero-copy .hero-text, .hero-copy .hero-actions, .scroll-indicator', {
+          y: 24,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.08,
+        }, '-=0.3')
+        .from('.hero-art', { y: 40, opacity: 0, duration: 1 }, '-=0.7');
+
+      gsap.to('.hero-art', {
+        yPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.to('.orb-one', {
+        x: 28,
+        y: -24,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.to('.orb-two', {
+        x: -26,
+        y: -20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.from('.menu-card', {
+        y: 42,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#menu',
+          start: 'top 72%',
+        },
+      });
+
+      gsap.from('.reveal-left', {
+        x: -60,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 70%',
+        },
+      });
+
+      gsap.from('.reveal-right', {
+        x: 60,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 70%',
+        },
+      });
+
+      gsap.from('.gallery-tile', {
+        y: 34,
+        opacity: 0,
+        scale: 0.98,
+        duration: 0.8,
+        stagger: 0.09,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 70%',
+        },
+      });
+
+      gsap.from('#visit .reveal-up, #visit .map-wrap', {
+        y: 34,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#visit',
+          start: 'top 70%',
+        },
+      });
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Papakape Fort Santiago",
+    "description": "A heritage cafe inside Aljibe de la Fuerza at Fort Santiago, Intramuros, Manila.",
+    "url": "https://frans15-2006.github.io/TheFrans/papakape-fort-santiago/",
+    "image": "https://frans15-2006.github.io/TheFrans/papakape-fort-santiago/assets/img/og-image.svg",
+    "telephone": "+63 917 898 6268",
+    "email": "coffee@papakape.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "18 Sta. Clara St, Fort Santiago",
+      "addressLocality": "Manila",
+      "addressRegion": "Intramuros",
+      "postalCode": "1002",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.5945344,
+      "longitude": 120.9695853
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Monday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Tuesday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Wednesday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Thursday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Friday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Saturday", "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "https://schema.org/Sunday", "opens": "09:00", "closes": "21:00" }
+    ],
+    "sameAs": [
+      "https://papakape.com/",
+      "https://papakape.com/fort-santiago",
+      "https://www.facebook.com/papakape",
+      "https://www.instagram.com/papakape/"
+    ]
+  }
+  </script>
 </body>
+</html>

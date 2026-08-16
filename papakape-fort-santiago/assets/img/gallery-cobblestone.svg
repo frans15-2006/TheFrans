@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Cobblestone path study</title>
+  <desc id="desc">A cobblestone pattern with a subtle map pin and amber glow.</desc>
+  <rect width="900" height="700" fill="#101010"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 166h680M110 286h680M110 406h680M110 526h680" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="3"/>
+    <path d="M170 112v508M290 112v508M410 112v508M530 112v508M650 112v508M770 112v508" stroke="#f0a500" stroke-opacity="0.08" stroke-width="3"/>
+    <g stroke="#eaeaea" stroke-opacity="0.2" stroke-width="4">
+      <path d="M164 214c32-34 82-34 114 0s32 82 0 114-82 34-114 0-32-82 0-114z"/>
+      <path d="M324 164c28-28 72-28 100 0s28 72 0 100-72 28-100 0-28-72 0-100z"/>
+      <path d="M496 224c26-26 68-26 94 0s26 68 0 94-68 26-94 0-26-68 0-94z"/>
+      <path d="M642 176c34-32 84-32 116 0s32 84 0 116-82 32-116 0-32-84 0-116z"/>
+      <path d="M220 420c32-34 82-34 114 0s32 82 0 114-82 34-114 0-32-82 0-114z"/>
+      <path d="M398 368c30-30 74-30 104 0s30 74 0 104-74 30-104 0-30-74 0-104z"/>
+      <path d="M562 438c26-26 68-26 94 0s26 68 0 94-68 26-94 0-26-68 0-94z"/>
+      <path d="M706 386c34-32 84-32 116 0s32 84 0 116-82 32-116 0-32-84 0-116z"/>
+    </g>
+    <path d="M450 166c58 0 106 47 106 106 0 80-106 166-106 166s-106-86-106-166c0-59 48-106 106-106z" stroke="#f0a500" stroke-opacity="0.34" stroke-width="7"/>
+    <circle cx="450" cy="272" r="28" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="6"/>
+  </g>
+</svg>
