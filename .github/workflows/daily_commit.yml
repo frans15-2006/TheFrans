@@ -1,7 +1,10 @@
 name: Daily Contribution
 on:
   schedule:
+    - cron: '0 0 * * *'
+    - cron: '0 6 * * *'
     - cron: '0 12 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
 
 jobs:
@@ -11,11 +14,13 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Modify file and commit
+      - name: Modify file and commit multiple times
         run: |
-          date -u >> activity.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add activity.txt
-          git commit -m "Update activity log"
+          for i in {1..10}; do
+            date -u >> activity.txt
+            git add activity.txt
+            git commit -m "Update activity log $i"
+          done
           git push
