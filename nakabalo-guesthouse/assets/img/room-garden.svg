@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Garden queen room illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#1b1208"/>
+    </linearGradient>
+    <linearGradient id="bed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d2418"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="930" cy="175" r="180" fill="#f0a500" opacity="0.18"/>
+  <rect x="120" y="160" width="960" height="580" rx="18" fill="#0b0b0b" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <rect x="160" y="200" width="260" height="190" rx="8" fill="#141414" stroke="#f0a500" stroke-opacity="0.26"/>
+  <rect x="190" y="230" width="200" height="120" rx="6" fill="#f0a500" opacity="0.1"/>
+  <rect x="470" y="220" width="280" height="160" rx="12" fill="url(#bed)"/>
+  <rect x="498" y="194" width="205" height="92" rx="12" fill="#d4c2a5" opacity="0.25"/>
+  <rect x="500" y="290" width="215" height="84" rx="12" fill="#232323"/>
+  <rect x="810" y="220" width="220" height="260" rx="12" fill="#111111"/>
+  <rect x="838" y="258" width="164" height="86" rx="8" fill="#191919" stroke="#f0a500" stroke-opacity="0.16"/>
+  <rect x="200" y="540" width="840" height="120" rx="18" fill="#111111" stroke="#f0a500" stroke-opacity="0.2"/>
+  <rect x="230" y="568" width="220" height="20" rx="10" fill="#eaeaea" opacity="0.55"/>
+  <rect x="230" y="605" width="320" height="12" rx="6" fill="#eaeaea" opacity="0.18"/>
+  <path d="M180 742 C300 650, 360 670, 460 742" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="10"/>
+  <path d="M760 726 C860 664, 930 670, 1020 736" fill="none" stroke="#f0a500" stroke-opacity="0.16" stroke-width="8"/>
+</svg>

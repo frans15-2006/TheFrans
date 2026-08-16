@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Family loft room illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#1b1107"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="100" y="130" width="1000" height="650" rx="22" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <rect x="145" y="175" width="420" height="230" rx="18" fill="#1a1a1a"/>
+  <rect x="175" y="210" width="160" height="92" rx="12" fill="#2b2418"/>
+  <rect x="352" y="210" width="160" height="92" rx="12" fill="#2b2418"/>
+  <rect x="145" y="440" width="420" height="250" rx="18" fill="#131313"/>
+  <rect x="610" y="185" width="475" height="505" rx="18" fill="#141414" stroke="#f0a500" stroke-opacity="0.18"/>
+  <rect x="655" y="230" width="165" height="320" rx="14" fill="#0d0d0d"/>
+  <rect x="846" y="230" width="165" height="320" rx="14" fill="#0d0d0d"/>
+  <rect x="685" y="275" width="105" height="170" rx="10" fill="#f0a500" opacity="0.1"/>
+  <rect x="876" y="275" width="105" height="170" rx="10" fill="#f0a500" opacity="0.1"/>
+  <path d="M620 716 C772 612, 946 612, 1070 706" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="10"/>
+  <circle cx="982" cy="160" r="125" fill="#f0a500" opacity="0.16"/>
+</svg>

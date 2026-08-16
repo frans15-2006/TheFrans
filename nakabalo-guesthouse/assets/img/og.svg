@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Nakabalo Guesthouse social preview">
+  <rect width="1600" height="900" fill="#080808"/>
+  <circle cx="1190" cy="190" r="210" fill="#f0a500" opacity="0.2"/>
+  <rect x="130" y="150" width="1320" height="600" rx="24" fill="#101010" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <text x="210" y="370" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="118" letter-spacing="10">NAKABALO GUESTHOUSE</text>
+  <text x="210" y="470" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="32" letter-spacing="6">PUERTO PRINCESA, PALAWAN</text>
+  <text x="210" y="560" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="38" opacity="0.78">Warm rooms, tropical quiet, and an easy booking path.</text>
+  <path d="M210 650 H1410" stroke="#f0a500" stroke-opacity="0.35" stroke-width="6"/>
+</svg>

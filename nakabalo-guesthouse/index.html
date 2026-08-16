@@ -1,5 +1,439 @@
 <!DOCTYPE html>
-<title>Nakabalo Guesthouse</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nakabalo Guesthouse | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Nakabalo Guesthouse in Puerto Princesa, Palawan. A calm tropical stay with warm rooms, relaxed amenities, and easy booking for island-bound travelers.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nakabalo Guesthouse | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A calm tropical stay in Puerto Princesa, Palawan with warm rooms, relaxed amenities, and an easy path to booking.">
+  <meta property="og:image" content="assets/img/og.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nakabalo Guesthouse | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="A calm tropical stay in Puerto Princesa, Palawan with warm rooms, relaxed amenities, and an easy path to booking.">
+  <meta name="twitter:image" content="assets/img/og.svg">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --off: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --soft: rgba(240, 165, 0, 0.12);
+    }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      background: var(--bg);
+      color: var(--off);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+    }
+
+    .section-rule {
+      border-top: 1px solid var(--line);
+    }
+
+    .fine-grid {
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+    }
+
+    .hero-media {
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .room-details {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+      border: 1px solid var(--line);
+    }
+
+    .room-details summary {
+      list-style: none;
+    }
+
+    .room-details summary img {
+      transition: transform 350ms ease;
+    }
+
+    .room-details[open] {
+      border-color: rgba(240, 165, 0, 0.38);
+    }
+
+    .room-details[open] summary img {
+      transform: scale(1.03);
+    }
+
+    .room-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .button-link {
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .button-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(240, 165, 0, 0.55);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .text-soft { color: var(--muted); }
+
+    .accent-glow {
+      background: radial-gradient(circle at center, rgba(240, 165, 0, 0.22), transparent 65%);
+    }
+
+    .image-frame {
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #111;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="absolute inset-x-0 top-0 z-40 px-5 pt-5 md:px-10">
+    <div class="mx-auto flex max-w-7xl items-center justify-between border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-sm md:px-5">
+      <a href="#top" class="nav-brand display text-xl text-off md:text-2xl">Nakabalo Guesthouse</a>
+      <nav class="nav-links hidden items-center gap-7 md:flex">
+        <a href="#rooms" class="mono text-[11px] uppercase tracking-[0.25em] text-soft transition-colors hover:text-off">Rooms</a>
+        <a href="#amenities" class="mono text-[11px] uppercase tracking-[0.25em] text-soft transition-colors hover:text-off">Amenities</a>
+        <a href="#location" class="mono text-[11px] uppercase tracking-[0.25em] text-soft transition-colors hover:text-off">Location</a>
+        <a href="#contact" class="mono text-[11px] uppercase tracking-[0.25em] text-soft transition-colors hover:text-off">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-shell relative overflow-hidden">
+      <img class="hero-media absolute inset-0 h-full w-full object-cover" src="assets/img/hero.svg" alt="Warm tropical guesthouse scene in Puerto Princesa, Palawan" loading="eager" decoding="async">
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.94)_0%,rgba(8,8,8,0.78)_44%,rgba(8,8,8,0.4)_100%)]"></div>
+      <div class="absolute inset-0 fine-grid" style="opacity: 0.18;"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(240,165,0,0.18),transparent_24%),radial-gradient(circle_at_88%_12%,rgba(240,165,0,0.08),transparent_22%)]"></div>
+
+      <div class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl items-end px-5 pb-10 pt-28 md:px-10 md:pb-14 lg:items-center">
+        <div class="max-w-3xl">
+          <p class="hero-kicker mono text-[11px] uppercase tracking-[0.36em] text-[color:var(--amber)]">Puerto Princesa City, Palawan</p>
+          <h1 class="hero-title mt-4 text-[clamp(4.5rem,13vw,9.8rem)] text-off">
+            <span class="display block">Nakabalo Guesthouse</span>
+            <span class="display block text-[color:var(--amber)]">Easy days in Palawan</span>
+          </h1>
+          <p class="hero-copy mt-5 max-w-xl text-base leading-7 text-soft md:text-lg">
+            A calm base for guests who want warm rooms, tropical quiet, and a simple place to land before exploring the city and the coast.
+          </p>
+          <div class="hero-actions mt-8 flex flex-wrap gap-3">
+            <a href="#booking" class="button-link inline-flex items-center border border-[color:var(--amber)] bg-[color:var(--amber)] px-5 py-3 font-medium text-black">Request availability</a>
+            <a href="#rooms" class="button-link inline-flex items-center border border-white/15 px-5 py-3 text-off">Explore rooms</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms" class="section-rule px-5 py-20 md:px-10 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-2xl" data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Rooms / Accommodations</p>
+          <h2 class="display mt-4 text-5xl text-off md:text-7xl">Three ways to settle in</h2>
+          <p class="mt-4 text-base leading-7 text-soft md:text-lg">
+            Pick the room that matches your pace, whether you are traveling light, arriving as a couple, or bringing the whole family along.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          <details class="room-details group overflow-hidden" data-reveal>
+            <summary class="cursor-pointer">
+              <div class="image-frame aspect-[4/3]">
+                <img src="assets/img/room-garden.svg" alt="Garden room illustration with warm light and quiet interior">
+              </div>
+              <div class="p-6">
+                <p class="mono text-[10px] uppercase tracking-[0.3em] text-soft">01</p>
+                <h3 class="display mt-3 text-4xl text-off md:text-5xl">Garden Queen</h3>
+                <p class="mt-4 text-sm leading-7 text-soft">
+                  A restful room for solo travelers or couples who want a softer, quieter landing after the journey.
+                </p>
+              </div>
+            </summary>
+            <div class="px-6 pb-6 text-sm leading-7 text-soft">
+              Simple, warm, and easy to settle into.
+              <div class="mt-4">
+                <a href="#booking" class="button-link inline-flex items-center border border-white/15 px-4 py-2 text-off">Request this room</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="room-details group overflow-hidden" data-reveal>
+            <summary class="cursor-pointer">
+              <div class="image-frame aspect-[4/3]">
+                <img src="assets/img/room-veranda.svg" alt="Veranda room illustration with balcony light and tropical shadows">
+              </div>
+              <div class="p-6">
+                <p class="mono text-[10px] uppercase tracking-[0.3em] text-soft">02</p>
+                <h3 class="display mt-3 text-4xl text-off md:text-5xl">Veranda King</h3>
+                <p class="mt-4 text-sm leading-7 text-soft">
+                  A brighter option for guests who like daylight, fresh air, and a little more room to unwind.
+                </p>
+              </div>
+            </summary>
+            <div class="px-6 pb-6 text-sm leading-7 text-soft">
+              Ideal for slower mornings and longer stays.
+              <div class="mt-4">
+                <a href="#booking" class="button-link inline-flex items-center border border-white/15 px-4 py-2 text-off">Request this room</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="room-details group overflow-hidden" data-reveal>
+            <summary class="cursor-pointer">
+              <div class="image-frame aspect-[4/3]">
+                <img src="assets/img/room-family.svg" alt="Family room illustration with wider layout and shared space">
+              </div>
+              <div class="p-6">
+                <p class="mono text-[10px] uppercase tracking-[0.3em] text-soft">03</p>
+                <h3 class="display mt-3 text-4xl text-off md:text-5xl">Family Loft</h3>
+                <p class="mt-4 text-sm leading-7 text-soft">
+                  Built for groups that want a flexible layout, a calm palette, and enough breathing room to unpack properly.
+                </p>
+              </div>
+            </summary>
+            <div class="px-6 pb-6 text-sm leading-7 text-soft">
+              A practical stay for shared travel plans.
+              <div class="mt-4">
+                <a href="#booking" class="button-link inline-flex items-center border border-white/15 px-4 py-2 text-off">Request this room</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities" class="section-rule px-5 py-20 md:px-10 lg:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
+        <div data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Amenities</p>
+          <h2 class="display mt-4 text-5xl text-off md:text-7xl">Comfort without clutter</h2>
+          <p class="mt-4 max-w-xl text-base leading-7 text-soft md:text-lg">
+            Nakabalo is shaped around the things guests actually use: rest, air, light, and an easy way to move between check-in, downtime, and the next plan.
+          </p>
+        </div>
+
+        <dl class="space-y-4" data-reveal>
+          <div class="border-b border-white/10 pb-4">
+            <dt class="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--amber)]">Sleep</dt>
+            <dd class="mt-2 text-sm leading-7 text-soft md:text-base">Quiet rooms with a warm, low-noise atmosphere designed for proper rest.</dd>
+          </div>
+          <div class="border-b border-white/10 pb-4">
+            <dt class="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--amber)]">Connect</dt>
+            <dd class="mt-2 text-sm leading-7 text-soft md:text-base">Reliable Wi-Fi and practical spaces for quick check-ins, route planning, or remote work.</dd>
+          </div>
+          <div class="border-b border-white/10 pb-4">
+            <dt class="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--amber)]">Unwind</dt>
+            <dd class="mt-2 text-sm leading-7 text-soft md:text-base">A tropical mood with enough openness to feel airy, but still private and composed.</dd>
+          </div>
+          <div class="border-b border-white/10 pb-4">
+            <dt class="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--amber)]">Plan</dt>
+            <dd class="mt-2 text-sm leading-7 text-soft md:text-base">Friendly local guidance for transit, timing, and the best way to make your Palawan days feel easy.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ADDRESS UNVERIFIED: needs manual check before deploy -->
+    <section id="location" class="section-rule px-5 py-20 md:px-10 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-12">
+          <div data-reveal>
+            <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Location / Map</p>
+            <h2 class="display mt-4 text-5xl text-off md:text-7xl">Puerto Princesa anchor</h2>
+            <p class="mt-4 max-w-xl text-base leading-7 text-soft md:text-lg">
+              We are pinning Nakabalo to Puerto Princesa City, Palawan, and keeping the exact street details ready for a final manual check before launch.
+            </p>
+            <p class="mono mt-8 text-[11px] uppercase tracking-[0.28em] text-[color:var(--amber)]">Coordinates 9.7400, 118.7400</p>
+            <a href="https://www.openstreetmap.org/?mlat=9.7400&mlon=118.7400#map=15/9.7400/118.7400" target="_blank" rel="noopener noreferrer" class="button-link mt-6 inline-flex items-center border border-white/15 px-4 py-2 text-off">Open map in new tab</a>
+          </div>
+
+          <div class="image-frame min-h-[22rem] md:min-h-[34rem]" data-reveal>
+            <iframe
+              title="Map centered on Puerto Princesa coordinates"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=118.7040%2C9.7150%2C118.7760%2C9.7650&layer=mapnik&marker=9.7400%2C118.7400"
+              class="h-full w-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section-rule px-5 py-20 md:px-10 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 border border-white/10 bg-white/[0.03] p-6 md:grid-cols-[1.2fr_0.8fr] md:p-10 lg:p-12" data-reveal>
+          <div>
+            <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Booking CTA</p>
+            <h2 class="display mt-4 text-5xl text-off md:text-7xl">Tell us your dates</h2>
+            <p class="mt-4 max-w-2xl text-base leading-7 text-soft md:text-lg">
+              Share your check-in window, guest count, and room preference, and the team can move the conversation forward without forms or friction.
+            </p>
+          </div>
+
+          <div class="flex flex-col justify-end gap-3">
+            <a href="mailto:bookings@nakabalo-guesthouse.com?subject=Nakabalo%20Guesthouse%20Availability%20Request" class="button-link inline-flex items-center justify-center border border-[color:var(--amber)] bg-[color:var(--amber)] px-5 py-3 font-medium text-black">Email for availability</a>
+            <a href="#contact" class="button-link inline-flex items-center justify-center border border-white/15 px-5 py-3 text-off">Go to contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-rule px-5 py-20 md:px-10 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-2xl" data-reveal>
+          <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Gallery</p>
+          <h2 class="display mt-4 text-5xl text-off md:text-7xl">Atmosphere in four frames</h2>
+          <p class="mt-4 text-base leading-7 text-soft md:text-lg">
+            A visual sweep through the guesthouse mood: warm interiors, tropical shadow, and the kind of stillness that makes arrival feel immediate.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-12">
+          <figure class="image-frame md:col-span-7" data-reveal>
+            <img src="assets/img/gallery-sunset.svg" alt="Sunset-toned guesthouse view">
+          </figure>
+          <figure class="image-frame md:col-span-5" data-reveal>
+            <img src="assets/img/gallery-room.svg" alt="Quiet room interior view">
+          </figure>
+          <figure class="image-frame md:col-span-4" data-reveal>
+            <img src="assets/img/gallery-night.svg" alt="Night pool mood illustration">
+          </figure>
+          <figure class="image-frame md:col-span-8" data-reveal>
+            <img src="assets/img/amenity-courtyard.svg" alt="Courtyard and pool mood illustration">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-rule px-5 py-20 md:px-10 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between" data-reveal>
+          <div class="max-w-2xl">
+            <p class="mono text-[11px] uppercase tracking-[0.34em] text-[color:var(--amber)]">Contact / Footer</p>
+            <h2 class="display mt-4 text-5xl text-off md:text-7xl">Nakabalo Guesthouse</h2>
+            <p class="mt-4 text-base leading-7 text-soft md:text-lg">
+              Puerto Princesa City, Palawan, Philippines. Exact street verification is still pending before deployment, but the property pin is fixed to the city coordinates above.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <a href="mailto:bookings@nakabalo-guesthouse.com" class="button-link inline-flex items-center justify-center border border-white/15 px-5 py-3 text-off">Email reservations</a>
+            <a href="tel:+639170000000" class="button-link inline-flex items-center justify-center border border-white/15 px-5 py-3 text-off">Call the guesthouse</a>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[11px] uppercase tracking-[0.28em] text-soft md:flex-row md:items-center md:justify-between">
+          <span>Coordinates 9.7400, 118.7400</span>
+          <span>Palawan hospitality</span>
+          <span>Single-page HTML, CSS, JS</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      lerp: reduceMotion ? 1 : 0.08,
+      smoothWheel: !reduceMotion,
+      smoothTouch: false,
+      autoRaf: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.9 } });
+
+    heroTl
+      .from('.nav-brand', { y: 18, opacity: 0 })
+      .from('.nav-links a', { y: 12, opacity: 0, stagger: 0.08 }, '<0.1')
+      .from('.hero-kicker', { y: 18, opacity: 0 }, '<0.05')
+      .from('.hero-title span', { yPercent: 110, opacity: 0, stagger: 0.08, duration: 1.05 }, '<0.05')
+      .from('.hero-copy', { y: 18, opacity: 0 }, '<0.05')
+      .from('.hero-actions a', { y: 16, opacity: 0, stagger: 0.08 }, '<0.04')
+      .from('.hero-media', { scale: 1.06, opacity: 0 }, 0);
+
+    gsap.to('.hero-media', {
+      yPercent: 7,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-shell',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    document.querySelectorAll('[data-reveal]').forEach((element) => {
+      gsap.from(element, {
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 82%'
+        },
+        opacity: 0,
+        y: 24,
+        duration: 0.9,
+        ease: 'power2.out'
+      });
+    });
+  </script>
 </body>
+</html>

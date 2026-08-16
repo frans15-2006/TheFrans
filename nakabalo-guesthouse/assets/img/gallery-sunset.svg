@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Sunset guesthouse illustration">
+  <rect width="1200" height="900" fill="#090909"/>
+  <circle cx="860" cy="220" r="170" fill="#f0a500" opacity="0.26"/>
+  <path d="M0 660 C180 610, 420 560, 610 584 C860 614, 980 650, 1200 600 L1200 900 L0 900 Z" fill="#121212"/>
+  <path d="M115 650 L240 450 L380 650 Z" fill="#0c0c0c"/>
+  <rect x="240" y="430" width="360" height="240" rx="10" fill="#171717"/>
+  <rect x="280" y="470" width="120" height="82" rx="6" fill="#1f1f1f"/>
+  <rect x="420" y="470" width="120" height="82" rx="6" fill="#1f1f1f"/>
+  <path d="M0 770 C220 736, 430 720, 640 732 C830 742, 1020 760, 1200 720" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="8"/>
+</svg>

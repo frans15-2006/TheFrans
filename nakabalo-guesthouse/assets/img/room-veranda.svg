@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Veranda king room illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#070707"/>
+      <stop offset="100%" stop-color="#221608"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="90" y="110" width="1020" height="680" rx="22" fill="#0d0d0d" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <rect x="140" y="160" width="450" height="510" rx="16" fill="#141414"/>
+  <rect x="190" y="200" width="120" height="260" rx="8" fill="#1f1f1f"/>
+  <rect x="340" y="210" width="170" height="240" rx="8" fill="#1b1b1b"/>
+  <rect x="620" y="190" width="350" height="220" rx="18" fill="#121212" stroke="#f0a500" stroke-opacity="0.18"/>
+  <rect x="660" y="225" width="115" height="84" rx="8" fill="#0f0f0f" stroke="#f0a500" stroke-opacity="0.32"/>
+  <rect x="790" y="225" width="140" height="84" rx="8" fill="#0f0f0f" stroke="#f0a500" stroke-opacity="0.18"/>
+  <rect x="620" y="440" width="350" height="220" rx="18" fill="#151515"/>
+  <path d="M620 528 H970" stroke="#f0a500" stroke-opacity="0.22" stroke-width="10"/>
+  <path d="M170 720 C290 620, 390 620, 520 720" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="10"/>
+  <path d="M610 738 C742 638, 870 638, 1010 738" fill="none" stroke="#f0a500" stroke-opacity="0.16" stroke-width="8"/>
+  <circle cx="960" cy="170" r="120" fill="#f0a500" opacity="0.15"/>
+</svg>

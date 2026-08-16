@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Night pool illustration">
+  <rect width="1200" height="900" fill="#060606"/>
+  <circle cx="860" cy="180" r="140" fill="#f0a500" opacity="0.16"/>
+  <rect x="110" y="150" width="980" height="620" rx="22" fill="#111111" stroke="#eaeaea" stroke-opacity="0.09"/>
+  <rect x="160" y="420" width="880" height="230" rx="20" fill="#0d1517"/>
+  <path d="M210 530 C380 500, 520 492, 690 522 C850 552, 950 560, 1030 526" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="8"/>
+  <path d="M220 620 C410 582, 600 580, 840 628" fill="none" stroke="#f0a500" stroke-opacity="0.1" stroke-width="8"/>
+</svg>
