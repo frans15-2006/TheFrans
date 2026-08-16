@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Palawan routes illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.86"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <path d="M122 180 H642" stroke="url(#a)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="668" cy="180" r="10" fill="#f0a500"/>
+  <path d="M0 606 C192 548, 344 526, 520 554 C712 584, 856 636, 1048 604 C1120 592, 1168 580, 1200 576 L1200 900 L0 900 Z" fill="#0b0b0b"/>
+  <path d="M170 628 C226 574, 304 562, 364 606 C420 646, 426 726, 382 778 C332 836, 240 836, 184 782 C128 724, 124 666, 170 628 Z" fill="#1a1a1a"/>
+  <path d="M560 622 C616 568, 694 560, 758 606 C816 650, 822 726, 772 778 C718 834, 626 836, 568 780 C514 724, 506 668, 560 622 Z" fill="#161616"/>
+  <text x="70" y="126" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="4">PALAWAN ROUTES</text>
+  <text x="72" y="182" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Custom trip planning across the archipelago</text>
+</svg>

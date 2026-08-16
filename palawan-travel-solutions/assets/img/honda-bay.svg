@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Honda Bay illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0d1318"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <path d="M0 566 C154 532, 308 520, 484 548 C650 574, 828 630, 1046 596 C1118 584, 1168 572, 1200 566 L1200 900 L0 900 Z" fill="#0a0a0a"/>
+  <path d="M182 618 C232 582, 294 572, 354 610 C414 648, 424 734, 376 786 C320 844, 228 846, 174 790 C120 734, 120 660, 182 618 Z" fill="#1a1a1a"/>
+  <path d="M520 616 C570 582, 634 572, 694 608 C758 646, 766 736, 716 790 C656 854, 562 848, 512 786 C466 730, 462 660, 520 616 Z" fill="#151515"/>
+  <path d="M850 614 C904 578, 970 570, 1030 606 C1092 644, 1100 734, 1048 790 C990 850, 898 848, 844 788 C792 730, 790 658, 850 614 Z" fill="#181818"/>
+  <circle cx="112" cy="160" r="118" fill="#f0a500" opacity="0.1"/>
+  <text x="70" y="126" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="4">HONDA BAY</text>
+  <text x="72" y="182" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Island hopping near Puerto Princesa</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="El Nido illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <path d="M0 566 C180 520, 312 510, 490 548 C660 584, 832 626, 1040 590 C1110 578, 1162 568, 1200 564 L1200 900 L0 900 Z" fill="#0b0b0b"/>
+  <path d="M142 602 C208 546, 282 534, 342 580 C398 624, 402 708, 350 760 C292 818, 196 814, 150 748 C108 690, 108 640, 142 602 Z" fill="#1c1c1c"/>
+  <path d="M478 584 C542 530, 626 518, 694 574 C758 628, 762 708, 704 764 C644 824, 544 820, 492 756 C440 694, 436 632, 478 584 Z" fill="#161616"/>
+  <path d="M848 590 C900 544, 976 534, 1038 576 C1098 618, 1104 704, 1054 756 C996 818, 902 814, 852 756 C802 696, 794 640, 848 590 Z" fill="#151515"/>
+  <circle cx="968" cy="160" r="104" fill="#f0a500" opacity="0.12"/>
+  <text x="70" y="126" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="4">EL NIDO</text>
+  <text x="72" y="182" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Northbound island hopping routes</text>
+</svg>

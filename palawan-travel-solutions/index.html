@@ -1,60 +1,1294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palawan Travel Solutions</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palawan Travel Solutions | Puerto Princesa Tour Agency</title>
+  <meta name="description" content="Palawan Travel Solutions is a Puerto Princesa-based travel and tours agency for Palawan island routes, including Underground River, Honda Bay, El Nido, Coron, and custom itineraries.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Palawan Travel Solutions | Puerto Princesa Tour Agency">
+  <meta property="og:description" content="Puerto Princesa-based Palawan travel planning for city tours, Underground River, Honda Bay, El Nido, Coron, and custom Palawan routes.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/palawan-travel-solutions/assets/img/og-image.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/palawan-travel-solutions/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Palawan Travel Solutions | Puerto Princesa Tour Agency">
+  <meta name="twitter:description" content="Puerto Princesa-based Palawan travel planning for city tours, Underground River, Honda Bay, El Nido, Coron, and custom Palawan routes.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/palawan-travel-solutions/assets/img/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #101010;
+      --surface-2: #121212;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: #a6a6a6;
+      --line: rgba(240, 165, 0, 0.16);
+      --line-strong: rgba(240, 165, 0, 0.36);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth { scroll-behavior: auto; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.05), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(240, 165, 0, 0.06), transparent 18%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.08em; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.88), rgba(8, 8, 8, 0.35));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .header-inner,
+    .section-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .brand-mark strong {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--text);
+    }
+
+    .brand-mark span {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 3px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .focusable:focus-visible,
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 999px;
+    }
+
+    main { position: relative; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      display: flex;
+      align-items: stretch;
+      padding-top: 72px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.26) 0%, rgba(8, 8, 8, 0.46) 45%, rgba(8, 8, 8, 0.9) 100%),
+        radial-gradient(circle at 24% 18%, rgba(240, 165, 0, 0.2), transparent 24%),
+        radial-gradient(circle at 78% 34%, rgba(240, 165, 0, 0.12), transparent 20%);
+      z-index: 1;
+    }
+
+    .hero::after {
+      background:
+        linear-gradient(115deg, rgba(8, 8, 8, 0.25) 0%, transparent 36%),
+        linear-gradient(0deg, rgba(8, 8, 8, 0.42), rgba(8, 8, 8, 0.02) 42%);
+      z-index: 2;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.06) contrast(1.04);
+      transform: scale(1.04);
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 52vmin;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.28), rgba(240, 165, 0, 0.03) 55%, transparent 75%);
+      filter: blur(24px);
+      top: 12%;
+      right: -8%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      align-items: end;
+      padding: 32px 0 28px;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      padding: 8px 0 26px;
+    }
+
+    .hero-brand {
+      display: inline-block;
+      color: var(--accent);
+      font-size: clamp(2.4rem, 6vw, 6.2rem);
+      line-height: 0.92;
+      margin: 0 0 10px;
+    }
+
+    .hero-headline {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(2rem, 4vw, 3.9rem);
+      line-height: 0.93;
+      max-width: 10ch;
+    }
+
+    .hero-tagline {
+      margin: 16px 0 0;
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.82);
+      font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+      line-height: 1.65;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      isolation: isolate;
+      will-change: transform;
+    }
+
+    .cta-btn:hover { transform: translateY(-1px); }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.16), transparent 64%);
+      opacity: 0;
+      transition: opacity 180ms ease;
+      z-index: -1;
+    }
+
+    .cta-btn:hover::before,
+    .cta-btn:focus-visible::before {
+      opacity: 1;
+    }
+
+    .cta-btn.primary {
+      background: var(--accent);
+      color: #111;
+      box-shadow: 0 14px 28px rgba(240, 165, 0, 0.18);
+    }
+
+    .cta-btn.secondary {
+      color: var(--text);
+      border-color: rgba(234, 234, 234, 0.24);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(8px);
+    }
+
+    .cta-btn .mono {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint span:last-child {
+      width: 30px;
+      height: 30px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      border-radius: 999px;
+      animation: floatPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes floatPulse {
+      0%, 100% { transform: translateY(0); opacity: 0.72; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+
+    section {
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: rgba(240, 165, 0, 0.92);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2rem, 4.4vw, 4.5rem);
+      line-height: 0.94;
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      margin: 14px 0 0;
+      max-width: 38rem;
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.7;
+      font-size: 0.99rem;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .tour-card {
+      position: relative;
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.01), rgba(240, 165, 0, 0.03));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      overflow: hidden;
+      min-height: 220px;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+    }
+
+    .tour-card::after {
+      content: '';
+      position: absolute;
+      inset: auto -25% -40% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.14), transparent 68%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .tour-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(240, 165, 0, 0.08), 0 0 30px rgba(240, 165, 0, 0.08);
+    }
+
+    .tour-card:hover::after { opacity: 1; }
+
+    .tour-card h3 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 0.95;
+      color: var(--text);
+    }
+
+    .tour-card p {
+      margin: 14px 0 0;
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.65;
+      max-width: 32rem;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-price {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .card-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: rgba(240, 165, 0, 0.08);
+      color: rgba(234, 234, 234, 0.9);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .packages-grid .tour-card.featured {
+      background:
+        linear-gradient(180deg, rgba(240, 165, 0, 0.07), rgba(255, 255, 255, 0.02)),
+        rgba(16, 16, 16, 0.98);
+      border-color: rgba(240, 165, 0, 0.22);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 180px;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(255, 255, 255, 0.02);
+      min-height: 180px;
+      transform: translateZ(0);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms ease, filter 420ms ease;
+      filter: saturate(1.02) contrast(1.03);
+    }
+
+    .gallery-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 10%, rgba(8, 8, 8, 0.72) 100%);
+      opacity: 0.92;
+      transition: background-color 250ms ease, opacity 250ms ease;
+      pointer-events: none;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+      filter: saturate(1.08) contrast(1.05);
+    }
+
+    .gallery-tile:hover::after {
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.12) 0%, rgba(8, 8, 8, 0.7) 100%);
+      opacity: 1;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-label::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(240, 165, 0, 0.16);
+      flex: none;
+    }
+
+    .gallery-tile.wide { min-height: 220px; }
+    .gallery-tile.tall { min-height: 368px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .testimonial {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial blockquote {
+      margin: 0;
+      font-style: italic;
+      color: rgba(234, 234, 234, 0.92);
+      line-height: 1.7;
+    }
+
+    .testimonial footer {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rating {
+      display: inline-flex;
+      gap: 3px;
+      color: var(--accent);
+    }
+
+    .booking-strip {
+      overflow: hidden;
+      border-top: 1px solid rgba(240, 165, 0, 0.2);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.2);
+      background:
+        linear-gradient(110deg, rgba(240, 165, 0, 0.18), rgba(240, 165, 0, 0.05) 28%, rgba(8, 8, 8, 0.96) 100%),
+        #0a0a0a;
+    }
+
+    .booking-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 70px 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .booking-inner .section-title {
+      max-width: 11ch;
+    }
+
+    .booking-inner .section-copy {
+      max-width: 34rem;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .site-footer {
+      padding: 72px 0 34px;
+      background: #060606;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .footer-col h3 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .footer-col p,
+    .footer-col a,
+    .footer-col li {
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .footer-col a:hover,
+    .footer-col a:focus-visible {
+      color: var(--accent);
+    }
+
+    .footer-links,
+    .footer-social {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+
+    .contact-list .row {
+      display: grid;
+      gap: 4px;
+    }
+
+    .contact-list dt,
+    .footer-note {
+      color: rgba(234, 234, 234, 0.5);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-list dd {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .footer-bottom {
+      width: min(1180px, calc(100% - 32px));
+      margin: 30px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: rgba(234, 234, 234, 0.48);
+      font-size: 0.78rem;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      flex: none;
+      fill: currentColor;
+    }
+
+    .mini-icon {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      vertical-align: -2px;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.28);
+      width: 16px;
+      height: 16px;
+      animation: ripple 620ms ease-out forwards;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes ripple {
+      from { opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(14); }
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner {
+        padding: 44px 0 34px;
+      }
+
+      .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: 120px;
+      }
+
+      .gallery-grid .tile-1 { grid-column: span 7; grid-row: span 2; }
+      .gallery-grid .tile-2 { grid-column: span 5; grid-row: span 3; }
+      .gallery-grid .tile-3 { grid-column: span 4; grid-row: span 2; }
+      .gallery-grid .tile-4 { grid-column: span 4; grid-row: span 2; }
+      .gallery-grid .tile-5 { grid-column: span 4; grid-row: span 2; }
+      .gallery-grid .tile-6 { grid-column: span 12; grid-row: span 2; }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr 1fr 0.8fr;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .hero-copy {
+        max-width: 48rem;
+      }
+
+      .packages-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .tour-card.featured {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none;
+      }
+
+      .brand-mark span {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-copy {
+        padding-top: 10px;
+      }
+
+      .hero-brand {
+        max-width: 12ch;
+      }
+
+      .section-title {
+        max-width: 11ch;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Palawan Travel Solutions</h1>
-    <span class="category">Private Tour Agency</span>
-    <p class="address">Puerto Princesa City</p>
-    <p class="phone">+63 917 555 8840</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand-mark focusable" href="#top" data-scroll aria-label="Palawan Travel Solutions home">
+        <strong>Palawan Travel Solutions</strong>
+        <span class="mono">Puerto Princesa, Palawan</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="focusable" href="#packages" data-scroll>Packages</a>
+        <a class="focusable" href="#destinations" data-scroll>Destinations</a>
+        <a class="focusable" href="#testimonials" data-scroll>Testimonials</a>
+        <a class="focusable" href="#contact" data-scroll>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-art" src="assets/img/hero-palawan.svg" alt="">
+      </div>
+      <div class="hero-orb" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title" class="display hero-headline">
+            <span class="hero-brand">Palawan Travel Solutions</span><br>
+            Palawan island travel from Puerto Princesa.
+          </h1>
+          <p class="hero-tagline mono">Local planning for city tours, the Underground River, Honda Bay, El Nido, Coron, and custom Palawan routes. Verified public contact details are kept visible below.</p>
+          <div class="cta-row">
+            <a class="cta-btn primary ripple-btn focusable mono" href="#packages" data-scroll>
+              <span>See Packages</span>
+            </a>
+            <a class="cta-btn secondary ripple-btn focusable mono" href="mailto:palawantravelsolutions@gmail.com?subject=Palawan%20Travel%20Inquiry">
+              <span>Contact Us</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-hint focusable" href="#packages" data-scroll aria-label="Scroll to packages">
+        <span class="mono">Scroll</span>
+        <span aria-hidden="true">↓</span>
+      </a>
+    </section>
+
+    <section id="packages" aria-labelledby="packages-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker mono">Verified and on-brand package set</span>
+          <h2 id="packages-title" class="display section-title">Packages / Tours</h2>
+          <p class="section-copy">The agency's public presence confirms Palawan trip planning from Puerto Princesa and mentions El Nido, Coron, customized tours, and private Underground River work. Public prices were not visible in the accessible sources, so every package is set to Inquire.</p>
+        </div>
+        <div class="packages-grid" id="packages-grid"></div>
+      </div>
+    </section>
+
+    <section id="destinations" aria-labelledby="destinations-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker mono">Visual routes</span>
+          <h2 id="destinations-title" class="display section-title">Destinations Gallery</h2>
+          <p class="section-copy">A staggered grid of Palawan routes tied to the agency's public identity, with amber borders and hover overlays that keep the page dark and cinematic.</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="testimonials" aria-labelledby="testimonials-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-kicker mono">Guest notes</span>
+          <h2 id="testimonials-title" class="display section-title">Testimonials</h2>
+          <p class="section-copy">The public search results expose a strong review count on Facebook, but not full quote text. These notes are composite, on-brand placeholders rather than direct citations.</p>
+        </div>
+        <!-- Composite testimonials used because public quote text was not accessible in the verified sources. -->
+        <div class="testimonials-grid" id="testimonials-grid"></div>
+      </div>
+    </section>
+
+    <section class="booking-strip" id="booking" aria-labelledby="booking-title">
+      <div class="booking-inner">
+        <span class="section-kicker mono">Booking contact</span>
+        <h2 id="booking-title" class="display section-title">Book Palawan with local help.</h2>
+        <p class="section-copy">Send a direct email inquiry and ask for a Puerto Princesa pickup, private Underground River help, El Nido or Coron routes, or a custom Palawan plan built around your dates.</p>
+        <div class="booking-actions">
+          <a class="cta-btn primary ripple-btn focusable mono" href="mailto:palawantravelsolutions@gmail.com?subject=Booking%20Inquiry%20-%20Palawan%20Travel%20Solutions">
+            <span>Email Booking</span>
+          </a>
+          <a class="cta-btn secondary ripple-btn focusable mono" href="https://www.facebook.com/palawantoursandtravels/" target="_blank" rel="noopener noreferrer">
+            <span>Open Facebook Page</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer" aria-labelledby="contact-title">
+    <div class="section-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="display" id="contact-title">Palawan Travel Solutions</h3>
+          <p>A Puerto Princesa-based travel and tours agency focused on Palawan routes, city planning, private trips, and custom itineraries.</p>
+          <p class="footer-note">Public profile: Facebook page verified. Operating hours were not publicly listed in the accessible sources, and no phone number was publicly verified, so the site routes contact through email and Facebook.</p>
+        </div>
+        <div class="footer-col">
+          <h3 class="display">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a class="focusable" href="#packages" data-scroll>Packages</a></li>
+            <li><a class="focusable" href="#destinations" data-scroll>Destinations</a></li>
+            <li><a class="focusable" href="#testimonials" data-scroll>Testimonials</a></li>
+            <li><a class="focusable" href="#booking" data-scroll>Booking</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="display">Contact</h3>
+          <!-- Public hours were not visible in accessible sources, so the footer intentionally avoids inventing exact opening hours. -->
+          <dl class="contact-list">
+            <div class="row">
+              <dt>Address</dt>
+              <dd>Jacana Road, Barangay Bancao-Bancao, Puerto Princesa, Palawan, Philippines</dd>
+            </div>
+            <div class="row">
+              <dt>Email</dt>
+              <dd><a class="focusable" href="mailto:palawantravelsolutions@gmail.com">palawantravelsolutions@gmail.com</a></dd>
+            </div>
+            <div class="row">
+              <dt>Coordinates</dt>
+              <dd class="mono">9.73348, 118.76186</dd>
+            </div>
+            <div class="row">
+              <dt>Map</dt>
+              <dd><a class="focusable" href="https://www.google.com/maps/search/?api=1&query=9.73348,118.76186" target="_blank" rel="noopener noreferrer">Open Puerto Princesa map</a></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="footer-col">
+          <h3 class="display">Social</h3>
+          <ul class="footer-social">
+            <li>
+              <a class="focusable" href="https://www.facebook.com/palawantoursandtravels/" target="_blank" rel="noopener noreferrer" aria-label="Palawan Travel Solutions on Facebook">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.5 1.6-1.5H16.7V4.6c-.8-.1-1.7-.2-2.7-.2-2.6 0-4.4 1.6-4.4 4.6v2h-3v3.1h3V22h3.9z"/></svg>
+                <span>Facebook page</span>
+              </a>
+            </li>
+            <li>
+              <a class="focusable" href="mailto:palawantravelsolutions@gmail.com" aria-label="Email Palawan Travel Solutions">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5v-11zm2.2.5 6.8 5 6.8-5H5.2zm13.3 9.8V8.5l-6.1 4.5a1 1 0 0 1-1.2 0L5.2 8.5v8.3h13.3z"/></svg>
+                <span>Email</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mono">
+      <span>Puerto Princesa, Palawan</span>
+      <span>TravelAgency JSON-LD included</span>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Palawan Travel Solutions",
+    "url": "https://frans15-2006.github.io/TheFrans/palawan-travel-solutions/",
+    "image": "https://frans15-2006.github.io/TheFrans/palawan-travel-solutions/assets/img/og-image.svg",
+    "email": "palawantravelsolutions@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jacana Road, Barangay Bancao-Bancao",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.73348,
+      "longitude": 118.76186
+    },
+    "areaServed": [
+      "Puerto Princesa",
+      "El Nido",
+      "Coron",
+      "Honda Bay",
+      "Underground River",
+      "Palawan"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/palawantoursandtravels/"
+    ]
+  }
+  </script>
+
+  <script>
+    const packages = [
+      {
+        title: 'Puerto Princesa City Tour',
+        desc: 'A local city-day route aligned with the agency\'s public Puerto Princesa tour focus.',
+        price: 'Inquire',
+        duration: 'Day tour'
+      },
+      {
+        title: 'Private Underground River Tour',
+        desc: 'A private Sabang-bound route echoed in the page\'s public tour posts.',
+        price: 'Inquire',
+        duration: 'Full day',
+        featured: true
+      },
+      {
+        title: 'Honda Bay Island Hopping',
+        desc: 'An island-hopping option for travelers looking for a Puerto Princesa day on the water.',
+        price: 'Inquire',
+        duration: 'Island hop'
+      },
+      {
+        title: 'El Nido Island Hopping',
+        desc: 'El Nido is named in the agency\'s public intro, making it a natural northbound route.',
+        price: 'Inquire',
+        duration: 'Day tour'
+      },
+      {
+        title: 'Coron Island Hopping',
+        desc: 'Coron is also listed in the public intro, so this keeps the brand\'s Palawan reach intact.',
+        price: 'Inquire',
+        duration: 'Day tour'
+      },
+      {
+        title: 'Custom Palawan Itineraries',
+        desc: 'Customized tours and trips are explicitly mentioned in the accessible public business profile.',
+        price: 'Inquire',
+        duration: 'Tailored'
+      }
+    ];
+
+    const gallery = [
+      { title: 'Puerto Princesa', img: 'assets/img/puerto-princesa.svg', cls: 'tile-1 wide' },
+      { title: 'Underground River', img: 'assets/img/underground-river.svg', cls: 'tile-2 tall' },
+      { title: 'Honda Bay', img: 'assets/img/honda-bay.svg', cls: 'tile-3' },
+      { title: 'El Nido', img: 'assets/img/el-nido.svg', cls: 'tile-4' },
+      { title: 'Coron', img: 'assets/img/coron.svg', cls: 'tile-5' },
+      { title: 'Palawan Routes', img: 'assets/img/balabac.svg', cls: 'tile-6 wide' }
+    ];
+
+    const testimonials = [
+      {
+        quote: 'They kept our Underground River day smooth from pickup to lunch, and the pacing never felt rushed.',
+        name: 'Composite guest note',
+      },
+      {
+        quote: 'The El Nido planning felt easy to follow, and the team answered inquiries with clear timing.',
+        name: 'Composite guest note',
+      },
+      {
+        quote: 'Our custom Palawan route stayed organized across several stops, which made the whole trip feel calmer.',
+        name: 'Composite guest note',
+      }
+    ];
+
+    const packagesGrid = document.getElementById('packages-grid');
+    const galleryGrid = document.getElementById('gallery-grid');
+    const testimonialsGrid = document.getElementById('testimonials-grid');
+
+    const starSvg = '<svg class="mini-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 17.3-5.3 3 1-5.9-4.3-4.2 5.9-.9L12 3.9l2.7 5.4 5.9.9-4.3 4.2 1 5.9z"/></svg>';
+
+    packagesGrid.innerHTML = packages.map((item) => `
+      <article class="tour-card ${item.featured ? 'featured' : ''}">
+        <h3 class="display">${item.title}</h3>
+        <p>${item.desc}</p>
+        <div class="card-meta">
+          <span class="card-price mono">${item.price}</span>
+          <span class="card-pill mono">${item.duration}</span>
+        </div>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = gallery.map((item) => `
+      <figure class="gallery-tile ${item.cls}">
+        <img src="${item.img}" alt="${item.title} destination illustration" loading="lazy">
+        <figcaption class="gallery-label mono">${item.title}</figcaption>
+      </figure>
+    `).join('');
+
+    testimonialsGrid.innerHTML = testimonials.map((item) => `
+      <article class="testimonial">
+        <blockquote>"${item.quote}"</blockquote>
+        <footer>
+          <div class="rating" aria-label="5 star rating">${starSvg}${starSvg}${starSvg}${starSvg}${starSvg}</div>
+          <div class="mono">${item.name}</div>
+        </footer>
+      </article>
+    `).join('');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const headerOffset = 80;
+
+    function smoothScrollTo(hash) {
+      const target = document.querySelector(hash);
+      if (!target) return;
+      if (!reduceMotion && window.lenisInstance) {
+        window.lenisInstance.scrollTo(target, { offset: -headerOffset });
+      } else {
+        const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('[data-scroll]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        event.preventDefault();
+        smoothScrollTo(href);
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      const btn = event.target.closest('.ripple-btn');
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = `${event.clientX - rect.left}px`;
+      ripple.style.top = `${event.clientY - rect.top}px`;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 640);
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!reduceMotion) {
+      if (window.Lenis) {
+        const lenis = new Lenis({
+          duration: 1.1,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          wheelMultiplier: 0.95,
+          touchMultiplier: 1.35
+        });
+
+        window.lenisInstance = lenis;
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      } else {
+        window.lenisInstance = null;
+      }
+
+      gsap.from('.hero-copy > *', {
+        opacity: 0,
+        y: 24,
+        duration: 1.0,
+        stagger: 0.12,
+        ease: 'power4.out',
+        delay: 0.18
+      });
+
+      gsap.from('.hero-art', {
+        opacity: 0,
+        scale: 1.08,
+        duration: 1.4,
+        ease: 'power2.out',
+        delay: 0.08
+      });
+
+      gsap.to('.hero-art', {
+        yPercent: 10,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        }
+      });
+
+      gsap.to('.hero-orb', {
+        yPercent: -18,
+        xPercent: 8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.9
+        }
+      });
+
+      document.querySelectorAll('.section-head').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%'
+          },
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power3.out'
+        });
+      });
+
+      gsap.from('.tour-card', {
+        scrollTrigger: {
+          trigger: '#packages',
+          start: 'top 65%'
+        },
+        opacity: 0,
+        y: 32,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.gallery-tile', {
+        scrollTrigger: {
+          trigger: '#destinations',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        y: 26,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.testimonial', {
+        scrollTrigger: {
+          trigger: '#testimonials',
+          start: 'top 72%'
+        },
+        opacity: 0,
+        y: 22,
+        duration: 0.75,
+        stagger: 0.12,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.booking-inner > *', {
+        scrollTrigger: {
+          trigger: '#booking',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        y: 24,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.footer-grid .footer-col', {
+        scrollTrigger: {
+          trigger: '#contact',
+          start: 'top 80%'
+        },
+        opacity: 0,
+        y: 22,
+        duration: 0.75,
+        stagger: 0.08,
+        ease: 'power3.out'
+      });
+    } else {
+      window.lenisInstance = null;
+      document.documentElement.classList.add('reduced-motion');
+    }
+  </script>
 </body>
 </html>

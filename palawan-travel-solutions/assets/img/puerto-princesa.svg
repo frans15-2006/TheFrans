@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Puerto Princesa route illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <circle cx="834" cy="214" r="220" fill="#f0a500" opacity="0.12"/>
+  <path d="M0 590 C210 500, 402 484, 614 538 C804 587, 970 614, 1200 548 L1200 900 L0 900 Z" fill="#0c0c0c"/>
+  <path d="M122 604 C188 546, 250 526, 312 572 C360 608, 366 680, 320 726 C266 780, 176 776, 132 714 C92 662, 92 634, 122 604 Z" fill="#1a1a1a"/>
+  <path d="M432 604 C492 554, 570 538, 628 582 C682 624, 688 694, 640 744 C586 800, 502 800, 448 742 C398 690, 392 648, 432 604 Z" fill="#141414"/>
+  <path d="M474 150 H726" stroke="url(#a)" stroke-width="6" stroke-linecap="round"/>
+  <text x="80" y="146" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="96" letter-spacing="4">PUERTO PRINCESA</text>
+  <text x="80" y="208" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Palawan gateway and tour base</text>
+</svg>

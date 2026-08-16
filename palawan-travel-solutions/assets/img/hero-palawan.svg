@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized Palawan travel scene">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="58%" stop-color="#09111a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="34%" r="34%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="28%" stop-color="#f0a500" stop-opacity="0.45"/>
+      <stop offset="58%" stop-color="#f0a500" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0c1824"/>
+      <stop offset="100%" stop-color="#040506"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#2a2b2c"/>
+      <stop offset="45%" stop-color="#0f1111"/>
+      <stop offset="100%" stop-color="#060606"/>
+    </linearGradient>
+    <linearGradient id="boat" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#8d5f00" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1100" cy="240" r="350" fill="url(#sun)"/>
+  <circle cx="230" cy="180" r="210" fill="#f0a500" opacity="0.08" filter="url(#blur)"/>
+  <path d="M0 690 C220 650, 340 620, 520 652 C750 694, 900 742, 1120 710 C1290 684, 1440 630, 1600 650 L1600 1200 L0 1200 Z" fill="url(#sea)"/>
+  <path d="M0 760 C240 734, 402 720, 560 748 C812 792, 1040 860, 1270 820 C1412 795, 1520 760, 1600 774 L1600 1200 L0 1200 Z" fill="#020202" opacity="0.9"/>
+  <path d="M240 742 C290 680, 360 658, 416 706 C472 754, 468 848, 426 934 C381 1024, 266 1022, 220 932 C180 852, 180 810, 240 742 Z" fill="url(#cliff)" opacity="0.95"/>
+  <path d="M520 700 C574 650, 662 622, 728 674 C793 726, 792 822, 736 910 C684 989, 580 995, 520 928 C460 861, 458 765, 520 700 Z" fill="url(#cliff)" opacity="0.9"/>
+  <path d="M1080 678 C1132 628, 1220 608, 1290 666 C1358 722, 1362 826, 1304 906 C1248 982, 1140 990, 1080 926 C1020 860, 1018 748, 1080 678 Z" fill="url(#cliff)" opacity="0.92"/>
+  <path d="M0 905 C220 858, 410 842, 600 864 C862 895, 1080 949, 1360 925 C1470 915, 1544 896, 1600 894 L1600 1200 L0 1200 Z" fill="#080808"/>
+  <path d="M630 980 C724 940, 878 944, 960 986 C864 1002, 738 1008, 630 980 Z" fill="#f0a500" opacity="0.15" filter="url(#blur)"/>
+  <path d="M782 1000 L800 958 L818 1000 Z" fill="url(#boat)"/>
+  <rect x="794" y="942" width="14" height="56" rx="7" fill="url(#boat)"/>
+  <path d="M718 1002 C760 974, 840 974, 882 1002 C844 1016, 756 1016, 718 1002 Z" fill="#f0a500" opacity="0.84"/>
+  <path d="M794 936 L794 874" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M794 880 C762 896, 740 914, 706 936" stroke="#f0a500" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <path d="M794 880 C828 896, 850 914, 884 936" stroke="#f0a500" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <ellipse cx="390" cy="1070" rx="420" ry="68" fill="#f0a500" opacity="0.06" filter="url(#blur)"/>
+  <ellipse cx="1180" cy="1038" rx="320" ry="54" fill="#f0a500" opacity="0.04" filter="url(#blur)"/>
+</svg>

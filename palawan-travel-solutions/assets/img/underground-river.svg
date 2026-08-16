@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Underground River illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f10"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <path d="M0 300 C160 260, 272 252, 420 286 C612 330, 770 384, 980 352 C1080 338, 1148 320, 1200 306 L1200 900 L0 900 Z" fill="#101010"/>
+  <path d="M180 190 C292 116, 432 118, 548 204 C638 270, 652 380, 578 454 C500 532, 386 534, 296 464 C204 390, 146 264, 180 190 Z" fill="#1d1d1d"/>
+  <path d="M658 182 C756 112, 890 116, 994 200 C1082 270, 1090 386, 1018 458 C944 532, 828 538, 742 468 C646 392, 614 262, 658 182 Z" fill="#171717"/>
+  <path d="M202 454 C318 424, 432 430, 548 456 C680 486, 826 528, 1002 506 C1090 494, 1144 486, 1200 478 L1200 900 L0 900 L0 484 C82 474, 132 468, 202 454 Z" fill="#080808"/>
+  <circle cx="392" cy="296" r="52" fill="#f0a500" opacity="0.12"/>
+  <circle cx="822" cy="294" r="52" fill="#f0a500" opacity="0.12"/>
+  <text x="70" y="130" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="4">UNDERGROUND RIVER</text>
+  <text x="72" y="184" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Sabang gateway and cave river route</text>
+</svg>

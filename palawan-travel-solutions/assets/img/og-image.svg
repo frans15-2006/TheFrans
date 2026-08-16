@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Palawan Travel Solutions social preview image">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="56%" cy="28%" r="45%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#f0a500" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="844" cy="176" r="220" fill="url(#orb)"/>
+  <path d="M0 434 C180 402, 306 384, 484 402 C674 422, 838 472, 1012 448 C1084 438, 1148 420, 1200 410 L1200 630 L0 630 Z" fill="#0d1319"/>
+  <path d="M96 438 C180 372, 274 344, 356 406 C426 458, 436 548, 366 598 C286 654, 166 642, 118 558 C78 488, 74 478, 96 438 Z" fill="#151515"/>
+  <path d="M472 426 C534 374, 626 350, 692 408 C756 464, 754 552, 700 604 C640 660, 536 656, 478 598 C420 540, 414 484, 472 426 Z" fill="#121212"/>
+  <text x="78" y="176" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="76" letter-spacing="4">PALAWAN TRAVEL SOLUTIONS</text>
+  <text x="78" y="250" fill="#eaeaea" font-family="Space Grotesk, Arial, sans-serif" font-size="28">Puerto Princesa-based Palawan tours, island routes, and custom itineraries.</text>
+  <text x="78" y="300" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="20">Underground River - Honda Bay - El Nido - Coron</text>
+</svg>

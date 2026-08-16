@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Coron illustration">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <path d="M0 560 C164 528, 320 520, 496 546 C670 572, 846 618, 1052 590 C1122 580, 1170 570, 1200 564 L1200 900 L0 900 Z" fill="#0b0b0b"/>
+  <path d="M174 610 C232 548, 316 538, 382 588 C444 636, 448 718, 392 772 C334 828, 236 828, 182 764 C132 706, 126 654, 174 610 Z" fill="#191919"/>
+  <path d="M510 606 C570 548, 652 540, 714 588 C776 636, 780 720, 724 774 C664 832, 568 830, 516 766 C466 706, 458 654, 510 606 Z" fill="#161616"/>
+  <circle cx="210" cy="172" r="110" fill="#f0a500" opacity="0.11"/>
+  <text x="70" y="126" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="4">CORON</text>
+  <text x="72" y="182" fill="#a6a6a6" font-family="JetBrains Mono, monospace" font-size="24">Island routes and Palawan extensions</text>
+</svg>
