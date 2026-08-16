@@ -1,60 +1,955 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lartista</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lartista | Cafe and Pizzeria in Puerto Princesa, Palawan</title>
+  <meta name="description" content="Lartista in Puerto Princesa, Palawan. Verified address on L. Nadayao Road, guest-favorite menu highlights, hours, contact details, and a dark art-led one-page experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lartista | Cafe and Pizzeria in Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified address, guest-favorite menu highlights, and location details for Lartista in Puerto Princesa, Palawan.">
+  <meta property="og:image" content="assets/img/og.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --container: min(1180px, calc(100vw - 2rem));
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    html.lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(240, 165, 0, 0.06), transparent 18%),
+        linear-gradient(180deg, #0b0b0b 0%, #080808 42%, #050505 100%);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      pointer-events: none;
+      padding: 1rem 0;
+      mix-blend-mode: normal;
+    }
+
+    .topbar-inner {
+      width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      color: var(--text);
+    }
+
+    .brand-mark strong {
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .brand-mark span {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .top-link {
+      font-size: 0.72rem;
+      color: rgba(234, 234, 234, 0.74);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.18);
+      padding-bottom: 0.15rem;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .top-link:hover {
+      color: var(--text);
+      border-color: rgba(240, 165, 0, 0.7);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    .hero-media,
+    .hero-overlay,
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.04);
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.18) 0%, rgba(8, 8, 8, 0.52) 44%, rgba(8, 8, 8, 0.92) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.72) 0%, rgba(8, 8, 8, 0.12) 52%, rgba(8, 8, 8, 0.64) 100%);
+      z-index: 1;
+    }
+
+    .hero-grain {
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(234, 234, 234, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.02) 1px, transparent 1px);
+      background-size: 4px 4px, 4px 4px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent 90%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: var(--container);
+      margin: 0 auto;
+      padding: 7.2rem 0 2.25rem;
+      display: grid;
+      gap: 1rem;
+      align-content: end;
+    }
+
+    .hero-kicker {
+      color: rgba(234, 234, 234, 0.84);
+      font-size: 0.73rem;
+      margin: 0;
+    }
+
+    .hero-title {
+      margin: 0;
+      max-width: 8ch;
+      font-size: clamp(5rem, 17vw, 11rem);
+      color: var(--text);
+      text-shadow: 0 0 26px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-title .accent {
+      color: var(--amber);
+    }
+
+    .hero-copy {
+      max-width: 34rem;
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.55;
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-top: 0.4rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.77rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.72);
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: #111;
+      border-color: rgba(240, 165, 0, 0.92);
+      box-shadow: 0 14px 32px rgba(240, 165, 0, 0.18);
+    }
+
+    .button.primary:hover {
+      background: #ffb41a;
+      color: #060606;
+    }
+
+    .button.ghost {
+      background: rgba(8, 8, 8, 0.46);
+      color: var(--text);
+      backdrop-filter: blur(8px);
+    }
+
+    .section {
+      padding: 6rem 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-tag {
+      margin: 0;
+      font-size: 0.72rem;
+      color: rgba(240, 165, 0, 0.92);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      max-width: 12ch;
+      color: var(--text);
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 52rem;
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.74);
+    }
+
+    .menu-lines {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.12);
+    }
+
+    .menu-item h3,
+    .menu-item p {
+      margin: 0;
+    }
+
+    .menu-item h3 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .menu-item p {
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.65;
+      max-width: 44rem;
+    }
+
+    .menu-item .mono {
+      display: inline-block;
+      margin-top: 0.45rem;
+      font-size: 0.68rem;
+      color: rgba(240, 165, 0, 0.86);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .story-panel {
+      border-left: 1px solid rgba(234, 234, 234, 0.12);
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .story-panel p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.8;
+      max-width: 38rem;
+    }
+
+    .story-note {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(240, 165, 0, 0.86);
+      margin: 0;
+    }
+
+    .story-aside {
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.12);
+      padding: 1.1rem 0;
+    }
+
+    .story-aside .line {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      font-size: 0.93rem;
+      color: rgba(234, 234, 234, 0.78);
+    }
+
+    .story-aside .line:last-child {
+      border-bottom: 0;
+    }
+
+    .story-aside .line span:first-child {
+      color: var(--text);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    figure.gallery-item {
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .gallery-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      background: #111;
+    }
+
+    figure.gallery-item figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.88rem;
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    figure.gallery-item figcaption span:last-child {
+      color: rgba(240, 165, 0, 0.84);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .detail-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+    }
+
+    .detail-item {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.12);
+    }
+
+    .detail-list dt,
+    .detail-list dd {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .detail-list dt {
+      color: rgba(240, 165, 0, 0.88);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.68rem;
+      padding-top: 0.25rem;
+    }
+
+    .detail-list dd {
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .map-frame {
+      position: relative;
+      aspect-ratio: 5 / 4;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+      background: #090909;
+    }
+
+    .map-frame svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.7rem;
+      padding-bottom: 0.15rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.86rem;
+    }
+
+    .map-caption span:last-child {
+      color: rgba(240, 165, 0, 0.86);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer .stack {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .footer .stack p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.72);
+      max-width: 42rem;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(234, 234, 234, 0.78);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.16);
+      padding-bottom: 0.12rem;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--amber);
+      border-color: rgba(240, 165, 0, 0.8);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 900px) {
+      .story-grid,
+      .location-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding-top: 7rem;
+      }
+
+      .menu-item,
+      .detail-item {
+        grid-template-columns: 1fr;
+      }
+
+      .story-panel {
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid rgba(234, 234, 234, 0.12);
+        padding-top: 1rem;
+      }
+
+      .footer-inner {
+        align-items: start;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        padding-top: 0.85rem;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+      }
+
+      .brand-mark span {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 6.7rem 0 1.8rem;
+        gap: 0.8rem;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .map-caption,
+      figure.gallery-item figcaption,
+      .story-aside .line {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Lartista</h1>
-    <span class="category">Restaurant & Hostel</span>
-    <p class="address">Nadayao Rd, San Pedro, Puerto Princesa City</p>
-    <p class="phone">+63 956 178 9839</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar" aria-label="Site header">
+    <div class="topbar-inner">
+      <a class="brand-mark" href="#top" aria-label="Lartista home">
+        <strong>Lartista</strong>
+        <span>Puerto Princesa, Palawan</span>
+      </a>
+      <a class="top-link mono" href="#location">L. Nadayao Rd</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero-media" src="assets/img/hero.svg" alt="A stylized dark artwork showing coffee, pizza, and greenery at Lartista" width="2000" height="1200" decoding="async" fetchpriority="high">
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <p class="hero-kicker mono reveal">Cafe / pizzeria in Puerto Princesa</p>
+        <h1 class="hero-title display reveal" id="hero-title">Lartista</h1>
+        <p class="hero-copy reveal">A warm, artful stop on L. Nadayao Road where pizza, coffee, and long conversations share the same table.</p>
+        <div class="hero-actions reveal">
+          <a class="button primary mono" href="#menu">Menu highlights</a>
+          <a class="button ghost mono" href="#location">Get directions</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-tag mono reveal">Menu highlights</p>
+          <h2 class="section-title display reveal" id="menu-title">Guest favorites people keep naming.</h2>
+          <p class="section-copy reveal">These dishes come from public reviews and listing snippets, so the menu story stays grounded in what guests actually mention.</p>
+        </div>
+
+        <ul class="menu-lines" aria-label="Guest-favorite dishes">
+          <li class="menu-item reveal">
+            <h3>Pesto Pasta</h3>
+            <p>Repeatedly praised for its fresh basil-led flavor and the kind of plate that fits brunch, lunch, or a slow evening unwind.<span class="mono">Frequently recommended</span></p>
+          </li>
+          <li class="menu-item reveal">
+            <h3>Pasta Bolognese</h3>
+            <p>One of the most consistently mentioned dishes in traveler reviews, especially for guests who want something comforting and familiar.<span class="mono">Guest favorite</span></p>
+          </li>
+          <li class="menu-item reveal">
+            <h3>Pesto Pizza and Don Diego Pizza</h3>
+            <p>The pizza conversation starts here: reviews call out the dough, the pesto, and the wood-fired feel of the slice itself.<span class="mono">Pizza highlight</span></p>
+          </li>
+          <li class="menu-item reveal">
+            <h3>Pulled Pork Sandwich</h3>
+            <p>A standout for visitors who want something beyond the usual cafe order, mentioned alongside the savory plates people remember after leaving.<span class="mono">Savory pick</span></p>
+          </li>
+          <li class="menu-item reveal">
+            <h3>Patatas Bravas and Nachos</h3>
+            <p>These shareable plates show up in review notes for groups that come in with an appetite and stay for the atmosphere.<span class="mono">Shared plates</span></p>
+          </li>
+          <li class="menu-item reveal">
+            <h3>Tiramisu and Cocktails</h3>
+            <p>For the lingering part of the night, guests mention dessert and drinks as part of the relaxed, after-dinner rhythm.<span class="mono">Late-table finish</span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="story" aria-labelledby="story-title">
+      <div class="container story-grid">
+        <div>
+          <div class="section-head">
+            <p class="section-tag mono reveal">Story / about</p>
+            <h2 class="section-title display reveal" id="story-title">A cafe that knows how to slow the room down.</h2>
+          </div>
+          <div class="story-panel">
+            <p class="reveal">Public listings and traveler reviews describe Lartista as a cozy place with hanging greenery, warm lighting, and a friendly team. That makes it feel less like a quick stop and more like a table you settle into.</p>
+            <p class="reveal">The result is part cafe, part pizzeria, part easy night out. It works for breakfast, brunch, lunch, and dinner, and it seems to keep its best energy in the long middle of the day when people are in no rush to leave.</p>
+          </div>
+        </div>
+
+        <aside class="story-aside" aria-label="Listing notes">
+          <div class="line reveal"><span>Verified address</span><span class="mono">L. Nadayao Road, Barangay San Pedro, Puerto Princesa, Palawan 5300, Philippines</span></div>
+          <div class="line reveal"><span>Location check</span><span class="mono">9.761976, 118.74569</span></div>
+          <div class="line reveal"><span>Listing hours</span><span class="mono">Daily, 7:00 AM to 9:00 PM</span></div>
+          <div class="line reveal"><span>Phone</span><span class="mono">+63 956 178 9839</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-tag mono reveal">Gallery</p>
+          <h2 class="section-title display reveal" id="gallery-title">Three small scenes from the same table.</h2>
+          <p class="section-copy reveal">These SVG artworks give the page a real visual anchor while keeping the mood aligned with the cafe, the pizza house, and the art-led atmosphere.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img class="gallery-image" src="assets/img/gallery-espresso.svg" alt="Stylized espresso cup with warm steam and amber highlights" width="1200" height="1500" loading="lazy" decoding="async">
+            <figcaption><span>Espresso glow</span><span>coffee break</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img class="gallery-image" src="assets/img/gallery-pizza.svg" alt="Stylized pizza slice on a peel with basil and charred crust" width="1200" height="1500" loading="lazy" decoding="async">
+            <figcaption><span>Pizza moment</span><span>guest favorite</span></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img class="gallery-image" src="assets/img/gallery-room.svg" alt="Stylized dining room with hanging lights and greenery" width="1200" height="1500" loading="lazy" decoding="async">
+            <figcaption><span>Room mood</span><span>late table</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location" aria-labelledby="location-title">
+      <div class="container location-grid">
+        <div>
+          <div class="section-head">
+            <p class="section-tag mono reveal">Hours and location</p>
+            <h2 class="section-title display reveal" id="location-title">Puerto Princesa, not Manila.</h2>
+            <p class="section-copy reveal">The pinned location sits in Puerto Princesa at 9.761976, 118.74569, which matches the city rather than Metro Manila and lands near the Nadayao Road area.</p>
+          </div>
+
+          <dl class="detail-list">
+            <div class="detail-item reveal">
+              <dt>Address</dt>
+              <dd>L. Nadayao Road, Barangay San Pedro, Puerto Princesa, Palawan 5300, Philippines</dd>
+            </div>
+            <div class="detail-item reveal">
+              <dt>Hours</dt>
+              <dd>Daily, 7:00 AM to 9:00 PM</dd>
+            </div>
+            <div class="detail-item reveal">
+              <dt>Phone</dt>
+              <dd><a href="tel:+639561789839">+63 956 178 9839</a></dd>
+            </div>
+            <div class="detail-item reveal">
+              <dt>Map link</dt>
+              <dd><a href="https://www.google.com/maps/search/?api=1&query=9.761976,118.74569" target="_blank" rel="noopener noreferrer">Open in Google Maps</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <div class="map-frame reveal" aria-label="Simplified location map for Puerto Princesa">
+            <svg viewBox="0 0 1000 800" role="img" aria-labelledby="mapTitle mapDesc">
+              <title id="mapTitle">Simplified map showing Lartista in Puerto Princesa</title>
+              <desc id="mapDesc">A stylized dark map with amber roads and a highlighted pin at Lartista's Puerto Princesa location.</desc>
+              <defs>
+                <linearGradient id="mapGlow" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.34"/>
+                  <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+                </linearGradient>
+                <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="16" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <rect width="1000" height="800" fill="#080808"/>
+              <rect width="1000" height="800" fill="url(#mapGlow)" opacity="0.9"/>
+              <g opacity="0.18" stroke="#eaeaea" stroke-width="1">
+                <path d="M80 100H920M80 220H920M80 340H920M80 460H920M80 580H920M80 700H920"/>
+                <path d="M120 60V740M260 60V740M400 60V740M540 60V740M680 60V740M820 60V740"/>
+              </g>
+              <g fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+                <path d="M130 610 C240 540, 360 525, 470 470 S720 330, 870 265"/>
+                <path d="M180 210 C260 260, 330 290, 430 290 S620 260, 750 180" opacity="0.55"/>
+                <path d="M190 725 C320 670, 420 650, 560 620 S760 590, 870 520" opacity="0.45"/>
+              </g>
+              <g fill="#eaeaea" opacity="0.8">
+                <circle cx="180" cy="610" r="6"/>
+                <circle cx="320" cy="540" r="6"/>
+                <circle cx="510" cy="455" r="6"/>
+                <circle cx="710" cy="330" r="6"/>
+                <circle cx="820" cy="270" r="6"/>
+              </g>
+              <g transform="translate(585 380)" filter="url(#softGlow)">
+                <circle cx="0" cy="0" r="16" fill="#f0a500"/>
+                <circle cx="0" cy="0" r="40" fill="none" stroke="#f0a500" stroke-width="4" opacity="0.45"/>
+                <circle cx="0" cy="0" r="64" fill="none" stroke="#f0a500" stroke-width="2" opacity="0.24"/>
+                <path d="M0 -72 C34 -72, 52 -43, 52 -14 C52 33, 0 74, 0 74 C0 74, -52 33, -52 -14 C-52 -43, -34 -72, 0 -72Z" fill="#f0a500" opacity="0.18"/>
+                <path d="M0 -45 C17 -45, 31 -31, 31 -14 C31 3, 17 17, 0 17 C-17 17, -31 3, -31 -14 C-31 -31, -17 -45, 0 -45Z" fill="#080808"/>
+              </g>
+              <text x="86" y="94" fill="#eaeaea" opacity="0.8" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="2">PUERTO PRINCESA</text>
+              <text x="86" y="136" fill="#f0a500" opacity="0.9" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="2">9.761976, 118.74569</text>
+              <text x="86" y="174" fill="#eaeaea" opacity="0.62" font-family="Space Grotesk, sans-serif" font-size="20">Lartista, L. Nadayao Road, Brgy. San Pedro</text>
+            </svg>
+          </div>
+          <div class="map-caption reveal"><span>City check</span><span>Puerto Princesa, Palawan</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="stack reveal">
+        <p class="mono" style="font-size:0.72rem;color:rgba(240,165,0,.86);margin:0;">Contact / footer</p>
+        <p>Call ahead, open your map app, or come by for the pizza and coffee that make Lartista feel like a lived-in room in Puerto Princesa.</p>
+      </div>
+      <div class="footer-links mono reveal">
+        <a href="tel:+639561789839">Call</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=9.761976,118.74569" target="_blank" rel="noopener noreferrer">Maps</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:1.1rem;">
+      <p class="mono" style="font-size:0.68rem;color:rgba(234,234,234,.48);margin:0;">© <span data-year></span> Lartista. Verified public details used for address, location, hours, and menu highlights. Built for GitHub Pages in /lartista/.</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const anchors = Array.from(document.querySelectorAll('a[href^="#"]'));
+
+      function smoothScrollTo(target) {
+        if (!target) return;
+        if (window.lenisInstance) {
+          window.lenisInstance.scrollTo(target, { offset: -18 });
+          return;
+        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      anchors.forEach((anchor) => {
+        anchor.addEventListener('click', (event) => {
+          const href = anchor.getAttribute('href');
+          const target = href && href !== '#' ? document.querySelector(href) : null;
+          if (!target) return;
+          event.preventDefault();
+          smoothScrollTo(target);
+        });
+      });
+
+      if (!reducedMotion && window.Lenis && window.gsap) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+          lerp: 0.09,
+          smoothWheel: true,
+          smoothTouch: false
+        });
+
+        window.lenisInstance = lenis;
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        const raf = (time) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+
+        gsap.set('.hero-media', { scale: 1.08 });
+
+        gsap.from('.hero .reveal', {
+          opacity: 0,
+          y: 28,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.12,
+          delay: 0.15
+        });
+
+        gsap.to('.hero-media', {
+          scale: 1.14,
+          y: 60,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        gsap.utils.toArray('.section').forEach((section) => {
+          const targets = section.querySelectorAll('.reveal');
+          if (!targets.length) return;
+          gsap.from(targets, {
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 80%'
+            },
+            opacity: 0,
+            y: 26,
+            duration: 0.9,
+            ease: 'power2.out',
+            stagger: 0.08
+          });
+        });
+
+        ScrollTrigger.refresh();
+      } else {
+        document.documentElement.classList.add('no-motion');
+        document.querySelectorAll('.reveal').forEach((item) => {
+          item.style.opacity = '1';
+          item.style.transform = 'none';
+        });
+      }
+
+      const year = document.querySelector('[data-year]');
+      if (year) year.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>

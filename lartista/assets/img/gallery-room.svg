@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Stylized dining room with greenery and hanging lights">
+  <defs>
+    <linearGradient id="r1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="r2" cx="50%" cy="35%" r="58%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#r1)"/>
+  <circle cx="600" cy="450" r="430" fill="url(#r2)"/>
+  <g opacity="0.18" stroke="#eaeaea" stroke-width="1">
+    <path d="M120 180H1080M120 300H1080M120 420H1080M120 540H1080M120 660H1080M120 780H1080"/>
+    <path d="M150 120V1380M300 120V1380M450 120V1380M600 120V1380M750 120V1380M900 120V1380M1050 120V1380"/>
+  </g>
+  <g transform="translate(120 180)">
+    <path d="M120 60 C170 0, 230 0, 280 60" stroke="#f0a500" stroke-opacity="0.52" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <circle cx="200" cy="88" r="34" fill="#181818" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+    <circle cx="200" cy="88" r="18" fill="#f0a500" opacity="0.38"/>
+    <path d="M410 120 C462 46, 524 46, 576 120" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="494" cy="150" r="28" fill="#181818" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+    <circle cx="494" cy="150" r="14" fill="#f0a500" opacity="0.38"/>
+    <path d="M760 86 C816 10, 874 10, 928 86" stroke="#f0a500" stroke-opacity="0.42" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <circle cx="844" cy="120" r="30" fill="#181818" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="4"/>
+    <circle cx="844" cy="120" r="14" fill="#f0a500" opacity="0.38"/>
+    <g transform="translate(140 340)">
+      <path d="M0 360 C76 264, 150 252, 224 360" stroke="#f0a500" stroke-opacity="0.34" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M30 330 H316" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="8" stroke-linecap="round"/>
+      <path d="M500 390 C576 288, 650 280, 736 390" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M120 180 C164 118, 234 108, 278 176 C246 230, 168 238, 120 180Z" fill="#2f5b24"/>
+      <path d="M630 164 C676 100, 742 96, 784 160 C752 214, 674 220, 630 164Z" fill="#31552a"/>
+      <path d="M308 210 C360 180, 430 182, 486 218" stroke="#f0a500" stroke-opacity="0.28" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="390" cy="392" rx="220" ry="46" fill="#060606"/>
+    </g>
+  </g>
+  <g opacity="0.24" stroke="#eaeaea" stroke-width="1">
+    <path d="M120 1120H1080"/>
+  </g>
+</svg>

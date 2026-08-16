@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Stylized pizza slice on a peel">
+  <defs>
+    <linearGradient id="p1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <radialGradient id="p2" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#p1)"/>
+  <circle cx="600" cy="520" r="420" fill="url(#p2)"/>
+  <g transform="translate(190 250)">
+    <path d="M120 980 L770 720 L385 210 Z" fill="#c88d2a" opacity="0.13"/>
+    <path d="M140 962 L734 720 L400 244 Z" fill="#251605" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="4"/>
+    <path d="M350 222 C418 190, 510 190, 586 236 C464 250, 392 270, 350 222Z" fill="#2e2e2e" opacity="0.45"/>
+    <path d="M404 286 L648 690 L184 878 Z" fill="#d1a24a" opacity="0.52"/>
+    <path d="M404 286 L648 690 L184 878" fill="none" stroke="#f6ddb0" stroke-opacity="0.24" stroke-width="2"/>
+    <g fill="#f0a500" opacity="0.92">
+      <circle cx="382" cy="402" r="46"/>
+      <circle cx="506" cy="516" r="42"/>
+      <circle cx="428" cy="618" r="40"/>
+      <circle cx="326" cy="532" r="36"/>
+      <circle cx="518" cy="390" r="34"/>
+    </g>
+    <g fill="#2f5b24">
+      <path d="M365 426 C370 392, 406 382, 418 414 C404 438, 386 444, 365 426Z"/>
+      <path d="M466 596 C476 564, 510 556, 522 586 C510 610, 488 614, 466 596Z"/>
+      <path d="M274 566 C286 534, 318 526, 330 556 C318 580, 298 586, 274 566Z"/>
+    </g>
+    <path d="M676 730 C760 762, 810 828, 842 910" fill="none" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="10" stroke-linecap="round"/>
+    <path d="M656 746 C760 790, 820 864, 856 952" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="14" stroke-linecap="round"/>
+    <rect x="112" y="930" width="620" height="28" rx="14" fill="#f0a500" opacity="0.44"/>
+  </g>
+  <g opacity="0.24" stroke="#eaeaea" stroke-width="1">
+    <path d="M120 260H1080M120 340H1080M120 420H1080M120 500H1080M120 580H1080"/>
+  </g>
+</svg>
