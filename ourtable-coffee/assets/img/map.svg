@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 980" role="img" aria-label="Static map of OurTable Coffee Shop in Puerto Princesa">
+  <defs>
+    <linearGradient id="mapBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+    <radialGradient id="pinGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="980" rx="32" fill="url(#mapBg)"/>
+  <g opacity="0.45" stroke="#f0a500" stroke-width="2">
+    <path d="M140 160h920"/>
+    <path d="M140 320h920"/>
+    <path d="M140 480h920"/>
+    <path d="M140 640h920"/>
+    <path d="M140 800h920"/>
+    <path d="M220 110v760"/>
+    <path d="M410 110v760"/>
+    <path d="M600 110v760"/>
+    <path d="M790 110v760"/>
+    <path d="M980 110v760"/>
+  </g>
+  <g opacity="0.18" fill="#f0a500">
+    <rect x="220" y="236" width="150" height="46" rx="20"/>
+    <rect x="398" y="404" width="190" height="46" rx="20"/>
+    <rect x="668" y="520" width="210" height="46" rx="20"/>
+    <rect x="322" y="676" width="254" height="46" rx="20"/>
+  </g>
+  <circle cx="706" cy="502" r="120" fill="url(#pinGlow)"/>
+  <path d="M706 390c-55 0-100 45-100 100 0 77 100 177 100 177s100-100 100-177c0-55-45-100-100-100zm0 142a42 42 0 1 1 0-84 42 42 0 0 1 0 84z" fill="#f0a500"/>
+  <path d="M706 390c-55 0-100 45-100 100 0 77 100 177 100 177s100-100 100-177c0-55-45-100-100-100zm0 142a42 42 0 1 1 0-84 42 42 0 0 1 0 84z" fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="6"/>
+  <rect x="120" y="84" width="320" height="88" rx="24" fill="#0d0d0d" stroke="#f0a500" stroke-opacity="0.18"/>
+  <text x="150" y="138" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="2">2F GOLAND PLAZA</text>
+  <rect x="120" y="828" width="360" height="92" rx="24" fill="#0d0d0d" stroke="#f0a500" stroke-opacity="0.18"/>
+  <text x="150" y="872" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="1.6">MALVAR ROAD, SAN MIGUEL</text>
+  <text x="150" y="902" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="2">9.7515 N, 118.7475 E</text>
+</svg>

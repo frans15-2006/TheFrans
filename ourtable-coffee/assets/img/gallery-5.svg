@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-label="Upstairs table illustration">
+  <rect width="900" height="1120" rx="34" fill="#0b0b0b"/>
+  <circle cx="470" cy="258" r="250" fill="#f0a500" fill-opacity="0.08"/>
+  <rect x="164" y="438" width="572" height="110" rx="32" fill="#151515" stroke="#f0a500" stroke-opacity="0.2"/>
+  <path d="M242 548v268M658 548v268" stroke="#f0a500" stroke-opacity="0.26" stroke-width="10" stroke-linecap="round"/>
+  <path d="M286 420v120M614 420v120" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="10" stroke-linecap="round"/>
+  <rect x="244" y="846" width="412" height="80" rx="40" fill="#151515" stroke="#f0a500" stroke-opacity="0.16"/>
+  <text x="92" y="1040" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="4">UPSTAIRS TABLE</text>
+</svg>

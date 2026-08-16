@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Illustrated OurTable coffee scene">
+  <defs>
+    <radialGradient id="hGlow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.26"/>
+      <stop offset="45%" stop-color="#f0a500" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tableLine" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#f0a500" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="none"/>
+  <circle cx="830" cy="260" r="290" fill="url(#hGlow)"/>
+  <circle cx="308" cy="320" r="180" fill="#f0a500" fill-opacity="0.07"/>
+  <path d="M150 900c150-82 354-120 558-120 144 0 300 22 392 54" fill="none" stroke="url(#tableLine)" stroke-width="4" stroke-linecap="round"/>
+  <rect x="205" y="455" width="320" height="350" rx="34" fill="#111" stroke="#f0a500" stroke-opacity="0.18"/>
+  <path d="M256 534h198c42 0 76 34 76 76s-34 76-76 76h-92" fill="none" stroke="#f0a500" stroke-width="16" stroke-linecap="round"/>
+  <path d="M440 534c0 80 34 116 34 164" fill="none" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="10" stroke-linecap="round"/>
+  <path d="M370 520c0 80 34 116 34 164" fill="none" stroke="#eaeaea" stroke-opacity="0.56" stroke-width="10" stroke-linecap="round"/>
+  <rect x="642" y="440" width="300" height="392" rx="44" fill="#121212" stroke="#f0a500" stroke-opacity="0.18"/>
+  <ellipse cx="792" cy="612" rx="104" ry="48" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="10"/>
+  <path d="M716 612c0 78 34 132 76 132s76-54 76-132" fill="none" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="10" stroke-linecap="round"/>
+  <path d="M740 560c18-24 36-36 52-36 16 0 34 12 52 36" fill="none" stroke="#f0a500" stroke-opacity="0.3" stroke-width="8" stroke-linecap="round"/>
+  <rect x="466" y="820" width="292" height="112" rx="40" fill="#151515" stroke="#f0a500" stroke-opacity="0.16"/>
+  <path d="M530 868h164" stroke="#f0a500" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="974" cy="508" r="10" fill="#f0a500"/>
+  <circle cx="1014" cy="548" r="7" fill="#f0a500" fill-opacity="0.8"/>
+  <circle cx="960" cy="584" r="5" fill="#f0a500" fill-opacity="0.7"/>
+  <path d="M145 386c120-74 264-110 420-110 170 0 314 28 438 86" fill="none" stroke="#f0a500" stroke-opacity="0.08" stroke-width="8" stroke-linecap="round"/>
+  <text x="126" y="1048" fill="#eaeaea" fill-opacity="0.6" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="4">OURTABLE COFFEE SHOP</text>
+</svg>

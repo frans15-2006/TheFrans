@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="OurTable Coffee Shop social preview image">
+  <defs>
+    <radialGradient id="ogGlow" cx="70%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="900" cy="120" r="250" fill="url(#ogGlow)"/>
+  <rect x="76" y="76" width="1048" height="478" rx="36" fill="#0d0d0d" stroke="#f0a500" stroke-opacity="0.16"/>
+  <text x="122" y="232" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="124" letter-spacing="6">OURTABLE</text>
+  <text x="124" y="322" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="5">COFFEE SHOP | PUERTO PRINCESA, PALAWAN</text>
+  <text x="124" y="394" fill="#eaeaea" fill-opacity="0.76" font-family="Space Grotesk, sans-serif" font-size="34">Verified address, hours, socials, and menu highlights.</text>
+  <path d="M850 334c-10 84-62 124-126 124-68 0-124-56-124-126 0-64 32-104 86-124" fill="none" stroke="#f0a500" stroke-opacity="0.36" stroke-width="10" stroke-linecap="round"/>
+  <path d="M652 334c0 66 30 98 60 98s60-32 60-98" fill="none" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="10" stroke-linecap="round"/>
+  <rect x="76" y="576" width="1048" height="18" rx="9" fill="#f0a500" fill-opacity="0.12"/>
+</svg>

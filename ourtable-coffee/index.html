@@ -1,60 +1,902 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OurTable Coffee Shop</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OurTable Coffee | Puerto Princesa, Palawan</title>
+  <meta name="description" content="OurTable Coffee Shop in Puerto Princesa, Palawan. Verified location at 2F Goland Plaza on Malvar Road, with public hours, menu highlights, social links, and coordinates." />
+  <meta property="og:title" content="OurTable Coffee | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified public details for OurTable Coffee Shop: address, hours, social links, coordinates, and menu highlights from Puerto Princesa, Palawan.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/ourtable-coffee/assets/img/og-image.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/ourtable-coffee/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(13, 13, 13, 0.72);
+      --panel-strong: rgba(10, 10, 10, 0.9);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --border: rgba(240, 165, 0, 0.18);
+      --border-strong: rgba(240, 165, 0, 0.36);
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(240, 165, 0, 0.08), transparent 34%),
+        radial-gradient(circle at 82% 14%, rgba(240, 165, 0, 0.06), transparent 28%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: var(--text);
+    }
+
+    .font-display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+    }
+
+    .font-mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: rgba(234, 234, 234, 0.82);
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 240ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transform: translateZ(0);
+    }
+
+    .btn-ripple .ripple {
+      position: absolute;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 35%, transparent 72%);
+      transform: scale(0);
+      pointer-events: none;
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .button-amber {
+      background: linear-gradient(180deg, rgba(240, 165, 0, 1), rgba(216, 142, 0, 1));
+      color: #111;
+      box-shadow: 0 16px 35px rgba(240, 165, 0, 0.2);
+    }
+
+    .button-ghost {
+      border: 1px solid rgba(240, 165, 0, 0.4);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+
+    .section-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.45), transparent);
+    }
+
+    .hero-shell {
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      overflow: clip;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(12px);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .orb-a {
+      width: min(54vw, 34rem);
+      height: min(54vw, 34rem);
+      top: -12%;
+      right: -7%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18) 0%, rgba(240, 165, 0, 0.06) 40%, transparent 72%);
+      animation: floatA 12s ease-in-out infinite alternate;
+    }
+
+    .orb-b {
+      width: min(32vw, 20rem);
+      height: min(32vw, 20rem);
+      bottom: 10%;
+      left: -8%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.13) 0%, rgba(240, 165, 0, 0.04) 45%, transparent 75%);
+      animation: floatB 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatA {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(-2%, 2%, 0) scale(1.05); }
+    }
+
+    @keyframes floatB {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(3%, -1%, 0) scale(1.08); }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: end;
+      min-height: 100svh;
+      padding-top: 5.25rem;
+      padding-bottom: 2.25rem;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .hero-art-wrap {
+      position: relative;
+      min-height: 26rem;
+    }
+
+    .hero-art {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.3));
+    }
+
+    .label-ticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(16px);
+    }
+
+    .menu-card {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(180deg, rgba(18, 18, 18, 0.9), rgba(8, 8, 8, 0.92));
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(240, 165, 0, 0), rgba(240, 165, 0, 0.35), rgba(240, 165, 0, 0));
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(240, 165, 0, 0.12), 0 0 28px rgba(240, 165, 0, 0.1);
+    }
+
+    .menu-card:hover::before,
+    .menu-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.25);
+      color: rgba(234, 234, 234, 0.78);
+      background: rgba(240, 165, 0, 0.06);
+      font-size: 0.78rem;
+      line-height: 1;
+    }
+
+    .price {
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(255, 255, 255, 0.02);
+      min-height: 13rem;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.001);
+      transition: transform 280ms ease, filter 280ms ease;
+    }
+
+    .gallery-tile:hover img,
+    .gallery-tile:focus-within img {
+      transform: scale(1.03);
+      filter: brightness(0.72);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.78));
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    .gallery-tile:hover .gallery-caption,
+    .gallery-tile:focus-within .gallery-caption {
+      opacity: 1;
+    }
+
+    .hover-lift {
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-3px);
+      border-color: rgba(240, 165, 0, 0.3);
+    }
+
+    .reveal-ready {
+      will-change: transform, opacity;
+    }
+
+    .sun-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.5);
+      animation: ping 2.2s ease-in-out infinite;
+    }
+
+    @keyframes ping {
+      0%, 100% { transform: scale(0.92); box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.2); }
+      50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(240, 165, 0, 0); }
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      z-index: 50;
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #111;
+      transition: top 180ms ease;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .mono-rule {
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.62);
+    }
+
+    .glass-panel {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(18px);
+    }
+
+    .table-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .table-row:last-child {
+      border-bottom: 0;
+    }
+
+    .foot-link {
+      color: rgba(234, 234, 234, 0.76);
+      transition: color 180ms ease;
+    }
+
+    .foot-link:hover,
+    .foot-link:focus-visible {
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
-    <h1>OurTable Coffee Shop</h1>
-    <span class="category">Cafe</span>
-    <p class="address">2F Goland Plaza, Malvar Road, San Miguel, Puerto Princesa City</p>
-    <p class="phone">+63 945 557 8548</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a class="skip-link font-mono text-sm" href="#content">Skip to content</a>
+
+  <header class="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-[#080808]/75 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#top" class="group inline-flex items-baseline gap-2 text-sm uppercase tracking-[0.28em] text-[#eaeaea]">
+        <span class="font-display text-2xl tracking-[0.08em] text-[#f0a500]">OurTable</span>
+        <span class="hidden text-[0.7rem] text-white/60 sm:inline">Coffee Shop</span>
+      </a>
+      <nav class="flex items-center gap-4 text-[0.72rem] uppercase tracking-[0.22em] sm:gap-6">
+        <a class="nav-link" href="#menu">Menu</a>
+        <a class="nav-link" href="#story">Story</a>
+        <a class="nav-link" href="#gallery">Gallery</a>
+        <a class="nav-link" href="#visit">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section id="top" class="hero-shell">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="mx-auto grid max-w-7xl items-end gap-8 px-5 lg:grid-cols-2 lg:px-8">
+        <div class="hero-grid relative z-10">
+          <div class="max-w-2xl pb-4">
+            <div class="mb-6 flex items-center gap-3 reveal-ready" data-reveal-hero>
+              <span class="sun-dot"></span>
+              <span class="label-ticker font-mono text-[0.72rem] uppercase tracking-[0.2em] text-[#eaeaea]/80">Puerto Princesa, Palawan</span>
+            </div>
+            <p class="font-mono text-[0.72rem] uppercase tracking-[0.3em] text-white/55 reveal-ready" data-reveal-hero>Verified public details, first-party socials, and map coordinates</p>
+            <h1 class="mt-4 max-w-4xl font-display text-[clamp(4.4rem,13vw,9.7rem)] leading-[0.86] text-[#eaeaea] reveal-ready" data-reveal-hero>
+              OURTABLE<br>Coffee
+            </h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-white/75 sm:text-lg reveal-ready" data-reveal-hero>
+              A second-floor coffee shop above Goland Plaza on Malvar Road, known publicly for coffee drinks, bagels, bowls, and a quiet table tucked into the city.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row reveal-ready" data-reveal-hero>
+              <a class="btn-ripple button-amber inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]" href="#menu">Explore Menu</a>
+              <a class="btn-ripple button-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]" href="#visit">Find Us</a>
+            </div>
+          </div>
+          <div class="mt-auto flex items-end justify-between gap-4 pt-10 text-white/55">
+            <p class="font-mono text-[0.72rem] uppercase tracking-[0.22em] reveal-ready" data-reveal-hero>Mon-Sat 10:00 AM-9:00 PM</p>
+            <div class="flex items-center gap-2 reveal-ready" data-reveal-hero>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.22em]">scroll</span>
+              <span class="inline-flex h-10 w-6 items-start justify-center rounded-full border border-white/15 p-1">
+                <span class="scroll-dot mt-1 h-1.5 w-1.5 rounded-full bg-[#f0a500]"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-art-wrap relative z-10 flex items-end justify-center lg:min-h-[100svh] lg:pb-8">
+          <img class="hero-art pointer-events-none select-none" src="assets/img/hero-art.svg" alt="Illustrated coffee scene for OurTable Coffee Shop">
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl reveal-ready" data-reveal>
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-white/55">Menu highlights</p>
+          <h2 class="mt-3 font-display text-[clamp(3rem,7vw,5.6rem)] leading-[0.9] text-[#eaeaea]">Public menu favorites</h2>
+          <p class="mt-4 text-base leading-7 text-white/72">
+            Public listings do not expose stable item-level pricing, so the cards below use the verified house price band from public listings.
+          </p>
+        </div>
+        <div id="menu-grid" class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section id="story" class="px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div class="reveal-ready" data-reveal-left>
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-white/55">Story</p>
+          <h2 class="mt-3 max-w-xl font-display text-[clamp(3rem,8vw,6rem)] leading-[0.9] text-[#eaeaea]">
+            A quiet second-floor table with coffee and bowls.
+          </h2>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div class="reveal-ready" data-reveal-right>
+            <p class="max-w-2xl text-base leading-8 text-white/74 sm:text-lg">
+              Public reviews describe OurTable Coffee Shop as clean, comfortable, and friendly, with a menu that moves between coffee drinks, bagels, salads, bowls, and bulgogi plates. Tripadvisor traveler photos name items like OUR Signature Latte (Coconut Cream), Cheese Bulgogi Panini, Breakfast Yogurt Bowl, and the salad bowls, while other public listings mention grilled tofu bowls and sesame noodles. The cafe sits upstairs at Goland Plaza on Malvar Road in Puerto Princesa.
+            </p>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-white/74 sm:text-lg">
+              That mix of soft lighting, easy seating, and hearty plates gives the place its own pace: not rushed, not overly styled, just a solid table for coffee or lunch.
+            </p>
+          </div>
+          <figure class="reveal-ready glass-panel rounded-[1.75rem] p-4 lg:p-5" data-reveal-right>
+            <svg viewBox="0 0 560 560" class="h-full w-full" role="img" aria-label="Abstract line art for a cafe table, coffee cup, and bowl">
+              <defs>
+                <linearGradient id="storyGlow" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#f0a500" stop-opacity="0.02" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="560" height="560" rx="34" fill="#0b0b0b" />
+              <circle cx="390" cy="130" r="130" fill="url(#storyGlow)" />
+              <rect x="92" y="348" width="376" height="88" rx="30" fill="#121212" stroke="#f0a500" stroke-opacity="0.18" />
+              <path d="M126 358h308" stroke="#f0a500" stroke-opacity="0.22" stroke-width="2" />
+              <path d="M152 348v88M408 348v88" stroke="#f0a500" stroke-opacity="0.22" stroke-width="2" />
+              <rect x="160" y="152" width="126" height="150" rx="26" fill="#121212" stroke="#f0a500" stroke-opacity="0.2" />
+              <path d="M184 182h76c18 0 32 14 32 32s-14 32-32 32h-36" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round" />
+              <path d="M234 162c0 24 12 34 12 54" fill="none" stroke="#eaeaea" stroke-opacity="0.7" stroke-width="5" stroke-linecap="round" />
+              <path d="M208 160c0 24 12 34 12 54" fill="none" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round" />
+              <ellipse cx="360" cy="220" rx="82" ry="34" fill="none" stroke="#f0a500" stroke-opacity="0.2" stroke-width="5" />
+              <path d="M302 220c0 40 26 70 58 70s58-30 58-70" fill="none" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="5" stroke-linecap="round" />
+              <path d="M318 190c16-18 36-28 42-28 6 0 26 10 42 28" fill="none" stroke="#f0a500" stroke-opacity="0.26" stroke-width="4" stroke-linecap="round" />
+              <text x="72" y="496" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="3">coffee, bowls, and time</text>
+            </svg>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl reveal-ready" data-reveal>
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-white/55">Gallery</p>
+          <h2 class="mt-3 font-display text-[clamp(3rem,7vw,5.6rem)] leading-[0.9] text-[#eaeaea]">Quiet scenes, amber edges</h2>
+          <p class="mt-4 text-base leading-7 text-white/72">A staggered grid of SVG scenes inspired by verified menu names and the cafe's relaxed, upstairs mood.</p>
+        </div>
+        <div id="gallery-grid" class="mt-10 grid gap-4 md:grid-cols-12"></div>
+      </div>
+    </section>
+
+    <section id="visit" class="px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="max-w-3xl reveal-ready" data-reveal>
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-white/55">Hours / Location</p>
+          <h2 class="mt-3 font-display text-[clamp(3rem,7vw,5.6rem)] leading-[0.9] text-[#eaeaea]">Where to find the table</h2>
+        </div>
+        <div class="mt-10 grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+          <div class="glass-panel rounded-[1.75rem] p-5 lg:p-6 reveal-ready" data-reveal-left>
+            <div class="flex items-center justify-between gap-4 pb-5">
+              <div>
+                <p class="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-white/55">Public hours</p>
+                <h3 class="mt-2 font-display text-4xl leading-none text-[#eaeaea]">Mon-Sat</h3>
+              </div>
+              <p class="font-mono text-right text-[0.72rem] uppercase tracking-[0.22em] text-[#f0a500]">verify sunday before you go</p>
+            </div>
+            <div class="overflow-hidden rounded-[1.35rem] border border-white/8 bg-black/20">
+              <div class="grid grid-cols-2 bg-white/3 px-4 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-white/55">
+                <span>Day</span>
+                <span class="text-right">Hours</span>
+              </div>
+              <div class="divide-y divide-white/6 font-mono text-[0.9rem] text-[#eaeaea]">
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Monday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Tuesday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Wednesday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Thursday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Friday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Saturday</span><span class="text-right">10:00 AM - 9:00 PM</span></div>
+                <div class="table-row grid grid-cols-2 px-4 py-3"><span>Sunday</span><span class="text-right text-[#f0a500]">public listings conflict: closed vs 11:00 AM - 8:00 PM</span></div>
+              </div>
+            </div>
+            <div class="mt-5 space-y-3 text-sm leading-7 text-white/72">
+              <p class="font-mono text-[0.75rem] uppercase tracking-[0.22em] text-white/55">Verified address</p>
+              <address class="not-italic">
+                2F Goland Plaza, Malvar Road, Brgy. San Miguel, Puerto Princesa, Palawan 5300, Philippines
+              </address>
+              <p class="font-mono text-[0.75rem] uppercase tracking-[0.22em] text-white/55">Coordinates</p>
+              <p class="font-mono text-sm text-[#f0a500]">9.7515 N, 118.7475 E</p>
+            </div>
+          </div>
+          <div class="glass-panel rounded-[1.75rem] p-4 lg:p-6 reveal-ready" data-reveal-right>
+            <img src="assets/img/map.svg" alt="Static map for OurTable Coffee Shop in Puerto Princesa" class="h-full w-full rounded-[1.25rem] border border-white/8 object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 px-5 py-16 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr_0.85fr_1fr]">
+      <div>
+        <a href="#top" class="font-display text-5xl leading-none text-[#f0a500]">OurTable</a>
+        <p class="mt-4 max-w-sm text-sm leading-7 text-white/72">
+          A public-detail landing page for OurTable Coffee Shop in Puerto Princesa, built from verified address, hours, menu signals, and social listings.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-white/55">Quick links</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a class="foot-link" href="#menu">Menu highlights</a></li>
+          <li><a class="foot-link" href="#story">About the cafe</a></li>
+          <li><a class="foot-link" href="#gallery">Gallery</a></li>
+          <li><a class="foot-link" href="#visit">Hours and location</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-white/55">Hours summary</p>
+        <p class="mt-4 text-sm leading-7 text-white/72">Monday to Saturday: 10:00 AM - 9:00 PM.</p>
+        <p class="mt-2 text-sm leading-7 text-white/72">Sunday: public listings disagree, so verify the latest post before heading over.</p>
+      </div>
+      <div>
+        <p class="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-white/55">Contact and socials</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a class="foot-link" href="mailto:ourtablepalawan@gmail.com">ourtablepalawan@gmail.com</a></li>
+          <li><a class="foot-link" href="tel:+639455578548">+63 945 557 8548</a></li>
+          <li><a class="foot-link" href="https://www.facebook.com/ourtablepalawan" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a class="foot-link" href="https://www.instagram.com/ourtable_ph/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a class="foot-link" href="https://www.google.com/maps/search/?api=1&query=9.751499,118.74754" target="_blank" rel="noopener noreferrer">Open map</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mx-auto mt-10 flex max-w-7xl flex-col gap-4 border-t border-white/5 pt-6 md:flex-row md:items-center md:justify-between">
+      <p class="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-white/55">Copyright 2026 OurTable Coffee Shop landing page</p>
+      <div class="flex items-center gap-4 text-white/70">
+        <a class="hover-lift inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/8" href="https://www.facebook.com/ourtablepalawan" target="_blank" rel="noopener noreferrer" aria-label="OurTable Coffee Shop on Facebook">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V5a24 24 0 0 0-2.5-.1c-2.5 0-4.2 1.6-4.2 4.4V11H8v3h2.1v8h3.4Z"/></svg>
+        </a>
+        <a class="hover-lift inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/8" href="https://www.instagram.com/ourtable_ph/" target="_blank" rel="noopener noreferrer" aria-label="OurTable Coffee Shop on Instagram">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="hover-lift inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/8" href="https://www.google.com/maps/search/?api=1&query=9.751499,118.74754" target="_blank" rel="noopener noreferrer" aria-label="Open OurTable Coffee Shop in Maps">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s6-4.5 6-10a6 6 0 1 0-12 0c0 5.5 6 10 6 10Z"/><circle cx="12" cy="11" r="2.25"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    const menuItems = [
+      {
+        name: 'Our Signature Latte',
+        subtitle: 'Coconut cream house latte called out in traveler photos and review snippets.',
+        price: 'PHP 1-500',
+        category: 'coffee',
+      },
+      {
+        name: 'Signature Iced Latte',
+        subtitle: 'A chilled version noted in public reviews for its coconut-cream base.',
+        price: 'PHP 1-500',
+        category: 'coffee',
+      },
+      {
+        name: 'Iced Salted Caramel Latte',
+        subtitle: 'A sweet, cold coffee mentioned in local coffee roundups and social snippets.',
+        price: 'PHP 1-500',
+        category: 'coffee',
+      },
+      {
+        name: 'Cheese Bulgogi Panini',
+        subtitle: 'Traveler photos show a savory sandwich plate with the cafe\'s bulgogi twist.',
+        price: 'PHP 1-500',
+        category: 'panini',
+      },
+      {
+        name: 'Chicken Breast Salad Bowl',
+        subtitle: 'A hearty bowl item named in Tripadvisor traveler photos.',
+        price: 'PHP 1-500',
+        category: 'bowl',
+      },
+      {
+        name: 'Pomelo Crabmeat Salad Bowl',
+        subtitle: 'A bright bowl plate that appears in public traveler photo listings.',
+        price: 'PHP 1-500',
+        category: 'bowl',
+      },
+      {
+        name: 'Breakfast Yogurt Bowl',
+        subtitle: 'A lighter breakfast plate from the cafe\'s traveler photo set.',
+        price: 'PHP 1-500',
+        category: 'brunch',
+      },
+      {
+        name: 'Beef Bulgogi Salad Bowl',
+        subtitle: 'A bulgogi-led salad bowl visible in Tripadvisor traveler photos.',
+        price: 'PHP 1-500',
+        category: 'bowl',
+      },
+    ];
+
+    const galleryItems = [
+      { src: 'assets/img/gallery-1.svg', title: 'Signature latte glow', span: 'md:col-span-5' },
+      { src: 'assets/img/gallery-2.svg', title: 'Bulgogi bowl', span: 'md:col-span-7' },
+      { src: 'assets/img/gallery-3.svg', title: 'Bagel brunch', span: 'md:col-span-4' },
+      { src: 'assets/img/gallery-4.svg', title: 'Panini break', span: 'md:col-span-4' },
+      { src: 'assets/img/gallery-5.svg', title: 'Upstairs table', span: 'md:col-span-4' },
+    ];
+
+    const menuGrid = document.getElementById('menu-grid');
+    const galleryGrid = document.getElementById('gallery-grid');
+
+    menuGrid.innerHTML = menuItems.map((item) => `
+      <article class="menu-card reveal-card rounded-[1.5rem] p-5 sm:p-6" tabindex="0">
+        <div class="flex items-start justify-between gap-3">
+          <span class="pill font-mono uppercase tracking-[0.16em]">${item.category}</span>
+          <span class="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-white/45">public range</span>
+        </div>
+        <h3 class="mt-5 font-display text-[2.35rem] leading-[0.88] text-[#eaeaea]">${item.name}</h3>
+        <p class="mt-3 max-w-md text-sm leading-7 text-white/72">${item.subtitle}</p>
+        <div class="mt-6 flex items-end justify-between gap-3 border-t border-white/6 pt-4">
+          <span class="font-mono text-[0.78rem] uppercase tracking-[0.18em] text-white/52">verified via public listings</span>
+          <span class="font-mono text-lg font-semibold price">${item.price}</span>
+        </div>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = galleryItems.map((item) => `
+      <figure class="gallery-tile reveal-tile rounded-[1.5rem] ${item.span} md:min-h-[18rem]" tabindex="0">
+        <img src="${item.src}" alt="${item.title}">
+        <figcaption class="gallery-caption">
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-[#f0a500]">gallery</p>
+          <h3 class="mt-2 font-display text-3xl leading-none text-[#eaeaea]">${item.title}</h3>
+        </figcaption>
+      </figure>
+    `).join('');
+
+    const rippleButtons = document.querySelectorAll('.btn-ripple');
+    rippleButtons.forEach((button) => {
+      button.addEventListener('pointerdown', (event) => {
+        const existing = button.querySelector('.ripple');
+        if (existing) existing.remove();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.8;
+        ripple.style.width = `${size}px`;
+        ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        button.appendChild(ripple);
+        gsap.fromTo(ripple, { scale: 0, opacity: 0.45 }, { scale: 1, opacity: 0, duration: 0.7, ease: 'power2.out', onComplete: () => ripple.remove() });
+      });
+    });
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        duration: 1.15,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      gsap.fromTo('[data-reveal-hero]', {
+        opacity: 0,
+        y: 28,
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        delay: 0.12,
+      });
+
+      gsap.fromTo('.hero-art-wrap', {
+        opacity: 0,
+        x: 40,
+        scale: 0.98,
+      }, {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: 'power3.out',
+        delay: 0.15,
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 84%',
+          },
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power3.out',
+        });
+      });
+
+      gsap.to('.scroll-dot', {
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        duration: 1.1,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to('.orb-a', {
+        y: 40,
+        scrollTrigger: {
+          trigger: '#top',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.to('.orb-b', {
+        y: -24,
+        scrollTrigger: {
+          trigger: '#top',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.from('.reveal-card', {
+        scrollTrigger: {
+          trigger: '#menu-grid',
+          start: 'top 82%',
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out',
+      });
+
+      gsap.from('[data-reveal-left]', {
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 74%',
+        },
+        opacity: 0,
+        x: -42,
+        duration: 0.9,
+        ease: 'power3.out',
+      });
+
+      gsap.from('[data-reveal-right]', {
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 74%',
+        },
+        opacity: 0,
+        x: 42,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.reveal-tile', {
+        scrollTrigger: {
+          trigger: '#gallery-grid',
+          start: 'top 80%',
+        },
+        opacity: 0,
+        y: 34,
+        duration: 0.8,
+        stagger: 0.09,
+        ease: 'power3.out',
+      });
+
+      gsap.from('#visit .glass-panel', {
+        scrollTrigger: {
+          trigger: '#visit',
+          start: 'top 78%',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: 'power3.out',
+      });
+    } else {
+      document.querySelectorAll('[data-reveal-hero], [data-reveal-left], [data-reveal-right], .reveal-card, .reveal-tile').forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "OurTable Coffee Shop",
+    "url": "https://frans15-2006.github.io/TheFrans/ourtable-coffee/",
+    "image": "https://frans15-2006.github.io/TheFrans/ourtable-coffee/assets/img/og-image.svg",
+    "telephone": "+63 945 557 8548",
+    "email": "ourtablepalawan@gmail.com",
+    "priceRange": "PHP 1-500",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2F Goland Plaza, Malvar Road, Brgy. San Miguel",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.751499,
+      "longitude": 118.74754
+    },
+    "openingHours": [
+      "Mo 10:00-21:00",
+      "Tu 10:00-21:00",
+      "We 10:00-21:00",
+      "Th 10:00-21:00",
+      "Fr 10:00-21:00",
+      "Sa 10:00-21:00"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/ourtablepalawan",
+      "https://www.instagram.com/ourtable_ph/"
+    ]
+  }
+  </script>
 </body>
 </html>

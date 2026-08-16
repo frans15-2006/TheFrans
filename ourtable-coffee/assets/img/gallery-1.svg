@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1120" role="img" aria-label="Signature latte illustration">
+  <rect width="900" height="1120" rx="34" fill="#0b0b0b"/>
+  <circle cx="650" cy="220" r="210" fill="#f0a500" fill-opacity="0.12"/>
+  <rect x="150" y="330" width="600" height="460" rx="42" fill="#121212" stroke="#f0a500" stroke-opacity="0.2"/>
+  <path d="M250 506h220c42 0 76 34 76 76s-34 76-76 76H368" fill="none" stroke="#f0a500" stroke-width="18" stroke-linecap="round"/>
+  <path d="M476 506c0 98 38 136 38 196" fill="none" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="11" stroke-linecap="round"/>
+  <path d="M384 490c0 98 38 136 38 196" fill="none" stroke="#eaeaea" stroke-opacity="0.5" stroke-width="11" stroke-linecap="round"/>
+  <rect x="192" y="846" width="516" height="80" rx="40" fill="#151515" stroke="#f0a500" stroke-opacity="0.16"/>
+  <path d="M244 886h412" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
+  <text x="90" y="1040" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="4">SIGNATURE LATTE</text>
+</svg>
