@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Order to Brew social preview</title>
+  <desc id="desc">Dark amber social preview for Order to Brew with a coffee cup and Puerto Princesa coordinates.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="272" cy="160" r="250" fill="url(#orb)"/>
+  <circle cx="1000" cy="420" r="210" fill="rgba(240,165,0,0.08)"/>
+  <path d="M180 448 C254 362, 364 323, 478 325 C584 326, 672 362, 745 444" fill="none" stroke="rgba(240,165,0,0.16)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M640 196 C686 190, 736 208, 761 250 C787 294, 784 347, 748 384 C713 421, 665 438, 614 430 C557 422, 515 384, 501 332 C486 282, 509 232, 560 206 C585 194, 613 192, 640 196 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M645 230 C655 230, 663 238, 663 248 C663 258, 655 266, 645 266 C635 266, 627 258, 627 248 C627 238, 635 230, 645 230 Z" fill="#f0a500"/>
+  <path d="M645 266 C645 266, 636 285, 625 302 C616 317, 607 332, 597 348" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M646 266 C646 266, 657 286, 668 301 C677 314, 686 329, 696 346" stroke="rgba(240,165,0,0.8)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <rect x="508" y="344" width="242" height="126" rx="26" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="546" y="386" width="118" height="48" rx="24" fill="rgba(240,165,0,0.2)"/>
+  <path d="M724 386 C747 386, 760 399, 760 417 C760 436, 746 449, 726 449" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <text x="88" y="184" fill="#f7f2e8" font-family="Bebas Neue, sans-serif" font-size="92" letter-spacing="5">ORDER TO BREW</text>
+  <text x="90" y="240" fill="rgba(234,234,234,0.72)" font-family="Space Grotesk, sans-serif" font-size="29">Puerto Princesa, Palawan, Philippines</text>
+  <text x="90" y="286" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="3">9.7400, 118.7400</text>
+  <text x="90" y="566" fill="rgba(234,234,234,0.48)" font-family="JetBrains Mono, monospace" font-size="16" letter-spacing="2">DARK HERO  -  AMBER ACCENT  -  LENIS + GSAP</text>
+</svg>

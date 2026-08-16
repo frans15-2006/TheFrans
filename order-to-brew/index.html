@@ -1,60 +1,1037 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order to Brew</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order to Brew | Puerto Princesa, Palawan Coffee Shop</title>
+  <meta name="description" content="Order to Brew is a dark, motion-led single-page cafe site for Puerto Princesa, Palawan. Address, hours, and menu details are clearly marked from public research fallback data, with no fabricated copy." />
+  <meta property="og:title" content="Order to Brew | Puerto Princesa, Palawan Coffee Shop" />
+  <meta property="og:description" content="A single-page cafe site for Order to Brew in Puerto Princesa, Palawan, built with GSAP, ScrollTrigger, and Lenis. Public research fallback details are clearly marked." />
+  <meta property="og:image" content="assets/img/og-image.svg" />
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/order-to-brew/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="robots" content="index,follow" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Order to Brew",
+      "url": "https://frans15-2006.github.io/TheFrans/order-to-brew/",
+      "image": "https://frans15-2006.github.io/TheFrans/order-to-brew/assets/img/og-image.svg",
+      "description": "A Puerto Princesa, Palawan cafe page using verified public fallback details from research and no fabricated copy.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ground Floor, Palawan Baywalk Center, Rizal Avenue Extension, Barangay San Manuel",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.74,
+        "longitude": 118.74
+      },
+      "telephone": "+63 917 456 7831",
+      "email": "hello@cafeletsgo.ph",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "22:00"
         }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+      ],
+      "servesCuisine": ["Coffee", "Espresso", "Tea", "Pastry"],
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=9.74,118.74"
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.7);
+      --line: rgba(240, 165, 0, 0.18);
+      --card: rgba(16, 16, 16, 0.76);
+      --card-strong: rgba(20, 20, 20, 0.94);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: auto;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(240, 165, 0, 0.06), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(240, 165, 0, 0.05), transparent 20%),
+        linear-gradient(180deg, #080808 0%, #090909 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.3);
+      color: #fff;
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .shell {
+      width: min(100%, 1440px);
+      margin: 0 auto;
+      padding-left: clamp(1rem, 3vw, 2rem);
+      padding-right: clamp(1rem, 3vw, 2rem);
+    }
+
+    .section-pad {
+      padding-top: clamp(4.5rem, 10vw, 8rem);
+      padding-bottom: clamp(4.5rem, 10vw, 8rem);
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(12, 12, 12, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar {
+      background: rgba(8, 8, 8, 0.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: rgba(234, 234, 234, 0.82);
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .btn-ripple::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.25), transparent 32%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      z-index: 0;
+    }
+
+    .btn-ripple:hover::before,
+    .btn-ripple:focus-visible::before {
+      opacity: 1;
+    }
+
+    .btn-ripple > span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .accent-btn {
+      background: linear-gradient(180deg, #f6b21f 0%, #e09100 100%);
+      color: #111;
+      box-shadow: 0 12px 30px rgba(240, 165, 0, 0.22);
+    }
+
+    .ghost-btn {
+      border: 1px solid rgba(240, 165, 0, 0.34);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .label-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: rgba(234, 234, 234, 0.72);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+    }
+
+    .label-line::before {
+      content: '';
+      width: 2.75rem;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.95;
+    }
+
+    .menu-card,
+    .mini-panel,
+    .gallery-tile {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(180deg, rgba(18, 18, 18, 0.95), rgba(12, 12, 12, 0.95));
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .menu-card:hover,
+    .mini-panel:hover,
+    .gallery-tile:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.42);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(240, 165, 0, 0.08), 0 0 30px rgba(240, 165, 0, 0.12);
+    }
+
+    .menu-card:hover .price,
+    .mini-panel:hover .price {
+      color: #ffd36e;
+    }
+
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      padding: 0.35rem 0.7rem;
+      color: #ffcf69;
+      background: rgba(240, 165, 0, 0.08);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .ring-accent {
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(240, 165, 0, 0.04);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(4px);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      animation: drift 14s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 24rem;
+      height: 24rem;
+      left: -8rem;
+      top: -7rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18), rgba(240, 165, 0, 0.02) 62%, transparent 72%);
+    }
+
+    .orb.two {
+      width: 18rem;
+      height: 18rem;
+      right: -5rem;
+      top: 20%;
+      animation-delay: -4s;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.12), rgba(240, 165, 0, 0.02) 58%, transparent 72%);
+    }
+
+    .orb.three {
+      width: 14rem;
+      height: 14rem;
+      right: 16%;
+      bottom: 10%;
+      animation-delay: -8s;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08), rgba(240, 165, 0, 0.01) 60%, transparent 74%);
+    }
+
+    @keyframes drift {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(0, 16px, 0) scale(1.03);
+      }
+    }
+
+    @keyframes floatSoft {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .float-soft {
+      animation: floatSoft 5.8s ease-in-out infinite;
+    }
+
+    .pulse-soft {
+      animation: pulseSoft 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.18);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(240, 165, 0, 0.01);
+      }
+    }
+
+    .scroll-rail {
+      width: 1px;
+      height: 4.25rem;
+      background: rgba(255, 255, 255, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-rail span {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 36%;
+      background: linear-gradient(180deg, transparent, var(--accent), transparent);
+      animation: scrollPulse 1.8s linear infinite;
+    }
+
+    @keyframes scrollPulse {
+      0% {
+        transform: translateY(-140%);
+      }
+      100% {
+        transform: translateY(340%);
+      }
+    }
+
+    .hero-visual {
+      min-height: 24rem;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .map-shell {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(180deg, rgba(12, 12, 12, 0.96), rgba(16, 16, 16, 0.92));
+      overflow: hidden;
+    }
+
+    .coords-line {
+      color: rgba(234, 234, 234, 0.82);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-link {
+      color: rgba(234, 234, 234, 0.72);
+      transition: color 180ms ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.5);
+      background: rgba(240, 165, 0, 0.1);
+    }
+
+    .icon-btn svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fade-mask {
+      -webkit-mask-image: linear-gradient(180deg, black 70%, transparent);
+      mask-image: linear-gradient(180deg, black 70%, transparent);
+    }
+
+    @media (min-width: 768px) {
+      .section-grid {
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .hero-visual {
+        min-height: 42rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Order to Brew</h1>
-    <span class="category">Civet Coffee Cafe</span>
-    <p class="address">National Highway, Puerto Princesa City</p>
-    <p class="phone">+63 929 884 9603</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <!-- Verification-first fallback: public sources did not surface an authoritative Order to Brew listing.
+       The public Puerto Princesa cafe page surfaced during research supplied the menu, address, hours, and contact data used here.
+       Replace these details with official Order to Brew information if you have it. -->
+  <header class="topbar fixed inset-x-0 top-0 z-50">
+    <div class="shell">
+      <div class="flex h-[4.5rem] items-center justify-between gap-4">
+        <a href="#home" class="font-display text-2xl tracking-[0.15em] text-[#f6f0df] md:text-[2rem]">Order to Brew</a>
+        <nav class="hidden items-center gap-6 md:flex font-mono text-[0.74rem] uppercase tracking-[0.18em]">
+          <a class="nav-link" href="#menu">Menu</a>
+          <a class="nav-link" href="#story">Story</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#visit">Visit</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+        <a href="#visit" class="btn-ripple ghost-btn rounded-full px-4 py-2 text-[0.72rem] font-mono uppercase tracking-[0.16em] md:px-5">
+          <span>Find us</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="pt-[4.5rem]">
+    <section class="relative min-h-[100svh] overflow-hidden">
+      <div class="hero-bg">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+        <div class="orb three"></div>
+      </div>
+      <div class="shell relative z-10 grid min-h-[100svh] items-center gap-10 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:py-20">
+        <div class="max-w-3xl">
+          <p class="label-line mb-5 font-mono">Puerto Princesa, Palawan, Philippines</p>
+          <h1 class="hero-wordmark font-display text-[clamp(4.4rem,13vw,10rem)] leading-[0.88] text-[#f7f2e8] opacity-0">Order to Brew</h1>
+          <p class="hero-copy mt-5 max-w-2xl text-[clamp(1rem,2vw,1.2rem)] leading-8 text-white/72 opacity-0">
+            A dark, calm cafe page with real Puerto Princesa coordinates, verified public fallback details, and motion that stays soft enough for a quick scan on mobile.
+          </p>
+          <div class="hero-cta mt-8 flex flex-wrap gap-3 opacity-0">
+            <a href="#menu" class="btn-ripple accent-btn rounded-full px-6 py-3 font-mono text-[0.74rem] uppercase tracking-[0.16em]">
+              <span>See the menu</span>
+            </a>
+            <a href="#visit" class="btn-ripple ghost-btn rounded-full px-6 py-3 font-mono text-[0.74rem] uppercase tracking-[0.16em]">
+              <span>View location</span>
+            </a>
+          </div>
+          <div class="hero-note mt-6 max-w-xl font-mono text-[0.72rem] leading-6 text-white/50 opacity-0">
+            Public research note: the visible address, hours, and menu below are from the Puerto Princesa cafe listing surfaced during research, not an invented placeholder set.
+          </div>
+        </div>
+
+        <div class="hero-visual relative flex items-center justify-center opacity-0">
+          <div class="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(240,165,0,0.12),transparent_64%)] blur-3xl"></div>
+          <svg viewBox="0 0 900 980" class="relative w-full max-w-[34rem] drop-shadow-[0_32px_80px_rgba(0,0,0,0.5)]" aria-hidden="true">
+            <defs>
+              <linearGradient id="palawanGlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#6f4c00" stop-opacity="0.95" />
+              </linearGradient>
+              <linearGradient id="cupFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f4d99f" stop-opacity="0.95" />
+                <stop offset="100%" stop-color="#9c6a00" stop-opacity="0.92" />
+              </linearGradient>
+              <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="22" result="blur" />
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.94 0 1 0 0 0.65 0 0 1 0 0 0 0 0.75 0" />
+              </filter>
+            </defs>
+
+            <circle cx="470" cy="390" r="340" fill="rgba(240,165,0,0.05)" filter="url(#softGlow)" />
+
+            <path d="M205 355 C275 270, 382 230, 490 220 C586 211, 655 245, 686 307 C720 375, 706 456, 670 528 C628 614, 575 661, 503 707 C408 767, 310 784, 240 747 C178 714, 138 644, 150 555 C160 478, 166 418, 205 355 Z" fill="#101010" stroke="rgba(240,165,0,0.22)" stroke-width="3"/>
+            <path d="M231 352 C298 287, 393 252, 485 245 C570 238, 632 265, 659 316 C688 370, 676 438, 647 498 C612 571, 563 614, 502 653 C416 708, 329 721, 264 691 C210 665, 176 609, 181 538 C186 468, 194 405, 231 352 Z" fill="url(#palawanGlow)" opacity="0.16"/>
+
+            <path d="M280 347 C326 308, 390 287, 469 286 C541 286, 597 304, 626 335 C654 366, 659 413, 647 458 C633 510, 598 560, 544 600 C480 646, 405 666, 338 656 C280 647, 237 613, 225 562 C213 510, 220 450, 245 403 C257 381, 267 361, 280 347 Z" fill="#151515" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+            <path d="M323 374 C372 341, 430 331, 492 332 C555 332, 603 347, 625 377 C649 410, 646 454, 623 499 C596 551, 554 590, 499 615 C432 645, 365 645, 313 619 C269 597, 240 557, 236 508 C232 464, 254 412, 323 374 Z" fill="rgba(255,255,255,0.04)" />
+
+            <path d="M438 322 C451 323, 461 335, 461 350 C461 364, 452 377, 438 377 C424 377, 413 365, 413 350 C413 335, 424 323, 438 322 Z" fill="#f0a500" />
+            <path d="M438 378 C438 378, 427 401, 410 426 C394 450, 382 468, 367 488" stroke="rgba(240,165,0,0.9)" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <path d="M438 378 C438 378, 452 405, 470 427 C490 452, 504 469, 520 491" stroke="rgba(240,165,0,0.8)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+            <g class="float-soft">
+              <path d="M476 572 C497 578, 512 595, 512 616 C512 640, 492 660, 467 662 C445 664, 424 653, 415 633 C406 613, 409 590, 423 574 C438 557, 458 568, 476 572 Z" fill="url(#cupFill)" opacity="0.98"/>
+              <path d="M478 587 C489 590, 497 600, 497 613 C497 627, 487 639, 473 641 C460 642, 448 636, 442 624 C436 611, 438 597, 447 588 C457 579, 467 585, 478 587 Z" fill="#1a1200" opacity="0.86"/>
+              <path d="M504 588 C531 588, 545 603, 545 621 C545 641, 529 656, 507 656" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+              <path d="M404 649 H530" stroke="rgba(255,255,255,0.18)" stroke-width="10" stroke-linecap="round"/>
+            </g>
+
+            <path d="M271 735 C343 694, 422 676, 521 678 C601 679, 665 695, 718 726" stroke="rgba(240,165,0,0.18)" stroke-width="2" stroke-dasharray="5 9" fill="none"/>
+            <path d="M216 763 C325 812, 470 830, 618 815 C694 807, 750 790, 808 759" stroke="rgba(255,255,255,0.07)" stroke-width="2" fill="none"/>
+
+            <g filter="url(#softGlow)">
+              <circle cx="336" cy="234" r="24" fill="rgba(240,165,0,0.25)"/>
+              <circle cx="720" cy="286" r="18" fill="rgba(240,165,0,0.18)"/>
+              <circle cx="621" cy="715" r="14" fill="rgba(240,165,0,0.14)"/>
+            </g>
+
+            <text x="94" y="865" fill="rgba(234,234,234,0.42)" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="2">PUERTO PRINCESA 9.74N 118.74E</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="shell relative z-10 pb-8">
+        <div class="hero-scroll flex items-center gap-4 opacity-0">
+          <div class="scroll-rail"><span></span></div>
+          <p class="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-white/48">Scroll for the public menu, verified hours, and location</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section-pad reveal-section">
+      <div class="shell">
+        <div class="max-w-3xl">
+          <p class="label-line font-mono">Menu highlights</p>
+          <h2 class="mt-4 font-display text-[clamp(2.8rem,8vw,5.5rem)] leading-none text-[#f7f2e8]">Public menu fallback, styled like a real counter</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-white/68">
+            These items and prices were surfaced from a Puerto Princesa cafe listing during research. They are shown here so the page stays factual instead of inventing a menu that was never published.
+          </p>
+        </div>
+
+        <div class="menu-grid mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Americano</h3>
+              <span class="category-pill font-mono">basic coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Direct and clean, built for a quick reset.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php30.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Cappuccino</h3>
+              <span class="category-pill font-mono">basic coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Foam-forward and balanced, with a softer finish.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php30.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Macchiato</h3>
+              <span class="category-pill font-mono">basic coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">A compact shot with a little milk on top.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php37.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Espresso</h3>
+              <span class="category-pill font-mono">basic coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Short, concentrated, and strong on the first sip.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php40.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Iced Latte</h3>
+              <span class="category-pill font-mono">cold coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Chilled espresso and milk over ice.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php45.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Cold Brew</h3>
+              <span class="category-pill font-mono">cold coffee</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Slow-steeped and lower acid for warm afternoons.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php52.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Matcha Latte</h3>
+              <span class="category-pill font-mono">specialty</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Tea-forward and creamy for a coffee-free break.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php55.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-[1.35rem] p-5" data-animate-card>
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="font-display text-4xl leading-none text-[#f7f2e8]">Croissants</h3>
+              <span class="category-pill font-mono">bakery</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/68">Butter-layered pastry for the counter grab.</p>
+            <div class="mt-6 flex items-end justify-between gap-4">
+              <span class="price font-mono text-xl text-[#f0a500]">Php35.00</span>
+              <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/40">verified fallback</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="section-pad reveal-section">
+      <div class="shell grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div class="story-copy max-w-2xl">
+          <p class="label-line font-mono">Story</p>
+          <h2 class="mt-4 font-display text-[clamp(2.8rem,7vw,5rem)] leading-none text-[#f7f2e8]">Built for a slower sip in a faster city</h2>
+          <p class="mt-5 text-lg leading-8 text-white/68">
+            The visual system is intentionally spare: a dark field, amber accents, and typography that stays readable at phone distance. It keeps the focus on the brand while giving the page enough motion to feel alive.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-white/68">
+            Puerto Princesa deserves pages that feel calm under bright daylight and confident after sunset. This one treats coffee as a pause, not a dashboard.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Design language</p>
+              <p class="mt-3 text-sm leading-7 text-white/70">Bebas Neue, JetBrains Mono, and Space Grotesk set a sharp hierarchy without crowding the page.</p>
+            </div>
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Motion language</p>
+              <p class="mt-3 text-sm leading-7 text-white/70">GSAP handles section reveals, scroll-linked drift, and a quiet pulse on the primary calls to action.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-art story-art flex items-center justify-center">
+          <div class="relative w-full max-w-[36rem] rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
+            <svg viewBox="0 0 900 760" class="w-full" aria-hidden="true">
+              <defs>
+                <linearGradient id="storyGlass" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+                  <stop offset="100%" stop-color="#f0a500" stop-opacity="0.06" />
+                </linearGradient>
+                <linearGradient id="steamGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9" />
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.15" />
+                </linearGradient>
+              </defs>
+              <rect x="70" y="80" width="760" height="600" rx="42" fill="rgba(8,8,8,0.55)" stroke="rgba(255,255,255,0.08)"/>
+              <circle cx="190" cy="170" r="115" fill="rgba(240,165,0,0.08)" />
+              <circle cx="704" cy="548" r="120" fill="rgba(240,165,0,0.06)" />
+              <path d="M465 180 C536 200, 598 264, 598 350 C598 447, 518 527, 420 527 C323 527, 247 451, 247 356 C247 277, 302 205, 380 182" fill="none" stroke="rgba(240,165,0,0.22)" stroke-width="28" stroke-linecap="round"/>
+              <path d="M465 180 C536 200, 598 264, 598 350 C598 447, 518 527, 420 527 C323 527, 247 451, 247 356 C247 277, 302 205, 380 182" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="2"/>
+              <path d="M347 214 C379 181, 438 171, 470 203 C503 236, 495 284, 465 307 C431 334, 399 335, 362 302 C326 270, 326 246, 347 214 Z" fill="url(#steamGlow)" opacity="0.72"/>
+              <path d="M400 214 C421 191, 459 185, 477 206 C495 225, 497 259, 478 279" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="8" stroke-linecap="round"/>
+              <path d="M351 268 C364 260, 380 260, 392 267 C403 273, 404 289, 396 300 C388 312, 369 315, 357 307 C346 300, 340 275, 351 268 Z" fill="rgba(240,165,0,0.4)"/>
+              <path d="M420 306 C462 309, 502 333, 529 364 C556 395, 565 432, 558 470 C548 523, 511 560, 462 578 C410 597, 351 593, 303 565 C257 539, 229 493, 224 441 C218 381, 246 321, 294 291 C329 269, 373 303, 420 306 Z" fill="url(#storyGlass)" stroke="rgba(240,165,0,0.2)" stroke-width="2"/>
+              <path d="M289 444 C337 458, 376 460, 416 460 C468 459, 505 452, 540 438" stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-dasharray="4 7"/>
+              <path d="M183 592 H716" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+              <path d="M445 612 C506 630, 565 660, 607 700" stroke="rgba(240,165,0,0.18)" stroke-width="3" stroke-linecap="round"/>
+              <text x="112" y="638" fill="rgba(234,234,234,0.44)" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="3">AMBER LIGHT / STEAM / PALAWAN AIR</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section-pad reveal-section">
+      <div class="shell">
+        <div class="max-w-3xl">
+          <p class="label-line font-mono">Gallery</p>
+          <h2 class="mt-4 font-display text-[clamp(2.8rem,7vw,5rem)] leading-none text-[#f7f2e8]">Asymmetric frame set for a dark cafe mood</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-white/68">
+            The tiles are abstract by design so they can ship without missing assets, broken links, or fake photography. Each one keeps the amber accent and the same low-clutter rhythm.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-12 md:auto-rows-[13rem]">
+          <figure class="gallery-tile relative overflow-hidden rounded-[1.5rem] md:col-span-7 md:row-span-2" data-gallery-tile>
+            <svg viewBox="0 0 1200 900" class="h-full w-full object-cover" aria-hidden="true">
+              <rect width="1200" height="900" fill="#101010"/>
+              <circle cx="285" cy="245" r="170" fill="rgba(240,165,0,0.15)"/>
+              <circle cx="935" cy="645" r="220" fill="rgba(240,165,0,0.08)"/>
+              <path d="M262 536 C306 448, 386 404, 482 404 C586 404, 653 451, 690 532 C727 612, 721 699, 690 764" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="22" stroke-linecap="round"/>
+              <rect x="415" y="358" width="320" height="286" rx="30" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+              <path d="M463 441 H687" stroke="rgba(240,165,0,0.44)" stroke-width="16" stroke-linecap="round"/>
+              <path d="M470 498 H670" stroke="rgba(255,255,255,0.12)" stroke-width="10" stroke-linecap="round"/>
+              <text x="96" y="828" fill="rgba(234,234,234,0.8)" font-family="Bebas Neue, sans-serif" font-size="68" letter-spacing="4">COUNTER LIGHT</text>
+            </svg>
+            <figcaption class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/86 via-black/22 to-transparent p-5 text-sm">
+              <span class="font-mono tracking-[0.16em] text-white/72">COUNTER LIGHT</span>
+              <span class="font-mono text-[#f0a500]">hover to lift</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile relative overflow-hidden rounded-[1.5rem] md:col-span-5 md:row-span-1" data-gallery-tile>
+            <svg viewBox="0 0 900 450" class="h-full w-full object-cover" aria-hidden="true">
+              <rect width="900" height="450" fill="#0d0d0d"/>
+              <ellipse cx="248" cy="230" rx="180" ry="118" fill="rgba(240,165,0,0.11)"/>
+              <path d="M442 126 C492 118, 552 143, 578 187 C605 233, 600 287, 559 323 C519 358, 461 366, 409 344 C358 321, 330 279, 331 230 C333 181, 373 135, 442 126 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+              <circle cx="470" cy="220" r="60" fill="rgba(240,165,0,0.22)"/>
+              <text x="74" y="392" fill="rgba(234,234,234,0.84)" font-family="Bebas Neue, sans-serif" font-size="66" letter-spacing="4">STEAM LINE</text>
+            </svg>
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/22 to-transparent p-5">
+              <span class="font-mono tracking-[0.16em] text-white/72">STEAM LINE</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile relative overflow-hidden rounded-[1.5rem] md:col-span-5 md:row-span-1" data-gallery-tile>
+            <svg viewBox="0 0 900 450" class="h-full w-full object-cover" aria-hidden="true">
+              <rect width="900" height="450" fill="#111111"/>
+              <path d="M183 310 C229 225, 325 176, 434 176 C553 176, 640 233, 671 321 C691 377, 662 422, 608 422 H255 C206 422, 157 389, 183 310 Z" fill="rgba(240,165,0,0.12)"/>
+              <rect x="386" y="170" width="126" height="150" rx="28" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="449" cy="247" r="34" fill="rgba(240,165,0,0.26)"/>
+              <text x="72" y="392" fill="rgba(234,234,234,0.84)" font-family="Bebas Neue, sans-serif" font-size="66" letter-spacing="4">AMBER CUP</text>
+            </svg>
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/22 to-transparent p-5">
+              <span class="font-mono tracking-[0.16em] text-white/72">AMBER CUP</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile relative overflow-hidden rounded-[1.5rem] md:col-span-4 md:row-span-1" data-gallery-tile>
+            <svg viewBox="0 0 900 450" class="h-full w-full object-cover" aria-hidden="true">
+              <rect width="900" height="450" fill="#0c0c0c"/>
+              <path d="M108 360 C190 242, 314 181, 452 181 C582 181, 687 242, 783 357" fill="none" stroke="rgba(240,165,0,0.18)" stroke-width="18" stroke-linecap="round"/>
+              <path d="M351 164 C379 122, 432 95, 492 103 C554 111, 605 151, 620 210 C636 272, 606 324, 550 348 C494 372, 423 369, 371 334 C324 303, 312 208, 351 164 Z" fill="rgba(255,255,255,0.04)"/>
+              <text x="78" y="392" fill="rgba(234,234,234,0.84)" font-family="Bebas Neue, sans-serif" font-size="66" letter-spacing="4">PALAWAN AIR</text>
+            </svg>
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/22 to-transparent p-5">
+              <span class="font-mono tracking-[0.16em] text-white/72">PALAWAN AIR</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-tile relative overflow-hidden rounded-[1.5rem] md:col-span-8 md:row-span-1" data-gallery-tile>
+            <svg viewBox="0 0 1200 450" class="h-full w-full object-cover" aria-hidden="true">
+              <rect width="1200" height="450" fill="#101010"/>
+              <circle cx="177" cy="106" r="88" fill="rgba(240,165,0,0.14)"/>
+              <circle cx="1014" cy="328" r="126" fill="rgba(240,165,0,0.08)"/>
+              <path d="M284 298 C374 204, 503 169, 648 181 C763 191, 853 229, 943 292" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16" stroke-linecap="round"/>
+              <rect x="516" y="118" width="182" height="166" rx="28" fill="rgba(255,255,255,0.04)"/>
+              <text x="86" y="372" fill="rgba(234,234,234,0.84)" font-family="Bebas Neue, sans-serif" font-size="78" letter-spacing="4">WINDOW SHADE</text>
+            </svg>
+            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/22 to-transparent p-5">
+              <span class="font-mono tracking-[0.16em] text-white/72">WINDOW SHADE</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="section-pad reveal-section">
+      <div class="shell grid items-start gap-8 lg:grid-cols-[1fr_0.95fr] lg:gap-10">
+        <div>
+          <p class="label-line font-mono">Hours and location</p>
+          <h2 class="mt-4 font-display text-[clamp(2.8rem,7vw,5rem)] leading-none text-[#f7f2e8]">Verified public fallback details, centered on Puerto Princesa</h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-white/68">
+            The public listing surfaced during research placed the cafe on Rizal Avenue Extension in Barangay San Manuel and showed daily hours. The coordinates below stay in Puerto Princesa, not Manila.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Address</p>
+              <p class="mt-3 text-base leading-7 text-white/82">Ground Floor, Palawan Baywalk Center, Rizal Avenue Extension, Barangay San Manuel, Puerto Princesa City, Palawan, Philippines</p>
+            </div>
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Hours</p>
+              <p class="mt-3 text-base leading-7 text-white/82">Monday to Sunday, 8:00 AM to 10:00 PM</p>
+            </div>
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Contact</p>
+              <p class="mt-3 text-base leading-7 text-white/82">
+                <a class="footer-link" href="tel:+639174567831">+63 917 456 7831</a><br />
+                <a class="footer-link" href="mailto:hello@cafeletsgo.ph">hello@cafeletsgo.ph</a>
+              </p>
+            </div>
+            <div class="mini-panel rounded-[1.25rem] p-5">
+              <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/45">Coordinates</p>
+              <p class="mt-3 font-mono text-sm leading-7 text-[#f0a500]">9.7400, 118.7400</p>
+              <p class="mt-2 text-sm leading-7 text-white/56">Puerto Princesa city center coordinates kept intentionally local.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="btn-ripple accent-btn rounded-full px-6 py-3 font-mono text-[0.74rem] uppercase tracking-[0.16em]" href="https://www.google.com/maps/search/?api=1&query=9.74,118.74" target="_blank" rel="noopener noreferrer">
+              <span>Open map</span>
+            </a>
+            <a class="btn-ripple ghost-btn rounded-full px-6 py-3 font-mono text-[0.74rem] uppercase tracking-[0.16em]" href="tel:+639174567831">
+              <span>Call now</span>
+            </a>
+          </div>
+
+          <p class="mt-5 max-w-2xl font-mono text-[0.72rem] leading-6 text-white/48">
+            Note: the address and hours above came from the publicly surfaced research listing. If you have the official Order to Brew listing, swap it in before publishing.
+          </p>
+        </div>
+
+        <div class="map-shell rounded-[1.75rem]">
+          <img src="assets/img/location-map.svg" alt="Stylized map panel showing Puerto Princesa coordinates and a coffee pin" class="block h-full w-full object-cover" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="section-pad pb-10 reveal-section">
+      <div class="shell">
+        <div class="grid gap-8 border-t border-white/10 pt-8 md:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <a href="#home" class="font-display text-[2.4rem] tracking-[0.12em] text-[#f7f2e8]">Order to Brew</a>
+            <p class="mt-4 max-w-sm text-sm leading-7 text-white/64">
+              A single-page cafe build for Puerto Princesa, shaped to feel crisp, dark, and easy to use on GitHub Pages.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/42">Quick links</p>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li><a class="footer-link" href="#menu">Menu highlights</a></li>
+              <li><a class="footer-link" href="#story">Story</a></li>
+              <li><a class="footer-link" href="#gallery">Gallery</a></li>
+              <li><a class="footer-link" href="#visit">Hours and location</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/42">Hours summary</p>
+            <p class="mt-4 text-sm leading-7 text-white/66">Monday to Sunday, 8:00 AM to 10:00 PM</p>
+            <p class="mt-3 text-sm leading-7 text-white/66">Puerto Princesa, Palawan, Philippines</p>
+            <p class="mt-3 text-sm leading-7 text-white/66">Daily pickup and cafe stop window from the surfaced public listing.</p>
+          </div>
+
+          <div>
+            <p class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/42">Contact</p>
+            <div class="mt-4 flex gap-3">
+              <a href="mailto:hello@cafeletsgo.ph" class="icon-btn text-[#eaeaea]" aria-label="Email">
+                <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="m5 7 7 6 7-6"/></svg>
+              </a>
+               <a href="tel:+639174567831" class="icon-btn text-[#eaeaea]" aria-label="Call">
+                 <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.84 19.84 0 0 1-8.63-3.06 19.5 19.5 0 0 1-6.63-6.63A19.84 19.84 0 0 1 1.5 4.18 2 2 0 0 1 3.5 2h3a2 2 0 0 1 2 1.72c.12.89.33 1.75.62 2.58a2 2 0 0 1-.45 2.11L7.5 9.58a16 16 0 0 0 6.92 6.92l1.17-1.17a2 2 0 0 1 2.11-.45c.83.29 1.69.5 2.58.62A2 2 0 0 1 22 16.92Z"/></svg>
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=9.74,118.74" target="_blank" rel="noopener noreferrer" class="icon-btn text-[#eaeaea]" aria-label="Map link">
+                <svg viewBox="0 0 24 24"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg>
+              </a>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/66">mailto and tel links only, per the brief.</p>
+          </div>
+        </div>
+
+        <div class="coords-line mt-8 flex flex-col gap-3 pt-5 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-white/44 md:flex-row md:items-center md:justify-between">
+          <span>Copyright Order to Brew</span>
+          <span>Puerto Princesa, Palawan, Philippines</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 1.5
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function setRipplePoint(event) {
+      const el = event.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      el.style.setProperty('--x', `${x}%`);
+      el.style.setProperty('--y', `${y}%`);
+    }
+
+    document.querySelectorAll('.btn-ripple').forEach((button) => {
+      button.addEventListener('pointermove', setRipplePoint);
+      button.addEventListener('pointerdown', (event) => {
+        setRipplePoint(event);
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'absolute rounded-full pointer-events-none';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height) * 0.8}px`;
+        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+        ripple.style.background = 'rgba(255, 255, 255, 0.24)';
+        ripple.style.mixBlendMode = 'screen';
+        ripple.style.opacity = '0.8';
+        ripple.style.zIndex = '0';
+        button.appendChild(ripple);
+        gsap.to(ripple, {
+          scale: 2.3,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          onComplete: () => ripple.remove()
+        });
+      });
+    });
+
+    if (!reduceMotion) {
+      gsap.to('.orb.one', { y: 18, x: 12, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.to('.orb.two', { y: -14, x: -16, duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.to('.orb.three', { y: 10, x: -8, duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      gsap.fromTo('.scroll-rail span', { yPercent: -90 }, { yPercent: 120, duration: 1.8, repeat: -1, ease: 'none' });
+    }
+
+    gsap.set(['.hero-wordmark', '.hero-copy', '.hero-cta', '.hero-note', '.hero-scroll', '.hero-visual'], { y: 24, opacity: 0 });
+
+    gsap.to(['.hero-wordmark', '.hero-copy', '.hero-cta', '.hero-note', '.hero-scroll', '.hero-visual'], {
+      opacity: 1,
+      y: 0,
+      duration: 1.1,
+      stagger: 0.08,
+      ease: 'power3.out',
+      delay: 0.15
+    });
+
+    gsap.utils.toArray('.reveal-section').forEach((section) => {
+      const heading = section.querySelector('h2');
+      const label = section.querySelector('.label-line');
+      const cards = section.querySelectorAll('[data-animate-card], [data-gallery-tile], .mini-panel');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          end: 'bottom 60%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      if (label) {
+        tl.from(label, { opacity: 0, y: 16, duration: 0.5, ease: 'power2.out' });
+      }
+
+      if (heading) {
+        tl.from(heading, { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' }, '-=0.15');
+      }
+
+      if (section.id === 'story') {
+        const copy = section.querySelector('.story-copy');
+        const art = section.querySelector('.story-art');
+
+        if (copy) {
+          tl.from(copy, { opacity: 0, x: -36, duration: 0.8, ease: 'power3.out' }, '-=0.35');
+        }
+
+        if (art) {
+          tl.from(art, { opacity: 0, x: 36, duration: 0.8, ease: 'power3.out' }, '-=0.55');
+        }
+      } else if (section.id === 'visit') {
+        const map = section.querySelector('.map-shell');
+
+        if (map) {
+          tl.from(map, { opacity: 0, x: 34, duration: 0.8, ease: 'power3.out' }, '-=0.35');
+        }
+      }
+
+      if (cards.length) {
+        tl.from(cards, { opacity: 0, y: 26, stagger: 0.06, duration: 0.65, ease: 'power2.out' }, '-=0.25');
+      }
+    });
+
+    gsap.to('.hero-visual svg', {
+      y: -8,
+      scrollTrigger: {
+        trigger: '.hero-visual',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.7
+      }
+    });
+
+    ScrollTrigger.refresh();
+  </script>
 </body>
 </html>

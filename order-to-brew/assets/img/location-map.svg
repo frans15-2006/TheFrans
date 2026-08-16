@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Puerto Princesa map panel</title>
+  <desc id="desc">Stylized dark map panel centered on Puerto Princesa with a coffee pin at 9.74 north and 118.74 east.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="828" rx="36" fill="none" stroke="rgba(255,255,255,0.07)"/>
+  <g opacity="0.18">
+    <path d="M120 138 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M120 254 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M120 370 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M120 486 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M120 602 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M120 718 H1080" stroke="#ffffff" stroke-width="1"/>
+    <path d="M180 110 V790" stroke="#ffffff" stroke-width="1"/>
+    <path d="M360 110 V790" stroke="#ffffff" stroke-width="1"/>
+    <path d="M540 110 V790" stroke="#ffffff" stroke-width="1"/>
+    <path d="M720 110 V790" stroke="#ffffff" stroke-width="1"/>
+    <path d="M900 110 V790" stroke="#ffffff" stroke-width="1"/>
+  </g>
+  <circle cx="863" cy="246" r="168" fill="url(#amber)" filter="url(#blur)"/>
+  <circle cx="242" cy="692" r="132" fill="rgba(240,165,0,0.07)" filter="url(#blur)"/>
+  <path d="M213 575 C289 488, 377 452, 471 454 C564 456, 629 492, 682 560 C744 642, 833 681, 981 680" fill="none" stroke="rgba(240,165,0,0.22)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M326 424 C383 369, 454 348, 534 353 C618 359, 681 389, 719 451 C756 512, 739 584, 687 640 C634 695, 548 726, 456 718 C378 712, 312 680, 277 621 C245 565, 246 476, 326 424 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <path d="M608 304 C625 304, 638 317, 638 334 C638 351, 625 364, 608 364 C591 364, 578 351, 578 334 C578 317, 591 304, 608 304 Z" fill="#f0a500"/>
+  <path d="M608 364 C608 364, 593 394, 575 422 C561 444, 545 468, 530 494" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M607 364 C607 364, 624 396, 643 421 C657 441, 670 461, 685 486" stroke="rgba(240,165,0,0.88)" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <g>
+    <rect x="480" y="500" width="260" height="150" rx="28" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.09)"/>
+    <rect x="520" y="548" width="130" height="54" rx="26" fill="rgba(240,165,0,0.18)"/>
+    <path d="M714 548 C742 548, 759 565, 759 587 C759 610, 741 625, 716 625" stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none"/>
+  </g>
+  <text x="80" y="820" fill="rgba(234,234,234,0.88)" font-family="Bebas Neue, sans-serif" font-size="74" letter-spacing="4">PUERTO PRINCESA</text>
+  <text x="82" y="858" fill="rgba(234,234,234,0.52)" font-family="JetBrains Mono, monospace" font-size="20" letter-spacing="3">9.7400, 118.7400 - PALAWAN, PHILIPPINES</text>
+</svg>
