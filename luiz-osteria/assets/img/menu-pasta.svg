@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Illustrated pasta scene">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="18%" r="92%">
+      <stop offset="0%" stop-color="#17110a"/>
+      <stop offset="55%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+    <radialGradient id="pastaGlow" cx="50%" cy="54%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <circle cx="600" cy="760" r="420" fill="url(#pastaGlow)"/>
+  <circle cx="600" cy="760" r="360" fill="#101010" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="3"/>
+  <circle cx="600" cy="760" r="290" fill="#eaeaea" fill-opacity="0.05" stroke="#f0a500" stroke-opacity="0.34" stroke-width="6"/>
+  <g transform="translate(600 760)" fill="none" stroke-linecap="round">
+    <path d="M-190 -40c24 -120 125 -185 231 -185 132 0 225 82 226 200 1 131 -89 229 -231 229-164 0 -256 -124 -226 -244Z" stroke="#f0a500" stroke-opacity="0.64" stroke-width="26"/>
+    <path d="M-140 12c20 -73 84 -118 157 -118 89 0 154 51 155 125 1 81 -61 144 -159 144-106 0 -171 -67 -153 -151Z" stroke="#eaeaea" stroke-opacity="0.72" stroke-width="18"/>
+    <path d="M-190 -40c-26 34 -42 76 -48 120" stroke="#f0a500" stroke-opacity="0.42" stroke-width="18"/>
+    <path d="M252 -32c32 46 48 96 48 150" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="14"/>
+    <path d="M-126 -132c54 36 82 74 114 116" stroke="#eaeaea" stroke-opacity="0.34" stroke-width="14"/>
+    <path d="M54 -180c36 16 62 50 94 90" stroke="#f0a500" stroke-opacity="0.38" stroke-width="14"/>
+    <path d="M170 176c-50 38 -112 58 -182 58" stroke="#eaeaea" stroke-opacity="0.26" stroke-width="14"/>
+  </g>
+  <g>
+    <path d="M930 470c16 16 32 46 36 70 2 14-8 24-20 24-22 0-44-18-52-42-8-26 0-54 16-52 6 1 14 0 20 0Z" fill="#f0a500" fill-opacity="0.8"/>
+    <path d="M944 460c26 20 50 60 54 96" fill="none" stroke="#eaeaea" stroke-opacity="0.58" stroke-width="6" stroke-linecap="round"/>
+    <path d="M962 450c34 28 58 70 62 118" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.75">
+    <circle cx="396" cy="1088" r="10" fill="#f0a500"/>
+    <circle cx="432" cy="1124" r="5" fill="#eaeaea" fill-opacity="0.72"/>
+    <circle cx="821" cy="1104" r="8" fill="#f0a500" fill-opacity="0.72"/>
+    <circle cx="862" cy="1140" r="4" fill="#eaeaea" fill-opacity="0.55"/>
+  </g>
+</svg>

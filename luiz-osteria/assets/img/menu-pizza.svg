@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Illustrated pizza scene">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="18%" r="95%">
+      <stop offset="0%" stop-color="#17100a"/>
+      <stop offset="55%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+    <radialGradient id="pizzaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#bg)"/>
+  <circle cx="600" cy="740" r="470" fill="url(#pizzaGlow)"/>
+  <circle cx="600" cy="760" r="390" fill="#101010" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="3"/>
+  <circle cx="600" cy="760" r="330" fill="#eaeaea" fill-opacity="0.06" stroke="#f0a500" stroke-opacity="0.35" stroke-width="6"/>
+  <g transform="translate(600 760)">
+    <path d="M0 -275C100 -275 195 -235 250 -165L0 0Z" fill="#f0a500" fill-opacity="0.82"/>
+    <path d="M0 -275C-100 -275 -195 -235 -250 -165L0 0Z" fill="#eaeaea" fill-opacity="0.1"/>
+    <path d="M250 -165C292 -95 310 -15 300 65L0 0Z" fill="#f0a500" fill-opacity="0.58"/>
+    <path d="M-250 -165C-292 -95 -310 -15 -300 65L0 0Z" fill="#eaeaea" fill-opacity="0.08"/>
+    <path d="M0 0L300 65C280 178 205 268 97 315L0 0Z" fill="#eaeaea" fill-opacity="0.06"/>
+    <path d="M0 0L97 315C-4 355 -118 353 -217 309L0 0Z" fill="#f0a500" fill-opacity="0.42"/>
+    <path d="M0 0L-217 309C-313 267 -381 174 -300 65L0 0Z" fill="#eaeaea" fill-opacity="0.04"/>
+    <path d="M0 0L-300 65C-308 -18 -283 -96 -250 -165L0 0Z" fill="#f0a500" fill-opacity="0.3"/>
+    <circle cx="-88" cy="-54" r="22" fill="#080808" fill-opacity="0.7"/>
+    <circle cx="118" cy="-98" r="16" fill="#080808" fill-opacity="0.7"/>
+    <circle cx="168" cy="62" r="18" fill="#080808" fill-opacity="0.7"/>
+    <circle cx="-150" cy="84" r="18" fill="#080808" fill-opacity="0.7"/>
+    <circle cx="-12" cy="136" r="14" fill="#080808" fill-opacity="0.7"/>
+    <path d="M-85 -134c34 28 58 46 108 64" fill="none" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="10" stroke-linecap="round"/>
+    <path d="M76 -160c26 58 68 98 126 125" fill="none" stroke="#eaeaea" stroke-opacity="0.35" stroke-width="10" stroke-linecap="round"/>
+    <path d="M-140 140c42 18 88 28 138 28" fill="none" stroke="#eaeaea" stroke-opacity="0.34" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.95">
+    <path d="M160 1210C324 1116 470 1080 610 1080s286 38 442 114" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="6" stroke-linecap="round"/>
+    <path d="M176 1250C332 1180 478 1144 610 1144s278 38 414 96" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

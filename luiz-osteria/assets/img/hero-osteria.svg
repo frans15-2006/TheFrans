@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 960" role="img" aria-label="Stylized Italian dining scene">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1d1200"/>
+      <stop offset="40%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+    <radialGradient id="amberGlow" cx="72%" cy="30%" r="26%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="42%" stop-color="#f0a500" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lineFade" x1="0" x2="1">
+      <stop offset="0%" stop-color="#eaeaea" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#eaeaea" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="960" fill="url(#g1)"/>
+  <rect width="1600" height="960" fill="url(#amberGlow)"/>
+  <g opacity="0.18" stroke="#eaeaea" fill="none">
+    <path d="M120 160H630" stroke="url(#lineFade)" stroke-width="2"/>
+    <path d="M100 240H720" stroke="url(#lineFade)" stroke-width="1.5"/>
+    <path d="M118 330H540" stroke="url(#lineFade)" stroke-width="1.2"/>
+    <path d="M90 430H610" stroke="url(#lineFade)" stroke-width="1.2"/>
+    <path d="M109 530H640" stroke="url(#lineFade)" stroke-width="1.2"/>
+  </g>
+  <g transform="translate(1020 140)" opacity="0.32">
+    <rect x="0" y="0" width="330" height="210" rx="14" fill="none" stroke="#eaeaea" stroke-width="2"/>
+    <rect x="18" y="18" width="294" height="174" rx="10" fill="none" stroke="#f0a500" stroke-opacity="0.4" stroke-width="1.5"/>
+    <path d="M0 70H330M0 140H330" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="1.4"/>
+    <path d="M110 0V210M220 0V210" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="1.4"/>
+  </g>
+  <g transform="translate(760 455)">
+    <circle cx="0" cy="0" r="220" fill="none" stroke="#eaeaea" stroke-opacity="0.26" stroke-width="2"/>
+    <circle cx="0" cy="0" r="176" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="2"/>
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="2"/>
+    <path d="M-60 -20c40 -48 110 -40 132 2s-6 92 -60 110-122 -10-140 -60 18 -86 68 -108" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-20 -20c24 -26 62 -26 82 0s12 60 -22 76-76 2-86 -32 2 -42 26 -44" fill="none" stroke="#eaeaea" stroke-opacity="0.82" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-88 8c54 12 114 10 170 -4" fill="none" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round"/>
+    <path d="M104 -102c22 14 38 34 44 58" fill="none" stroke="#f0a500" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>
+    <path d="M132 -40c-16 18-28 34-42 52" fill="none" stroke="#eaeaea" stroke-opacity="0.48" stroke-width="2.8" stroke-linecap="round"/>
+    <ellipse cx="152" cy="48" rx="38" ry="22" transform="rotate(28 152 48)" fill="#f0a500" fill-opacity="0.16" stroke="#f0a500" stroke-opacity="0.5" stroke-width="2"/>
+  </g>
+  <g opacity="0.9">
+    <path d="M92 738H1508" stroke="#eaeaea" stroke-opacity="0.26" stroke-width="2"/>
+    <path d="M134 740c116-46 208-46 288 0 78 46 164 46 260 0s190-46 292 0 212 46 360 0 240-46 314 0" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="4"/>
+    <rect x="100" y="742" width="1400" height="88" fill="#080808" fill-opacity="0.22"/>
+  </g>
+  <g opacity="0.6">
+    <circle cx="1150" cy="650" r="6" fill="#f0a500"/>
+    <circle cx="1180" cy="695" r="4" fill="#eaeaea" fill-opacity="0.8"/>
+    <circle cx="1218" cy="635" r="3.6" fill="#eaeaea" fill-opacity="0.45"/>
+    <circle cx="1268" cy="678" r="4.2" fill="#f0a500" fill-opacity="0.72"/>
+  </g>
+</svg>

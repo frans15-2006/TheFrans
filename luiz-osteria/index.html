@@ -1,60 +1,951 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUIZ Osteria Italian Restorante</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luiz Osteria | Italian Restaurant in Puerto Princesa, Palawan</title>
+  <meta name="description" content="Luiz Osteria is an Italian restaurant on Rizal Avenue Dagomboy St in Puerto Princesa, Palawan, known for pizza, pasta, seafood, and warm table service.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="./">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luiz Osteria | Italian Restaurant in Puerto Princesa, Palawan">
+  <meta property="og:description" content="A dark, editorial one-page site for Luiz Osteria, placed at Rizal Avenue Dagomboy St in Puerto Princesa with verified location details and guest-praised menu cues.">
+  <meta property="og:image" content="assets/img/og-image.svg">
+  <meta property="og:image:alt" content="Luiz Osteria editorial hero image">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luiz Osteria | Italian Restaurant in Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Italian dining in Puerto Princesa, Palawan, with verified address, hours, and menu highlights.">
+  <meta name="twitter:image" content="assets/img/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #0f0f0f;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(234, 234, 234, 0.22);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --faint: rgba(234, 234, 234, 0.52);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.14);
+      --amber-deep: rgba(240, 165, 0, 0.34);
+      --radius: 0.85rem;
+      --max: 1180px;
+      --pad: clamp(1rem, 2.8vw, 2rem);
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: auto;
+      scroll-padding-top: 5rem;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(240, 165, 0, 0.05), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--amber); color: var(--bg); }
+
+    .site-shell {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem var(--pad);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.4) 80%, transparent);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: 0.12em;
+      line-height: 1;
+    }
+
+    .brand span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color 180ms ease;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 100%;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+    .nav a:hover,
+    .nav a:focus-visible { color: var(--text); }
+    .nav a:hover::after,
+    .nav a:focus-visible::after { transform: scaleX(1); }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(6.2rem, 14vw, 8.5rem) var(--pad) clamp(2rem, 5vw, 3.5rem);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -3;
+      transform: scale(1.03);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.76) 40%, rgba(8, 8, 8, 0.35) 100%),
+        linear-gradient(to top, rgba(8, 8, 8, 0.82), rgba(8, 8, 8, 0.14) 55%, rgba(8, 8, 8, 0.2));
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.85;
+    }
+
+    .hero-glow.one {
+      width: clamp(18rem, 28vw, 26rem);
+      height: clamp(18rem, 28vw, 26rem);
+      right: -4rem;
+      top: 13vh;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.24), rgba(240, 165, 0, 0.02) 65%, transparent 72%);
+    }
+
+    .hero-glow.two {
+      width: 12rem;
+      height: 12rem;
+      left: 42%;
+      bottom: 15vh;
+      background: radial-gradient(circle, rgba(234, 234, 234, 0.08), rgba(234, 234, 234, 0.01) 65%, transparent 72%);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 42rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .eyebrow,
+    .section-kicker {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      color: var(--amber);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.25rem, 13vw, 8.8rem);
+      letter-spacing: 0.08em;
+      line-height: 0.86;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 36rem;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.35rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid var(--line-strong);
+      background: rgba(8, 8, 8, 0.28);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.72);
+      background: rgba(240, 165, 0, 0.08);
+      color: #fff7e6;
+    }
+
+    .button.primary {
+      background: var(--amber);
+      color: var(--bg);
+      border-color: var(--amber);
+    }
+    .button.primary:hover,
+    .button.primary:focus-visible {
+      background: #ffb81a;
+      color: var(--bg);
+    }
+
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .hero-note::before {
+      content: '';
+      width: 2.5rem;
+      height: 1px;
+      background: var(--amber);
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) var(--pad);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      max-width: 44rem;
+      margin-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-head p,
+    .section-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: minmax(3.3rem, 5rem) 1fr;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .menu-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--amber);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding-top: 0.14rem;
+    }
+
+    .menu-row h3 {
+      margin: 0 0 0.35rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .menu-row p {
+      margin: 0;
+      max-width: 42rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .menu-row .menu-meta {
+      margin-top: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.58);
+    }
+
+    .about-layout {
+      display: grid;
+      gap: clamp(1.2rem, 3vw, 2rem);
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+    }
+
+    .about-quote {
+      border-top: 1px solid var(--amber-deep);
+      border-bottom: 1px solid var(--line);
+      padding: 1.2rem 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4.2vw, 3.3rem);
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff3d0;
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 1rem;
+      padding-top: 0.15rem;
+    }
+
+    .about-copy .mini-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      display: grid;
+      gap: 0.8rem;
+      align-content: start;
+    }
+
+    .gallery-frame {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+    }
+
+    .gallery-frame.tall { aspect-ratio: 3 / 4; }
+    .gallery-frame.wide { aspect-ratio: 16 / 11; }
+
+    .gallery-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+    }
+
+    .gallery-caption {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .cta-band {
+      display: grid;
+      gap: 1.1rem;
+      align-items: center;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .cta-band h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-band p {
+      margin: 0;
+      max-width: 34rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .footer-card {
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .footer-card h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4.4vw, 3.3rem);
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--line);
+      line-height: 1.55;
+    }
+
+    .info-list .label {
+      min-width: 7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .map-wrap {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .map-frame {
+      border: 1px solid var(--line);
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: auto;
+    }
+
+    .footer-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.54);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .map-link-inline {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--amber);
+      text-underline-offset: 0.22em;
+      transition: color 180ms ease;
+    }
+    .map-link-inline:hover,
+    .map-link-inline:focus-visible { color: #fff7e2; }
+
+    html.js [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @media (max-width: 900px) {
+      .nav { gap: 0.7rem; font-size: 0.66rem; }
+      .about-layout,
+      .cta-band,
+      .footer-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+      }
+
+      .nav {
+        gap: 0.55rem 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding-top: 7.8rem;
+        align-items: flex-end;
+      }
+
+      .menu-row {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-index { padding-top: 0; }
+
+      .section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      html.js [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Luiz Osteria Italian Restorante",
+    "image": "assets/img/og-image.svg",
+    "telephone": "+639542207003",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rizal Avenue Dagomboy St",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Mimaropa",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.739902,
+      "longitude": 118.74605
+    },
+    "servesCuisine": ["Italian", "Healthy"],
+    "priceRange": "$$ - $$$",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "06:00", "closes": "23:00"}
+    ]
+  }
+  </script>
 </head>
 <body>
-    <h1>LUIZ Osteria Italian Restorante</h1>
-    <span class="category">Italian Restaurant</span>
-    <p class="address">359 Rizal Avenue, Puerto Princesa City</p>
+  <div class="site-shell" id="top">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Luiz Osteria home">
+        <strong>Luiz Osteria</strong>
+        <span>Italian Restorante, Puerto Princesa</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+      </nav>
+    </header>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+    <main>
+      <section class="hero">
+        <img class="hero-visual" src="assets/img/hero-osteria.svg" alt="Stylized Italian dining scene for Luiz Osteria" fetchpriority="high" decoding="async">
+        <div class="hero-scrim"></div>
+        <div class="hero-glow one"></div>
+        <div class="hero-glow two"></div>
+        <div class="hero-copy">
+          <p class="eyebrow hero-reveal" data-reveal>Puerto Princesa, Palawan, Philippines</p>
+          <h1 class="hero-reveal" data-reveal>Luiz Osteria</h1>
+          <p class="hero-reveal" data-reveal>Italian dining on Rizal Avenue Dagomboy St, praised by guests for pizza, pasta, seafood, and the warm, visible-kitchen energy that makes the room feel alive from breakfast through dinner.</p>
+          <div class="cta-row hero-reveal" data-reveal>
+            <a class="button primary" href="tel:+639542207003">Call +63 954 220 7003</a>
+            <a class="button" href="#location">Get directions</a>
+          </div>
+          <p class="hero-note hero-reveal" data-reveal>Open daily 6:00 AM to 11:00 PM</p>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="section-inner">
+          <div class="section-head" data-reveal>
+            <p class="section-kicker">Menu highlights</p>
+            <h2>What guests keep naming first</h2>
+            <p>The public trail around Luiz Osteria points to a menu that leans on classic Italian comfort, with pizza, pasta, seafood, and meat dishes all showing up in reviews.</p>
+          </div>
+
+          <div class="menu-list">
+            <div class="menu-row" data-reveal>
+              <div class="menu-index">01</div>
+              <div>
+                <h3>Pizza</h3>
+                <p>Reviewers repeatedly single out the pizza as the dish to order first, especially for a first visit in Puerto Princesa.</p>
+                <div class="menu-meta">Most recommended in guest reviews</div>
+              </div>
+            </div>
+            <div class="menu-row" data-reveal>
+              <div class="menu-index">02</div>
+              <div>
+                <h3>Pasta</h3>
+                <p>Guests also call out truffle pasta and carbonara spaghetti, which fits the restaurant's reputation for straightforward Italian comfort.</p>
+                <div class="menu-meta">Truffle pasta, carbonara spaghetti</div>
+              </div>
+            </div>
+            <div class="menu-row" data-reveal>
+              <div class="menu-index">03</div>
+              <div>
+                <h3>Seafood</h3>
+                <p>Reviews describe Luiz Osteria as a good seafood stop as well, giving the menu a wider Italian range than pizza and pasta alone.</p>
+                <div class="menu-meta">Seafood appears in public praise</div>
+              </div>
+            </div>
+            <div class="menu-row" data-reveal>
+              <div class="menu-index">04</div>
+              <div>
+                <h3>Meat dishes</h3>
+                <p>Public comments note that the kitchen covers meat dishes too, so the table stays flexible for mixed groups and shared dinners.</p>
+                <div class="menu-meta">A broader Italian dinner line-up</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-inner">
+          <div class="section-head" data-reveal>
+            <p class="section-kicker">About and chef story</p>
+            <h2>Visible craft, warm room</h2>
+          </div>
+
+          <div class="about-layout">
+            <div class="about-copy" data-reveal>
+              <p class="mini-label">Guest-read story</p>
+              <p>Guests describe Luiz Osteria as welcoming, elegant, and spotlessly clean, with an Italian chef named Luigi praised for skill and attention. The kitchen sits close to the street, so the cooking feels part of the city rather than hidden behind it.</p>
+              <p>That makes the restaurant feel like a true osteria in the Puerto Princesa rhythm, the kind of place that works for breakfast, lunch, and dinner without losing its sense of occasion.</p>
+            </div>
+            <div class="about-quote" data-reveal>
+              The kitchen is visible from the street, and guests keep calling the food a taste of Italy in the Philippines.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="section-inner">
+          <div class="section-head" data-reveal>
+            <p class="section-kicker">Gallery</p>
+            <h2>Three moods from the same address</h2>
+            <p>Edges, light, and platework, translated into a dark editorial strip that matches the restaurant's calm, polished feel.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item" data-reveal>
+              <div class="gallery-frame tall">
+                <img src="assets/img/hero-osteria.svg" alt="Stylized interior mood for Luiz Osteria" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery-caption">A warm room with the kitchen close to the street and a clean, amber-lit edge.</figcaption>
+            </figure>
+            <figure class="gallery-item" data-reveal>
+              <div class="gallery-frame wide">
+                <img src="assets/img/menu-pizza.svg" alt="Illustrated pizza scene in Luiz Osteria colors" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery-caption">Pizza is the first dish guests mention when they talk about the menu.</figcaption>
+            </figure>
+            <figure class="gallery-item" data-reveal>
+              <div class="gallery-frame tall">
+                <img src="assets/img/menu-pasta.svg" alt="Illustrated pasta scene in Luiz Osteria colors" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="gallery-caption">Pasta, truffle pasta, and carbonara spaghetti show up again and again in public praise.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reservations">
+        <div class="section-inner">
+          <div class="cta-band" data-reveal>
+            <div>
+              <p class="section-kicker">Reservations</p>
+              <h2>Call ahead for a table in Puerto Princesa</h2>
+            </div>
+            <div>
+              <p>Luiz Osteria lists table service and daily opening from 6:00 AM to 11:00 PM. Use the phone number below to check availability before you go.</p>
+            </div>
+          </div>
+
+          <div class="cta-row" style="margin-top:1.5rem;" data-reveal>
+            <a class="button primary" href="tel:+639542207003">Call for availability</a>
+            <a class="button" href="https://www.google.com/maps/search/?api=1&query=9.739902,118.74605" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="section" id="location">
+      <div class="section-inner">
+        <div class="footer-grid">
+          <div class="footer-card" data-reveal>
+            <p class="section-kicker">Location and footer</p>
+            <h3>Rizal Avenue Dagomboy St, Puerto Princesa</h3>
+            <ul class="info-list">
+              <li><span class="label">Address</span><span>Rizal Avenue Dagomboy St, Puerto Princesa, Palawan Island 5300, Philippines</span></li>
+              <li><span class="label">Phone</span><span><a href="tel:+639542207003">+63 954 220 7003</a></span></li>
+              <li><span class="label">Hours</span><span>Daily, 6:00 AM to 11:00 PM</span></li>
+              <li><span class="label">Coordinates</span><span>9.739902, 118.74605</span></li>
+              <li><span class="label">Cuisine</span><span>Italian, Healthy</span></li>
+              <li><span class="label">Directions</span><span><a class="map-link-inline" href="https://www.google.com/maps/search/?api=1&query=9.739902,118.74605" target="_blank" rel="noopener noreferrer">Open the Puerto Princesa pin</a></span></li>
+            </ul>
+          </div>
+
+          <div class="map-wrap" data-reveal>
+            <div class="map-frame">
+              <img src="assets/img/location-map.svg" alt="Stylized location map for Luiz Osteria in Puerto Princesa" loading="lazy" decoding="async">
+            </div>
+            <p class="gallery-caption">Verified location data places Luiz Osteria in Puerto Princesa, not Manila, at latitude 9.739902 and longitude 118.74605.</p>
+          </div>
+        </div>
+
+        <div class="footer-note" data-reveal>
+          <span>Luiz Osteria Italian Restorante</span>
+          <span>Single-page site for GitHub Pages</span>
+          <span>Built with vanilla HTML, CSS, JS, GSAP, and Lenis</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && window.Lenis && window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.05,
+        smoothWheel: true,
+        smoothTouch: false,
+        wheelMultiplier: 1,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      intro
+        .from('.topbar', { y: -20, opacity: 0, duration: 0.7 })
+        .from('.hero-visual', { scale: 1.08, opacity: 0, duration: 1.2 }, 0)
+        .from('.hero-scrim', { opacity: 0, duration: 1.1 }, 0)
+        .from('.hero-glow.one', { scale: 0.8, opacity: 0, duration: 1.1 }, 0.15)
+        .from('.hero-glow.two', { scale: 0.7, opacity: 0, duration: 1.1 }, 0.25)
+        .from('.hero-copy > *', { y: 24, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.25);
+
+      gsap.to('.hero-visual', {
+        yPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      gsap.to('.hero-glow.one', {
+        x: -25,
+        y: 24,
+        duration: 7,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to('.hero-glow.two', {
+        x: 24,
+        y: -16,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.utils.toArray('[data-reveal]:not(.hero-reveal)').forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.95,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 84%',
+            },
+          }
+        );
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (!target) return;
+          event.preventDefault();
+          lenis.scrollTo(target, { offset: -84 });
+        });
+      });
+
+      gsap.utils.toArray('.gallery-frame img').forEach((img) => {
+        gsap.to(img, {
+          yPercent: -5,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: img,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.7,
+          },
+        });
+      });
+
+      gsap.utils.toArray('.menu-row').forEach((row, index) => {
+        gsap.from(row, {
+          opacity: 0,
+          y: 20,
+          duration: 0.7,
+          delay: index * 0.05,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 88%',
+          },
+        });
+      });
+    } else {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = 'none';
+      });
+    }
+  </script>
 </body>
 </html>

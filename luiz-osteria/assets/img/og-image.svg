@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Luiz Osteria social preview image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="74%" cy="38%" r="42%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.85"/>
+      <stop offset="40%" stop-color="#f0a500" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(88 114)">
+    <text x="0" y="0" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="5">ITALIAN RESTORANTE</text>
+    <text x="0" y="120" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="126" letter-spacing="6">Luiz Osteria</text>
+    <text x="0" y="178" fill="#eaeaea" fill-opacity="0.76" font-family="Space Grotesk, sans-serif" font-size="26">Puerto Princesa, Palawan, Philippines</text>
+    <text x="0" y="230" fill="#eaeaea" fill-opacity="0.72" font-family="Space Grotesk, sans-serif" font-size="24">Rizal Avenue Dagomboy St, daily 6:00 AM to 11:00 PM</text>
+  </g>
+  <g transform="translate(790 128)" fill="none" stroke-linecap="round">
+    <circle cx="120" cy="170" r="132" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3"/>
+    <circle cx="120" cy="170" r="92" stroke="#f0a500" stroke-opacity="0.38" stroke-width="5"/>
+    <path d="M70 146c30 -38 84 -38 108 0s-4 82 -50 98-102 -10-116 -50 10 -80 58 -98" stroke="#f0a500" stroke-width="8"/>
+    <path d="M186 120c24 24 36 52 36 86" stroke="#eaeaea" stroke-opacity="0.68" stroke-width="7"/>
+    <path d="M220 96c34 36 52 84 52 142" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="7"/>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-label="Stylized map location for Luiz Osteria in Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="pinGlow" cx="52%" cy="42%" r="34%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="1000" fill="url(#bg)"/>
+  <circle cx="700" cy="500" r="320" fill="url(#pinGlow)"/>
+  <g opacity="0.18" stroke="#eaeaea" fill="none" stroke-width="2">
+    <path d="M80 180H1320M80 300H1320M80 420H1320M80 540H1320M80 660H1320M80 780H1320"/>
+    <path d="M180 80V920M340 80V920M500 80V920M660 80V920M820 80V920M980 80V920M1140 80V920M1300 80V920"/>
+  </g>
+  <g opacity="0.56">
+    <path d="M230 720C378 606 476 582 602 602c102 16 194 62 286 62 128 0 210-62 330-110" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+    <path d="M240 722c128-70 250-100 366-92 92 6 168 38 248 58 88 22 182 22 286-10" fill="none" stroke="#eaeaea" stroke-opacity="0.3" stroke-width="4" stroke-linecap="round"/>
+    <path d="M384 262c80 60 144 106 198 148" fill="none" stroke="#f0a500" stroke-opacity="0.38" stroke-width="6" stroke-linecap="round"/>
+    <path d="M916 246c-80 74-140 138-178 196" fill="none" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(700 510)">
+    <path d="M0 -168c90 0 164 74 164 164 0 112-164 282-164 282S-164 608-164 496C-164 406 -90 332 0 332s164 74 164 164c0 90-74 164-164 164s-164-74-164-164c0-112 164-282 164-282S164 164 164 164C164 74 90 0 0 0Z" fill="#f0a500" fill-opacity="0.88"/>
+    <circle cx="0" cy="164" r="64" fill="#080808" fill-opacity="0.9"/>
+    <circle cx="0" cy="164" r="28" fill="#eaeaea" fill-opacity="0.92"/>
+  </g>
+  <g opacity="0.88">
+    <path d="M82 892H1318" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="3"/>
+    <text x="96" y="934" fill="#eaeaea" fill-opacity="0.5" font-family="JetBrains Mono, monospace" font-size="32" letter-spacing="4">PUERTO PRINCESA 9.739902, 118.74605</text>
+  </g>
+</svg>
