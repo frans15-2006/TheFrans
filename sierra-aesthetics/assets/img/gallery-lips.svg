@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Concept of lip tint and blush tones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#131313"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 690) rotate(90) scale(260 240)">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <g transform="translate(150 170)">
+    <circle cx="360" cy="300" r="214" fill="#0f0f0f" stroke="#303030" stroke-width="2"/>
+    <path d="M258 316c42-46 96-72 162-72s120 26 162 72" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="2"/>
+    <path d="M288 334c30 18 58 28 92 28 25 0 50-6 80-22 30 16 55 22 80 22 34 0 62-10 92-28" fill="none" stroke="#f0a500" stroke-opacity="0.48" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M326 364c34 28 62 40 94 40s60-12 94-40" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="4" stroke-linecap="round"/>
+    <path d="M648 194l120 82" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6" stroke-linecap="round"/>
+    <rect x="726" y="236" width="132" height="30" rx="15" transform="rotate(28 726 236)" fill="#101010" stroke="#f0a500" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="824" cy="288" r="14" fill="#f0a500" fill-opacity="0.64"/>
+    <circle cx="822" cy="288" r="6" fill="#eaeaea" fill-opacity="0.5"/>
+    <path d="M804 302c-22 26-30 60-30 60" fill="none" stroke="#f0a500" stroke-opacity="0.24" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

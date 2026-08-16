@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Concept of lash styling and eyeliner detail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 700) rotate(90) scale(220 220)">
+      <stop offset="0%" stop-color="#eaeaea" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#eaeaea" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <g transform="translate(160 180)">
+    <circle cx="370" cy="280" r="220" fill="#0d0d0d" stroke="#2f2f2f" stroke-width="2"/>
+    <path d="M250 302c54-54 106-82 162-82s108 28 162 82" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="2"/>
+    <ellipse cx="412" cy="296" rx="96" ry="56" fill="#080808" stroke="#f0a500" stroke-opacity="0.22" stroke-width="2"/>
+    <path d="M292 276c38-32 83-46 120-46s82 14 120 46" fill="none" stroke="#eaeaea" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M278 260l-28-34M302 244l-16-46M330 236l-4-48M360 232l12-48M392 230l28-44M426 230l42-36M460 234l56-24" fill="none" stroke="#f0a500" stroke-opacity="0.48" stroke-width="3" stroke-linecap="round"/>
+    <path d="M472 338l48 26M452 352l36 42M424 358l18 50M394 360l-2 50M360 356l-18 50M330 346l-40 44M304 330l-52 32" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="3" stroke-linecap="round"/>
+    <path d="M658 188l110 84" fill="none" stroke="#f0a500" stroke-opacity="0.36" stroke-width="6" stroke-linecap="round"/>
+    <path d="M720 240l74 42" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="2"/>
+    <circle cx="782" cy="289" r="16" fill="#f0a500" fill-opacity="0.58"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Concept of a calm treatment room">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 180) rotate(90) scale(220 260)">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.38"/>
+      <stop offset="70%" stop-color="#f0a500" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <g stroke="#eaeaea" stroke-opacity="0.16" stroke-width="1">
+    <path d="M120 140h960"/>
+    <path d="M120 740h960"/>
+    <path d="M120 140v600"/>
+    <path d="M1080 140v600"/>
+  </g>
+  <g transform="translate(160 200)">
+    <rect x="0" y="360" width="880" height="110" rx="30" fill="#0d0d0d" stroke="#2b2b2b" stroke-width="2"/>
+    <rect x="74" y="250" width="300" height="76" rx="22" fill="#101010" stroke="#3d3d3d" stroke-width="2"/>
+    <rect x="112" y="266" width="142" height="18" rx="9" fill="#f0a500" fill-opacity="0.34"/>
+    <rect x="462" y="160" width="100" height="330" rx="44" fill="#0f0f0f" stroke="#f0a500" stroke-opacity="0.34" stroke-width="2"/>
+    <rect x="490" y="112" width="40" height="56" rx="18" fill="#141414"/>
+    <path d="M510 112v-50" stroke="#f0a500" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="510" cy="74" r="18" fill="#f0a500" fill-opacity="0.16"/>
+    <rect x="652" y="168" width="170" height="210" rx="26" fill="#111111" stroke="#303030" stroke-width="2"/>
+    <rect x="680" y="194" width="114" height="14" rx="7" fill="#1b1b1b"/>
+    <rect x="680" y="222" width="72" height="14" rx="7" fill="#1b1b1b"/>
+    <rect x="680" y="278" width="130" height="14" rx="7" fill="#1b1b1b"/>
+    <rect x="680" y="306" width="96" height="14" rx="7" fill="#1b1b1b"/>
+  </g>
+  <path d="M230 650c160-44 272-50 420-16" fill="none" stroke="#f0a500" stroke-opacity="0.18" stroke-width="2"/>
+</svg>

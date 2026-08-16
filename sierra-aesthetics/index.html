@@ -1,60 +1,1388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sierra Aesthetics</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Aesthetics | Puerto Princesa PMU Studio</title>
+  <meta name="description" content="Sierra Aesthetics in Bgy Masipag, Puerto Princesa, Palawan. Verified public listings for brows, lips, eyeliner, lashes, private PMU training, posted hours, and map details.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="Sierra Aesthetics | Puerto Princesa PMU Studio">
+  <meta property="og:description" content="Semi-permanent makeup and beauty services in Puerto Princesa, Palawan, with verified public location, hours, and a publicly posted lip blush + eyeliner special.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/sierra-aesthetics/assets/img/hero-visual.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/sierra-aesthetics/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/sierra-aesthetics/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-2: #0d0d0d;
+      --panel: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.42);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.42);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.14);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.48);
+      --container: min(1160px, calc(100% - 32px));
+      --mono: 'JetBrains Mono', monospace;
+      --body: 'Space Grotesk', sans-serif;
+      --display: 'Bebas Neue', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(240, 165, 0, 0.14), transparent 26%),
+        radial-gradient(circle at 85% 12%, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 50% 92%, rgba(240, 165, 0, 0.05), transparent 30%);
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .site {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrap {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+    }
+
+    .display {
+      font-family: var(--display);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(72px, 8vw, 116px) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 28px;
+      max-width: 760px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.06rem);
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 14px 0;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.88), rgba(8, 8, 8, 0.14));
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.06);
+    }
+
+    .topbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(240, 165, 0, 0.3);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.14), rgba(240, 165, 0, 0.02)),
+        rgba(16, 16, 16, 0.8);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark svg {
+      width: 19px;
+      height: 19px;
+      stroke: var(--accent);
+      stroke-width: 1.7;
+      fill: none;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      font-family: var(--display);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      font-size: 1.08rem;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.14em;
+      color: var(--faint);
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 22px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 4px 0;
+      color: var(--muted);
+      transition: color 220ms ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      padding: 0 18px;
+      border: 1px solid rgba(240, 165, 0, 0.42);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(240, 165, 0, 0.06);
+      transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(240, 165, 0, 0.12);
+      box-shadow: 0 0 0 4px rgba(240, 165, 0, 0.08);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 96px 0 58px;
+      border-top: 0;
+      overflow: clip;
+    }
+
+    .hero .wrap {
+      min-height: calc(100svh - 154px);
+      display: grid;
+      align-items: end;
+      position: relative;
+    }
+
+    .hero-stage {
+      position: absolute;
+      inset: 0;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hero-stage::before,
+    .hero-stage::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .hero-stage::before {
+      width: clamp(220px, 32vw, 520px);
+      height: clamp(220px, 32vw, 520px);
+      left: -8%;
+      top: 11%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.22), rgba(240, 165, 0, 0.04) 58%, transparent 70%);
+      opacity: 0.8;
+    }
+
+    .hero-stage::after {
+      width: clamp(180px, 24vw, 420px);
+      height: clamp(180px, 24vw, 420px);
+      right: 2%;
+      bottom: 10%;
+      background: radial-gradient(circle, rgba(234, 234, 234, 0.09), rgba(234, 234, 234, 0.02) 55%, transparent 72%);
+      opacity: 0.7;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: 0.95;
+      filter: saturate(0.95) contrast(1.04);
+      transform: scale(1.04);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.82) 42%, rgba(8, 8, 8, 0.34) 72%, rgba(8, 8, 8, 0.78) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.56) 82%, rgba(8, 8, 8, 0.9) 100%);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: clamp(36px, 8vw, 86px) 0 0;
+      display: grid;
+      gap: 18px;
+      align-content: end;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(5rem, 14vw, 10rem);
+      line-height: 0.84;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      max-width: 9.5ch;
+      text-wrap: balance;
+    }
+
+    .hero-tag {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(0.78rem, 1.15vw, 0.92rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-text {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+      line-height: 1.78;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #101010;
+      background: var(--accent);
+      border: 1px solid rgba(240, 165, 0, 0.85);
+      box-shadow: 0 12px 28px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 0 0 5px rgba(240, 165, 0, 0.1), 0 18px 34px rgba(240, 165, 0, 0.22);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(234, 234, 234, 0.18);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.42);
+      background: rgba(240, 165, 0, 0.05);
+      box-shadow: 0 0 0 5px rgba(240, 165, 0, 0.06);
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      color: var(--faint);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .scroll-hint::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    .service-card,
+    .pricing-table,
+    .gallery-item,
+    .booking-panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 22px 22px 20px;
+      min-height: 220px;
+      display: grid;
+      gap: 16px;
+      transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease, background 250ms ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.58), transparent);
+      opacity: 0.2;
+      transition: opacity 250ms ease;
+    }
+
+    .service-card:hover,
+    .service-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.45);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(240, 165, 0, 0.14), 0 0 36px rgba(240, 165, 0, 0.08);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .service-card:hover::before,
+    .service-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .pill {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.35);
+      background: rgba(240, 165, 0, 0.06);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.6vw, 2.9rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.72;
+    }
+
+    .service-foot {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: auto;
+    }
+
+    .service-price {
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .service-note {
+      color: var(--faint);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .pricing-layout {
+      display: grid;
+      gap: 16px;
+    }
+
+    .pricing-table {
+      padding: 8px;
+    }
+
+    .pricing-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.96rem;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+      text-align: left;
+      padding: 18px 14px;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+      vertical-align: top;
+    }
+
+    .pricing-table th {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .pricing-table td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .pricing-table .rate {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .pricing-table .highlight {
+      background: rgba(240, 165, 0, 0.04);
+    }
+
+    .pricing-note {
+      margin: 0;
+      color: var(--faint);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      grid-auto-rows: 220px;
+    }
+
+    .gallery-item {
+      position: relative;
+      isolation: isolate;
+      min-height: 220px;
+      border-color: rgba(240, 165, 0, 0.18);
+      transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 320ms ease, filter 320ms ease;
+      filter: saturate(0.96) contrast(1.03);
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.04), rgba(8, 8, 8, 0.72));
+      opacity: 0.86;
+      transition: opacity 260ms ease;
+      z-index: 1;
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(234, 234, 234, 0.1);
+    }
+
+    .gallery-item figcaption strong {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .gallery-item figcaption span {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .gallery-item:hover,
+    .gallery-item:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.42);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(240, 165, 0, 0.12);
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-within img {
+      transform: scale(1.03);
+      filter: saturate(1.02) contrast(1.06);
+    }
+
+    .gallery-item:hover::after,
+    .gallery-item:focus-within::after {
+      opacity: 0.94;
+    }
+
+    .gallery-item.wide {
+      grid-column: auto;
+    }
+
+    .booking {
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .booking-panel {
+      margin: 0;
+      padding: clamp(28px, 5vw, 42px);
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+      background:
+        linear-gradient(135deg, rgba(240, 165, 0, 0.14), rgba(8, 8, 8, 0.92) 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      box-shadow: none;
+    }
+
+    .booking-grid {
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .booking-grid h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.88;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      max-width: 10ch;
+    }
+
+    .booking-grid p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: start;
+    }
+
+    .site-footer {
+      padding: clamp(58px, 7vw, 92px) 0 26px;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 1fr;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-family: var(--display);
+      font-size: clamp(2.3rem, 5vw, 3.9rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-copy {
+      margin: 0;
+      max-width: 36ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-column a,
+    .footer-column address,
+    .footer-column p {
+      color: var(--muted);
+      font-style: normal;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .footer-column a:hover,
+    .footer-column a:focus-visible {
+      color: var(--text);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .socials a:hover,
+    .socials a:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.42);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .socials svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.7;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer-meta a {
+      color: var(--faint);
+    }
+
+    .footer-meta a:hover,
+    .footer-meta a:focus-visible {
+      color: var(--text);
+    }
+
+    .coords {
+      color: var(--accent);
+    }
+
+    @media (min-width: 700px) {
+      .nav { display: inline-flex; }
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-auto-rows: 190px;
+      }
+      .gallery-item:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+      .gallery-item:nth-child(2) { grid-column: span 3; }
+      .gallery-item:nth-child(3) { grid-column: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+      .gallery-item:nth-child(5) { grid-column: span 2; }
+      .booking-grid {
+        grid-template-columns: 1.45fr 0.95fr;
+        gap: 28px;
+      }
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.7fr 0.7fr 0.8fr;
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .service-card:nth-child(1) {
+        grid-column: span 1;
+      }
+      .hero {
+        padding-top: 104px;
+      }
+    }
+
+    @media (max-width: 699px) {
+      .topbar .wrap {
+        gap: 12px;
+      }
+      .brand-text span {
+        letter-spacing: 0.08em;
+      }
+      .hero {
+        padding-top: 90px;
+      }
+      .hero h1 {
+        max-width: 7.2ch;
+      }
+      .btn {
+        width: 100%;
+      }
+      .service-foot {
+        align-items: start;
+        flex-direction: column;
+      }
+      .service-note {
+        text-align: left;
+      }
+      .pricing-table th:nth-child(3),
+      .pricing-table td:nth-child(3) {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Sierra Aesthetics</h1>
-    <span class="category">Microblading & Aesthetics Clinic</span>
-    <p class="address">Mabini St, Puerto Princesa City</p>
+  <div class="site">
+    <header class="topbar">
+      <div class="wrap">
+        <a class="brand" href="#top" aria-label="Sierra Aesthetics home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 15.5c1.5-3.6 3.7-5.6 6-5.6s4.5 2 6 5.6"></path>
+              <path d="M9 10c.8 1.5 1.8 2.2 3 2.2S14.2 11.5 15 10"></path>
+              <path d="M8.5 18c1-1 2.2-1.5 3.5-1.5s2.5.5 3.5 1.5"></path>
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>Sierra Aesthetics</strong>
+            <span>Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta mono" href="mailto:sierraaesthetics.co@gmail.com?subject=Consultation%20Request%20-%20Sierra%20Aesthetics">Book</a>
+      </div>
+    </header>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-stage">
+          <img class="hero-visual" src="assets/img/hero-visual.svg" alt="Stylized dark clinic interior with treatment bed, light sources, and amber bloom" fetchpriority="high">
+          <div class="hero-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="wrap">
+          <div class="hero-copy">
+            <p class="eyebrow mono" data-reveal>Public listing verified in Puerto Princesa</p>
+            <h1 class="display" data-reveal>Sierra Aesthetics</h1>
+            <p class="hero-tag mono" data-reveal>Brows | Lips | Eyeliner | Lashes</p>
+            <p class="hero-text" data-reveal>Semi-permanent makeup and beauty services in Bgy Masipag, Puerto Princesa, with public listings for microblading, ombre brows, microshading, classic eyeliner, lip tint, eyelash extensions, and 1:1 PMU training.</p>
+            <div class="hero-actions" data-reveal>
+              <a class="btn btn-primary" href="mailto:sierraaesthetics.co@gmail.com?subject=Book%20a%20Consultation%20-%20Sierra%20Aesthetics">Book a Consultation</a>
+              <a class="btn btn-ghost" href="#services">See Services</a>
+            </div>
+            <a class="scroll-hint mono" href="#services">Scroll for treatments</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="wrap">
+          <div class="section-title">
+            <p class="eyebrow mono" data-reveal>Treatments</p>
+            <h2 class="display" data-reveal>Verified Public Services</h2>
+            <p data-reveal>The public descriptions for Sierra Aesthetics center on brows, lips, eyeliner, lashes, and private PMU education. Public pricing is limited, so anything not posted online is labeled Inquire instead of guessed.</p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal">
+              <span class="pill">Brows</span>
+              <h3>Microblading</h3>
+              <p>6D eyebrow embroidery and hair-stroke brow enhancement, listed in the clinic's public service descriptions.</p>
+              <div class="service-foot">
+                <span class="mono service-price">Inquire</span>
+                <span class="service-note">Verified from public listings</span>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <span class="pill">Brows</span>
+              <h3>Ombre Brows</h3>
+              <p>Soft powder-style brow shading for a fuller finish, also described publicly as microshading.</p>
+              <div class="service-foot">
+                <span class="mono service-price">Inquire</span>
+                <span class="service-note">Verified from public listings</span>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <span class="pill">Eyes</span>
+              <h3>Classic Eyeliner</h3>
+              <p>Semi-permanent eyeliner for a defined lash line and an always-polished eye look.</p>
+              <div class="service-foot">
+                <span class="mono service-price">Inquire</span>
+                <span class="service-note">Verified from public listings</span>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <span class="pill">Lips</span>
+              <h3>Lip Tint</h3>
+              <p>Lip tint and lip blush work are included in public posts and service references from the clinic.</p>
+              <div class="service-foot">
+                <span class="mono service-price">PHP 7,700 special</span>
+                <span class="service-note">Publicly posted offer</span>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <span class="pill">Lashes</span>
+              <h3>Eyelash Extensions</h3>
+              <p>One of the public service categories listed for the Puerto Princesa branch, alongside brows, lips, and eyeliner.</p>
+              <div class="service-foot">
+                <span class="mono service-price">Inquire</span>
+                <span class="service-note">Verified from public listings</span>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <span class="pill">Training</span>
+              <h3>1:1 PMU Training</h3>
+              <p>Private permanent makeup training is listed on the public Linktree alongside bookings for Puerto Princesa, Coron, and Manila.</p>
+              <div class="service-foot">
+                <span class="mono service-price">Inquire</span>
+                <span class="service-note">Public booking link verified</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing">
+        <div class="wrap pricing-layout">
+          <div class="section-title">
+            <p class="eyebrow mono" data-reveal>Pricing</p>
+            <h2 class="display" data-reveal>Public Rates Found</h2>
+            <p data-reveal>Only one exact service price was publicly visible in the accessible sources I could verify. Everything else stays on inquiry to avoid inventing a number the clinic did not publish here.</p>
+          </div>
+
+          <div class="pricing-table reveal" data-reveal>
+            <table>
+              <thead>
+                <tr>
+                  <th>Treatment</th>
+                  <th>Rate</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight">
+                  <td>Lip blush + eyeliner tattoo</td>
+                  <td class="rate">PHP 7,700</td>
+                  <td>Publicly posted special offer; the clinic also posted a shared 2-session variant at the same rate.</td>
+                </tr>
+                <tr>
+                  <td>Brows, lashes, and other public services</td>
+                  <td class="rate">Inquire</td>
+                  <td>Current rates were not clearly published in the accessible public sources.</td>
+                </tr>
+                <tr>
+                  <td>1:1 PMU training</td>
+                  <td class="rate">Inquire</td>
+                  <td>A public price-guide PDF is linked from the clinic's Linktree, but the accessible preview did not expose item-by-item rates.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="pricing-note reveal">Note: public prices can change. Use the verified contact details below to confirm the current consultation or service rate before booking.</p>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="section-title">
+            <p class="eyebrow mono" data-reveal>Gallery</p>
+            <h2 class="display" data-reveal>Calm Clinical Atmosphere</h2>
+            <p data-reveal>These SVG tiles are crafted to echo the atmosphere of a modern aesthetics studio: precise, warm, and quietly luxurious without pretending to be client photos.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item reveal wide">
+              <img src="assets/img/gallery-room.svg" alt="Conceptual treatment room with bed, lamp, and amber lighting" loading="lazy">
+              <figcaption>
+                <strong>Room Light</strong>
+                <span>Atmosphere</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-brows.svg" alt="Conceptual brow mapping and symmetry study with fine lines" loading="lazy">
+              <figcaption>
+                <strong>Brow Map</strong>
+                <span>Brows</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-lips.svg" alt="Conceptual lip tint palette with soft blush tones and precision brush" loading="lazy">
+              <figcaption>
+                <strong>Lip Tone</strong>
+                <span>Lips</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-lashes.svg" alt="Conceptual eyelash styling study with a clean close-up eye motif" loading="lazy">
+              <figcaption>
+                <strong>Lash Line</strong>
+                <span>Eyes</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-tools.svg" alt="Conceptual tray with pigment cups, pens, and small beauty tools" loading="lazy">
+              <figcaption>
+                <strong>Tool Tray</strong>
+                <span>Precision</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="booking" id="booking">
+        <div class="booking-panel">
+          <div class="wrap booking-grid">
+            <div>
+              <p class="eyebrow mono" data-reveal>Booking</p>
+              <h2 class="display" data-reveal>Reserve Your Sierra Slot</h2>
+              <p data-reveal>Message the clinic directly for current availability, consultation details, and the latest rate confirmation. No forms, no guessing, just direct contact.</p>
+            </div>
+            <div class="booking-actions" data-reveal>
+              <a class="btn btn-primary" href="mailto:sierraaesthetics.co@gmail.com?subject=Book%20a%20Consultation%20-%20Sierra%20Aesthetics">Email the Clinic</a>
+              <a class="btn btn-ghost" href="tel:+639177023736">Call +63 917 702 3736</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <a class="footer-brand" href="#top">Sierra Aesthetics</a>
+            <p class="footer-copy">Top-rated aesthetic clinic in Palawan, publicly listed in Puerto Princesa with brows, lips, eyeliner, lashes, and 1:1 PMU training.</p>
+            <div class="socials" aria-label="Social links">
+              <a href="https://www.facebook.com/SierraAesthetics/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 8.5h2.1V6.2h-2.1c-2 0-3.4 1.4-3.4 3.5v1.6H8v2.4h2.1V18h2.4v-4.3h2.3l.4-2.4h-2.7V9.8c0-.8.4-1.3 1-1.3z"></path></svg>
+              </a>
+              <a href="https://instagram.com/sierra_aesthetics" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"></rect><circle cx="12" cy="12" r="3.2"></circle><circle cx="16.8" cy="7.3" r="0.7" fill="currentColor" stroke="none"></circle></svg>
+              </a>
+              <a href="https://tiktok.com/@sierrababkin" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.6 5.5c.7 1.8 2 3 4 3.2v2.6c-1.4.1-2.7-.3-3.9-1.1v4.8c0 3-1.9 5.1-5.1 5.1-3 0-4.9-2-4.9-4.7 0-2.6 2.1-4.7 4.9-4.7.3 0 .6 0 .9.1v2.7a3 3 0 0 0-.9-.1c-1.5 0-2.4.8-2.4 2.1 0 1.2.9 2 2.2 2 1.6 0 2.6-1 2.6-2.9V3.8h2.6c0 .7 0 1.1.1 1.7z"></path></svg>
+              </a>
+              <a href="https://linktr.ee/sierraaesthetics" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v8.1"></path><path d="M8.4 7.7 12 11.2"></path><path d="M15.6 7.7 12 11.2"></path><path d="M6.3 13.9h11.4"></path><path d="M8.8 17.7h6.4"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#booking">Booking</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Hours</h3>
+            <p class="mono">10:00 AM - 8:00 PM</p>
+            <p>Public directory entries also describe the studio as always open, but the publicly posted studio hours appear as 10:00 AM - 8:00 PM.</p>
+          </div>
+
+          <div class="footer-column contact-list">
+            <h3>Contact</h3>
+            <a href="mailto:sierraaesthetics.co@gmail.com">sierraaesthetics.co@gmail.com</a>
+            <a href="tel:+639177023736">+63 917 702 3736</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=9.7408264,118.7408092" target="_blank" rel="noopener noreferrer">View map</a>
+            <address>Apartment 16, Ground Floor, Mabini Street, Bgy Masipag, Puerto Princesa 5400, Palawan, Philippines</address>
+          </div>
+        </div>
+
+        <div class="footer-meta">
+          <span>Coordinates <span class="coords">9.7408264, 118.7408092</span></span>
+          <span>Verified public sources used for address, services, hours, and posted special pricing</span>
+          <span>&copy; 2026 Sierra Aesthetics</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && 'Lenis' in window) {
+      const lenis = new Lenis({
+        duration: 1.15,
+        smoothWheel: true,
+        smoothTouch: false,
+        lerp: 0.08
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    }
+
+    if (window.gsap && !prefersReducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const heroItems = document.querySelectorAll('.hero [data-reveal]');
+      gsap.from(heroItems, {
+        opacity: 0,
+        y: 24,
+        duration: 0.95,
+        stagger: 0.12,
+        ease: 'power3.out',
+        delay: 0.15
+      });
+
+      gsap.fromTo('.hero-visual', { scale: 1.08, opacity: 0.42 }, {
+        scale: 1,
+        opacity: 0.95,
+        duration: 1.35,
+        ease: 'power3.out'
+      });
+
+      gsap.to('.hero-visual', {
+        yPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.9
+        }
+      });
+
+      gsap.to('.scroll-hint', {
+        y: 4,
+        duration: 1.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.utils.toArray('section:not(.hero) [data-reveal]').forEach((el) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 26,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 84%'
+          }
+        });
+      });
+
+      gsap.from('.footer-grid > *', {
+        opacity: 0,
+        y: 28,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.footer-grid',
+          start: 'top 84%'
+        }
+      });
+
+      gsap.utils.toArray('.service-card').forEach((card, index) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 36,
+          duration: 0.8,
+          delay: index * 0.03,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.services-grid',
+            start: 'top 75%'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.gallery-item').forEach((tile, index) => {
+        gsap.from(tile, {
+          opacity: 0,
+          scale: 0.96,
+          y: 24,
+          duration: 0.8,
+          delay: index * 0.05,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.gallery-grid',
+            start: 'top 75%'
+          }
+        });
+      });
+
+      ScrollTrigger.refresh();
+    } else if (window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Sierra Aesthetics",
+    "url": "https://frans15-2006.github.io/TheFrans/sierra-aesthetics/",
+    "image": "https://frans15-2006.github.io/TheFrans/sierra-aesthetics/assets/img/hero-visual.svg",
+    "description": "Puerto Princesa aesthetic clinic publicly listing brows, lips, eyeliner, lashes, and 1:1 PMU training.",
+    "email": "sierraaesthetics.co@gmail.com",
+    "telephone": "+639177023736",
+    "priceRange": "$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Apartment 16, Ground Floor, Mabini Street, Bgy Masipag",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5400",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7408264,
+      "longitude": 118.7408092
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "10:00",
+      "closes": "20:00"
+    }],
+    "sameAs": [
+      "https://www.facebook.com/SierraAesthetics/",
+      "https://instagram.com/sierra_aesthetics",
+      "https://tiktok.com/@sierrababkin",
+      "https://linktr.ee/sierraaesthetics"
+    ]
+  }
+  </script>
 </body>
 </html>
