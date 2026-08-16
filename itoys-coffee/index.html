@@ -1,60 +1,871 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itoys Coffee Haus</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iToys Coffee Haus | Puerto Princesa, Palawan</title>
+  <meta name="description" content="iToys Coffee Haus on Rizal Avenue in Puerto Princesa, Palawan. Vintage cafe energy, coffee favorites, breakfast plates, cakes, and a backyard seat to stay awhile.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="iToys Coffee Haus | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A vintage downtown coffee stop on Rizal Avenue in Puerto Princesa, Palawan - coffee, brunch plates, cakes, and a relaxed backyard mood.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/img/hero-scene.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:alt" content="Stylized vintage coffee scene for iToys Coffee Haus">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iToys Coffee Haus | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Vintage downtown coffee stop on Rizal Avenue in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="./assets/img/hero-scene.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #111111;
+      --panel-soft: rgba(255, 255, 255, 0.04);
+      --fg: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.14);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+      color: var(--fg);
+      scrollbar-color: rgba(240, 165, 0, 0.45) rgba(255, 255, 255, 0.06);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(240, 165, 0, 0.06), transparent 18%),
+        linear-gradient(180deg, #080808 0%, #0b0b0b 45%, #080808 100%);
+      color: var(--fg);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--amber);
+      color: #080808;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      padding: 1rem 0;
+    }
+
+    .topbar__inner {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: rgba(234, 234, 234, 0.95);
+    }
+
+    .brand-mark span {
+      color: var(--amber);
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .navlinks a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      transition: color 180ms ease;
+    }
+
+    .navlinks a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms ease;
+      opacity: 0.7;
+    }
+
+    .navlinks a:hover,
+    .navlinks a:focus-visible {
+      color: var(--fg);
+      outline: none;
+    }
+
+    .navlinks a:hover::after,
+    .navlinks a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: clip;
+      padding: 6rem 0 2rem;
+      isolation: isolate;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .hero__art {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      transform: scale(1.05);
+      filter: saturate(1.02) contrast(1.05);
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.72) 38%, rgba(8, 8, 8, 0.44) 62%, rgba(8, 8, 8, 0.9) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.08) 0%, rgba(8, 8, 8, 0.6) 100%);
+      pointer-events: none;
+    }
+
+    .hero__glow {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero__glow--1 {
+      width: 30vw;
+      height: 30vw;
+      min-width: 220px;
+      min-height: 220px;
+      left: -6vw;
+      top: 12vh;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.16), transparent 72%);
+    }
+
+    .hero__glow--2 {
+      width: 24vw;
+      height: 24vw;
+      min-width: 180px;
+      min-height: 180px;
+      right: 6vw;
+      bottom: 12vh;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.08), transparent 68%);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 8rem 0 4.5rem;
+      display: grid;
+      gap: 1rem;
+      align-content: end;
+      min-height: 100svh;
+    }
+
+    .hero__eyebrow {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.66);
+    }
+
+    .hero__brand {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.2rem, 15vw, 10.5rem);
+      line-height: 0.84;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      max-width: 8.5ch;
+      text-wrap: balance;
+    }
+
+    .hero__brand span {
+      color: var(--amber);
+    }
+
+    .hero__copy {
+      margin: 0;
+      max-width: 35rem;
+      color: rgba(234, 234, 234, 0.82);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 0.55rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      background: rgba(8, 8, 8, 0.26);
+      color: var(--fg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.72);
+      outline: none;
+    }
+
+    .btn--fill {
+      background: var(--amber);
+      color: #080808;
+      border-color: var(--amber);
+      box-shadow: 0 18px 50px rgba(240, 165, 0, 0.16);
+    }
+
+    .section {
+      position: relative;
+      padding: 5rem 0;
+      scroll-margin-top: 5.5rem;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(234, 234, 234, 0.12), transparent);
+    }
+
+    .kicker {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.54);
+    }
+
+    .section h2 {
+      margin: 0.45rem 0 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .lead {
+      margin: 1rem 0 0;
+      max-width: 56rem;
+      color: var(--muted);
+      line-height: 1.78;
+      font-size: 1rem;
+    }
+
+    .grid-two {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .menu-list {
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+    }
+
+    .menu-item {
+      padding: 1rem 0 1.05rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .menu-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .menu-name {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.9rem);
+      line-height: 0.92;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .menu-note {
+      margin: 0;
+      max-width: 44rem;
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.76);
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+      max-width: 44rem;
+    }
+
+    .story-copy p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.8;
+    }
+
+    .story-quote {
+      margin: 0.6rem 0 0;
+      padding-left: 1rem;
+      border-left: 2px solid var(--amber);
+      color: rgba(234, 234, 234, 0.94);
+      line-height: 1.75;
+    }
+
+    .gallery-grid {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #0d0d0d;
+      min-height: 18rem;
+      transform: translateZ(0);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms ease;
+    }
+
+    .gallery-card:hover img,
+    .gallery-card:focus-within img {
+      transform: scale(1.05);
+    }
+
+    .gallery-card figcaption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      padding: 0.42rem 0.65rem;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      background: rgba(8, 8, 8, 0.5);
+      backdrop-filter: blur(10px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .map-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: #0d0d0d;
+      min-height: 21rem;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .location-stack {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .info-block {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .info-label {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.56);
+    }
+
+    .info-value {
+      margin: 0.4rem 0 0;
+      color: rgba(234, 234, 234, 0.82);
+      line-height: 1.75;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .footer-copy {
+      max-width: 38rem;
+      margin: 0;
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.75;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-color: rgba(234, 234, 234, 0.22);
+      text-underline-offset: 0.2em;
+      transition: text-decoration-color 180ms ease, color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--amber);
+      text-decoration-color: var(--amber);
+      outline: none;
+    }
+
+    .fineprint {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.42);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 720px) {
+      .grid-two {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .location-grid {
+        grid-template-columns: 1.08fr 0.92fr;
+        align-items: start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+        align-items: end;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .navlinks {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 5.2rem;
+      }
+
+      .hero__content {
+        padding-top: 7.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Itoys Coffee Haus</h1>
-    <span class="category">Cafe & Restaurant</span>
-    <p class="address">Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 48 433 5182</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand-mark" href="#top" aria-label="iToys Coffee Haus home">iToys <span>Coffee Haus</span></a>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <img class="hero__art" src="assets/img/hero-scene.svg" alt="">
+      </div>
+      <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+      <div class="hero__content wrap">
+        <p class="hero__eyebrow" data-intro="eyebrow">Puerto Princesa, Palawan</p>
+        <h1 class="hero__brand" data-intro="brand">iToys <span>Coffee Haus</span></h1>
+        <p class="hero__copy" data-intro="copy">A downtown Rizal Avenue coffee stop with vintage atmosphere, coffee favorites, breakfast plates, cakes, and a backyard seat that makes the city feel a little slower.</p>
+        <div class="hero__actions" data-intro="actions">
+          <a class="btn btn--fill" href="#menu">See menu highlights</a>
+          <a class="btn" href="#location">Find the cafe</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="menu" data-reveal>
+      <p class="kicker" data-animate>Menu highlights</p>
+      <h2 data-animate>Frequently mentioned by guests and local guides</h2>
+      <p class="lead" data-animate>Public listings and review roundups repeatedly point to a mix of signature coffee drinks, sweeter frappe builds, and savory plates. These are the names that keep showing up when people talk about iToys.</p>
+      <ul class="menu-list">
+        <li class="menu-item" data-animate>
+          <span class="menu-tag">Coffee favorite</span>
+          <h3 class="menu-name">Kapeng Halo ni Eving</h3>
+          <p class="menu-note">Named in travel guides and review roundups as one of the cafe's standout coffee drinks.</p>
+        </li>
+        <li class="menu-item" data-animate>
+          <span class="menu-tag">Sweet blend</span>
+          <h3 class="menu-name">Butchies Special kahlua frappe</h3>
+          <p class="menu-note">Another frequently cited house drink that appears in public mentions of the menu.</p>
+        </li>
+        <li class="menu-item" data-animate>
+          <span class="menu-tag">House frappe</span>
+          <h3 class="menu-name">Charlie Brown white frappucino</h3>
+          <p class="menu-note">A named menu favorite that appears in multiple listings, showing the playful side of the drink lineup.</p>
+        </li>
+        <li class="menu-item" data-animate>
+          <span class="menu-tag">Savory pick</span>
+          <h3 class="menu-name">Sizzling Bulalo</h3>
+          <p class="menu-note">Mentioned as a house specialty in food roundups, and one of the reasons iToys is more than just a coffee stop.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section wrap" id="story" data-reveal>
+      <p class="kicker" data-animate>Story / About</p>
+      <div class="grid-two">
+        <div>
+          <h2 data-animate>Vintage energy in the center of town</h2>
+        </div>
+        <div class="story-copy">
+          <p data-animate>iToys Coffee Haus reads like a neighborhood classic: air-conditioned inside, garden seating at the back, and enough menu range to cover coffee, breakfast, desserts, and a full meal when you want to stay longer than planned.</p>
+          <p data-animate>That balance is what keeps the cafe relevant. It feels relaxed without feeling empty, lively without becoming rushed, and familiar whether you are stopping in for a quick cup or settling in for a long conversation.</p>
+          <p class="story-quote" data-animate>Guests regularly mention friendly service, fair prices, and a setting that works just as well for a slow breakfast as it does for an afternoon coffee break.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="gallery" data-reveal>
+      <p class="kicker" data-animate>Gallery</p>
+      <h2 data-animate>Atmosphere studies from the iToys palette</h2>
+      <p class="lead" data-animate>These SVG scenes are built to echo the cafe's mood - warm light, dark walls, coffee steam, and the quiet corners that make a downtown stop feel personal.</p>
+      <div class="gallery-grid">
+        <figure class="gallery-card" data-animate>
+          <img src="assets/img/gallery-cup.svg" alt="Stylized coffee cup with steam and amber highlights">
+          <figcaption>Cup close-up</figcaption>
+        </figure>
+        <figure class="gallery-card" data-animate>
+          <img src="assets/img/gallery-interior.svg" alt="Stylized indoor cafe corner with warm pendant light and tables">
+          <figcaption>Indoor corner</figcaption>
+        </figure>
+        <figure class="gallery-card" data-animate>
+          <img src="assets/img/gallery-patio.svg" alt="Stylized backyard patio mood with plants and string lights">
+          <figcaption>Backyard dusk</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section wrap" id="location" data-reveal>
+      <p class="kicker" data-animate>Hours / Location</p>
+      <h2 data-animate>Rizal Avenue, Puerto Princesa City</h2>
+      <p class="lead" data-animate>The verified pin lands in Puerto Princesa, not Manila: PPQR+XJV, Rizal Avenue, Puerto Princesa City 5300, Palawan, Philippines, at 9.7399821, 118.7415419.</p>
+      <div class="location-grid">
+        <div class="map-frame" data-animate>
+          <img src="assets/img/location-map.svg" alt="Stylized location graphic for iToys Coffee Haus in Puerto Princesa">
+        </div>
+        <div class="location-stack">
+          <div class="info-block" data-animate>
+            <p class="info-label">Address</p>
+            <p class="info-value">PPQR+XJV, Rizal Avenue, Puerto Princesa City 5300, Palawan, Philippines</p>
+          </div>
+          <div class="info-block" data-animate>
+            <p class="info-label">Coordinates</p>
+            <p class="info-value">9.7399821, 118.7415419</p>
+          </div>
+          <div class="info-block" data-animate>
+            <p class="info-label">Hours</p>
+            <p class="info-value">Daily, 7:00 AM to 11:00 PM</p>
+          </div>
+          <div class="info-block" data-animate>
+            <p class="info-label">Direct links</p>
+            <p class="info-value">Open the pin in Maps, call ahead, or check the page for the latest posts before you go.</p>
+            <div class="contact-row">
+              <a class="btn btn--fill" href="https://www.google.com/maps?q=9.7399821,118.7415419" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+              <a class="btn" href="tel:+63484335182">Call +63 48 433 5182</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="kicker">Contact / Footer</p>
+        <p class="footer-copy">For orders, directions, or quick updates, reach iToys Coffee Haus on the Rizal Avenue side of downtown Puerto Princesa. The cafe is easiest to find by the exact pin and phone number below.</p>
+      </div>
+      <div>
+        <div class="footer-links" aria-label="Contact links">
+          <a href="tel:+63484335182">+63 48 433 5182</a>
+          <a href="https://www.facebook.com/p/Itoys-Coffee-Haus-100075994701397/" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.google.com/maps?q=9.7399821,118.7415419" target="_blank" rel="noopener noreferrer">Maps</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top: 1.5rem;">
+      <p class="fineprint">iToys Coffee Haus, Puerto Princesa, Palawan. Built with vanilla HTML, CSS, JS, GSAP, and Lenis.</p>
+    </div>
+  </footer>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Smooth scrolling with Lenis, synced to GSAP's ticker for consistent scroll-based motion.
+    let lenis = null;
+
+    if (!prefersReducedMotion) {
+      lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false,
+        autoRaf: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    if (!prefersReducedMotion) {
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      intro
+        .from('.topbar', { opacity: 0, y: -10, duration: 0.6 })
+        .from('[data-intro="eyebrow"]', { opacity: 0, y: 18, duration: 0.7 }, '-=0.2')
+        .from('[data-intro="brand"]', { opacity: 0, y: 34, duration: 1.0 }, '-=0.35')
+        .from('[data-intro="copy"]', { opacity: 0, y: 18, duration: 0.75 }, '-=0.55')
+        .from('[data-intro="actions"] .btn', { opacity: 0, y: 16, duration: 0.65, stagger: 0.12 }, '-=0.45');
+
+      gsap.to('.hero__art', {
+        y: -18,
+        scale: 1.08,
+        duration: 12,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('.hero__glow--1', {
+        x: 24,
+        y: -14,
+        scale: 1.06,
+        duration: 9,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('.hero__glow--2', {
+        x: -18,
+        y: 12,
+        scale: 1.08,
+        duration: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      document.querySelectorAll('[data-reveal]').forEach((section) => {
+        const items = section.querySelectorAll('[data-animate]');
+        if (!items.length) return;
+
+        gsap.from(items, {
+          opacity: 0,
+          y: 26,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.09,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 78%'
+          }
+        });
+      });
+    } else {
+      gsap.set(['.hero__art', '.hero__glow--1', '.hero__glow--2'], { clearProps: 'all' });
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "iToys Coffee Haus",
+      "telephone": "+63 48 433 5182",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "PPQR+XJV, Rizal Avenue",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7399821,
+        "longitude": 118.7415419
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "07:00",
+          "closes": "23:00"
+        }
+      ],
+      "servesCuisine": ["Cafe", "Coffee shop"],
+      "priceRange": "$$",
+      "sameAs": ["https://www.facebook.com/p/Itoys-Coffee-Haus-100075994701397/"]
+    }
+  </script>
 </body>
 </html>

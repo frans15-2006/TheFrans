@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Stylized location map graphic for Puerto Princesa">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="base" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="#080808"/>
+  <rect width="1600" height="1000" fill="url(#base)" opacity="0.9"/>
+  <circle cx="950" cy="360" r="420" fill="url(#g1)"/>
+
+  <g opacity="0.75">
+    <path d="M0 160 H1600" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M0 320 H1600" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M0 480 H1600" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M0 640 H1600" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M0 800 H1600" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M220 0 V1000" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M480 0 V1000" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M760 0 V1000" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M1080 0 V1000" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M1360 0 V1000" stroke="#2a2a2a" stroke-width="2"/>
+  </g>
+
+  <g>
+    <path d="M120 720 C320 652, 488 648, 640 688 C804 732, 966 756, 1140 720 C1282 690, 1420 686, 1520 710" stroke="#3c2b19" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.75"/>
+    <path d="M160 540 C318 490, 468 472, 612 492 C768 514, 920 550, 1086 528 C1240 508, 1380 498, 1500 514" stroke="#222222" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.9"/>
+    <path d="M260 240 C420 284, 566 324, 720 306 C884 286, 1018 220, 1144 200" stroke="#202020" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <g>
+    <circle cx="1024" cy="502" r="120" fill="#f0a500" opacity="0.16" filter="url(#blur)"/>
+    <path d="M1024 356 C1060 356, 1088 386, 1088 422 C1088 470, 1024 558, 1024 558 C1024 558, 960 470, 960 422 C960 386, 988 356, 1024 356 Z" fill="#f0a500"/>
+    <circle cx="1024" cy="424" r="34" fill="#080808"/>
+    <circle cx="1024" cy="424" r="14" fill="#f0a500"/>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M140 890 C286 826, 430 792, 598 798 C748 804, 860 830, 1008 844 C1178 860, 1360 840, 1520 784" stroke="#1a1a1a" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M160 926 C320 874, 470 856, 620 860 C788 866, 940 892, 1084 900 C1246 908, 1380 886, 1506 848" stroke="#1f1f1f" stroke-width="8" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

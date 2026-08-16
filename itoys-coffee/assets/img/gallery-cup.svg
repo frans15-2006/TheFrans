@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Stylized coffee cup close-up">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cup" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fbf7ef"/>
+      <stop offset="100%" stop-color="#d8d1c7"/>
+    </linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1200" fill="#080808"/>
+  <circle cx="600" cy="300" r="430" fill="url(#g1)"/>
+  <ellipse cx="600" cy="914" rx="280" ry="56" fill="#000" opacity="0.5" filter="url(#blur)"/>
+  <g>
+    <ellipse cx="600" cy="658" rx="268" ry="72" fill="#ede6da"/>
+    <ellipse cx="600" cy="648" rx="224" ry="54" fill="#7d4a19"/>
+    <path d="M420 520 C430 450, 470 418, 540 412 C604 406, 674 410, 738 416 C804 422, 852 450, 870 520 L860 720 C844 790, 776 836, 600 840 C424 836, 356 790, 340 720 Z" fill="url(#cup)"/>
+    <path d="M858 548 C942 544, 974 594, 968 640 C964 686, 922 716, 862 710" fill="none" stroke="#e9e2d6" stroke-width="34" stroke-linecap="round"/>
+    <rect x="466" y="842" width="268" height="34" rx="17" fill="#ede6da"/>
+    <rect x="428" y="874" width="344" height="28" rx="14" fill="#d7cec3"/>
+    <circle cx="365" cy="820" r="24" fill="#f0a500" opacity="0.28" filter="url(#blur)"/>
+    <circle cx="825" cy="780" r="22" fill="#f0a500" opacity="0.26" filter="url(#blur)"/>
+  </g>
+  <g fill="#27140b" opacity="0.9">
+    <ellipse cx="348" cy="938" rx="44" ry="30" transform="rotate(-18 348 938)"/>
+    <ellipse cx="398" cy="984" rx="48" ry="32" transform="rotate(16 398 984)"/>
+    <ellipse cx="842" cy="956" rx="46" ry="31" transform="rotate(18 842 956)"/>
+    <ellipse cx="892" cy="996" rx="42" ry="28" transform="rotate(-14 892 996)"/>
+    <ellipse cx="304" cy="890" rx="38" ry="26" transform="rotate(22 304 890)"/>
+    <ellipse cx="916" cy="864" rx="40" ry="27" transform="rotate(-24 916 864)"/>
+  </g>
+  <g fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.55">
+    <path d="M508 370 C486 334, 486 306, 500 280"/>
+    <path d="M600 350 C580 312, 582 286, 596 258"/>
+    <path d="M694 370 C684 332, 686 304, 702 282"/>
+  </g>
+</svg>
