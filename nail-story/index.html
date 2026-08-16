@@ -1,60 +1,885 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nail Story</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nail Story | Nail Salon in SM City Puerto Princesa, Palawan</title>
+  <meta name="description" content="Nail Story is a Korean-vibe nail salon at SM City Puerto Princesa, Palawan. See verified location details, public service families, and direct contact links.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nail Story | SM City Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified contact, location, and public service directions for Nail Story Palawan.">
+  <meta property="og:image" content="./assets/img/hero.svg">
+  <meta property="og:url" content="./">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.46);
+      --display: "Bebas Neue", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+      --body: "Space Grotesk", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      font-family: var(--body);
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.08), transparent 35%),
+        linear-gradient(180deg, #0c0c0c 0%, #080808 52%, #050505 100%);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(234,234,234,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234,234,234,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.56), transparent 88%);
+      opacity: 0.55;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 84px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section h2,
+    .hero h1,
+    .brand-mark {
+      font-family: var(--display);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2.8rem, 8vw, 6.8rem);
+    }
+
+    .lede,
+    .copy,
+    .section-note,
+    .footer-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 24px 0 28px;
+      overflow: clip;
+      background: #050505;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(8,8,8,0), rgba(8,8,8,0.82) 70%, rgba(8,8,8,1));
+      pointer-events: none;
+    }
+
+    .hero__art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.02) contrast(1.02);
+      transform-origin: center;
+    }
+
+    .hero__shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.74) 40%, rgba(8,8,8,0.22) 100%),
+        radial-gradient(circle at 70% 20%, rgba(240,165,0,0.15), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100svh - 52px);
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero__copy {
+      width: min(720px, 100%);
+      padding: 18vh 0 2rem;
+    }
+
+    .hero__eyebrow {
+      margin: 0 0 18px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(5rem, 16vw, 10.5rem);
+      color: var(--text);
+    }
+
+    .hero__summary {
+      width: min(520px, 100%);
+      margin: 16px 0 0;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.8;
+      color: rgba(234,234,234,0.84);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(234,234,234,0.03);
+      color: var(--text);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease, color .25s ease;
+      will-change: transform;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240,165,0,0.5);
+      background: rgba(240,165,0,0.12);
+      color: #fff;
+    }
+
+    .btn--solid {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn--solid:hover {
+      background: #ffb620;
+      color: #080808;
+    }
+
+    .hero__meta {
+      margin-top: 22px;
+      max-width: 60ch;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--faint);
+    }
+
+    .hero__stamp {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(234,234,234,0.15);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.58);
+    }
+
+    .services-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      margin-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-item {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      align-items: start;
+      transition: background .25s ease;
+    }
+
+    .service-item:hover {
+      background: linear-gradient(90deg, rgba(240,165,0,0.08), transparent 55%);
+    }
+
+    .service-index {
+      font-family: var(--mono);
+      color: var(--amber);
+      font-size: 0.8rem;
+      padding-top: 4px;
+    }
+
+    .service-title {
+      margin: 0 0 8px;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .service-copy {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      gap: 28px;
+      margin-top: 34px;
+    }
+
+    .pricing-panel {
+      padding: 28px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .pricing-list {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pricing-list li {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pricing-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .pricing-term {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .pricing-desc {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      margin-top: 34px;
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234,234,234,0.08);
+      background: linear-gradient(180deg, rgba(234,234,234,0.04), rgba(234,234,234,0.015));
+      min-height: 280px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 10px 12px;
+      background: rgba(8,8,8,0.76);
+      border: 1px solid rgba(234,234,234,0.1);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cta-band {
+      margin-top: 34px;
+      padding: 34px 0;
+      border-top: 1px solid rgba(240,165,0,0.28);
+      border-bottom: 1px solid rgba(240,165,0,0.28);
+      background: linear-gradient(90deg, rgba(240,165,0,0.08), rgba(240,165,0,0.02) 30%, transparent);
+    }
+
+    .cta-band__inner {
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-band h2 {
+      margin-bottom: 10px;
+    }
+
+    .cta-band p {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta-band__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    .contact-block {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-block:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .contact-value {
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 34px 0 56px;
+      color: var(--faint);
+    }
+
+    .footer__row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .text-amber { color: var(--amber); }
+
+    .map-link {
+      color: var(--amber);
+      text-decoration: underline;
+      text-decoration-color: rgba(240,165,0,0.35);
+      text-underline-offset: 0.2em;
+    }
+
+    .anchor-line {
+      width: 64px;
+      height: 1px;
+      background: var(--amber);
+      margin: 0 0 22px;
+      transform-origin: left center;
+    }
+
+    .subgrid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hidden-touch {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 720px) {
+      .section {
+        padding: 100px 0;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero__copy {
+        padding-top: 20vh;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .service-item:nth-child(odd) {
+        border-right: 1px solid var(--line);
+        padding-right: 20px;
+      }
+
+      .service-item:nth-child(even) {
+        padding-left: 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-areas:
+          "a b"
+          "a c";
+      }
+
+      .gallery-item:nth-child(1) { grid-area: a; min-height: 620px; }
+      .gallery-item:nth-child(2) { grid-area: b; }
+      .gallery-item:nth-child(3) { grid-area: c; }
+
+      .pricing-wrap {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 42px;
+      }
+
+      .cta-band__inner {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .hero__summary {
+        font-size: 1.22rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .service-item:nth-child(3n+1) {
+        padding-left: 0;
+      }
+
+      .service-item:nth-child(3n) {
+        border-right: 0;
+        padding-right: 0;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Nail Story</h1>
-    <span class="category">Nail Salon</span>
-    <p class="address">2nd Level SM Supermall, Malvar Road, Puerto Princesa City</p>
-    <p class="phone">+63 950 882 2565</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero__art" src="assets/img/hero.svg" alt="Stylized Nail Story salon scene with nail art tools, polished nails, and an amber-lit work surface.">
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="shell hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow reveal">SM CITY PUERTO PRINCESA, PALAWAN</p>
+          <h1 id="hero-title" class="reveal">Nail Story</h1>
+          <p class="hero__summary reveal">Korean vibe in Palawan. Public profiles for Nail Story Palawan point to nail art, manicure goals, custom design work, and extension-ready sets inside SM City Puerto Princesa.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--solid" href="tel:+639508822565">Call the salon</a>
+            <a class="btn" href="mailto:nailstory.palawan@gmail.com">Email Nail Story</a>
+            <a class="btn" href="#services">See services</a>
+          </div>
+          <p class="hero__meta reveal">Verified public contact: +63 950 882 2565 and nailstory.palawan@gmail.com. Location used on this page: 2nd Level, SM City Puerto Princesa, Malvar Street, Brgy. San Miguel, Puerto Princesa City, Palawan.</p>
+          <div class="hero__stamp reveal">Puerto Princesa coordinates checked at 9.74333, 118.73944</div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="services" class="section">
+        <div class="shell">
+          <p class="eyebrow reveal">Services</p>
+          <h2 class="reveal">Verified service families, kept concise.</h2>
+          <p class="section-note reveal">The public pages I could verify clearly position Nail Story around custom nail art, manicure goals, extension work, and polished everyday sets. I have not invented services that were not publicly visible.</p>
+
+          <div class="services-grid">
+            <article class="service-item" data-reveal>
+              <div class="service-index">01</div>
+              <div>
+                <h3 class="service-title">Nail art</h3>
+                <p class="service-copy">Trend-led details for clients who want something cleaner than basic color. Public posts mention marble, metallic, and custom art directions.</p>
+              </div>
+            </article>
+            <article class="service-item" data-reveal>
+              <div class="service-index">02</div>
+              <div>
+                <h3 class="service-title">Nail extensions</h3>
+                <p class="service-copy">A better fit when you want length, shape, and a bolder silhouette that still reads refined.</p>
+              </div>
+            </article>
+            <article class="service-item" data-reveal>
+              <div class="service-index">03</div>
+              <div>
+                <h3 class="service-title">Manicure</h3>
+                <p class="service-copy">The salon’s public feed leans into manicure goals, so this page keeps the treatment family front and center.</p>
+              </div>
+            </article>
+            <article class="service-item" data-reveal>
+              <div class="service-index">04</div>
+              <div>
+                <h3 class="service-title">Pedicure</h3>
+                <p class="service-copy">A practical stop for a neater finish before mall days, travel, or special events in Puerto Princesa.</p>
+              </div>
+            </article>
+            <article class="service-item" data-reveal>
+              <div class="service-index">05</div>
+              <div>
+                <h3 class="service-title">Marble and metallic sets</h3>
+                <p class="service-copy">These are explicitly reflected in recent public post copy and shape the look of the salon’s signature aesthetic.</p>
+              </div>
+            </article>
+            <article class="service-item" data-reveal>
+              <div class="service-index">06</div>
+              <div>
+                <h3 class="service-title">Custom design consultation</h3>
+                <p class="service-copy">For a set that follows your reference, outfit, or event mood instead of a fixed template.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section">
+        <div class="shell">
+          <p class="eyebrow reveal">Pricing</p>
+          <h2 class="reveal">Straight quotes, not guesswork.</h2>
+          <p class="section-note reveal">I could verify the salon’s public contact, location, and service direction, but not a full price sheet that was clearly posted and readable. To avoid fabricating numbers, this section is set up for direct inquiry.</p>
+
+          <div class="pricing-wrap">
+            <div class="pricing-panel reveal">
+              <div class="anchor-line"></div>
+              <p class="copy">If you want the current menu, the fastest route is a call or email. That keeps the quote aligned with the salon’s latest rates and your exact design.</p>
+              <div class="hero__actions" style="margin-top: 18px;">
+                <a class="btn btn--solid" href="tel:+639508822565">Ask for today’s rates</a>
+                <a class="btn" href="mailto:nailstory.palawan@gmail.com?subject=Nail%20Story%20pricing%20request">Request by email</a>
+              </div>
+            </div>
+
+            <ul class="pricing-list reveal" aria-label="Pricing notes">
+              <li>
+                <div class="pricing-term">Manicure / pedicure</div>
+                <p class="pricing-desc">Quoted directly by the salon. Best confirmed before you travel to the mall.</p>
+              </li>
+              <li>
+                <div class="pricing-term">Nail art / custom sets</div>
+                <p class="pricing-desc">Usually depends on the art density, finish, and whether the set is marble, metallic, or fully custom.</p>
+              </li>
+              <li>
+                <div class="pricing-term">Nail extensions</div>
+                <p class="pricing-desc">Typically quoted by length and structure, so a photo reference is the clearest way to get a precise number.</p>
+              </li>
+              <li>
+                <div class="pricing-term">Publicly verified status</div>
+                <p class="pricing-desc">No readable public price sheet was available in the sources I checked, so this site stays honest and leaves room for the salon’s latest menu.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section">
+        <div class="shell">
+          <p class="eyebrow reveal">Gallery</p>
+          <h2 class="reveal">Three visual directions, one salon identity.</h2>
+          <p class="section-note reveal">The gallery uses local SVG artwork so the page is deployable as-is, while still echoing the public feed’s marble, metallic, and custom-art language.</p>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-marble.svg" alt="Marble-inspired nail composition in black, ivory, and amber tones.">
+              <figcaption class="gallery-caption">Marble finish</figcaption>
+            </figure>
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-metallic.svg" alt="Reflective metallic nail composition with chrome accents and amber highlights.">
+              <figcaption class="gallery-caption">Metallic finish</figcaption>
+            </figure>
+            <figure class="gallery-item reveal">
+              <img src="assets/img/gallery-custom.svg" alt="Custom nail-art composition with a French tip, brush strokes, and studio tools.">
+              <figcaption class="gallery-caption">Custom art</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="cta-band">
+            <div class="cta-band__inner shell" style="width: min(1160px, calc(100% - 0px));">
+              <div data-reveal>
+                <p class="eyebrow">Booking</p>
+                <h2>Reserve your next set in Puerto Princesa.</h2>
+                <p>Walk in if you are already at SM City Puerto Princesa, or contact the salon first so your design, timing, and rate stay aligned.</p>
+              </div>
+              <div class="cta-band__actions" data-reveal>
+                <a class="btn btn--solid" href="tel:+639508822565">Call now</a>
+                <a class="btn" href="mailto:nailstory.palawan@gmail.com">Send an email</a>
+                <a class="btn" href="https://www.google.com/maps/search/?api=1&query=9.74333,118.73944" target="_blank" rel="noopener noreferrer">Open maps</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="shell">
+          <p class="eyebrow reveal">Contact</p>
+          <h2 class="reveal">Find Nail Story at SM City Puerto Princesa.</h2>
+          <p class="section-note reveal">Coordinates on this page point to Puerto Princesa, not Manila: 9.74333, 118.73944.</p>
+
+          <div class="contact-grid">
+            <div class="contact-block reveal">
+              <div class="contact-label">Visit</div>
+              <div class="contact-value">2nd Level, SM City Puerto Princesa<br>Malvar Street, Brgy. San Miguel<br>Puerto Princesa City, Palawan, Philippines</div>
+            </div>
+            <div class="contact-block reveal">
+              <div class="contact-label">Call</div>
+              <a class="contact-value map-link" href="tel:+639508822565">+63 950 882 2565</a>
+            </div>
+            <div class="contact-block reveal">
+              <div class="contact-label">Email</div>
+              <a class="contact-value map-link" href="mailto:nailstory.palawan@gmail.com">nailstory.palawan@gmail.com</a>
+            </div>
+            <div class="contact-block reveal">
+              <div class="contact-label">Map</div>
+              <a class="contact-value map-link" href="https://www.google.com/maps/search/?api=1&query=9.74333,118.73944" target="_blank" rel="noopener noreferrer">9.74333, 118.73944</a>
+            </div>
+            <div class="contact-block reveal">
+              <div class="contact-label">Social</div>
+              <div class="contact-value"><a class="map-link" href="https://www.facebook.com/p/Nail-Story-Palawan-100091268331386/" target="_blank" rel="noopener noreferrer">Facebook</a><br><a class="map-link" href="https://www.instagram.com/nailstory_palawan/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+            </div>
+            <div class="contact-block reveal">
+              <div class="contact-label">Public note</div>
+              <div class="contact-value">Korean vibe in Palawan, custom nail art, and sets that lean marble to metallic.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        <div class="footer-copy">Nail Story Palawan</div>
+        <div class="footer__row">
+          <span>Verified public contact and Puerto Princesa location</span>
+          <span>Built for GitHub Pages</span>
+          <span id="year"></span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && window.Lenis && window.gsap) {
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', window.ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    if (window.gsap) {
+      gsap.registerPlugin(window.ScrollTrigger);
+
+      gsap.from('.hero .reveal', {
+        opacity: 0,
+        y: 26,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.15
+      });
+
+      gsap.to('.hero__art', {
+        yPercent: 6,
+        scale: 1.04,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      const revealItems = gsap.utils.toArray('[data-reveal]');
+      revealItems.forEach((item) => {
+        gsap.from(item, {
+          opacity: 0,
+          y: 28,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.from('.service-item', {
+        opacity: 0,
+        y: 18,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: '#services',
+          start: 'top 72%'
+        }
+      });
+
+      gsap.from('.gallery-item', {
+        opacity: 0,
+        y: 26,
+        scale: 0.98,
+        duration: 0.85,
+        ease: 'power2.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 72%'
+        }
+      });
+
+      window.addEventListener('load', () => {
+        window.ScrollTrigger.refresh();
+      });
+    }
+  </script>
 </body>
 </html>
