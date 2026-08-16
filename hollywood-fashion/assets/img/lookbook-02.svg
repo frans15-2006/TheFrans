@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Hollywood Fashion lookbook edit two</title>
+  <desc id="desc">A sleek outfit composition with a shirt, perfume bottle, and shoes in a moody studio frame.</desc>
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070707"/>
+      <stop offset="100%" stop-color="#15110a"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1eee8"/>
+      <stop offset="100%" stop-color="#c0ad87"/>
+    </linearGradient>
+    <linearGradient id="glassBottle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="blur2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="38"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g2)"/>
+  <circle cx="280" cy="280" r="220" fill="#f0a500" opacity="0.13" filter="url(#blur2)"/>
+  <circle cx="980" cy="1140" r="270" fill="#f0a500" opacity="0.11" filter="url(#blur2)"/>
+
+  <g opacity="0.16" stroke="#eaeaea" stroke-width="1">
+    <path d="M0 300H1200M0 600H1200M0 900H1200M0 1200H1200"/>
+    <path d="M240 0V1500M600 0V1500M960 0V1500"/>
+  </g>
+
+  <g transform="translate(165 120)">
+    <path d="M285 0c42 0 84 11 125 31l-40 61c-21-11-43-16-65-16s-44 5-65 16l-40-61c41-20 83-31 125-31z" fill="#f0a500" fill-opacity="0.18" stroke="#f0a500" stroke-opacity="0.6" stroke-width="3"/>
+    <path d="M285 84c86 0 142 59 166 176l-23 286c-10 58-58 101-118 101H260c-60 0-108-43-118-101l-23-286c24-117 80-176 166-176z" fill="#111" stroke="#eaeaea" stroke-opacity="0.58" stroke-width="4"/>
+    <path d="M215 174c38 48 62 107 70 177 8-70 32-129 70-177" fill="none" stroke="#f0a500" stroke-opacity="0.5" stroke-width="4"/>
+    <path d="M244 102c12 12 25 18 41 18s29-6 41-18" fill="none" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(170 890)">
+    <path d="M58 0h124l-14 214H72z" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M93 16h54l-8 154H101z" fill="url(#glassBottle)" stroke="#f0a500" stroke-opacity="0.45" stroke-width="2"/>
+    <path d="M109 0h22v26h-22z" fill="#f0a500" fill-opacity="0.8"/>
+  </g>
+
+  <g transform="translate(410 930)">
+    <path d="M0 90c0-50 40-90 90-90h140l-18 230H90c-50 0-90-40-90-90z" fill="#151515" stroke="#eaeaea" stroke-opacity="0.5" stroke-width="4"/>
+    <path d="M56 108h130" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M86 60h70l-8 84H94z" fill="#f0a500" fill-opacity="0.13"/>
+  </g>
+
+  <g transform="translate(775 900)">
+    <path d="M32 0h170l-25 180H57z" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M62 30h110l-14 120H76z" fill="#f0a500" fill-opacity="0.1"/>
+    <path d="M80 62h74" stroke="#eaeaea" stroke-opacity="0.5" stroke-width="3"/>
+    <circle cx="115" cy="120" r="20" fill="none" stroke="#f0a500" stroke-opacity="0.8" stroke-width="6"/>
+  </g>
+</svg>

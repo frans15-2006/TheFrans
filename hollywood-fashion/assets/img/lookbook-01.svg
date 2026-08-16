@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Hollywood Fashion lookbook edit one</title>
+  <desc id="desc">A fashion still life with a jacket, clutch bag, and shoes in a dark amber-lit scene.</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="100%" stop-color="#1c1408"/>
+    </linearGradient>
+    <linearGradient id="fabric1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaeaea"/>
+      <stop offset="100%" stop-color="#bda46f"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g1)"/>
+  <circle cx="920" cy="330" r="260" fill="#f0a500" opacity="0.16" filter="url(#blur)"/>
+  <circle cx="260" cy="1220" r="220" fill="#f0a500" opacity="0.1" filter="url(#blur)"/>
+  <g opacity="0.15" stroke="#eaeaea" stroke-width="1">
+    <path d="M0 250H1200M0 500H1200M0 750H1200M0 1000H1200M0 1250H1200"/>
+    <path d="M180 0V1500M420 0V1500M760 0V1500M1020 0V1500"/>
+  </g>
+
+  <g transform="translate(165 170)">
+    <path d="M285 0c42 0 84 11 125 31l-40 61c-21-11-43-16-65-16s-44 5-65 16l-40-61c41-20 83-31 125-31z" fill="#f0a500" fill-opacity="0.18" stroke="#f0a500" stroke-opacity="0.6" stroke-width="3"/>
+    <path d="M285 84c80 0 135 49 165 146l-35 270c-12 66-62 110-130 110H285c-68 0-118-44-130-110l-35-270c30-97 85-146 165-146z" fill="#101010" stroke="#eaeaea" stroke-opacity="0.65" stroke-width="4"/>
+    <path d="M205 184c31 41 54 93 70 158 16-65 39-117 70-158" fill="none" stroke="#eaeaea" stroke-opacity="0.4" stroke-width="5" stroke-linecap="round"/>
+    <path d="M250 104c11 13 24 22 35 22s24-9 35-22" fill="none" stroke="#f0a500" stroke-opacity="0.65" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(115 825)">
+    <path d="M35 0h216l-20 176H55z" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M64 30h158l-14 120H78z" fill="#f0a500" fill-opacity="0.12"/>
+    <path d="M142 57c40 0 72 32 72 72H70c0-40 32-72 72-72z" fill="none" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(630 890)">
+    <path d="M28 80c0-44 36-80 80-80h130l-20 190H88c-33 0-60-27-60-60z" fill="#161616" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M70 72c0-21 17-38 38-38h48c21 0 38 17 38 38v58c0 20-16 36-36 36H106c-20 0-36-16-36-36z" fill="#f0a500" fill-opacity="0.12" stroke="#f0a500" stroke-opacity="0.55" stroke-width="3"/>
+    <path d="M70 88h124" stroke="#f0a500" stroke-opacity="0.4" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(860 975)">
+    <path d="M0 135c10-77 46-131 108-162 56 30 91 84 103 162" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M36 112h140" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <circle cx="102" cy="55" r="23" fill="#f0a500" fill-opacity="0.16" stroke="#f0a500" stroke-opacity="0.6" stroke-width="4"/>
+  </g>
+</svg>

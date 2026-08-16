@@ -1,60 +1,965 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-PH">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hollywood Fashion Merchandise</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hollywood Fashion | Puerto Princesa Clothing, Bags, Shoes, Perfume, and Fine Collection</title>
+  <meta name="description" content="Hollywood Fashion in Puerto Princesa, Palawan is a multi-brand fashion and beauty store at 331 Remari Bldg., Rizal Avenue, Barangay San Miguel. Shop apparel, bags, shoes, perfumes, accessories, jewelry, and fine collection pieces.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hollywood Fashion | Puerto Princesa Fashion and Beauty Store">
+  <meta property="og:description" content="Verified Puerto Princesa main store for clothing, perfume, bags, shoes, accessories, jewelry, and fine collection pieces at Rizal Avenue, Barangay San Miguel.">
+  <meta property="og:image" content="assets/img/hero-fashion.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hollywood Fashion | Puerto Princesa Fashion and Beauty Store">
+  <meta name="twitter:description" content="Verified Puerto Princesa main store for clothing, perfume, bags, shoes, accessories, jewelry, and fine collection pieces at Rizal Avenue, Barangay San Miguel.">
+  <meta name="twitter:image" content="assets/img/hero-fashion.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "Hollywood Fashion",
+      "image": "assets/img/hero-fashion.svg",
+      "description": "Hollywood Fashion is a multi-brand fashion and beauty store in Puerto Princesa, Palawan.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "331 Remari Bldg., Rizal Avenue, Barangay San Miguel",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.740795,
+        "longitude": 118.73064
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "10:00",
+          "closes": "20:00"
         }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+      ],
+      "telephone": ["+63487161637", "+639204353101", "+639666373799"],
+      "email": "hollywoodfashionmerchandise@gmail.com",
+      "areaServed": "Puerto Princesa City, Palawan, Philippines"
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #0d0d0d;
+      --paper: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.42);
+      --amber: #f0a500;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.1), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(240, 165, 0, 0.06), transparent 28%),
+        var(--bg);
+      color: var(--paper);
+      font-family: "Space Grotesk", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(8, 8, 8, 0.12), rgba(8, 8, 8, 0.52)),
+        linear-gradient(90deg, rgba(234, 234, 234, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(234, 234, 234, 0.03) 1px, transparent 1px);
+      background-size: auto, 70px 70px, 70px 70px;
+      mix-blend-mode: screen;
+      opacity: 0.14;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0), rgba(8, 8, 8, 0.2) 25%, rgba(8, 8, 8, 0.6));
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 8, 0.58);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.35rem;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand small {
+      color: rgba(234, 234, 234, 0.58);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.9rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.7);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      width: 100%;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.24s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--paper);
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.02);
+      filter: contrast(1.06) saturate(0.92);
+    }
+
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.92) 0%, rgba(8, 8, 8, 0.82) 34%, rgba(8, 8, 8, 0.34) 68%, rgba(8, 8, 8, 0.62) 100%),
+        linear-gradient(to bottom, rgba(8, 8, 8, 0.12), rgba(8, 8, 8, 0.28));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 7.5rem 0 4.25rem;
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.4rem, 14vw, 10.4rem);
+      line-height: 0.82;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      max-width: 8ch;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-copy {
+      margin: 0;
+      max-width: 40rem;
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.2rem;
+    }
+
+    .btn,
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      background: transparent;
+      color: var(--paper);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease, background 0.22s ease;
+    }
+
+    .btn {
+      background: var(--amber);
+      border-color: rgba(240, 165, 0, 0.7);
+      color: var(--bg);
+    }
+
+    .btn:hover,
+    .btn:focus-visible,
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.65);
+      color: var(--amber);
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: #ffc21b;
+      color: var(--bg);
+    }
+
+    .btn--ghost:hover,
+    .btn--ghost:focus-visible {
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1.6rem;
+      max-width: 56rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 52rem;
+      line-height: 1.75;
+      color: rgba(234, 234, 234, 0.8);
+      font-size: 1rem;
+    }
+
+    .collection-spotlight {
+      margin: 1.25rem 0 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.7;
+      min-height: 3.35rem;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 1.6rem;
+    }
+
+    .collection-item {
+      width: 100%;
+      display: grid;
+      gap: 0.35rem;
+      padding: 1.1rem 0 1.25rem;
+      text-align: left;
+      border: 0;
+      border-top: 1px solid var(--line);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    }
+
+    .collection-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .collection-item:hover,
+    .collection-item:focus-visible,
+    .collection-item[aria-pressed="true"] {
+      transform: translateX(0.35rem);
+      border-color: var(--line-strong);
+      color: var(--amber);
+    }
+
+    .collection-index {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.56);
+    }
+
+    .collection-item h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem;
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .collection-item p {
+      margin: 0;
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.6;
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .lookbook-frame {
+      margin: 0;
+    }
+
+    .lookbook-frame img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .lookbook-frame figcaption {
+      padding-top: 0.55rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.7);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .about-copy {
+      max-width: 56rem;
+    }
+
+    .about-copy p {
+      margin: 0 0 1rem;
+      line-height: 1.82;
+      color: rgba(234, 234, 234, 0.82);
+      font-size: 1.02rem;
+    }
+
+    .about-copy strong {
+      color: var(--paper);
+    }
+
+    .about-timeline {
+      display: grid;
+      gap: 0.7rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    .location-map {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .location-details {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.95rem;
+      margin: 0;
+      padding: 1rem 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .detail-item {
+      display: grid;
+      gap: 0.25rem;
+      padding-bottom: 0.88rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .detail-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .detail-item dt {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.58);
+    }
+
+    .detail-item dd {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--paper);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.2rem;
+    }
+
+    .contact-link {
+      color: var(--paper);
+    }
+
+    .footer {
+      padding: 1rem 0 2rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      gap: 1rem;
+      padding-top: 1rem;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .footer-note {
+      margin: 0;
+      line-height: 1.7;
+      font-size: 0.84rem;
+    }
+
+    .disclaimer {
+      margin: 0;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      line-height: 1.7;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.52);
+    }
+
+    .section .container > :is(.section-head, .section-copy, .collection-spotlight, .collection-grid, .lookbook-grid, .about-grid, .location-grid, .footer-inner) {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 720px) {
+      .hero-inner {
+        padding-top: 8rem;
+      }
+
+      .collection-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .lookbook-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid,
+      .location-grid {
+        grid-template-columns: 1.08fr 0.92fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .hero-inner {
+        gap: 1.25rem;
+      }
+
+      .lookbook-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 719px) {
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hollywood Fashion Merchandise</h1>
-    <span class="category">Branded Retail</span>
-    <p class="address">331 Remari Bldg, Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 920 435 3101</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Hollywood Fashion home">
+        Hollywood Fashion
+        <small>Puerto Princesa</small>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#collections">Collections</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#about">About</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <img class="hero-media" src="assets/img/hero-fashion.svg" alt="" aria-hidden="true" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner container">
+        <div class="hero-kicker mono reveal">Puerto Princesa, Palawan</div>
+        <h1 class="hero-title reveal" aria-label="Hollywood Fashion">
+          <span>Hollywood</span>
+          <span>Fashion</span>
+        </h1>
+        <p class="hero-copy reveal">The main store at 331 Remari Bldg., Rizal Avenue, Barangay San Miguel brings clothing, bags, shoes, perfume, make-up, accessories, and jewelry together for everyday style in Puerto Princesa.</p>
+        <div class="hero-actions reveal">
+          <a class="btn" href="tel:+63487161637">Call the store</a>
+          <a class="btn btn--ghost" href="#collections">View collections</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collections">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label mono">Verified product mix</div>
+          <h2 class="section-title">Collections that cover the full look</h2>
+          <p class="section-copy">Verified from Hollywood Fashion Philippines: perfumes, make-up, apparel, shoes, bags, accessories, jewelry, and the Fine Collection. The mix stays broad, but the styling stays practical.</p>
+        </div>
+        <p class="collection-spotlight mono reveal" id="spotlight" aria-live="polite">Selected: Perfumes. Imported scents and gift-ready bottles for daily wear, events, and counter gifts.</p>
+        <div class="collection-grid">
+          <button class="collection-item reveal" type="button" aria-pressed="true" data-title="Perfumes" data-copy="Imported scents and gift-ready bottles for daily wear, events, and counter gifts.">
+            <span class="collection-index mono">01</span>
+            <h3>Perfumes</h3>
+            <p>Imported scents and gift-ready bottles.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Make-up" data-copy="Beauty essentials that pair with the store's fashion mix for a polished finish.">
+            <span class="collection-index mono">02</span>
+            <h3>Make-up</h3>
+            <p>Beauty essentials for a polished finish.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Apparel" data-copy="Wearable pieces for casual days, city errands, and dressed-up nights.">
+            <span class="collection-index mono">03</span>
+            <h3>Apparel</h3>
+            <p>Wearable pieces for casual and dressed-up days.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Shoes" data-copy="A rotation of shoes that can move from weekdays to weekends without effort.">
+            <span class="collection-index mono">04</span>
+            <h3>Shoes</h3>
+            <p>Pairs for weekdays, weekends, and beyond.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Bags" data-copy="Carryall and statement bags that complete the outfit without overcomplicating it.">
+            <span class="collection-index mono">05</span>
+            <h3>Bags</h3>
+            <p>Carryall and statement bags for daily use.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Accessories" data-copy="Small finishing touches that make the store's multi-brand edit feel personal.">
+            <span class="collection-index mono">06</span>
+            <h3>Accessories</h3>
+            <p>Finishing touches that complete the edit.</p>
+          </button>
+          <button class="collection-item reveal" type="button" aria-pressed="false" data-title="Jewelry and Fine Collection" data-copy="Fine Collection pieces, natural diamonds, and repair services for pieces that need lasting care.">
+            <span class="collection-index mono">07</span>
+            <h3>Jewelry and Fine Collection</h3>
+            <p>Natural diamonds, repair services, and lasting care.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lookbook">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label mono">Lookbook gallery</div>
+          <h2 class="section-title">Styled for Puerto Princesa days and nights</h2>
+          <p class="section-copy">A moodboard from the store's fashion and beauty mix, shaped around city errands, gift runs, and the Fine Collection counter.</p>
+        </div>
+        <div class="lookbook-grid">
+          <figure class="lookbook-frame reveal">
+            <img src="assets/img/lookbook-01.svg" alt="Fashion still life with a jacket, clutch bag, and shoes" loading="lazy" decoding="async">
+            <figcaption class="mono">City layers</figcaption>
+          </figure>
+          <figure class="lookbook-frame reveal">
+            <img src="assets/img/lookbook-02.svg" alt="Stylized outfit composition with a shirt, perfume bottle, and shoes" loading="lazy" decoding="async">
+            <figcaption class="mono">Gift edit</figcaption>
+          </figure>
+          <figure class="lookbook-frame reveal">
+            <img src="assets/img/lookbook-03.svg" alt="Jewelry-focused still life with rings, a clutch, and dark studio lighting" loading="lazy" decoding="async">
+            <figcaption class="mono">Fine details</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label mono">About the store</div>
+          <h2 class="section-title">Built from perfume, expanded through style</h2>
+          <p class="section-copy">The story started in 2009 with 13 bottles of imported perfume. The first store opened on February 13, 2010, and the main branch now serves Puerto Princesa from Rizal Avenue in Barangay San Miguel.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p><strong>Hollywood Fashion Merchandise</strong> grew into a one-stop shop for imported and authentic products, with a mix that includes clothing, shoes, bags, accessories, perfumes, make-up, and fine jewelry. The brand's official focus is simple: authenticity, affordability, discounts, freebies, and customer service that keeps the experience easy.</p>
+            <p>The Fine Collection adds natural diamond jewelry, custom design work, and repair services such as stone replacement, ring sizing, chain repair, diamond setting, engraving, polishing, and free cleaning and inspection.</p>
+          </div>
+          <div class="about-timeline reveal" aria-label="Store details">
+            <div>Started in 2009 with 13 bottles of perfume</div>
+            <div>First store opened on February 13, 2010</div>
+            <div>Main store now on Rizal Avenue, Puerto Princesa City</div>
+            <div>Credit cards and GCash are accepted</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label mono">Store location</div>
+          <h2 class="section-title">Rizal Avenue, Barangay San Miguel, Puerto Princesa</h2>
+          <p class="section-copy">Main store address: 331 Remari Bldg., Rizal Avenue, Barangay San Miguel, Puerto Princesa City, Palawan. The official listing places it in front of Capitol Gate 1, toward the old airport.</p>
+        </div>
+        <div class="location-grid">
+          <img class="location-map reveal" src="assets/img/location-map.svg" alt="Stylized map of Rizal Avenue and the Puerto Princesa main store location" loading="lazy" decoding="async">
+          <div class="location-details reveal">
+            <dl class="detail-list">
+              <div class="detail-item">
+                <dt>Coordinates</dt>
+                <dd>9.740795, 118.73064 - Puerto Princesa City, Palawan</dd>
+              </div>
+              <div class="detail-item">
+                <dt>Hours</dt>
+                <dd>Monday to Saturday: 9:00 AM to 9:00 PM. Sunday: 10:00 AM to 8:00 PM.</dd>
+              </div>
+              <div class="detail-item">
+                <dt>Nearest context</dt>
+                <dd>In front of Capitol Gate 1, going to the old airport.</dd>
+              </div>
+            </dl>
+            <div class="contact-row">
+              <a class="contact-link" href="https://www.google.com/maps?q=9.740795,118.73064">Open in Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label mono">Contact / footer</div>
+          <h2 class="section-title">Call, text, or email the main store</h2>
+          <p class="section-copy">Reach the Hollywood Fashion team for availability, Fine Collection questions, and general store inquiries.</p>
+        </div>
+        <div class="footer-inner reveal">
+          <div>
+            <div class="contact-row">
+              <a class="contact-link" href="tel:+63487161637">048 716 1637</a>
+              <a class="contact-link" href="tel:+639204353101">0920 435 3101</a>
+              <a class="contact-link" href="tel:+639666373799">0966 637 3799</a>
+              <a class="contact-link" href="mailto:hollywoodfashionmerchandise@gmail.com">hollywoodfashionmerchandise@gmail.com</a>
+            </div>
+            <p class="footer-note">The store's verified mix includes perfumes, make-up, apparel, shoes, bags, accessories, jewelry, and the Fine Collection.</p>
+          </div>
+          <p class="footer-note mono">Puerto Princesa main store - Rizal Avenue, Barangay San Miguel</p>
+        </div>
+        <footer class="footer reveal">
+          <p class="disclaimer">Hollywood Fashion Merchandise is a seller of brand-new and pre-loved luxury goods.</p>
+          <p class="footer-note mono">Copyright <span id="year"></span> Hollywood Fashion</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
+
+    const spotlight = document.getElementById("spotlight");
+    const collectionButtons = Array.from(document.querySelectorAll(".collection-item"));
+
+    function setSpotlight(button) {
+      collectionButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      spotlight.textContent = `Selected: ${button.dataset.title}. ${button.dataset.copy}`;
+    }
+
+    collectionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setSpotlight(button);
+        if (window.gsap) {
+          gsap.fromTo(spotlight, { opacity: 0.35, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" });
+        }
+      });
+    });
+
+    setSpotlight(collectionButtons[0]);
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (window.gsap && window.ScrollTrigger && !reducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = window.Lenis ? new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false,
+        normalizeWheel: true
+      }) : null;
+
+      if (lenis) {
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      gsap.from(".hero .reveal", {
+        opacity: 0,
+        y: 26,
+        duration: 1,
+        stagger: 0.08,
+        ease: "power3.out"
+      });
+
+      gsap.fromTo(".hero-media", { scale: 1.06, opacity: 0.7 }, {
+        scale: 1.02,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out"
+      });
+
+      gsap.to(".hero-media", {
+        yPercent: 2,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6
+        }
+      });
+
+      gsap.utils.toArray(".section .reveal").filter((element) => !element.matches(".collection-item, .lookbook-frame, .location-map")).forEach((element) => {
+        gsap.from(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 82%"
+          },
+          opacity: 0,
+          y: 28,
+          duration: 0.85,
+          ease: "power3.out"
+        });
+      });
+
+      gsap.from(".collection-item", {
+        scrollTrigger: {
+          trigger: "#collections",
+          start: "top 75%"
+        },
+        opacity: 0,
+        y: 24,
+        duration: 0.75,
+        stagger: 0.08,
+        ease: "power3.out"
+      });
+
+      gsap.from(".lookbook-frame img", {
+        scrollTrigger: {
+          trigger: "#lookbook",
+          start: "top 74%"
+        },
+        opacity: 0,
+        y: 32,
+        scale: 0.98,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: "power3.out"
+      });
+
+      gsap.from(".location-map", {
+        scrollTrigger: {
+          trigger: "#location",
+          start: "top 74%"
+        },
+        opacity: 0,
+        y: 22,
+        duration: 0.9,
+        ease: "power3.out"
+      });
+
+      window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+      });
+    } else {
+      document.querySelectorAll(".hero .reveal, .section .reveal").forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = "none";
+      });
+    }
+  </script>
 </body>
 </html>
