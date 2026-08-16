@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" role="img" aria-label="Stylized map of New Buncag Road in Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070707"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="55%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="840" fill="url(#bg)"/>
+  <rect width="1200" height="840" fill="url(#glow)"/>
+  <g opacity="0.18" stroke="#eaeaea" stroke-width="1">
+    <path d="M0 120H1200"/>
+    <path d="M0 240H1200"/>
+    <path d="M0 360H1200"/>
+    <path d="M0 480H1200"/>
+    <path d="M0 600H1200"/>
+    <path d="M150 0V840"/>
+    <path d="M300 0V840"/>
+    <path d="M450 0V840"/>
+    <path d="M600 0V840"/>
+    <path d="M750 0V840"/>
+    <path d="M900 0V840"/>
+    <path d="M1050 0V840"/>
+  </g>
+  <path d="M110 650C220 570 320 570 420 520S640 420 720 356 920 242 1110 220" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round" stroke-dasharray="20 14" opacity="0.9"/>
+  <path d="M185 530C270 475 380 475 460 445S620 380 700 320 890 230 1040 208" fill="none" stroke="#eaeaea" stroke-width="3" stroke-linecap="round" opacity="0.36"/>
+  <path d="M220 248C248 282 275 324 286 372S294 470 320 522" fill="none" stroke="#eaeaea" stroke-width="3" opacity="0.35"/>
+  <path d="M790 160c42 64 65 116 67 176 2 62-15 116-53 168" fill="none" stroke="#eaeaea" stroke-width="3" opacity="0.28"/>
+  <g transform="translate(676 270)">
+    <path d="M84 0c-46 0-84 38-84 84 0 62 84 164 84 164s84-102 84-164C168 38 130 0 84 0zm0 117c-18 0-33-15-33-33s15-33 33-33 33 15 33 33-15 33-33 33z" fill="#f0a500" opacity="0.95"/>
+    <circle cx="84" cy="84" r="54" fill="none" stroke="#080808" stroke-width="12" opacity="0.6"/>
+  </g>
+  <g fill="#eaeaea" opacity="0.85" font-family="JetBrains Mono, monospace" font-size="26">
+    <text x="96" y="96">Puerto Princesa</text>
+    <text x="764" y="740">New Buncag Road</text>
+    <text x="764" y="776">9.747694, 118.739982</text>
+  </g>
+  <g opacity="0.22" stroke="#f0a500" stroke-width="2">
+    <path d="M80 720h180"/>
+    <path d="M944 102h180"/>
+    <path d="M150 150h100"/>
+    <path d="M870 620h220"/>
+  </g>
+</svg>

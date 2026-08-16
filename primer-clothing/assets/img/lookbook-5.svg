@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Lookbook tile five">
+  <rect width="1200" height="900" fill="#0c0c0c"/>
+  <path d="M110 220h260v300H110z" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <path d="M154 272h182" stroke="#eaeaea" stroke-width="3" opacity="0.26"/>
+  <path d="M154 326h182" stroke="#eaeaea" stroke-width="3" opacity="0.18"/>
+  <path d="M154 380h116" stroke="#eaeaea" stroke-width="3" opacity="0.18"/>
+  <path d="M462 188h320v340H462z" fill="#0f0f0f" stroke="#eaeaea" stroke-width="3" opacity="0.9"/>
+  <path d="M650 208c30 0 56 16 72 42l58 98-78 50-52-68-52 68-78-50 58-98c16-26 42-42 72-42z" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <circle cx="906" cy="500" r="120" fill="#f0a500" fill-opacity="0.08"/>
+  <path d="M828 500h156" stroke="#f0a500" stroke-width="4" opacity="0.45"/>
+  <path d="M906 422v156" stroke="#eaeaea" stroke-width="3" opacity="0.24"/>
+  <text x="80" y="820" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30">Neutral fit</text>
+  <text x="80" y="860" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18">Soft blacks, warm metal, quiet contrast</text>
+</svg>

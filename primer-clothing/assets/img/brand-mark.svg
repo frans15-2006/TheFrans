@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="Primer Clothing brand mark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0b0b"/>
+      <stop offset="100%" stop-color="#101010"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="72" fill="url(#bg)" stroke="#f0a500" stroke-opacity="0.22"/>
+  <circle cx="320" cy="320" r="220" fill="none" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4"/>
+  <path d="M198 246h244c20 0 36 16 36 36v8H162v-8c0-20 16-36 36-36z" fill="none" stroke="#f0a500" stroke-width="6"/>
+  <path d="M220 290h200" stroke="#eaeaea" stroke-opacity="0.3" stroke-width="4"/>
+  <path d="M266 295c0 60-38 78-76 108-16 12-22 25-22 42v16h88v-19c0-15 7-28 21-38 34-25 60-42 60-87v-22h2" fill="#111111" stroke="#eaeaea" stroke-opacity="0.75" stroke-width="3"/>
+  <path d="M374 295c0 60 38 78 76 108 16 12 22 25 22 42v16h-88v-19c0-15-7-28-21-38-34-25-60-42-60-87v-22h-2" fill="#111111" stroke="#eaeaea" stroke-opacity="0.75" stroke-width="3"/>
+  <path d="M320 328v146" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M276 474h88" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <text x="320" y="560" text-anchor="middle" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="72" letter-spacing="6">PRIMER</text>
+</svg>

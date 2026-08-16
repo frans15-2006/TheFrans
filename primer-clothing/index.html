@@ -1,60 +1,921 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer Clothing Boutique</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>Primer Clothing | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Primer Clothing is a Puerto Princesa, Palawan clothing and lifestyle boutique on New Buncag Highway in Brgy. Mandaragat, with in-store and online shopping and QRPH accepted.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Primer Clothing | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Dark, editorial one-page site for Primer Clothing in Brgy. Mandaragat, New Buncag Highway, Puerto Princesa, Palawan.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/primer-clothing/assets/img/hero-scene.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/primer-clothing/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --accent: #f0a500;
+      --line: rgba(240, 165, 0, 0.18);
+      --line-strong: rgba(240, 165, 0, 0.42);
+      --shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    html.lenis.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(240, 165, 0, 0.08), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.05), transparent 22%),
+        linear-gradient(180deg, #080808 0%, #080808 55%, #060606 100%);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.3);
+      color: #fff6dd;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .container-shell {
+      width: min(100%, 1280px);
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3vw, 2rem);
+    }
+
+    .section {
+      position: relative;
+      padding-block: clamp(4.5rem, 10vw, 8rem);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      max-width: 42rem;
+      margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .eyebrow {
+      color: rgba(240, 165, 0, 0.82);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 40rem;
+      font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+      line-height: 1.75;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 1;
+      animation: floaty 12s ease-in-out infinite;
+    }
+
+    .hero::before {
+      width: 24rem;
+      height: 24rem;
+      left: -8rem;
+      top: -5rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.24), rgba(240, 165, 0, 0.04) 58%, transparent 72%);
+    }
+
+    .hero::after {
+      width: 18rem;
+      height: 18rem;
+      right: -4rem;
+      bottom: 4rem;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04) 60%, transparent 74%);
+      animation-delay: -4s;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.92;
+      transform: scale(1.04);
+      filter: saturate(0.95) contrast(1.03);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.93) 0%, rgba(8, 8, 8, 0.76) 38%, rgba(8, 8, 8, 0.12) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.42) 100%);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.42) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-link {
+      position: relative;
+      padding-block: 0.25rem;
+      color: rgba(234, 234, 234, 0.8);
+      transition: color 180ms ease;
+    }
+
+    .topbar-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .topbar-link:hover,
+    .topbar-link:focus-visible {
+      color: var(--text);
+    }
+
+    .topbar-link:hover::after,
+    .topbar-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3.1rem;
+      padding: 0.92rem 1.2rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #080808;
+      box-shadow: 0 12px 30px rgba(240, 165, 0, 0.22);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.55);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.12), 0 12px 30px rgba(0, 0, 0, 0.32);
+    }
+
+    .ripple {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      margin-left: -7px;
+      margin-top: -7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.42);
+      transform: scale(0);
+      pointer-events: none;
+    }
+
+    .ripple.is-on {
+      transform: scale(24);
+      opacity: 0;
+      transition: transform 620ms ease, opacity 620ms ease;
+    }
+
+    .collection-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 15rem;
+      padding: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.015) 100%);
+      border-radius: 1.1rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+      outline: none;
+    }
+
+    .collection-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0);
+      transition: box-shadow 220ms ease;
+    }
+
+    .collection-card:hover,
+    .collection-card:focus-visible {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.55);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(240, 165, 0, 0.12);
+    }
+
+    .collection-card:hover::before,
+    .collection-card:focus-visible::before {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.28), 0 0 30px rgba(240, 165, 0, 0.14);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      width: fit-content;
+      padding: 0.28rem 0.62rem;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      border-radius: 999px;
+      color: rgba(240, 165, 0, 0.96);
+      background: rgba(240, 165, 0, 0.06);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      align-items: stretch;
+    }
+
+    .lookbook-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 13rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: #0d0d0d;
+      box-shadow: var(--shadow);
+    }
+
+    .lookbook-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease, filter 260ms ease;
+      filter: contrast(1.05) saturate(0.92);
+    }
+
+    .lookbook-tile:hover img,
+    .lookbook-tile:focus-within img {
+      transform: scale(1.03);
+    }
+
+    .lookbook-mask {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.02) 0%, rgba(8, 8, 8, 0.5) 100%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .lookbook-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      gap: 0.35rem;
+      padding: 0.9rem;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0) 0%, rgba(8, 8, 8, 0.72) 100%);
+      transform: translateY(18%);
+      opacity: 0.88;
+      transition: transform 220ms ease, opacity 220ms ease;
+    }
+
+    .lookbook-tile:hover .lookbook-caption,
+    .lookbook-tile:focus-within .lookbook-caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .map-panel {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.2rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .map-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .footer-link {
+      color: rgba(234, 234, 234, 0.8);
+      transition: color 180ms ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .line-box {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: rgba(234, 234, 234, 0.72);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator .line {
+      width: 3.5rem;
+      height: 1px;
+      background: rgba(240, 165, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-indicator .line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      background: var(--accent);
+      animation: sweep 1.8s ease-in-out infinite;
+    }
+
+    .price-tag {
+      color: rgba(240, 165, 0, 0.96);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .social-icon {
+      width: 1rem;
+      height: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(18px, -16px, 0) scale(1.04); }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-100%); }
+      60% { transform: translateX(160%); }
+      100% { transform: translateX(160%); }
+    }
+
+    @media (min-width: 768px) {
+      .lookbook-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .lookbook-tile {
+        min-height: 16rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .section {
+        padding-block: 4rem;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Primer Clothing Boutique</h1>
-    <span class="category">Dress Shop</span>
-    <p class="address">New Buncag Rd, Puerto Princesa City</p>
-    <p class="phone">+63 951 438 5763</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar">
+    <div class="container-shell py-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <a href="#hero" class="group flex items-baseline gap-3" data-scroll>
+          <span class="display text-[1.9rem] leading-none tracking-[0.05em] text-[var(--text)]">Primer Clothing</span>
+          <span class="mono text-[0.68rem] uppercase tracking-[0.18em] text-[rgba(234,234,234,.62)]">Puerto Princesa, Palawan</span>
+        </a>
+        <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm mono uppercase tracking-[0.14em]">
+          <a class="topbar-link" href="#collections" data-scroll>Collections</a>
+          <a class="topbar-link" href="#lookbook" data-scroll>Lookbook</a>
+          <a class="topbar-link" href="#visit" data-scroll>Visit</a>
+          <a class="topbar-link" href="#contact" data-scroll>Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <img class="hero-media" src="assets/img/hero-scene.svg" alt="Editorial clothing rack illustration for Primer Clothing in Puerto Princesa" loading="eager">
+      <div class="hero-overlay"></div>
+      <div class="container-shell relative z-10 flex min-h-[100svh] items-end pb-8 pt-20 md:pb-10">
+        <div class="grid w-full items-end gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="max-w-3xl">
+            <p class="hero-kicker mono mb-5 text-[0.72rem] uppercase tracking-[0.28em] text-[rgba(240,165,0,.88)]">Clothing and lifestyle retail in Puerto Princesa</p>
+            <h1 class="hero-title display max-w-4xl text-[clamp(4.5rem,13vw,10.5rem)] text-[var(--text)]">
+              <span class="block">Primer Clothing</span>
+              <span class="block text-[clamp(2.2rem,5vw,4.4rem)] text-[rgba(234,234,234,.82)]">Puerto Princesa, Palawan</span>
+            </h1>
+            <p class="hero-copy mt-5 max-w-xl text-[1rem] leading-7 text-[rgba(234,234,234,.78)] md:text-[1.08rem]">
+              A direct, dark retail edit for the boutique on New Buncag Highway in Brgy. Mandaragat, shaped around in-store and online shopping.
+            </p>
+            <div class="hero-ctas mt-8 flex flex-wrap gap-3">
+              <a class="btn btn-accent ripple-btn" href="#collections" data-scroll>Shop Collections</a>
+              <a class="btn btn-ghost ripple-btn" href="https://www.openstreetmap.org/?mlat=9.747694&mlon=118.739982#map=18/9.747694/118.739982" target="_blank" rel="noopener noreferrer">Visit Store</a>
+            </div>
+            <div class="hero-meta mt-9 flex flex-wrap items-center gap-5">
+              <span class="mono text-[0.8rem] uppercase tracking-[0.18em] text-[rgba(234,234,234,.66)]">Brgy. Mandaragat, New Buncag Highway</span>
+              <a class="scroll-indicator" href="#collections" data-scroll aria-label="Scroll to collections">
+                <span class="line"></span>
+                <span>Scroll</span>
+              </a>
+            </div>
+          </div>
+          <div class="hidden justify-self-end lg:block lg:max-w-[24rem]">
+            <div class="rounded-[1.2rem] border border-[rgba(255,255,255,.08)] bg-[rgba(8,8,8,.42)] p-5 backdrop-blur-sm">
+              <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Verified store details</p>
+              <p class="mt-4 text-[0.98rem] leading-7 text-[rgba(234,234,234,.76)]">
+                In-store and online shopping. SALMON accredited. QRPH accepted. Call or message the boutique for the latest hours.
+              </p>
+              <div class="mt-5 space-y-2 mono text-[0.82rem] leading-6 text-[rgba(234,234,234,.72)]">
+                <p>Phone: 0995-345-9334</p>
+                <p>Email: primerclothingboutique@gmail.com</p>
+                <!-- Fallback: public search snippets did not expose a day-by-day schedule, so the site uses contact-first hours copy instead of inventing one. -->
+                <!-- Fallback: no public storefront pin surfaced, so the coordinate shown here uses the verified New Buncag Road area in Mandaragat, Puerto Princesa. -->
+                <p>Coords: 9.747694, 118.739982</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections" class="section">
+      <div class="container-shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Collections</p>
+          <h2 class="section-title">Wearable edits for the boutique floor</h2>
+          <p class="section-copy">A lean mix of on-brand categories that fit Primer Clothing's clothing-and-lifestyle position. Each tile is a browsing cue, not a made-up stock claim.</p>
+        </div>
+        <div id="collectionsGrid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <section id="lookbook" class="section">
+      <div class="container-shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Lookbook</p>
+          <h2 class="section-title">Editorial layers and flat-lay energy</h2>
+          <p class="section-copy">Six SVG scenes hold the mood: amber accents, dark surfaces, and a clean retail rhythm inspired by the store's tone.</p>
+        </div>
+        <div id="lookbookGrid" class="lookbook-grid"></div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container-shell">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div class="fade-up">
+            <p class="eyebrow mono">About</p>
+            <h2 class="section-title max-w-lg">A Puerto Princesa boutique with a direct retail voice</h2>
+          </div>
+          <div class="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="fade-up space-y-5 text-[1rem] leading-8 text-[rgba(234,234,234,.77)]">
+              <p>Primer Clothing's public page identifies it as an in-store and online shopping store in Brgy. Mandaragat, New Buncag Highway, Puerto Princesa, Palawan.</p>
+              <p>The same page also notes SALMON accreditation and QRPH acceptance, with customers reaching out by phone, message, or email for the live schedule.</p>
+            </div>
+            <div class="fade-up flex justify-start lg:justify-end">
+              <img src="assets/img/brand-mark.svg" alt="Primer Clothing brand mark" class="w-full max-w-[18rem] opacity-90">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="section">
+      <div class="container-shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Store Location</p>
+          <h2 class="section-title">Brgy. Mandaragat, New Buncag Highway</h2>
+          <p class="section-copy">The public address reads as a 2/F boutique near Padul Store before Antanzo Bldg. (Egg Center). The map pin below uses the verified New Buncag Road area coordinate for Puerto Princesa, not Manila.</p>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+          <div class="rounded-[1.2rem] border border-[rgba(255,255,255,.08)] bg-[rgba(255,255,255,.02)] p-5 shadow-[var(--shadow)] fade-up">
+            <div class="grid gap-5">
+              <div>
+                <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Address</p>
+                <p class="mt-2 max-w-xl text-[1rem] leading-8 text-[rgba(234,234,234,.84)]">2/F, Brgy. Mandaragat, New Buncag Highway, Near Padul Store before Antanzo Bldg. (Egg Center), Puerto Princesa, Palawan, Philippines</p>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Hours</p>
+                <!-- Fallback: the verified public sources did not publish a precise daily schedule. -->
+                  <p class="mt-2 text-[0.98rem] leading-7 text-[rgba(234,234,234,.76)]">Call or message for the latest schedule.</p>
+                </div>
+                <div>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Phone</p>
+                  <a href="tel:+639953459334" class="mt-2 block text-[0.98rem] leading-7 text-[rgba(234,234,234,.84)] hover:text-[var(--accent)]">0995-345-9334</a>
+                </div>
+                <div>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Email</p>
+                  <a href="mailto:primerclothingboutique@gmail.com" class="mt-2 block text-[0.98rem] leading-7 text-[rgba(234,234,234,.84)] hover:text-[var(--accent)]">primerclothingboutique@gmail.com</a>
+                </div>
+                <div>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Coordinates</p>
+                  <!-- Fallback: the exact storefront pin was not publicly surfaced, so this uses the verified New Buncag Road area coordinate for Puerto Princesa. -->
+                  <p class="mt-2 mono text-[0.92rem] leading-7 text-[rgba(234,234,234,.84)]">9.747694, 118.739982</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3 pt-1">
+                <a class="btn btn-accent ripple-btn" href="https://www.openstreetmap.org/?mlat=9.747694&mlon=118.739982#map=18/9.747694/118.739982" target="_blank" rel="noopener noreferrer">Open Map</a>
+                <a class="btn btn-ghost ripple-btn" href="https://www.facebook.com/PrimerClothing.Co/" target="_blank" rel="noopener noreferrer">Facebook Page</a>
+              </div>
+            </div>
+          </div>
+          <div class="map-panel fade-up min-h-[22rem] lg:min-h-full">
+            <img src="assets/img/map-scene.svg" alt="Stylized map for Primer Clothing in New Buncag Road, Puerto Princesa" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="section pt-0">
+      <div class="container-shell">
+        <div class="line-box pt-8"></div>
+        <div class="grid gap-10 py-10 lg:grid-cols-[1.25fr_0.75fr_0.9fr]">
+          <div class="space-y-4">
+            <p class="display text-[3rem] leading-none text-[var(--text)]">Primer Clothing</p>
+            <p class="max-w-md text-[1rem] leading-7 text-[rgba(234,234,234,.74)]">Clothing and lifestyle retail in Puerto Princesa, Palawan, designed for direct browsing, quick contact, and dark editorial presence.</p>
+            <div class="flex items-center gap-4 pt-2 text-[rgba(234,234,234,.84)]">
+              <a class="footer-link" href="https://www.facebook.com/PrimerClothing.Co/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.2V6H14c-2.1 0-3.5 1.4-3.5 3.7v1.6H8.5v2.7h2V18h3v-4.7h2.4l.4-2.7H13.5V10c0-.9.3-1.5 1.5-1.5z"/></svg>
+              </a>
+              <a class="footer-link" href="mailto:primerclothingboutique@gmail.com" aria-label="Email">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16v11H4z"/><path d="m4.5 7 7.5 6 7.5-6"/></svg>
+              </a>
+              <a class="footer-link" href="tel:+639953459334" aria-label="Call">
+                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5c.7 3.7 2.2 6.1 4 8l2.2-2.2c.3-.3.8-.4 1.2-.2l3.1 1.3c.5.2.8.7.8 1.2 0 1.7-1.4 3.1-3.1 3.1-7.5 0-13.6-6.1-13.6-13.6C3.1 1.4 4.5 0 6.2 0c.5 0 1 .3 1.2.8l1.3 3.1c.2.4.1.9-.2 1.2L8.5 5.5z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Quick Links</p>
+            <ul class="mt-4 space-y-3 text-[0.98rem] leading-7">
+              <li><a class="footer-link" href="#collections" data-scroll>Collections</a></li>
+              <li><a class="footer-link" href="#lookbook" data-scroll>Lookbook</a></li>
+              <li><a class="footer-link" href="#visit" data-scroll>Store Location</a></li>
+              <li><a class="footer-link" href="https://www.openstreetmap.org/?mlat=9.747694&mlon=118.739982#map=18/9.747694/118.739982" target="_blank" rel="noopener noreferrer">Map Link</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.22em] text-[rgba(240,165,0,.88)]">Store Snapshot</p>
+            <div class="mt-4 space-y-3 text-[0.98rem] leading-7 text-[rgba(234,234,234,.76)]">
+              <p>Brgy. Mandaragat, New Buncag Highway, Puerto Princesa, Palawan</p>
+              <p>In-store and online shopping</p>
+              <p>SALMON accredited, QRPH accepted</p>
+              <p><a class="footer-link" href="mailto:primerclothingboutique@gmail.com">primerclothingboutique@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="line-box flex flex-wrap items-center justify-between gap-3 py-6 mono text-[0.74rem] uppercase tracking-[0.16em] text-[rgba(234,234,234,.58)]">
+          <p>Copyright 2026 Primer Clothing</p>
+          <p>Puerto Princesa, Palawan</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const store = {
+      name: 'Primer Clothing',
+      city: 'Puerto Princesa, Palawan',
+      address: '2/F, Brgy. Mandaragat, New Buncag Highway, Near Padul Store before Antanzo Bldg. (Egg Center), Puerto Princesa, Philippines',
+      phone: '0995-345-9334',
+      tel: '+639953459334',
+      email: 'primerclothingboutique@gmail.com',
+      facebook: 'https://www.facebook.com/PrimerClothing.Co/',
+      map: 'https://www.openstreetmap.org/?mlat=9.747694&mlon=118.739982#map=18/9.747694/118.739982',
+      website: 'https://primerclothingboutique.odoo.com/',
+      coords: { lat: 9.747694, lng: 118.739982 },
+      notes: 'Verified public sources exposed the store address, contact lines, in-store and online retail note, and QRPH acceptance. Public search snippets did not expose a day-by-day schedule, so hours are presented as a contact-first fallback.'
+    };
+
+    const collections = [
+      {
+        code: '01',
+        title: 'Streetwear Tops',
+        copy: 'Boxy layers, graphic energy, and easy rotation for humid city days.',
+        tag: 'tops',
+        price: 'In Store',
+        href: '#visit'
+      },
+      {
+        code: '02',
+        title: 'Everyday Basics',
+        copy: 'Clean tees, tanks, and wear-everywhere pieces that anchor a capsule.',
+        tag: 'basics',
+        price: 'In Store',
+        href: '#visit'
+      },
+      {
+        code: '03',
+        title: 'Denim and Bottoms',
+        copy: 'Relaxed fits and lower-half staples for travel, work, and weekends.',
+        tag: 'bottoms',
+        price: 'In Store',
+        href: '#visit'
+      },
+      {
+        code: '04',
+        title: 'Accessories',
+        copy: 'Belts, caps, jewelry, and small finishing pieces that sharpen the look.',
+        tag: 'accessories',
+        price: 'From PHP 199',
+        href: '#visit'
+      },
+      {
+        code: '05',
+        title: 'Footwear',
+        copy: 'Grounding pieces for a full retail fit, from casual to clean-cut.',
+        tag: 'footwear',
+        price: 'Ask In Store',
+        href: '#visit'
+      },
+      {
+        code: '06',
+        title: 'Bags and Carryalls',
+        copy: 'Crossbodies, totes, and daily carry pieces that move with the day.',
+        tag: 'bags',
+        price: 'In Store',
+        href: '#visit'
+      }
+    ];
+
+    const lookbook = [
+      { label: 'Street layer', file: 'assets/img/lookbook-1.svg', span: 'lg:col-span-7 lg:row-span-2' },
+      { label: 'Clean set', file: 'assets/img/lookbook-2.svg', span: 'lg:col-span-5' },
+      { label: 'Utility edit', file: 'assets/img/lookbook-3.svg', span: 'lg:col-span-4' },
+      { label: 'Carry line', file: 'assets/img/lookbook-4.svg', span: 'lg:col-span-4' },
+      { label: 'Neutral fit', file: 'assets/img/lookbook-5.svg', span: 'lg:col-span-4' },
+      { label: 'Evening layer', file: 'assets/img/lookbook-6.svg', span: 'lg:col-span-12' }
+    ];
+
+    const collectionsGrid = document.getElementById('collectionsGrid');
+    const lookbookGrid = document.getElementById('lookbookGrid');
+
+    collectionsGrid.innerHTML = collections.map(item => `
+      <a class="collection-card fade-up ripple-btn" href="${item.href}" data-scroll>
+        <div class="flex items-start justify-between gap-3">
+          <span class="mono text-[0.78rem] uppercase tracking-[0.18em] text-[rgba(234,234,234,.58)]">SKU ${item.code}</span>
+          <span class="pill">${item.tag}</span>
+        </div>
+        <div class="grid gap-3">
+          <h3 class="display text-[clamp(2.5rem,5vw,3.4rem)] text-[var(--text)]">${item.title}</h3>
+          <p class="max-w-sm text-[0.98rem] leading-7 text-[rgba(234,234,234,.74)]">${item.copy}</p>
+        </div>
+        <div class="mt-auto flex items-center justify-between gap-3 pt-2">
+          <span class="price-tag">${item.price}</span>
+          <span class="mono text-[0.7rem] uppercase tracking-[0.16em] text-[rgba(234,234,234,.48)]">Tap to visit</span>
+        </div>
+      </a>
+    `).join('');
+
+    lookbookGrid.innerHTML = lookbook.map((item, index) => `
+      <figure class="lookbook-tile fade-up ${item.span}">
+        <img src="${item.file}" alt="${item.label} lookbook tile ${index + 1} for Primer Clothing" loading="lazy">
+        <div class="lookbook-mask"></div>
+        <figcaption class="lookbook-caption">
+          <span class="mono text-[0.7rem] uppercase tracking-[0.18em] text-[rgba(240,165,0,.92)]">Lookbook ${String(index + 1).padStart(2, '0')}</span>
+          <span class="display text-[clamp(2rem,3vw,2.8rem)] text-[var(--text)]">${item.label}</span>
+        </figcaption>
+      </figure>
+    `).join('');
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('[data-scroll]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = link.getAttribute('href');
+        if (!target || !target.startsWith('#')) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -84, duration: 1.1 });
+      });
+    });
+
+    function addRipple(button, event) {
+      const rect = button.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = `${event.clientX - rect.left}px`;
+      ripple.style.top = `${event.clientY - rect.top}px`;
+      button.appendChild(ripple);
+      requestAnimationFrame(() => ripple.classList.add('is-on'));
+      setTimeout(() => ripple.remove(), 700);
+    }
+
+    document.querySelectorAll('.ripple-btn').forEach((button) => {
+      button.addEventListener('pointerdown', (event) => addRipple(button, event));
+    });
+
+    gsap.from('.hero-kicker', { y: 18, opacity: 0, duration: 0.8, ease: 'power3.out' });
+    gsap.from('.hero-title span', { yPercent: 110, opacity: 0, stagger: 0.08, duration: 1.05, ease: 'power4.out', delay: 0.08 });
+    gsap.from('.hero-copy, .hero-ctas, .hero-meta, .hero .lg\:block', { y: 24, opacity: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out', delay: 0.18 });
+    gsap.from('.hero-media', { scale: 1.11, opacity: 0, duration: 1.3, ease: 'power2.out' });
+
+    gsap.to('.hero-media', {
+      yPercent: 6,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.utils.toArray('.fade-up').forEach((el) => {
+      gsap.from(el, {
+        y: 32,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 82%'
+        }
+      });
+    });
+
+    gsap.from('#about .section-title', {
+      x: -40,
+      opacity: 0,
+      duration: 0.95,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 78%'
+      }
+    });
+
+    gsap.from('#about img', {
+      x: 36,
+      opacity: 0,
+      duration: 1.05,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#about',
+        start: 'top 75%'
+      }
+    });
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+
+    const year = new Date().getFullYear();
+    document.querySelectorAll('[data-year]').forEach((node) => node.textContent = year);
+
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'ClothingStore',
+      name: store.name,
+      url: 'https://frans15-2006.github.io/TheFrans/primer-clothing/',
+      image: 'https://frans15-2006.github.io/TheFrans/primer-clothing/assets/img/hero-scene.svg',
+      telephone: store.phone,
+      email: store.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: store.address,
+        addressLocality: 'Puerto Princesa',
+        addressRegion: 'Palawan',
+        addressCountry: 'PH'
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: store.coords.lat,
+        longitude: store.coords.lng
+      },
+      sameAs: [store.facebook, store.website],
+      description: 'Primer Clothing is a clothing and lifestyle boutique in Puerto Princesa, Palawan, with in-store and online shopping and QRPH accepted.'
+    };
+
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(schema);
+    document.head.appendChild(ld);
+  </script>
 </body>
 </html>

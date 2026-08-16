@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Lookbook tile four">
+  <rect width="1200" height="900" fill="#090909"/>
+  <circle cx="902" cy="250" r="180" fill="#f0a500" fill-opacity="0.08"/>
+  <path d="M170 180h330v210H170z" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <path d="M250 248c0-22 16-38 38-38h46c22 0 38 16 38 38v42H250z" fill="none" stroke="#eaeaea" stroke-width="3" opacity="0.72"/>
+  <path d="M590 168h182v300H590z" fill="#0f0f0f" stroke="#eaeaea" stroke-width="3" opacity="0.9"/>
+  <path d="M680 180v300" stroke="#f0a500" stroke-width="2" opacity="0.35"/>
+  <path d="M846 194h156v280H846z" fill="#101010" stroke="#f0a500" stroke-width="3"/>
+  <path d="M900 248h58" stroke="#eaeaea" stroke-width="4" opacity="0.28"/>
+  <path d="M924 294v120" stroke="#eaeaea" stroke-width="4" opacity="0.28"/>
+  <rect x="214" y="540" width="220" height="170" rx="18" fill="#0f0f0f" stroke="#f0a500" stroke-width="3"/>
+  <rect x="488" y="530" width="228" height="180" rx="18" fill="#111111" stroke="#eaeaea" stroke-width="3" opacity="0.9"/>
+  <path d="M532 610h140" stroke="#f0a500" stroke-width="3" opacity="0.45"/>
+  <text x="80" y="820" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30">Carry line</text>
+  <text x="80" y="860" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18">Bags, caps, and finishing pieces</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Lookbook tile three">
+  <rect width="1200" height="900" fill="#0a0a0a"/>
+  <path d="M106 630h990" stroke="#f0a500" stroke-width="4" opacity="0.4"/>
+  <path d="M210 216h176v300H210z" fill="#101010" stroke="#f0a500" stroke-width="3"/>
+  <path d="M338 216v300" stroke="#f0a500" stroke-width="2" opacity="0.35"/>
+  <path d="M382 250h150v150H382z" fill="#0f0f0f" stroke="#eaeaea" stroke-width="3" opacity="0.9"/>
+  <path d="M690 210h286v160H690z" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <path d="M714 242h238" stroke="#eaeaea" stroke-width="3" opacity="0.22"/>
+  <path d="M714 286h180" stroke="#eaeaea" stroke-width="3" opacity="0.22"/>
+  <path d="M734 392h132v130H734z" fill="#0f0f0f" stroke="#eaeaea" stroke-width="3" opacity="0.88"/>
+  <rect x="898" y="390" width="104" height="212" rx="16" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <text x="80" y="820" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30">Utility edit</text>
+  <text x="80" y="860" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18">Pockets, layers, and movement</text>
+</svg>

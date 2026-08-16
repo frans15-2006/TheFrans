@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Lookbook tile one">
+  <rect width="1200" height="900" fill="#0b0b0b"/>
+  <circle cx="260" cy="210" r="180" fill="#f0a500" fill-opacity="0.10"/>
+  <path d="M170 230h300" stroke="#f0a500" stroke-width="4" opacity="0.7"/>
+  <path d="M220 240c0 42-28 58-66 86-15 11-20 22-20 38v16h88v-18c0-14 6-26 18-35 30-22 52-36 52-78v-19h2" fill="#111111" stroke="#eaeaea" stroke-width="3" opacity="0.96"/>
+  <path d="M472 198h206v348H472z" fill="#101010" stroke="#f0a500" stroke-width="3"/>
+  <path d="M574 198v348" stroke="#f0a500" stroke-width="2" opacity="0.4"/>
+  <path d="M504 255h140" stroke="#eaeaea" stroke-width="2" opacity="0.35"/>
+  <path d="M506 305h136" stroke="#eaeaea" stroke-width="2" opacity="0.22"/>
+  <path d="M506 355h136" stroke="#eaeaea" stroke-width="2" opacity="0.22"/>
+  <path d="M700 260l180-46 84 152-132 66-132-78z" fill="#0f0f0f" stroke="#f0a500" stroke-width="3"/>
+  <rect x="850" y="470" width="110" height="30" rx="15" fill="#f0a500" fill-opacity="0.12" stroke="#f0a500" stroke-opacity="0.4"/>
+  <rect x="892" y="510" width="118" height="18" rx="9" fill="#eaeaea" fill-opacity="0.16"/>
+  <text x="80" y="820" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30">Street layer</text>
+  <text x="80" y="860" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18">Amber trims, dark basics, clean lines</text>
+</svg>

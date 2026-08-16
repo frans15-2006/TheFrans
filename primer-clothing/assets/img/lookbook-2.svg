@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Lookbook tile two">
+  <rect width="1200" height="900" fill="#0d0d0d"/>
+  <path d="M120 190h410v520H120z" fill="#111111" stroke="#f0a500" stroke-width="3"/>
+  <path d="M220 260h110" stroke="#eaeaea" stroke-width="4" opacity="0.28"/>
+  <path d="M220 320h160" stroke="#eaeaea" stroke-width="4" opacity="0.18"/>
+  <path d="M220 380h140" stroke="#eaeaea" stroke-width="4" opacity="0.18"/>
+  <path d="M590 180h400v300H590z" fill="#0f0f0f" stroke="#eaeaea" stroke-width="3" opacity="0.9"/>
+  <path d="M720 230c0-26 20-46 46-46h70c26 0 46 20 46 46v52H720z" fill="#f0a500" fill-opacity="0.08" stroke="#f0a500" stroke-width="3"/>
+  <path d="M650 550h420" stroke="#f0a500" stroke-width="3" opacity="0.55"/>
+  <circle cx="830" cy="690" r="94" fill="#f0a500" fill-opacity="0.08"/>
+  <path d="M790 660h80" stroke="#eaeaea" stroke-width="3" opacity="0.34"/>
+  <path d="M812 622h36v86h-36z" fill="#111111" stroke="#f0a500" stroke-width="2"/>
+  <text x="80" y="820" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="30">Clean set</text>
+  <text x="80" y="860" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="18">Easy, minimal, and ready to wear</text>
+</svg>
