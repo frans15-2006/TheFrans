@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Cafe window illustration with warm interior glow">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151515"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="inside" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <rect x="160" y="160" width="880" height="880" rx="44" fill="#0c0c0c" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="6"/>
+  <rect x="210" y="210" width="780" height="780" rx="24" fill="#101010"/>
+  <rect x="210" y="210" width="780" height="780" rx="24" fill="url(#inside)"/>
+  <path d="M210 520 H990" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6"/>
+  <path d="M600 210 V990" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="6"/>
+
+  <g opacity="0.95">
+    <circle cx="420" cy="410" r="56" fill="#f0a500" fill-opacity="0.7"/>
+    <circle cx="420" cy="410" r="124" fill="#f0a500" fill-opacity="0.16"/>
+    <rect x="304" y="686" width="230" height="32" rx="16" fill="#d7c7b4" fill-opacity="0.78"/>
+    <rect x="304" y="734" width="200" height="26" rx="13" fill="#d7c7b4" fill-opacity="0.52"/>
+    <rect x="684" y="660" width="188" height="250" rx="18" fill="#1a1a1a" stroke="#f0a500" stroke-opacity="0.2" stroke-width="3"/>
+    <rect x="720" y="702" width="116" height="28" rx="14" fill="#f0a500" fill-opacity="0.7"/>
+    <rect x="720" y="748" width="116" height="28" rx="14" fill="#eaeaea" fill-opacity="0.28"/>
+    <rect x="720" y="794" width="116" height="28" rx="14" fill="#f0a500" fill-opacity="0.42"/>
+  </g>
+  <path d="M250 914 C338 856 430 830 506 830 C588 830 682 854 748 900" fill="none" stroke="#080808" stroke-width="24" stroke-linecap="round" opacity="0.55"/>
+  <path d="M846 920 C854 854 860 774 856 698" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round" opacity="0.62"/>
+</svg>

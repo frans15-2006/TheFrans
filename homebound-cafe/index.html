@@ -1,60 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homebound Cafe and Music Lounge</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homebound Cafe | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Homebound Cafe on Rizal Avenue in Barangay Tanglaw, Puerto Princesa, Palawan. Open daily from 7:00 AM to 2:00 AM with breakfast, lunch, dinner, and cafe, American, and Asian service.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Homebound Cafe | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A warm cafe and music lounge on Rizal Avenue in Barangay Tanglaw, Puerto Princesa, Palawan. Open daily 7:00 AM to 2:00 AM.">
+  <meta property="og:image" content="assets/img/hero-scene.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/homebound-cafe/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Homebound Cafe | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Homebound Cafe on Rizal Avenue in Barangay Tanglaw, Puerto Princesa, Palawan. Open daily 7:00 AM to 2:00 AM.">
+  <meta name="twitter:image" content="assets/img/hero-scene.svg">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/homebound-cafe/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23080808'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23f0a500'/%3E%3Crect x='20' y='41' width='24' height='5' rx='2.5' fill='%23eaeaea' fill-opacity='.72'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #0d0d0d;
+      --panel-soft: #111111;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.24);
+      --amber: #f0a500;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(240, 165, 0, 0.10), transparent 26%),
+        radial-gradient(circle at 86% 16%, rgba(240, 165, 0, 0.10), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(240, 165, 0, 0.05), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      color-scheme: dark;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--amber);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      z-index: 1000;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      transform: translateY(-180%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.06);
+      filter: saturate(0.96) contrast(1.03);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.16) 0%, rgba(8, 8, 8, 0.30) 36%, rgba(8, 8, 8, 0.78) 82%, rgba(8, 8, 8, 0.96) 100%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.82) 0%, rgba(8, 8, 8, 0.40) 52%, rgba(8, 8, 8, 0.08) 100%);
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(20px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-orb.one {
+      width: 26rem;
+      height: 26rem;
+      left: -7rem;
+      top: 14%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.24), rgba(240, 165, 0, 0.04) 60%, transparent 72%);
+    }
+
+    .hero-orb.two {
+      width: 18rem;
+      height: 18rem;
+      right: 4rem;
+      top: 18%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.18), rgba(240, 165, 0, 0.03) 62%, transparent 72%);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 2;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.25rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+
+    .brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      line-height: 0.88;
+      font-weight: 400;
+    }
+
+    .brand span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.64rem;
+      color: rgba(234, 234, 234, 0.68);
+      letter-spacing: 0.2em;
+    }
+
+    .utility-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--line);
+      background: rgba(8, 8, 8, 0.38);
+      backdrop-filter: blur(10px);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, transform 180ms ease, color 180ms ease;
+    }
+
+    .utility-link:hover {
+      border-color: var(--amber);
+      transform: translateY(-1px);
+    }
+
+    .hero-copy {
+      width: min(36rem, 100%);
+      padding-top: 2rem;
+      padding-bottom: clamp(0.4rem, 2vw, 1rem);
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .detail-label,
+    .gallery-caption,
+    .source-note {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      font-size: 0.74rem;
+      color: var(--amber);
+      margin: 0 0 0.9rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .hero-copy h1,
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.9;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(4.3rem, 14vw, 8.4rem);
+      max-width: 4.5ch;
+    }
+
+    .hero-copy > p:not(.eyebrow) {
+      max-width: 33rem;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2.2vw, 1.22rem);
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid var(--line);
+      background: rgba(8, 8, 8, 0.42);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      color: var(--text);
+      border-color: var(--amber);
+    }
+
+    .btn.primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: var(--amber);
+    }
+
+    .btn.primary:hover {
+      background: #ffb21d;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      padding: clamp(4.5rem, 8vw, 7rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+      font-size: 0.72rem;
+      color: var(--amber);
+      margin: 0;
+    }
+
+    .section h2 {
+      font-size: clamp(2.9rem, 8vw, 5.6rem);
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 56ch;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .menu-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .menu-row {
+      display: grid;
+      gap: 0.35rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-row strong,
+    .detail-value {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .menu-row span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .menu-row p,
+    .story-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 52ch;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-figure {
+      margin: 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .gallery-figure img,
+    .map-frame {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      transition: transform 300ms ease, border-color 300ms ease;
+    }
+
+    .gallery-figure:hover img {
+      transform: scale(1.02);
+      border-color: rgba(240, 165, 0, 0.35);
+    }
+
+    .gallery-caption {
+      font-size: 0.68rem;
+      color: rgba(234, 234, 234, 0.66);
+    }
+
+    .detail-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .detail-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .detail-label {
+      font-size: 0.68rem;
+      color: var(--amber);
+    }
+
+    .detail-value {
+      color: var(--text);
+      max-width: 48ch;
+      overflow-wrap: anywhere;
+    }
+
+    .map-frame {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .footer {
+      padding: 2rem 0 2.25rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.4rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.4rem;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .footer-brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.08em;
+      font-weight: 400;
+      line-height: 0.9;
+    }
+
+    .footer-brand span,
+    .footer-links a,
+    .footer-meta {
+      color: rgba(234, 234, 234, 0.74);
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .footer-links a {
+      width: fit-content;
+    }
+
+    .source-note {
+      margin-top: 1.25rem;
+      font-size: 0.64rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: none;
+      letter-spacing: 0.06em;
+      color: rgba(234, 234, 234, 0.5);
+      line-height: 1.8;
+    }
+
+    @media (min-width: 760px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: start;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .gallery-figure:nth-child(1) {
+        grid-column: span 7;
+      }
+
+      .gallery-figure:nth-child(2) {
+        grid-column: span 5;
+      }
+
+      .gallery-figure:nth-child(3) {
+        grid-column: 1 / -1;
+      }
+
+      .gallery-figure:nth-child(1) img,
+      .gallery-figure:nth-child(2) img {
+        aspect-ratio: 4 / 4.2;
+      }
+
+      .gallery-figure:nth-child(3) img {
+        aspect-ratio: 16 / 7.2;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero-copy {
+        padding-top: 3rem;
+      }
+
+      .section-head {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: end;
+      }
+
+      .menu-list {
+        margin-left: auto;
+        width: min(60rem, 100%);
+      }
+
+      .detail-wrap {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: start;
+      }
+
+      .contact-row {
+        gap: 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Homebound Cafe and Music Lounge</h1>
-    <span class="category">Cafe & Karaoke</span>
-    <p class="address">Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 961 513 3441</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <img class="hero-image" src="assets/img/hero-scene.svg" alt="Warm illustrated cafe scene with amber light and tropical silhouettes" />
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-orb one" aria-hidden="true"></div>
+    <div class="hero-orb two" aria-hidden="true"></div>
+
+    <div class="wrap hero-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Homebound Cafe home">
+          <strong>Homebound Cafe</strong>
+          <span>Puerto Princesa, Palawan</span>
+        </a>
+        <a class="utility-link" href="https://www.google.com/maps/search/?api=1&query=9.739916,118.743004" target="_blank" rel="noopener noreferrer">
+          Directions
+        </a>
+      </header>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Rizal Avenue | Barangay Tanglaw</p>
+        <h1 id="hero-title">Homebound Cafe</h1>
+        <p>Coffee, breakfast, and late nights on Rizal Avenue in Barangay Tanglaw.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="tel:+639615133441">Call +63 961 513 3441</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=9.739916,118.743004" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="content">
+    <section class="section" id="menu">
+      <div class="wrap two-col">
+        <div class="section-head" data-reveal>
+          <p class="section-kicker">Menu highlights</p>
+          <h2>Simple service from the first coffee to the last closing hour.</h2>
+        </div>
+        <p class="section-copy" data-reveal>
+          Public listings point to breakfast, lunch, and dinner service, with American, cafe, and Asian options on the table.
+        </p>
+      </div>
+      <div class="wrap">
+        <div class="menu-list" data-reveal>
+          <article class="menu-row">
+            <span>Breakfast</span>
+            <strong>Morning coffee and an easy start.</strong>
+            <p>Homebound Cafe is listed for breakfast, so it works as an early stop before the rest of Rizal Avenue wakes up.</p>
+          </article>
+          <article class="menu-row">
+            <span>Lunch and dinner</span>
+            <strong>Midday meals that stay relevant after sunset.</strong>
+            <p>Public listings include lunch and dinner, which gives the space a steady daytime-to-evening rhythm.</p>
+          </article>
+          <article class="menu-row">
+            <span>American | cafe | Asian</span>
+            <strong>A broad mix without losing its cafe identity.</strong>
+            <p>The public category range keeps the menu flexible for regulars who want something familiar and something different.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="wrap two-col">
+        <div class="section-head" data-reveal>
+          <p class="section-kicker">Story</p>
+          <h2>Built into the rhythm of Rizal Avenue.</h2>
+        </div>
+        <div class="story-copy" data-reveal>
+          <p>Homebound Cafe sits in Barangay Tanglaw, Puerto Princesa, on Rizal Avenue, a straightforward city address that makes it easy to stop by for coffee or stay longer when the evening gets going.</p>
+          <p>The public page describes it as a cafe and music lounge, with karaoke listed too, so the tone feels casual, social, and open late rather than formal or rushed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="section-kicker">Gallery</p>
+          <h2>A warm room, a darker hour.</h2>
+          <p class="section-copy">Illustrated scenes echo the cafe's mood: coffee light, window glow, and a lounge energy that fits the late close.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-latte.svg" alt="Illustrated latte cup with warm amber glow" loading="lazy">
+            <figcaption class="gallery-caption">Morning pour</figcaption>
+          </figure>
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-window.svg" alt="Illustrated cafe window with warm interior light" loading="lazy">
+            <figcaption class="gallery-caption">Window seat</figcaption>
+          </figure>
+          <figure class="gallery-figure" data-reveal>
+            <img src="assets/img/gallery-night.svg" alt="Illustrated late-night lounge scene with amber lights" loading="lazy">
+            <figcaption class="gallery-caption">After dark</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="wrap detail-wrap">
+        <div data-reveal>
+          <div class="section-head">
+            <p class="section-kicker">Hours & location</p>
+            <h2>Rizal Avenue, Barangay Tanglaw, Puerto Princesa.</h2>
+          </div>
+          <p class="section-copy">Verified map coordinates place Homebound Cafe at 9.739916 N, 118.743004 E, which matches Puerto Princesa and not Manila.</p>
+          <div class="detail-list">
+            <div class="detail-item">
+              <span class="detail-label">Hours</span>
+              <strong class="detail-value">Daily 7:00 AM - 2:00 AM</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Address</span>
+              <strong class="detail-value">Rizal Avenue, Barangay Tanglaw, Puerto Princesa, Palawan 5300, Philippines</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Landmark</span>
+              <strong class="detail-value">In front of Drugman Rizal</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Coordinates</span>
+              <strong class="detail-value">9.739916 N, 118.743004 E</strong>
+            </div>
+          </div>
+          <div class="contact-row">
+            <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=9.739916,118.743004" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            <a class="btn" href="tel:+639615133441">Call the cafe</a>
+          </div>
+        </div>
+        <a class="map-frame" href="https://www.google.com/maps/search/?api=1&query=9.739916,118.743004" target="_blank" rel="noopener noreferrer" data-reveal aria-label="Open Homebound Cafe location in Google Maps">
+          <img src="assets/img/location-map.svg" alt="Stylized map marker showing Homebound Cafe in Puerto Princesa" loading="lazy">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-grid">
+      <div class="footer-brand" data-reveal>
+        <strong>Homebound Cafe</strong>
+        <span>Homebound Cafe and Music Lounge</span>
+        <p class="footer-meta">Rizal Avenue, Barangay Tanglaw, Puerto Princesa, Palawan, Philippines.</p>
+      </div>
+      <div class="footer-links" data-reveal>
+        <a href="tel:+639615133441">+63 961 513 3441</a>
+        <a href="mailto:homeboundcafeandmusiclounge@gmail.com">homeboundcafeandmusiclounge@gmail.com</a>
+        <a href="https://www.facebook.com/homeboundcafeandmusiclounge" target="_blank" rel="noopener noreferrer">Facebook page</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="source-note">Public details verified from listing sources that placed Homebound Cafe on Rizal Avenue in Barangay Tanglaw, Puerto Princesa, with coordinates at 9.739916 N, 118.743004 E.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis/dist/lenis.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!reduceMotion && window.gsap) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = window.Lenis ? new Lenis({
+          lerp: 0.08,
+          smoothWheel: true,
+          smoothTouch: false,
+          anchors: true
+        }) : null;
+
+        if (lenis) {
+          lenis.on('scroll', ScrollTrigger.update);
+
+          const raf = (time) => {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          };
+
+          requestAnimationFrame(raf);
+          gsap.ticker.lagSmoothing(0);
+        }
+
+        gsap.from('.site-header', {
+          opacity: 0,
+          y: -18,
+          duration: 0.9,
+          ease: 'power2.out'
+        });
+
+        gsap.from('.hero-copy > *', {
+          opacity: 0,
+          y: 24,
+          duration: 1,
+          ease: 'power3.out',
+          stagger: 0.12,
+          delay: 0.15
+        });
+
+        gsap.from('.hero-image', {
+          scale: 1.09,
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.out'
+        });
+
+        gsap.to('.hero-image', {
+          yPercent: 4,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.9
+          }
+        });
+
+        gsap.to('.hero-orb.one', {
+          x: 24,
+          y: 18,
+          duration: 6,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+
+        gsap.to('.hero-orb.two', {
+          x: -18,
+          y: 26,
+          duration: 7,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+
+        gsap.utils.toArray('[data-reveal]').forEach((element) => {
+          gsap.fromTo(element, {
+            opacity: 0,
+            y: 30
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: element,
+              start: 'top 82%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.gallery-figure img').forEach((img) => {
+          gsap.fromTo(img, {
+            scale: 1.06
+          }, {
+            scale: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: img.parentElement,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.6
+            }
+          });
+        });
+
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+      }
+    });
+  </script>
 </body>
 </html>

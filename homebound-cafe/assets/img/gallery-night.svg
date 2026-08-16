@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Late-night lounge illustration with amber lights">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.42" r="0.8">
+      <stop offset="0" stop-color="#2d1d0f"/>
+      <stop offset="0.5" stop-color="#121212"/>
+      <stop offset="1" stop-color="#080808"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="310" cy="290" r="170" fill="#f0a500" fill-opacity="0.18"/>
+  <circle cx="876" cy="304" r="120" fill="#f0a500" fill-opacity="0.12"/>
+  <ellipse cx="610" cy="930" rx="420" ry="80" fill="#000" fill-opacity="0.48"/>
+
+  <path d="M250 420 h700 l-44 320 h-612 z" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="5"/>
+  <rect x="320" y="484" width="560" height="92" rx="26" fill="#151515"/>
+  <path d="M344 528 h512" stroke="#f0a500" stroke-width="10" stroke-linecap="round" stroke-opacity="0.5"/>
+  <path d="M404 450 c-30 48 -28 104 6 152" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.8"/>
+  <path d="M506 452 c-28 42 -26 92 6 136" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+  <path d="M610 450 c-26 42 -24 88 8 136" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+
+  <rect x="370" y="658" width="112" height="126" rx="12" fill="#1f1f1f" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <rect x="520" y="628" width="160" height="170" rx="20" fill="#1d1d1d" stroke="#eaeaea" stroke-opacity="0.1"/>
+  <rect x="706" y="672" width="102" height="124" rx="12" fill="#1f1f1f" stroke="#eaeaea" stroke-opacity="0.1"/>
+
+  <circle cx="520" cy="690" r="18" fill="#f0a500" fill-opacity="0.88"/>
+  <circle cx="640" cy="690" r="18" fill="#f0a500" fill-opacity="0.65"/>
+  <circle cx="760" cy="690" r="18" fill="#f0a500" fill-opacity="0.48"/>
+  <path d="M460 780 h278" stroke="#f0a500" stroke-width="8" stroke-linecap="round" stroke-opacity="0.4"/>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Stylized map marker for Homebound Cafe in Puerto Princesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g opacity="0.18" stroke="#eaeaea" stroke-width="2">
+    <path d="M90 150 H1110"/>
+    <path d="M90 270 H1110"/>
+    <path d="M90 390 H1110"/>
+    <path d="M90 510 H1110"/>
+    <path d="M90 630 H1110"/>
+    <path d="M90 750 H1110"/>
+    <path d="M220 80 V820"/>
+    <path d="M410 80 V820"/>
+    <path d="M600 80 V820"/>
+    <path d="M790 80 V820"/>
+    <path d="M980 80 V820"/>
+  </g>
+  <path d="M170 690 C300 620 390 610 500 650 C610 690 710 706 812 668 C900 638 980 604 1040 560" fill="none" stroke="#f0a500" stroke-width="8" stroke-linecap="round" stroke-opacity="0.6"/>
+  <path d="M210 520 C290 452 392 430 500 444 C600 458 704 506 784 490 C880 472 936 402 1010 350" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" stroke-opacity="0.24"/>
+  <g transform="translate(630 410)">
+    <path d="M0 -166 C-90 -166 -156 -98 -156 -16 C-156 92 0 258 0 258 C0 258 156 92 156 -16 C156 -98 90 -166 0 -166 Z" fill="#f0a500" fill-opacity="0.9"/>
+    <circle cx="0" cy="-18" r="62" fill="#080808"/>
+    <circle cx="0" cy="-18" r="26" fill="#f0a500"/>
+  </g>
+  <g opacity="0.95">
+    <circle cx="438" cy="240" r="18" fill="#f0a500"/>
+    <circle cx="838" cy="288" r="18" fill="#f0a500" fill-opacity="0.7"/>
+    <circle cx="312" cy="638" r="18" fill="#f0a500" fill-opacity="0.55"/>
+  </g>
+  <rect x="132" y="86" width="392" height="56" rx="28" fill="#101010" stroke="#f0a500" stroke-opacity="0.2"/>
+  <rect x="714" y="780" width="354" height="56" rx="28" fill="#101010" stroke="#f0a500" stroke-opacity="0.2"/>
+</svg>
