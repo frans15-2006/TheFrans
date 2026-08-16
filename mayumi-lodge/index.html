@@ -1,60 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mayumi Lodge</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayumi Lodge | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Mayumi Lodge is a Puerto Princesa stay on Villion Road, Rizal Avenue Ext., with free WiFi, free parking, room service, a 24-hour front desk, and room options suited to solo travelers, couples, and families.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mayumi Lodge | Puerto Princesa, Palawan">
+  <meta property="og:description" content="A verified Puerto Princesa lodge on Villion Road with free WiFi, free parking, room service, and 24-hour front desk support.">
+  <meta property="og:image" content="assets/img/hero-lodge.svg">
+  <meta property="og:image:alt" content="Illustrated dusk scene of Mayumi Lodge in Puerto Princesa">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mayumi Lodge | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Verified lodge details, room types, amenities, map, and contact information for Mayumi Lodge in Puerto Princesa.">
+  <meta name="twitter:image" content="assets/img/hero-lodge.svg">
+  <link rel="canonical" href="./">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #101010;
+      --line: rgba(234, 234, 234, 0.14);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--amber); color: #080808; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(4rem, 7vw, 7rem) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+    }
+
+    .section-copy {
+      margin: 1rem 0 0;
+      max-width: 46rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+      line-height: 1.7;
+    }
+
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(8,8,8,.8), rgba(8,8,8,.15));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 24px rgba(240, 165, 0, 0.6);
+    }
+
+    .brand strong {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a,
+    .ghost-link {
+      position: relative;
+      color: rgba(234, 234, 234, 0.84);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav a::after,
+    .ghost-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.18rem;
+      width: 100%;
+      height: 1px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover::after,
+    .ghost-link:hover::after,
+    .nav a:focus-visible::after,
+    .ghost-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      padding-top: 5.5rem;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(240,165,0,.15), transparent 28%),
+        linear-gradient(180deg, rgba(8,8,8,.15), rgba(8,8,8,.72) 68%, rgba(8,8,8,1));
+    }
+
+    .hero-media,
+    .hero-overlay,
+    .hero-ambient {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.02) contrast(1.03);
+      opacity: 0.96;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(8,8,8,.86) 0%, rgba(8,8,8,.42) 42%, rgba(8,8,8,.15) 100%),
+        linear-gradient(0deg, rgba(8,8,8,.92) 0%, rgba(8,8,8,0) 48%);
+    }
+
+    .hero-ambient .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+    }
+
+    .hero-ambient .orb-one {
+      width: 22rem;
+      height: 22rem;
+      right: -6rem;
+      top: 8rem;
+      background: radial-gradient(circle, rgba(240,165,0,.16), rgba(240,165,0,0) 68%);
+    }
+
+    .hero-ambient .orb-two {
+      width: 15rem;
+      height: 15rem;
+      left: 6%;
+      bottom: 12%;
+      background: radial-gradient(circle, rgba(234,234,234,.08), rgba(234,234,234,0) 72%);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 2;
+      padding: clamp(3rem, 8vw, 6rem) 0 2.75rem;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(4.5rem, 13vw, 9.6rem);
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 34rem;
+      color: rgba(234, 234, 234, 0.8);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      line-height: 1.75;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 2.95rem;
+      padding: 0.8rem 1.15rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--text);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.45);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .btn.primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      box-shadow: 0 14px 40px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn.primary:hover,
+    .btn.primary:focus-visible {
+      background: #ffb31c;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.68);
+      font-size: 0.92rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .hero-meta i {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--amber);
+      display: inline-block;
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.7);
+    }
+
+    .rooms-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .room-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .room-art {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .room-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-content {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .room-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      align-items: baseline;
+    }
+
+    .room-head h3,
+    .amenity-title,
+    .mini-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 0.95;
+    }
+
+    .room-head h3 { font-size: clamp(2rem, 3vw, 2.8rem); }
+
+    .room-spec {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .room-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.95rem;
+      padding: 0 0.7rem;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      color: rgba(234, 234, 234, 0.82);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+    }
+
+    .amenity-columns {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .amenity-column {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .amenity-title {
+      font-size: clamp(1.9rem, 2.8vw, 2.35rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .amenity-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+      color: rgba(234, 234, 234, 0.82);
+      line-height: 1.6;
+    }
+
+    .amenity-list li::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-right: 0.65rem;
+      background: var(--amber);
+      box-shadow: 0 0 10px rgba(240, 165, 0, 0.55);
+      vertical-align: middle;
+      transform: translateY(-0.08rem);
+    }
+
+    .location-grid,
+    .cta-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .location-copy,
+    .cta-copy,
+    .contact-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 42rem;
+      margin: 0;
+    }
+
+    .map-frame {
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      min-height: 26rem;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(0.92) contrast(1.02) brightness(0.92);
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .gallery-image {
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.02);
+      aspect-ratio: 16 / 10;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item figcaption {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: rgba(234, 234, 234, 0.78);
+    }
+
+    .booking-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(2rem, 4vw, 3rem) 0;
+    }
+
+    .booking-inner {
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .booking-inner h2 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: rgba(234, 234, 234, 0.7);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .footer a { color: var(--text); }
+
+    .subtle-rule {
+      margin-top: 1rem;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240,165,0,.0), rgba(240,165,0,.65), rgba(240,165,0,.0));
+      opacity: .75;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      will-change: transform, opacity;
+    }
+
+    .hero .reveal { transform: translateY(30px); }
+
+    @media (min-width: 768px) {
+      .rooms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 1.25rem;
+      }
+
+      .amenity-columns {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: start;
+      }
+
+      .cta-grid {
+        grid-template-columns: minmax(0, 1.3fr) auto;
+        justify-content: space-between;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: end;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .header-inner {
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 0.75rem 1rem;
+      }
+
+      .room-item {
+        grid-template-columns: 1fr;
+      }
+
+      .map-frame {
+        min-height: 20rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Mayumi Lodge</h1>
-    <span class="category">Hotel</span>
-    <p class="address">Bancao-Bancao Extension, Puerto Princesa City</p>
-    <p class="phone">+63 966 839 0508</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Mayumi Lodge home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <strong>Mayumi Lodge</strong>
+      </a>
+      <nav class="nav mono" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/img/hero-lodge.svg" alt="">
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-ambient" aria-hidden="true">
+        <span class="orb orb-one"></span>
+        <span class="orb orb-two"></span>
+      </div>
+      <div class="container hero-shell">
+        <div class="hero-copy">
+          <p class="mono reveal">Puerto Princesa, Palawan</p>
+          <h1 class="display hero-title reveal">Mayumi Lodge</h1>
+          <p class="reveal">An easy Puerto Princesa base on Villion Road, with free WiFi, free parking, room service, and a 24-hour front desk.</p>
+          <div class="cta-row reveal">
+            <a class="btn primary" href="tel:+639668390508">Call Front Desk</a>
+            <a class="btn" href="mailto:mayumilodge@gmail.com?subject=Stay%20Inquiry%20for%20Mayumi%20Lodge">Email Mayumi</a>
+            <a class="btn" href="#rooms">View Rooms</a>
+          </div>
+          <div class="hero-meta reveal" aria-label="Verified highlights">
+            <span><i></i>Villion Road, Rizal Avenue Ext.</span>
+            <span><i></i>Free WiFi and parking</span>
+            <span><i></i>Breakfast available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms" class="section">
+      <div class="container">
+        <p class="mono reveal">Rooms and accommodations</p>
+        <h2 class="display section-title reveal">Room names seen on public listings</h2>
+        <p class="section-copy reveal">Public listings currently show studio and house-style stays for Mayumi Lodge, while the lodge's own site also uses suite and deluxe room naming. Bed layouts and guest counts vary by room type, so the details below follow the published listing data.</p>
+
+        <div class="rooms-grid">
+          <article class="room-item reveal">
+            <div class="room-art"><img src="assets/img/room-triple.svg" alt="Illustration representing the Basic Triple Room"></div>
+            <div class="room-content">
+              <div class="room-head">
+                <h3>Basic Triple Room</h3>
+                <span class="mono">Sleeps 6</span>
+              </div>
+              <p class="room-spec">Listed with 6 twin beds on Booking.com. Suited to group stays that want a simple base with air conditioning, private bathroom, and flat-screen TV.</p>
+              <div class="room-tags"><span class="tag">6 twin beds</span><span class="tag">Family-friendly layout</span><span class="tag">Air-conditioned</span></div>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-art"><img src="assets/img/room-studio.svg" alt="Illustration representing the Queen Studio"></div>
+            <div class="room-content">
+              <div class="room-head">
+                <h3>Queen Studio</h3>
+                <span class="mono">1 queen bed</span>
+              </div>
+              <p class="room-spec">A compact studio format with a queen bed, private bathroom, desk, and the essentials for a shorter Puerto Princesa stay.</p>
+              <div class="room-tags"><span class="tag">Studio</span><span class="tag">Private bathroom</span><span class="tag">Desk</span></div>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-art"><img src="assets/img/room-studio.svg" alt="Illustration representing the Deluxe Queen Studio"></div>
+            <div class="room-content">
+              <div class="room-head">
+                <h3>Deluxe Queen Studio</h3>
+                <span class="mono">1 king bed</span>
+              </div>
+              <p class="room-spec">Published as a king-bed studio. It keeps the same practical lodge setup while giving couples a little more space to stretch out.</p>
+              <div class="room-tags"><span class="tag">King bed</span><span class="tag">Air conditioning</span><span class="tag">Private bathroom</span></div>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-art"><img src="assets/img/room-studio.svg" alt="Illustration representing the King Studio"></div>
+            <div class="room-content">
+              <div class="room-head">
+                <h3>King Studio</h3>
+                <span class="mono">King bed + sofa bed</span>
+              </div>
+              <p class="room-spec">A flexible studio option listed with a king bed and living area sofa bed, useful for small families or friends traveling together.</p>
+              <div class="room-tags"><span class="tag">Flexible sleeping</span><span class="tag">Flat-screen TV</span><span class="tag">WiFi</span></div>
+            </div>
+          </article>
+
+          <article class="room-item reveal">
+            <div class="room-art"><img src="assets/img/room-house.svg" alt="Illustration representing the Two-Bedroom House"></div>
+            <div class="room-content">
+              <div class="room-head">
+                <h3>Two-Bedroom House</h3>
+                <span class="mono">Sleeps 7</span>
+              </div>
+              <p class="room-spec">The largest public listing, shown with two bedrooms, a living room sofa bed, and a mix of full and king beds for families or groups.</p>
+              <div class="room-tags"><span class="tag">2 bedrooms</span><span class="tag">Living room</span><span class="tag">Group stay</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="amenities" class="section">
+      <div class="container">
+        <p class="mono reveal">Amenities</p>
+        <h2 class="display section-title reveal">Verified stay essentials</h2>
+        <p class="section-copy reveal">Across public listings, Mayumi Lodge consistently shows the basics travelers look for in Puerto Princesa: fast access, practical rooms, and service that keeps the stay moving.</p>
+
+        <div class="amenity-columns">
+          <div class="amenity-column reveal">
+            <h3 class="amenity-title">Arrival</h3>
+            <ul class="amenity-list">
+              <li>24-hour front desk</li>
+              <li>Express check-in and check-out</li>
+              <li>Concierge service</li>
+              <li>Free on-site parking</li>
+            </ul>
+          </div>
+
+          <div class="amenity-column reveal">
+            <h3 class="amenity-title">Stay</h3>
+            <ul class="amenity-list">
+              <li>Free WiFi</li>
+              <li>Air conditioning</li>
+              <li>Family rooms</li>
+              <li>Non-smoking rooms</li>
+            </ul>
+          </div>
+
+          <div class="amenity-column reveal">
+            <h3 class="amenity-title">In Room</h3>
+            <ul class="amenity-list">
+              <li>Private bathroom</li>
+              <li>Flat-screen TV with cable</li>
+              <li>Desk and bed linen</li>
+              <li>Room service and breakfast options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section">
+      <div class="container">
+        <p class="mono reveal">Location and map</p>
+        <h2 class="display section-title reveal">Villion Road in Puerto Princesa</h2>
+        <p class="section-copy reveal">The public listing address is Villion Road, Rizal Avenue Ext., 5300 Puerto Princesa, Palawan, Philippines. The embedded map centers on 9.73787, 118.75271 so the pin stays in Puerto Princesa and not Manila.</p>
+
+        <div class="location-grid">
+          <div class="reveal">
+            <p class="location-copy">From the lodge, public listings place you near Puerto Princesa Airport and within reach of Rizal Avenue landmarks such as Mendoza Park, Palawan Museum, Balinsasayaw Restaurant - Rizal, and the Immaculate Conception Cathedral.</p>
+            <div class="subtle-rule"></div>
+            <p class="location-copy" style="margin-top: 1rem;">Check-in is listed from 2:00 PM to 12:00 AM, with check-out until 12:00 PM.</p>
+          </div>
+          <div class="map-frame reveal" aria-label="Map of Mayumi Lodge in Puerto Princesa">
+            <iframe title="Mayumi Lodge map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=9.73787,118.75271&z=17&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-band">
+      <div class="container booking-inner reveal">
+        <div>
+          <p class="mono">Booking direct</p>
+          <h2 class="display">Reach Mayumi Lodge without a booking form</h2>
+          <p class="cta-copy">Call or email the lodge directly for stay questions, room guidance, or timing details. The page keeps the path simple and avoids third-party form handoffs.</p>
+        </div>
+        <div class="cta-row" style="align-self: center;">
+          <a class="btn primary" href="tel:+639668390508">Call +63 966 839 0508</a>
+          <a class="btn" href="mailto:mayumilodge@gmail.com?subject=Mayumi%20Lodge%20Booking%20Inquiry">Email mayumilodge@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <p class="mono reveal">Gallery</p>
+        <h2 class="display section-title reveal">Atmosphere, room, and place</h2>
+        <p class="section-copy reveal">These local SVG scenes are built into the page so the gallery remains deployable as-is while still showing a tropical lodge mood, room feeling, and Puerto Princesa context.</p>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <div class="gallery-image"><img src="assets/img/hero-lodge.svg" alt="Illustrated dusk view of Mayumi Lodge"></div>
+            <figcaption><span class="mini-title">Lodge Dusk</span><span class="mono">Puerto Princesa</span></figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-image"><img src="assets/img/room-studio.svg" alt="Illustrated studio room at Mayumi Lodge"></div>
+            <figcaption><span class="mini-title">Studio Stay</span><span class="mono">Compact comfort</span></figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <div class="gallery-image"><img src="assets/img/gallery-palawan.svg" alt="Illustrated Puerto Princesa location scene"></div>
+            <figcaption><span class="mini-title">City Context</span><span class="mono">Villion Road</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section footer-section">
+      <div class="container">
+        <p class="mono reveal">Contact</p>
+        <h2 class="display section-title reveal">Mayumi Lodge, Puerto Princesa</h2>
+        <div class="contact-grid">
+          <p class="contact-copy reveal">Villion Road, Rizal Avenue Ext., 5300 Puerto Princesa, Palawan, Philippines<br>Phone: <a href="tel:+639668390508">+63 966 839 0508</a><br>Email: <a href="mailto:mayumilodge@gmail.com">mayumilodge@gmail.com</a></p>
+          <p class="contact-copy reveal">The lodge is mapped in Puerto Princesa City, with nearby access to the airport, Rizal Avenue, and city-center landmarks. Use the map above or message direct for timing and room questions.</p>
+        </div>
+
+        <div class="footer-grid reveal">
+          <div>
+            <p class="mono" style="margin:0 0 .5rem;">Mayumi Lodge</p>
+            <p class="contact-copy" style="margin:0;">A verified Puerto Princesa stay with practical rooms, steady service, and a location that keeps the city within reach.</p>
+          </div>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:flex-start;">
+            <a class="ghost-link mono" href="#top">Back to top</a>
+            <a class="ghost-link mono" href="https://www.google.com/maps?q=9.73787,118.75271" target="_blank" rel="noopener noreferrer">Open map</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.documentElement.classList.add('js');
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      lerp: 0.09,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl.from('.hero .reveal', {
+      y: 28,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.12
+    });
+
+    gsap.to('.orb-one', {
+      x: 18,
+      y: -16,
+      scale: 1.04,
+      duration: 6.2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    gsap.to('.orb-two', {
+      x: -14,
+      y: 10,
+      scale: 0.98,
+      duration: 7.4,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    gsap.to('.hero-media img', {
+      yPercent: 4,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.utils.toArray('.section .reveal, .booking-band .reveal').forEach((el) => {
+      if (el.closest('.hero')) return;
+      gsap.fromTo(el, {
+        opacity: 0,
+        y: 26
+      }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 84%'
+        }
+      });
+    });
+
+    gsap.utils.toArray('.gallery-image, .room-art, .map-frame').forEach((el) => {
+      gsap.fromTo(el, { scale: 0.98, opacity: 0 }, {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%'
+        }
+      });
+    });
+
+    gsap.to('.brand-mark', {
+      boxShadow: '0 0 28px rgba(240,165,0,0.95)',
+      duration: 2.8,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const targetId = anchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -72, duration: 1.1 });
+      });
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Mayumi Lodge",
+    "url": "./",
+    "image": ["assets/img/hero-lodge.svg"],
+    "telephone": "+63 966 839 0508",
+    "email": "mayumilodge@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Villion Road, Rizal Avenue Ext.",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.73787,
+      "longitude": 118.75271
+    },
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "24-hour front desk", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Room service", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Family rooms", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true }
+    ]
+  }
+  </script>
 </body>
 </html>

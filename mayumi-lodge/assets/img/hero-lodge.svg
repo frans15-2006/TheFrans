@@ -1,0 +1,74 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated dusk scene of Mayumi Lodge in Puerto Princesa">
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080808"/>
+      <stop offset="0.52" stop-color="#151515"/>
+      <stop offset="1" stop-color="#060606"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1190 250) rotate(90) scale(220 220)">
+      <stop stop-color="#f0a500" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wall" x1="800" y1="540" x2="800" y2="990" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#191919"/>
+      <stop offset="1" stop-color="#0c0c0c"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="800" y1="380" x2="800" y2="540" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2a2a2a"/>
+      <stop offset="1" stop-color="#111111"/>
+    </linearGradient>
+    <linearGradient id="window" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#eaeaea" stop-opacity="0.28"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <rect width="1600" height="1200" fill="url(#glow)"/>
+
+  <circle cx="1202" cy="272" r="145" fill="#f0a500" fill-opacity="0.14"/>
+  <circle cx="1202" cy="272" r="92" fill="#f0a500" fill-opacity="0.2"/>
+
+  <path d="M0 1018C128 978 256 952 386 948C520 944 678 978 802 1002C948 1030 1086 1044 1222 1030C1352 1016 1460 982 1600 950V1200H0V1018Z" fill="#050505"/>
+  <path d="M0 1040C124 1008 260 990 396 986C534 982 658 998 800 1024C960 1053 1112 1068 1266 1052C1396 1038 1490 1012 1600 988V1200H0V1040Z" fill="#0e0e0e"/>
+
+  <g opacity="0.95">
+    <path d="M726 454L796 382L866 454L846 454L866 494H726L746 454H726Z" fill="url(#roof)"/>
+    <rect x="706" y="494" width="180" height="250" rx="4" fill="url(#wall)"/>
+    <rect x="736" y="530" width="52" height="68" fill="url(#window)"/>
+    <rect x="812" y="530" width="52" height="68" fill="url(#window)"/>
+    <rect x="776" y="632" width="40" height="112" fill="#080808" stroke="#f0a500" stroke-opacity="0.2"/>
+    <rect x="684" y="744" width="220" height="28" rx="3" fill="#101010"/>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M412 876C440 824 452 780 450 726C448 664 426 610 396 566C372 532 338 500 304 484C322 532 324 584 314 636C302 698 272 744 244 788C228 814 214 844 208 876H412Z" fill="#0a0a0a"/>
+    <path d="M1228 884C1214 840 1192 804 1172 772C1140 724 1118 676 1116 616C1114 564 1122 522 1138 480C1102 498 1074 530 1054 568C1030 612 1018 660 1018 710C1018 768 1036 826 1062 884H1228Z" fill="#0a0a0a"/>
+  </g>
+
+  <g opacity="0.88">
+    <path d="M102 974C166 922 222 880 292 842C350 812 418 784 492 768C458 818 430 852 382 892C324 940 252 978 182 1006L102 974Z" fill="#111111"/>
+    <path d="M1492 968C1432 918 1384 880 1328 844C1272 808 1210 782 1144 772C1174 820 1202 854 1242 892C1296 944 1360 980 1428 1008L1492 968Z" fill="#111111"/>
+  </g>
+
+  <path d="M420 924H1200L1280 1020H340L420 924Z" fill="#0b0b0b"/>
+  <path d="M498 940H1120L1168 992H450L498 940Z" fill="#121212"/>
+
+  <g opacity="0.9">
+    <path d="M462 918C520 902 576 892 628 888C662 886 694 892 714 906C670 920 638 928 604 934C554 942 508 942 462 918Z" fill="#f0a500" fill-opacity="0.18"/>
+    <path d="M1114 916C1058 898 1000 890 948 888C910 886 878 894 856 908C900 920 932 928 968 936C1018 946 1064 946 1114 916Z" fill="#f0a500" fill-opacity="0.18"/>
+  </g>
+
+  <g stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2" fill="none">
+    <path d="M141 382C210 456 256 534 286 628"/>
+    <path d="M318 330C350 432 356 534 344 624"/>
+    <path d="M1472 370C1394 444 1338 530 1306 636"/>
+    <path d="M1272 332C1238 444 1228 546 1240 638"/>
+  </g>
+
+  <g fill="#f0a500" fill-opacity="0.28">
+    <circle cx="250" cy="310" r="7"/>
+    <circle cx="336" cy="294" r="5"/>
+    <circle cx="1270" cy="326" r="7"/>
+    <circle cx="1358" cy="304" r="5"/>
+  </g>
+</svg>

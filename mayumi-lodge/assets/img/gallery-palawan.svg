@@ -1,0 +1,31 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated Puerto Princesa location scene">
+  <defs>
+    <linearGradient id="bg" x1="800" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f0f0f"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <path d="M180 772C288 692 396 640 520 604C650 564 784 550 922 566C1056 582 1170 628 1320 706L1440 772V1000H180V772Z" fill="#111111"/>
+  <path d="M240 784C352 708 456 660 570 632C700 600 826 590 962 606C1082 620 1188 656 1302 718L1406 776V1000H240V784Z" fill="#080808"/>
+  <path d="M810 172C856 220 882 292 882 362C882 472 808 556 706 556C604 556 530 470 530 362C530 290 556 218 602 170C642 130 672 120 706 120C740 120 770 130 810 172Z" fill="#f0a500" fill-opacity="0.22"/>
+  <path d="M706 186C768 186 816 236 816 300C816 360 768 414 706 414C644 414 596 360 596 300C596 236 644 186 706 186Z" fill="#f0a500" fill-opacity="0.65"/>
+  <path d="M706 222C730 222 748 240 748 266C748 292 730 310 706 310C682 310 664 292 664 266C664 240 682 222 706 222Z" fill="#080808"/>
+  <path d="M706 412L706 580" stroke="#f0a500" stroke-opacity="0.45" stroke-width="18" stroke-linecap="round"/>
+  <path d="M650 500L706 580L762 500" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M294 644C356 606 430 580 502 564C470 612 430 650 368 686C334 706 298 722 260 732L294 644Z" fill="#0e0e0e"/>
+  <path d="M1328 652C1268 610 1194 582 1118 566C1150 614 1188 652 1248 688C1282 708 1318 724 1356 734L1328 652Z" fill="#0e0e0e"/>
+  <path d="M166 846C286 814 392 798 512 794C634 790 750 806 872 826C1010 848 1142 862 1268 856C1360 852 1430 836 1524 812V1000H166V846Z" fill="#050505"/>
+  <g stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2" fill="none">
+    <path d="M284 246C330 292 356 336 370 388"/>
+    <path d="M1290 246C1244 292 1216 336 1202 388"/>
+    <path d="M208 248C270 314 308 386 330 470"/>
+    <path d="M1392 248C1330 314 1292 386 1270 470"/>
+  </g>
+  <g fill="#f0a500" fill-opacity="0.24">
+    <circle cx="368" cy="296" r="8"/>
+    <circle cx="1228" cy="296" r="8"/>
+    <circle cx="442" cy="352" r="5"/>
+    <circle cx="1164" cy="352" r="5"/>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a triple room">
+  <defs>
+    <linearGradient id="bg" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#121212"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0a500"/>
+      <stop offset="1" stop-color="#eaeaea" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="84" y="118" width="1032" height="664" rx="26" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <rect x="142" y="204" width="916" height="44" rx="22" fill="#151515"/>
+  <rect x="202" y="300" width="794" height="252" rx="18" fill="#0c0c0c" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <rect x="246" y="336" width="178" height="118" rx="10" fill="#191919"/>
+  <rect x="446" y="336" width="178" height="118" rx="10" fill="#191919"/>
+  <rect x="646" y="336" width="178" height="118" rx="10" fill="#191919"/>
+  <rect x="248" y="362" width="174" height="28" rx="6" fill="url(#amber)" fill-opacity="0.72"/>
+  <rect x="448" y="362" width="174" height="28" rx="6" fill="url(#amber)" fill-opacity="0.72"/>
+  <rect x="648" y="362" width="174" height="28" rx="6" fill="url(#amber)" fill-opacity="0.72"/>
+  <rect x="246" y="474" width="182" height="28" rx="6" fill="#2a2a2a"/>
+  <rect x="446" y="474" width="182" height="28" rx="6" fill="#2a2a2a"/>
+  <rect x="646" y="474" width="182" height="28" rx="6" fill="#2a2a2a"/>
+  <rect x="524" y="580" width="152" height="104" rx="14" fill="#141414" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <rect x="552" y="604" width="96" height="20" rx="5" fill="#f0a500" fill-opacity="0.8"/>
+  <rect x="154" y="634" width="892" height="52" rx="26" fill="#131313"/>
+  <circle cx="272" cy="162" r="16" fill="#f0a500" fill-opacity="0.45"/>
+  <circle cx="314" cy="162" r="16" fill="#eaeaea" fill-opacity="0.12"/>
+  <circle cx="356" cy="162" r="16" fill="#f0a500" fill-opacity="0.2"/>
+</svg>
