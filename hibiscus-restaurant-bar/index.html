@@ -1,60 +1,951 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hibiscus Restaurant and Bar</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hibiscus Restaurant & Bar | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Hibiscus Restaurant & Bar in Puerto Princesa, Palawan serves garden-view breakfasts, wood-fired pizza, pasta, fresh seafood, and cocktails inside Hibiscus Garden Inn.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/hibiscus-restaurant-bar/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hibiscus Restaurant & Bar | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Garden-view dining, wood-fired pizza, fresh seafood, pasta, and cocktails in Manalo Extension, Puerto Princesa City, Palawan.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/hibiscus-restaurant-bar/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/hibiscus-restaurant-bar/assets/img/hero-terrace.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hibiscus Restaurant & Bar | Puerto Princesa, Palawan">
+  <meta name="twitter:description" content="Garden-view dining, wood-fired pizza, fresh seafood, pasta, and cocktails in Puerto Princesa City.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/hibiscus-restaurant-bar/assets/img/hero-terrace.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Hibiscus Restaurant & Bar",
+    "url": "https://frans15-2006.github.io/TheFrans/hibiscus-restaurant-bar/",
+    "telephone": "+63 920 969 2763",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Manalo Extension, Barangay Milagrosa",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.735469818115234,
+      "longitude": 118.75093078613281
+    },
+    "servesCuisine": ["Italian", "Filipino", "Mediterranean", "Asian", "European"],
+    "priceRange": "$$ - $$$"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #080808;
+      --amber: #f0a500;
+      --paper: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.26);
+      --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.08), transparent 38%),
+        linear-gradient(180deg, #0a0a0a 0%, #080808 100%);
+      color: var(--paper);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: clip;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 8, 8, 0.64);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.5rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 2.55rem;
+      height: 2.55rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      background: rgba(240, 165, 0, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(240, 165, 0, 0.12);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 0.78rem;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--paper);
+      transform: translateY(-1px);
+    }
+
+    .nav .reserve-link {
+      color: var(--bg);
+      background: var(--amber);
+      padding: 0.78rem 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 26px rgba(240, 165, 0, 0.18);
+    }
+
+    .nav .reserve-link:hover,
+    .nav .reserve-link:focus-visible {
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding-top: 4.5rem;
+      overflow: clip;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.62) 34%, rgba(8, 8, 8, 0.2) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.48) 100%);
+    }
+
+    .hero-inner {
+      padding: clamp(4rem, 10vw, 7rem) 0 clamp(2rem, 4vw, 3rem);
+      display: grid;
+      gap: 1.25rem;
+      max-width: 52rem;
+      position: relative;
+    }
+
+    .hero-tag {
+      color: var(--amber);
+      font-size: 0.74rem;
+      align-self: start;
+      width: fit-content;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(240, 165, 0, 0.26);
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.07);
+    }
+
+    .hero-name {
+      margin: 0;
+      font-size: clamp(5.2rem, 18vw, 12rem);
+      color: var(--paper);
+      text-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-subname {
+      margin: -0.7rem 0 0;
+      color: rgba(240, 165, 0, 0.95);
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.5vw, 1.16rem);
+      line-height: 1.7;
+      margin: 0.25rem 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3.1rem;
+      padding: 0.86rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--bg);
+      box-shadow: 0 14px 28px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-secondary {
+      border-color: rgba(234, 234, 234, 0.14);
+      background: rgba(234, 234, 234, 0.03);
+      color: var(--paper);
+    }
+
+    .section {
+      padding: clamp(4rem, 9vw, 7rem) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+      max-width: 46rem;
+    }
+
+    .section-kicker {
+      color: var(--amber);
+      font-size: 0.76rem;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      line-height: 0.92;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .split {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .visual-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.4rem;
+      border: 1px solid rgba(234, 234, 234, 0.1);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .visual-frame img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transform-origin: center;
+    }
+
+    .visual-frame.wide img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .menu-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-item:first-child {
+      padding-top: 0;
+    }
+
+    .menu-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .menu-item h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      letter-spacing: 0.02em;
+      color: var(--paper);
+    }
+
+    .menu-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .story-grid,
+    .gallery-grid,
+    .location-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.03rem;
+      max-width: 44rem;
+    }
+
+    .story-copy strong {
+      color: var(--paper);
+      font-weight: 700;
+    }
+
+    .story-note {
+      padding: 1.25rem 0 0;
+      color: var(--paper);
+      border-top: 1px solid var(--line);
+      font-size: 0.98rem;
+      line-height: 1.8;
+    }
+
+    .story-note span {
+      color: var(--amber);
+      display: block;
+      margin-bottom: 0.6rem;
+      font-size: 0.72rem;
+    }
+
+    .quote-panel {
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      border-radius: 1.4rem;
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.08), rgba(255, 255, 255, 0.02));
+      padding: 1.35rem;
+      color: var(--paper);
+      box-shadow: var(--shadow);
+      align-self: stretch;
+    }
+
+    .quote-panel p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .quote-panel cite {
+      display: block;
+      margin-top: 1rem;
+      color: var(--amber);
+      font-style: normal;
+      font-size: 0.78rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+      margin: 0;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .gallery-item figcaption {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .cta-band {
+      padding: clamp(2.2rem, 5vw, 3rem) 0;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(240, 165, 0, 0.16), transparent 40%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    }
+
+    .cta-inner {
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta-inner h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 8vw, 4.6rem);
+      font-weight: 400;
+      line-height: 0.92;
+    }
+
+    .cta-inner p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 40rem;
+    }
+
+    address {
+      font-style: normal;
+      color: var(--paper);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .location-meta {
+      display: grid;
+      gap: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: rgba(234, 234, 234, 0.66);
+    }
+
+    .map-link {
+      width: fit-content;
+      color: var(--amber);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.3);
+      padding-bottom: 0.1rem;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .map-link:hover,
+    .map-link:focus-visible {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .site-footer {
+      padding: 1.25rem 0 2rem;
+      color: rgba(234, 234, 234, 0.52);
+      font-size: 0.78rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--paper);
+    }
+
+    html.motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @media (min-width: 720px) {
+      .split {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+
+      .story-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+      }
+
+      .gallery-grid .gallery-item:nth-child(1) {
+        grid-row: span 2;
+      }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: center;
+      }
+
+      .cta-inner {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .hero-inner {
+        padding-bottom: 4rem;
+      }
+
+      .hero-copy {
+        max-width: 38rem;
+      }
+
+      .nav {
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 719px) {
+      .nav a:not(.reserve-link) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-inner {
+        padding-top: 5.5rem;
+      }
+
+      .visual-frame img,
+      .visual-frame.wide img {
+        aspect-ratio: 16 / 11;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: smooth;
+      }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hibiscus Restaurant and Bar</h1>
-    <span class="category">Garden Restaurant & Pool</span>
-    <p class="address">Manalo St Extension, Puerto Princesa City</p>
-    <p class="phone">+63 920 969 2763</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand-lockup" href="#home" aria-label="Hibiscus Restaurant and Bar home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4.4c1.95 0 3.5 1.6 3.5 3.55 0 1.38-.8 2.58-1.97 3.16 1.17.58 1.97 1.78 1.97 3.16 0 1.95-1.55 3.55-3.5 3.55s-3.5-1.6-3.5-3.55c0-1.38.8-2.58 1.97-3.16C8.3 10.53 7.5 9.33 7.5 7.95 7.5 6 9.05 4.4 11 4.4c.35 0 .68.05 1 .15.32-.1.65-.15 1-.15Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+              <path d="M12 8.1v7.8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <path d="M8.1 12h7.8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>Hibiscus Restaurant & Bar</strong>
+            <span>Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+        <nav class="nav mono" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a class="reserve-link" href="#reserve">Reserve</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-media" aria-hidden="true">
+          <img class="hero-art" src="assets/img/hero-terrace.svg" alt="">
+        </div>
+        <div class="container hero-inner">
+          <div class="hero-tag mono">Inside Hibiscus Garden Inn</div>
+          <h1 class="display hero-name">HIBISCUS</h1>
+          <p class="hero-subname">Restaurant & Bar</p>
+          <p class="hero-copy">Garden-view breakfasts, firewood oven-baked pizza, fresh seafood, pasta, and cocktails in Manalo Extension, Puerto Princesa City, Palawan.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+639209692763">Call to reserve</a>
+            <a class="btn btn-secondary" href="#menu">Explore menu highlights</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="container">
+          <div class="section-head reveal" data-reveal>
+            <div class="section-kicker mono">Menu highlights</div>
+            <h2 class="section-title">From breakfast service to late-night drinks</h2>
+            <p class="section-copy">The public restaurant pages highlight Mediterranean and local fresh food, wood-fired pizza, pasta, fresh tuna, and Filipino plates. These are the signatures to look for when you arrive in Puerto Princesa.</p>
+          </div>
+          <div class="split">
+            <div class="visual-frame reveal" data-reveal>
+              <img src="assets/img/menu-pizza.svg" alt="Wood-fired pizza and fresh herb pizza illustration">
+            </div>
+            <div class="menu-list reveal" data-reveal>
+              <article class="menu-item">
+                <h3 class="mono">Breakfast choices</h3>
+                <p>Continental, Filipino, and American breakfast, plus fresh fruits and homemade yogurt, are highlighted on the restaurant page for easy mornings.</p>
+              </article>
+              <article class="menu-item">
+                <h3 class="mono">Wood-fired pizza</h3>
+                <p>The restaurant's signature oven-baked Italian pizza is made for the wood oven, with a thin crust and that smoky finish the kitchen calls out.</p>
+              </article>
+              <article class="menu-item">
+                <h3 class="mono">Seafood and chef picks</h3>
+                <p>Chef's selection leans into fresh seafood, including Fish Carpaccio and Fish Kinilaw, cooked the healthy yet savory way.</p>
+              </article>
+              <article class="menu-item">
+                <h3 class="mono">Pasta, shakes, cocktails</h3>
+                <p>Pasta with fresh herbs, fruit shakes, and signature cocktails round out the dining room and bar from lunch into the evening.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-head reveal" data-reveal>
+            <div class="section-kicker mono">About and chef story</div>
+            <h2 class="section-title">A garden restaurant built around fresh, fire-warmed plates</h2>
+          </div>
+          <div class="story-grid">
+            <div class="story-copy reveal" data-reveal>
+              <p><strong>Hibiscus Restaurant & Bar</strong> sits inside Hibiscus Garden Inn, where the dining room is framed by the same tropical, relaxed setting that the property is known for.</p>
+              <p>The restaurant page emphasizes Asian and European dishes prepared with fresh and organic ingredients, alongside firewood oven-baked pizza, salads, pasta, and seafood specials.</p>
+              <p>Public listings also describe the menu as a blend of Mediterranean and local fresh food, with oven pizza, imported meat, fresh tuna, Filipino dishes, and signature cocktails available for guests and walk-ins.</p>
+              <div class="story-note">
+                <span class="mono">Kitchen note</span>
+                The line is straightforward: make the pizza wood-fired, keep the seafood fresh, and let the bar carry the evening.
+              </div>
+            </div>
+            <aside class="quote-panel reveal" data-reveal>
+              <p>"A fusion of Asian and European dishes cooked using fresh and organic ingredients are available for lunch and dinner. The fresh and delicious aroma of our wood-fired pizza will make you crave for more."</p>
+              <cite class="mono">Hibiscus Garden Inn restaurant page</cite>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-head reveal" data-reveal>
+            <div class="section-kicker mono">Gallery</div>
+            <h2 class="section-title">A look at the Hibiscus mood</h2>
+            <p class="section-copy">The visuals lean into what the restaurant sells best: warm fire, tropical nights, and plates that suit a long table in Palawan.</p>
+          </div>
+          <div class="gallery-grid">
+            <figure class="gallery-item visual-frame wide reveal" data-reveal>
+              <img src="assets/img/hero-terrace.svg" alt="Tropical dining terrace illustration with warm lights and evening garden atmosphere">
+              <figcaption>Garden dining</figcaption>
+            </figure>
+            <figure class="gallery-item visual-frame reveal" data-reveal>
+              <img src="assets/img/gallery-cocktail.svg" alt="Signature cocktail illustration with hibiscus garnish">
+              <figcaption>Bar service</figcaption>
+            </figure>
+            <figure class="gallery-item visual-frame reveal" data-reveal>
+              <img src="assets/img/location-map.svg" alt="Stylized map illustration marking Puerto Princesa in Palawan">
+              <figcaption>Puerto Princesa, Palawan</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band" id="reserve">
+        <div class="container cta-inner reveal" data-reveal>
+          <div>
+            <div class="section-kicker mono">Reservations</div>
+            <h2>Reserve ahead for garden seating, pizza nights, and private tables.</h2>
+          </div>
+          <div>
+            <p>Use the public restaurant number or email for reservations and takeout. No external booking form is required.</p>
+            <div class="cta-actions" style="margin-top:1rem;">
+              <a class="btn btn-primary" href="tel:+639209692763">+63 920 969 2763</a>
+              <a class="btn btn-secondary" href="mailto:hibiscus.pizzeria@gmail.com">hibiscus.pizzeria@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="container">
+          <div class="section-head reveal" data-reveal>
+            <div class="section-kicker mono">Location</div>
+            <h2 class="section-title">Manalo Extension, Puerto Princesa City, Palawan 5300</h2>
+            <p class="section-copy">Verified public listings place Hibiscus Restaurant & Bar at Hibiscus Garden Inn in Puerto Princesa City, not Manila. The coordinates below point to Palawan.</p>
+          </div>
+          <div class="location-grid">
+            <div class="location-copy reveal" data-reveal>
+              <address>Manalo Extension, Barangay Milagrosa, Puerto Princesa City, Palawan 5300</address>
+              <div class="location-meta">
+                <span>Coordinates: 9.73547, 118.75093</span>
+                <span>Phone: +63 920 969 2763</span>
+                <span>Inside Hibiscus Garden Inn</span>
+              </div>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=9.735469818115234,118.75093078613281" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            </div>
+            <div class="visual-frame wide reveal" data-reveal>
+              <img src="assets/img/location-map.svg" alt="Stylized location map showing the Hibiscus area in Puerto Princesa, Palawan">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner mono">
+        <div>Hibiscus Restaurant & Bar, Puerto Princesa, Palawan</div>
+        <div class="footer-links">
+          <a href="tel:+639209692763">Call</a>
+          <a href="mailto:hibiscus.pizzeria@gmail.com">Email</a>
+          <a href="#home">Back to top</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (window.gsap && window.ScrollTrigger) {
+        document.documentElement.classList.add('motion-ready');
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (!prefersReducedMotion && window.Lenis) {
+          const lenis = new Lenis({
+            duration: 1.1,
+            smoothWheel: true,
+            smoothTouch: false
+          });
+
+          lenis.on('scroll', ScrollTrigger.update);
+
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+
+          gsap.ticker.lagSmoothing(0);
+        }
+
+        if (!prefersReducedMotion) {
+          gsap.from('.site-header', {
+            y: -18,
+            autoAlpha: 0,
+            duration: 0.7,
+            ease: 'power2.out'
+          });
+
+          const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+          heroTl
+            .from('.hero-tag', { y: 24, autoAlpha: 0, duration: 0.7 })
+            .from('.hero-name', { y: 44, autoAlpha: 0, duration: 0.9 }, '-=0.2')
+            .from('.hero-subname', { y: 24, autoAlpha: 0, duration: 0.65 }, '-=0.6')
+            .from('.hero-copy', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.45')
+            .from('.hero-actions', { y: 20, autoAlpha: 0, duration: 0.6 }, '-=0.45')
+            .from('.hero-art', { scale: 1.08, x: 28, autoAlpha: 0, duration: 1.2 }, 0.1);
+
+          gsap.utils.toArray('section:not(.hero) [data-reveal]').forEach((element) => {
+            gsap.fromTo(element, {
+              y: 28,
+              autoAlpha: 0
+            }, {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.95,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: element,
+                start: 'top 84%'
+              }
+            });
+          });
+
+          gsap.to('.hero-art', {
+            y: 18,
+            scale: 1.03,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 0.6
+            }
+          });
+
+          gsap.from('.gallery-item img', {
+            scale: 0.96,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '#gallery',
+              start: 'top 72%'
+            }
+          });
+        }
+      }
+
+      window.addEventListener('load', () => {
+        if (window.ScrollTrigger) {
+          ScrollTrigger.refresh();
+        }
+      });
+    });
+  </script>
 </body>
 </html>

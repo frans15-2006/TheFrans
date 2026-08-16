@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Stylized map of Puerto Princesa, Palawan with location pin">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.25" r="0.9">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.16"/>
+      <stop offset="0.5" stop-color="#14110e" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="0" x2="1">
+      <stop offset="0" stop-color="#0f1d24"/>
+      <stop offset="1" stop-color="#081015"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" x2="1">
+      <stop offset="0" stop-color="#1e412c"/>
+      <stop offset="1" stop-color="#0f2619"/>
+    </linearGradient>
+    <linearGradient id="pin" x1="0" x2="1">
+      <stop offset="0" stop-color="#f8d48d"/>
+      <stop offset="1" stop-color="#f0a500"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <path d="M0 780c121-80 213-114 314-121 165-12 284 57 389 75 160 28 270-8 497-90v556H0Z" fill="url(#sea)"/>
+  <path d="M112 601c127-82 250-113 387-93 94 14 175 50 239 110 40 37 68 80 90 128-129 43-232 58-324 45-107-16-216-77-338-76-48 1-98 10-154 31-39-45-57-95-55-145 3-55 27-106 55-157Z" fill="url(#land)"/>
+  <path d="M178 610c91-58 182-78 272-59 80 17 143 53 193 106 29 31 51 65 68 103-102 29-184 38-253 28-73-10-151-45-231-46-31 0-65 4-101 12-20-29-29-60-27-91 3-31 14-59 29-84Z" fill="#254f34" opacity="0.68"/>
+
+  <g opacity="0.55" stroke="#f0a500" stroke-width="3" stroke-dasharray="8 12" fill="none">
+    <path d="M205 402c68-44 151-66 248-67"/>
+    <path d="M535 352c72 4 144 28 217 72"/>
+    <path d="M741 610c-44 53-98 92-162 115"/>
+  </g>
+
+  <g transform="translate(510 450)">
+    <circle cx="100" cy="100" r="86" fill="#f0a500" opacity="0.16"/>
+    <path d="M100 18c-41 0-74 33-74 74 0 50 74 120 74 120s74-70 74-120c0-41-33-74-74-74Z" fill="url(#pin)"/>
+    <circle cx="100" cy="92" r="29" fill="#101010"/>
+    <circle cx="100" cy="92" r="13" fill="#f0a500"/>
+  </g>
+
+  <g fill="#eaeaea" opacity="0.8" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="0.24em" text-transform="uppercase">
+    <text x="90" y="122">PALAWAN</text>
+    <text x="854" y="104">PUERTO PRINCESA</text>
+  </g>
+  <g stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.8">
+    <path d="M650 225h92"/>
+    <path d="M900 760h110"/>
+  </g>
+  <g fill="#eaeaea" opacity="0.7" font-family="Space Grotesk, sans-serif" font-size="26">
+    <text x="88" y="160">Manalo Extension, Brgy. Milagrosa</text>
+    <text x="842" y="142">Coordinates: 9.73547, 118.75093</text>
+  </g>
+</svg>

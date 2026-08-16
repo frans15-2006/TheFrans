@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Signature cocktail with hibiscus garnish">
+  <defs>
+    <radialGradient id="bg" cx="0.34" cy="0.22" r="0.86">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.18"/>
+      <stop offset="0.55" stop-color="#19140f" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#060606"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop offset="0" stop-color="#faf4d8" stop-opacity="0.96"/>
+      <stop offset="0.5" stop-color="#d8d0ac" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#faf4d8" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="drink" x1="0" x2="1">
+      <stop offset="0" stop-color="#9e2d2f"/>
+      <stop offset="1" stop-color="#f0a500"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" x2="1">
+      <stop offset="0" stop-color="#58b56c"/>
+      <stop offset="1" stop-color="#1d6938"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="980" cy="180" r="170" fill="#f0a500" opacity="0.08"/>
+  <circle cx="160" cy="980" r="240" fill="#f0a500" opacity="0.09"/>
+
+  <g transform="translate(190 110)">
+    <path d="M350 160c122 0 220 86 220 194 0 81-58 154-144 178l-5 10v74l128 230H151l128-230v-74l-5-10C88 508 30 435 30 354c0-108 98-194 220-194Z" fill="url(#glass)" opacity="0.95" stroke="#f2e6bd" stroke-width="6"/>
+    <path d="M95 298c38 92 145 156 255 156s217-64 255-156c-18-31-40-56-69-80H164c-29 24-51 49-69 80Z" fill="url(#drink)" opacity="0.92"/>
+    <path d="M160 224c44-16 96-24 190-24 96 0 145 10 189 24" stroke="#ffd56c" stroke-width="16" stroke-linecap="round" opacity="0.55"/>
+    <path d="M214 168c-13 33-22 69-24 108" stroke="#f0a500" stroke-width="14" stroke-linecap="round" opacity="0.68"/>
+    <path d="M310 140c-13 46-16 81-14 125" stroke="#f0a500" stroke-width="14" stroke-linecap="round" opacity="0.68"/>
+    <path d="M410 154c6 37 7 75 2 115" stroke="#f0a500" stroke-width="14" stroke-linecap="round" opacity="0.68"/>
+
+    <path d="M245 74c39-24 72-27 98-8 19 14 29 34 31 61-30 10-58 5-87-12-25-15-39-31-42-41Z" fill="url(#leaf)"/>
+    <path d="M332 78c44-24 82-27 112-8 21 13 32 34 34 61-36 11-68 7-99-11-28-16-43-32-47-42Z" fill="url(#leaf)" opacity="0.84"/>
+    <path d="M322 116c-3 54-10 88-31 131" stroke="#0a3318" stroke-width="9" stroke-linecap="round" opacity="0.8"/>
+    <path d="M419 117c7 53 3 93-13 137" stroke="#0a3318" stroke-width="9" stroke-linecap="round" opacity="0.8"/>
+
+    <g transform="translate(94 548)">
+      <rect x="128" y="0" width="286" height="42" rx="20" fill="#f2e6bd" opacity="0.72"/>
+      <rect x="226" y="34" width="90" height="238" rx="30" fill="#f2e6bd" opacity="0.82"/>
+      <rect x="206" y="248" width="132" height="24" rx="12" fill="#f2e6bd" opacity="0.68"/>
+    </g>
+
+    <g transform="translate(546 220)">
+      <circle cx="72" cy="72" r="54" fill="#d94f66" opacity="0.92"/>
+      <path d="M72 26c-11 28-26 40-48 50 23 9 37 22 48 48 11-26 25-39 48-48-23-10-38-22-48-50Z" fill="#f4b0be"/>
+      <path d="M72 4c8 36 26 57 59 78-35 2-58 11-80 35 0-31-8-53-31-77 27-3 43-15 52-36Z" fill="#f0a500" opacity="0.78"/>
+    </g>
+  </g>
+</svg>
