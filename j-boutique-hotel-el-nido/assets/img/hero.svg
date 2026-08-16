@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1114"/>
+      <stop offset="55%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f161d"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#sky)"/>
+  <circle cx="1080" cy="165" r="72" fill="url(#amberGlow)"/>
+  <path d="M0 565C170 532 260 540 410 548C585 558 699 524 842 508C1024 487 1173 523 1400 547V900H0V565Z" fill="url(#sea)"/>
+  <path d="M95 560C210 574 310 573 414 561" stroke="#f0a500" stroke-opacity="0.28" stroke-width="3"/>
+  <path d="M900 566C1023 584 1138 587 1300 566" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <g opacity="0.95">
+    <path d="M420 224H980V706H420V224Z" fill="#0d0d0d" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M420 224H980L938 170H462L420 224Z" fill="#121212" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+    <path d="M548 170H844L888 224H504L548 170Z" fill="#090909" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+    <rect x="515" y="300" width="148" height="156" fill="#080808" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="737" y="300" width="148" height="156" fill="#080808" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="515" y="486" width="148" height="156" fill="#080808" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="737" y="486" width="148" height="156" fill="#080808" stroke="#eaeaea" stroke-opacity="0.2" stroke-width="2"/>
+    <rect x="600" y="246" width="120" height="48" fill="#f0a500" fill-opacity="0.18" stroke="#f0a500" stroke-opacity="0.48" stroke-width="2"/>
+    <path d="M620 342H658" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+    <path d="M770 342H808" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+    <path d="M620 528H658" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+    <path d="M770 528H808" stroke="#f0a500" stroke-width="4" stroke-linecap="round"/>
+    <path d="M620 372H658" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="2" stroke-linecap="round"/>
+    <path d="M770 372H808" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="2" stroke-linecap="round"/>
+    <path d="M620 558H658" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="2" stroke-linecap="round"/>
+    <path d="M770 558H808" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.7">
+    <path d="M138 708C195 640 220 617 255 540" stroke="#f0a500" stroke-opacity="0.42" stroke-width="3" stroke-linecap="round"/>
+    <path d="M244 540C253 524 261 505 266 487" stroke="#eaeaea" stroke-opacity="0.28" stroke-width="2" stroke-linecap="round"/>
+    <path d="M246 540C235 520 226 500 220 480" stroke="#eaeaea" stroke-opacity="0.28" stroke-width="2" stroke-linecap="round"/>
+    <path d="M1240 722C1195 636 1165 584 1124 514" stroke="#f0a500" stroke-opacity="0.32" stroke-width="3" stroke-linecap="round"/>
+    <path d="M1118 514C1126 500 1130 486 1130 472" stroke="#eaeaea" stroke-opacity="0.24" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.5" stroke="#eaeaea" stroke-width="2">
+    <path d="M0 650C160 631 234 617 394 602C605 583 724 583 931 597C1098 608 1209 625 1400 650" stroke-opacity="0.12"/>
+    <path d="M0 696C184 680 299 671 449 660C673 644 855 644 1081 660C1218 670 1317 681 1400 695" stroke-opacity="0.1"/>
+  </g>
+  <text x="118" y="154" fill="#eaeaea" fill-opacity="0.16" font-family="Bebas Neue, sans-serif" font-size="92" letter-spacing="6">EL NIDO</text>
+</svg>

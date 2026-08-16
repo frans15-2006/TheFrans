@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg2)"/>
+  <rect x="70" y="90" width="1060" height="620" rx="10" fill="#0a0a0a" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="3"/>
+  <rect x="150" y="180" width="900" height="310" rx="8" fill="#111111" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2"/>
+  <rect x="220" y="280" width="760" height="150" rx="12" fill="#0b0b0b" stroke="#f0a500" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="258" y="254" width="200" height="52" rx="6" fill="#f0a500" fill-opacity="0.12" stroke="#f0a500" stroke-opacity="0.3" stroke-width="2"/>
+  <rect x="280" y="218" width="620" height="60" rx="6" fill="#151515" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="276" y="304" width="88" height="126" rx="6" fill="#080808" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2"/>
+  <rect x="836" y="304" width="88" height="126" rx="6" fill="#080808" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2"/>
+  <rect x="350" y="324" width="500" height="62" rx="31" fill="#eaeaea" fill-opacity="0.13"/>
+  <rect x="180" y="552" width="240" height="92" rx="8" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="190" y="566" width="168" height="18" rx="9" fill="#f0a500" fill-opacity="0.2"/>
+  <rect x="190" y="594" width="180" height="10" rx="5" fill="#eaeaea" fill-opacity="0.12"/>
+  <rect x="454" y="552" width="220" height="92" rx="8" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="464" y="566" width="156" height="18" rx="9" fill="#f0a500" fill-opacity="0.2"/>
+  <rect x="464" y="594" width="168" height="10" rx="5" fill="#eaeaea" fill-opacity="0.12"/>
+  <rect x="708" y="552" width="320" height="92" rx="8" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="720" y="566" width="240" height="18" rx="9" fill="#f0a500" fill-opacity="0.2"/>
+  <rect x="720" y="594" width="260" height="10" rx="5" fill="#eaeaea" fill-opacity="0.12"/>
+  <text x="154" y="742" fill="#eaeaea" fill-opacity="0.18" font-family="Bebas Neue, sans-serif" font-size="48" letter-spacing="5">QUEEN ROOM</text>
+</svg>

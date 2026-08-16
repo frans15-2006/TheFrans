@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10151c"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg4)"/>
+  <path d="M0 490C150 430 285 420 414 455C554 493 647 492 781 457C941 414 1057 416 1200 455V800H0V490Z" fill="#0b0f12"/>
+  <path d="M0 510C190 462 295 457 432 488C583 521 695 523 839 488C965 456 1080 455 1200 490V800H0V510Z" fill="#080808"/>
+  <circle cx="930" cy="160" r="78" fill="#f0a500" fill-opacity="0.16"/>
+  <path d="M120 420C228 390 310 393 395 426" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round"/>
+  <path d="M226 430C300 474 390 474 462 435" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M725 332C797 305 855 303 925 332" stroke="#f0a500" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round"/>
+  <g opacity="0.85">
+    <path d="M495 374C530 333 559 297 579 264C613 315 646 355 679 378C635 385 569 385 495 374Z" fill="#111111" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+    <path d="M510 374C540 344 562 318 578 292" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M530 375C553 348 571 325 584 306" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="824" cy="275" r="6" fill="#f0a500"/>
+    <circle cx="854" cy="292" r="5" fill="#eaeaea" fill-opacity="0.5"/>
+    <circle cx="887" cy="271" r="5" fill="#f0a500"/>
+  </g>
+  <rect x="120" y="574" width="720" height="62" rx="31" fill="#0f0f0f" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="2"/>
+  <rect x="170" y="590" width="250" height="28" rx="14" fill="#f0a500" fill-opacity="0.12"/>
+  <text x="120" y="704" fill="#eaeaea" fill-opacity="0.18" font-family="JetBrains Mono, monospace" font-size="26">el nido coast / island day / town night</text>
+</svg>

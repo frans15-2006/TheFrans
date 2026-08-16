@@ -1,5 +1,1015 @@
 <!DOCTYPE html>
-<title>J Boutique Hotel El Nido</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J Boutique Hotel El Nido | Boutique Stay on Rizal St, Palawan</title>
+  <meta name="description" content="J Boutique Hotel El Nido is a compact town-center stay on Rizal St in El Nido, Palawan, with free WiFi, 24-hour front desk service, airport shuttle support, family rooms, and walkable access to El Nido Beach.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="J Boutique Hotel El Nido">
+  <meta property="og:description" content="A verified El Nido base on Rizal St, close to El Nido Beach, with free WiFi, airport shuttle support, and family-friendly room setups.">
+  <meta property="og:image" content="assets/img/og.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="J Boutique Hotel El Nido">
+  <meta name="twitter:description" content="Boutique hotel on Rizal St in El Nido, Palawan, near the beach and town center.">
+  <meta name="twitter:image" content="assets/img/og.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.umd.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --panel: #101010;
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.35);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; background: var(--bg); }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(240, 165, 0, 0.12), transparent 30%),
+        linear-gradient(180deg, #0a0a0a 0%, #080808 40%, #050505 100%);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: geometricPrecision;
+    }
+
+    img, iframe { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.5), transparent 80%);
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    .site-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    .accent {
+      color: var(--amber);
+    }
+
+    .hero-inner {
+      max-width: 58rem;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-header .section-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 2.35rem;
+      height: 2.35rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      color: var(--amber);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      background: linear-gradient(180deg, rgba(240,165,0,0.08), rgba(240,165,0,0.02));
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 0.14rem;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .top-nav a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .top-nav a::after,
+    .cta-link::after,
+    .text-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1px;
+      width: 100%;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .top-nav a:hover::after,
+    .cta-link:hover::after,
+    .text-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 74px);
+      min-height: calc(100svh - 74px);
+      border-bottom: 1px solid var(--line);
+      overflow: clip;
+      display: grid;
+      align-items: end;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.85) contrast(1.06);
+      transform: scale(1.06);
+    }
+
+    .hero-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.52) 30%, rgba(8,8,8,0.18) 100%),
+        linear-gradient(180deg, rgba(8,8,8,0.18) 0%, rgba(8,8,8,0.62) 100%);
+      z-index: 1;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: 5.5rem 0 2rem;
+    }
+
+    .hero-kicker {
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      max-width: 10ch;
+      font-size: clamp(4.1rem, 16vw, 9.2rem);
+      margin: 0;
+    }
+
+    .hero-copy p {
+      max-width: 34rem;
+      margin: 1rem 0 0;
+      color: rgba(234, 234, 234, 0.84);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.15rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      will-change: transform;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(240, 165, 0, 0.06);
+    }
+
+    .button-primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .button-primary:hover {
+      background: #ffb21f;
+      border-color: transparent;
+    }
+
+    .hero-meta {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    .hero-meta span {
+      padding-top: 0.2rem;
+    }
+
+    .section {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+    }
+
+    .section-copy {
+      max-width: 38rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .room-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .room-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.4fr);
+      gap: 1rem;
+      align-items: stretch;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: background 180ms ease, transform 180ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .room-item:hover {
+      background: linear-gradient(90deg, rgba(240,165,0,0.05), transparent 60%);
+    }
+
+    .room-item:hover .room-image img,
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+    }
+
+    .room-image {
+      position: relative;
+      border: 1px solid rgba(234,234,234,0.1);
+      min-height: 17rem;
+      overflow: hidden;
+      background: #0d0d0d;
+    }
+
+    .room-image img,
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 320ms ease;
+    }
+
+    .room-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.35rem 0 0.35rem 0.25rem;
+    }
+
+    .room-content h3 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .room-lead {
+      margin: 0.6rem 0 0;
+      color: rgba(234,234,234,0.82);
+      line-height: 1.7;
+      max-width: 34rem;
+    }
+
+    .room-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+    }
+
+    .room-specs span {
+      padding-top: 0.15rem;
+    }
+
+    .room-note {
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      margin-top: 1rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-row {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: start;
+    }
+
+    .amenity-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-top: 0.45rem;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px rgba(240,165,0,0.08);
+    }
+
+    .amenity-row h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .amenity-row p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .location-copy {
+      border-top: 1px solid var(--line);
+      padding-top: 1.2rem;
+    }
+
+    .info-list {
+      margin: 1.4rem 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .info-list li {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+      gap: 1rem;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-list strong {
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      padding-top: 0.16rem;
+    }
+
+    .info-list span {
+      color: rgba(234,234,234,0.9);
+      line-height: 1.6;
+    }
+
+    .map-shell {
+      min-height: 28rem;
+      border: 1px solid rgba(234,234,234,0.14);
+      overflow: hidden;
+      background: #0d0d0d;
+      position: relative;
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 28rem;
+      border: 0;
+      filter: grayscale(1) contrast(1.05) brightness(0.95);
+    }
+
+    .map-caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(234,234,234,0.14);
+      background: rgba(8,8,8,0.72);
+      color: rgba(234,234,234,0.9);
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.5;
+      backdrop-filter: blur(10px);
+    }
+
+    .cta-band {
+      background:
+        linear-gradient(135deg, rgba(240,165,0,0.12), rgba(240,165,0,0.02) 30%, rgba(255,255,255,0.02)),
+        #0b0b0b;
+    }
+
+    .cta-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .cta-wrap p {
+      color: rgba(234,234,234,0.82);
+      line-height: 1.75;
+      max-width: 36rem;
+    }
+
+    .cta-panel {
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 15rem;
+      border: 1px solid rgba(234,234,234,0.12);
+      background: #0c0c0c;
+    }
+
+    .gallery-tile:nth-child(1) { grid-column: span 7; min-height: 24rem; }
+    .gallery-tile:nth-child(2) { grid-column: span 5; }
+    .gallery-tile:nth-child(3) { grid-column: span 4; }
+    .gallery-tile:nth-child(4) { grid-column: span 4; }
+    .gallery-tile:nth-child(5) { grid-column: span 4; }
+
+    .footer {
+      padding: 2rem 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 1.5rem;
+      align-items: start;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      color: var(--muted);
+    }
+
+    .footer-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .fine-print {
+      color: rgba(234,234,234,0.5);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      max-width: 34rem;
+    }
+
+    .reveal {
+      will-change: transform, opacity;
+    }
+
+    @media (max-width: 900px) {
+      .hero-copy {
+        padding: 5rem 0 2.4rem;
+      }
+
+      .room-item,
+      .location-grid,
+      .cta-wrap,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-tile:nth-child(n) {
+        grid-column: span 12;
+        min-height: 16rem;
+      }
+
+      .info-list li {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+
+      .top-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section-shell {
+        width: min(1180px, calc(100% - 24px));
+      }
+
+      .site-header .section-shell {
+        padding: 0.85rem 0;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero-title {
+        max-width: 8ch;
+      }
+
+      .room-image {
+        min-height: 13rem;
+      }
+
+      .map-shell,
+      .map-shell iframe {
+        min-height: 20rem;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="section-shell">
+        <a class="brand-mark" href="#top" aria-label="J Boutique Hotel El Nido home">
+          <span class="brand-badge">J</span>
+          <span class="brand-copy">
+            <strong>J Boutique Hotel El Nido</strong>
+            <span>Rizal St, El Nido, Palawan</span>
+          </span>
+        </a>
+        <nav class="top-nav" aria-label="Section navigation">
+          <a href="#rooms">Rooms</a>
+          <a href="#amenities">Amenities</a>
+          <a href="#location">Location</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/img/hero.svg" alt="Stylized El Nido hotel facade with palms and coastal light">
+        </div>
+        <div class="section-shell hero-copy">
+          <div class="hero-inner">
+            <div class="mono hero-kicker accent reveal">El Nido, Palawan, Philippines</div>
+            <h1 class="display hero-title reveal">J Boutique Hotel El Nido</h1>
+            <p class="reveal">A verified town-center base on Rizal Street, a short walk from El Nido Beach and the island-tour pickup area, with free WiFi, 24-hour front desk service, airport shuttle support, and family-friendly room setups.</p>
+            <div class="hero-actions reveal">
+              <a class="button button-primary" href="tel:+639171087713">Call Reservations</a>
+              <a class="button" href="#rooms">Explore Rooms</a>
+              <a class="button cta-link" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">Open Booking Listing</a>
+            </div>
+            <div class="hero-meta reveal" aria-label="Key facts">
+              <span>Rizal St, El Nido, 5313 Palawan</span>
+              <span>Coordinates 11.176278, 119.391126</span>
+              <span>6-minute walk to El Nido Beach</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rooms">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <div>
+              <div class="mono accent">Rooms / Accommodations</div>
+              <h2 class="display section-title">Room setups that match different El Nido trips</h2>
+            </div>
+            <p class="section-copy">Public booking listings surface a mix of compact doubles, twins, and larger family configurations. Every room version is built around the same essentials: air conditioning, a private bathroom, a flat-screen TV, an electric kettle, and free toiletries.</p>
+          </div>
+
+          <div class="room-grid">
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-double.svg" alt="Illustration of a compact double room"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Compact stay</div>
+                  <h3>Double Room</h3>
+                  <p class="room-lead">A 12 m2 room with 2 bunk beds, suited to guests who want a practical sleep-first base in town.</p>
+                </div>
+                <div class="room-specs">
+                  <span>12 m2</span><span>2 bunk beds</span><span>Private bath</span><span>Air conditioning</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-queen.svg" alt="Illustration of a queen room with a double bed"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Standard stay</div>
+                  <h3>Standard Queen Room</h3>
+                  <p class="room-lead">A 15 m2 queen setup for two, with a simple layout and the same in-room basics found across the property.</p>
+                </div>
+                <div class="room-specs">
+                  <span>15 m2</span><span>1 double bed</span><span>Flat-screen TV</span><span>Electric kettle</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-twin.svg" alt="Illustration of a twin room with two beds"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Two-bed option</div>
+                  <h3>Twin Room</h3>
+                  <p class="room-lead">A 16 m2 room with 2 single beds, a clean fit for friends or travelers splitting a short stay.</p>
+                </div>
+                <div class="room-specs">
+                  <span>16 m2</span><span>2 single beds</span><span>Bidet</span><span>Shower</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-queen.svg" alt="Illustration of a deluxe queen room"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">More space</div>
+                  <h3>Deluxe Queen Room</h3>
+                  <p class="room-lead">A 30 m2 queen room with extra breathing room for longer stays or guests who prefer a larger layout.</p>
+                </div>
+                <div class="room-specs">
+                  <span>30 m2</span><span>1 double bed</span><span>Private bath</span><span>Free toiletries</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-family.svg" alt="Illustration of a family room with multiple beds"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Family setup</div>
+                  <h3>Family Room</h3>
+                  <p class="room-lead">A 30 m2 room arranged for up to five guests, with 3 single beds and 2 double beds in public listings.</p>
+                </div>
+                <div class="room-specs">
+                  <span>30 m2</span><span>3 single beds</span><span>2 double beds</span><span>Private bath</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-family.svg" alt="Illustration of a larger family suite"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Large group stay</div>
+                  <h3>Deluxe Family Room</h3>
+                  <p class="room-lead">A 30 m2 family room listed with 6 double beds, made for groups that want to stay under one roof.</p>
+                </div>
+                <div class="room-specs">
+                  <span>30 m2</span><span>6 double beds</span><span>Air conditioning</span><span>Flat-screen TV</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="room-item reveal" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">
+              <div class="room-image"><img src="assets/img/room-family.svg" alt="Illustration of a superior family room"></div>
+              <div class="room-content">
+                <div>
+                  <div class="mono accent">Largest family layout</div>
+                  <h3>Superior Family Room</h3>
+                  <p class="room-lead">A 30 m2 option also surfaced publicly with 3 single beds and 2 double beds, keeping larger groups together comfortably.</p>
+                </div>
+                <div class="room-specs">
+                  <span>30 m2</span><span>3 single beds</span><span>2 double beds</span><span>Electric kettle</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="room-note">Room names and bed setups above reflect current public booking listings for the property.</div>
+        </div>
+      </section>
+
+      <section class="section" id="amenities">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <div>
+              <div class="mono accent">Amenities</div>
+              <h2 class="display section-title">The essentials are handled cleanly</h2>
+            </div>
+            <p class="section-copy">The public listing centers on simple, practical comforts rather than resort extras. That keeps the experience focused on a quick check-in, reliable WiFi, and a base that works well for beach days and island tours.</p>
+          </div>
+
+          <div class="amenities-grid">
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>Free WiFi</h3><p>WiFi is listed as free in the rooms, making it easier to plan tours and keep travel details close at hand.</p></div></div>
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>24-hour front desk</h3><p>Reception is available around the clock, which helps with late arrivals and early departures.</p></div></div>
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>Airport shuttle support</h3><p>Airport transfer is available for an additional charge, according to public booking listings.</p></div></div>
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>Family rooms</h3><p>Public listings include family-friendly layouts for groups that want to stay together.</p></div></div>
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>Non-smoking rooms</h3><p>Rooms are described as non-smoking across the current listings.</p></div></div>
+            <div class="amenity-row reveal"><span class="amenity-dot"></span><div><h3>In-room basics</h3><p>Air conditioning, a private bathroom, shower, bidet, free toiletries, flat-screen TV, and an electric kettle are repeatedly surfaced in the room details.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <div>
+              <div class="mono accent">Location / Map</div>
+              <h2 class="display section-title">In El Nido town proper, close to the beach</h2>
+            </div>
+            <p class="section-copy">Public listings place the hotel on Rizal Street in El Nido, Palawan, about a 6-minute walk from El Nido Beach and roughly 0.6 miles from Lapus Lapus Beach.</p>
+          </div>
+
+          <div class="location-grid">
+            <div class="location-copy reveal">
+              <div class="mono accent">Verified address</div>
+              <ul class="info-list">
+                <li><strong>Address</strong><span>Rizal St, El Nido, 5313 Palawan, Philippines</span></li>
+                <li><strong>Coordinates</strong><span>11.176278, 119.391126</span></li>
+                <li><strong>Nearest beach</strong><span>El Nido Beach, about a 6-minute walk</span></li>
+                <li><strong>Second beach</strong><span>Lapus Lapus Beach, about 0.6 miles away</span></li>
+                <li><strong>Airport</strong><span>El Nido Airport, about 4.3 miles away</span></li>
+              </ul>
+              <div class="hero-actions" style="margin-top: 1.5rem;">
+                <a class="button button-primary" href="https://www.google.com/maps/search/?api=1&query=11.176278,119.391126" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                <a class="button" href="https://www.openstreetmap.org/?mlat=11.176278&mlon=119.391126#map=17/11.176278/119.391126" target="_blank" rel="noopener noreferrer">Open in OSM</a>
+              </div>
+            </div>
+
+            <div class="map-shell reveal" aria-label="Map showing J Boutique Hotel El Nido location">
+              <iframe title="J Boutique Hotel El Nido map" loading="lazy" src="https://www.google.com/maps?q=11.176278,119.391126&z=16&output=embed"></iframe>
+              <div class="map-caption">Rizal St, El Nido, Palawan 5313<br>11.176278, 119.391126</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-band" id="booking">
+        <div class="section-shell cta-wrap">
+          <div class="reveal">
+            <div class="mono accent">Booking CTA</div>
+            <h2 class="display section-title">Make J Boutique Hotel your El Nido base</h2>
+            <p>Reserve the town-center location if you want beach access, easy transfer handling, and a practical room setup that keeps the logistics simple before and after island tours.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="tel:+639171087713">Call +63 917 108 7713</a>
+              <a class="button" href="https://www.booking.com/hotel/ph/j-hostel-el-nido.en-gb.html" target="_blank" rel="noopener noreferrer">View Booking Listing</a>
+            </div>
+          </div>
+          <div class="cta-panel reveal">
+            <div class="mono accent">Good to know</div>
+            <p style="margin: 0.75rem 0 0;">The hotel is listed in the El Nido town area, with walkable access to restaurants, shops, and the beach. Public booking pages also note luggage storage and a 24-hour front desk.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <div>
+              <div class="mono accent">Gallery</div>
+              <h2 class="display section-title">A dark, coastal visual set</h2>
+            </div>
+            <p class="section-copy">The images below are local SVG assets built for this site so the page stays fully deployable on GitHub Pages without missing file paths.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-tile reveal"><img src="assets/img/hero.svg" alt="El Nido hotel facade illustration"></figure>
+            <figure class="gallery-tile reveal"><img src="assets/img/room-double.svg" alt="Compact room illustration"></figure>
+            <figure class="gallery-tile reveal"><img src="assets/img/room-family.svg" alt="Family room illustration"></figure>
+            <figure class="gallery-tile reveal"><img src="assets/img/coast.svg" alt="El Nido coast illustration"></figure>
+            <figure class="gallery-tile reveal"><img src="assets/img/og.svg" alt="Brand artwork for J Boutique Hotel El Nido"></figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="section-shell footer-grid">
+        <div class="reveal">
+          <div class="mono accent">Contact / Footer</div>
+          <h2 class="display section-title" style="font-size: clamp(2.2rem, 4.6vw, 4rem);">J Boutique Hotel El Nido</h2>
+          <p class="fine-print">Rizal St, El Nido, 5313 Palawan, Philippines. Reservations number surfaced publicly on the hotel front office page: +63 917 108 7713.</p>
+        </div>
+        <div class="reveal">
+          <div class="footer-links">
+            <a class="text-link" href="tel:+639171087713">Call</a>
+            <a class="text-link" href="https://www.facebook.com/p/J-Boutique-Hotel-Front-Office-100094755277142/" target="_blank" rel="noopener noreferrer">Front Office</a>
+            <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=11.176278,119.391126" target="_blank" rel="noopener noreferrer">Maps</a>
+            <a class="text-link" href="#rooms">Rooms</a>
+            <a class="text-link" href="#location">Location</a>
+          </div>
+          <p class="fine-print" style="margin-top: 1rem;">Built as a single-page site for fast publishing, with verified address, room setups, amenities, and El Nido location data reflected in the copy.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!reduceMotion) {
+        const lenis = window.Lenis ? new Lenis({ lerp: 0.08, smoothWheel: true, smoothTouch: false }) : null;
+
+        if (lenis) {
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add((time) => lenis.raf(time * 1000));
+          gsap.ticker.lagSmoothing(0);
+        }
+
+        gsap.from('.hero .reveal', {
+          y: 22,
+          opacity: 0,
+          duration: 0.95,
+          stagger: 0.1,
+          ease: 'power3.out',
+          delay: 0.15
+        });
+
+        gsap.to('.hero-media img', {
+          yPercent: 8,
+          scale: 1.12,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+          }
+        });
+
+        ScrollTrigger.batch('.section:not(.hero) .reveal, .amenity-row, .gallery-tile, .location-copy, .map-shell, .cta-band .reveal, .footer .reveal', {
+          interval: 0.08,
+          batchMax: 6,
+          onEnter: (batch) => gsap.fromTo(batch, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power3.out', overwrite: true })
+        });
+
+        gsap.utils.toArray('.room-item').forEach((item) => {
+          gsap.fromTo(item, { opacity: 0, y: 30 }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 82%'
+            }
+          });
+        });
+
+        gsap.utils.toArray('.gallery-tile img').forEach((img) => {
+          gsap.fromTo(img, { scale: 1.08, filter: 'blur(10px)' }, {
+            scale: 1,
+            filter: 'blur(0px)',
+            duration: 1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: img.closest('.gallery-tile'),
+              start: 'top 85%'
+            }
+          });
+        });
+      } else {
+        document.querySelectorAll('.reveal, .room-item, .amenity-row, .gallery-tile, .location-copy, .map-shell, .footer .reveal').forEach((el) => {
+          el.style.opacity = 1;
+          el.style.transform = 'none';
+        });
+      }
+    }
+  </script>
 </body>
+</html>
