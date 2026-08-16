@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized beachfront hotel scene">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="58%" stop-color="#121212"/>
+      <stop offset="100%" stop-color="#1a1207"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b2325"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#1b1b1b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1260" cy="260" r="150" fill="url(#sun)"/>
+  <circle cx="1260" cy="260" r="78" fill="#f0a500" fill-opacity="0.55"/>
+
+  <path d="M0 675C240 630 420 645 540 670C680 700 780 725 930 725C1088 725 1242 685 1600 650V1200H0Z" fill="url(#sea)"/>
+  <path d="M0 740C210 712 394 721 580 748C762 774 928 784 1120 770C1275 758 1420 730 1600 705V1200H0Z" fill="#0c0c0c" opacity="0.86"/>
+  <path d="M0 840C250 812 520 840 760 875C980 906 1210 920 1600 882V1200H0Z" fill="#090909"/>
+
+  <g opacity="0.92">
+    <rect x="140" y="430" width="350" height="320" rx="8" fill="url(#building)"/>
+    <rect x="190" y="390" width="260" height="90" rx="6" fill="#151515"/>
+    <rect x="175" y="512" width="64" height="58" rx="3" fill="#1d1d1d"/>
+    <rect x="260" y="512" width="64" height="58" rx="3" fill="#1d1d1d"/>
+    <rect x="345" y="512" width="64" height="58" rx="3" fill="#1d1d1d"/>
+    <rect x="430" y="512" width="42" height="58" rx="3" fill="#1d1d1d"/>
+    <rect x="175" y="592" width="126" height="80" rx="4" fill="#181818"/>
+    <rect x="318" y="592" width="154" height="80" rx="4" fill="#181818"/>
+    <rect x="178" y="445" width="308" height="22" rx="11" fill="#f0a500" opacity="0.14"/>
+  </g>
+
+  <path d="M0 720C170 695 340 695 510 718C694 742 850 760 1070 748C1290 736 1435 715 1600 690" fill="none" stroke="#f0a500" stroke-opacity="0.32" stroke-width="5"/>
+  <path d="M0 780C210 758 390 760 600 783C820 806 980 820 1260 804C1392 796 1498 782 1600 772" fill="none" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+  <path d="M0 818C180 798 392 805 580 830C782 856 965 866 1240 852C1420 843 1508 830 1600 818" fill="none" stroke="#f0a500" stroke-opacity="0.22" stroke-width="3"/>
+
+  <path d="M0 915C260 865 460 860 660 892C872 926 1032 935 1280 915C1410 903 1510 888 1600 870V1200H0Z" fill="#120f0b" opacity="0.95"/>
+  <path d="M0 965C240 930 420 932 650 962C878 994 1085 1003 1285 988C1420 977 1510 962 1600 952V1200H0Z" fill="#f0a500" opacity="0.1"/>
+
+  <g transform="translate(1130 760)" opacity="0.85">
+    <path d="M0 210C20 120 32 74 58 20C88 68 100 115 112 210Z" fill="#0e0e0e"/>
+    <path d="M38 32C76 6 130 8 168 40C134 70 83 79 38 32Z" fill="#151515"/>
+    <path d="M78 24C92 70 96 150 88 214" stroke="#f0a500" stroke-opacity="0.35" stroke-width="4" fill="none"/>
+  </g>
+
+  <path d="M1040 840C1090 810 1140 804 1185 828C1148 868 1095 876 1040 840Z" fill="#f0a500" fill-opacity="0.12"/>
+</svg>

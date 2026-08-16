@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized pool and courtyard scene">
+  <defs>
+    <linearGradient id="poolBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d2a2f"/>
+      <stop offset="100%" stop-color="#0b0b0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#poolBg)"/>
+  <path d="M150 198C410 150 770 145 1060 185C1270 214 1420 285 1528 393V1200H0V270C40 236 84 216 150 198Z" fill="#111111"/>
+  <path d="M220 330H1390V1020H220Z" fill="#151515" stroke="rgba(234,234,234,0.08)"/>
+  <path d="M260 450C448 415 626 406 820 422C1012 438 1178 470 1348 534V972H260Z" fill="url(#water)"/>
+  <path d="M260 545C430 515 612 512 804 532C1000 552 1184 592 1348 650" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="6"/>
+  <path d="M260 610C430 582 620 580 820 598C1010 614 1186 652 1348 706" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="4"/>
+
+  <rect x="340" y="742" width="132" height="42" rx="21" fill="#f0a500" fill-opacity="0.18"/>
+  <rect x="340" y="790" width="132" height="42" rx="21" fill="#1f1f1f"/>
+  <rect x="1186" y="736" width="132" height="42" rx="21" fill="#f0a500" fill-opacity="0.18"/>
+  <rect x="1186" y="784" width="132" height="42" rx="21" fill="#1f1f1f"/>
+
+  <rect x="1060" y="286" width="250" height="206" rx="14" fill="#191919"/>
+  <rect x="1090" y="318" width="190" height="142" rx="10" fill="#0d0d0d"/>
+  <rect x="1130" y="206" width="110" height="102" rx="18" fill="#f0a500" fill-opacity="0.1"/>
+
+  <path d="M166 1040H1450" stroke="rgba(234,234,234,0.08)" stroke-width="2"/>
+  <path d="M150 1026C342 972 548 964 774 992C1004 1020 1216 1020 1448 980" fill="none" stroke="#f0a500" stroke-opacity="0.15" stroke-width="4"/>
+
+  <g transform="translate(370 256)" opacity="0.8">
+    <path d="M0 276C28 190 52 128 84 28C120 126 136 188 162 276Z" fill="#0f0f0f"/>
+    <path d="M52 44C90 16 144 20 176 56C144 82 92 88 52 44Z" fill="#151515"/>
+  </g>
+  <g transform="translate(210 260)" opacity="0.8">
+    <path d="M0 276C28 190 52 128 84 28C120 126 136 188 162 276Z" fill="#0f0f0f"/>
+    <path d="M52 44C90 16 144 20 176 56C144 82 92 88 52 44Z" fill="#151515"/>
+  </g>
+</svg>

@@ -1,5 +1,1028 @@
 <!DOCTYPE html>
-<title>Microtel Puerto Princesa</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microtel by Wyndham Puerto Princesa | Beachfront Stay in Palawan</title>
+  <meta name="description" content="Explore Microtel by Wyndham Puerto Princesa: a 50-room beachfront hotel at The Emerald Playa Beach & Nature Park in San Jose, Puerto Princesa, with pool, airport transfers, meeting space, and verified room options.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Microtel by Wyndham Puerto Princesa">
+  <meta property="og:description" content="A verified beachfront Microtel stay in Puerto Princesa, Palawan, with room options, amenities, map, and direct contact details.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/microtel-puerto-princesa/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/microtel-puerto-princesa/assets/img/hero-beach.svg">
+  <meta property="og:image:alt" content="Stylized beachfront scene for Microtel by Wyndham Puerto Princesa">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/microtel-puerto-princesa/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-soft: #111111;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.18);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: auto; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(240,165,0,0.08), transparent 28%),
+        radial-gradient(circle at 80% 15%, rgba(240,165,0,0.06), transparent 24%),
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 15%);
+      opacity: 0.9;
+      z-index: -2;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image: linear-gradient(rgba(234,234,234,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(234,234,234,0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.38), transparent 95%);
+      opacity: 0.24;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      padding: 1rem 0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(8,8,8,0.7), rgba(8,8,8,0));
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      min-width: 0;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.3rem, 3.8vw, 1.8rem);
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.85rem 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -0.1rem;
+      height: 1px;
+      background: var(--amber);
+      transition: right 0.28s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after { right: 0; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 7rem 0 2rem;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      filter: saturate(0.88) contrast(1.02);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,0.96) 0%, rgba(8,8,8,0.72) 26%, rgba(8,8,8,0.34) 62%, rgba(8,8,8,0.68) 100%),
+        linear-gradient(to top, rgba(8,8,8,0.94), transparent 55%);
+    }
+
+    .hero-inner {
+      display: grid;
+      gap: 1.1rem;
+      align-content: end;
+      max-width: 860px;
+      padding-bottom: 1rem;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(234,234,234,0.72);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.1rem, 12vw, 9.5rem);
+      letter-spacing: 0.05em;
+      line-height: 0.86;
+      text-wrap: balance;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.9vw, 1.15rem);
+      line-height: 1.65;
+    }
+
+    .hero-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: rgba(234,234,234,0.66);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      padding-top: 0.35rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.85rem 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240,165,0,0.6);
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #101010;
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(240,165,0,0.18);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #ffba2b;
+      color: #050505;
+    }
+
+    .btn-ghost {
+      background: rgba(234,234,234,0.03);
+      color: var(--text);
+    }
+
+    .section {
+      position: relative;
+      padding: 5.5rem 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      max-width: 46rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 42rem;
+    }
+
+    .section-rule {
+      width: 100%;
+      height: 1px;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, transparent, rgba(234,234,234,0.16), transparent);
+    }
+
+    .rooms-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .room {
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      background: rgba(255,255,255,0.015);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .room[open],
+    .room:hover {
+      background: rgba(255,255,255,0.028);
+      border-color: rgba(240,165,0,0.24);
+    }
+
+    .room summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      gap: 0.25rem;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      padding: 1.15rem 0;
+    }
+
+    .room summary::-webkit-details-marker { display: none; }
+
+    .room-title {
+      display: grid;
+      gap: 0.16rem;
+    }
+
+    .room-title strong {
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    .room-title span,
+    .room-copy {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
+    .room-chip {
+      justify-self: end;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.7);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.5rem 0.7rem;
+    }
+
+    .room-body {
+      display: grid;
+      gap: 0.95rem;
+      padding: 0 0 1.15rem;
+    }
+
+    .room-copy {
+      max-width: 56rem;
+    }
+
+    .room-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .room-list li,
+    .tiny-pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: rgba(234,234,234,0.82);
+      background: rgba(234,234,234,0.02);
+    }
+
+    .room summary:hover .room-chip,
+    .room[open] .room-chip {
+      color: var(--amber);
+      border-color: rgba(240,165,0,0.35);
+    }
+
+    .room summary::after {
+      content: '+';
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--amber);
+      margin-left: 1rem;
+      transition: transform 0.25s ease;
+    }
+
+    .room[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .amenity-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .amenity-group {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .amenity-group:last-child { border-bottom: 0; }
+
+    .amenity-group h3 {
+      margin: 0 0 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.6);
+    }
+
+    .amenity-group ul {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .amenity-group li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      color: rgba(234,234,234,0.88);
+    }
+
+    .amenity-group li::before {
+      content: '';
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.45rem;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 0 4px rgba(240,165,0,0.14);
+      flex: 0 0 auto;
+    }
+
+    .location-wrap {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .address-block {
+      display: grid;
+      gap: 0.45rem;
+      padding: 1rem 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .address-block strong {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .address-block p,
+    .location-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .map-frame {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      min-height: 22rem;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 22rem;
+      border: 0;
+      display: block;
+      filter: grayscale(0.12) contrast(1.02) saturate(0.82);
+    }
+
+    .map-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.8rem;
+      align-items: center;
+      color: rgba(234,234,234,0.68);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .booking-band {
+      padding: 0;
+    }
+
+    .booking-panel {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(240,165,0,0.12), rgba(234,234,234,0.03) 55%, rgba(240,165,0,0.06));
+    }
+
+    .booking-panel h2 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 0.9;
+    }
+
+    .booking-panel p {
+      margin: 0;
+      max-width: 50rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-grid figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-grid figcaption {
+      padding: 0.8rem 0.85rem 1rem;
+      color: rgba(234,234,234,0.72);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-footer {
+      padding: 3.5rem 0 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.7rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .contact-list a {
+      color: var(--text);
+      border-bottom: 1px solid rgba(240,165,0,0.28);
+    }
+
+    .footer-note {
+      display: grid;
+      gap: 0.4rem;
+      color: rgba(234,234,234,0.54);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.6;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .accent-line {
+      display: block;
+      width: 4.25rem;
+      height: 2px;
+      background: var(--amber);
+      box-shadow: 0 0 16px rgba(240,165,0,0.4);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    @media (min-width: 720px) {
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .room { border-right: 1px solid var(--line); }
+      .room:nth-child(2n) { border-right: 0; }
+      .amenity-grid { grid-template-columns: repeat(3, 1fr); }
+      .amenity-group { padding: 1.35rem 1rem 1.45rem 0; border-bottom: 0; border-right: 1px solid var(--line); }
+      .amenity-group:last-child { border-right: 0; }
+      .location-wrap { grid-template-columns: 0.9fr 1.1fr; gap: 1.25rem; }
+      .gallery-grid { grid-template-columns: 1.3fr 0.7fr 0.7fr; grid-auto-rows: minmax(14rem, auto); }
+      .gallery-grid figure:first-child { grid-row: span 2; }
+      .gallery-grid figure:nth-child(2),
+      .gallery-grid figure:nth-child(3) { min-height: 14rem; }
+      .footer-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+    }
+
+    @media (max-width: 719px) {
+      .site-header { padding: 0.8rem 0; }
+      .nav { gap: 0.55rem 0.8rem; font-size: 0.7rem; }
+      .hero { padding-top: 6.5rem; }
+      .room summary { grid-template-columns: 1fr; gap: 0.5rem; }
+      .room-chip { justify-self: start; }
+      .room summary::after { justify-self: start; margin-left: 0; }
+      .booking-panel { padding: 1.25rem; }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="Microtel by Wyndham Puerto Princesa home">
+        <span>Microtel by Wyndham</span>
+        <strong>Puerto Princesa</strong>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-art" aria-hidden="true">
+        <img src="assets/img/hero-beach.svg" alt="" fetchpriority="high">
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="eyebrow reveal">The Emerald Playa Beach & Nature Park, San Jose, Palawan</div>
+        <h1 class="reveal">Microtel by Wyndham Puerto Princesa</h1>
+        <p class="reveal">A verified 50-room beachfront hotel in Puerto Princesa City with pool access, airport transfers, meeting space, and the practical, value-first room setup Microtel is known for.</p>
+        <div class="hero-note reveal">Official hotel pages confirm the beachfront location, 7 km distance from Puerto Princesa International Airport, and a current room mix that includes beach-view, garden-view, accessible, and suite options.</div>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="https://microtel-palawan.com/" target="_blank" rel="noopener noreferrer">Visit official site</a>
+          <a class="btn btn-ghost" href="#rooms">See room options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="accent-line"></span>
+          <h2>Rooms and accommodations</h2>
+          <p>Room names below reflect current booking-channel listings for this property, while the shared amenities come from Microtel's official room page. Every room includes individually controlled air-conditioning, a flat TV, safety deposit box, IDD/NDD phone, radio clock, hair dryer, hot and cold shower, electronic keycard entry, and a baby crib on request. Beach-view rooms also include a refrigerator.</p>
+        </div>
+        <div class="rooms-grid" id="rooms-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="accent-line"></span>
+          <h2>Verified amenities</h2>
+          <p>The current facility list is simple, useful, and geared toward the beach setting: swim, work, move, and arrange island time without leaving the property footprint.</p>
+        </div>
+        <div class="amenity-grid reveal" id="amenity-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="accent-line"></span>
+          <h2>Location and map</h2>
+          <p>Microtel by Wyndham Puerto Princesa sits inside The Emerald Playa Beach & Nature Park in San Jose, Puerto Princesa, Palawan 5300, Philippines. The hotel states it is about 7 km from Puerto Princesa International Airport, and the verified map pin sits in Puerto Princesa at 9.7906377, 118.7720507.</p>
+        </div>
+        <div class="location-wrap">
+          <div class="location-copy reveal">
+            <div class="address-block">
+              <strong>The Emerald Playa Beach & Nature Park</strong>
+              <p>San Jose, Puerto Princesa, Palawan 5300 Philippines</p>
+              <p>Tel: <a href="tel:+639175497363">+63 917 549 7363</a> / <a href="tel:+639177710434">+63 917 771 0434</a></p>
+              <p>Email: <a href="mailto:puertoprincesa@microtel.ph">puertoprincesa@microtel.ph</a></p>
+            </div>
+            <div class="map-meta">
+              <span class="tiny-pill">Puerto Princesa pin verified</span>
+              <span>GPS: 9.7906377, 118.7720507</span>
+              <span>7 km from PPS Airport</span>
+            </div>
+            <p>For a stay base, the official contact page highlights Honda Bay, the Puerto Princesa Subterranean River National Park, Puerto Princesa Bay, the Immaculate Conception Cathedral, Crocodile Farm, and Iwahig Penal Colony as easy trip ideas to ask about at the desk.</p>
+          </div>
+          <div class="map-frame reveal">
+            <iframe title="Map to Microtel by Wyndham Puerto Princesa" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=118.7626%2C9.7846%2C118.7826%2C9.7967&layer=mapnik&marker=9.7906377%2C118.7720507"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking-band">
+      <div class="container">
+        <div class="booking-panel reveal">
+          <span class="mono" style="color: rgba(234,234,234,0.74); font-size: 0.74rem;">Direct booking</span>
+          <h2>Book the beachfront stay direct</h2>
+          <p>The official hotel site is the fastest way to check current availability, while the published phone and email contacts make it easy to confirm airport transfers, room preferences, or a function space for a small group.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://microtel-palawan.com/" target="_blank" rel="noopener noreferrer">Official site</a>
+            <a class="btn btn-ghost" href="tel:+639175497363">Call reservations</a>
+            <a class="btn btn-ghost" href="mailto:puertoprincesa@microtel.ph">Email hotel</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="accent-line"></span>
+          <h2>Gallery</h2>
+          <p>Local SVG artwork keeps the page self-contained while matching the beach, pool, and room mood of the property.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure>
+            <img src="assets/img/hero-beach.svg" alt="Stylized beachfront and hotel facade scene">
+            <figcaption>Beachfront arrival</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/room-suite.svg" alt="Stylized guest room with two queen beds and sea view">
+            <figcaption>Room mood</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/pool-courtyard.svg" alt="Stylized pool and courtyard scene">
+            <figcaption>Pool and grounds</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <footer class="contact-footer" id="contact">
+      <div class="container">
+        <div class="footer-grid reveal">
+          <div>
+            <div class="section-head" style="margin-bottom: 1rem;">
+              <span class="accent-line"></span>
+              <h2>Contact and footer</h2>
+              <p>Microtel by Wyndham Puerto Princesa, Palawan is the only international brand beachfront hotel in the city according to the official homepage, with a 50-room footprint and a location geared toward island hopping, snorkeling, and city tours.</p>
+            </div>
+          </div>
+          <div>
+            <ul class="contact-list">
+              <li><span class="mono" style="color: var(--amber); font-size: 0.7rem;">Address</span><br>The Emerald Playa Beach & Nature Park, San Jose, Puerto Princesa, Palawan 5300 Philippines</li>
+              <li><span class="mono" style="color: var(--amber); font-size: 0.7rem;">Phone</span><br><a href="tel:+639175497363">+63 917 549 7363</a> / <a href="tel:+639177710434">+63 917 771 0434</a></li>
+              <li><span class="mono" style="color: var(--amber); font-size: 0.7rem;">Email</span><br><a href="mailto:puertoprincesa@microtel.ph">puertoprincesa@microtel.ph</a></li>
+              <li><span class="mono" style="color: var(--amber); font-size: 0.7rem;">Website</span><br><a href="https://microtel-palawan.com/" target="_blank" rel="noopener noreferrer">microtel-palawan.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">
+          <span>Verified against official Microtel pages, the Wyndham hotel overview, and current booking listings.</span>
+          <span>Room inventories and availability can change without notice.</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const roomData = [
+      {
+        title: 'Premium Queen Room with Two Queen Beds and Beach View - Non-Smoking',
+        meta: '2 queen beds',
+        chip: 'Current booking listing',
+        copy: 'Beach-view room type with the clearest coastal outlook in the current inventory. Beach-view rooms are the ones the official room page says include a refrigerator.',
+        tags: ['Beach view', 'Two queen beds', 'Refrigerator in room']
+      },
+      {
+        title: 'Queen Room with Two Queen Beds and Garden View - Non-Smoking',
+        meta: '2 queen beds',
+        chip: 'Current booking listing',
+        copy: 'A practical garden-view option with the same Microtel room basics and a quieter outlook than the beach-facing inventory.',
+        tags: ['Garden view', 'Two queen beds', 'Value-first layout']
+      },
+      {
+        title: 'Queen Room with Roll-In Shower - Mobility Accessible - Non-Smoking',
+        meta: '1 queen bed',
+        chip: 'Current booking listing',
+        copy: 'The accessible room type currently surfaced by booking channels, set up for easier circulation and a roll-in shower configuration.',
+        tags: ['Mobility accessible', 'Roll-in shower', 'Single queen bed']
+      },
+      {
+        title: 'Queen Suite - Non-Smoking',
+        meta: 'Up to 4 guests',
+        chip: 'Current booking listing',
+        copy: 'A suite option in the current inventory for guests who want a little more room without leaving the Microtel setup.',
+        tags: ['Suite layout', 'Non-smoking', 'Flexible stay']
+      },
+      {
+        title: 'Queen Suite with Beach View - Non-Smoking',
+        meta: 'Beach view',
+        chip: 'Current booking listing',
+        copy: 'The beach-view suite variant that appears in the current booking-channel inventory for guests who want a brighter outlook.',
+        tags: ['Beach view', 'Suite', 'Non-smoking']
+      }
+    ];
+
+    const amenityGroups = [
+      {
+        title: 'Stay',
+        items: [
+          'Swimming pool',
+          'Wireless internet access',
+          'Meeting room for up to 30 persons',
+          'Accessible facilities',
+          'Water stations',
+          'Sundry shop',
+          'Safety deposit box at the front desk'
+        ]
+      },
+      {
+        title: 'Outdoors',
+        items: [
+          'Children\'s play area',
+          'Outdoor fitness equipment',
+          'Kayaks for rent, subject to availability',
+          'Tours and island activities',
+          'Beachfront setting'
+        ]
+      },
+      {
+        title: 'Services',
+        items: [
+          'Airport transfers and transport services',
+          'Photocopying and printing services',
+          'Laundry',
+          'Massage with prior reservation'
+        ]
+      }
+    ];
+
+    const roomsGrid = document.getElementById('rooms-grid');
+    roomsGrid.innerHTML = roomData.map((room, index) => `
+      <details class="room reveal" ${index === 0 ? 'open' : ''}>
+        <summary>
+          <span class="room-title">
+            <strong>${room.title}</strong>
+            <span>${room.meta}</span>
+          </span>
+          <span class="room-chip">${room.chip}</span>
+        </summary>
+        <div class="room-body">
+          <p class="room-copy">${room.copy}</p>
+          <ul class="room-list">${room.tags.map(tag => `<li>${tag}</li>`).join('')}</ul>
+        </div>
+      </details>
+    `).join('');
+
+    const amenityGrid = document.getElementById('amenity-grid');
+    amenityGrid.innerHTML = amenityGroups.map(group => `
+      <div class="amenity-group reveal">
+        <h3>${group.title}</h3>
+        <ul>${group.items.map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>
+    `).join('');
+
+    // Smooth scrolling and reveal motion.
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.05,
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    gsap.from('.hero .reveal', {
+      opacity: 0,
+      y: 24,
+      duration: 0.9,
+      ease: 'power3.out',
+      stagger: 0.09,
+      delay: 0.15
+    });
+
+    gsap.to('.hero-art img', {
+      yPercent: -6,
+      scale: 1.08,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    ScrollTrigger.batch('.section .reveal, .booking-panel.reveal, .footer-grid.reveal', {
+      start: 'top 82%',
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          stagger: 0.08,
+          ease: 'power3.out'
+        });
+      }
+    });
+
+    gsap.utils.toArray('.gallery-grid figure').forEach((figure, index) => {
+      gsap.fromTo(figure, { opacity: 0, y: 26 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: figure,
+          start: 'top 85%'
+        },
+        delay: index * 0.05
+      });
+    });
+
+    document.querySelectorAll('summary').forEach(summary => {
+      summary.addEventListener('click', () => {
+        const details = summary.parentElement;
+        requestAnimationFrame(() => {
+          if (details.open) {
+            gsap.fromTo(details.querySelector('.room-body'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+          }
+        });
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Microtel by Wyndham Puerto Princesa",
+      "url": "https://frans15-2006.github.io/TheFrans/microtel-puerto-princesa/",
+      "telephone": "+63 917 549 7363",
+      "email": "puertoprincesa@microtel.ph",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "The Emerald Playa Beach & Nature Park, San Jose",
+        "addressLocality": "Puerto Princesa",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7906377,
+        "longitude": 118.7720507
+      },
+      "hasMap": "https://www.openstreetmap.org/?mlat=9.7906377&mlon=118.7720507#map=16/9.7906377/118.7720507",
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Swimming pool", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Wireless internet access", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Airport transfers", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Meeting room", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Accessible facilities", "value": true}
+      ]
+    }
+  </script>
 </body>
+</html>

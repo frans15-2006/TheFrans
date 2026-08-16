@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized guest room with two beds and a sea view">
+  <defs>
+    <linearGradient id="roomBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="windowSea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b2426"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#roomBg)"/>
+  <rect x="110" y="110" width="1380" height="980" rx="24" fill="#0d0d0d" stroke="rgba(234,234,234,0.08)"/>
+  <rect x="140" y="150" width="1320" height="760" rx="16" fill="#101010"/>
+  <rect x="910" y="150" width="550" height="760" rx="16" fill="url(#windowSea)"/>
+  <rect x="960" y="200" width="460" height="520" rx="18" fill="#171717"/>
+  <rect x="988" y="226" width="404" height="448" rx="10" fill="#0b0b0b"/>
+  <path d="M988 450C1090 418 1182 440 1290 466C1360 482 1420 480 1392 510C1340 568 1250 600 1138 582C1040 566 984 536 988 450Z" fill="#1b2325"/>
+  <path d="M988 486C1080 462 1190 486 1276 512C1340 532 1376 540 1388 564C1328 590 1244 610 1158 606C1060 600 1002 574 988 486Z" fill="#f0a500" fill-opacity="0.12"/>
+  <circle cx="1228" cy="294" r="58" fill="#f0a500" fill-opacity="0.55"/>
+
+  <rect x="210" y="560" width="450" height="160" rx="20" fill="#151515"/>
+  <rect x="270" y="510" width="300" height="60" rx="18" fill="#202020"/>
+  <rect x="270" y="672" width="300" height="68" rx="12" fill="#1b1b1b"/>
+  <rect x="220" y="540" width="68" height="140" rx="14" fill="#f0a500" fill-opacity="0.12"/>
+  <rect x="586" y="540" width="68" height="140" rx="14" fill="#f0a500" fill-opacity="0.12"/>
+
+  <rect x="760" y="640" width="178" height="140" rx="18" fill="#191919"/>
+  <rect x="782" y="586" width="130" height="56" rx="12" fill="#202020"/>
+  <rect x="824" y="520" width="46" height="70" rx="10" fill="#f0a500" fill-opacity="0.12"/>
+
+  <rect x="142" y="220" width="264" height="74" rx="14" fill="#151515"/>
+  <rect x="142" y="314" width="188" height="18" rx="9" fill="#f0a500" fill-opacity="0.24"/>
+  <rect x="142" y="348" width="230" height="18" rx="9" fill="#f0a500" fill-opacity="0.16"/>
+
+  <path d="M143 880H1460" stroke="rgba(234,234,234,0.08)" stroke-width="2"/>
+  <path d="M120 1010H1480" stroke="#f0a500" stroke-opacity="0.18" stroke-width="4"/>
+</svg>
