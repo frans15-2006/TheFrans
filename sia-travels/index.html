@@ -1,60 +1,1170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sia Travels</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sia Travels | Puerto Princesa, Palawan Tours</title>
+  <meta name="description" content="Sia Travels is a Puerto Princesa, Palawan travel service offering verified Underground River, El Nido, city tour, and Palawan getaway options with budget-friendly booking support.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sia Travels | Puerto Princesa, Palawan Tours">
+  <meta property="og:description" content="Verified Palawan tours, island hopping, and custom trip planning from Sia Travels in Puerto Princesa.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/sia-travels/assets/img/og-sia-travels.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/sia-travels/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sia Travels | Puerto Princesa, Palawan Tours">
+  <meta name="twitter:description" content="Verified Palawan tours, island hopping, and custom trip planning from Sia Travels in Puerto Princesa.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/sia-travels/assets/img/og-sia-travels.svg">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/sia-travels/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(14, 14, 14, 0.86);
+      --panel-strong: rgba(18, 18, 18, 0.94);
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.68);
+      --line: rgba(240, 165, 0, 0.18);
+      --line-strong: rgba(240, 165, 0, 0.38);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; background: var(--bg); }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(240, 165, 0, 0.25); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    .wrap {
+      width: min(100%, 1440px);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .eyebrow, .mono, .meta, .duration, .footer-note, .topbar a, .chip, .label {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1.8rem;
+      max-width: 54rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 48rem;
+      line-height: 1.65;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      padding: 1rem 0;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.84), rgba(8, 8, 8, 0.18));
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+    }
+
+    .brand-mark strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark span {
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .topnav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .topnav a {
+      position: relative;
+      color: rgba(234, 234, 234, 0.86);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.2rem 0;
+    }
+
+    .topnav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .topnav a:hover::after,
+    .topnav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      overflow: clip;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(240, 165, 0, 0.16), transparent 22%),
+        radial-gradient(circle at 78% 20%, rgba(240, 165, 0, 0.11), transparent 18%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.1) 0%, rgba(8, 8, 8, 0.6) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.96;
+      filter: saturate(0.98) contrast(1.05);
+      transform: scale(1.04);
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: grid;
+      align-items: end;
+      padding: 7.5rem 0 2rem;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      padding-bottom: 1.4rem;
+    }
+
+    .hero-brand {
+      margin: 0 0 0.35rem;
+      color: var(--accent);
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3.6rem, 9vw, 8.4rem);
+      color: var(--text);
+    }
+
+    .hero-copy .hook {
+      margin: 1rem 0 1.5rem;
+      color: rgba(234, 234, 234, 0.78);
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      line-height: 1.7;
+      max-width: 33rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0.82rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn-fill {
+      background: var(--accent);
+      color: #121212;
+      box-shadow: 0 12px 40px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-fill:hover {
+      background: #ffb52a;
+      box-shadow: 0 16px 48px rgba(240, 165, 0, 0.24);
+    }
+
+    .btn-ghost {
+      background: rgba(8, 8, 8, 0.18);
+      color: var(--text);
+      border-color: rgba(234, 234, 234, 0.18);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.18), 0 12px 40px rgba(0, 0, 0, 0.34);
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.35);
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 600ms ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to { transform: translate(-50%, -50%) scale(14); opacity: 0; }
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator span {
+      display: inline-block;
+      width: 2.2rem;
+      height: 1px;
+      background: var(--accent);
+      position: relative;
+    }
+
+    .scroll-indicator span::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: 0;
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
+      transform: rotate(45deg);
+    }
+
+    .packages-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .package-card {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      min-height: 14rem;
+      padding: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(18, 18, 18, 0.9), rgba(10, 10, 10, 0.96));
+      box-shadow: var(--shadow);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      overflow: hidden;
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(240, 165, 0, 0.08), transparent 46%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .package-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.5);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.46), 0 0 0 1px rgba(240, 165, 0, 0.12);
+    }
+
+    .package-card:hover::before { opacity: 1; }
+
+    .package-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(234, 234, 234, 0.64);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .package-card h3 {
+      margin: 0;
+      font-size: clamp(2.1rem, 3vw, 3.4rem);
+      font-family: 'Bebas Neue', sans-serif;
+      line-height: 0.94;
+      letter-spacing: 0.04em;
+    }
+
+    .package-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .package-card .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .price {
+      color: var(--accent);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .duration {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.48rem 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(10rem, 1fr);
+    }
+
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: #111;
+      min-height: 12rem;
+      box-shadow: var(--shadow);
+    }
+
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.001);
+      transition: transform 260ms ease, filter 260ms ease;
+      filter: saturate(1.02) contrast(1.04);
+    }
+
+    .tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 15%, rgba(8, 8, 8, 0.65) 100%);
+      transition: background 260ms ease;
+      pointer-events: none;
+    }
+
+    .tile:hover img { transform: scale(1.03); }
+    .tile:hover::after { background: linear-gradient(180deg, rgba(240, 165, 0, 0.08) 0%, rgba(8, 8, 8, 0.56) 100%); }
+
+    .tile figcaption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .tile figcaption span {
+      padding: 0.5rem 0.68rem;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: rgba(8, 8, 8, 0.56);
+      backdrop-filter: blur(8px);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      padding: 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(14, 14, 14, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial-card blockquote {
+      margin: 0 0 1rem;
+      color: rgba(234, 234, 234, 0.88);
+      font-size: 1.04rem;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .testimonial-card .name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 0.18rem;
+      color: var(--accent);
+    }
+
+    .stars svg { width: 0.9rem; height: 0.9rem; fill: currentColor; }
+
+    .booking-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background:
+        linear-gradient(90deg, rgba(240, 165, 0, 0.14), rgba(240, 165, 0, 0.02) 32%, rgba(8, 8, 8, 0.98) 70%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.96), rgba(8, 8, 8, 0.96));
+    }
+
+    .booking-cta .inner {
+      display: grid;
+      gap: 1.2rem;
+      padding: 3.2rem 0;
+      align-items: center;
+    }
+
+    .booking-cta h2 {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 0.92;
+    }
+
+    .booking-cta p {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.65;
+      max-width: 40rem;
+    }
+
+    .pulse {
+      box-shadow: 0 0 0 rgba(240, 165, 0, 0.35);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.22); }
+      70% { box-shadow: 0 0 0 18px rgba(240, 165, 0, 0); }
+    }
+
+    footer {
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2rem;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      line-height: 0.9;
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-brand p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 28rem;
+    }
+
+    .footer-col h3 {
+      margin: 0 0 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(234, 234, 234, 0.78);
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-links,
+    .footer-list {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-links a,
+    .footer-list a {
+      color: rgba(234, 234, 234, 0.8);
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-list a:hover,
+    .footer-links a:focus-visible,
+    .footer-list a:focus-visible {
+      color: var(--accent);
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 0.8rem;
+      color: rgba(234, 234, 234, 0.8);
+      line-height: 1.6;
+    }
+
+    .contact-lines strong {
+      color: var(--text);
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      border-radius: 999px;
+      color: var(--accent);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .socials a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.5);
+      background: rgba(240, 165, 0, 0.08);
+    }
+
+    .socials svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentColor;
+    }
+
+    .legal {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: rgba(234, 234, 234, 0.5);
+      font-size: 0.78rem;
+      line-height: 1.65;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(234, 234, 234, 0.7);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .feature-tag::before {
+      content: '';
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(240, 165, 0, 0.6);
+    }
+
+    @media (min-width: 768px) {
+      .wrap { padding: 0 1.5rem; }
+      .section { padding: 6.5rem 0; }
+      .hero-shell { padding: 9rem 0 2rem; }
+      .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+      .tile:nth-child(1) { grid-column: 1 / span 7; grid-row: span 2; }
+      .tile:nth-child(2) { grid-column: 8 / span 5; }
+      .tile:nth-child(3) { grid-column: 8 / span 5; }
+      .tile:nth-child(4) { grid-column: 1 / span 4; }
+      .tile:nth-child(5) { grid-column: 5 / span 4; }
+      .tile:nth-child(6) { grid-column: 9 / span 4; }
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .booking-cta .inner {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1.3fr 0.8fr 1fr 0.9fr;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .packages-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-shell { padding-bottom: 3rem; }
+      .hero-copy { max-width: 47rem; }
+    }
+
+    @media (max-width: 767px) {
+      .topbar .inner { align-items: flex-start; }
+      .topnav { gap: 0.8rem 1rem; }
+      .hero-copy h1 { max-width: 11ch; }
+      .package-card .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .tile figcaption { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Sia Travels</h1>
-    <span class="category">Tour Agency</span>
-    <p class="address">Tiniguiban, Puerto Princesa City</p>
-    <p class="phone">+63 909 876 6555</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="topbar">
+    <div class="wrap inner">
+      <a class="brand-mark" href="#top" aria-label="Sia Travels home">
+        <strong>SIA TRAVELS</strong>
+        <span>Puerto Princesa, Palawan</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="#packages">Packages</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/img/hero-palawan.svg" alt="">
+      </div>
+      <div class="hero-shell wrap">
+        <div class="hero-copy">
+          <p class="hero-brand display">SIA TRAVELS</p>
+          <h1 class="display">PALAWAN ISLAND TRAVEL</h1>
+          <p class="hook mono">DOT accredited Puerto Princesa travel service for budget-friendly domestic and select international bookings. Public listings show Sia Travels as always open, with Palawan tours, island hopping, and custom trip support.</p>
+          <div class="hero-actions">
+            <a class="btn btn-fill" data-ripple href="#packages">Explore Packages</a>
+            <a class="btn btn-ghost" data-ripple href="mailto:booking.siatravels@gmail.com?subject=Sia%20Travels%20Booking%20Request">Book Now</a>
+          </div>
+          <a class="scroll-indicator" href="#packages">Scroll down <span aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow feature-tag">Verified packages</p>
+          <h2 class="display">Tours with public listings, plus on-brand custom requests.</h2>
+          <p>These cards are built from public Sia Travels listings on Tripadvisor and GetYourGuide, plus service themes directly referenced in reviews for Honda Bay and firefly watching.</p>
+        </div>
+        <!-- Verified packages are mixed with clearly on-brand custom-request items where a public listing was not exposed in the research results. -->
+        <div class="packages-grid" id="packagesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow feature-tag">Destinations gallery</p>
+          <h2 class="display">A quick visual path through Palawan.</h2>
+          <p>Asymmetric destination tiles echo the coastline, lagoons, limestone caves, and island routes that define the agency's Palawan focus.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow feature-tag">Guest notes</p>
+          <h2 class="display">Public praise, kept concise.</h2>
+          <p>These cards paraphrase public Tripadvisor feedback so the page can stay honest without inventing private client identities.</p>
+        </div>
+        <!-- Testimonial copy below is paraphrased from public Tripadvisor review snippets; generic labels are used to avoid inventing private client identities. -->
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+      </div>
+    </section>
+
+    <section class="booking-cta" id="book">
+      <div class="wrap inner">
+        <div>
+          <p class="eyebrow feature-tag">Booking call to action</p>
+          <h2 class="display">LOCK IN YOUR PALAWAN ROUTE</h2>
+          <p>Message Sia Travels through the verified booking email for Underground River, El Nido, Puerto Princesa city routes, or a custom island plan.</p>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:flex-start;gap:0.9rem;flex-wrap:wrap;">
+          <a class="btn btn-fill pulse cta-pulse" data-ripple href="mailto:booking.siatravels@gmail.com?subject=Palawan%20Tour%20Inquiry">Send Booking Email</a>
+          <a class="btn btn-ghost" data-ripple href="https://www.facebook.com/siatravels23/" target="_blank" rel="noopener noreferrer">Visit Facebook</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>SIA TRAVELS</strong>
+          <p>Puerto Princesa-based travel and tours agency for Palawan island hopping, multi-day routes, and budget-friendly itinerary support.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#book">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <div class="contact-lines">
+            <div><strong>Email</strong><br><a href="mailto:booking.siatravels@gmail.com">booking.siatravels@gmail.com</a></div>
+            <div><strong>Address</strong><br>Blessy Torres Subd., Tiniguiban 5300 Puerto Princesa City, Palawan, Philippines</div>
+            <div><strong>Hours</strong><br>Always open</div>
+            <div><strong>Coordinates</strong><br><span class="mono">9.7777535, 118.7388894</span></div>
+            <div class="footer-note">No public phone number was verified in the sources checked, so booking is routed through email and social links.</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Social</h3>
+          <div class="socials" aria-label="Sia Travels social links">
+            <a href="https://www.facebook.com/siatravels23/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.3-1.5 1.6-1.5H16.7V4.6c-.8-.1-1.8-.2-2.9-.2-2.9 0-4.8 1.7-4.8 4.9V11H6v3h3v8h4.5Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/siatravels23/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2A4.8 4.8 0 1 0 16.8 12 4.8 4.8 0 0 0 12 7.2Zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1ZM17.9 6.1a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1ZM21 7.2a5.6 5.6 0 0 0-1.5-4A5.6 5.6 0 0 0 15.5 1.7C14.1 1.6 9.9 1.6 8.5 1.7a5.6 5.6 0 0 0-4 1.5A5.6 5.6 0 0 0 2.9 7.2c-.1 1.4-.1 5.6 0 7a5.6 5.6 0 0 0 1.5 4 5.6 5.6 0 0 0 4 1.5c1.4.1 5.6.1 7 0a5.6 5.6 0 0 0 4-1.5 5.6 5.6 0 0 0 1.5-4c.1-1.4.1-5.6 0-7Zm-1.9 8.5a3.6 3.6 0 0 1-2.1 2.1c-1.5.6-5.2.4-6.9.4s-5.4.2-6.9-.4A3.6 3.6 0 0 1 1.2 15.7C.6 14.2.8 10.5.8 8.8s-.2-5.4.4-6.9A3.6 3.6 0 0 1 3.3-.2c1.5-.6 5.2-.4 6.9-.4s5.4-.2 6.9.4a3.6 3.6 0 0 1 2.1 2.1c.6 1.5.4 5.2.4 6.9s.2 5.4-.4 6.9Z"/></svg>
+            </a>
+            <a href="https://maps.google.com/?q=9.7777535,118.7388894" target="_blank" rel="noopener noreferrer" aria-label="Map link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4a6.4 6.4 0 0 0-6.4 6.4c0 4.5 6.4 12.8 6.4 12.8s6.4-8.3 6.4-12.8A6.4 6.4 0 0 0 12 2.4Zm0 9.2a2.8 2.8 0 1 1 2.8-2.8A2.8 2.8 0 0 1 12 11.6Z"/></svg>
+            </a>
+          </div>
+          <p class="legal">Public business signals verified for this page: Facebook page, Instagram profile, booking email, always-open status, and Puerto Princesa address in Blessy Torres Subd., Tiniguiban. Coordinates use the verified Blessy Torres Subdivision reference point in Puerto Princesa, not Manila.</p>
+        </div>
+      </div>
+      <div class="legal">Copyright <span id="year"></span> Sia Travels. Built as a static single-page site for GitHub Pages deployment.</div>
+    </div>
+  </footer>
+
+  <script>
+    const packages = [
+      {
+        title: 'Puerto Princesa Underground River Day Tour',
+        duration: '6+ hours',
+        price: 'From $49',
+        summary: "Explore the UNESCO World Heritage river with hotel pick-up and a Sabang-based day built around one of Palawan's best-known landmarks."
+      },
+      {
+        title: 'Small-Group El Nido Island Hopping Tour',
+        duration: '6+ hours',
+        price: 'From $24',
+        summary: "A shared island-hopping day with lagoons, beaches, and swim stops, matching Sia Travels' public Tripadvisor listing."
+      },
+      {
+        title: 'Palawan Highlights 4 Days Ultimate Getaway',
+        duration: '3+ days',
+        price: 'From $160',
+        summary: 'A multi-stop Palawan route for travelers who want one itinerary that bridges Puerto Princesa and El Nido.'
+      },
+      {
+        title: 'El Nido: Highlights Island Hopping Tour, Lagoons & Beaches',
+        duration: '2 days',
+        price: 'From $73',
+        summary: "Longer El Nido pacing with lagoons and beach stops from the provider's GetYourGuide inventory."
+      },
+      {
+        title: 'Puerto Princesa Half-Day City Tour: Feel & Live Like a Local',
+        duration: '5 hours',
+        price: 'From $84',
+        summary: 'A compact city loop for visitors who want a local look at Puerto Princesa without losing the afternoon.'
+      },
+      {
+        title: 'Honda Bay Island Hopping',
+        duration: 'Day tour',
+        price: 'Inquire',
+        summary: 'Mentioned directly in public Sia Travels reviews as part of a Puerto Princesa trip. Ask for the latest inclusions and timing.'
+      },
+      {
+        title: 'Firefly Watching',
+        duration: 'Evening',
+        price: 'Inquire',
+        summary: 'Referenced in public reviews as a Sia Travels add-on for Puerto Princesa nights. Best confirmed by message before booking.'
+      },
+      {
+        title: 'Balabac Expedition Planning',
+        duration: 'Custom',
+        price: 'Inquire',
+        summary: "A custom quote request for Palawan's remote south. Use it when you want a route built around your dates and pace."
+      }
+    ];
+
+    const gallery = [
+      { title: 'El Nido lagoon', img: 'assets/img/el-nido-lagoon.svg' },
+      { title: 'Underground River', img: 'assets/img/underground-river.svg' },
+      { title: 'Honda Bay', img: 'assets/img/honda-bay.svg' },
+      { title: 'Coron lake', img: 'assets/img/coron-lake.svg' },
+      { title: 'Balabac beach', img: 'assets/img/balabac-beach.svg' },
+      { title: 'Puerto Princesa bay', img: 'assets/img/puerto-city.svg' }
+    ];
+
+    const testimonials = [
+      {
+        quote: 'The communication and attention from the guides were perfect - excellent service.',
+        name: 'Tripadvisor guest',
+      },
+      {
+        quote: 'Great tour! Great service! Sia set us up with a great island hopping tour and stayed connected personally.',
+        name: 'Michael R',
+      },
+      {
+        quote: 'It was an amazing experience. The guide is funny and helpful during our tour, and we will surely book again.',
+        name: 'Tripadvisor guest',
+      }
+    ];
+
+    const starSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.2 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.8-5.4 2.8 1-6.1-4.4-4.3 6.1-.9L12 2.2Z"/></svg>';
+
+    const packagesGrid = document.getElementById('packagesGrid');
+    packagesGrid.innerHTML = packages.map((item) => `
+      <article class="package-card reveal">
+        <div class="meta"><span class="label">Palawan route</span><span class="duration">${item.duration}</span></div>
+        <h3 class="display">${item.title}</h3>
+        <p>${item.summary}</p>
+        <div class="bottom">
+          <div class="mono price">${item.price}</div>
+          <div class="mono" style="color: rgba(234,234,234,0.52); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.68rem;">Book through email</div>
+        </div>
+      </article>
+    `).join('');
+
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = gallery.map((item) => `
+      <figure class="tile reveal">
+        <img src="${item.img}" alt="${item.title}">
+        <figcaption><span>${item.title}</span></figcaption>
+      </figure>
+    `).join('');
+
+    const testimonialsGrid = document.getElementById('testimonialsGrid');
+    testimonialsGrid.innerHTML = testimonials.map((item) => `
+      <article class="testimonial-card reveal">
+        <div class="name"><span>${item.name}</span><span class="stars" aria-label="5 star rating">${starSvg}${starSvg}${starSvg}${starSvg}${starSvg}</span></div>
+        <blockquote>“${item.quote}”</blockquote>
+        <div class="mono" style="color: rgba(234,234,234,0.46); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;">Public review reference</div>
+      </article>
+    `).join('');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('[data-ripple]').forEach((button) => {
+      button.addEventListener('pointerdown', (event) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 650);
+      });
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!reduceMotion) {
+        const lenis = new Lenis({
+          duration: 1.05,
+          smoothWheel: true,
+          smoothTouch: false,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        gsap.from('.hero-copy > *', {
+          autoAlpha: 0,
+          y: 22,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: 'power3.out',
+          delay: 0.12
+        });
+
+        gsap.to('.hero-media img', {
+          yPercent: 6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.to('.hero-copy', {
+          y: -40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+          }
+        });
+
+        gsap.to('.scroll-indicator span', {
+          x: 8,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.3,
+          ease: 'sine.inOut'
+        });
+
+        gsap.to('.cta-pulse', {
+          scale: 1.02,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.7,
+          ease: 'sine.inOut'
+        });
+
+        gsap.utils.toArray('.reveal').forEach((el) => {
+          gsap.from(el, {
+            autoAlpha: 0,
+            y: 36,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 82%'
+            }
+          });
+        });
+
+        gsap.from('.package-card', {
+          autoAlpha: 0,
+          y: 34,
+          duration: 0.75,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#packagesGrid',
+            start: 'top 80%'
+          }
+        });
+
+        gsap.from('.tile', {
+          autoAlpha: 0,
+          scale: 0.96,
+          duration: 0.8,
+          stagger: 0.09,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#galleryGrid',
+            start: 'top 80%'
+          }
+        });
+
+        gsap.from('.testimonial-card', {
+          autoAlpha: 0,
+          y: 28,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '#testimonialsGrid',
+            start: 'top 82%'
+          }
+        });
+      } else {
+        ScrollTrigger.refresh();
+      }
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Sia Travels",
+    "url": "https://frans15-2006.github.io/TheFrans/sia-travels/",
+    "image": "https://frans15-2006.github.io/TheFrans/sia-travels/assets/img/og-sia-travels.svg",
+    "email": "booking.siatravels@gmail.com",
+    "priceRange": "$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Blessy Torres Subd., Tiniguiban",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7777535,
+      "longitude": 118.7388894
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "sameAs": [
+      "https://www.facebook.com/siatravels23/",
+      "https://www.instagram.com/siatravels23/"
+    ]
+  }
+  </script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Balabac beach motif">
+  <rect width="1200" height="900" fill="#080808"/>
+  <circle cx="873" cy="174" r="172" fill="#f0a500" fill-opacity="0.17"/>
+  <path d="M0 638c99-39 195-57 292-55 128 3 237 53 343 81 113 30 219 28 324-4 119-36 181-63 241-62v302H0Z" fill="#0f0f0f"/>
+  <path d="M0 771c82-13 166-8 250 11 110 25 207 63 309 74 125 14 241-6 358-48 108-39 203-52 283-44v136H0Z" fill="#1b1b1b"/>
+  <path d="M192 590c35-36 70-61 106-73 54-18 106-8 157 30 42 32 81 76 117 131H141c17-33 33-61 51-88Z" fill="#191919"/>
+  <path d="M654 578c46-49 94-83 143-99 58-19 115-8 171 32 45 31 88 76 129 136H601c16-29 33-54 53-69Z" fill="#141414"/>
+  <path d="M424 665c76-57 153-85 233-84 90 1 174 34 258 72 73 33 145 58 245 63" stroke="#f0a500" stroke-opacity="0.32" stroke-width="3" fill="none"/>
+  <path d="M301 706h582" stroke="#f0a500" stroke-opacity="0.46" stroke-width="5" stroke-linecap="round"/>
+  <path d="M393 706c26-74 69-118 128-132 42-9 87 0 137 29 57 33 106 64 150 103H393Z" fill="#0d0d0d"/>
+</svg>

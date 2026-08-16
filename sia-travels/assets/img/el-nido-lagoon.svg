@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="El Nido lagoon motif">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0e0e0e"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#141414"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <circle cx="920" cy="180" r="190" fill="#f0a500" fill-opacity="0.22"/>
+  <path d="M0 560c108-56 208-70 313-58 121 14 221 65 333 80 129 18 252-7 351-44 93-35 144-57 203-53v415H0Z" fill="url(#water)"/>
+  <path d="M160 650c70-138 151-233 233-256 72-21 153 14 221 81 41 40 78 87 115 140H160Z" fill="#171717"/>
+  <path d="M750 630c54-89 108-156 176-179 73-24 150 15 224 85 30 29 58 62 87 108H750Z" fill="#141414"/>
+  <path d="M220 585c68 26 133 30 197 17 68-15 120-44 170-53 67-11 138 3 199 31 74 33 139 52 247 44" stroke="#f0a500" stroke-opacity="0.42" stroke-width="3" fill="none"/>
+  <path d="M320 448c28-11 56-8 79 8 21 15 37 36 52 63 18 33 30 73 37 122H201c23-72 68-143 119-193Z" fill="#0f0f0f"/>
+  <path d="M912 414c24-9 48-6 68 8 18 12 33 29 46 52 16 28 29 61 36 101H802c19-61 53-117 110-161Z" fill="#0f0f0f"/>
+  <circle cx="600" cy="456" r="56" fill="#f0a500" fill-opacity="0.12"/>
+</svg>

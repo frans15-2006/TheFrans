@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Honda Bay island hopping motif">
+  <rect width="1200" height="900" fill="#080808"/>
+  <circle cx="962" cy="180" r="180" fill="#f0a500" fill-opacity="0.18"/>
+  <path d="M0 604c95-29 173-33 251-24 128 16 230 65 347 85 132 22 238-4 334-39 100-36 161-61 268-46v320H0Z" fill="#101010"/>
+  <path d="M140 560c77-53 154-77 231-74 78 4 142 38 203 90 34 29 67 65 101 107H90c21-45 38-83 50-123Z" fill="#181818"/>
+  <path d="M692 548c56-45 113-69 168-69 70 0 136 37 202 100 33 32 64 70 94 113H617c23-55 46-96 75-144Z" fill="#141414"/>
+  <path d="M165 725c64-28 129-42 195-42 72 0 140 19 206 38 81 24 158 42 237 40 84-2 167-21 313-78" stroke="#f0a500" stroke-opacity="0.34" stroke-width="3" fill="none"/>
+  <circle cx="348" cy="610" r="22" fill="#f0a500" fill-opacity="0.5"/>
+  <circle cx="812" cy="585" r="18" fill="#f0a500" fill-opacity="0.46"/>
+  <circle cx="927" cy="628" r="8" fill="#f0a500" fill-opacity="0.75"/>
+  <path d="M545 488c18-52 45-89 79-113 44-31 91-33 134-10 40 21 73 61 98 119 18 41 34 88 48 140H471c26-52 44-98 74-136Z" fill="#090909"/>
+</svg>

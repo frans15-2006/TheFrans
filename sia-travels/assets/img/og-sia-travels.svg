@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Sia Travels social preview">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.25" r="0.55">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="0.38" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="900" cy="170" r="230" fill="url(#glow)"/>
+  <g fill="#1a1a1a">
+    <path d="M0 400c100-36 178-45 268-38 125 9 232 64 349 82 124 19 241-7 341-37 89-27 173-53 242-39v262H0Z"/>
+    <path d="M0 470c122-23 224-15 301 1 115 25 198 71 321 86 115 14 228-5 347-45 79-26 160-51 231-47v165H0Z" fill="#101010"/>
+  </g>
+  <text x="78" y="158" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="108" letter-spacing="6">SIA TRAVELS</text>
+  <text x="78" y="250" fill="#eaeaea" font-family="Space Grotesk, Arial, sans-serif" font-size="34" letter-spacing="2">PUERTO PRINCESA, PALAWAN</text>
+  <text x="78" y="314" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="1.6">VERIFIED TOURS - ISLAND HOPPING - CUSTOM ITINERARIES</text>
+  <g stroke="#f0a500" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M80 390h260"/>
+    <path d="M80 410h180" opacity="0.7"/>
+  </g>
+</svg>

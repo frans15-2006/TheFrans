@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Stylized Palawan seascape">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#050505"/>
+      <stop offset="0.55" stop-color="#111111"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0.52" cy="0.25" r="0.42">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#101010"/>
+      <stop offset="1" stop-color="#040404"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#f0a500" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1030" cy="220" r="310" fill="url(#orb)"/>
+  <circle cx="1220" cy="120" r="34" fill="#f0a500" fill-opacity="0.8"/>
+  <g fill="#1a1a1a">
+    <path d="M0 675c100-70 194-104 292-102 124 2 210 57 309 89 79 25 169 29 261 17 103-13 204-61 317-57 114 3 207 52 421 151v427H0Z"/>
+    <path d="M0 785c122-39 227-43 314-28 119 20 218 68 321 72 110 5 219-35 321-43 110-9 226 18 344 72 87 39 174 62 300 57v285H0Z" fill="#0e0e0e"/>
+  </g>
+  <path d="M0 620c110 34 219 45 329 31 90-11 181-43 277-52 111-10 218 7 328 34 113 28 221 42 333 24 101-16 206-58 333-58" stroke="#f0a500" stroke-opacity="0.25" stroke-width="3" fill="none"/>
+  <path d="M0 705c129 28 243 40 343 36 114-4 196-36 299-52 124-18 241 0 353 26 123 28 229 40 325 36 89-4 192-26 280-59" stroke="url(#wave)" stroke-width="2.2" fill="none"/>
+  <g fill="#080808">
+    <path d="M360 616c40-78 86-139 152-156 68-18 147 18 209 81 37 38 74 89 96 146H290c18-29 39-52 70-71Z"/>
+    <path d="M1140 600c44-62 93-111 163-120 76-10 149 28 214 87 36 33 71 74 97 125H1081c22-36 41-69 59-92Z"/>
+  </g>
+  <g stroke="#f0a500" stroke-opacity="0.45" stroke-width="2" fill="none">
+    <path d="M640 1030c72-40 146-57 222-54 102 3 188 46 281 58 70 9 152 4 233-20"/>
+    <path d="M520 1080c96-28 184-33 265-18 99 18 181 63 276 77 87 13 178 4 299-32"/>
+  </g>
+  <path d="M620 790c31-23 69-21 100 2 48 34 112 124 146 188 31 57 50 113 64 190H407c19-79 68-167 123-228 35-39 60-74 90-152Z" fill="#171717"/>
+  <path d="M640 799c20-9 42-8 63 6 31 20 58 57 84 103 28 50 49 106 59 165H497c17-69 49-129 82-171 26-33 40-75 61-103Z" fill="#f0a500" fill-opacity="0.15"/>
+  <path d="M770 906c36 0 65 29 65 64s-29 64-65 64-65-29-65-64 29-64 65-64Z" fill="#f0a500" fill-opacity="0.34"/>
+  <g fill="#f0a500" fill-opacity="0.85">
+    <circle cx="1150" cy="815" r="8"/>
+    <circle cx="1187" cy="804" r="5"/>
+    <circle cx="1091" cy="854" r="4"/>
+    <circle cx="1235" cy="887" r="6"/>
+  </g>
+  <path d="M870 952c28-17 53-21 79-16 24 4 46 16 68 30 24 15 49 33 83 42 22 6 47 7 75 2" stroke="#f0a500" stroke-opacity="0.45" stroke-width="2" fill="none"/>
+</svg>

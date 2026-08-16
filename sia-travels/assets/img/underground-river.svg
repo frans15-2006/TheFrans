@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Underground River cave motif">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#080808"/>
+      <stop offset="1" stop-color="#030303"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <path d="M0 680c121-86 243-118 364-95 112 21 193 81 291 107 106 29 214 11 320-26 108-38 165-66 225-63v297H0Z" fill="#111"/>
+  <path d="M112 680c58-123 127-217 209-274 89-61 187-53 275 4 67 44 120 105 169 179 30 46 58 95 84 150H112Z" fill="#171717"/>
+  <path d="M286 553c37-111 95-182 171-202 66-17 131 19 182 81 38 47 67 106 90 176H286Z" fill="#090909"/>
+  <path d="M0 739c91-11 170-2 246 17 94 24 177 61 276 73 114 14 222-6 325-44 97-35 183-47 353-13" stroke="#f0a500" stroke-opacity="0.4" stroke-width="3" fill="none"/>
+  <path d="M460 682c58-71 116-104 176-101 56 3 110 39 157 97 29 35 53 77 71 126H357c31-50 74-86 103-122Z" fill="#0d0d0d"/>
+  <path d="M528 506c20-8 40-7 58 4 25 16 45 41 63 73 20 35 34 75 42 121H437c14-57 39-102 64-135 17-22 15-47 27-63Z" fill="#f0a500" fill-opacity="0.16"/>
+  <circle cx="890" cy="188" r="86" fill="#f0a500" fill-opacity="0.2"/>
+  <path d="M889 119v138M820 188h138" stroke="#f0a500" stroke-opacity="0.45" stroke-width="4" stroke-linecap="round"/>
+</svg>
