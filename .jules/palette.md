@@ -1,0 +1,3 @@
+## 2025-05-29 - Enhanced Search and Filtering UX
+**Learning:** In static food ordering sites with sectioned menus, dynamically hiding empty sections during search and providing a clear 'No results' call-to-action significantly reduces cognitive load and prevents user frustration. Converting non-semantic navigation elements (like 'div' tabs) to semantic 'button' elements with ARIA roles is a critical first step for keyboard accessibility in legacy projects.
+**Action:** Always implement empty states with actionable recovery steps (like a 'Clear search' button) and use semantic HTML for navigation components to ensure native keyboard support and screen reader compatibility.
