@@ -1,5 +1,1232 @@
 <!DOCTYPE html>
-<title>Lagun Hotel El Nido</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lagùn Hotel El Nido | Boutique stay on Balinsasayaw Road</title>
+  <meta name="description" content="Lagùn Hotel El Nido is a 37-room boutique hotel on Balinsasayaw Road in Barangay Maligaya, with a rooftop infinity pool, verified room types, and direct booking contact details." />
+  <meta property="og:title" content="Lagùn Hotel El Nido" />
+  <meta property="og:description" content="A boutique hotel in El Nido, Palawan, with verified room types, a rooftop infinity pool, and a location on Balinsasayaw Road in Barangay Maligaya." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/hero.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#080808" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #101010;
+      --panel-strong: #121212;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --line: rgba(234, 234, 234, 0.12);
+      --line-strong: rgba(240, 165, 0, 0.32);
+      --amber: #f0a500;
+      --amber-soft: rgba(240, 165, 0, 0.14);
+      --shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 90% 0%, rgba(255, 255, 255, 0.05), transparent 20%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .kicker {
+      margin: 0 0 0.65rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      margin: 1rem 0 0;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.42);
+    }
+
+    .btn.primary {
+      background: var(--amber);
+      color: #080808;
+      border-color: transparent;
+      box-shadow: 0 14px 35px rgba(240, 165, 0, 0.22);
+    }
+
+    .btn.primary:hover,
+    .btn.primary:focus-visible {
+      background: #ffb41f;
+      color: #080808;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(8, 8, 8, 0.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .brand-place {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.88) 72%, rgba(8, 8, 8, 1)),
+        radial-gradient(circle at 12% 18%, rgba(240, 165, 0, 0.16), transparent 25%),
+        radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.06), transparent 18%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-shell {
+      position: relative;
+      z-index: 2;
+      min-height: 100svh;
+      padding: clamp(1rem, 3vw, 2rem) 0 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    .hero-locale {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      text-align: right;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      padding-top: clamp(2.2rem, 8vw, 5rem);
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-brand {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.8rem, 15vw, 11.5rem);
+      line-height: 0.86;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0.1rem 0 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: 0.08em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.9);
+    }
+
+    .hero-text {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: min(64svh, 760px);
+      pointer-events: none;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      filter: saturate(0.95) contrast(1.06);
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: min(64svh, 760px);
+      pointer-events: none;
+      border-top: 1px solid rgba(234, 234, 234, 0.12);
+      box-shadow: 0 -48px 80px rgba(0, 0, 0, 0.42) inset;
+      z-index: 2;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(36px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .orb.one {
+      width: 16rem;
+      height: 16rem;
+      left: -4rem;
+      top: 8rem;
+      background: rgba(240, 165, 0, 0.16);
+    }
+
+    .orb.two {
+      width: 13rem;
+      height: 13rem;
+      right: -3rem;
+      top: 16rem;
+      background: rgba(234, 234, 234, 0.08);
+    }
+
+    .rooms-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .rooms-grid {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+
+    .room-card {
+      width: 100%;
+      padding: 0;
+      text-align: left;
+      border: 1px solid var(--line);
+      border-radius: 1.1rem;
+      overflow: hidden;
+      background: rgba(16, 16, 16, 0.76);
+      color: inherit;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+      box-shadow: none;
+    }
+
+    .room-card:hover,
+    .room-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      background: rgba(18, 18, 18, 0.96);
+    }
+
+    .room-media {
+      aspect-ratio: 4 / 3;
+      background: #0d0d0d;
+    }
+
+    .room-media img,
+    .gallery-item img,
+    .modal-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-body {
+      padding: 1rem 1rem 1.05rem;
+    }
+
+    .room-meta {
+      margin: 0 0 0.45rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .room-name {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.85rem;
+      letter-spacing: 0.05em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .room-desc {
+      margin: 0.7rem 0 0;
+      min-height: 4.6rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.95rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.95rem;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid rgba(234, 234, 234, 0.12);
+      border-radius: 999px;
+      font-size: 0.74rem;
+      color: rgba(234, 234, 234, 0.84);
+    }
+
+    .amenity-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .amenity-group {
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .amenity-group h3 {
+      margin: 0 0 0.8rem;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .amenity-group ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.62rem;
+      color: var(--muted);
+    }
+
+    .amenity-group li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .amenity-group li::before {
+      content: "•";
+      color: var(--amber);
+      line-height: 1.3;
+    }
+
+    .location-layout {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .map-shell {
+      min-height: 420px;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      background: #0d0d0d;
+      box-shadow: var(--shadow);
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      filter: grayscale(0.08) contrast(1.05) saturate(0.92);
+    }
+
+    .location-copy {
+      max-width: 38rem;
+    }
+
+    .location-copy p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .address-box {
+      display: grid;
+      gap: 0.55rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .address-box strong {
+      font-weight: 600;
+    }
+
+    .inline-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .inline-links .btn {
+      min-height: 2.65rem;
+      padding-inline: 1rem;
+    }
+
+    .booking-slab {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.06), transparent 44%);
+    }
+
+    .booking-copy {
+      max-width: 42rem;
+    }
+
+    .booking-meta {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      display: block;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #111;
+      text-align: left;
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .gallery-item:hover,
+    .gallery-item:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+    }
+
+    .gallery-item img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-caption {
+      padding: 0.75rem 0.9rem 0.95rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer small,
+    .footer p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+    }
+
+    .footer-links a {
+      color: rgba(234, 234, 234, 0.9);
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--amber);
+    }
+
+    .modal {
+      width: min(960px, calc(100% - 1rem));
+      padding: 0;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      border-radius: 1.25rem;
+      background: #0b0b0b;
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .modal::backdrop {
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-wrap {
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid rgba(234, 234, 234, 0.15);
+      background: rgba(8, 8, 8, 0.8);
+      color: var(--text);
+      z-index: 3;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      min-height: 540px;
+    }
+
+    .modal-media {
+      background: #101010;
+    }
+
+    .modal-copy {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-copy h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 3rem;
+      line-height: 0.92;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .modal-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .modal-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .modal-list li {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+    }
+
+    .modal-list li::before {
+      content: "•";
+      color: var(--amber);
+    }
+
+    .modal-actions {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .section-heading {
+      max-width: 46rem;
+    }
+
+    [data-reveal] {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 900px) {
+      .location-layout {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+        align-items: end;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-visual,
+      .hero-frame {
+        height: 52svh;
+      }
+
+      .hero-copy {
+        padding-top: 1.6rem;
+      }
+
+      .header-inner {
+        align-items: center;
+      }
+
+      .modal-body {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .modal-media img {
+        min-height: 260px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Lagùn Hotel El Nido home">
+        <span class="brand-mark">Lagùn Hotel</span>
+        <span class="brand-place">El Nido</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#location">Location</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <span class="orb one" aria-hidden="true"></span>
+      <span class="orb two" aria-hidden="true"></span>
+      <div class="hero-shell container">
+        <div class="hero-top" data-reveal>
+          <a class="brand" href="#top">
+            <span class="brand-mark">Lagùn Hotel</span>
+          </a>
+          <div class="hero-locale">Balinsasayaw Road, Barangay Maligaya</div>
+        </div>
+        <div class="hero-copy" data-hero-copy>
+          <h1 class="hero-brand">Lagùn Hotel</h1>
+          <p class="hero-title">El Nido, Palawan</p>
+          <p class="hero-text">A verified 37-room boutique stay with a rooftop infinity pool, room types from 26 to 42 sqm, and a location that keeps El Nido town and the airport within easy reach.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#rooms">Explore rooms</a>
+            <a class="btn" href="https://hotels.cloudbeds.com/en/reservation/msyZKO" target="_blank" rel="noopener noreferrer">Reserve direct</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img src="assets/img/hero.svg" alt="" />
+      </div>
+      <div class="hero-frame" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Rooms & accommodations</p>
+          <h2 class="section-title">Verified room types for a slower kind of El Nido stay.</h2>
+          <p class="section-copy">Lagùn Hotel lists 37 rooms in total, with layouts ranging from 26 sqm to 42 sqm and an accessible Deluxe PWD Room for guests who need step-free practicality.</p>
+        </div>
+        <div class="rooms-grid" id="roomsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="amenities">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Amenities</p>
+          <h2 class="section-title">The essentials are already in place.</h2>
+          <p class="section-copy">Verified hotel features include a rooftop infinity pool, restaurant and bar, room service, elevator access, laundry service, meeting rooms, baggage storage, safe deposit boxes, and a spa room.</p>
+        </div>
+        <div class="amenity-columns" data-reveal>
+          <div class="amenity-group">
+            <h3>Shared spaces</h3>
+            <ul>
+              <li>Rooftop infinity pool and outdoor pool</li>
+              <li>Restaurant, bar/lounge, and pool bar</li>
+              <li>Spa room and terrace space</li>
+              <li>Shared lounge and welcome drink</li>
+            </ul>
+          </div>
+          <div class="amenity-group">
+            <h3>Room comforts</h3>
+            <ul>
+              <li>Air-conditioning and ceiling fan</li>
+              <li>Wi-Fi and cable TV</li>
+              <li>Bathrobes, slippers, and hair dryer</li>
+              <li>Minibar and electric kettle</li>
+            </ul>
+          </div>
+          <div class="amenity-group">
+            <h3>Guest services</h3>
+            <ul>
+              <li>Room service and concierge-style assistance</li>
+              <li>Elevator, laundry service, and meeting rooms</li>
+              <li>Baggage storage and safe deposit boxes</li>
+              <li>Airport transfer is listed on selected room types for El Nido Airport only</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Location</p>
+          <h2 class="section-title">Balinsasayaw Road in Barangay Maligaya.</h2>
+          <p class="section-copy">The hotel sits in El Nido town, with Taraw limestone cliff facing the property and El Nido Airport about a 15-minute drive away. Verified coordinates place the property at 11.17565727, 119.39151001.</p>
+        </div>
+        <div class="location-layout">
+          <div class="map-shell" data-reveal>
+            <iframe
+              title="Map to Lagùn Hotel El Nido"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=119.3878%2C11.1727%2C119.3958%2C11.1791&layer=mapnik&marker=11.17565727%2C119.39151001"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="location-copy" data-reveal>
+            <p>Official address</p>
+            <div class="address-box">
+              <strong>Balinsasayaw Road, Bgy. Maligaya National Highway, El Nido, Palawan 5313, Philippines</strong>
+              <span>Coordinates: 11.17565727, 119.39151001</span>
+              <span>Nearest airport: El Nido Airport</span>
+            </div>
+            <div class="inline-links">
+              <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=11.17565727,119.39151001" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+              <a class="btn" href="https://www.openstreetmap.org/?mlat=11.17565727&mlon=119.39151001#map=17/11.17565727/119.39151001" target="_blank" rel="noopener noreferrer">View route</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section booking-slab" id="booking">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Booking</p>
+          <h2 class="section-title">Reserve direct with Lagùn.</h2>
+          <p class="section-copy booking-copy">Use the official Cloudbeds booking page for current availability. Selected room types list breakfast and El Nido Airport transfer, and the hotel publishes a 14:00 check-in and 12:00 check-out.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://hotels.cloudbeds.com/en/reservation/msyZKO" target="_blank" rel="noopener noreferrer">Book on Cloudbeds</a>
+            <a class="btn" href="tel:+639171561507">Call +63 917 156 1507</a>
+            <a class="btn" href="mailto:lagunhotel@gmail.com">Email reservations</a>
+          </div>
+          <div class="booking-meta">Check-in 14:00 | Check-out 12:00 | lagunhotel@gmail.com</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Gallery</p>
+          <h2 class="section-title">A visual mood of the hotel.</h2>
+          <p class="section-copy">Local SVG scenes echo the facade, room atmosphere, pool deck, and Taraw-facing shoreline so the page stays self-contained on GitHub Pages.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand" data-reveal>
+        <span class="brand-mark" style="font-size: 2.1rem;">Lagùn Hotel</span>
+        <small>Boutique hotel in El Nido, Palawan, Philippines</small>
+        <p>Balinsasayaw Road, Barangay Maligaya, El Nido, Palawan 5313</p>
+      </div>
+      <div class="footer-links" data-reveal>
+        <a href="tel:+639171561507">+63 917 156 1507</a>
+        <a href="mailto:lagunhotel@gmail.com">lagunhotel@gmail.com</a>
+        <a href="https://hotels.cloudbeds.com/en/reservation/msyZKO" target="_blank" rel="noopener noreferrer">Cloudbeds booking</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="detailModal" class="modal" aria-labelledby="modalTitle">
+    <div class="modal-wrap">
+      <button class="close-btn" id="closeModal" type="button" aria-label="Close dialog">×</button>
+      <div class="modal-body">
+        <div class="modal-media">
+          <img id="modalImage" src="" alt="" />
+        </div>
+        <div class="modal-copy">
+          <p class="kicker" id="modalKicker"></p>
+          <h3 id="modalTitle"></h3>
+          <p id="modalText"></p>
+          <ul class="modal-list" id="modalList"></ul>
+          <div class="modal-actions" id="modalActions">
+            <a class="btn primary" id="modalBook" href="https://hotels.cloudbeds.com/en/reservation/msyZKO" target="_blank" rel="noopener noreferrer">Book direct</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const rooms = [
+      {
+        name: "Deluxe Room",
+        size: "26 sqm",
+        occupancy: "Up to 4 guests",
+        summary: "2 double beds with breakfast included and airport transfer included for El Nido Airport only.",
+        details: ["2 double beds", "Breakfast included", "El Nido Airport transfer included", "Private room"],
+        image: "assets/img/room.svg"
+      },
+      {
+        name: "Deluxe Queen",
+        size: "26 sqm",
+        occupancy: "Up to 3 guests",
+        summary: "1 queen bed and 1 day bed, with a Bacuit Bay view listed on the reservation channel.",
+        details: ["1 queen bed", "1 day bed", "Bacuit Bay view", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/room.svg"
+      },
+      {
+        name: "Deluxe Loft",
+        size: "37 sqm",
+        occupancy: "Up to 4 guests",
+        summary: "A ground-level queen bed with two single mattresses on the loft.",
+        details: ["1 queen bed", "2 single mattresses on the loft", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/loft.svg"
+      },
+      {
+        name: "Premier Room",
+        size: "30 sqm",
+        occupancy: "Up to 3 guests",
+        summary: "1 queen bed and 1 day bed facing the Taraw limestone cliff.",
+        details: ["1 queen bed", "1 day bed", "Faces Taraw limestone cliff", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/room.svg"
+      },
+      {
+        name: "Premier with Balcony",
+        size: "30 sqm",
+        occupancy: "Up to 3 guests",
+        summary: "A small balcony faces the Taraw limestone cliff.",
+        details: ["1 queen bed", "1 day bed", "Balcony facing Taraw", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/facade.svg"
+      },
+      {
+        name: "Premier Loft",
+        size: "42 sqm",
+        occupancy: "Up to 5 adults",
+        summary: "The largest loft layout, with a queen bed, day bed, and two single mattresses.",
+        details: ["1 queen bed", "1 day bed", "2 single mattresses", "El Nido Airport transfer included"],
+        image: "assets/img/loft.svg"
+      },
+      {
+        name: "Premier Balcony w/Bathtub",
+        size: "32 sqm",
+        occupancy: "Up to 3 adults",
+        summary: "The most luxurious room in the hotel's own wording, with a bathtub and balcony.",
+        details: ["Bathtub", "Balcony", "1 queen bed", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/bay.svg"
+      },
+      {
+        name: "Deluxe PWD Room",
+        size: "Accessible room",
+        occupancy: "2 guests",
+        summary: "A Deluxe PWD Room with 1 queen size bed and the same breakfast-and-transfer note on the booking data.",
+        details: ["1 queen size bed", "PWD room", "Breakfast included", "El Nido Airport transfer included"],
+        image: "assets/img/room.svg"
+      }
+    ];
+
+    const gallery = [
+      {
+        title: "Arrival facade",
+        caption: "A dark, compact frontage with warm amber detailing and a clean vertical rhythm.",
+        image: "assets/img/facade.svg"
+      },
+      {
+        title: "Rooftop pool mood",
+        caption: "The pool deck scene leans into the property's rooftop infinity-pool identity.",
+        image: "assets/img/pool.svg"
+      },
+      {
+        title: "Room interior",
+        caption: "Simple bedroom geometry keeps the focus on sleep, shade, and a calm palette.",
+        image: "assets/img/room.svg"
+      },
+      {
+        title: "Taraw and bay",
+        caption: "The El Nido backdrop stays close to the cliff line and the water edge.",
+        image: "assets/img/bay.svg"
+      }
+    ];
+
+    const roomsGrid = document.getElementById("roomsGrid");
+    const galleryGrid = document.getElementById("galleryGrid");
+    const modal = document.getElementById("detailModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const modalKicker = document.getElementById("modalKicker");
+    const modalList = document.getElementById("modalList");
+    const modalBook = document.getElementById("modalBook");
+    const closeModal = document.getElementById("closeModal");
+
+    function renderRooms() {
+      roomsGrid.innerHTML = rooms.map((room, index) => `
+        <button class="room-card" type="button" data-room-index="${index}" aria-label="View details for ${room.name}">
+          <div class="room-media">
+            <img src="${room.image}" alt="${room.name} illustration" loading="lazy" />
+          </div>
+          <div class="room-body">
+            <p class="room-meta">${room.size} • ${room.occupancy}</p>
+            <h3 class="room-name">${room.name}</h3>
+            <p class="room-desc">${room.summary}</p>
+            <div class="room-features">
+              ${room.details.slice(0, 3).map((item) => `<span class="pill">${item}</span>`).join("")}
+            </div>
+          </div>
+        </button>
+      `).join("");
+    }
+
+    function renderGallery() {
+      galleryGrid.innerHTML = gallery.map((item, index) => `
+        <button class="gallery-item" type="button" data-gallery-index="${index}" aria-label="Open gallery image: ${item.title}">
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <div class="gallery-caption">${item.title}</div>
+        </button>
+      `).join("");
+    }
+
+    function openDetail({ image, title, kicker, text, details = [], book = true }) {
+      modalImage.src = image;
+      modalImage.alt = title;
+      modalTitle.textContent = title;
+      modalKicker.textContent = kicker;
+      modalText.textContent = text;
+      modalList.innerHTML = details.length ? details.map((item) => `<li>${item}</li>`).join("") : "";
+      modalBook.style.display = book ? "inline-flex" : "none";
+      if (!modal.open) modal.showModal();
+    }
+
+    roomsGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-room-index]");
+      if (!button) return;
+      const room = rooms[Number(button.dataset.roomIndex)];
+      openDetail({
+        image: room.image,
+        title: room.name,
+        kicker: `${room.size} • ${room.occupancy}`,
+        text: room.summary,
+        details: room.details,
+        book: true
+      });
+    });
+
+    galleryGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-gallery-index]");
+      if (!button) return;
+      const item = gallery[Number(button.dataset.gallery-index)];
+      openDetail({
+        image: item.image,
+        title: item.title,
+        kicker: "Gallery",
+        text: item.caption,
+        details: [],
+        book: false
+      });
+    });
+
+    function closeDetail() {
+      if (modal.open) modal.close();
+    }
+
+    closeModal.addEventListener("click", closeDetail);
+    modal.addEventListener("click", (event) => {
+      const rect = modal.querySelector(".modal-wrap").getBoundingClientRect();
+      const inDialog = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (!inDialog) closeDetail();
+    });
+
+    renderRooms();
+    renderGallery();
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (!reducedMotion && window.Lenis) {
+        const lenis = new Lenis({
+          lerp: 0.08,
+          smoothWheel: true,
+          smoothTouch: false
+        });
+
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      if (!reducedMotion) {
+        const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTimeline
+          .from("[data-hero-copy] > *", { y: 22, opacity: 0, duration: 0.9, stagger: 0.08 }, 0)
+          .from(".hero-visual", { opacity: 0, scale: 0.985, duration: 1.2 }, 0.1)
+          .from(".hero-top", { y: -10, opacity: 0, duration: 0.8 }, 0);
+
+        gsap.utils.toArray("[data-reveal]").forEach((el) => {
+          gsap.from(el, {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 84%",
+              once: true
+            },
+            y: 24,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power3.out"
+          });
+        });
+
+        gsap.from(".room-card", {
+          scrollTrigger: {
+            trigger: ".rooms-grid",
+            start: "top 80%",
+            once: true
+          },
+          y: 26,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.08
+        });
+
+        gsap.from(".gallery-item", {
+          scrollTrigger: {
+            trigger: ".gallery-grid",
+            start: "top 82%",
+            once: true
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.08
+        });
+
+        gsap.to(".orb.one", {
+          x: 42,
+          y: -18,
+          duration: 11,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+
+        gsap.to(".orb.two", {
+          x: -36,
+          y: 22,
+          duration: 13,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+
+        gsap.to(".hero-visual img", {
+          y: -16,
+          duration: 7,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }
+
+      window.addEventListener("load", () => ScrollTrigger.refresh());
+    }
+  </script>
 </body>
+</html>

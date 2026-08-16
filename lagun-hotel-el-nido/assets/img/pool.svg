@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Stylized rooftop pool at Lagùn Hotel">
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="78" y="86" width="1044" height="724" rx="34" fill="#0d0d0d" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <path d="M114 620 C260 560 388 540 600 544 C808 548 960 574 1086 628 L1086 764 L114 764 Z" fill="#0e1820"/>
+  <path d="M130 620 C262 578 392 558 598 560 C806 562 958 584 1070 630" fill="none" stroke="#f0a500" stroke-opacity="0.34" stroke-width="4"/>
+  <rect x="184" y="584" width="832" height="118" rx="24" fill="#0b0b0b" stroke="#f0a500" stroke-opacity="0.22"/>
+  <rect x="232" y="600" width="736" height="72" rx="18" fill="#111" stroke="#eaeaea" stroke-opacity="0.08"/>
+  <rect x="328" y="620" width="520" height="34" rx="17" fill="#f0a500" fill-opacity="0.28"/>
+  <rect x="140" y="500" width="170" height="52" rx="16" fill="#eaeaea" fill-opacity="0.08"/>
+  <rect x="292" y="476" width="140" height="76" rx="18" fill="#f0a500" fill-opacity="0.16"/>
+  <rect x="828" y="472" width="182" height="80" rx="18" fill="#eaeaea" fill-opacity="0.08"/>
+  <path d="M778 112 C840 188 882 264 914 352 C942 424 968 500 1000 564 C1048 660 1100 718 1144 760 L1200 760 L1200 112 Z" fill="#111"/>
+  <path d="M778 112 C840 188 882 264 914 352 C942 424 968 500 1000 564 C1048 660 1100 718 1144 760" fill="none" stroke="#f0a500" stroke-opacity="0.42" stroke-width="4"/>
+  <path d="M0 832 C188 786 360 760 544 760 C724 760 900 786 1200 838 L1200 900 L0 900 Z" fill="#080808"/>
+  <rect x="138" y="148" width="262" height="12" rx="6" fill="#f0a500" fill-opacity="0.78"/>
+  <rect x="160" y="176" width="198" height="12" rx="6" fill="#eaeaea" fill-opacity="0.14"/>
+  <circle cx="478" cy="244" r="72" fill="#f0a500" fill-opacity="0.08"/>
+</svg>

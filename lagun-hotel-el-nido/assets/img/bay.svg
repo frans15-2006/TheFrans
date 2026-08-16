@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Stylized Taraw and bay view of El Nido">
+  <rect width="1200" height="900" fill="#080808"/>
+  <path d="M0 646 C172 612 336 598 508 606 C678 614 816 650 1200 730 L1200 900 L0 900 Z" fill="#0c1620"/>
+  <path d="M774 688 C840 600 888 518 952 424 C1012 336 1080 260 1148 190 C1172 164 1192 146 1200 140 L1200 900 L736 900 C738 812 742 756 774 688 Z" fill="#111"/>
+  <path d="M774 688 C840 600 888 518 952 424 C1012 336 1080 260 1148 190 C1172 164 1192 146 1200 140" fill="none" stroke="#f0a500" stroke-opacity="0.44" stroke-width="4"/>
+  <circle cx="144" cy="156" r="88" fill="#f0a500" fill-opacity="0.1"/>
+  <rect x="120" y="280" width="264" height="20" rx="10" fill="#eaeaea" fill-opacity="0.16"/>
+  <rect x="120" y="320" width="180" height="20" rx="10" fill="#eaeaea" fill-opacity="0.12"/>
+  <path d="M116 612 C220 574 326 564 442 570 C560 576 664 598 772 626" fill="none" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="2"/>
+  <path d="M138 670 C250 640 366 630 492 636 C624 642 738 664 858 700" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+  <rect x="170" y="594" width="126" height="18" rx="9" fill="#f0a500" fill-opacity="0.82"/>
+  <rect x="324" y="618" width="82" height="18" rx="9" fill="#eaeaea" fill-opacity="0.26"/>
+  <rect x="454" y="642" width="120" height="18" rx="9" fill="#eaeaea" fill-opacity="0.18"/>
+  <path d="M54 820 C200 776 354 754 520 760 C690 766 838 798 1200 872 L1200 900 L0 900 L0 850 Z" fill="#080808"/>
+  <rect x="88" y="724" width="194" height="66" rx="20" fill="#0b0b0b" stroke="#f0a500" stroke-opacity="0.22"/>
+  <rect x="118" y="704" width="132" height="18" rx="9" fill="#f0a500" fill-opacity="0.84"/>
+</svg>

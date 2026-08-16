@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Stylized loft room at Lagùn Hotel">
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="74" y="84" width="1052" height="732" rx="34" fill="#0d0d0d" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="122" y="132" width="430" height="602" rx="24" fill="#111" stroke="#f0a500" stroke-opacity="0.26"/>
+  <rect x="176" y="184" width="322" height="118" rx="20" fill="#f0a500" fill-opacity="0.16"/>
+  <rect x="202" y="156" width="266" height="40" rx="18" fill="#eaeaea" fill-opacity="0.88"/>
+  <rect x="204" y="316" width="262" height="100" rx="16" fill="#eaeaea" fill-opacity="0.08"/>
+  <rect x="204" y="444" width="110" height="118" rx="18" fill="#f0a500" fill-opacity="0.22"/>
+  <rect x="328" y="444" width="138" height="118" rx="18" fill="#eaeaea" fill-opacity="0.08"/>
+  <rect x="204" y="588" width="262" height="66" rx="16" fill="#f0a500" fill-opacity="0.12"/>
+  <rect x="600" y="132" width="420" height="602" rx="24" fill="#101010" stroke="#eaeaea" stroke-opacity="0.12"/>
+  <rect x="648" y="168" width="168" height="168" rx="16" fill="#f0a500" fill-opacity="0.18"/>
+  <rect x="836" y="168" width="132" height="168" rx="16" fill="#eaeaea" fill-opacity="0.06"/>
+  <rect x="648" y="364" width="320" height="90" rx="18" fill="#eaeaea" fill-opacity="0.08"/>
+  <rect x="648" y="476" width="320" height="48" rx="24" fill="#f0a500" fill-opacity="0.9"/>
+  <path d="M648 476 L720 392 L788 476" fill="none" stroke="#080808" stroke-opacity="0.85" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 790 C270 742 378 716 500 712 C618 708 728 730 826 760 C928 792 1020 816 1118 820 L1118 900 L180 900 Z" fill="#080808"/>
+  <path d="M640 638 L736 566 L824 638" fill="none" stroke="#f0a500" stroke-opacity="0.34" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="748" y="608" width="156" height="18" rx="9" fill="#eaeaea" fill-opacity="0.45"/>
+  <rect x="748" y="644" width="120" height="18" rx="9" fill="#eaeaea" fill-opacity="0.24"/>
+</svg>
