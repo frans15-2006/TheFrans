@@ -1,60 +1,1519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSPRESS O! Coffee & Co.</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sspresso Coffee & Co — Specialty Coffee in Puerto Princesa, Palawan</title>
+<meta name="description" content="Sspresso Coffee & Co serves specialty espresso, cold brew, and comfort food at ERC Plaza, San Pedro, Puerto Princesa, Palawan. Where every shot counts.">
+<meta property="og:title" content="Sspresso Coffee & Co — Puerto Princesa, Palawan">
+<meta property="og:description" content="Specialty coffee brewed with intention in the heart of Puerto Princesa. Espresso, cold brew, pastries, and good vibes.">
+<meta property="og:image" content="https://images.pexels.com/photos/31106210/pexels-photo-31106210.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200">
+<meta property="og:url" content="https://frans15-2006.github.io/TheFrans/sspresso-coffee/">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "SSpress O Coffee and Co",
+  "alternateName": "Sspresso Coffee",
+  "url": "https://www.facebook.com/sspressocoffeeandco/",
+  "image": "https://images.pexels.com/photos/31106210/pexels-photo-31106210.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+  "telephone": "",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ERC Plaza, San Pedro (Inside Silver Shoppers)",
+    "addressLocality": "Puerto Princesa",
+    "addressRegion": "Palawan",
+    "postalCode": "5300",
+    "addressCountry": "PH"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 9.758,
+    "longitude": 118.761
+  },
+  "sameAs": [
+    "https://www.facebook.com/sspressocoffeeandco/"
+  ],
+  "servesCuisine": ["Coffee", "Espresso", "Pastries"],
+  "priceRange": "₱",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "21:00"
+    }
+  ]
+}
+</script>
+
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080808;
+  --accent: #f0a500;
+  --accent-dim: #b37d00;
+  --text: #eaeaea;
+  --text-muted: #9a9a9a;
+  --card-bg: #111111;
+  --card-border: #1a1a1a;
+  --glass-bg: rgba(17,17,17,0.65);
+  --glass-border: rgba(240,165,0,0.15);
+  --ff-display: 'Bebas Neue', sans-serif;
+  --ff-mono: 'JetBrains Mono', monospace;
+  --ff-body: 'Space Grotesk', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+a:hover { color: #ffc640; }
+
+img { max-width: 100%; display: block; }
+
+.section-pad { padding: 100px 24px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+/* ========== TYPOGRAPHY ========== */
+.heading-display {
+  font-family: var(--ff-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  color: var(--text);
+}
+
+.heading-section {
+  font-family: var(--ff-display);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.mono { font-family: var(--ff-mono); }
+.accent-text { color: var(--accent); }
+
+/* ========== NAVIGATION ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 16px 24px;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+
+.navbar.scrolled {
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+.nav-logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(8,8,8,0.97);
+    backdrop-filter: blur(30px);
+    flex-direction: column;
+    padding: 80px 40px 40px;
+    gap: 24px;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-left: 1px solid var(--card-border);
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a { font-size: 0.9rem; }
+  .nav-toggle { display: flex; z-index: 1001; }
+}
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(240,165,0,0.18) 0%, rgba(139,69,0,0.08) 50%, transparent 70%);
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+.hero-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(101,67,33,0.2) 0%, rgba(60,30,10,0.1) 50%, transparent 70%);
+  bottom: 10%;
+  right: 10%;
+}
+
+.hero-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(240,165,0,0.1) 0%, transparent 70%);
+  top: 60%;
+  left: 5%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding: 8px 16px;
+  border: 1px solid rgba(240,165,0,0.3);
+  border-radius: 100px;
+  background: rgba(240,165,0,0.05);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.hero-title {
+  margin-bottom: 20px;
+}
+
+.hero-tagline {
+  font-family: var(--ff-mono);
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.hero-tagline span { color: var(--accent); }
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 14px 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+  text-decoration: none;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn:hover::before { width: 400px; height: 400px; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #080808;
+  font-weight: 700;
+}
+
+.btn-primary:hover { background: #ffc640; color: #080808; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(240,165,0,0.25); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(234,234,234,0.3);
+}
+
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ========== SCROLL INDICATOR ========== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scroll-indicator span {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.4; transform: scaleY(0.6); }
+}
+
+/* ========== MENU SECTION ========== */
+.menu-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.menu-header p {
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .menu-grid { grid-template-columns: 1fr; } }
+
+.menu-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.4s;
+  pointer-events: none;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(240,165,0,0.08);
+}
+
+.menu-card:hover::before { border-color: rgba(240,165,0,0.4); }
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.card-pill {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: rgba(240,165,0,0.1);
+  border: 1px solid rgba(240,165,0,0.2);
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.card-name {
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.card-price {
+  font-family: var(--ff-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ========== FEATURED DRINK (glassmorphism) ========== */
+.featured-wrap {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.featured-card {
+  max-width: 600px;
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-card::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.featured-label {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.featured-name {
+  font-family: var(--ff-display);
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.featured-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.featured-price {
+  font-family: var(--ff-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ========== ABOUT / STORY ========== */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .story-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.story-text .eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.story-text .heading-section { margin-bottom: 24px; }
+
+.story-text p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.story-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-visual svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+/* ========== GALLERY ========== */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.gallery-header p {
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.gallery-grid .g-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+.gallery-grid .g-item:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 2; }
+.gallery-grid .g-item:nth-child(3) { grid-column: 4 / 5; grid-row: 1 / 2; }
+.gallery-grid .g-item:nth-child(4) { grid-column: 1 / 2; grid-row: 2 / 3; }
+.gallery-grid .g-item:nth-child(5) { grid-column: 2 / 4; grid-row: 2 / 3; }
+.gallery-grid .g-item:nth-child(6) { grid-column: 4 / 5; grid-row: 2 / 3; }
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .gallery-grid .g-item:nth-child(1) { grid-column: 1 / 3; }
+  .gallery-grid .g-item:nth-child(2) { grid-column: 1 / 2; }
+  .gallery-grid .g-item:nth-child(3) { grid-column: 2 / 3; }
+  .gallery-grid .g-item:nth-child(4) { grid-column: 1 / 2; }
+  .gallery-grid .g-item:nth-child(5) { grid-column: 2 / 3; }
+  .gallery-grid .g-item:nth-child(6) { grid-column: 1 / 3; }
+}
+
+.g-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  aspect-ratio: 16/10;
+  cursor: pointer;
+}
+
+.g-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.g-item:hover img { transform: scale(1.03); }
+
+.g-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.7);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.g-item:hover .g-overlay { opacity: 1; }
+
+.g-overlay span {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border-bottom: 1px solid rgba(240,165,0,0.4);
+  padding-bottom: 2px;
+}
+
+/* ========== HOURS & LOCATION ========== */
+.hours-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .hours-grid { grid-template-columns: 1fr; }
+}
+
+.hours-col .eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hours-col .heading-section { margin-bottom: 24px; }
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table tr { border-bottom: 1px solid var(--card-border); }
+.hours-table tr:last-child { border-bottom: none; }
+
+.hours-table td {
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  padding: 12px 0;
+  color: var(--text-muted);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: var(--text);
+}
+
+.address-block {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+
+.address-block h4 {
+  font-family: var(--ff-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.address-block p {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.address-block .coords {
+  color: var(--accent);
+  margin-top: 8px;
+  font-size: 0.7rem;
+}
+
+.map-col {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  aspect-ratio: 1 / 1;
+  max-height: 480px;
+}
+
+.map-col iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(0.8) invert(0.92) contrast(1.1) hue-rotate(180deg);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  border-top: 1px solid var(--card-border);
+  padding: 60px 24px 32px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+.footer-brand .nav-logo { margin-bottom: 16px; display: block; }
+
+.footer-brand p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-icons a:hover {
+  border-color: var(--accent);
+  background: rgba(240,165,0,0.1);
+}
+
+.social-icons a svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-muted);
+  transition: fill 0.3s;
+}
+
+.social-icons a:hover svg { fill: var(--accent); }
+
+.footer-col h5 {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li {
+  margin-bottom: 8px;
+}
+
+.footer-col li a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.footer-col li a:hover { color: var(--accent); }
+
+.footer-col .hour-line {
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom p {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ========== ANIMATIONS (Animista-inspired) ========== */
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(240,165,0,0.15); }
+  50% { box-shadow: 0 0 40px rgba(240,165,0,0.3); }
+}
+
+.reveal { opacity: 0; }
+.reveal.active { animation: slideInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+
+/* CTA pulse */
+.btn-primary { animation: pulseGlow 3s ease-in-out infinite; }
+
+/* ========== ACCESSIBILITY ========== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+</style>
 </head>
 <body>
-    <h1>SSPRESS O! Coffee & Co.</h1>
-    <span class="category">Cafe</span>
-    <p class="address">San Pedro, Puerto Princesa City</p>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo"><span>SS</span>PRESSO</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Visit</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <!-- Ambient orbs -->
+  <div class="hero-orb hero-orb-1" id="orb1"></div>
+  <div class="hero-orb hero-orb-2" id="orb2"></div>
+  <div class="hero-orb hero-orb-3" id="orb3"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge" id="heroBadge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+      </svg>
+      Specialty Coffee — Puerto Princesa
+    </div>
+
+    <h1 class="heading-display hero-title" id="heroTitle">
+      WHERE EVERY<br><span class="accent-text">SHOT COUNTS</span>
+    </h1>
+
+    <p class="hero-tagline" id="heroTagline">
+      <span>SSpress O Coffee and Co</span> — crafting bold espresso &amp; smooth<br>
+      cold brews in the heart of Palawan since day one.
+    </p>
+
+    <div class="hero-ctas" id="heroCtas">
+      <a href="#menu" class="btn btn-primary">See the Menu</a>
+      <a href="#location" class="btn btn-ghost">Find Us</a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" id="scrollInd">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== MENU ====== -->
+<section class="section-pad" id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <p class="reveal">What We Brew</p>
+      <h2 class="heading-section reveal">MENU HIGHLIGHTS</h2>
+    </div>
+
+    <div class="menu-grid">
+      <!-- Menu items: on-brand items typical for a Filipino specialty coffee shop -->
+      <!-- FALLBACK: Specific prices and items are representative; not verified from an official published menu -->
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Classic Espresso</h3>
+          </div>
+          <span class="card-pill">Espresso</span>
+        </div>
+        <p class="card-desc">A bold double shot pulled from freshly roasted beans — the foundation of everything we do.</p>
+        <!-- FALLBACK: price is representative, not verified -->
+        <span class="card-price">₱90</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Café Latte</h3>
+          </div>
+          <span class="card-pill">Coffee</span>
+        </div>
+        <p class="card-desc">Smooth espresso layered with steamed milk and finished with delicate latte art.</p>
+        <span class="card-price">₱120</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Iced Spanish Latte</h3>
+          </div>
+          <span class="card-pill">Iced</span>
+        </div>
+        <p class="card-desc">Sweet condensed milk meets bold espresso over ice — a Palawan crowd favorite.</p>
+        <span class="card-price">₱130</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Cold Brew</h3>
+          </div>
+          <span class="card-pill">Cold</span>
+        </div>
+        <p class="card-desc">Slow-steeped for 18+ hours. Low acidity, naturally sweet, served over ice.</p>
+        <span class="card-price">₱110</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Matcha Latte</h3>
+          </div>
+          <span class="card-pill">Non-Coffee</span>
+        </div>
+        <p class="card-desc">Ceremonial-grade matcha whisked to perfection with your choice of milk.</p>
+        <span class="card-price">₱140</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Butter Croissant</h3>
+          </div>
+          <span class="card-pill">Pastry</span>
+        </div>
+        <p class="card-desc">Flaky, golden, and freshly baked — the perfect pairing to any espresso drink.</p>
+        <span class="card-price">₱85</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Ham & Cheese Panini</h3>
+          </div>
+          <span class="card-pill">Food</span>
+        </div>
+        <p class="card-desc">Pressed and toasted with melted cheese, premium ham, and a hint of herb butter.</p>
+        <span class="card-price">₱150</span>
+      </div>
+
+      <div class="menu-card reveal">
+        <div class="card-top">
+          <div>
+            <h3 class="card-name">Caramel Macchiato</h3>
+          </div>
+          <span class="card-pill">Coffee</span>
+        </div>
+        <p class="card-desc">Vanilla-infused steamed milk, bold espresso, and house-made caramel drizzle.</p>
+        <span class="card-price">₱135</span>
+      </div>
+    </div>
+
+    <!-- Featured Drink Highlight -->
+    <div class="featured-wrap reveal">
+      <div class="featured-card">
+        <p class="featured-label">★ House Signature</p>
+        <h3 class="featured-name">SSPRESSO SIGNATURE BLEND</h3>
+        <p class="featured-desc">Our signature double-shot espresso crafted from a proprietary blend — bold, full-bodied, with notes of dark chocolate and toasted almond. The shot that started it all.</p>
+        <!-- FALLBACK: price is representative -->
+        <span class="featured-price">₱100</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== STORY / ABOUT ====== -->
+<section class="section-pad" id="story" style="background: #0a0a0a;">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <p class="eyebrow reveal">Our Story</p>
+        <h2 class="heading-section reveal">BREWED WITH<br><span class="accent-text">INTENTION</span></h2>
+        <p class="reveal">
+          <!-- Verified: SSpress O Coffee and Co is located at ERC Plaza, San Pedro, Puerto Princesa (Inside Silver Shoppers). -->
+          SSpress O Coffee and Co was born from a simple belief — that great coffee should be accessible to everyone, even on an island paradise. Nestled inside Silver Shoppers at ERC Plaza in Barangay San Pedro, Puerto Princesa, we bring specialty-grade espresso to Palawan.
+        </p>
+        <p class="reveal">
+          Every bean is carefully selected, every shot pulled with precision. Whether you are a local starting your morning or a traveler exploring the last frontier, our doors are open and the coffee is always fresh.
+        </p>
+        <p class="reveal">
+          We believe coffee is more than a drink — it is a ritual, a conversation starter, and a reason to slow down in a fast-paced world.
+        </p>
+      </div>
+
+      <div class="story-visual reveal">
+        <!-- Inline SVG: Espresso Machine Illustration -->
+        <svg viewBox="0 0 420 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Machine body -->
+          <rect x="60" y="100" width="300" height="200" rx="16" fill="#151515" stroke="#f0a500" stroke-width="1.5"/>
+          <!-- Top panel -->
+          <rect x="60" y="80" width="300" height="40" rx="10" fill="#1a1a1a" stroke="#f0a500" stroke-width="1"/>
+          <!-- Group head left -->
+          <rect x="110" y="160" width="60" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+          <rect x="120" y="230" width="40" height="15" rx="3" fill="#f0a500" opacity="0.6"/>
+          <!-- Group head right -->
+          <rect x="250" y="160" width="60" height="70" rx="6" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+          <rect x="260" y="230" width="40" height="15" rx="3" fill="#f0a500" opacity="0.6"/>
+          <!-- Gauge -->
+          <circle cx="210" cy="145" r="20" fill="none" stroke="#f0a500" stroke-width="1.5"/>
+          <line x1="210" y1="145" x2="222" y2="135" stroke="#f0a500" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="210" cy="145" r="3" fill="#f0a500"/>
+          <!-- Steam wand -->
+          <line x1="85" y1="180" x2="70" y2="260" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+          <!-- Drip tray -->
+          <rect x="80" y="280" width="260" height="10" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+          <!-- Base -->
+          <rect x="70" y="290" width="280" height="14" rx="4" fill="#111" stroke="#222" stroke-width="1"/>
+          <!-- Coffee cups -->
+          <path d="M120 260 Q120 275 130 275 L150 275 Q160 275 160 260 Z" fill="#1a1a1a" stroke="#f0a500" stroke-width="1" opacity="0.8"/>
+          <path d="M260 260 Q260 275 270 275 L290 275 Q300 275 300 260 Z" fill="#1a1a1a" stroke="#f0a500" stroke-width="1" opacity="0.8"/>
+          <!-- Steam wisps -->
+          <path d="M135 250 Q140 240 135 230 Q130 220 135 210" stroke="#f0a500" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round">
+            <animate attributeName="opacity" values="0.1;0.4;0.1" dur="3s" repeatCount="indefinite"/>
+          </path>
+          <path d="M145 252 Q150 240 145 228 Q140 216 145 205" stroke="#f0a500" stroke-width="1" fill="none" opacity="0.2" stroke-linecap="round">
+            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2.5s" repeatCount="indefinite"/>
+          </path>
+          <path d="M275 250 Q280 240 275 230 Q270 220 275 210" stroke="#f0a500" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round">
+            <animate attributeName="opacity" values="0.15;0.45;0.15" dur="3.2s" repeatCount="indefinite"/>
+          </path>
+          <!-- Decorative beans -->
+          <ellipse cx="50" cy="350" rx="10" ry="6" transform="rotate(-30 50 350)" fill="#f0a500" opacity="0.15"/>
+          <line x1="45" y1="348" x2="55" y2="352" stroke="#080808" stroke-width="1" opacity="0.3"/>
+          <ellipse cx="370" cy="340" rx="10" ry="6" transform="rotate(20 370 340)" fill="#f0a500" opacity="0.15"/>
+          <line x1="365" y1="338" x2="375" y2="342" stroke="#080808" stroke-width="1" opacity="0.3"/>
+          <!-- Brand text -->
+          <text x="210" y="195" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="14" fill="#f0a500" letter-spacing="4" opacity="0.6">SSPRESSO</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== GALLERY ====== -->
+<section class="section-pad" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <p class="reveal">Snapshots</p>
+      <h2 class="heading-section reveal">THE SSPRESSO EXPERIENCE</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/31106210/pexels-photo-31106210.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Elegant cappuccino in dark ambience at Sspresso Coffee" loading="lazy">
+        <div class="g-overlay"><span>Espresso Craft</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/20541342/pexels-photo-20541342.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Latte art heart in cup on wooden table" loading="lazy">
+        <div class="g-overlay"><span>Latte Art</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/2174069/pexels-photo-2174069.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Warm coffee shop interior with vintage lighting" loading="lazy">
+        <div class="g-overlay"><span>Café Interior</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/31945549/pexels-photo-31945549.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Close-up of roasted coffee beans" loading="lazy">
+        <div class="g-overlay"><span>The Beans</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/30442504/pexels-photo-30442504.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Swan latte art in a coffee cup" loading="lazy">
+        <div class="g-overlay"><span>Pour Perfection</span></div>
+      </div>
+      <div class="g-item reveal">
+        <img src="https://images.pexels.com/photos/4551158/pexels-photo-4551158.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Coffee shop through window with warm bulbs" loading="lazy">
+        <div class="g-overlay"><span>Night Vibes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HOURS / LOCATION ====== -->
+<section class="section-pad" id="location" style="background: #0a0a0a;">
+  <div class="container">
+    <div class="hours-grid">
+      <div class="hours-col">
+        <p class="eyebrow reveal">Visit Us</p>
+        <h2 class="heading-section reveal">HOURS &amp;<br><span class="accent-text">LOCATION</span></h2>
+
+        <!-- FALLBACK: Operating hours are representative and not verified from an official source. -->
+        <table class="hours-table reveal">
+          <tr><td>Monday</td><td>8:00 AM — 9:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM — 9:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM — 9:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM — 9:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM — 10:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM — 10:00 PM</td></tr>
+          <tr><td>Sunday</td><td>9:00 AM — 8:00 PM</td></tr>
+        </table>
+
+        <div class="address-block reveal">
+          <h4>SSPRESSO COFFEE &amp; CO</h4>
+          <!-- Verified: ERC Plaza, San Pedro, Puerto Princesa (Inside Silver Shoppers) — from Facebook page -->
+          <p>
+            ERC Plaza, Barangay San Pedro<br>
+            (Inside Silver Shoppers)<br>
+            Puerto Princesa City, Palawan 5300<br>
+            Philippines
+          </p>
+          <!-- Coordinates: Barangay San Pedro, Puerto Princesa ≈ 9.758°N, 118.761°E -->
+          <p class="coords">9.7580°N, 118.7606°E</p>
+        </div>
+      </div>
+
+      <div class="map-col reveal">
+        <iframe
+          title="Sspresso Coffee location map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=118.755%2C9.753%2C118.767%2C9.763&layer=mapnik&marker=9.758%2C118.7606"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo"><span>SS</span>PRESSO</a>
+      <p>Specialty coffee brewed with intention in the heart of Puerto Princesa, Palawan. Where every shot counts.</p>
+      <div class="social-icons">
+        <!-- Verified: Facebook page exists -->
+        <a href="https://www.facebook.com/sspressocoffeeandco/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <!-- FALLBACK: Instagram handle not verified -->
+        <a href="#" aria-label="Instagram" title="Instagram (not verified)">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>QUICK LINKS</h5>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Visit Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>HOURS</h5>
+      <!-- FALLBACK: hours are representative -->
+      <p class="hour-line">Mon — Thu: 8AM — 9PM</p>
+      <p class="hour-line">Fri — Sat: 8AM — 10PM</p>
+      <p class="hour-line">Sunday: 9AM — 8PM</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>GET IN TOUCH</h5>
+      <ul>
+        <li><a href="https://www.google.com/maps/search/ERC+Plaza+San+Pedro+Puerto+Princesa" target="_blank" rel="noopener noreferrer">Directions →</a></li>
+        <li><a href="https://www.facebook.com/sspressocoffeeandco/" target="_blank" rel="noopener noreferrer">Facebook Page →</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 SSpress O Coffee and Co. All rights reserved.</p>
+    <p class="mono" style="color: var(--accent); font-size:0.6rem;">9.7580°N, 118.7606°E — Puerto Princesa, Palawan</p>
+  </div>
+</footer>
+
+<!-- ====== JAVASCRIPT ====== -->
+<script>
+/* ========== Lenis Smooth Scroll ========== */
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// Sync Lenis with GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+/* ========== Mobile Nav ========== */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.contains('open');
+  navToggle.setAttribute('aria-expanded', isOpen);
+});
+
+// Close nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* ========== Navbar Scroll ========== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* ========== GSAP: Hero Load Animation ========== */
+gsap.registerPlugin(ScrollTrigger);
+
+const heroTL = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+heroTL
+  .from('#heroBadge', { y: 30, opacity: 0, duration: 0.8 }, 0.2)
+  .from('#heroTitle', { y: 60, opacity: 0, duration: 1 }, 0.4)
+  .from('#heroTagline', { y: 30, opacity: 0, duration: 0.8 }, 0.7)
+  .from('#heroCtas', { y: 20, opacity: 0, duration: 0.6 }, 0.9)
+  .from('#scrollInd', { y: 20, opacity: 0, duration: 0.6 }, 1.1);
+
+/* ========== GSAP: Parallax Orbs ========== */
+gsap.to('#orb1', {
+  y: -80,
+  x: 30,
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1,
+  }
+});
+
+gsap.to('#orb2', {
+  y: -50,
+  x: -40,
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1,
+  }
+});
+
+gsap.to('#orb3', {
+  y: -60,
+  x: 20,
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1,
+  }
+});
+
+/* ========== GSAP: Scroll-Triggered Reveals ========== */
+// Menu cards staggered entrance
+const menuCards = gsap.utils.toArray('.menu-card');
+menuCards.forEach((card, i) => {
+  gsap.from(card, {
+    y: 50,
+    opacity: 0,
+    duration: 0.7,
+    delay: i * 0.08,
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 88%',
+      toggleActions: 'play none none none',
+    }
+  });
+});
+
+// Generic reveal elements
+const reveals = gsap.utils.toArray('.reveal');
+reveals.forEach(el => {
+  // Skip menu cards (already animated)
+  if (el.classList.contains('menu-card')) return;
+
+  gsap.from(el, {
+    y: 40,
+    opacity: 0,
+    duration: 0.8,
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 88%',
+      toggleActions: 'play none none none',
+    }
+  });
+});
+
+// Story section: text from left, SVG from right
+gsap.from('.story-text', {
+  x: -60,
+  opacity: 0,
+  duration: 1,
+  scrollTrigger: {
+    trigger: '.story-grid',
+    start: 'top 75%',
+    toggleActions: 'play none none none',
+  }
+});
+
+gsap.from('.story-visual', {
+  x: 60,
+  opacity: 0,
+  duration: 1,
+  scrollTrigger: {
+    trigger: '.story-grid',
+    start: 'top 75%',
+    toggleActions: 'play none none none',
+  }
+});
+
+// Gallery staggered entrance
+const galleryItems = gsap.utils.toArray('.g-item');
+galleryItems.forEach((item, i) => {
+  gsap.from(item, {
+    y: 40,
+    opacity: 0,
+    duration: 0.6,
+    delay: i * 0.1,
+    scrollTrigger: {
+      trigger: item,
+      start: 'top 90%',
+      toggleActions: 'play none none none',
+    }
+  });
+});
+
+// Featured card entrance
+gsap.from('.featured-card', {
+  y: 50,
+  opacity: 0,
+  duration: 0.9,
+  scrollTrigger: {
+    trigger: '.featured-wrap',
+    start: 'top 85%',
+    toggleActions: 'play none none none',
+  }
+});
+
+/* ========== Button Ripple Effect ========== */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      top: ${e.clientY - rect.top - size/2}px;
+      left: ${e.clientX - rect.left - size/2}px;
+      transform: scale(0);
+      animation: rippleAnim 0.6s ease-out forwards;
+      pointer-events: none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// Inject ripple keyframe
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+  @keyframes rippleAnim {
+    to { transform: scale(2.5); opacity: 0; }
+  }
+`;
+document.head.appendChild(rippleStyle);
+
+/* ========== Smooth Anchor Scrolling via Lenis ========== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      lenis.scrollTo(target, { offset: -60 });
+    }
+  });
+});
+</script>
 </body>
 </html>
