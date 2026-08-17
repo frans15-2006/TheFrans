@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Illustrated waveform session poster">
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="104" y="120" width="992" height="660" rx="40" fill="none" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="6"/>
+  <g stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M180 510h100"/>
+    <path d="M340 510h150"/>
+    <path d="M560 510h120"/>
+    <path d="M740 510h90"/>
+    <path d="M890 510h130"/>
+    <path d="M212 420c40 0 40-120 80-120s40 240 80 240 40-280 80-280 40 360 80 360 40-190 80-190 40 110 80 110 40-160 80-160 40 200 80 200 40-80 80-80 40-120 80-120 40 160 80 160 40-40 80-40"/>
+  </g>
+  <g fill="#eaeaea" fill-opacity="0.82" font-family="Bebas Neue, sans-serif" font-size="66" letter-spacing="5">
+    <text x="180" y="200">LIVE SET</text>
+  </g>
+  <g fill="#f0a500" fill-opacity="0.9" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">
+    <text x="180" y="242">THURSDAY / FRIDAY ENERGY</text>
+  </g>
+  <circle cx="944" cy="266" r="88" fill="none" stroke="#f0a500" stroke-width="10"/>
+  <circle cx="944" cy="266" r="22" fill="#f0a500"/>
+</svg>

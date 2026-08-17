@@ -1,60 +1,1371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinyl Cafe Palawan</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinyl Cafe Palawan | Coffee, Records, Puerto Princesa</title>
+  <meta name="description" content="Vinyl Cafe Palawan is a music-themed cafe on Rizal Avenue in Puerto Princesa City, Palawan, with vinyl records, coffee, and all-day food.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/vinyl-cafe/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vinyl Cafe Palawan | Coffee, Records, Puerto Princesa">
+  <meta property="og:description" content="A music-first cafe on Rizal Avenue in Puerto Princesa City, Palawan, with vinyl records, coffee, and all-day food.">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/vinyl-cafe/">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/vinyl-cafe/assets/img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vinyl Cafe Palawan | Coffee, Records, Puerto Princesa">
+  <meta name="twitter:description" content="A music-first cafe on Rizal Avenue in Puerto Princesa City, Palawan, with vinyl records, coffee, and all-day food.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/vinyl-cafe/assets/img/og-image.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --soft: rgba(234, 234, 234, 0.7);
+      --line: rgba(234, 234, 234, 0.16);
+      --glow: rgba(240, 165, 0, 0.34);
+      --radius: 1.25rem;
+      --display: "Bebas Neue", sans-serif;
+      --mono: "JetBrains Mono", monospace;
+      --body: "Space Grotesk", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow,
+    .mono {
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .section-title,
+    .hero-title,
+    .about-title,
+    .footer-brand {
+      font-family: var(--display);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
+    }
+
+    .lead {
+      max-width: 46rem;
+      color: var(--soft);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.48));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.5rem;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--display);
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-mark img {
+      width: 2rem;
+      height: 2rem;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a,
+    .footer-link,
+    .map-link,
+    .social-link {
+      position: relative;
+    }
+
+    .nav-links a::after,
+    .footer-link::after,
+    .map-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .footer-link:hover::after,
+    .map-link:hover::after,
+    .nav-links a:focus-visible::after,
+    .footer-link:focus-visible::after,
+    .map-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      overflow: clip;
+      padding: 2rem 0 3rem;
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(70% 55% at 12% 20%, rgba(240, 165, 0, 0.1), transparent 55%),
+        radial-gradient(45% 35% at 88% 78%, rgba(240, 165, 0, 0.09), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+      grid-template-columns: 1fr;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 1rem;
+      order: 2;
+      max-width: 38rem;
+    }
+
+    .hero-brand {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(4.8rem, 18vw, 10.5rem);
+      color: var(--text);
+    }
+
+    .hero-hook {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin: 0;
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 0.55rem;
+      max-width: 34rem;
+      color: var(--soft);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 0.65rem;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.15rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+      will-change: transform;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 62%);
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 380ms ease, opacity 380ms ease;
+      pointer-events: none;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.28), 0 0 32px var(--glow);
+    }
+
+    .btn:hover::after,
+    .btn:focus-visible::after {
+      transform: scale(1.4);
+      opacity: 1;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 22rem;
+      order: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-orb,
+    .hero-wave {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      object-fit: contain;
+    }
+
+    .hero-orb {
+      width: min(92vw, 38rem);
+      height: min(92vw, 38rem);
+      opacity: 0.96;
+      animation: recordSpin 18s linear infinite;
+    }
+
+    .hero-wave {
+      opacity: 0.32;
+      transform: translateY(1rem);
+    }
+
+    .hero-spin-badge {
+      position: absolute;
+      inset: auto 4% 6% auto;
+      width: min(24vw, 8rem);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(240, 165, 0, 0.34);
+      border-radius: 999px;
+      background: rgba(8, 8, 8, 0.6);
+      box-shadow: 0 0 24px rgba(240, 165, 0, 0.12);
+      animation: pulseBadge 3.5s ease-in-out infinite;
+    }
+
+    .hero-spin-badge span {
+      display: block;
+      text-align: center;
+      max-width: 5rem;
+      line-height: 1.3;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 1.15rem;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--soft);
+      z-index: 2;
+    }
+
+    .scroll-cue::before {
+      content: "";
+      width: 4rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
+      animation: cueLine 1.8s ease-in-out infinite;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 16px rgba(240, 165, 0, 0.45);
+      animation: cueDot 1.8s ease-in-out infinite;
+    }
+
+    .menu-note {
+      font-size: 0.95rem;
+      color: var(--soft);
+      max-width: 58rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .menu-card,
+    .info-panel,
+    .gallery-tile,
+    .map-panel,
+    .footer-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(234, 234, 234, 0.02);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+    }
+
+    .menu-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.2rem;
+      min-height: 15rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      inset: auto auto -1.2rem -1.2rem;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: radial-gradient(circle at center, rgba(240, 165, 0, 0.12), transparent 58%);
+      opacity: 0.8;
+      transform: rotate(-12deg);
+      transition: transform 300ms ease;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.7);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.24), 0 0 28px rgba(240, 165, 0, 0.14);
+      background: rgba(234, 234, 234, 0.03);
+    }
+
+    .menu-card:hover::before {
+      transform: rotate(10deg) scale(1.05);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .track-tag,
+    .price-tag,
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.34);
+      background: rgba(8, 8, 8, 0.72);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .track-tag {
+      min-width: 3.2rem;
+      padding: 0.45rem 0.7rem;
+    }
+
+    .price-tag {
+      padding: 0.45rem 0.75rem;
+    }
+
+    .price-fallback {
+      border-color: rgba(234, 234, 234, 0.28);
+      color: var(--soft);
+    }
+
+    .mini-tag {
+      padding: 0.35rem 0.6rem;
+      color: var(--soft);
+      border-color: rgba(234, 234, 234, 0.18);
+    }
+
+    .menu-name {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .menu-desc {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .menu-foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-self: end;
+    }
+
+    .story-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: center;
+      grid-template-columns: 1fr;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .about-title {
+      font-size: clamp(3.2rem, 8vw, 6.2rem);
+    }
+
+    .about-blurb {
+      font-size: 1.02rem;
+      color: var(--soft);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .story-art {
+      position: relative;
+      min-height: 22rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .story-art img {
+      width: min(100%, 28rem);
+      aspect-ratio: 1;
+      object-fit: contain;
+      animation: recordSpin 24s linear infinite;
+      filter: drop-shadow(0 0 30px rgba(240, 165, 0, 0.12));
+    }
+
+    .story-art::before {
+      content: "";
+      position: absolute;
+      width: min(78vw, 28rem);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(234, 234, 234, 0.06);
+      animation: pulseRing 6s ease-in-out infinite;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: minmax(10rem, auto);
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 12rem;
+    }
+
+    .gallery-tile:hover {
+      transform: scale(1.03);
+      border-color: rgba(240, 165, 0, 0.72);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.22), 0 0 28px rgba(240, 165, 0, 0.12);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 260ms ease;
+    }
+
+    .gallery-tile:hover img { transform: scale(1.05); }
+
+    .tile-label {
+      position: absolute;
+      left: 0.8rem;
+      right: 0.8rem;
+      bottom: 0.8rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(240, 165, 0, 0.28);
+      background: linear-gradient(to top, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.54));
+      backdrop-filter: blur(6px);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .tile-label strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-top: 0.2rem;
+    }
+
+    .gallery-wide { grid-column: span 3; }
+    .gallery-tall { grid-column: span 2; grid-row: span 2; }
+    .gallery-short { grid-column: span 1; }
+    .gallery-hero { grid-column: span 4; grid-row: span 2; }
+
+    .location-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .info-panel,
+    .map-panel {
+      padding: 1.2rem;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .details-list li {
+      display: grid;
+      gap: 0.25rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      color: var(--soft);
+      line-height: 1.6;
+    }
+
+    .details-list strong,
+    .table-label {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+    }
+
+    .hours-table tr + tr td {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hours-table td {
+      padding: 0.82rem 0;
+      vertical-align: top;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--text);
+    }
+
+    .hours-table .closed {
+      color: var(--soft);
+    }
+
+    .map-frame {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid rgba(234, 234, 234, 0.1);
+      background: #050505;
+    }
+
+    .map-caption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-top: 0.9rem;
+      color: var(--soft);
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .footer-panel {
+      padding: 1.1rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .footer-brand {
+      font-size: clamp(3rem, 10vw, 5rem);
+      margin: 0;
+    }
+
+    .footer-copy {
+      color: var(--soft);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .footer-links,
+    .social-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .social-link svg {
+      width: 1rem;
+      height: 1rem;
+      stroke: var(--accent);
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .record-mark {
+      display: inline-flex;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.55);
+      animation: pulseDot 2.4s ease-in-out infinite;
+      flex: 0 0 auto;
+    }
+
+    .hidden-source-note {
+      display: none;
+    }
+
+    @keyframes recordSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { transform: scale(1); opacity: 0.74; }
+      50% { transform: scale(1.03); opacity: 0.92; }
+    }
+
+    @keyframes pulseBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes cueLine {
+      0%, 100% { opacity: 0.35; transform: translateX(0); }
+      50% { opacity: 1; transform: translateX(6px); }
+    }
+
+    @keyframes cueDot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    @media (min-width: 48rem) {
+      .section { padding: 7rem 0; }
+      .nav-links { display: flex; }
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 1rem; }
+      .hero-copy { order: 1; }
+      .hero-visual { order: 2; min-height: 34rem; }
+      .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .story-grid { grid-template-columns: 1.05fr 0.95fr; gap: 2rem; }
+      .location-grid { grid-template-columns: 0.9fr 1.1fr; }
+      .footer-grid { grid-template-columns: 1.1fr 0.9fr; }
+      .footer-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    }
+
+    @media (min-width: 80rem) {
+      .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .gallery-wide { grid-column: span 2; }
+      .gallery-tall { grid-column: span 2; grid-row: span 2; }
+      .gallery-short { grid-column: span 1; }
+      .gallery-hero { grid-column: span 3; grid-row: span 2; }
+      .footer-grid { grid-template-columns: 1.25fr 0.75fr; }
+      .hero-grid { gap: 2rem; }
+    }
+
+    @media (max-width: 47.99rem) {
+      .hero { padding-top: 1rem; }
+      .hero-visual { min-height: 18rem; }
+      .scroll-cue { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-wide,
+      .gallery-tall,
+      .gallery-short,
+      .gallery-hero { grid-column: span 2; grid-row: auto; }
+      .map-caption { font-size: 0.95rem; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Vinyl Cafe Palawan</h1>
-    <span class="category">Music Cafe</span>
-    <p class="address">Rizal Avenue (in front of EMCOR), Puerto Princesa City</p>
-    <p class="phone">+63 977 854 2408</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand-mark" href="#hero" aria-label="Vinyl Cafe home">
+          <img src="assets/img/vinyl-record.svg" alt="" aria-hidden="true">
+          <span>Vinyl Cafe</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#story">Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Location</a>
+          <a href="#footer">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <p class="hero-brand">Puerto Princesa, Palawan</p>
+            <h1 class="hero-title">Vinyl Cafe</h1>
+            <p class="hero-hook">Drop the Needle.</p>
+            <div class="hero-meta">
+              <p>First cafe in Palawan with selection of vinyl records to dig on and play.</p>
+              <p>Lustre Bldg., Rizal Ave., in front of EMCOR, Puerto Princesa City, Palawan.</p>
+            </div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#menu">See the Menu</a>
+              <a class="btn btn-secondary" href="#location">Find Us</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <img class="hero-wave" src="assets/img/waveform.svg" alt="">
+            <img class="hero-orb" src="assets/img/vinyl-record.svg" alt="">
+            <div class="hero-spin-badge"><span>Needle Ready</span></div>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#menu">Scroll</a>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Menu highlights</p>
+            <h2 class="section-title">Side A, Side B, and a few public favorites</h2>
+            <p class="menu-note">Public listings only expose a few item prices, so the cards below mix verified prices with review and social-post mentions. Fallback price labels are marked instead of being guessed.</p>
+          </div>
+
+          <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section" id="story">
+        <div class="container story-grid">
+          <div class="story-copy" data-reveal>
+            <p class="eyebrow">Story</p>
+            <h2 class="about-title">A listening room dressed as a cafe.</h2>
+            <p class="about-blurb">Vinyl Cafe Palawan is praised in public reviews for its calm courtyard feel, good espresso, greenery, and records you can actually dig through. The brand itself says it is the first cafe in Palawan with vinyl records to play, which is the energy this page follows.</p>
+            <p class="about-blurb">The vibe is music-first, but the menu is grounded in real cafe food and drinks, from rice meals to salads, wraps, and coffee.</p>
+          </div>
+          <div class="story-art" data-reveal>
+            <img src="assets/img/turntable.svg" alt="Illustrated vinyl turntable">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">Gallery</p>
+            <h2 class="section-title">Scenes in groove mode</h2>
+            <p class="lead">Illustrated tiles echo the cafe's record walls, coffee service, courtyard mood, and live-session energy without inventing photos that do not exist here.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-tile gallery-hero" data-reveal>
+              <img src="assets/img/gallery-courtyard.svg" alt="Illustrated courtyard with plants and patio seating">
+              <figcaption class="tile-label">Courtyard <strong>Green shade off Rizal Avenue</strong></figcaption>
+            </figure>
+            <figure class="gallery-tile gallery-wide" data-reveal>
+              <img src="assets/img/gallery-record-wall.svg" alt="Illustrated record wall and album display">
+              <figcaption class="tile-label">Record wall <strong>Dig through the shelves</strong></figcaption>
+            </figure>
+            <figure class="gallery-tile gallery-tall" data-reveal>
+              <img src="assets/img/gallery-coffee-vinyl.svg" alt="Illustrated coffee cup on a vinyl platter">
+              <figcaption class="tile-label">Coffee + vinyl <strong>Set the record spinning</strong></figcaption>
+            </figure>
+            <figure class="gallery-tile gallery-short" data-reveal>
+              <img src="assets/img/gallery-album-grid.svg" alt="Illustrated album sleeves and track grid">
+              <figcaption class="tile-label">Album stack <strong>Track list energy</strong></figcaption>
+            </figure>
+            <figure class="gallery-tile gallery-short" data-reveal>
+              <img src="assets/img/gallery-wave-session.svg" alt="Illustrated waveform and session poster">
+              <figcaption class="tile-label">Live set <strong>Friday and Thursday vibes</strong></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="container location-grid">
+          <div class="info-panel" data-reveal>
+            <p class="eyebrow">Hours and location</p>
+            <h2 class="section-title">Rizal Avenue, Puerto Princesa City</h2>
+            <ul class="details-list">
+              <li>
+                <strong>Address</strong>
+                <span>Lustre Bldg., Rizal Ave., in front of EMCOR, Puerto Princesa City, 5300 Palawan, Philippines.</span>
+              </li>
+              <li>
+                <strong>Coordinates</strong>
+                <span class="mono">9.7403624, 118.7430101</span>
+              </li>
+              <li>
+                <strong>Socials</strong>
+                <span>Facebook: vinylcafepalawan / Instagram: @vinylcafepalawan</span>
+              </li>
+            </ul>
+            <div style="margin-top: 1.2rem; display: grid; gap: 0.9rem;">
+              <div class="mini-tag">Current public listing hours</div>
+              <table class="hours-table" aria-label="Operating hours">
+                <tbody>
+                  <tr><td>Monday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Tuesday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Wednesday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Thursday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Friday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Saturday</td><td>7:00 AM - 9:30 PM</td></tr>
+                  <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="map-panel" data-reveal>
+            <div class="map-frame">
+              <svg viewBox="0 0 1200 860" role="img" aria-label="Static map illustration showing the Vinyl Cafe area in Puerto Princesa">
+                <rect width="1200" height="860" fill="#080808"/>
+                <g stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3" fill="none">
+                  <path d="M70 120H1120"/>
+                  <path d="M70 210H1080"/>
+                  <path d="M90 300H1140"/>
+                  <path d="M120 380H1100"/>
+                  <path d="M70 470H1135"/>
+                  <path d="M85 560H1125"/>
+                  <path d="M110 650H1090"/>
+                  <path d="M180 70V790"/>
+                  <path d="M320 70V790"/>
+                  <path d="M470 70V790"/>
+                  <path d="M620 70V790"/>
+                  <path d="M770 70V790"/>
+                  <path d="M920 70V790"/>
+                </g>
+                <g stroke="#f0a500" stroke-opacity="0.35" stroke-width="8" fill="none">
+                  <path d="M135 740C320 650 420 680 580 600S840 480 1020 330"/>
+                  <path d="M210 145C370 200 470 150 640 190S920 260 1080 190"/>
+                </g>
+                <g fill="#eaeaea" fill-opacity="0.8" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="4">
+                  <text x="110" y="95">RIZAL AVENUE</text>
+                  <text x="820" y="710">PUERTO PRINCESA</text>
+                  <text x="220" y="790">IN FRONT OF EMCOR</text>
+                </g>
+                <g transform="translate(740 340)">
+                  <circle r="34" fill="#080808" stroke="#f0a500" stroke-width="8"/>
+                  <circle r="12" fill="#f0a500"/>
+                  <path d="M0 40C0 40 -38 95 -38 125C-38 146 -20 164 0 164C20 164 38 146 38 125C38 95 0 40 0 40Z" fill="#f0a500"/>
+                </g>
+                <g fill="#eaeaea" fill-opacity="0.95" font-family="Bebas Neue, sans-serif" font-size="64" letter-spacing="4">
+                  <text x="98" y="170">VINYL CAFE</text>
+                </g>
+                <g fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="2">
+                  <text x="98" y="220">9.7403624, 118.7430101</text>
+                </g>
+              </svg>
+            </div>
+            <div class="map-caption">
+              <div>
+                <strong class="table-label">Map note</strong>
+                <div>The coordinates above point to Puerto Princesa, not Manila.</div>
+              </div>
+              <a class="map-link mono" href="https://www.google.com/maps/search/?api=1&query=9.7403624,118.7430101" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="container footer-grid">
+        <div class="footer-panel" data-reveal>
+          <h2 class="footer-brand">Vinyl Cafe</h2>
+          <p class="footer-copy">Music-first coffee on Rizal Avenue in Puerto Princesa City, with records, courtyard seating, and a menu that has real public listings behind it.</p>
+          <ul class="footer-links">
+            <li><a class="footer-link mono" href="#menu">Menu</a></li>
+            <li><a class="footer-link mono" href="#story">Story</a></li>
+            <li><a class="footer-link mono" href="#location">Location</a></li>
+            <li><a class="footer-link mono" href="https://www.facebook.com/vinylcafepalawan" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a class="footer-link mono" href="https://www.instagram.com/vinylcafepalawan/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+          <div class="copyright" id="copyrightLine">© Vinyl Cafe Palawan</div>
+        </div>
+
+        <div class="footer-panels">
+          <div class="footer-panel" data-reveal>
+            <div class="table-label">Contact</div>
+            <a class="social-link" href="mailto:vinylcafepalawan@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4.5 6.5 12 13l7.5-6.5"></path></svg>
+              <span>vinylcafepalawan@gmail.com</span>
+            </a>
+            <a class="social-link" href="tel:+639778542408">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5c0 7 5.5 12.5 12.5 12.5"></path><path d="M8.5 3H14l1.5 3.5-2 2c1.1 2 2.9 3.8 4.9 4.9l2-2L24 13v5.5l-1.5 1.5c-1 0-8-0.3-13.5-5.8S3.5 1.5 3.5 0.5L5 0h3.5z"></path></svg>
+              <span>+63 977 854 2408</span>
+            </a>
+          </div>
+
+          <div class="footer-panel" data-reveal>
+            <div class="table-label">Hours</div>
+            <div class="footer-copy">Mon-Sat 7:00 AM - 9:30 PM. Sunday closed.</div>
+            <div class="table-label" style="margin-top: 0.5rem;">Socials</div>
+            <div class="social-list">
+              <a class="social-link" href="https://www.facebook.com/vinylcafepalawan" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v3H7v4h3v9h4v-9h3l1-4h-4V8c0-.6.4-1 1-1z"></path></svg>
+                <span>Facebook</span>
+              </a>
+              <a class="social-link" href="https://www.instagram.com/vinylcafepalawan/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r="1"></circle></svg>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Fallback price labels are shown only where public menu prices were not indexed in the sources we could verify. -->
+  <!-- Public listings disagree slightly on closing time; the visible schedule uses the current indexed Mon-Sat 7:00 AM-9:30 PM listing and Sunday closed. -->
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script>
+    const menuItems = [
+      {
+        tag: 'A1',
+        name: 'NDMT Salad Overload',
+        desc: 'A verified menu listing from the public index, with a green-first build that keeps the cafe side of the menu visible.',
+        price: '₱180',
+        fallback: false
+      },
+      {
+        tag: 'A2',
+        name: 'Chicken & Cashew Wrap',
+        desc: 'Also surfaced in the public menu index, this wrap is one of the clearest priced items we could verify.',
+        price: '₱180',
+        fallback: false
+      },
+      {
+        tag: 'A3',
+        name: 'Vegetable Sticks with Hummus Dip',
+        desc: 'Another publicly indexed menu item, useful for showing the cafe side without inventing numbers.',
+        price: '₱350',
+        fallback: false
+      },
+      {
+        tag: 'B1',
+        name: 'Beef Tapsilog',
+        desc: 'Reviewers call this out as a standout rice meal, which makes it a strong on-brand house favorite.',
+        price: 'Price not indexed',
+        fallback: true
+      },
+      {
+        tag: 'B2',
+        name: 'Longsilog',
+        desc: 'A reviewer noted the longganisa portion, so this stays as a publicly mentioned breakfast plate.',
+        price: 'Price not indexed',
+        fallback: true
+      },
+      {
+        tag: 'B3',
+        name: 'Pork Sisig',
+        desc: 'Mentioned in a diner review with rice, which fits the more savory side of the cafe menu.',
+        price: 'Price not indexed',
+        fallback: true
+      },
+      {
+        tag: 'C1',
+        name: 'Americano',
+        desc: 'A reviewer ordered it alongside the record collection and indoor seating.',
+        price: 'Price not indexed',
+        fallback: true
+      },
+      {
+        tag: 'C2',
+        name: 'Lemonade',
+        desc: 'Multiple reviews mention the lemonade, so it earns a place in the set list even without a public price.',
+        price: 'Price not indexed',
+        fallback: true
+      }
+    ];
+
+    const galleryItems = [
+      {
+        src: 'assets/img/gallery-courtyard.svg',
+        alt: 'Illustrated courtyard with plants and patio seating',
+        title: 'Courtyard',
+        sub: 'Green shade off Rizal Avenue'
+      },
+      {
+        src: 'assets/img/gallery-record-wall.svg',
+        alt: 'Illustrated record wall and album display',
+        title: 'Record wall',
+        sub: 'Dig through the shelves'
+      },
+      {
+        src: 'assets/img/gallery-coffee-vinyl.svg',
+        alt: 'Illustrated coffee cup on a vinyl platter',
+        title: 'Coffee + vinyl',
+        sub: 'Set the record spinning'
+      },
+      {
+        src: 'assets/img/gallery-album-grid.svg',
+        alt: 'Illustrated album sleeves and track grid',
+        title: 'Album stack',
+        sub: 'Track list energy'
+      },
+      {
+        src: 'assets/img/gallery-wave-session.svg',
+        alt: 'Illustrated waveform and session poster',
+        title: 'Live set',
+        sub: 'Thursday and Friday energy'
+      }
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+    menuGrid.innerHTML = menuItems.map((item) => `
+      <article class="menu-card" data-reveal>
+        <div class="card-top">
+          <span class="track-tag">${item.tag}</span>
+          <span class="price-tag ${item.fallback ? 'price-fallback' : ''}">${item.price}</span>
+        </div>
+        <div>
+          <h3 class="menu-name">${item.name}</h3>
+        </div>
+        <p class="menu-desc">${item.desc}</p>
+        <div class="menu-foot">
+          <span class="mini-tag">Vinyl Cafe Palawan</span>
+          <span class="mini-tag">${item.fallback ? 'Public mention' : 'Verified menu price'}</span>
+        </div>
+      </article>
+    `).join('');
+
+    const galleryGrid = document.querySelector('.gallery-grid');
+    galleryGrid.innerHTML = galleryItems.map((item, index) => {
+      const classes = ['gallery-tile'];
+      if (index === 0) classes.push('gallery-hero');
+      if (index === 1) classes.push('gallery-wide');
+      if (index === 2) classes.push('gallery-tall');
+      if (index === 3 || index === 4) classes.push('gallery-short');
+      return `
+        <figure class="${classes.join(' ')}" data-reveal>
+          <img src="${item.src}" alt="${item.alt}">
+          <figcaption class="tile-label">${item.title}<strong>${item.sub}</strong></figcaption>
+        </figure>
+      `;
+    }).join('');
+
+    document.getElementById('copyrightLine').textContent = `© ${new Date().getFullYear()} Vinyl Cafe Palawan`;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.05,
+      smoothWheel: true,
+      wheelMultiplier: 0.85,
+      lerp: 0.08
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const id = anchor.getAttribute('href');
+        if (id && id.length > 1 && document.querySelector(id)) {
+          event.preventDefault();
+          lenis.scrollTo(document.querySelector(id), { offset: -24 });
+        }
+      });
+    });
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .from('.nav-inner', { y: -16, opacity: 0, duration: 0.8 })
+      .from('.hero-copy > *', { y: 28, opacity: 0, duration: 0.85, stagger: 0.12 }, 0.12)
+      .from('.hero-visual', { scale: 0.92, rotation: -6, opacity: 0, duration: 1 }, 0.18)
+      .from('.scroll-cue', { y: 10, opacity: 0, duration: 0.6 }, 0.8);
+
+    gsap.to('.hero-orb', {
+      yPercent: 6,
+      xPercent: 2,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    gsap.to('.hero-wave', {
+      yPercent: 14,
+      opacity: 0.18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    gsap.utils.toArray('[data-reveal]:not(.menu-card):not(.gallery-tile):not(.story-art)').forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 42,
+        duration: 0.95,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 82%'
+        }
+      });
+    });
+
+    gsap.from('.menu-card', {
+      opacity: 0,
+      y: 36,
+      rotateX: -8,
+      duration: 0.9,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#menuGrid',
+        start: 'top 80%'
+      }
+    });
+
+    gsap.from('.gallery-tile', {
+      opacity: 0,
+      y: 34,
+      scale: 0.96,
+      duration: 0.9,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#gallery',
+        start: 'top 78%'
+      }
+    });
+
+    gsap.from('.story-art', {
+      opacity: 0,
+      x: 48,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#story',
+        start: 'top 75%'
+      }
+    });
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Vinyl Cafe Palawan",
+      "description": "A music-themed cafe on Rizal Avenue in Puerto Princesa City, Palawan, with vinyl records, coffee, and all-day food.",
+      "url": "https://frans15-2006.github.io/TheFrans/vinyl-cafe/",
+      "image": "https://frans15-2006.github.io/TheFrans/vinyl-cafe/assets/img/og-image.svg",
+      "email": "vinylcafepalawan@gmail.com",
+      "telephone": "+63 977 854 2408",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lustre Bldg., Rizal Ave., in front of EMCOR",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7403624,
+        "longitude": 118.7430101
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "07:00", "closes": "21:30" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/vinylcafepalawan",
+        "https://www.instagram.com/vinylcafepalawan/"
+      ],
+      "servesCuisine": ["Cafe", "Coffee", "Breakfast"]
+    }
+  </script>
 </body>
 </html>

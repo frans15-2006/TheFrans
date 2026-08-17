@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" role="img" aria-label="Turntable illustration">
+  <rect width="1000" height="800" fill="#080808"/>
+  <rect x="140" y="180" width="720" height="420" rx="38" fill="none" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="6"/>
+  <rect x="184" y="224" width="632" height="332" rx="26" fill="#080808" stroke="#f0a500" stroke-opacity="0.28" stroke-width="4"/>
+  <circle cx="420" cy="390" r="150" fill="none" stroke="#f0a500" stroke-width="16"/>
+  <circle cx="420" cy="390" r="102" fill="none" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+  <circle cx="420" cy="390" r="64" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+  <circle cx="420" cy="390" r="24" fill="#f0a500"/>
+  <rect x="710" y="266" width="36" height="178" rx="18" fill="#f0a500" transform="rotate(22 710 266)"/>
+  <rect x="692" y="350" width="160" height="18" rx="9" fill="#eaeaea" fill-opacity="0.34" transform="rotate(22 692 350)"/>
+  <circle cx="302" cy="270" r="18" fill="#eaeaea" fill-opacity="0.7"/>
+  <circle cx="350" cy="270" r="6" fill="#f0a500"/>
+  <path d="M210 590h580" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M250 168h500" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+  <path d="M240 630c80-22 162-28 250-20 102 10 188 10 256-2" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3"/>
+  <g fill="#eaeaea" fill-opacity="0.9" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">
+    <text x="230" y="150">LISTENING ROOM</text>
+    <text x="640" y="150">SIDE A</text>
+  </g>
+</svg>

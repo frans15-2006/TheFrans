@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Waveform accent illustration">
+  <rect width="1200" height="300" fill="none"/>
+  <g stroke="#f0a500" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.7">
+    <path d="M30 150c42 0 42-90 84-90s42 180 84 180 42-240 84-240 42 300 84 300 42-200 84-200 42 110 84 110 42-150 84-150 42 220 84 220 42-80 84-80 42-120 84-120 42 160 84 160 42-60 84-60 42-180 84-180 42 240 84 240 42-20 84-20 42-160 84-160"/>
+  </g>
+  <g stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3" fill="none">
+    <path d="M0 40H1200"/>
+    <path d="M0 260H1200"/>
+  </g>
+  <circle cx="1100" cy="150" r="70" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="6"/>
+  <circle cx="1100" cy="150" r="24" fill="#080808" stroke="#f0a500" stroke-width="8"/>
+</svg>

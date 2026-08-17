@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Illustrated album grid scene">
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="120" y="120" width="960" height="660" rx="42" fill="none" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="6"/>
+  <g stroke="#f0a500" stroke-width="6" stroke-opacity="0.8" fill="none">
+    <rect x="200" y="220" width="180" height="220" rx="12"/>
+    <rect x="420" y="220" width="180" height="220" rx="12"/>
+    <rect x="640" y="220" width="180" height="220" rx="12"/>
+    <rect x="860" y="220" width="180" height="220" rx="12"/>
+  </g>
+  <g stroke="#eaeaea" stroke-opacity="0.18" stroke-width="4" fill="none">
+    <path d="M200 490h840"/>
+    <path d="M200 560h840"/>
+    <path d="M200 630h840"/>
+  </g>
+  <circle cx="316" cy="530" r="72" fill="none" stroke="#f0a500" stroke-width="10"/>
+  <circle cx="568" cy="530" r="72" fill="none" stroke="#f0a500" stroke-width="10"/>
+  <circle cx="820" cy="530" r="72" fill="none" stroke="#f0a500" stroke-width="10"/>
+  <g fill="#eaeaea" fill-opacity="0.8" font-family="Bebas Neue, sans-serif" font-size="68" letter-spacing="5">
+    <text x="200" y="180">ALBUM STACK</text>
+  </g>
+  <g fill="#f0a500" fill-opacity="0.9" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">
+    <text x="200" y="822">TRACK LIST MODE</text>
+  </g>
+</svg>

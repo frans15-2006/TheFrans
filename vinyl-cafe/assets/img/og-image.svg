@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Vinyl Cafe Palawan social preview image">
+  <rect width="1200" height="630" fill="#080808"/>
+  <g stroke="#f0a500" fill="none">
+    <circle cx="940" cy="315" r="210" stroke-width="14"/>
+    <circle cx="940" cy="315" r="154" stroke="#eaeaea" stroke-opacity="0.14" stroke-width="4"/>
+    <circle cx="940" cy="315" r="108" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+    <circle cx="940" cy="315" r="64" stroke="#f0a500" stroke-width="8"/>
+    <circle cx="940" cy="315" r="18" fill="#f0a500" stroke="none"/>
+  </g>
+  <g fill="#eaeaea" font-family="Bebas Neue, sans-serif" letter-spacing="4">
+    <text x="86" y="156" font-size="84">VINYL CAFE PALAWAN</text>
+    <text x="86" y="260" font-size="54" fill="#f0a500">DROP THE NEEDLE.</text>
+  </g>
+  <g fill="#eaeaea" fill-opacity="0.82" font-family="Space Grotesk, sans-serif" font-size="28">
+    <text x="86" y="342">Lustre Bldg., Rizal Ave., in front of EMCOR</text>
+    <text x="86" y="388">Puerto Princesa City, Palawan, Philippines</text>
+    <text x="86" y="448">Coffee, records, and a courtyard mood on Rizal Avenue.</text>
+  </g>
+  <g stroke="#eaeaea" stroke-opacity="0.14" stroke-width="3" fill="none">
+    <path d="M80 520H1120"/>
+    <path d="M80 552H1120"/>
+  </g>
+</svg>

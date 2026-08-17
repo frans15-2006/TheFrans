@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Vinyl record illustration">
+  <rect width="800" height="800" fill="#080808"/>
+  <circle cx="400" cy="400" r="304" fill="none" stroke="#f0a500" stroke-width="12"/>
+  <circle cx="400" cy="400" r="252" fill="none" stroke="#eaeaea" stroke-opacity="0.18" stroke-width="4"/>
+  <circle cx="400" cy="400" r="210" fill="none" stroke="#eaeaea" stroke-opacity="0.12" stroke-width="4"/>
+  <circle cx="400" cy="400" r="168" fill="none" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="4"/>
+  <circle cx="400" cy="400" r="122" fill="none" stroke="#eaeaea" stroke-opacity="0.1" stroke-width="4"/>
+  <circle cx="400" cy="400" r="76" fill="none" stroke="#f0a500" stroke-opacity="0.6" stroke-width="8"/>
+  <circle cx="400" cy="400" r="24" fill="#f0a500"/>
+  <circle cx="400" cy="400" r="8" fill="#080808"/>
+  <g stroke="#eaeaea" stroke-opacity="0.12" stroke-width="3" fill="none">
+    <path d="M180 210c104-90 336-126 458-20"/>
+    <path d="M142 364c122-160 386-210 556-76"/>
+    <path d="M182 546c92-124 332-178 436-96"/>
+    <path d="M286 656c74-76 222-104 304-48"/>
+  </g>
+  <path d="M560 190c56 26 92 74 92 132 0 22-5 43-15 62" fill="none" stroke="#f0a500" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="684" cy="354" r="18" fill="#080808" stroke="#f0a500" stroke-width="8"/>
+</svg>
