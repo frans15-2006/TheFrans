@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Gallery bowl illustration</title>
+  <desc id="desc">Minimal bowl with leafy garnish and grains.</desc>
+  <rect width="900" height="700" fill="#080808"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="450" cy="290" r="210" fill="#f0a500" fill-opacity="0.1"/>
+    <path d="M255 392c34 98 119 154 199 154s165-56 199-154" stroke="#eaeaea" stroke-opacity="0.9" stroke-width="5"/>
+    <path d="M288 394c36 38 99 64 162 64s126-26 162-64" stroke="#f0a500" stroke-opacity="0.55" stroke-width="3"/>
+    <path d="M315 338c39-45 82-68 135-68s96 23 135 68" stroke="#eaeaea" stroke-opacity="0.28" stroke-width="3"/>
+    <path d="M396 248c28 26 39 61 33 105" stroke="#f0a500" stroke-opacity="0.7" stroke-width="4"/>
+    <path d="M431 244c-24 33-39 71-44 113" stroke="#eaeaea" stroke-opacity="0.54" stroke-width="3"/>
+    <path d="M483 241c22 24 31 54 26 91" stroke="#f0a500" stroke-opacity="0.7" stroke-width="4"/>
+    <circle cx="378" cy="286" r="10" fill="#eaeaea" fill-opacity="0.82"/>
+    <circle cx="458" cy="316" r="8" fill="#f0a500" fill-opacity="0.86"/>
+    <circle cx="525" cy="293" r="9" fill="#eaeaea" fill-opacity="0.76"/>
+    <circle cx="500" cy="336" r="7" fill="#f0a500" fill-opacity="0.8"/>
+    <circle cx="403" cy="345" r="7" fill="#f0a500" fill-opacity="0.8"/>
+  </g>
+</svg>

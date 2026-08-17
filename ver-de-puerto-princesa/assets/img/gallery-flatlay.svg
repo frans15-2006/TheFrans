@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Gallery flat lay illustration</title>
+  <desc id="desc">Ingredient flat lay with circles, slices, and lines.</desc>
+  <rect width="900" height="700" fill="#080808"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="120" y="120" width="660" height="460" rx="28" stroke="#eaeaea" stroke-opacity="0.26" stroke-width="2"/>
+    <circle cx="287" cy="243" r="74" stroke="#f0a500" stroke-opacity="0.55" stroke-width="3"/>
+    <circle cx="603" cy="220" r="96" fill="#f0a500" fill-opacity="0.08" stroke="#f0a500" stroke-opacity="0.35" stroke-width="3"/>
+    <circle cx="575" cy="436" r="112" stroke="#eaeaea" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M211 452c42-44 93-66 153-66 60 0 112 22 154 66" stroke="#f0a500" stroke-opacity="0.62" stroke-width="4"/>
+    <path d="M235 465c59 16 116 22 170 18s107-14 159-31" stroke="#eaeaea" stroke-opacity="0.44" stroke-width="3"/>
+    <path d="M181 181l92 58M647 166l62 86M350 509l84-53M589 545l57-86" stroke="#f0a500" stroke-opacity="0.5" stroke-width="3"/>
+    <circle cx="510" cy="203" r="14" fill="#eaeaea" fill-opacity="0.8"/>
+    <circle cx="545" cy="208" r="12" fill="#f0a500" fill-opacity="0.84"/>
+    <circle cx="576" cy="199" r="14" fill="#eaeaea" fill-opacity="0.8"/>
+    <circle cx="610" cy="214" r="10" fill="#f0a500" fill-opacity="0.84"/>
+    <circle cx="265" cy="344" r="10" fill="#f0a500" fill-opacity="0.84"/>
+    <circle cx="321" cy="364" r="9" fill="#eaeaea" fill-opacity="0.8"/>
+    <circle cx="359" cy="334" r="11" fill="#f0a500" fill-opacity="0.84"/>
+  </g>
+</svg>

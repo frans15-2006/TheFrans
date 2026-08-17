@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" role="img" aria-labelledby="title desc">
+  <title id="title">Puerto Princesa map illustration</title>
+  <desc id="desc">Stylized location map with a highlighted pin for Ver De Puerto Princesa.</desc>
+  <rect width="1100" height="780" fill="#080808"/>
+  <g opacity="0.85" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M72 140h956M72 246h956M72 352h956M72 458h956M72 564h956M72 670h956" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+    <path d="M132 82v618M276 82v618M420 82v618M564 82v618M708 82v618M852 82v618M996 82v618" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="2"/>
+    <path d="M115 185c88 42 181 59 280 52s193-39 277-92 174-71 277-53" stroke="#f0a500" stroke-opacity="0.18" stroke-width="4"/>
+    <path d="M153 296c91 16 184 13 279-10s179-58 252-109 150-76 237-75" stroke="#f0a500" stroke-opacity="0.14" stroke-width="4"/>
+    <path d="M185 526c104-34 190-63 257-87s123-56 168-97 88-102 129-171" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="4"/>
+    <path d="M170 605c101-3 188-20 263-52 75-31 141-79 198-141 58-63 118-104 181-125 63-20 129-23 195-9" stroke="#eaeaea" stroke-opacity="0.16" stroke-width="4"/>
+  </g>
+  <g>
+    <circle cx="742" cy="338" r="120" fill="#f0a500" fill-opacity="0.08"/>
+    <path d="M742 196c-57 0-103 46-103 103 0 79 103 171 103 171s103-92 103-171c0-57-46-103-103-103zm0 138c-19 0-35-16-35-35s16-35 35-35 35 16 35 35-16 35-35 35z" fill="#f0a500"/>
+    <circle cx="742" cy="299" r="14" fill="#080808"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M524 542c93-25 175-44 245-57" stroke="#eaeaea" stroke-opacity="0.42" stroke-width="3"/>
+    <path d="M624 470c-54-38-98-83-130-135" stroke="#f0a500" stroke-opacity="0.4" stroke-width="4"/>
+    <path d="M620 468c48 0 90 10 127 31" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M651 420c0 33 8 61 24 86" stroke="#eaeaea" stroke-opacity="0.22" stroke-width="3"/>
+    <path d="M674 430c29 5 55 18 79 39" stroke="#f0a500" stroke-opacity="0.4" stroke-width="3"/>
+  </g>
+</svg>

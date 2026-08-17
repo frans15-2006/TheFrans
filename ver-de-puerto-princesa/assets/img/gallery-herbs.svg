@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Gallery herbs illustration</title>
+  <desc id="desc">Leafy herb stems with a dark background and accent highlights.</desc>
+  <rect width="900" height="700" fill="#080808"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="610" cy="250" r="175" fill="#f0a500" fill-opacity="0.08"/>
+    <path d="M195 546c97-34 173-96 231-186s94-188 102-303" stroke="#eaeaea" stroke-opacity="0.88" stroke-width="5"/>
+    <path d="M290 470c-48-55-66-118-54-189" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M350 392c-64-34-109-82-134-142" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M412 330c-64-10-118-34-162-74" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M472 274c-56 18-110 20-162 6" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M534 218c-37 35-80 57-128 67" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M590 170c-14 46-38 84-72 114" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M644 141c16 44 37 80 64 110" stroke="#f0a500" stroke-opacity="0.55" stroke-width="4"/>
+    <path d="M689 182c43 14 84 17 123 8" stroke="#eaeaea" stroke-opacity="0.28" stroke-width="3"/>
+    <path d="M333 540c42 10 82 14 120 11" stroke="#eaeaea" stroke-opacity="0.32" stroke-width="3"/>
+    <ellipse cx="507" cy="459" rx="120" ry="42" fill="#080808" fill-opacity="0.2"/>
+  </g>
+</svg>

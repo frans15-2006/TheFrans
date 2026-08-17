@@ -1,60 +1,1351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver De Puerto Princesa</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ver De Puerto Princesa | Plant-Based Cafe in Puerto Princesa, Palawan</title>
+  <meta name="description" content="Ver De Puerto Princesa is a plant-based cafe at #312 Rizal Ave., CityPoint Building, Puerto Princesa City, Palawan 5300. Open daily 10 AM to 8 PM.">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/">
+  <meta property="og:title" content="Ver De Puerto Princesa | Plant-Based Cafe in Puerto Princesa, Palawan">
+  <meta property="og:description" content="Verified address, hours, menu highlights, coordinates, and social links for Ver De Puerto Princesa in Puerto Princesa City, Palawan.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/assets/img/og-image.svg">
+  <meta property="og:image:alt" content="Ver De Puerto Princesa botanical brand composition">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --text-soft: rgba(234, 234, 234, 0.74);
+      --line: rgba(240, 165, 0, 0.18);
+      --line-strong: rgba(240, 165, 0, 0.42);
+      --panel: rgba(240, 165, 0, 0.05);
+      --panel-strong: rgba(240, 165, 0, 0.09);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(240, 165, 0, 0.08), transparent 38%),
+        radial-gradient(circle at 20% 10%, rgba(240, 165, 0, 0.04), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .shell {
+      width: min(1280px, calc(100% - 1.5rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 0.92;
+      font-weight: 400;
+    }
+
+    .section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section:not(.hero) {
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+      max-width: 56rem;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.05em;
+    }
+
+    .title-large {
+      font-size: clamp(4rem, 10vw, 8.8rem);
+      margin: 0;
+      line-height: 0.9;
+    }
+
+    .lede {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: clamp(1rem, 1.55vw, 1.2rem);
+      line-height: 1.7;
+      max-width: 44rem;
+    }
+
+    .fineprint {
+      margin: 1rem 0 0;
+      color: rgba(234, 234, 234, 0.62);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.64));
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .site-nav .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .brand-mark strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .brand-mark span {
+      color: rgba(234, 234, 234, 0.66);
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: rgba(234, 234, 234, 0.78);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.14rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      padding: 1.25rem 0 2rem;
+      overflow: clip;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 34%, rgba(240, 165, 0, 0.1), transparent 22%),
+        radial-gradient(circle at 74% 66%, rgba(240, 165, 0, 0.05), transparent 32%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+      grid-template-columns: 1fr;
+      min-height: calc(100svh - 5rem);
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 1.25rem;
+      align-content: start;
+      padding-top: 1.4rem;
+    }
+
+    .hero-identity {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .hero-identity h1 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 16vw, 10.6rem);
+      line-height: 0.86;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-identity h1 span {
+      display: block;
+    }
+
+    .hero-identity h1 .accent {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-identity p {
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 42rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1rem;
+      color: rgba(234, 234, 234, 0.8);
+      font-size: 0.82rem;
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-right: 1rem;
+    }
+
+    .hero-meta span::after {
+      content: '·';
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: rgba(240, 165, 0, 0.8);
+    }
+
+    .hero-meta span:last-child::after {
+      display: none;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .ripple-btn,
+    .ghost-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3.15rem;
+      padding: 0.9rem 1.3rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+      isolation: isolate;
+    }
+
+    .ripple-btn {
+      background: var(--accent);
+      color: #080808;
+      border: 1px solid var(--accent);
+      box-shadow: 0 14px 30px rgba(240, 165, 0, 0.16);
+    }
+
+    .ghost-btn {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(234, 234, 234, 0.24);
+    }
+
+    .ripple-btn:hover,
+    .ghost-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .ripple-btn .ripple,
+    .ghost-btn .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple 640ms ease-out;
+      background: rgba(234, 234, 234, 0.34);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .ghost-btn .ripple {
+      background: rgba(240, 165, 0, 0.26);
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    .scroll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: fit-content;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 0.5rem;
+    }
+
+    .scroll-link .indicator {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.18);
+      display: inline-grid;
+      place-items: center;
+      color: var(--accent);
+      animation: bob 3.6s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      min-height: 31rem;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .hero-visual img {
+      width: min(100%, 38rem);
+      height: auto;
+      filter: none;
+      will-change: transform;
+    }
+
+    .menu-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .menu-card {
+      position: relative;
+      padding: 1.25rem;
+      min-height: 100%;
+      border-radius: var(--radius);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background:
+        linear-gradient(180deg, rgba(240, 165, 0, 0.05), rgba(8, 8, 8, 0.98));
+      box-shadow: inset 0 1px 0 rgba(234, 234, 234, 0.03);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      overflow: hidden;
+    }
+
+    .menu-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0);
+      transition: box-shadow 220ms ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.34);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.22), 0 16px 40px rgba(240, 165, 0, 0.08);
+    }
+
+    .menu-card:hover::after {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.26), 0 0 46px rgba(240, 165, 0, 0.1);
+    }
+
+    .menu-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 1.6rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.3);
+      background: rgba(240, 165, 0, 0.06);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1rem;
+    }
+
+    .menu-card h3 {
+      margin: 0 0 0.7rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .menu-card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.65;
+      font-size: 0.96rem;
+    }
+
+    .menu-card .price {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1.1rem;
+      color: var(--accent);
+      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .story-grid,
+    .location-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .story-copy .display {
+      font-size: clamp(3.4rem, 8vw, 7rem);
+      max-width: 10ch;
+      margin: 0;
+    }
+
+    .story-copy p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.75;
+      max-width: 42rem;
+    }
+
+    .story-art {
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.03), rgba(8, 8, 8, 0.92));
+      padding: 0.8rem;
+      min-height: 24rem;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .story-art img {
+      width: 100%;
+      max-width: 28rem;
+      height: auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(240, 165, 0, 0.26);
+      background: rgba(240, 165, 0, 0.05);
+      min-height: 15rem;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 240ms ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.95rem 1rem;
+      color: var(--text);
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.94));
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .gallery-item:hover figcaption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .location-card {
+      display: grid;
+      gap: 1.2rem;
+      padding: 1.2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(234, 234, 234, 0.08);
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.04), rgba(8, 8, 8, 0.96));
+    }
+
+    .location-card h3,
+    .footer-col h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 2rem;
+      line-height: 0.9;
+    }
+
+    .address-block {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .address-block p,
+    .address-block address {
+      margin: 0;
+      color: var(--text-soft);
+      font-style: normal;
+      line-height: 1.7;
+    }
+
+    .coord-line {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: 0;
+    }
+
+    .hours-table th,
+    .hours-table td {
+      text-align: left;
+      padding: 0.78rem 0;
+      vertical-align: top;
+    }
+
+    .hours-table th {
+      color: rgba(234, 234, 234, 0.72);
+      font-weight: 500;
+      width: 38%;
+    }
+
+    .hours-table td {
+      color: var(--accent);
+    }
+
+    .location-actions,
+    .footer-socials,
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .text-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.7rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.14);
+      overflow: hidden;
+      color: rgba(234, 234, 234, 0.86);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      isolation: isolate;
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .text-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.46);
+      color: var(--text);
+    }
+
+    .map-frame {
+      position: relative;
+      border-radius: calc(var(--radius) + 8px);
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      background: rgba(240, 165, 0, 0.04);
+      min-height: 20rem;
+    }
+
+    .map-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 18px;
+      background: rgba(8, 8, 8, 0.82);
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .footer {
+      padding: 2.8rem 0 2.2rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+    }
+
+    .footer-grid {
+      align-items: start;
+    }
+
+    .footer-col {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 0.45rem;
+      max-width: 24rem;
+    }
+
+    .footer-brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .footer-brand p,
+    .footer-col p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .footer-note {
+      margin-top: 1.4rem;
+      color: rgba(234, 234, 234, 0.55);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .social-link {
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(234, 234, 234, 0.16);
+      display: inline-grid;
+      place-items: center;
+      transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+      color: var(--text);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.45);
+      color: var(--accent);
+    }
+
+    .social-link svg,
+    .mini-icon svg {
+      width: 1rem;
+      height: 1rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-bottom {
+      margin-top: 1.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(234, 234, 234, 0.08);
+      color: rgba(234, 234, 234, 0.56);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reveal,
+    .menu-card,
+    .gallery-item,
+    .location-card,
+    .story-art,
+    .map-frame,
+    .footer-col {
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 768px) {
+      .shell {
+        width: min(1280px, calc(100% - 2.5rem));
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .story-grid,
+      .location-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.25fr 0.8fr 0.95fr 0.8fr;
+        gap: 1.2rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 2.5rem;
+      }
+
+      .hero-copy {
+        padding-top: 0;
+      }
+
+      .hero-visual {
+        min-height: 40rem;
+      }
+
+      .gallery-item:nth-child(1) { grid-column: span 7; min-height: 21rem; }
+      .gallery-item:nth-child(2) { grid-column: span 5; min-height: 21rem; }
+      .gallery-item:nth-child(3) { grid-column: span 4; min-height: 18rem; }
+      .gallery-item:nth-child(4) { grid-column: span 4; min-height: 18rem; }
+      .gallery-item:nth-child(5) { grid-column: span 4; min-height: 18rem; }
+      .gallery-item:nth-child(6) { grid-column: span 12; min-height: 22rem; }
+    }
+
+    @media (min-width: 1280px) {
+      .section {
+        padding: 6.5rem 0;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 1.5rem;
+      }
+
+      .hero-visual img {
+        width: min(100%, 44rem);
+      }
+
+      .gallery-item:nth-child(1) { grid-column: span 6; }
+      .gallery-item:nth-child(2) { grid-column: span 3; }
+      .gallery-item:nth-child(3) { grid-column: span 3; }
+      .gallery-item:nth-child(4) { grid-column: span 5; }
+      .gallery-item:nth-child(5) { grid-column: span 4; }
+      .gallery-item:nth-child(6) { grid-column: span 3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Ver De Puerto Princesa</h1>
-    <span class="category">Vegetarian Restaurant</span>
-    <p class="address">312 Rizal Ave, Puerto Princesa City</p>
-    <p class="phone">+63 956 711 9711</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <header class="site-nav">
+    <div class="shell inner">
+      <a class="brand-mark" href="#top" aria-label="Ver De Puerto Princesa home">
+        <strong>Ver De Puerto Princesa</strong>
+        <span>Plant-based cafe in Puerto Princesa, Palawan</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <div class="hero-identity">
+            <h1 class="title-large"><span>Ver De</span> <span class="accent">Puerto Princesa</span></h1>
+            <p>Plant-based cafe rooted in nature, refined by craft.</p>
+          </div>
+          <div class="hero-meta mono" aria-label="Verified location details">
+            <span>#312 Rizal Ave. CityPoint Building</span>
+            <span>Puerto Princesa City, Palawan</span>
+            <span>Est. 2020</span>
+          </div>
+          <p class="lede">A verified plant-forward stop in Puerto Princesa with daily service, a full vegan menu, and a calm room built for slow lunches, coffee, and generous plates.</p>
+          <div class="cta-row">
+            <a class="ripple-btn js-ripple" href="#menu">See the Menu</a>
+            <a class="ghost-btn js-ripple" href="#visit">Find Us</a>
+          </div>
+          <a class="scroll-link" href="#menu" aria-label="Scroll to menu highlights">
+            <span class="indicator" aria-hidden="true">↓</span>
+            <span>Scroll for highlights</span>
+          </a>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-art" src="assets/img/hero-botanical.svg" alt="Botanical art for Ver De Puerto Princesa">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="kicker">Menu Highlights</div>
+          <h2 class="title">Verified dishes from public listings and review mentions</h2>
+          <p class="lede">These highlights are pulled from Tripadvisor menu listings and HappyCow review mentions. Prices are shown as published in those public sources.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card reveal">
+            <span class="menu-pill">Share</span>
+            <h3>Why Not-Choz?</h3>
+            <p>taro chips, bean chili, chyz sauce, sour cream, pico de gallo</p>
+            <div class="price">₱480.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Share</span>
+            <h3>Hummus Platter</h3>
+            <p>garlic hummus, dukkah, green olives, carrots, cucumbers, focaccia</p>
+            <div class="price">₱470.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Share</span>
+            <h3>Elote Dip</h3>
+            <p>corn, aioli, almond cotija, cilantro, red onions, plantain crackers</p>
+            <div class="price">₱420.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Pizza</span>
+            <h3>Naked Pizza</h3>
+            <p>garlic confit, parmesan, homemade marinara</p>
+            <div class="price">₱480.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Mains</span>
+            <h3>Bang Bang Tofu</h3>
+            <p>panko breaded tofu, sweet chili, gochujang mayo, sesame seeds</p>
+            <div class="price">₱430.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Handheld</span>
+            <h3>Pesto Grilled Cheese</h3>
+            <p>whole wheat bread, vegan mozzarella, spirulina pesto, sauteed onions, spinach, tomato</p>
+            <div class="price">₱370.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Handheld</span>
+            <h3>Bahn Mi</h3>
+            <p>seared marinated tofu, ciabatta, pickled vegetables, cucumber, asian pesto, chilli-garlic mayo, cilantro</p>
+            <div class="price">₱340.00</div>
+          </article>
+
+          <article class="menu-card reveal">
+            <span class="menu-pill">Breakfast</span>
+            <h3>Breakfast Burrito</h3>
+            <p>review mentions scrambled tofu and a fresh, beautifully prepared finish</p>
+            <div class="price">₱330.00</div>
+          </article>
+        </div>
+
+        <p class="fineprint mono reveal">Public sources used: Tripadvisor menu listings, Restaurant Guru summary pages, and HappyCow review mentions.</p>
+      </div>
+    </section>
+
+    <section class="section" id="story">
+      <div class="shell story-grid">
+        <div class="story-copy reveal">
+          <div class="kicker">Story</div>
+          <h2 class="display">Rooted in nature. Refined by craft.</h2>
+          <p>Ver De Palawan began its journey on January 11, 2020, in Puerto Princesa, driven by a passion to elevate vegan cuisine. The team builds dishes from legumes, vegetables, grains, fruits, herbs, and spices to create something indulgent, exciting, and satisfying.</p>
+          <p>Everyone is welcome here. The space is designed to feel calm, planted, and generous, with food that aims to work for plant-based regulars and curious first-timers alike.</p>
+        </div>
+
+        <div class="story-art reveal">
+          <img src="assets/img/about-botanical.svg" alt="Botanical artwork showing a tall plant and layered restaurant forms">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="kicker">Gallery</div>
+          <h2 class="title">Asymmetric visual notes</h2>
+          <p class="lede">A set of SVG mood frames for the food, plants, and interior atmosphere that define the space.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-bowl.svg" alt="Stylized bowl illustration">
+            <figcaption>Grain Bowl</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-interior.svg" alt="Stylized cafe interior illustration">
+            <figcaption>Cafe Interior</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-herbs.svg" alt="Stylized herb stems illustration">
+            <figcaption>Herb Detail</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-flatlay.svg" alt="Stylized ingredient flat lay illustration">
+            <figcaption>Ingredient Flat Lay</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-tea.svg" alt="Stylized tea cup illustration">
+            <figcaption>Tea Moment</figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/img/gallery-counter.svg" alt="Stylized cafe counter illustration">
+            <figcaption>Counter Light</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="kicker">Hours / Location</div>
+          <h2 class="title">Open daily in Puerto Princesa</h2>
+          <p class="lede">The current official site lists the Puerto Princesa branch at CityPoint Building on Rizal Avenue. Coordinates below reflect the CityPoint listing surfaced in public directory data.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card reveal">
+            <div class="address-block">
+              <h3>Visit</h3>
+              <address>#312 Rizal Ave., CityPoint Building, Puerto Princesa City, Palawan 5300, Philippines</address>
+              <p class="coord-line">Coordinates: 9.7399714, 118.7429818</p>
+              <p>Verified public contact: +63 956 711 9711 and puertoprincesa@verderesto.co.</p>
+            </div>
+
+            <table class="hours-table" aria-label="Operating hours">
+              <tbody>
+                <tr><th>Monday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Tuesday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Wednesday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Thursday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Friday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Saturday</th><td>10:00 AM - 8:00 PM</td></tr>
+                <tr><th>Sunday</th><td>10:00 AM - 8:00 PM</td></tr>
+              </tbody>
+            </table>
+
+            <div class="location-actions">
+              <a class="text-link js-ripple" href="https://www.openstreetmap.org/?mlat=9.7399714&mlon=118.7429818#map=18/9.7399714/118.7429818" target="_blank" rel="noopener noreferrer">Open OSM</a>
+              <a class="text-link js-ripple" href="tel:+639567119711">Call</a>
+              <a class="text-link js-ripple" href="mailto:puertoprincesa@verderesto.co">Email</a>
+            </div>
+          </div>
+
+          <figure class="map-frame reveal">
+            <img src="assets/img/map-princesa.svg" alt="Stylized map of Puerto Princesa with a highlighted location pin">
+            <figcaption class="map-caption">CityPoint Building pin at 9.7399714, 118.7429818</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand reveal">
+          <strong>Ver De Puerto Princesa</strong>
+          <p>Plant-based cafe at the center of Puerto Princesa, Palawan, with verified public hours, contact details, and social presence.</p>
+          <div class="contact-links">
+            <a class="text-link js-ripple" href="tel:+639567119711">+63 956 711 9711</a>
+            <a class="text-link js-ripple" href="mailto:puertoprincesa@verderesto.co">puertoprincesa@verderesto.co</a>
+          </div>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Quick Links</h3>
+          <a class="text-link" href="#menu">Menu</a>
+          <a class="text-link" href="#story">Story</a>
+          <a class="text-link" href="#gallery">Gallery</a>
+          <a class="text-link" href="#visit">Visit</a>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Hours</h3>
+          <p class="mono">Mon-Sun</p>
+          <p class="mono">10:00 AM - 8:00 PM</p>
+          <p class="mono">#312 Rizal Ave., CityPoint Building</p>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Social</h3>
+          <div class="footer-socials">
+            <a class="social-link" href="https://www.instagram.com/verde.puertoprincesa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r="1"></circle></svg>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/VerDePalawan/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h3V5h-3.4C10.8 5 9 6.7 9 9.3V12H6v3.5h3V19h3.5v-3.5h2.8L15.8 12h-2.3V9.7c0-.8.4-1.2 1.1-1.2z"></path></svg>
+            </a>
+            <a class="social-link" href="https://verderesto.co/" target="_blank" rel="noopener noreferrer" aria-label="Website">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16M12 4c2.5 2.4 4 5.3 4 8s-1.5 5.6-4 8c-2.5-2.4-4-5.3-4-8s1.5-5.6 4-8z"></path></svg>
+            </a>
+          </div>
+          <p class="mono">Instagram: @verde.puertoprincesa</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom mono">
+        <span>© 2026 Ver De Puerto Princesa</span>
+        <span>Built for GitHub Pages</span>
+      </div>
+      <div class="footer-note mono">JSON-LD included for Restaurant schema, address, coordinates, hours, and sameAs links.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.umd.js"></script>
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+      heroTl.from('.site-nav', { y: -20, opacity: 0, duration: 0.8 })
+        .from('.hero-identity h1', { y: 40, opacity: 0, duration: 1.05 }, 0.05)
+        .from('.hero-identity p', { y: 20, opacity: 0, duration: 0.75 }, 0.22)
+        .from('.hero-meta span', { y: 16, opacity: 0, stagger: 0.08, duration: 0.55 }, 0.34)
+        .from('.cta-row a', { y: 18, opacity: 0, stagger: 0.12, duration: 0.6 }, 0.48)
+        .from('.hero-visual', { y: 26, opacity: 0, duration: 1 }, 0.2);
+
+      gsap.to('.hero-art', {
+        y: -28,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      gsap.utils.toArray('.section-head.reveal, .story-copy.reveal, .story-art.reveal, .location-card.reveal, .map-frame.reveal, .footer-col.reveal').forEach((node) => {
+        gsap.fromTo(node, {
+          opacity: 0,
+          y: 30
+        }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: node,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      gsap.from('.menu-card', {
+        scrollTrigger: {
+          trigger: '#menu',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        y: 36,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.08
+      });
+
+      gsap.from('.gallery-item', {
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 68%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.85,
+        ease: 'power3.out',
+        stagger: 0.09
+      });
+
+      gsap.from('.story-copy', {
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        x: -44,
+        duration: 0.9,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.story-art', {
+        scrollTrigger: {
+          trigger: '#story',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        x: 44,
+        duration: 0.9,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.map-frame', {
+        scrollTrigger: {
+          trigger: '#visit',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        y: 26,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+    } else {
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+
+    document.querySelectorAll('.js-ripple').forEach((button) => {
+      button.addEventListener('pointerdown', (event) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 680);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      if (window.ScrollTrigger) {
+        ScrollTrigger.refresh();
+      }
+    });
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/#restaurant",
+      "name": "Ver De Puerto Princesa",
+      "url": "https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/",
+      "image": "https://frans15-2006.github.io/TheFrans/ver-de-puerto-princesa/assets/img/og-image.svg",
+      "description": "Plant-based cafe in Puerto Princesa, Palawan, Philippines.",
+      "servesCuisine": ["Vegan", "Plant-Based", "Cafe"],
+      "priceRange": "$$ - $$$",
+      "telephone": "+63 956 711 9711",
+      "email": "puertoprincesa@verderesto.co",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "#312 Rizal Ave., CityPoint Building",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7399714,
+        "longitude": 118.7429818
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "20:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "20:00"}
+      ],
+      "hasMenu": "https://verderesto.co/menu",
+      "sameAs": [
+        "https://verderesto.co/",
+        "https://www.instagram.com/verde.puertoprincesa/",
+        "https://www.facebook.com/VerDePalawan/",
+        "https://www.tripadvisor.com.ph/Restaurant_Review-g294257-d20199377-Reviews-Ver_De_Palawan-Puerto_Princesa_Palawan_Island_Palawan_Province_Mimaropa.html",
+        "https://www.happycow.net/reviews/ver-de-puerto-princesa-189560"
+      ]
+    }
+  </script>
 </body>
 </html>
