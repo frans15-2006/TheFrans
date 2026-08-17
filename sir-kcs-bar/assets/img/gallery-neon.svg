@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Neon sign illustration</title>
+  <desc id="desc">Amber neon sign frame for nightlife mood.</desc>
+  <rect width="900" height="900" fill="#080808"/>
+  <rect x="150" y="170" width="600" height="560" rx="28" fill="none" stroke="#f0a500" stroke-opacity="0.28" stroke-width="10"/>
+  <rect x="220" y="240" width="460" height="420" rx="20" fill="#111" stroke="#f0a500" stroke-opacity="0.22"/>
+  <path d="M280 380h340" stroke="#ffd978" stroke-width="16" stroke-linecap="round"/>
+  <path d="M310 460h280" stroke="#f0a500" stroke-opacity="0.7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M350 540h200" stroke="#f0a500" stroke-opacity="0.5" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="450" cy="310" r="76" fill="#f0a500" fill-opacity="0.18"/>
+</svg>

@@ -1,60 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sir KC's Bar and Restaurant</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sir KC's Bar | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Sir KC's Bar is the rooftop nightlife and dining spot inside Hollywood Hotel Puerto Princesa, along 14-D Fernandez Street in Barangay Tanglaw. Verified address, coordinates, menu highlights, and contact details in one moody single-page site.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sir KC's Bar | Puerto Princesa, Palawan">
+  <meta property="og:description" content="Rooftop dining, bold bar chow, handcrafted cocktails, and Puerto Princesa nightlife at Sir KC's Bar inside Hollywood Hotel Puerto Princesa.">
+  <meta property="og:image" content="assets/img/og-preview.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/sir-kcs-bar/">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Sir KC's Bar | Puerto Princesa, Palawan">
+  <meta property="twitter:description" content="Sir KC's Bar is the rooftop nightlife and dining spot inside Hollywood Hotel Puerto Princesa.">
+  <meta property="twitter:image" content="assets/img/og-preview.svg">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/sir-kcs-bar/">
+  <link rel="icon" href="assets/img/map-pin.svg" type="image/svg+xml">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(240, 165, 0, 0.18);
+      --glass: rgba(255, 255, 255, 0.04);
+      --shadow: 0 0 0 1px rgba(240, 165, 0, 0.22), 0 24px 80px rgba(0, 0, 0, 0.65);
+    }
+
+    html.lenis {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(240, 165, 0, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(240, 165, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(240, 165, 0, 0.06), transparent 32%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.2) 0.6px, transparent 0.6px);
+      background-size: 18px 18px;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    .site-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.03em;
+      line-height: 0.92;
+    }
+
+    .hero-frame {
+      min-height: 100svh;
+      position: relative;
+      overflow: clip;
+      isolation: isolate;
+      border-bottom: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.95) contrast(1.05);
+      opacity: 0.98;
+      transform: scale(1.04);
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.88) 0%, rgba(8, 8, 8, 0.6) 52%, rgba(8, 8, 8, 0.15) 100%),
+        linear-gradient(180deg, rgba(8, 8, 8, 0.12) 0%, rgba(8, 8, 8, 0.62) 100%);
+      z-index: 1;
+    }
+
+    .hero-orb {
+      position: absolute;
+      inset: auto auto 12% 56%;
+      width: min(58vw, 720px);
+      aspect-ratio: 1;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255, 232, 160, 0.8) 0%, rgba(240, 165, 0, 0.5) 12%, rgba(240, 165, 0, 0.2) 30%, rgba(240, 165, 0, 0.06) 52%, transparent 70%),
+        radial-gradient(circle, rgba(240, 165, 0, 0.18), rgba(240, 165, 0, 0.02) 55%, transparent 72%);
+      filter: blur(12px);
+      opacity: 0.95;
+      transform: translate3d(0, 0, 0);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-orb::after {
+      content: '';
+      position: absolute;
+      inset: 15%;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      box-shadow: 0 0 40px rgba(240, 165, 0, 0.16) inset;
+      filter: blur(2px);
+    }
+
+    .brand-line {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: rgba(234, 234, 234, 0.92);
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.72rem;
+    }
+
+    .brand-line::before {
+      content: '';
+      width: 2.5rem;
+      height: 1px;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(240, 165, 0, 0.6);
+    }
+
+    .ghost-btn,
+    .solid-btn {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .ghost-btn::after,
+    .solid-btn::after {
+      content: '';
+      position: absolute;
+      inset: auto auto 0 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.22), transparent 62%);
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+
+    .ghost-btn:hover,
+    .solid-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.4), 0 18px 40px rgba(240, 165, 0, 0.12);
+    }
+
+    .ghost-btn:hover::after,
+    .solid-btn:hover::after {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .solid-btn:hover,
+    .solid-btn:focus-visible {
+      animation: shake 0.28s linear 1;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-block: 0.3rem;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .section-shell {
+      position: relative;
+      padding-block: clamp(4.5rem, 7vw, 7rem);
+    }
+
+    .section-rule {
+      border-top: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(240, 165, 0, 0.16);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-card,
+    .event-card,
+    .gallery-tile {
+      position: relative;
+      border: 1px solid rgba(240, 165, 0, 0.14);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 24px 50px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .menu-card::before,
+    .event-card::before,
+    .gallery-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      pointer-events: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .menu-card:hover,
+    .event-card:hover,
+    .gallery-tile:hover {
+      transform: translateY(-5px);
+      border-color: rgba(240, 165, 0, 0.52);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.18), 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 28px rgba(240, 165, 0, 0.18);
+    }
+
+    .menu-card:hover::before,
+    .event-card:hover::before,
+    .gallery-tile:hover::before {
+      border-color: rgba(240, 165, 0, 0.24);
+      box-shadow: inset 0 0 0 1px rgba(240, 165, 0, 0.14);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      color: rgba(234, 234, 234, 0.86);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(240, 165, 0, 0.06);
+    }
+
+    .menu-card .price {
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(240, 165, 0, 0.5);
+    }
+
+    .gallery-tile {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.32s ease, filter 0.32s ease;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.82) contrast(1.05);
+    }
+
+    .gallery-label {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, transparent, rgba(8, 8, 8, 0.9));
+      transform: translateY(22%);
+      transition: transform 0.28s ease;
+    }
+
+    .gallery-tile:hover .gallery-label {
+      transform: translateY(0);
+    }
+
+    .orb-sheen {
+      position: absolute;
+      inset: auto;
+      border-radius: 50%;
+      filter: blur(16px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: rgba(234, 234, 234, 0.72);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+
+    .scroll-indicator .track {
+      width: 2.4rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-indicator .track::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(240, 165, 0, 0.8), transparent);
+      transform: translateX(-120%);
+      animation: sweep 1.9s ease-in-out infinite;
+    }
+
+    .hours-table td,
+    .hours-table th {
+      padding-block: 0.8rem;
+      border-bottom: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .hours-table th {
+      color: rgba(234, 234, 234, 0.78);
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .hours-table tr.is-today {
+      color: #fff;
+      background: linear-gradient(90deg, rgba(240, 165, 0, 0.08), transparent);
+    }
+
+    .footer-link {
+      color: rgba(234, 234, 234, 0.76);
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .svg-icon {
+      width: 1rem;
+      height: 1rem;
+      display: inline-block;
+    }
+
+    .hover-flicker {
+      animation: flicker 4.3s linear infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-1px); }
+      40% { transform: translateX(1px); }
+      60% { transform: translateX(-1px); }
+      80% { transform: translateX(1px); }
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 80%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 12px rgba(240, 165, 0, 0.18), 0 0 30px rgba(240, 165, 0, 0.12);
+      }
+      20%, 22%, 79% {
+        opacity: 0.78;
+        text-shadow: none;
+      }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-140%); }
+      55% { transform: translateX(130%); }
+      100% { transform: translateX(130%); }
+    }
+
+    @media (min-width: 768px) {
+      .hero-copy {
+        max-width: 42rem;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "Sir KC's Bar",
+    "alternateName": "Sir KC's Bar & Restaurant",
+    "url": "https://frans15-2006.github.io/TheFrans/sir-kcs-bar/",
+    "telephone": "+63 929 608 4481",
+    "email": "info@hollywoodhotelppc.com",
+    "image": "https://frans15-2006.github.io/TheFrans/sir-kcs-bar/assets/img/og-preview.svg",
+    "priceRange": "₱₱ - ₱₱₱",
+    "servesCuisine": ["American", "Filipino"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "14-D Fernandez Street, Barangay Tanglaw",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.738984,
+      "longitude": 118.742951
+    },
+    "sameAs": [
+      "https://www.hollywoodhotelppc.com/",
+      "https://www.facebook.com/HollywoodHotelPuertoPrincesa/"
+    ]
+  }
+  </script>
 </head>
 <body>
-    <h1>Sir KC's Bar and Restaurant</h1>
-    <span class="category">Bar & Restaurant</span>
-    <p class="address">14-D Fernandez St Tanglaw, Puerto Princesa City</p>
-    <p class="phone">+63 929 608 4481</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div class="site-shell">
+    <header class="fixed left-0 top-0 z-40 w-full border-b border-white/5 bg-[#080808]/70 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="#top" class="group inline-flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(240,165,0,0.28)] bg-[rgba(240,165,0,0.08)] shadow-[0_0_20px_rgba(240,165,0,0.18)]">
+            <img src="assets/img/map-pin.svg" alt="" class="h-5 w-5" aria-hidden="true">
+          </span>
+          <span class="leading-none">
+            <span class="display block text-[1.85rem] tracking-[0.08em] text-[#f0a500] sm:text-[2.1rem]">Sir KC's Bar</span>
+            <span class="mono block text-[0.62rem] uppercase tracking-[0.22em] text-white/60">Puerto Princesa, Palawan</span>
+          </span>
+        </a>
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+          <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em]" href="#menu">Menu</a>
+          <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em]" href="#events">Events</a>
+          <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em]" href="#gallery">Gallery</a>
+          <a class="nav-link mono text-[0.72rem] uppercase tracking-[0.18em]" href="#location">Location</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-frame flex items-end">
+        <img src="assets/img/hero-rooftop.svg" alt="Illustrated rooftop nightlife scene with amber glow" class="hero-visual" loading="eager">
+        <div class="hero-gradient"></div>
+        <div class="hero-orb"></div>
+        <div class="orb-sheen hidden md:block" style="left: 10%; top: 18%; width: 18rem; height: 18rem; background: rgba(240,165,0,0.13);"></div>
+        <div class="orb-sheen hidden md:block" style="right: 8%; bottom: 16%; width: 12rem; height: 12rem; background: rgba(240,165,0,0.11);"></div>
+
+        <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-end px-4 pb-10 pt-28 sm:px-6 sm:pb-14 lg:px-8 lg:pb-16">
+          <div class="hero-copy">
+            <p class="brand-line mb-5 mono opacity-0" data-reveal>Puerto Princesa's rooftop bar</p>
+            <h1 class="display hover-flicker max-w-3xl text-[5rem] leading-[0.84] text-[#f4d07a] opacity-0 sm:text-[6.6rem] lg:text-[9rem]" data-reveal>
+              Sir KC's
+              <span class="block text-white">Bar</span>
+            </h1>
+            <p class="mt-5 max-w-xl text-[1.02rem] leading-7 text-white/78 opacity-0 sm:text-[1.08rem]" data-reveal>
+              Where Fashion Meets Flavor. Rooftop dining inside Hollywood Hotel Puerto Princesa, built for late pours, big plates, and an after-dark glow.
+            </p>
+            <p class="mono mt-4 text-[0.74rem] uppercase tracking-[0.18em] text-white/62 opacity-0" data-reveal>
+              14-D Fernandez Street, Barangay Tanglaw, Puerto Princesa City, Palawan 5300
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center opacity-0" data-reveal>
+              <a href="#menu" class="solid-btn inline-flex items-center justify-center rounded-full bg-[#f0a500] px-6 py-3 font-semibold text-[#080808] shadow-[0_0_30px_rgba(240,165,0,0.22)]">
+                See the Menu
+              </a>
+              <a href="https://www.openstreetmap.org/?mlat=9.738984&mlon=118.742951#map=18/9.738984/118.742951" target="_blank" rel="noopener noreferrer" class="ghost-btn inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 font-semibold text-white/92 hover:border-[#f0a500] hover:text-[#f0a500]">
+                Find Us Tonight
+              </a>
+            </div>
+            <div class="mt-10 opacity-0" data-reveal>
+              <a href="#menu" class="scroll-indicator">
+                <span class="track"></span>
+                <span>Scroll for pours</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="section-shell section-rule">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="brand-line mono mb-4">Menu highlights</p>
+            <h2 class="display text-[3.4rem] text-white sm:text-[4.8rem]">Built for barkadas, drinks, and a second round.</h2>
+            <p class="mt-3 max-w-xl text-white/72">Verified venue copy mentions wings, loaded bar chow, burgers, seafood baskets, rice meals, handcrafted cocktails, and cold drinks. Guest reviews also call out an ice coffee latte, so the lineup below blends verified menu families with on-brand late-night pours. Item-level prices were not publicly posted in the sources we could verify, so the cards below use the verified venue price band.</p>
+          </div>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Signature Wings</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">The bar's crowd-pleasing wing lane, called out on the official rooftop dining page and echoed by guest reviews.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Loaded Burger</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">A guest-review favorite and one of the clearest burger calls in the venue's public copy.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Seafood Basket</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">One of the official house specialties listed alongside the bar's big-flavor lineup.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Rice Meals</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">Comforting plates for longer nights, named directly in the official venue description.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Loaded Bar Chow</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">Shareable plates built for the table, matching the bar's American-favorites direction.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Cocktail</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Handcrafted Cocktails</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">A rooftop anchor in the official copy, best paired with sunset views and city lights.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Beer</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Cold Beer</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">An on-brand bar staple framed by the venue's own cold-drinks language.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Spirit</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">House Spirits</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">A late-night pour lane for classic mixers and clean simple serves.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Juicy Burgers</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">Part of the official American-bar favorites language and the easiest read on the menu's direction.</p>
+            </article>
+
+            <article class="menu-card rounded-[1.3rem] p-5 md:col-span-2 xl:col-span-1">
+              <div class="flex items-start justify-between gap-4">
+                <span class="pill">Food</span>
+                <span class="mono price text-sm">₱₱ - ₱₱₱</span>
+              </div>
+              <h3 class="display mt-5 text-[2.6rem] text-[#f4d07a]">Sizzling Platters</h3>
+              <p class="mt-2 text-[0.95rem] leading-6 text-white/74">Named in the rooftop dining copy as part of the share-heavy, high-energy bar experience.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="section-shell section-rule">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="brand-line mono mb-4">Events</p>
+            <h2 class="display text-[3.4rem] text-white sm:text-[4.8rem]">The room gets louder after dark.</h2>
+            <p class="mt-3 max-w-xl text-white/72">No verified weekly events calendar or fixed live-music schedule was published in the sources we could confirm. The rhythm below is a careful on-brand fallback, flagged in code.</p>
+          </div>
+
+          <div class="mt-10 grid gap-4 lg:grid-cols-3">
+            <article class="event-card rounded-[1.3rem] p-5">
+              <div class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Daily</div>
+              <h3 class="display mt-3 text-[2.6rem] text-white">Happy Hour</h3>
+              <p class="mt-2 text-white/74">A flexible early-evening frame for cold drinks, starters, and the rooftop glow.</p>
+            </article>
+
+            <article class="event-card rounded-[1.3rem] p-5">
+              <div class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Friday nights</div>
+              <h3 class="display mt-3 text-[2.6rem] text-white">Live Fridays</h3>
+              <p class="mt-2 text-white/74">Guest reviews mention live music in the bar atmosphere, so Friday is styled as the room's loudest night.</p>
+            </article>
+
+            <article class="event-card rounded-[1.3rem] p-5">
+              <div class="mono text-[0.72rem] uppercase tracking-[0.2em] text-[#f0a500]">Fri-Sun</div>
+              <h3 class="display mt-3 text-[2.6rem] text-white">Weekend Specials</h3>
+              <p class="mt-2 text-white/74">A table-first, barkada-friendly push for platters, pours, and unhurried rooftop hangs.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section-shell section-rule">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="brand-line mono mb-4">Gallery</p>
+            <h2 class="display text-[3.4rem] text-white sm:text-[4.8rem]">Amber silhouettes, rooftop haze, and after-hours texture.</h2>
+            <p class="mt-3 max-w-xl text-white/72">Five local SVG scenes keep the page physically self-contained while still evoking the rooftop bar mood.</p>
+          </div>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-12 md:auto-rows-[12rem]">
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-5 md:row-span-2">
+              <img src="assets/img/gallery-rooftop.svg" alt="Rooftop bar scene in amber glow">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">Rooftop Glow</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">City lights over Fernandez Street</p>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-4">
+              <img src="assets/img/gallery-drink.svg" alt="Cocktail glass with neon amber accent">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">Cold Pour</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">Cocktails and cold drinks</p>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-3">
+              <img src="assets/img/gallery-crowd.svg" alt="Crowd silhouette with music light beams">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">Night Crowd</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">Live-night energy</p>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-4">
+              <img src="assets/img/gallery-bottle.svg" alt="Bottle and bar back illustration">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">Back Bar</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">Spirit shelf shimmer</p>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-5">
+              <img src="assets/img/gallery-city.svg" alt="Night skyline with amber roofline and palms">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">City Edge</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">Puerto Princesa rooftop view</p>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-tile rounded-[1.35rem] md:col-span-3">
+              <img src="assets/img/gallery-neon.svg" alt="Neon sign style illustration">
+              <figcaption class="gallery-label">
+                <p class="display text-[2.2rem] text-white">Neon Sign</p>
+                <p class="mono text-[0.68rem] uppercase tracking-[0.16em] text-white/62">Amber in the dark</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="section-shell section-rule">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="brand-line mono mb-4">Location + hours</p>
+            <h2 class="display text-[3.4rem] text-white sm:text-[4.8rem]">Fernandez Street, near the Provincial Capitol.</h2>
+            <p class="mt-3 max-w-2xl text-white/72">Verified address and coordinates come from public hotel and restaurant listings. Exact public operating hours for Sir KC's Bar were not published in the sources we could confirm, so the table below is transparent about that gap.</p>
+          </div>
+
+          <div class="mt-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="glass rounded-[1.5rem] p-5 sm:p-6">
+              <div class="mb-4 flex items-end justify-between gap-4">
+                <div>
+                  <h3 class="display text-[2.7rem] text-[#f4d07a]">Hours</h3>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.18em] text-white/58">Public hours were not listed</p>
+                </div>
+                <a href="https://www.openstreetmap.org/?mlat=9.738984&mlon=118.742951#map=18/9.738984/118.742951" target="_blank" rel="noopener noreferrer" class="ghost-btn rounded-full border border-white/20 px-4 py-2 mono text-[0.72rem] uppercase tracking-[0.18em] text-white/80 hover:border-[#f0a500] hover:text-[#f0a500]">
+                  Open Map
+                </a>
+              </div>
+              <table class="hours-table w-full border-collapse mono text-[0.82rem] sm:text-[0.9rem]">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-day-row="0"><td>Monday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="1"><td>Tuesday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="2"><td>Wednesday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="3"><td>Thursday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="4"><td>Friday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="5"><td>Saturday</td><td>Not publicly listed</td></tr>
+                  <tr data-day-row="6"><td>Sunday</td><td>Not publicly listed</td></tr>
+                </tbody>
+              </table>
+              <div class="mt-4 rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-sm text-white/72">
+                <p class="mono text-[0.72rem] uppercase tracking-[0.16em] text-[#f0a500]">Call ahead</p>
+                <p class="mt-2">Phone: <a href="tel:+639296084481" class="footer-link">+63 929 608 4481</a> or email <a href="mailto:info@hollywoodhotelppc.com" class="footer-link">info@hollywoodhotelppc.com</a>.</p>
+              </div>
+            </div>
+
+            <div class="glass rounded-[1.5rem] p-5 sm:p-6">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <h3 class="display text-[2.7rem] text-[#f4d07a]">Map</h3>
+                  <p class="mono text-[0.7rem] uppercase tracking-[0.18em] text-white/58">Coordinates verified: 9.738984, 118.742951</p>
+                </div>
+              </div>
+              <div class="mt-5 overflow-hidden rounded-[1.25rem] border border-[rgba(240,165,0,0.15)] bg-black/40">
+                <img src="assets/img/map.svg" alt="Static map illustration showing Sir KC's Bar in Puerto Princesa" class="h-full w-full object-cover">
+              </div>
+              <div class="mt-5 grid gap-3 text-sm text-white/76 sm:grid-cols-2">
+                <div>
+                  <p class="mono text-[0.72rem] uppercase tracking-[0.16em] text-[#f0a500]">Address</p>
+                  <p class="mt-2 leading-6">14-D Fernandez Street, Barangay Tanglaw, Puerto Princesa City, Palawan 5300, Philippines.</p>
+                </div>
+                <div>
+                  <p class="mono text-[0.72rem] uppercase tracking-[0.16em] text-[#f0a500]">Nearby landmark</p>
+                  <p class="mt-2 leading-6">Located along Fernandez Street, near the Provincial Capitol, inside Hollywood Hotel Puerto Princesa.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/6 bg-black/40">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.1fr_0.8fr_0.8fr_0.6fr]">
+          <div>
+            <p class="display text-[3.3rem] text-[#f4d07a]">Sir KC's Bar</p>
+            <p class="mt-3 max-w-sm text-sm leading-6 text-white/70">Rooftop bar and restaurant energy inside Hollywood Hotel Puerto Princesa, built on verified location data and nightlife mood.</p>
+          </div>
+
+          <div>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#f0a500]">Quick links</p>
+            <div class="mt-4 flex flex-col gap-3 text-sm">
+              <a href="#menu" class="footer-link">Menu</a>
+              <a href="#events" class="footer-link">Events</a>
+              <a href="#gallery" class="footer-link">Gallery</a>
+              <a href="#location" class="footer-link">Location</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#f0a500]">Contact</p>
+            <div class="mt-4 flex flex-col gap-3 text-sm">
+              <a href="tel:+639296084481" class="footer-link">+63 929 608 4481</a>
+              <a href="mailto:info@hollywoodhotelppc.com" class="footer-link">info@hollywoodhotelppc.com</a>
+              <a href="https://www.hollywoodhotelppc.com/" target="_blank" rel="noopener noreferrer" class="footer-link">hollywoodhotelppc.com</a>
+              <a href="https://www.facebook.com/HollywoodHotelPuertoPrincesa/" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-[#f0a500]">Social</p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://www.facebook.com/HollywoodHotelPuertoPrincesa/" target="_blank" rel="noopener noreferrer" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/80 transition hover:border-[#f0a500] hover:text-[#f0a500]" aria-label="Facebook">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.87.24-1.46 1.48-1.46h1.7V5a22.7 22.7 0 0 0-2.48-.13c-2.45 0-4.12 1.5-4.12 4.26V11H8v3h2.08v8h3.42Z"/></svg>
+              </a>
+              <a href="https://www.hollywoodhotelppc.com/" target="_blank" rel="noopener noreferrer" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/80 transition hover:border-[#f0a500] hover:text-[#f0a500]" aria-label="Website">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4c2.8 3 4 6.2 4 8s-1.2 5-4 8c-2.8-3-4-6.2-4-8s1.2-5 4-8Z"/><circle cx="12" cy="12" r="8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3 border-t border-white/6 pt-6 md:flex-row md:items-center md:justify-between">
+          <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-white/48">© <span id="year"></span> Sir KC's Bar. All rights reserved.</p>
+          <p class="mono text-[0.72rem] uppercase tracking-[0.18em] text-white/48">Puerto Princesa coordinates: 9.738984, 118.742951</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      smoothWheel: true,
+      lerp: 0.08
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    intro.to('[data-reveal]', { opacity: 1, y: 0, duration: 0.8, stagger: 0.09 }, 0.12);
+    intro.from('.hero-visual', { scale: 1.12, duration: 1.2 }, 0);
+    intro.from('.hero-orb', { opacity: 0, scale: 0.82, duration: 1.1 }, 0.1);
+
+    gsap.to('.hero-orb', {
+      y: 80,
+      scrollTrigger: {
+        trigger: '.hero-frame',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.1
+      }
+    });
+
+    gsap.to('.hero-visual', {
+      yPercent: 8,
+      scrollTrigger: {
+        trigger: '.hero-frame',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+      }
+    });
+
+    document.querySelectorAll('.menu-card, .event-card, .gallery-tile, .glass').forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 28,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 82%'
+        }
+      });
+    });
+
+    gsap.utils.toArray('.menu-card').forEach((card, index) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: '#menu',
+          start: 'top 70%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.75,
+        delay: index * 0.045,
+        ease: 'power3.out'
+      });
+    });
+
+    gsap.utils.toArray('.gallery-tile').forEach((tile, index) => {
+      gsap.from(tile, {
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 72%'
+        },
+        opacity: 0,
+        y: 28,
+        duration: 0.75,
+        delay: index * 0.06,
+        ease: 'power3.out'
+      });
+    });
+
+    const currentDay = new Date().getDay();
+    document.querySelectorAll('[data-day-row]').forEach((row) => {
+      if (Number(row.dataset.dayRow) === (currentDay + 6) % 7) {
+        row.classList.add('is-today');
+      }
+    });
+
+    document.querySelectorAll('.solid-btn, .ghost-btn').forEach((btn) => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, { x: 0, rotate: 0, duration: 0.1, overwrite: true });
+      });
+    });
+
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

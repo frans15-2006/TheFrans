@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rooftop scene</title>
+  <desc id="desc">Amber rooftop and skyline scene for the gallery.</desc>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="28%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="#080808"/>
+  <rect width="900" height="900" fill="url(#g)" opacity="0.3"/>
+  <g fill="#171717">
+    <rect x="70" y="220" width="90" height="390"/>
+    <rect x="185" y="180" width="70" height="430"/>
+    <rect x="275" y="250" width="115" height="360"/>
+    <rect x="420" y="145" width="84" height="465"/>
+    <rect x="530" y="232" width="120" height="378"/>
+    <rect x="680" y="190" width="78" height="420"/>
+  </g>
+  <path d="M0 600H900" stroke="#f0a500" stroke-opacity="0.16"/>
+  <path d="M100 650H820" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M170 480H690c18 0 32 14 32 32v136H138V512c0-18 14-32 32-32Z" fill="#101010" stroke="#f0a500" stroke-opacity="0.35"/>
+  <path d="M206 505h136l26 34 26-34h146l28 38 30-38h100" fill="none" stroke="#ffd978" stroke-opacity="0.55" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="680" cy="260" r="110" fill="#f0a500" fill-opacity="0.18"/>
+</svg>

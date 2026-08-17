@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">City edge scene</title>
+  <desc id="desc">Night skyline with amber rooftop accents.</desc>
+  <rect width="900" height="900" fill="#080808"/>
+  <circle cx="640" cy="300" r="180" fill="#f0a500" fill-opacity="0.18"/>
+  <g fill="#131313">
+    <rect x="55" y="260" width="108" height="400"/>
+    <rect x="180" y="220" width="78" height="440"/>
+    <rect x="274" y="290" width="126" height="370"/>
+    <rect x="425" y="180" width="84" height="480"/>
+    <rect x="529" y="258" width="106" height="402"/>
+    <rect x="650" y="204" width="96" height="456"/>
+    <rect x="766" y="286" width="74" height="374"/>
+  </g>
+  <path d="M0 650H900" stroke="#f0a500" stroke-opacity="0.16"/>
+  <g fill="#f0a500" fill-opacity="0.3">
+    <path d="M90 700h220l34 54H56Z"/>
+    <path d="M340 690h280l28 64H312Z"/>
+    <path d="M640 708h176l22 46H618Z"/>
+  </g>
+</svg>
