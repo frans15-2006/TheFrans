@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0c0c"/>
+      <stop offset="1" stop-color="#161616"/>
+    </linearGradient>
+    <linearGradient id="liquid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd86f"/>
+      <stop offset="1" stop-color="#f0a500"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="40" fill="url(#bg)"/>
+  <circle cx="470" cy="230" r="130" fill="#f0a500" fill-opacity="0.12"/>
+  <path d="M444 196h150l-18 256c-4 46-38 82-84 82h-20c-46 0-80-36-84-82l56-256Z" fill="#101010" stroke="#f0a500" stroke-opacity="0.32" stroke-width="6"/>
+  <path d="M466 270h108l-10 150c-2 24-21 42-45 42h-2c-24 0-43-18-45-42l-6-150Z" fill="url(#liquid)" fill-opacity="0.85"/>
+  <path d="M706 150c-60 50-94 100-118 176" stroke="#f0a500" stroke-opacity="0.5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M686 170c20 16 42 25 72 25" stroke="#f0a500" stroke-opacity="0.34" stroke-width="10" stroke-linecap="round"/>
+  <path d="M360 612c108-52 204-68 288-48 84 20 154 38 228 38" stroke="#f0a500" stroke-opacity="0.22" stroke-width="12" stroke-linecap="round"/>
+</svg>

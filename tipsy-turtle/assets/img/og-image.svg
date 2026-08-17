@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="860" cy="200" r="220" fill="#f0a500" fill-opacity="0.22"/>
+  <circle cx="880" cy="210" r="130" fill="#ffd77b" fill-opacity="0.48"/>
+  <path d="M0 430C210 368 392 344 600 360c180 14 328 54 600 146v124H0V430Z" fill="#111"/>
+  <text x="72" y="190" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="110" letter-spacing="4">Tipsy Turtle</text>
+  <text x="72" y="258" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="3">Puerto Princesa, Palawan</text>
+  <text x="72" y="320" fill="#eaeaea" fill-opacity="0.78" font-family="Space Grotesk, Arial, sans-serif" font-size="30">Live music, tropical drinks, and late-night island energy.</text>
+</svg>

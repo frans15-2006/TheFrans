@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 220" fill="none">
+  <defs>
+    <linearGradient id="shell" x1="50" y1="40" x2="210" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0a500"/>
+      <stop offset="1" stop-color="#8b5f00"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#f0a500" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="128" cy="114" rx="70" ry="48" fill="url(#shell)" fill-opacity="0.18"/>
+    <ellipse cx="128" cy="114" rx="54" ry="36" fill="none"/>
+    <path d="M128 78v72M97 90l18 28M163 90l-18 28M94 133l34-19 34 19" opacity="0.85"/>
+    <path d="M76 112H50c-11 0-20 8-22 19v2c2 11 11 19 22 19h26"/>
+    <path d="M184 112h26c11 0 20 8 22 19v2c-2 11-11 19-22 19h-26"/>
+    <path d="M108 62c6-13 18-22 30-22 14 0 25 8 30 22"/>
+    <path d="M98 62c0-10-10-18-22-18-12 0-22 8-22 18 0 10 10 18 22 18 12 0 22-8 22-18Z"/>
+    <path d="M204 108l18-10c8-4 16-3 21 3"/>
+    <path d="M58 108l-18-10c-8-4-16-3-21 3"/>
+    <circle cx="108" cy="62" r="4" fill="#f0a500"/>
+    <circle cx="150" cy="62" r="4" fill="#f0a500"/>
+    <path d="M121 74c6 5 12 5 18 0"/>
+    <path d="M82 156c-12 15-22 31-26 43"/>
+    <path d="M178 156c12 15 22 31 26 43"/>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f0f0f"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(690 300) rotate(90) scale(250)">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="780" rx="40" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1104" height="684" rx="30" fill="#0c0c0c" stroke="#f0a500" stroke-opacity="0.12"/>
+  <circle cx="690" cy="300" r="210" fill="url(#glow)"/>
+  <g opacity="0.32" stroke="#eaeaea" stroke-opacity="0.25" stroke-width="3">
+    <path d="M128 162H1078"/>
+    <path d="M128 250H1078"/>
+    <path d="M128 338H1078"/>
+    <path d="M128 426H1078"/>
+    <path d="M128 514H1078"/>
+    <path d="M128 602H1078"/>
+    <path d="M188 120V648"/>
+    <path d="M344 120V648"/>
+    <path d="M500 120V648"/>
+    <path d="M656 120V648"/>
+    <path d="M812 120V648"/>
+    <path d="M968 120V648"/>
+  </g>
+  <path d="M145 545C252 468 335 415 435 389C538 361 632 368 734 399C816 423 920 444 1048 424" stroke="#f0a500" stroke-opacity="0.72" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 612C370 570 473 514 572 468C685 417 774 392 878 396C944 399 996 413 1058 438" stroke="#f0a500" stroke-opacity="0.26" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(724 314)">
+    <path d="M0 120S76 69 76 20a76 76 0 1 0-152 0c0 49 76 100 76 100Z" fill="#f0a500" fill-opacity="0.9"/>
+    <path d="M0 86c24 0 44-20 44-44S24-2 0-2-44 18-44 42 -24 86 0 86Z" fill="#111"/>
+    <circle cx="0" cy="42" r="15" fill="#fff4ce" fill-opacity="0.95"/>
+    <circle cx="0" cy="42" r="7" fill="#111"/>
+  </g>
+  <text x="90" y="708" fill="#eaeaea" fill-opacity="0.72" font-family="JetBrains Mono, monospace" font-size="24">Puerto Princesa, Palawan</text>
+  <text x="90" y="86" fill="#f0a500" fill-opacity="0.82" font-family="JetBrains Mono, monospace" font-size="24">9.740337, 118.7434</text>
+</svg>
