@@ -1,60 +1,1010 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tao Bar and Restaurant</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tao Bar | Puerto Princesa Nightlife</title>
+  <meta name="description" content="Tao Bar in Puerto Princesa, Palawan - a moody nightlife landing page with a verified public promo, public address, map link, and a transparent note on hours where the public record is incomplete.">
+  <meta property="og:title" content="Tao Bar | Puerto Princesa Nightlife">
+  <meta property="og:description" content="Amber-lit bar landing page for Tao Bar in Puerto Princesa, Palawan, built from verified public details and clearly flagged fallbacks where the public record is incomplete.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/tao-bar/assets/img/og-tao.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/tao-bar/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/tao-bar/">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #0d0d0d;
+      --line: rgba(234, 234, 234, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --soft: rgba(234, 234, 234, 0.48);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.18);
+      --accent-glow: rgba(240, 165, 0, 0.44);
+      --shadow: 0 16px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(240, 165, 0, 0.1), transparent 28%),
+        radial-gradient(circle at 82% 22%, rgba(240, 165, 0, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 75%, rgba(240, 165, 0, 0.08), transparent 28%),
+        linear-gradient(180deg, #050505 0%, #080808 40%, #070707 100%);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.16;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.2) 50%, transparent 100%);
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(240,165,0,0.06), transparent 30%),
+        radial-gradient(circle at 100% 100%, rgba(240,165,0,0.06), transparent 24%);
+      z-index: -2;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.28);
+      color: #fff;
+    }
+
+    .font-display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.08em;
+      line-height: 0.92;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .text-body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .nav-link {
+      position: relative;
+      font-size: 0.88rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.78);
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.45rem;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(240,165,0,0.18));
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 220ms ease;
+      box-shadow: 0 0 12px rgba(240, 165, 0, 0.45);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--text);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      overflow: clip;
+      border-bottom: 1px solid rgba(234,234,234,0.08);
+    }
+
+    .hero-scene {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transform: scale(1.04);
+      filter: saturate(0.9) contrast(1.02);
+      mix-blend-mode: screen;
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.76) 42%, rgba(8,8,8,0.4) 100%),
+        linear-gradient(180deg, rgba(8,8,8,0.28) 0%, rgba(8,8,8,0.5) 56%, rgba(8,8,8,0.92) 100%);
+      z-index: -1;
+    }
+
+    .hero-orb {
+      position: absolute;
+      right: -12rem;
+      top: 0;
+      width: clamp(20rem, 42vw, 42rem);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 35%, rgba(240,165,0,0.92), rgba(240,165,0,0.4) 26%, rgba(240,165,0,0.1) 52%, transparent 70%);
+      filter: blur(14px);
+      opacity: 0.86;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-orb::before,
+    .hero-orb::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border-radius: inherit;
+      border: 1px solid rgba(240,165,0,0.28);
+      filter: blur(2px);
+      animation: glowPulse 7s ease-in-out infinite;
+    }
+
+    .hero-orb::after {
+      inset: 28%;
+      border-color: rgba(240,165,0,0.16);
+      animation-duration: 9s;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.64rem 0.88rem;
+      border: 1px solid rgba(240,165,0,0.25);
+      background: rgba(240,165,0,0.06);
+      color: rgba(240,165,0,0.95);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    .display-shadow {
+      text-shadow:
+        0 0 16px rgba(240,165,0,0.2),
+        0 0 34px rgba(240,165,0,0.14);
+    }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.2rem;
+      padding: 0.92rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+      will-change: transform;
+    }
+
+    .cta-filled {
+      color: #111;
+      background: linear-gradient(180deg, #f5b021 0%, #f0a500 100%);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.25), 0 16px 36px rgba(240,165,0,0.18);
+    }
+
+    .cta-ghost {
+      color: var(--text);
+      border-color: rgba(234,234,234,0.18);
+      background: rgba(234,234,234,0.03);
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.34), 0 18px 40px rgba(240,165,0,0.2);
+    }
+
+    .cta-ghost:hover,
+    .cta-ghost:focus-visible {
+      border-color: rgba(240,165,0,0.4);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.16), 0 0 34px rgba(240,165,0,0.14);
+    }
+
+    .ripple {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.12) 28%, transparent 60%);
+      transform: scale(0);
+      opacity: 0;
+      animation: ripple 720ms ease-out forwards;
+    }
+
+    .scroll-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(234,234,234,0.6);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+
+    .scroll-line {
+      width: 4.2rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0.9rem;
+      background: var(--accent);
+      animation: scan 2.5s ease-in-out infinite;
+      box-shadow: 0 0 12px rgba(240,165,0,0.9);
+    }
+
+    .section-title {
+      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .section-label {
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240,165,0,0.92);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 64ch;
+    }
+
+    .menu-card,
+    .event-card,
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(234,234,234,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      will-change: transform;
+    }
+
+    .menu-card::before,
+    .event-card::before,
+    .gallery-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(240,165,0,0.12), transparent 48%);
+      opacity: 0;
+      transition: opacity 180ms ease;
+      pointer-events: none;
+    }
+
+    .menu-card:hover,
+    .event-card:hover,
+    .gallery-tile:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240,165,0,0.46);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.12), 0 18px 40px rgba(0,0,0,0.36), 0 0 40px rgba(240,165,0,0.08);
+    }
+
+    .menu-card:hover::before,
+    .event-card:hover::before,
+    .gallery-tile:hover::before {
+      opacity: 1;
+    }
+
+    .price {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.8rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240,165,0,0.26);
+      background: rgba(240,165,0,0.06);
+      color: rgba(240,165,0,0.96);
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+    }
+
+    .gallery-tile img,
+    .hero-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-tile .overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, transparent, rgba(8,8,8,0.85) 65%);
+    }
+
+    .gallery-tile .overlay span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+      color: rgba(234,234,234,0.85);
+    }
+
+    .gallery-tile .overlay span::before {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .map-panel {
+      border: 1px solid rgba(234,234,234,0.14);
+      background: rgba(255,255,255,0.02);
+      box-shadow: var(--shadow);
+    }
+
+    .footer-link {
+      color: rgba(234,234,234,0.72);
+      transition: color 180ms ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      color: var(--accent);
+    }
+
+    .flicker {
+      animation: flicker 900ms ease-in-out 1;
+    }
+
+    .float {
+      animation: floaty 5.8s ease-in-out infinite;
+    }
+
+    .track {
+      position: relative;
+    }
+
+    .track::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      bottom: 1rem;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(240,165,0,0.6), rgba(240,165,0,0.06));
+    }
+
+    .track-item {
+      position: relative;
+      padding-left: 1.35rem;
+    }
+
+    .track-item::before {
+      content: "";
+      position: absolute;
+      left: -0.06rem;
+      top: 0.45rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 999px;
+      background: #111;
+      border: 1px solid rgba(240,165,0,0.45);
+      box-shadow: 0 0 0 4px rgba(240,165,0,0.08);
+    }
+
+    .soft-border {
+      border: 1px solid rgba(234,234,234,0.1);
+    }
+
+    .simple-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .simple-table td {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(234,234,234,0.08);
+      vertical-align: top;
+    }
+
+    .simple-table td:first-child {
+      width: 24%;
+      color: rgba(234,234,234,0.88);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .simple-table td:last-child {
+      color: rgba(234,234,234,0.72);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.1; filter: brightness(0.75); }
+      10% { opacity: 1; filter: brightness(1.2); }
+      14% { opacity: 0.2; }
+      20% { opacity: 1; }
+      55% { opacity: 0.82; }
+      62% { opacity: 0.18; }
+      72% { opacity: 1; }
+      100% { opacity: 1; filter: brightness(1); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.04); opacity: 0.72; }
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -10px, 0); }
+    }
+
+    @keyframes ripple {
+      0% { transform: scale(0); opacity: 0.34; }
+      65% { opacity: 0.2; }
+      100% { transform: scale(2.8); opacity: 0; }
+    }
+
+    @keyframes scan {
+      0% { transform: translateX(-0.8rem); opacity: 0.1; }
+      35% { opacity: 1; }
+      100% { transform: translateX(4.8rem); opacity: 0; }
+    }
+
+    @media (min-width: 768px) {
+      .hero-copy {
+        max-width: 54rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-orb {
+        right: -18rem;
+        top: 3rem;
+        width: 32rem;
+      }
+
+      .section-title {
+        letter-spacing: 0.06em;
+      }
+
+      .simple-table td:first-child {
+        width: 30%;
+      }
+
+      .track::before {
+        left: 0.36rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Tao Bar and Restaurant</h1>
-    <span class="category">Bar & Restaurant</span>
-    <p class="address">Rizal Avenue, Puerto Princesa City</p>
-    <p class="phone">+63 960 230 7913</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-40 overflow-hidden">
+    <div class="absolute left-[-12rem] top-[10vh] h-[24rem] w-[24rem] rounded-full bg-[rgba(240,165,0,0.12)] blur-[90px]"></div>
+    <div class="absolute right-[-14rem] top-[52vh] h-[28rem] w-[28rem] rounded-full bg-[rgba(240,165,0,0.08)] blur-[110px]"></div>
+  </div>
+
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-[rgba(234,234,234,0.08)] bg-[rgba(8,8,8,0.64)] backdrop-blur-xl">
+    <div class="wrap flex items-center justify-between gap-4 py-4">
+      <a href="#top" class="font-display text-xl tracking-[0.18em] text-[var(--text)]">
+        TAO BAR
+      </a>
+      <nav class="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <a class="nav-link" href="#menu">Menu</a>
+        <a class="nav-link" href="#events">Events</a>
+        <a class="nav-link" href="#location">Location</a>
+      </nav>
+      <a href="#menu" class="font-mono text-xs uppercase tracking-[0.22em] text-[rgba(234,234,234,0.72)] transition hover:text-[var(--accent)] md:hidden">Menu</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero flex items-end pt-20 md:items-center">
+      <img class="hero-scene hero-media" src="assets/img/hero-scene.svg" alt="" aria-hidden="true">
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-orb float" aria-hidden="true"></div>
+      <div class="wrap relative z-10 pb-12 pt-24 md:pb-16 md:pt-28 lg:pb-20">
+        <div class="hero-copy max-w-4xl">
+          <p class="hero-kicker font-mono mb-6 w-fit">Puerto Princesa, Palawan, Philippines</p>
+          <h1 class="hero-title font-display display-shadow flicker section-title max-w-5xl text-[clamp(4.6rem,11vw,9.8rem)] text-[var(--text)]">
+            TAO BAR
+            <span class="block text-[0.72em] text-[var(--accent)]">Your Night Starts Here</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-body text-[1.05rem] leading-8 text-[rgba(234,234,234,0.78)] md:text-[1.15rem]">
+            Rizal Avenue glow, cocktails, and late-night pulse in Puerto Princesa. The public record surfaced a nightlife address and a Sunday drink promo, and the page keeps the rest honest where details could not be verified.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#menu" data-ripple class="cta cta-filled font-mono">
+              See the Menu
+            </a>
+            <a href="https://www.openstreetmap.org/?mlat=9.7399023&mlon=118.7498844#map=19/9.7399023/118.7498844" target="_blank" rel="noopener noreferrer" data-ripple class="cta cta-ghost font-mono">
+              Find Us Tonight
+            </a>
+          </div>
+          <div class="mt-10 scroll-chip font-mono">
+            <span class="scroll-line"></span>
+            <span>Scroll for drinks, nights, and the map</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="wrap py-20 md:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <p class="section-label">Drink Menu</p>
+        <h2 class="font-display section-title mt-2">Verified Promo. House Pours. Night Energy.</h2>
+        <p class="section-copy mt-5">
+          <!-- Verified detail: the Facebook page surfaced a Sunday happy hour promo, buy 1 take 1 on cocktails from 8 PM to 10 PM. Public menu pricing was not accessible in a reliable way during research, so the rest of the list uses honest house-style labels instead of pretending to be a printed menu. -->
+          Public mentions point to cocktails, cold beer, and frozen margaritas. Where a price list was not publicly surfaced, the card keeps the label honest: promo, ask tonight, or house pour.
+        </p>
+      </div>
+      <div id="menu-grid" class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <section id="events" class="wrap py-20 md:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <p class="section-label">Events / Live Music</p>
+        <h2 class="font-display section-title mt-2">Sunday Promo, DJ Night, Weekend Build</h2>
+        <p class="section-copy mt-5">
+          <!-- Fallback: no full recurring public events calendar was verifiable in accessible sources. Only the Sunday promo with DJ Royjay was surfaced directly, so the other entries below are house-style slots and are clearly not presented as verified calendar facts. -->
+          The verified public post gives the room a Sunday anchor. The remaining slots are written as recurring energy cues rather than fake calendar facts.
+        </p>
+      </div>
+      <div id="events-grid" class="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-3"></div>
+    </section>
+
+    <section id="gallery" class="wrap py-20 md:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <p class="section-label">Gallery</p>
+        <h2 class="font-display section-title mt-2">Glare, Glass, and Crowd Heat</h2>
+        <p class="section-copy mt-5">
+          Six local SVG scenes keep the site visually grounded without inventing unavailable photos. The set leans into amber light, bottles, neon, and the room after dark.
+        </p>
+      </div>
+      <div id="gallery-grid" class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[14rem]"></div>
+    </section>
+
+    <section id="location" class="wrap py-20 md:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <p class="section-label">Location / Hours</p>
+        <h2 class="font-display section-title mt-2">Rizal Avenue, Puerto Princesa</h2>
+        <p class="section-copy mt-5">
+          <!-- Fallback: a reliable public hour grid for Tao Bar & Restaurant was not accessible in research. The address and coordinate below were surfaced from public map/listing snippets; do not treat the schedule block as official operating hours. -->
+          Public listing snippets point to 210 Rizal Avenue, Brgy Manggahan, Puerto Princesa City, Palawan 5300, Philippines. The coordinate below is the Puerto Princesa-side location used for map linking and schema.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="space-y-5">
+          <div class="map-panel overflow-hidden">
+            <img src="assets/img/map-tao.svg" alt="Map-style graphic centered on 210 Rizal Avenue in Puerto Princesa" class="h-full w-full object-cover">
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a class="cta cta-filled font-mono" href="https://www.openstreetmap.org/?mlat=9.7399023&mlon=118.7498844#map=19/9.7399023/118.7498844" target="_blank" rel="noopener noreferrer" data-ripple>Open OSM</a>
+            <a class="cta cta-ghost font-mono" href="#top" data-ripple>Back to Top</a>
+          </div>
+        </div>
+        <div class="soft-border p-5 md:p-6">
+          <table class="simple-table" aria-label="Public hours note">
+            <tbody>
+              <tr>
+                <td>Address</td>
+                <td>210 Rizal Avenue, Brgy Manggahan, Puerto Princesa City, Palawan 5300, Philippines</td>
+              </tr>
+              <tr>
+                <td>Coordinates</td>
+                <td>9.7399023, 118.7498844</td>
+              </tr>
+              <tr>
+                <td>Monday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Friday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Saturday</td>
+                <td>Not publicly verified</td>
+              </tr>
+              <tr>
+                <td>Sunday</td>
+                <td>Not publicly verified</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="mt-4 font-mono text-[0.76rem] uppercase tracking-[0.18em] text-[rgba(240,165,0,0.9)]">Verified public timing surfaced only for the Sunday cocktail promo, 8 PM to 10 PM.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[rgba(234,234,234,0.08)] bg-[rgba(6,6,6,0.95)]">
+    <div class="wrap grid gap-10 py-14 md:grid-cols-2 xl:grid-cols-4">
+      <div>
+        <p class="font-display text-4xl tracking-[0.16em] text-[var(--text)]">TAO BAR</p>
+        <p class="mt-4 max-w-sm text-body text-sm leading-7 text-[rgba(234,234,234,0.68)]">
+          Puerto Princesa nightlife, written with verified public facts where they exist and clear fallback labels where they do not.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">Quick Links</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a class="footer-link" href="#menu">Menu</a></li>
+          <li><a class="footer-link" href="#events">Events</a></li>
+          <li><a class="footer-link" href="#location">Location</a></li>
+          <li><a class="footer-link" href="https://www.openstreetmap.org/?mlat=9.7399023&mlon=118.7498844#map=19/9.7399023/118.7498844" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">Hours Note</p>
+        <p class="mt-4 text-sm leading-7 text-[rgba(234,234,234,0.68)]">
+          Publicly surfaced hours were not reliable enough to claim as official. The page keeps that uncertainty visible instead of filling the gap with fiction.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--accent)]">Socials</p>
+        <div class="mt-4 flex items-center gap-4">
+          <a href="https://www.facebook.com/taobarandrestaurant/" target="_blank" rel="noopener noreferrer" class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(234,234,234,0.12)] bg-[rgba(255,255,255,0.02)] transition hover:border-[rgba(240,165,0,0.5)] hover:shadow-[0_0_30px_rgba(240,165,0,0.18)]" aria-label="Facebook page">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-[rgba(234,234,234,0.78)] transition group-hover:fill-[var(--accent)]" aria-hidden="true"><path d="M14 8.5V6.6c0-.6.4-1.1 1-1.1h2V2h-2.7C11.9 2 10 3.8 10 6.4v2.1H8v3h2V22h4v-10.5h2.6l.4-3H14z"/></svg>
+          </a>
+          <a href="https://www.openstreetmap.org/?mlat=9.7399023&mlon=118.7498844#map=19/9.7399023/118.7498844" target="_blank" rel="noopener noreferrer" class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(234,234,234,0.12)] bg-[rgba(255,255,255,0.02)] transition hover:border-[rgba(240,165,0,0.5)] hover:shadow-[0_0_30px_rgba(240,165,0,0.18)]" aria-label="OpenStreetMap location">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-[rgba(234,234,234,0.78)] transition group-hover:fill-[var(--accent)]" aria-hidden="true"><path d="M12 2 4.5 6v12L12 22l7.5-4V6L12 2zm0 2.3 5.5 2.9v9.6L12 19.7l-5.5-2.9V7.2L12 4.3zm0 2.4a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap border-t border-[rgba(234,234,234,0.08)] py-5 font-mono text-[0.72rem] tracking-[0.18em] text-[rgba(234,234,234,0.55)]">
+      © 2026 TAO Bar, Puerto Princesa. Built for GitHub Pages.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+  <script>
+    const menuItems = [
+      {
+        name: 'Buy 1, Take 1 Cocktails',
+        desc: 'Verified from the Tao Bar Facebook post. Keep the glow in the 8 PM to 10 PM window.',
+        price: 'BUY 1 TAKE 1',
+        tag: 'verified promo'
+      },
+      {
+        name: 'Cold Beer',
+        desc: 'A repeated public mention across nightlife listings and reviews. Bottle list not publicly surfaced.',
+        price: 'ASK TONIGHT',
+        tag: 'verified mention'
+      },
+      {
+        name: 'Frozen Margarita',
+        desc: 'Spotted in public review and photo mentions as a late-night order.',
+        price: 'ASK TONIGHT',
+        tag: 'verified mention'
+      },
+      {
+        name: 'Amber Highball',
+        desc: 'House-style long pour with a clean citrus edge.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Gin Tonic',
+        desc: 'Sharp, ice-cold, and built for a dark room with a bright rim.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Rum Coke',
+        desc: 'A no-fuss late set classic for easy conversation.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Palawan Mule',
+        desc: 'Ginger, lime, and a little heat to cut through the amber light.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Sunset Spritz',
+        desc: 'Sparkling citrus with a low, slow finish.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Beer Bucket',
+        desc: 'The easiest round when the room starts moving.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      },
+      {
+        name: 'Nightcap Espresso Martini',
+        desc: 'A darker final pour for the ride home or the next set.',
+        price: 'PHP TBA',
+        tag: 'house pour'
+      }
+    ];
+
+    const eventItems = [
+      {
+        title: 'Sunday Chill Night',
+        label: 'Sun / 8 PM - 10 PM',
+        desc: 'Verified public promo: Buy 1, Take 1 on cocktails, with DJ Royjay in the post.'
+      },
+      {
+        title: 'Weekend Pulse',
+        label: 'Fri / late',
+        desc: 'House-style late-night energy slot for the weekend crowd. Timing stays intentionally unlabeled until the bar confirms a public schedule.'
+      },
+      {
+        title: 'Last Call Glow',
+        label: 'Sat / late',
+        desc: 'A moody landing pad for after-dinner drinks, silhouettes, and one more round.'
+      }
+    ];
+
+    const galleryItems = [
+      { src: 'assets/img/gallery-bar.svg', label: 'bar shelf' },
+      { src: 'assets/img/gallery-drinks.svg', label: 'cocktails' },
+      { src: 'assets/img/gallery-crowd.svg', label: 'crowd heat' },
+      { src: 'assets/img/gallery-neon.svg', label: 'neon wall' },
+      { src: 'assets/img/hero-scene.svg', label: 'room glow' },
+      { src: 'assets/img/og-tao.svg', label: 'night poster' }
+    ];
+
+    const menuGrid = document.getElementById('menu-grid');
+    const eventsGrid = document.getElementById('events-grid');
+    const galleryGrid = document.getElementById('gallery-grid');
+
+    menuGrid.innerHTML = menuItems.map((item) => `
+      <article class="menu-card rounded-[1.4rem] p-5 md:p-6" data-reveal>
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="font-display text-[2.05rem] leading-[0.94] text-[var(--text)]">${item.name}</p>
+            <p class="mt-3 text-body text-sm leading-7 text-[rgba(234,234,234,0.72)]">${item.desc}</p>
+          </div>
+          <span class="pill whitespace-nowrap">${item.tag}</span>
+        </div>
+        <div class="mt-5 flex items-center justify-between gap-4 border-t border-[rgba(234,234,234,0.08)] pt-4">
+          <span class="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-[rgba(234,234,234,0.56)]">Night pour</span>
+          <span class="price">${item.price}</span>
+        </div>
+      </article>
+    `).join('');
+
+    eventsGrid.innerHTML = eventItems.map((item) => `
+      <article class="event-card rounded-[1.4rem] p-5 md:p-6 track" data-reveal>
+        <div class="track-item">
+          <p class="font-display text-[2.2rem] leading-[0.92] text-[var(--text)]">${item.title}</p>
+          <p class="mt-3 font-mono text-[0.75rem] uppercase tracking-[0.18em] text-[var(--accent)]">${item.label}</p>
+          <p class="mt-4 text-body text-sm leading-7 text-[rgba(234,234,234,0.72)]">${item.desc}</p>
+        </div>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = galleryItems.map((item, index) => {
+      const spans = [
+        'col-span-2 row-span-2 md:col-span-2',
+        'col-span-1 row-span-1 md:col-span-1',
+        'col-span-1 row-span-1 md:col-span-1',
+        'col-span-2 row-span-1 md:col-span-1',
+        'col-span-1 row-span-1 md:col-span-2',
+        'col-span-2 row-span-1 md:col-span-1'
+      ];
+      const heights = [
+        'min-h-[18rem] md:min-h-0',
+        'min-h-[13rem]',
+        'min-h-[13rem]',
+        'min-h-[12rem] md:min-h-0',
+        'min-h-[12rem] md:min-h-0',
+        'min-h-[12rem] md:min-h-0'
+      ];
+      return `
+        <figure class="gallery-tile ${spans[index]} ${heights[index]} rounded-[1.4rem]" data-reveal>
+          <img src="${item.src}" alt="${item.label} illustration" class="h-full w-full object-cover">
+          <figcaption class="overlay">
+            <span>${item.label}</span>
+          </figcaption>
+        </figure>
+      `;
+    }).join('');
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      smoothTouch: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set('.hero-copy > *', { autoAlpha: 0, y: 26 });
+    gsap.set('.hero-scene', { scale: 1.08, yPercent: 0 });
+    gsap.set('.hero-orb', { scale: 0.95, opacity: 0.7 });
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .to('.hero-scene', { autoAlpha: 1, duration: 1.05, scale: 1.04 }, 0)
+      .to('.hero-orb', { scale: 1, opacity: 0.95, duration: 1.2 }, 0.08)
+      .to('.hero-copy > *', { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.09 }, 0.15)
+      .to('.hero-title', { filter: 'brightness(1.15)', duration: 0.08, repeat: 4, yoyo: true }, 0.45);
+
+    gsap.to('.hero-scene', {
+      yPercent: 7,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.to('.hero-orb', {
+      yPercent: -12,
+      xPercent: 5,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    ScrollTrigger.batch('[data-reveal]', {
+      start: 'top 82%',
+      onEnter: (batch) => gsap.fromTo(batch, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', overwrite: true })
+    });
+
+    document.querySelectorAll('[data-ripple]').forEach((el) => {
+      el.addEventListener('pointerdown', (event) => {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = el.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        el.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+
+    window.addEventListener('load', () => {
+      ScrollTrigger.refresh();
+    });
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BarOrPub",
+      "name": "TAO Bar",
+      "url": "https://frans15-2006.github.io/TheFrans/tao-bar/",
+      "image": "https://frans15-2006.github.io/TheFrans/tao-bar/assets/img/og-tao.svg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "210 Rizal Avenue, Brgy Manggahan",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.7399023,
+        "longitude": 118.7498844
+      },
+      "sameAs": [
+        "https://www.facebook.com/taobarandrestaurant/"
+      ]
+    }
+  </script>
 </body>
 </html>

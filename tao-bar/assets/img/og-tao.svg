@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">TAO Bar social preview</title>
+  <desc id="desc">Dark nightlife poster with amber glow and bar interior illustration.</desc>
+  <defs>
+    <radialGradient id="ogGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="55%" stop-color="#f0a500" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="860" cy="190" r="260" fill="url(#ogGlow)"/>
+  <g fill="#f0a500" opacity="0.9">
+    <rect x="88" y="98" width="98" height="350" rx="32"/>
+    <rect x="218" y="72" width="64" height="376" rx="22"/>
+    <rect x="306" y="116" width="86" height="332" rx="28"/>
+    <rect x="420" y="84" width="70" height="364" rx="24"/>
+    <rect x="516" y="110" width="92" height="338" rx="30"/>
+  </g>
+  <g opacity="0.18" fill="#eaeaea">
+    <rect x="66" y="468" width="1070" height="36" rx="18"/>
+    <rect x="66" y="520" width="860" height="22" rx="11"/>
+  </g>
+  <text x="72" y="606" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="72" letter-spacing="6">TAO BAR - PUERTO PRINCESA</text>
+  <text x="74" y="556" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="2.2">RIZAL AVENUE NIGHTLIFE / COCKTAILS / LIVE MUSIC</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Bar shelf illustration</title>
+  <desc id="desc">Amber-lit bar shelf with bottles and glassware.</desc>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.78"/>
+      <stop offset="60%" stop-color="#f0a500" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="#0a0a0a"/>
+  <circle cx="650" cy="220" r="300" fill="url(#g)"/>
+  <g opacity="0.9">
+    <rect x="70" y="160" width="760" height="40" rx="16" fill="#1a1a1a"/>
+    <rect x="110" y="350" width="680" height="26" rx="10" fill="#171717"/>
+    <rect x="150" y="540" width="600" height="20" rx="10" fill="#171717"/>
+  </g>
+  <g fill="#f0a500">
+    <rect x="120" y="230" width="34" height="110" rx="12"/>
+    <rect x="174" y="214" width="40" height="126" rx="14"/>
+    <rect x="246" y="238" width="34" height="102" rx="12"/>
+    <rect x="320" y="200" width="52" height="140" rx="16"/>
+    <rect x="412" y="228" width="34" height="112" rx="12"/>
+    <rect x="480" y="210" width="44" height="130" rx="14"/>
+    <rect x="568" y="240" width="34" height="100" rx="12"/>
+    <rect x="648" y="204" width="50" height="136" rx="16"/>
+    <rect x="748" y="230" width="34" height="110" rx="12"/>
+  </g>
+  <g opacity="0.22" fill="#f0a500">
+    <circle cx="166" cy="190" r="54"/>
+    <circle cx="348" cy="160" r="62"/>
+    <circle cx="658" cy="168" r="70"/>
+  </g>
+  <g fill="#080808">
+    <rect x="192" y="618" width="84" height="160" rx="34"/>
+    <rect x="346" y="600" width="94" height="178" rx="40"/>
+    <rect x="520" y="620" width="74" height="158" rx="32"/>
+  </g>
+  <g stroke="#eaeaea" stroke-width="12" stroke-linecap="round" opacity="0.82">
+    <path d="M234 602v-42"/>
+    <path d="M394 582v-46"/>
+    <path d="M556 598v-38"/>
+  </g>
+</svg>

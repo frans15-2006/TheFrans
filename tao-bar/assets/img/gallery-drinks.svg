@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cocktail illustration</title>
+  <desc id="desc">Three glowing drinks with ice and citrus on a dark bar.</desc>
+  <defs>
+    <radialGradient id="h" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#f0a500" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="#090909"/>
+  <circle cx="470" cy="240" r="330" fill="url(#h)"/>
+  <g transform="translate(120 170)">
+    <g>
+      <path d="M130 40h170l-74 118v152h-22V158z" fill="#f0a500" opacity="0.88"/>
+      <rect x="204" y="314" width="22" height="170" rx="11" fill="#eaeaea" opacity="0.9"/>
+      <rect x="170" y="476" width="90" height="22" rx="11" fill="#f0a500"/>
+    </g>
+    <g transform="translate(216 0)">
+      <path d="M130 40h170l-58 100v170h-54V140z" fill="#eaeaea" opacity="0.74"/>
+      <rect x="204" y="310" width="22" height="174" rx="11" fill="#f0a500" opacity="0.92"/>
+      <rect x="170" y="476" width="90" height="22" rx="11" fill="#eaeaea" opacity="0.9"/>
+    </g>
+    <g transform="translate(432 28)">
+      <path d="M130 40h164l-66 98v160h-32V138z" fill="#f0a500" opacity="0.54"/>
+      <rect x="202" y="300" width="22" height="188" rx="11" fill="#eaeaea" opacity="0.86"/>
+      <rect x="168" y="476" width="90" height="22" rx="11" fill="#f0a500" opacity="0.9"/>
+    </g>
+  </g>
+  <g fill="#080808" opacity="0.9">
+    <circle cx="278" cy="262" r="18"/>
+    <circle cx="534" cy="240" r="20"/>
+    <circle cx="698" cy="284" r="16"/>
+  </g>
+</svg>

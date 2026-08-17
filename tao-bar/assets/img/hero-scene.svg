@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Tao Bar hero scene</title>
+  <desc id="desc">Dark bar interior with amber glow, back bar bottles, neon sign, and crowd silhouettes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="60%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="35%" stop-color="#f0a500" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#f0a500" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="counter" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#111"/>
+      <stop offset="50%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1150" cy="260" r="390" fill="url(#glow)" filter="url(#blur)"/>
+  <circle cx="360" cy="720" r="220" fill="#f0a500" opacity="0.08" filter="url(#blur)"/>
+  <g opacity="0.22">
+    <path d="M0 130h1600" stroke="#f0a500" stroke-opacity="0.14" stroke-width="1"/>
+    <path d="M0 220h1600" stroke="#f0a500" stroke-opacity="0.10" stroke-width="1"/>
+    <path d="M0 310h1600" stroke="#f0a500" stroke-opacity="0.08" stroke-width="1"/>
+    <path d="M0 400h1600" stroke="#f0a500" stroke-opacity="0.06" stroke-width="1"/>
+    <path d="M0 490h1600" stroke="#f0a500" stroke-opacity="0.05" stroke-width="1"/>
+  </g>
+  <g opacity="0.92">
+    <rect x="0" y="560" width="1600" height="340" fill="url(#counter)"/>
+    <rect x="0" y="530" width="1600" height="32" fill="#141414"/>
+    <rect x="0" y="505" width="1600" height="12" fill="#1d1d1d"/>
+  </g>
+  <g transform="translate(170 195)">
+    <rect x="0" y="0" width="1260" height="260" rx="28" fill="#0a0a0a" opacity="0.55"/>
+    <rect x="42" y="36" width="1176" height="176" rx="22" fill="#111111" stroke="#2d2104" stroke-width="1.5"/>
+    <g fill="#f0a500" opacity="0.86">
+      <rect x="84" y="56" width="24" height="114" rx="10"/>
+      <rect x="138" y="44" width="18" height="126" rx="8"/>
+      <rect x="184" y="62" width="22" height="108" rx="10"/>
+      <rect x="236" y="38" width="18" height="132" rx="8"/>
+      <rect x="286" y="52" width="26" height="118" rx="11"/>
+      <rect x="344" y="46" width="20" height="124" rx="9"/>
+      <rect x="394" y="56" width="22" height="114" rx="10"/>
+      <rect x="446" y="40" width="18" height="130" rx="8"/>
+      <rect x="494" y="66" width="24" height="104" rx="10"/>
+      <rect x="548" y="48" width="20" height="122" rx="9"/>
+      <rect x="598" y="36" width="24" height="134" rx="11"/>
+      <rect x="652" y="52" width="18" height="118" rx="8"/>
+      <rect x="700" y="60" width="22" height="110" rx="10"/>
+      <rect x="752" y="44" width="20" height="126" rx="9"/>
+      <rect x="802" y="58" width="24" height="112" rx="10"/>
+      <rect x="858" y="38" width="18" height="132" rx="8"/>
+      <rect x="906" y="54" width="22" height="116" rx="10"/>
+      <rect x="958" y="46" width="20" height="124" rx="9"/>
+      <rect x="1008" y="62" width="24" height="108" rx="10"/>
+      <rect x="1062" y="42" width="18" height="128" rx="8"/>
+      <rect x="1110" y="56" width="22" height="114" rx="10"/>
+    </g>
+    <g opacity="0.18" fill="#f0a500">
+      <circle cx="98" cy="22" r="52"/>
+      <circle cx="150" cy="12" r="48"/>
+      <circle cx="460" cy="18" r="54"/>
+      <circle cx="910" cy="18" r="54"/>
+      <circle cx="1162" cy="26" r="48"/>
+    </g>
+  </g>
+  <g transform="translate(980 88)">
+    <g filter="url(#blur)">
+      <circle cx="0" cy="0" r="62" fill="#f0a500" opacity="0.72"/>
+      <circle cx="188" cy="40" r="76" fill="#f0a500" opacity="0.52"/>
+    </g>
+    <g stroke="#f0a500" stroke-width="6" stroke-linecap="round" fill="none">
+      <path d="M-10 8h360" opacity="0.3"/>
+      <path d="M8 74h272" opacity="0.35"/>
+    </g>
+    <text x="0" y="46" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="92" letter-spacing="7">TAO BAR</text>
+    <text x="6" y="104" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="4">PUERTO PRINCESA</text>
+  </g>
+  <g transform="translate(0 620)">
+    <path d="M0 164c140-56 260-48 390 18 122 61 239 83 362 54 109-26 190-72 291-58 96 13 160 39 243 77 100 46 222 47 314 9 53-22 105-47 170-62V900H0Z" fill="#030303" opacity="0.92"/>
+    <path d="M0 226c148-28 283-22 412 18 120 37 234 43 345 9 108-33 199-60 298-55 102 6 180 39 263 70 89 33 177 40 282 14V900H0Z" fill="#0a0a0a" opacity="0.84"/>
+    <g fill="#080808" opacity="0.82">
+      <rect x="72" y="44" width="42" height="156" rx="10"/>
+      <rect x="142" y="16" width="28" height="184" rx="8"/>
+      <rect x="208" y="54" width="54" height="146" rx="12"/>
+      <rect x="310" y="30" width="34" height="170" rx="9"/>
+      <rect x="430" y="8" width="56" height="192" rx="12"/>
+      <rect x="540" y="42" width="34" height="158" rx="9"/>
+      <rect x="640" y="18" width="48" height="182" rx="11"/>
+      <rect x="760" y="48" width="38" height="152" rx="10"/>
+      <rect x="862" y="12" width="60" height="188" rx="13"/>
+      <rect x="998" y="42" width="34" height="158" rx="9"/>
+      <rect x="1092" y="24" width="54" height="176" rx="12"/>
+      <rect x="1200" y="44" width="34" height="156" rx="10"/>
+      <rect x="1320" y="10" width="56" height="190" rx="12"/>
+      <rect x="1436" y="38" width="40" height="162" rx="10"/>
+    </g>
+  </g>
+</svg>

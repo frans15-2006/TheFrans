@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Neon illustration</title>
+  <desc id="desc">Amber neon tubes and sound waves on a black wall.</desc>
+  <defs>
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" fill="#080808"/>
+  <g filter="url(#blur)">
+    <circle cx="240" cy="220" r="130" fill="#f0a500" opacity="0.34"/>
+    <circle cx="640" cy="300" r="160" fill="#f0a500" opacity="0.2"/>
+    <circle cx="430" cy="560" r="180" fill="#f0a500" opacity="0.14"/>
+  </g>
+  <g stroke="#f0a500" stroke-width="20" stroke-linecap="round" fill="none">
+    <path d="M140 160h620" opacity="0.76"/>
+    <path d="M170 260h360" opacity="0.9"/>
+    <path d="M420 260c48 0 88 40 88 88s-40 88-88 88-88 40-88 88 40 88 88 88" opacity="0.34"/>
+    <path d="M600 510c30-20 56-20 86 0 28 18 54 18 82 0" opacity="0.72"/>
+    <path d="M170 656h560" opacity="0.52"/>
+  </g>
+  <text x="150" y="388" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="112" letter-spacing="6">TAO AFTER DARK</text>
+  <text x="152" y="446" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="26" letter-spacing="3">NEON. MUSIC. POURS.</text>
+</svg>

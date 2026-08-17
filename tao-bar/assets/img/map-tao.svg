@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Tao Bar location map graphic</title>
+  <desc id="desc">Dark map-style illustration with a location marker for 210 Rizal Avenue in Puerto Princesa.</desc>
+  <defs>
+    <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </linearGradient>
+    <radialGradient id="pulse" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#mapBg)"/>
+  <g opacity="0.18" stroke="#f0a500" stroke-width="1">
+    <path d="M0 120H1200M0 240H1200M0 360H1200M0 480H1200M0 600H1200M0 720H1200"/>
+    <path d="M120 0V900M240 0V900M360 0V900M480 0V900M600 0V900M720 0V900M840 0V900M960 0V900M1080 0V900"/>
+  </g>
+  <g opacity="0.35" stroke="#eaeaea" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M110 190c185 8 312-22 416-92 103-70 240-88 371-58 124 29 199 93 231 196"/>
+    <path d="M186 714c104-114 217-183 339-207 123-25 251-11 374 41 117 49 196 108 238 178"/>
+  </g>
+  <g opacity="0.24" stroke="#f0a500" stroke-width="18" stroke-linecap="round" fill="none">
+    <path d="M140 520h360"/>
+    <path d="M490 210v330"/>
+    <path d="M676 520h260"/>
+    <path d="M870 304h170"/>
+  </g>
+  <g filter="url(#soft)">
+    <circle cx="660" cy="455" r="170" fill="url(#pulse)"/>
+  </g>
+  <g transform="translate(595 385)">
+    <circle cx="65" cy="65" r="70" fill="none" stroke="#f0a500" stroke-width="6" opacity="0.6"/>
+    <circle cx="65" cy="65" r="38" fill="#f0a500" opacity="0.95"/>
+    <path d="M65 0c-26 0-47 21-47 47 0 34 47 85 47 85s47-51 47-85C112 21 91 0 65 0zm0 67a20 20 0 1 1 0-40 20 20 0 0 1 0 40z" fill="#f0a500"/>
+  </g>
+  <g fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="1.5">
+    <text x="78" y="820">210 Rizal Avenue, Brgy Manggahan</text>
+    <text x="78" y="852">Puerto Princesa City, Palawan 5300</text>
+    <text x="78" y="884">9.7399023, 118.7498844</text>
+  </g>
+  <g>
+    <rect x="76" y="78" width="312" height="70" rx="35" fill="#0b0b0b" stroke="#f0a500" stroke-opacity="0.4"/>
+    <text x="104" y="123" fill="#f0a500" font-family="Bebas Neue, Arial, sans-serif" font-size="52" letter-spacing="4">PUERTO PRINCESA</text>
+  </g>
+</svg>

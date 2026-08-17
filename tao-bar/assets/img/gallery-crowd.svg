@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Crowd illustration</title>
+  <desc id="desc">Night crowd silhouettes under stage lights.</desc>
+  <defs>
+    <radialGradient id="c" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="900" fill="#070707"/>
+  <circle cx="470" cy="250" r="320" fill="url(#c)"/>
+  <g fill="#0f0f0f">
+    <path d="M0 650c80-110 145-148 220-148 77 0 136 39 211 108 32 30 73 48 115 48 51 0 98-25 136-72 55-68 131-121 210-121 57 0 110 23 138 54v281H0z"/>
+    <circle cx="145" cy="500" r="52"/>
+    <circle cx="225" cy="476" r="72"/>
+    <circle cx="322" cy="508" r="58"/>
+    <circle cx="454" cy="468" r="82"/>
+    <circle cx="574" cy="494" r="60"/>
+    <circle cx="676" cy="470" r="76"/>
+    <circle cx="776" cy="516" r="58"/>
+  </g>
+  <g stroke="#f0a500" stroke-width="14" stroke-linecap="round">
+    <path d="M128 190l96 120"/>
+    <path d="M266 156l-20 166"/>
+    <path d="M540 170l84 122"/>
+    <path d="M710 162l-34 162"/>
+  </g>
+  <g fill="#f0a500" opacity="0.18">
+    <rect x="80" y="740" width="740" height="22" rx="11"/>
+    <rect x="130" y="700" width="640" height="16" rx="8"/>
+  </g>
+</svg>
