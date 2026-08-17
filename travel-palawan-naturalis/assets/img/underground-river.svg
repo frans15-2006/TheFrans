@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Underground River illustration">
+  <rect width="800" height="600" fill="#080808"/>
+  <path d="M116 458c24-114 80-208 164-272 66-50 130-74 204-74 94 0 176 34 246 100 42 40 72 92 90 154" fill="none" stroke="#f0a500" stroke-width="6" stroke-linecap="round"/>
+  <path d="M170 444c18-84 62-152 132-202 54-38 104-56 156-56 70 0 132 24 186 72 30 26 56 64 72 114" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <path d="M206 452c24-52 62-92 114-120 42-22 82-32 122-32 50 0 96 14 140 42 26 16 50 42 70 78" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M156 480h486" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M232 480c36-14 66-16 98-6s62 12 94 2 62-16 94-6 66 12 100 2" fill="none" stroke="#eaeaea" stroke-width="3" stroke-linecap="round" opacity="0.48"/>
+  <path d="M338 188c12 18 18 34 20 52M416 172c16 20 24 42 26 66M500 190c10 20 14 42 12 66" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <circle cx="382" cy="382" r="8" fill="#eaeaea" opacity="0.9"/>
+  <circle cx="420" cy="368" r="5" fill="#f0a500"/>
+  <circle cx="458" cy="382" r="4" fill="#eaeaea" opacity="0.8"/>
+  <circle cx="494" cy="372" r="4" fill="#f0a500" opacity="0.9"/>
+  <path d="M394 310c28 18 48 44 56 76" fill="none" stroke="#eaeaea" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <path d="M446 332c20 12 38 32 46 56" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+</svg>

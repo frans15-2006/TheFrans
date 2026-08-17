@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Palawan landscape illustration">
+  <rect width="1600" height="1000" fill="#080808"/>
+  <g opacity="0.9">
+    <circle cx="1220" cy="210" r="170" fill="#f0a500" fill-opacity="0.08"/>
+    <circle cx="1220" cy="210" r="310" fill="#f0a500" fill-opacity="0.03"/>
+    <path d="M0 740C180 676 286 686 438 648s208-138 332-126 208 84 340 72 230-120 490-98v404H0Z" fill="#f0a500" fill-opacity="0.08"/>
+    <path d="M0 728C180 668 300 674 450 640s214-128 332-118 200 80 338 68 230-110 480-92" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.42"/>
+    <path d="M136 678c78-86 180-160 270-220 106-70 178-70 292 0 88 54 170 124 252 220" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M100 704c96-28 170-34 262-30 92 4 176 24 244 58" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+    <path d="M1120 690c72-52 146-78 224-78 88 0 158 24 238 76" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round" opacity="0.34"/>
+    <path d="M256 694c18-74 12-140-22-196M282 694c34-102 32-184-8-238M1150 684c18-70 18-122 0-172M1184 684c44-98 58-176 42-238" fill="none" stroke="#f0a500" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    <path d="M214 660c36-20 58-40 78-76 18 34 42 60 74 78" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    <path d="M1116 650c46-26 76-58 100-110 24 48 56 84 102 114" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    <path d="M104 820h1392" stroke="#f0a500" stroke-width="2" opacity="0.35"/>
+    <path d="M160 820c126-58 214-66 304-18 84 44 172 52 244 20s148-56 224-28 146 44 226 10 170-52 294 16" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+    <path d="M686 572 734 508l48 64z" fill="#080808" stroke="#f0a500" stroke-width="4"/>
+    <path d="M734 508 814 580l-80 0z" fill="#080808" stroke="#f0a500" stroke-width="4"/>
+    <path d="M730 576c12 10 16 18 18 34" stroke="#eaeaea" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M781 603c22 10 38 28 52 54" stroke="#eaeaea" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M620 620c84 32 214 32 300 0" fill="none" stroke="#f0a500" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+    <path d="M214 372c34-60 66-88 114-88 30 0 54 10 78 30" fill="none" stroke="#f0a500" stroke-width="2" opacity="0.6"/>
+    <path d="M1168 364c34-58 66-86 114-86 30 0 56 10 80 30" fill="none" stroke="#f0a500" stroke-width="2" opacity="0.6"/>
+    <circle cx="252" cy="214" r="4" fill="#eaeaea" opacity="0.65"/>
+    <circle cx="316" cy="160" r="3" fill="#eaeaea" opacity="0.55"/>
+    <circle cx="390" cy="236" r="3" fill="#eaeaea" opacity="0.5"/>
+    <circle cx="1288" cy="126" r="4" fill="#eaeaea" opacity="0.56"/>
+    <circle cx="1346" cy="176" r="3" fill="#eaeaea" opacity="0.48"/>
+    <circle cx="1410" cy="246" r="3" fill="#eaeaea" opacity="0.45"/>
+  </g>
+</svg>

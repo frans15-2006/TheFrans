@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Fireflies illustration">
+  <rect width="800" height="600" fill="#080808"/>
+  <path d="M90 454c84-56 164-86 240-90 76-4 144 10 204 42 48 26 110 38 186 36" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M116 388c52 18 92 46 120 84M210 350c26 18 48 44 66 78M304 326c16 20 30 44 42 74M540 336c-12 24-18 48-18 72M634 348c-18 24-34 52-46 84" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  <path d="M182 468c6-44 18-82 36-114 14-26 32-46 54-60 20-12 44-20 72-22" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <path d="M344 474c2-58 12-104 30-138 16-30 36-50 60-60 22-10 46-14 72-12" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <path d="M528 466c8-54 24-96 48-128 20-26 46-44 78-54 28-8 56-10 86-6" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <circle cx="250" cy="188" r="8" fill="#f0a500"/>
+  <circle cx="286" cy="140" r="4" fill="#eaeaea" opacity="0.8"/>
+  <circle cx="350" cy="180" r="6" fill="#f0a500" opacity="0.88"/>
+  <circle cx="418" cy="124" r="4" fill="#eaeaea" opacity="0.75"/>
+  <circle cx="528" cy="176" r="7" fill="#f0a500" opacity="0.88"/>
+  <circle cx="608" cy="132" r="4" fill="#eaeaea" opacity="0.72"/>
+  <circle cx="656" cy="224" r="5" fill="#f0a500" opacity="0.86"/>
+</svg>

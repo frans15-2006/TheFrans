@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Mangrove paddle illustration">
+  <rect width="800" height="600" fill="#080808"/>
+  <path d="M94 444c106-42 208-58 306-48 82 8 160 2 234-18 56-16 104-36 156-64" fill="none" stroke="#f0a500" stroke-width="5" stroke-linecap="round"/>
+  <path d="M124 386c40 22 72 48 96 78M186 360c28 24 52 54 70 90M248 344c26 26 48 58 66 98M572 348c-22 28-38 62-48 102M650 332c-30 32-54 70-72 114" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <path d="M182 472c10-54 26-110 48-168 16-42 38-70 66-84 24-12 48-16 74-12" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  <path d="M276 472c-2-58 4-116 20-174 12-44 28-76 48-96 18-18 42-28 72-30" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  <path d="M520 468c2-56 16-110 42-160 18-34 40-58 66-72 24-12 52-16 84-12" fill="none" stroke="#eaeaea" stroke-width="4" stroke-linecap="round" opacity="0.62"/>
+  <path d="M586 454c28-18 54-24 78-18 28 8 50 8 68 0" fill="none" stroke="#f0a500" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+  <path d="M352 314c18 10 36 28 52 54" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+  <path d="M420 326c20 8 38 24 54 48" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+  <path d="M488 338c18 10 34 26 48 48" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+</svg>

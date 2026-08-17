@@ -1,60 +1,1453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Palawan by Naturalis Expeditions</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080808" />
+  <title>Travel Palawan Naturalis | Puerto Princesa Eco Tours</title>
+  <meta name="description" content="Travel Palawan Naturalis is a Puerto Princesa-based eco-tour agency offering verified Palawan routes, Underground River trips, firefly watching, El Nido island hopping, and custom multi-day itineraries." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Travel Palawan Naturalis | Puerto Princesa Eco Tours" />
+  <meta property="og:description" content="Verified Palawan eco-tours from Puerto Princesa, including the Underground River, firefly watching, El Nido island hopping, and multi-day custom itineraries." />
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/assets/img/og-image.svg" />
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/darkroomengineering/lenis@1.0.22/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --line: rgba(240, 165, 0, 0.16);
+      --line-strong: rgba(240, 165, 0, 0.5);
+      --surface: rgba(234, 234, 234, 0.03);
+      --surface-strong: rgba(234, 234, 234, 0.05);
+      --shadow: 0 24px 48px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      scrollbar-color: var(--accent) var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(240, 165, 0, 0.09), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(240, 165, 0, 0.06), transparent 20%),
+        radial-gradient(circle at 70% 82%, rgba(240, 165, 0, 0.05), transparent 18%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body.lenis-smooth {
+      scroll-behavior: auto;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      transform: translateY(-180%);
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      font: 700 0.8rem/1 'JetBrains Mono', monospace;
+      z-index: 80;
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 0.88;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+
+    .section-head {
+      max-width: 38rem;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      color: rgba(234, 234, 234, 0.6);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin: 0 0 0.75rem;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      color: var(--text);
+    }
+
+    .section-copy {
+      margin: 0.9rem 0 0;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 2.8rem;
+      height: 2.8rem;
+      border: 1px solid var(--line-strong);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: rgba(240, 165, 0, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(240, 165, 0, 0.08);
+      font: 700 0.85rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .brand-text strong {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.05em;
+      font-size: 1.7rem;
+      line-height: 0.9;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: rgba(234, 234, 234, 0.78);
+      font: 500 0.82rem/1 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a:focus-visible,
+    .ripple-btn:focus-visible,
+    .external-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .hero-stage {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: 0.88;
+      transform: scale(1.02);
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: min(74vw, 900px);
+      aspect-ratio: 1;
+      right: -12%;
+      top: -10%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(240, 165, 0, 0.22) 0%, rgba(240, 165, 0, 0.1) 24%, rgba(240, 165, 0, 0.02) 48%, transparent 70%);
+      filter: blur(8px);
+      opacity: 0.92;
+      mix-blend-mode: screen;
+    }
+
+    .hero-orb::after {
+      content: '';
+      position: absolute;
+      inset: 18% 22%;
+      border-radius: 50%;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      filter: blur(0);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      align-items: end;
+      padding: clamp(5.5rem, 11vw, 8rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+
+    .hero-copy {
+      width: min(100%, 40rem);
+      display: grid;
+      gap: 1.3rem;
+      padding: 0.5rem 0;
+    }
+
+    .hero-kicker {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.78);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(4.5rem, 9vw, 9rem);
+      color: var(--text);
+      max-width: 11ch;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-tag {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.72);
+      font-size: 0.9rem;
+    }
+
+    .hero-note {
+      margin: 0;
+      max-width: 34rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .ripple-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font: 700 0.82rem/1 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      overflow: hidden;
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease, box-shadow 0.24s ease;
+      will-change: transform;
+    }
+
+    .ripple-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.12), 0 16px 34px rgba(240, 165, 0, 0.12);
+    }
+
+    .btn-ghost {
+      border-color: rgba(240, 165, 0, 0.38);
+      color: var(--text);
+      background: rgba(234, 234, 234, 0.02);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.08), 0 0 22px rgba(240, 165, 0, 0.1);
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      background: rgba(234, 234, 234, 0.3);
+      animation: ripple 600ms ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(4.5);
+        opacity: 0;
+      }
+    }
+
+    .scroll-hint {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: rgba(234, 234, 234, 0.72);
+      font: 600 0.72rem/1 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .scroll-line {
+      width: 2.5rem;
+      height: 1px;
+      background: var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      inset: -1px 0 0;
+      width: 40%;
+      background: rgba(234, 234, 234, 0.3);
+      animation: hint-slide 1.7s ease-in-out infinite;
+    }
+
+    @keyframes hint-slide {
+      0% { transform: translateX(-120%); }
+      60% { transform: translateX(240%); }
+      100% { transform: translateX(240%); }
+    }
+
+    .floating-leaf {
+      position: absolute;
+      right: clamp(1rem, 6vw, 4rem);
+      bottom: clamp(1rem, 3vw, 2rem);
+      width: min(16vw, 9rem);
+      opacity: 0.88;
+      filter: drop-shadow(0 0 16px rgba(240, 165, 0, 0.12));
+    }
+
+    .packages-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .packages-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tour-card,
+    .testimonial-card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(234, 234, 234, 0.035), rgba(234, 234, 234, 0.015));
+      box-shadow: inset 0 1px 0 rgba(234, 234, 234, 0.04);
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+      overflow: hidden;
+    }
+
+    .tour-card::before,
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(240, 165, 0, 0.08), transparent 38%);
+      opacity: 0;
+      transition: opacity 0.28s ease;
+      pointer-events: none;
+    }
+
+    .tour-card:hover,
+    .tour-card:focus-visible,
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(240, 165, 0, 0.58);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(240, 165, 0, 0.08);
+    }
+
+    .tour-card:hover::before,
+    .tour-card:focus-visible::before,
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .tour-card {
+      min-height: 100%;
+      padding: 1.35rem 1.25rem 1.15rem;
+    }
+
+    .tour-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tour-code,
+    .tour-duration,
+    .tour-price,
+    .tour-label,
+    .footer-meta,
+    .coord-line {
+      font: 600 0.75rem/1.2 'JetBrains Mono', monospace;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .tour-code {
+      color: rgba(234, 234, 234, 0.54);
+    }
+
+    .tour-duration,
+    .tour-label {
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .tour-title {
+      margin: 0 0 0.75rem;
+      font-size: 2.35rem;
+      line-height: 0.88;
+      max-width: 11ch;
+    }
+
+    .tour-copy {
+      margin: 0 0 1.1rem;
+      color: var(--muted);
+    }
+
+    .tour-foot {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(240, 165, 0, 0.14);
+    }
+
+    .tour-price {
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .tour-meta {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.7rem;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      border-radius: 999px;
+      color: rgba(234, 234, 234, 0.88);
+      background: rgba(240, 165, 0, 0.06);
+      width: fit-content;
+      white-space: nowrap;
+    }
+
+    .pill-dot {
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(240, 165, 0, 0.35);
+    }
+
+    .tour-link {
+      display: block;
+      height: 100%;
+    }
+
+    .tour-link:hover .tour-title,
+    .tour-link:focus-visible .tour-title {
+      color: var(--accent);
+    }
+
+    .gallery-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.2);
+      min-height: 16rem;
+      background: rgba(234, 234, 234, 0.02);
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .gallery-tile:hover,
+    .gallery-tile:focus-visible {
+      transform: scale(1.03);
+      border-color: rgba(240, 165, 0, 0.55);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease, filter 0.35s ease;
+      filter: saturate(0.95) contrast(1.05);
+    }
+
+    .gallery-tile:hover img,
+    .gallery-tile:focus-visible img {
+      transform: scale(1.05);
+      filter: saturate(1.06) contrast(1.08);
+    }
+
+    .gallery-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.04), rgba(8, 8, 8, 0.64));
+      pointer-events: none;
+      transition: background 0.28s ease;
+    }
+
+    .gallery-tile:hover::after,
+    .gallery-tile:focus-visible::after {
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.08), rgba(8, 8, 8, 0.7));
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: grid;
+      gap: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .gallery-caption strong {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.9;
+      font-size: 2.1rem;
+    }
+
+    .gallery-caption span {
+      font: 600 0.7rem/1.2 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.74);
+    }
+
+    .testimonial-card {
+      padding: 1.35rem;
+    }
+
+    .quote {
+      margin: 0 0 1rem;
+      color: rgba(234, 234, 234, 0.88);
+      font-style: italic;
+    }
+
+    .rating {
+      display: inline-flex;
+      gap: 0.25rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .rating svg,
+    .social-link svg,
+    .contact-icon svg,
+    .scroll-icon svg {
+      width: 1rem;
+      height: 1rem;
+      fill: var(--accent);
+      stroke: var(--accent);
+    }
+
+    .testimonial-name {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    .testimonial-note {
+      margin: 0.3rem 0 0;
+      color: rgba(234, 234, 234, 0.56);
+      font-size: 0.8rem;
+    }
+
+    .booking {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      border-top: 1px solid rgba(240, 165, 0, 0.18);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.18);
+      background:
+        radial-gradient(circle at 18% 20%, rgba(240, 165, 0, 0.11), transparent 28%),
+        radial-gradient(circle at 86% 20%, rgba(240, 165, 0, 0.08), transparent 18%),
+        rgba(234, 234, 234, 0.02);
+    }
+
+    .booking-panel {
+      display: grid;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .booking-headline {
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      max-width: 10ch;
+      color: var(--accent);
+    }
+
+    .booking-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .booking-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .booking .btn-primary {
+      animation: booking-pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes booking-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.12), 0 0 0 rgba(240, 165, 0, 0);
+      }
+      50% {
+        box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.28), 0 0 34px rgba(240, 165, 0, 0.12);
+      }
+    }
+
+    .site-footer {
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .footer-brand {
+      display: grid;
+      gap: 1rem;
+      max-width: 24rem;
+    }
+
+    .footer-brand h2 {
+      margin: 0;
+      font-size: 3rem;
+      color: var(--text);
+    }
+
+    .footer-brand p,
+    .footer-copy {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer-columns {
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    .footer-col {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .footer-col h3 {
+      margin: 0;
+      font: 700 0.78rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.62);
+    }
+
+    .footer-links,
+    .footer-socials {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .footer-links a,
+    .contact-row a,
+    .social-link {
+      width: fit-content;
+    }
+
+    .contact-row {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: rgba(234, 234, 234, 0.86);
+    }
+
+    .contact-icon {
+      width: 1.8rem;
+      height: 1.8rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(240, 165, 0, 0.05);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(240, 165, 0, 0.12);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .coord-line {
+      color: var(--accent);
+    }
+
+    .map-link {
+      color: rgba(234, 234, 234, 0.82);
+      text-decoration: underline;
+      text-decoration-color: rgba(240, 165, 0, 0.5);
+      text-underline-offset: 0.2em;
+    }
+
+    .map-link:hover {
+      color: var(--accent);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    @media (min-width: 768px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: minmax(8rem, auto);
+      }
+
+      .gallery-grid .tile-a { grid-column: span 7; min-height: 18rem; }
+      .gallery-grid .tile-b { grid-column: span 5; min-height: 18rem; }
+      .gallery-grid .tile-c { grid-column: span 4; min-height: 17rem; }
+      .gallery-grid .tile-d { grid-column: span 4; min-height: 17rem; }
+      .gallery-grid .tile-e { grid-column: span 4; min-height: 17rem; }
+      .gallery-grid .tile-f { grid-column: span 12; min-height: 19rem; }
+
+      .booking-panel {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: end;
+      }
+
+      .footer-columns {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+        align-items: start;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .packages-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-copy {
+        width: min(100%, 42rem);
+      }
+
+      .hero-title {
+        max-width: 12ch;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-bar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .brand-text strong {
+        font-size: 1.45rem;
+      }
+
+      .floating-leaf {
+        width: 5.8rem;
+        right: 0.8rem;
+        bottom: 0.8rem;
+      }
+
+      .hero-content {
+        padding-top: 4.8rem;
+      }
+
+      .tour-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Travel Palawan by Naturalis Expeditions</h1>
-    <span class="category">Tour Agency</span>
-    <p class="address">Manalo St, Puerto Princesa City</p>
-    <p class="phone">+63 48 726 3752</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="site-nav">
+    <div class="shell nav-bar" id="navBar">
+      <a class="brand" href="#home" aria-label="Travel Palawan Naturalis home">
+        <span class="brand-mark">TPN</span>
+        <span class="brand-text">
+          <strong>Travel Palawan Naturalis</strong>
+          <span>Puerto Princesa, Palawan</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#packages">Tours</a>
+        <a href="#gallery">Destinations</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="home">
+      <div class="hero-stage" aria-hidden="true">
+        <div class="hero-orb" id="heroOrb"></div>
+        <img src="assets/img/hero-palawan.svg" alt="" class="hero-art" id="heroArt" loading="eager" />
+      </div>
+      <div class="shell hero-content">
+        <div class="hero-copy">
+          <p class="hero-kicker mono fade-up" id="heroLabel">Puerto Princesa-based eco-travel agency</p>
+          <h1 class="display hero-title fade-up" id="heroTitle">Travel Palawan Naturalis <span>Eco-travel through Palawan's last frontier</span></h1>
+          <p class="hero-tag mono fade-up" id="heroTag">Responsible travel through Palawan's last frontier</p>
+          <p class="hero-note fade-up" id="heroNote">Verified local routes from Puerto Princesa to the Underground River, Honda Bay, firefly mangroves, Batak country, El Nido, Coron, and Balabac. Built for travelers who want nature-led itineraries and clear booking details.</p>
+          <div class="cta-row fade-up" id="heroCtas">
+            <a class="ripple-btn btn-primary" href="#packages">Explore Tours</a>
+            <a class="ripple-btn btn-ghost" href="mailto:info@travel-palawan.com?subject=Travel%20Palawan%20Booking%20Inquiry">Book Now</a>
+          </div>
+          <a class="scroll-hint fade-up" id="scrollHint" href="#packages" aria-label="Scroll to tour packages">
+            <span class="scroll-line" aria-hidden="true"></span>
+            <span>Scroll down</span>
+            <span class="scroll-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M12 5v12m0 0 5-5m-5 5-5-5" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+      <img class="floating-leaf" src="assets/img/leaf-mark.svg" alt="" aria-hidden="true" />
+    </section>
+
+    <section class="section" id="packages">
+      <div class="shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Verified tour roster</p>
+          <h2 class="display section-title">Packages and routes built around Palawan's nature</h2>
+          <p class="section-copy">Official pages and booking snippets were used to keep the pricing, duration, and route names grounded in the agency's public information.</p>
+        </div>
+        <div class="packages-grid" id="packagesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Destination gallery</p>
+          <h2 class="display section-title">Limestone, mangrove, lagoon, and island light</h2>
+          <p class="section-copy">An asymmetric SVG gallery that mirrors the routes Travel Palawan Naturalis can arrange across Puerto Princesa and beyond.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="shell">
+        <div class="section-head fade-up">
+          <p class="eyebrow mono">Guest notes</p>
+          <h2 class="display section-title">Travelers praised the planning and the pace</h2>
+          <p class="section-copy"><!-- Fallback review copy is adapted from public review snippets because official testimonial pages were not accessible in the verified sources. -->
+            These quotes are shortened from public review snippets so the section stays truthful without inventing agency-owned testimonials.
+          </p>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+      </div>
+    </section>
+
+    <section class="booking" id="book">
+      <div class="shell booking-panel">
+        <div>
+          <p class="eyebrow mono">Booking</p>
+          <h2 class="display booking-headline">Plan the Palawan route</h2>
+          <p class="booking-copy">Reach the office by email or phone during published hours. The team lists Puerto Princesa as its base, and the contact line is open for trip planning from Monday to Friday, 9:00 a.m. to 5:00 p.m. Philippine time.</p>
+        </div>
+        <div class="booking-cta">
+          <a class="ripple-btn btn-primary" href="mailto:info@travel-palawan.com?subject=Travel%20Palawan%20Booking%20Inquiry">Email the Team</a>
+          <a class="ripple-btn btn-ghost" href="tel:+63487263752">Call +63 48 726 3752</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <div>
+          <p class="eyebrow mono">Travel Palawan Naturalis</p>
+          <h2 class="display">Puerto Princesa eco-travel</h2>
+        </div>
+        <p>Travel Palawan by Naturalis Expeditions Inc. is publicly listed at Arka Building in Puerto Princesa and offers custom nature-led itineraries across Palawan.</p>
+        <p class="coord-line">Coordinates: 9.737, 118.7383</p>
+        <a class="map-link external-link" href="https://www.google.com/maps?q=9.737,118.7383" target="_blank" rel="noopener noreferrer">Open Puerto Princesa map</a>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="#packages">Tours</a>
+            <a href="#gallery">Destinations</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#book">Book</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <div class="contact-row">
+            <a class="contact-item external-link" href="https://www.google.com/maps?q=Arka+Building,+Manalo+St,+Puerto+Princesa+City,+5300+Palawan,+Philippines" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation"><path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11Zm0-8a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" fill="currentColor"></path></svg>
+              </span>
+              Arka Building, Manalo St, Puerto Princesa City, 5300 Palawan, Philippines
+            </a>
+            <a class="contact-item" href="tel:+63487263752">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a.9.9 0 0 1 .92-.22c1 .33 2 .5 3.1.5A1.1 1.1 0 0 1 20.5 16.6v3.2A1.1 1.1 0 0 1 19.4 21 16.4 16.4 0 0 1 3 4.6 1.1 1.1 0 0 1 4.1 3.5h3.2A1.1 1.1 0 0 1 8.4 4.6c0 1.1.17 2.1.5 3.1a.9.9 0 0 1-.22.92l-2.08 2.08Z" fill="currentColor"></path></svg>
+              </span>
+              +63 48 726 3752
+            </a>
+            <a class="contact-item" href="mailto:info@travel-palawan.com">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation"><path d="M4 6.5h16A1.5 1.5 0 0 1 21.5 8v8A1.5 1.5 0 0 1 20 17.5H4A1.5 1.5 0 0 1 2.5 16V8A1.5 1.5 0 0 1 4 6.5Zm0 1.5v.3l8 5 8-5V8H4Zm16 7.5V9.8l-8 5-8-5V15h16Z" fill="currentColor"></path></svg>
+              </span>
+              info@travel-palawan.com
+            </a>
+            <span class="contact-item mono">Text only: +63 956 563 1816</span>
+            <span class="contact-item mono">Hours: Mon-Fri, 9:00 AM - 5:00 PM PHT</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Socials</h3>
+          <div class="footer-socials">
+            <a class="social-link external-link" href="https://www.facebook.com/travelpalawan/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" role="presentation"><path d="M14 8.5V7a1 1 0 0 1 1-1h2V3h-3c-2.2 0-4 1.8-4 4v1.5H8v3h2V21h4v-9.5h2.7l.8-3H14Z"></path></svg>
+              Travel Palawan
+            </a>
+            <a class="social-link external-link" href="https://www.facebook.com/naturalisexpeditions/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" role="presentation"><path d="M14 8.5V7a1 1 0 0 1 1-1h2V3h-3c-2.2 0-4 1.8-4 4v1.5H8v3h2V21h4v-9.5h2.7l.8-3H14Z"></path></svg>
+              Naturalis Expeditions
+            </a>
+            <a class="social-link external-link" href="https://www.travel-palawan.com/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" role="presentation"><path d="M12 2 2 7v10l10 5 10-5V7L12 2Zm0 2.2 7.8 3.9L12 12 4.2 8.1 12 4.2ZM4 9.6l7 3.5v6.5l-7-3.5V9.6Zm16 6.5-7 3.5v-6.5l7-3.5v6.5Z"></path></svg>
+              Official site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell footer-bottom">
+        <p class="footer-copy">© 2026 Travel Palawan Naturalis. All verified details on this page are sourced from the agency's public listings and official pages.</p>
+        <a class="map-link external-link" href="https://www.google.com/maps?q=9.737,118.7383" target="_blank" rel="noopener noreferrer">9.737, 118.7383</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Travel Palawan Naturalis",
+      "alternateName": "Travel Palawan by Naturalis Expeditions Inc.",
+      "url": "https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/",
+      "logo": "https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/assets/img/og-image.svg",
+      "image": "https://frans15-2006.github.io/TheFrans/travel-palawan-naturalis/assets/img/og-image.svg",
+      "telephone": "+63 48 726 3752",
+      "email": "info@travel-palawan.com",
+      "priceRange": "PHP",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Arka Building, Manalo St",
+        "addressLocality": "Puerto Princesa City",
+        "addressRegion": "Palawan",
+        "postalCode": "5300",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.737,
+        "longitude": 118.7383
+      },
+      "openingHours": ["Mo-Fr 09:00-17:00"],
+      "sameAs": [
+        "https://www.facebook.com/travelpalawan/",
+        "https://www.facebook.com/naturalisexpeditions/",
+        "https://www.travel-palawan.com/"
+      ],
+      "areaServed": ["Puerto Princesa", "El Nido", "Coron", "Balabac", "Palawan"]
+    }
+  </script>
+
+  <script>
+    const packages = [
+      {
+        code: 'PPC-06H',
+        title: 'Full Day Puerto Princesa City Tour with Iwahig Penal Farm',
+        duration: '6 Hours',
+        price: 'From PHP 2,573',
+        label: 'City / Eco',
+        description: 'A Puerto Princesa city introduction with heritage landmarks, the Butterfly Garden, Baker\'s Hill, and Iwahig Penal Farm. Public page pricing lists PHP 2,573 for a six-guest rate.',
+        href: 'https://www.travel-palawan.com/tours/iwahig-prison-and-puerto-princesa-city-tour/'
+      },
+      {
+        code: 'UR-07H',
+        title: 'Underground River Shared Day Tour',
+        duration: '7 Hours',
+        price: 'From PHP 2,996',
+        label: 'UNESCO / Eco',
+        description: 'Join-in transfer, Sabang boat ride, and a 1.5 kilometer shared canoe cruise inside the Puerto Princesa Underground River with lunch included.',
+        href: 'https://www.travel-palawan.com/tours/underground-river-shared-tour/'
+      },
+      {
+        code: 'FI-HP',
+        title: 'Firefly Watching',
+        duration: 'Half Day',
+        price: 'From PHP 1,800',
+        label: 'Mangrove / Night',
+        description: 'Puerto Princesa firefly watching in the Iwahig mangroves, listed as a half-day group tour with price per person on the official product page.',
+        href: 'https://www.travel-palawan.com/product/firefly-watching/'
+      },
+      {
+        code: 'BAT-04H',
+        title: 'Batak Tribe Village Tour',
+        duration: '4 Hours',
+        price: 'From PHP 2,881',
+        label: 'Culture / Forest',
+        description: 'A private village visit north of Puerto Princesa to learn about Batak daily life, handicrafts, and forest-based traditions.',
+        href: 'https://www.travel-palawan.com/tours/batak-tribe/'
+      },
+      {
+        code: 'ELN-A-06H',
+        title: 'El Nido Tour A by Shared Boat',
+        duration: '6 Hours',
+        price: 'From PHP 1,575',
+        label: 'Lagoon / Snorkel',
+        description: 'The classic shared Bacuit Bay route with Big Lagoon kayaking, Shimizu Island snorkeling, and 7 Commandos Beach.',
+        href: 'https://www.travel-palawan.com/tours/el-nido-tour-a-shared-boat/'
+      },
+      {
+        code: 'PPS-4D',
+        title: 'Explore Puerto Princesa',
+        duration: '4 Days',
+        price: 'From PHP 16,060',
+        label: 'Multi-day / Custom',
+        description: 'A private route built around Puerto Princesa city highlights, Honda Bay, and the Underground River for travelers who want a slower pace.',
+        href: 'https://www.travel-palawan.com/tours/explore-puerto-princesa-tour-package-4-d-3-n/'
+      },
+      {
+        code: 'COR-4D',
+        title: 'Essential Coron',
+        duration: '4 Days',
+        price: 'From PHP 18,560',
+        label: 'Private / Lagoon',
+        description: 'A four-day private Coron itinerary featuring lakes, lagoons, island hopping, and Maquinit Hot Springs.',
+        href: 'https://www.travel-palawan.com/tours/essential-coron/'
+      },
+      {
+        code: 'BAL-4D',
+        title: 'Balabac Island Hopping Private Tour',
+        duration: '4 Days',
+        price: 'From PHP 27,387',
+        label: 'Remote / Private',
+        description: 'A four-day Balabac escape with sandbars, turquoise water, and remote islands. The public listing shows PHP 27,387 for a six-guest rate.',
+        href: 'https://www.travel-palawan.com/tours/balabac-island-hopping-private-tour-4-days/'
+      }
+    ];
+
+    const gallery = [
+      { title: 'Underground River', subtitle: 'Sabang, Puerto Princesa', src: 'assets/img/underground-river.svg', spanClass: 'tile-a' },
+      { title: 'Honda Bay', subtitle: 'Island hopping and reef water', src: 'assets/img/honda-bay.svg', spanClass: 'tile-b' },
+      { title: 'El Nido Lagoons', subtitle: 'Bacuit Bay cliffs and kayak routes', src: 'assets/img/el-nido.svg', spanClass: 'tile-c' },
+      { title: 'Mangrove Paddle', subtitle: 'Slow water and root channels', src: 'assets/img/mangroves.svg', spanClass: 'tile-d' },
+      { title: 'Firefly Night', subtitle: 'Iwahig river glow', src: 'assets/img/fireflies.svg', spanClass: 'tile-e' },
+      { title: 'Wildlife Encounter', subtitle: 'Forest and rescue center motifs', src: 'assets/img/wildlife.svg', spanClass: 'tile-f' }
+    ];
+
+    const testimonials = [
+      {
+        name: 'Heather E.',
+        quote: 'Our private tours in Puerto Princesa were fantastic. The guides moved at our pace and the lunch was delicious.',
+        note: 'Public review snippet',
+      },
+      {
+        name: 'Margaret R.',
+        quote: 'Estefanie was incredibly helpful and responsive in booking our tour and answering questions whilst we were away.',
+        note: 'Public review snippet',
+      },
+      {
+        name: 'Skye C.',
+        quote: 'Planning felt much easier. Our 10-day route ran smoothly and every transfer was waiting when we arrived.',
+        note: 'Public review snippet',
+      }
+    ];
+
+    const packagesGrid = document.getElementById('packagesGrid');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const testimonialsGrid = document.getElementById('testimonialsGrid');
+
+    const starMarkup = `
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.97 6.03 6.66.97-4.82 4.7 1.14 6.63L12 17.71 6.05 20.83l1.14-6.63-4.82-4.7 6.66-.97L12 2.5Z"></path></svg>
+    `;
+
+    packagesGrid.innerHTML = packages.map((pkg) => `
+      <a class="tour-card tour-link external-link" href="${pkg.href}" target="_blank" rel="noopener noreferrer" aria-label="Open ${pkg.title} on the official site">
+        <div class="tour-head">
+          <div class="tour-code">${pkg.code}</div>
+          <div class="tour-duration">${pkg.duration}</div>
+        </div>
+        <h3 class="display tour-title">${pkg.title}</h3>
+        <p class="tour-copy">${pkg.description}</p>
+        <div class="tour-foot">
+          <div class="tour-meta">
+            <div class="tour-price">${pkg.price}</div>
+            <div class="pill"><span class="pill-dot"></span>${pkg.label}</div>
+          </div>
+          <span class="tour-label">Official page</span>
+        </div>
+      </a>
+    `).join('');
+
+    galleryGrid.innerHTML = gallery.map((item) => `
+      <figure class="gallery-tile ${item.spanClass}" tabindex="0" aria-label="${item.title}">
+        <img src="${item.src}" alt="${item.title} illustration" loading="lazy" />
+        <figcaption class="gallery-caption">
+          <strong>${item.title}</strong>
+          <span>${item.subtitle}</span>
+        </figcaption>
+      </figure>
+    `).join('');
+
+    testimonialsGrid.innerHTML = testimonials.map((item) => `
+      <article class="testimonial-card">
+        <div class="rating" aria-label="Five star rating">${starMarkup.repeat(5)}</div>
+        <p class="quote">“${item.quote}”</p>
+        <p class="testimonial-name">${item.name}</p>
+        <p class="testimonial-note">${item.note}</p>
+      </article>
+    `).join('');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function addRipple(target, event) {
+      const rect = target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+      target.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+    }
+
+    document.querySelectorAll('.ripple-btn').forEach((btn) => {
+      btn.addEventListener('click', (event) => addRipple(btn, event));
+    });
+
+    if (!reduceMotion && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.1,
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .from('#navBar', { opacity: 0, y: -18, duration: 0.8 })
+        .from(['#heroLabel', '#heroTitle', '#heroTag', '#heroNote', '#heroCtas', '#scrollHint'], {
+          opacity: 0,
+          y: 26,
+          duration: 0.9,
+          stagger: 0.07
+        }, '<0.1')
+        .from('#heroArt', { opacity: 0, scale: 1.05, duration: 1.4 }, '<0.12');
+
+      gsap.to('#heroOrb', {
+        x: '-4%',
+        y: '5%',
+        duration: 9,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('#heroArt', {
+        yPercent: -5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#home',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.7
+        }
+      });
+
+      gsap.to('#heroOrb', {
+        yPercent: 10,
+        xPercent: -5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#home',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.9
+        }
+      });
+
+      gsap.utils.toArray('.fade-up').forEach((el) => {
+        gsap.fromTo(el, { opacity: 0, y: 24 }, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 84%'
+          }
+        });
+      });
+
+      gsap.from('.tour-card', {
+        scrollTrigger: {
+          trigger: '#packages',
+          start: 'top 75%'
+        },
+        opacity: 0,
+        y: 34,
+        duration: 0.8,
+        stagger: 0.09,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.gallery-tile', {
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 72%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.testimonial-card', {
+        scrollTrigger: {
+          trigger: '#reviews',
+          start: 'top 74%'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out'
+      });
+
+      gsap.from('.booking', {
+        scrollTrigger: {
+          trigger: '#book',
+          start: 'top 80%'
+        },
+        opacity: 0,
+        y: 28,
+        duration: 0.75,
+        ease: 'power2.out'
+      });
+    } else {
+      document.documentElement.style.scrollBehavior = 'smooth';
+      document.querySelectorAll('.fade-up').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  </script>
 </body>
 </html>

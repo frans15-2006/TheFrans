@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Travel Palawan Naturalis social preview">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="930" cy="138" r="140" fill="#f0a500" fill-opacity="0.08"/>
+  <circle cx="930" cy="138" r="250" fill="#f0a500" fill-opacity="0.03"/>
+  <path d="M0 444c120-40 232-56 360-38 112 16 176-8 266-66s172-84 294-60 176 92 280 98v252H0Z" fill="#f0a500" fill-opacity="0.08"/>
+  <path d="M84 422c92-78 180-124 278-128 126-6 206 52 276 104 86 64 170 88 290 74 104-12 184-46 250-86" fill="none" stroke="#f0a500" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M116 470c62-18 114-18 168 4s104 28 162 8 116-36 176-22 122 34 182 14 124-28 182-8 122 24 198-2" fill="none" stroke="#eaeaea" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  <text x="70" y="112" fill="#eaeaea" font-family="Bebas Neue, Arial, sans-serif" font-size="72" letter-spacing="4">TRAVEL PALAWAN NATURALIS</text>
+  <text x="72" y="168" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="2.5">Responsible travel through Palawan's last frontier</text>
+  <path d="M552 318 608 250l54 68z" fill="#080808" stroke="#f0a500" stroke-width="4"/>
+  <path d="M608 250 708 328h-100z" fill="#080808" stroke="#f0a500" stroke-width="4"/>
+  <path d="M528 372h200" stroke="#f0a500" stroke-width="2" opacity="0.6"/>
+</svg>
