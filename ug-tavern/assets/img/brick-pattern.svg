@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0d0d"/>
+      <stop offset="1" stop-color="#060606"/>
+    </linearGradient>
+    <linearGradient id="brick" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#181818"/>
+      <stop offset="1" stop-color="#0f0f0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" fill="url(#bg)"/>
+  <g opacity="0.9" stroke="#1d1d1d" stroke-width="2">
+    <path d="M0 40H320M0 80H320M0 120H320M0 160H320M0 200H320M0 240H320M0 280H320"/>
+    <path d="M40 0V320M120 0V320M200 0V320M280 0V320"/>
+  </g>
+  <g fill="url(#brick)" opacity="0.95">
+    <rect x="0" y="0" width="80" height="40"/>
+    <rect x="80" y="0" width="80" height="40"/>
+    <rect x="160" y="0" width="80" height="40"/>
+    <rect x="240" y="0" width="80" height="40"/>
+    <rect x="40" y="40" width="80" height="40"/>
+    <rect x="120" y="40" width="80" height="40"/>
+    <rect x="200" y="40" width="80" height="40"/>
+    <rect x="0" y="80" width="80" height="40"/>
+    <rect x="80" y="80" width="80" height="40"/>
+    <rect x="160" y="80" width="80" height="40"/>
+    <rect x="240" y="80" width="80" height="40"/>
+    <rect x="40" y="120" width="80" height="40"/>
+    <rect x="120" y="120" width="80" height="40"/>
+    <rect x="200" y="120" width="80" height="40"/>
+    <rect x="0" y="160" width="80" height="40"/>
+    <rect x="80" y="160" width="80" height="40"/>
+    <rect x="160" y="160" width="80" height="40"/>
+    <rect x="240" y="160" width="80" height="40"/>
+    <rect x="40" y="200" width="80" height="40"/>
+    <rect x="120" y="200" width="80" height="40"/>
+    <rect x="200" y="200" width="80" height="40"/>
+    <rect x="0" y="240" width="80" height="40"/>
+    <rect x="80" y="240" width="80" height="40"/>
+    <rect x="160" y="240" width="80" height="40"/>
+    <rect x="240" y="240" width="80" height="40"/>
+    <rect x="40" y="280" width="80" height="40"/>
+    <rect x="120" y="280" width="80" height="40"/>
+    <rect x="200" y="280" width="80" height="40"/>
+  </g>
+  <g opacity="0.35" stroke="#f0a500" stroke-width="1.5">
+    <path d="M16 16h48M224 48h48M72 208h48M200 272h80"/>
+  </g>
+</svg>

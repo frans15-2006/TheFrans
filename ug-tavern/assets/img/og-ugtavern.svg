@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0c0c"/>
+      <stop offset="1" stop-color="#030303"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(820 210) rotate(90) scale(280 340)">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#amber)"/>
+  <g opacity="0.9">
+    <path d="M160 470C160 310 290 180 450 180H700C860 180 990 310 990 470V520H160V470Z" fill="#101010" stroke="#f0a500" stroke-opacity="0.22" stroke-width="6"/>
+    <path d="M220 470C220 340 325 235 455 235H695C825 235 930 340 930 470V475H220V470Z" fill="#070707"/>
+    <rect x="250" y="340" width="700" height="120" rx="20" fill="#151515"/>
+    <path d="M268 360H932" stroke="#f0a500" stroke-opacity="0.18" stroke-width="3"/>
+  </g>
+  <g font-family="Bebas Neue, sans-serif" fill="#eaeaea">
+    <text x="96" y="124" font-size="98" letter-spacing="4">UG TAVERN</text>
+    <text x="98" y="184" font-size="32" font-family="JetBrains Mono, monospace" fill="#f0a500">Puerto Princesa, Palawan</text>
+    <text x="98" y="540" font-size="42" font-family="Space Grotesk, sans-serif">Below the surface. The pour stays loud.</text>
+  </g>
+</svg>

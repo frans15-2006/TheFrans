@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d0d0d"/>
+      <stop offset="1" stop-color="#020202"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="28" fill="url(#bg)"/>
+  <path d="M350 710V300C350 245 394 200 449 200H751C806 200 850 245 850 300V710" fill="#0f0f0f" stroke="#f0a500" stroke-opacity="0.25" stroke-width="6"/>
+  <path d="M320 710H880" stroke="#f0a500" stroke-opacity="0.28" stroke-width="8"/>
+  <path d="M420 710V322C420 289 447 262 480 262H720C753 262 780 289 780 322V710" fill="#090909"/>
+  <path d="M480 710V322H720V710" fill="#121212"/>
+  <path d="M600 210L792 710H408L600 210Z" fill="url(#light)"/>
+  <g opacity="0.7" stroke="#f0a500" stroke-width="3">
+    <path d="M485 350H715"/>
+    <path d="M485 430H715"/>
+    <path d="M485 510H715"/>
+    <path d="M485 590H715"/>
+  </g>
+  <g opacity="0.24" stroke="#2b2b2b" stroke-width="10" stroke-linecap="round">
+    <path d="M245 760H955"/>
+    <path d="M345 760V820"/>
+    <path d="M855 760V820"/>
+  </g>
+</svg>

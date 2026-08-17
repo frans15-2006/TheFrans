@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#040404"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(710 360) rotate(90) scale(260 360)">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.62"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" rx="32" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="32" fill="url(#glow)"/>
+  <g opacity="0.24" stroke="#f0a500" stroke-width="1.2">
+    <path d="M60 110H1140M60 190H1140M60 270H1140M60 350H1140M60 430H1140M60 510H1140M60 590H1140M60 670H1140"/>
+    <path d="M110 60V700M220 60V700M330 60V700M440 60V700M550 60V700M660 60V700M770 60V700M880 60V700M990 60V700M1100 60V700"/>
+  </g>
+  <g stroke="#2a2a2a" stroke-width="18" stroke-linecap="round" opacity="0.8">
+    <path d="M170 610L360 510L530 510L670 420L830 420L1010 320"/>
+    <path d="M210 250L360 250L490 180L650 180L810 250L1020 250"/>
+    <path d="M270 560L270 410L390 340L520 340L650 420L650 540"/>
+  </g>
+  <g fill="#111" stroke="#f0a500" stroke-opacity="0.2">
+    <rect x="148" y="148" width="220" height="132" rx="22"/>
+    <rect x="858" y="130" width="210" height="142" rx="22"/>
+    <rect x="800" y="490" width="240" height="148" rx="22"/>
+  </g>
+  <g>
+    <path d="M693 378C693 333 729 297 774 297C819 297 855 333 855 378C855 440 774 532 774 532C774 532 693 440 693 378Z" fill="#f0a500" fill-opacity="0.95"/>
+    <circle cx="774" cy="376" r="28" fill="#fff0c4"/>
+    <circle cx="774" cy="376" r="10" fill="#090909"/>
+  </g>
+  <g font-family="JetBrains Mono, monospace" fill="#eaeaea" opacity="0.88">
+    <text x="92" y="720" font-size="26">PPRQ+4XR - Rizal Avenue - Puerto Princesa City</text>
+    <text x="92" y="690" font-size="22" fill="#f0a500">9.7403523, 118.7398963</text>
+  </g>
+  <g opacity="0.2" stroke="#f0a500" stroke-width="3" stroke-linecap="round">
+    <path d="M710 250V315"/>
+    <path d="M670 378H735"/>
+    <path d="M774 532V592"/>
+  </g>
+</svg>

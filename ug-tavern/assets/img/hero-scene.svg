@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" fill="none">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="1" stop-color="#030303"/>
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 300) rotate(118) scale(650 850)">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#f0a500" stop-opacity="0.34"/>
+      <stop offset="0.7" stop-color="#f0a500" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="stoneCut" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 530) rotate(90) scale(520 820)">
+      <stop offset="0" stop-color="#232323"/>
+      <stop offset="0.6" stop-color="#101010"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="counter" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0c0c0c"/>
+      <stop offset="0.5" stop-color="#161616"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#7a4d00" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#night)"/>
+  <rect width="1600" height="1100" fill="url(#amberGlow)"/>
+  <g opacity="0.75">
+    <ellipse cx="1180" cy="220" rx="330" ry="220" fill="#f0a500" fill-opacity="0.08"/>
+    <ellipse cx="1110" cy="330" rx="220" ry="160" fill="#f0a500" fill-opacity="0.15"/>
+    <circle cx="1220" cy="260" r="64" fill="#f6bb2f" fill-opacity="0.8" filter="url(#blur1)"/>
+  </g>
+  <defs>
+    <filter id="blur1" x="0" y="0" width="1600" height="1100" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+  </defs>
+  <g transform="translate(160 95)">
+    <path d="M180 760C100 650 70 560 70 450C70 235 245 70 520 70H900C1174 70 1350 235 1350 450C1350 558 1318 649 1240 760V905H180V760Z" fill="url(#stoneCut)"/>
+    <path d="M240 765C180 678 160 593 160 500C160 323 299 200 520 200H900C1119 200 1260 323 1260 500C1260 593 1239 678 1180 765V830H240V765Z" fill="#0b0b0b"/>
+    <path d="M520 210H900C1064 210 1165 300 1165 430C1165 520 1136 597 1084 670H336C284 597 255 520 255 430C255 300 356 210 520 210Z" fill="#050505"/>
+    <path d="M555 250H865C995 250 1069 324 1069 426C1069 496 1046 553 1004 607H416C374 553 351 496 351 426C351 324 425 250 555 250Z" fill="#201100" fill-opacity="0.7"/>
+    <path d="M420 610H1010V740H420Z" fill="url(#counter)"/>
+    <path d="M420 610H1010V640H420Z" fill="#f0a500" fill-opacity="0.08"/>
+    <g opacity="0.9">
+      <rect x="456" y="542" width="34" height="72" rx="8" fill="url(#glass)"/>
+      <rect x="510" y="530" width="24" height="84" rx="7" fill="#f0a500" fill-opacity="0.4"/>
+      <rect x="552" y="512" width="44" height="102" rx="12" fill="#151515" stroke="#f0a500" stroke-opacity="0.35"/>
+      <rect x="617" y="524" width="28" height="90" rx="8" fill="#f0a500" fill-opacity="0.25"/>
+      <rect x="667" y="514" width="24" height="100" rx="7" fill="#1b1b1b" stroke="#f0a500" stroke-opacity="0.26"/>
+      <rect x="710" y="525" width="40" height="89" rx="10" fill="#f0a500" fill-opacity="0.18"/>
+      <rect x="770" y="516" width="26" height="98" rx="7" fill="#111" stroke="#f0a500" stroke-opacity="0.22"/>
+      <rect x="814" y="524" width="34" height="90" rx="9" fill="#f0a500" fill-opacity="0.24"/>
+      <rect x="868" y="511" width="44" height="103" rx="12" fill="#191919" stroke="#f0a500" stroke-opacity="0.3"/>
+    </g>
+    <g stroke="#f0a500" stroke-opacity="0.14" fill="none">
+      <path d="M380 430C450 350 530 308 640 308H835C944 308 1024 350 1096 430" stroke-width="3"/>
+      <path d="M322 510C396 436 472 400 560 400H915C1003 400 1080 436 1154 510" stroke-width="2.5"/>
+    </g>
+    <g opacity="0.35" stroke="#2b2b2b" stroke-width="12" stroke-linecap="round">
+      <path d="M320 238L390 190"/>
+      <path d="M1080 238L1010 190"/>
+      <path d="M242 390L192 340"/>
+      <path d="M1178 390L1228 340"/>
+    </g>
+    <g opacity="0.85">
+      <circle cx="930" cy="458" r="92" fill="#f0a500" fill-opacity="0.08"/>
+      <circle cx="930" cy="458" r="36" fill="#f0a500" fill-opacity="0.22"/>
+      <path d="M930 405C951 405 971 425 971 458C971 496 930 548 930 548C930 548 889 496 889 458C889 425 909 405 930 405Z" fill="#f0a500" fill-opacity="0.85"/>
+      <circle cx="930" cy="456" r="13" fill="#fff2c5"/>
+    </g>
+  </g>
+</svg>

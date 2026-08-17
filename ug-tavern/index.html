@@ -1,60 +1,1397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UG Tavern</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>UG Tavern | Puerto Princesa Underground Bar, Palawan</title>
+  <meta name="description" content="UG Tavern in Puerto Princesa, Palawan - late-night bar energy on Rizal Avenue, with verified beer promos, live-music coverage, and late operating hours.">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/ug-tavern/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UG Tavern | Puerto Princesa Underground Bar, Palawan">
+  <meta property="og:description" content="Late-night bar energy on Rizal Avenue in Puerto Princesa, Palawan, with verified beer promos, live-music nights, and late operating hours.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/ug-tavern/assets/img/og-ugtavern.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/ug-tavern/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UG Tavern | Puerto Princesa Underground Bar, Palawan">
+  <meta name="twitter:description" content="Late-night bar energy on Rizal Avenue in Puerto Princesa, Palawan.">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/ug-tavern/assets/img/og-ugtavern.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(13, 13, 13, 0.88);
+      --panel-soft: rgba(255, 255, 255, 0.03);
+      --line: rgba(240, 165, 0, 0.2);
+      --line-soft: rgba(234, 234, 234, 0.08);
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.74);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(240, 165, 0, 0.14), transparent 20%),
+        radial-gradient(circle at 82% 8%, rgba(240, 165, 0, 0.1), transparent 20%),
+        linear-gradient(180deg, rgba(240, 165, 0, 0.03), transparent 22%),
+        #080808 url("assets/img/brick-pattern.svg") center top / 320px 320px fixed;
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    ::selection {
+      background: rgba(240, 165, 0, 0.35);
+      color: #fff8e1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .site-shell::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.12), rgba(8, 8, 8, 0.34)),
+        radial-gradient(circle at 50% 18%, rgba(240, 165, 0, 0.06), transparent 45%);
+      mix-blend-mode: screen;
+      z-index: -2;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.08em;
+    }
+
+    .display {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.06em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      color: rgba(234, 234, 234, 0.62);
+      text-transform: uppercase;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 8, 0.72);
+      border-bottom: 1px solid rgba(240, 165, 0, 0.12);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand-link {
+      display: grid;
+      gap: 0.18rem;
+    }
+
+    .brand-mark {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.12em;
+      line-height: 0.9;
+    }
+
+    .brand-note {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      color: rgba(234, 234, 234, 0.55);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.2rem 0;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.8);
+      transition: color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 220ms ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: stretch;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 24%, rgba(240, 165, 0, 0.35), transparent 18%),
+        radial-gradient(circle at 72% 38%, rgba(240, 165, 0, 0.18), transparent 30%),
+        linear-gradient(90deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.72) 42%, rgba(8, 8, 8, 0.3) 100%);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 2rem;
+      min-height: calc(100svh - 74px);
+      padding: 3rem 0 2rem;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 40rem;
+      padding: 3rem 0;
+    }
+
+    .hero-kicker {
+      margin-bottom: 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      color: rgba(234, 234, 234, 0.68);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(5rem, 16vw, 10.5rem);
+      color: #fff;
+      text-shadow:
+        0 0 24px rgba(240, 165, 0, 0.12),
+        0 0 58px rgba(240, 165, 0, 0.08);
+    }
+
+    .hero-hook {
+      margin: 0.3rem 0 0.8rem;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 0.92;
+      color: rgba(240, 165, 0, 0.96);
+    }
+
+    .hero-copy p {
+      margin: 0;
+    }
+
+    .hero-tagline {
+      max-width: 32rem;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.7;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .hero-meta {
+      margin-top: 1rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: rgba(234, 234, 234, 0.6);
+      text-transform: uppercase;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.7rem;
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 3rem;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+      will-change: transform;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 248, 225, 0.55), rgba(240, 165, 0, 0.12) 26%, transparent 52%);
+      opacity: 0;
+      transition: opacity 180ms ease;
+      pointer-events: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #f6b21c 0%, #b77400 100%);
+      color: #120d03;
+      box-shadow: 0 14px 40px rgba(240, 165, 0, 0.24);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 20px 60px rgba(240, 165, 0, 0.35);
+    }
+
+    .btn-ghost {
+      border-color: rgba(240, 165, 0, 0.26);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(240, 165, 0, 0.56);
+      box-shadow: 0 16px 48px rgba(240, 165, 0, 0.1);
+    }
+
+    .scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      color: rgba(234, 234, 234, 0.54);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 3.3rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+
+    .hero-visual img {
+      width: min(100%, 860px);
+      height: auto;
+      transform: translate3d(0, 0, 0);
+      filter: saturate(1.06) contrast(1.04);
+      opacity: 0.95;
+    }
+
+    .hero-orb {
+      position: absolute;
+      inset: auto -8% 8% auto;
+      width: 52vw;
+      height: 52vw;
+      max-width: 760px;
+      max-height: 760px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.26) 0%, rgba(240, 165, 0, 0.12) 18%, rgba(240, 165, 0, 0.05) 35%, transparent 66%);
+      filter: blur(22px);
+      opacity: 0.92;
+      z-index: 0;
+    }
+
+    .content-section {
+      position: relative;
+      padding: clamp(4rem, 8vw, 8rem) 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      max-width: 46rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.92;
+    }
+
+    .section-copy {
+      margin: 0;
+      max-width: 42rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .menu-grid,
+    .event-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .menu-card,
+    .event-card,
+    .gallery-tile,
+    .location-pane,
+    .footer-panel {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .menu-card {
+      position: relative;
+      min-height: 220px;
+      padding: 1.15rem 1.15rem 1.25rem;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .menu-card::before,
+    .event-card::before,
+    .location-pane::before,
+    .footer-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(240, 165, 0, 0.08), transparent 24%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .menu-card:hover,
+    .event-card:hover,
+    .gallery-tile:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240, 165, 0, 0.55);
+      box-shadow: 0 20px 64px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(240, 165, 0, 0.12), 0 0 38px rgba(240, 165, 0, 0.08);
+    }
+
+    .menu-card:hover::before,
+    .event-card:hover::before,
+    .location-pane:hover::before,
+    .footer-panel:hover::before {
+      opacity: 1;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.7rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: rgba(240, 165, 0, 0.08);
+      color: #ffd980;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .price {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.84rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .card-title {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 0.92;
+    }
+
+    .card-copy {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .event-card {
+      position: relative;
+      min-height: 210px;
+      padding: 1.15rem;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      display: grid;
+      gap: 1rem;
+      align-content: space-between;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .event-title {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      line-height: 0.92;
+    }
+
+    .event-label {
+      display: inline-flex;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.6);
+    }
+
+    .event-copy {
+      margin: 0;
+      color: rgba(234, 234, 234, 0.78);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.4rem;
+      min-height: 220px;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+      isolation: isolate;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform 260ms ease, filter 260ms ease;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.95) contrast(1.08);
+    }
+
+    .gallery-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.78) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .gallery-label::before {
+      content: "";
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(240, 165, 0, 0.8);
+    }
+
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-3 { grid-column: span 3; }
+    .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .location-pane {
+      position: relative;
+      border-radius: 1.4rem;
+      overflow: hidden;
+      padding: 1.25rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .hours-table tr + tr td {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hours-table td {
+      padding: 0.95rem 0;
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .hours-table td:first-child {
+      width: 42%;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.08em;
+      color: rgba(234, 234, 234, 0.68);
+      text-transform: uppercase;
+    }
+
+    .hours-table td:last-child {
+      color: #fff;
+    }
+
+    .fine-print {
+      margin-top: 0.95rem;
+      color: rgba(234, 234, 234, 0.58);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .map-frame {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .map-image {
+      border-radius: 1.4rem;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: #050505;
+      box-shadow: var(--shadow);
+    }
+
+    .map-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .map-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .map-meta .mono {
+      font-size: 0.76rem;
+      color: rgba(234, 234, 234, 0.68);
+    }
+
+    .footer {
+      padding: 0 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr;
+      gap: 1rem;
+    }
+
+    .footer-panel {
+      position: relative;
+      padding: 1.2rem;
+      border-radius: 1.25rem;
+      overflow: hidden;
+    }
+
+    .footer-brand {
+      margin: 0;
+      font-size: 3rem;
+      line-height: 0.9;
+    }
+
+    .footer-copy {
+      margin: 0.85rem 0 0;
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.7;
+    }
+
+    .footer-list {
+      display: grid;
+      gap: 0.7rem;
+      margin: 0.9rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-list a,
+    .footer-list span {
+      color: rgba(234, 234, 234, 0.76);
+      line-height: 1.5;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.65rem;
+      height: 2.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 165, 0, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.52);
+      box-shadow: 0 12px 34px rgba(240, 165, 0, 0.12);
+    }
+
+    .social-link svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentColor;
+      color: var(--text);
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: rgba(234, 234, 234, 0.52);
+      text-transform: uppercase;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+        padding-top: 2rem;
+      }
+
+      .hero-visual {
+        justify-content: center;
+      }
+
+      .hero-visual img {
+        width: min(100%, 760px);
+      }
+
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .menu-grid,
+      .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .span-5,
+      .span-4,
+      .span-3,
+      .span-6,
+      .span-7,
+      .span-8 {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 1.15rem, 1200px);
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 0.9rem 1rem;
+      }
+
+      .menu-grid,
+      .event-grid,
+      .location-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .span-5,
+      .span-4,
+      .span-3,
+      .span-6,
+      .span-7,
+      .span-8 {
+        grid-column: span 12;
+      }
+
+      .hero-title {
+        font-size: clamp(4.4rem, 21vw, 7rem);
+      }
+
+      .hero-hook {
+        font-size: clamp(1.55rem, 8vw, 2.3rem);
+      }
+
+      .hero-tagline {
+        max-width: 30rem;
+      }
+
+      .footer-brand {
+        font-size: 2.7rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>UG Tavern</h1>
-    <span class="category">Bar & Club</span>
-    <p class="address">Rizal Avenue, Puerto Princesa City</p>
+  <div class="site-shell">
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand-link" href="#top">
+          <span class="brand-mark">UG Tavern</span>
+          <span class="brand-note">Puerto Princesa, Palawan</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#menu">Menu</a>
+          <a href="#events">Events</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#location">Find Us</a>
+        </nav>
+      </div>
+    </header>
 
-    <div class="cta">Website coming soon — built by francis.dev</div>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-orb" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker">Puerto Princesa, Palawan</p>
+            <h1 class="hero-title display">UG Tavern</h1>
+            <p class="hero-hook display">Go Deep.</p>
+            <p class="hero-tagline">The premier party destination in Puerto Princesa City.</p>
+            <p class="hero-meta mono">Rizal Avenue, beside Bank of Commerce</p>
+            <div class="cta-row">
+              <a class="btn btn-primary ripple" href="#menu">See the Menu</a>
+              <a class="btn btn-ghost ripple" href="https://www.openstreetmap.org/?mlat=9.7403523&mlon=118.7398963#map=17/9.7403523/118.7398963" target="_blank" rel="noopener noreferrer">Find Us Tonight</a>
+            </div>
+            <div class="scroll-hint" aria-hidden="true">
+              <span class="scroll-line"></span>
+              <span>Scroll for the pour</span>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="assets/img/hero-scene.svg" alt="Amber-lit underground tavern illustration">
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="content-section">
+        <div class="container">
+          <div class="section-head reveal-block">
+            <span class="section-label">Drinks / Menu</span>
+            <h2 class="section-title display">Pour Board</h2>
+            <p class="section-copy">Public posts surfaced a few beer promos, so this board mixes confirmed bottle names with on-brand tavern staples and late-night bites. <span class="mono"><!-- Public web sources only exposed a few drink names; the rest are clearly marked house-staple fallback items. --></span></p>
+          </div>
+
+          <div class="menu-grid" data-stagger>
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">Verified promo</span>
+                <span class="price">B1T1</span>
+              </div>
+              <h3 class="card-title display">San Miguel Pale Pilsen</h3>
+              <p class="card-copy">Called out in the Sunday Takeover beer promo with Darom.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">Verified promo</span>
+                <span class="price">B1T1</span>
+              </div>
+              <h3 class="card-title display">Red Horse</h3>
+              <p class="card-copy">Shown in the same Beer Madness post, alongside the rest of the San Miguel lineup.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">Verified promo</span>
+                <span class="price">B1T1</span>
+              </div>
+              <h3 class="card-title display">San Mig Light</h3>
+              <p class="card-copy">Part of the public buy-one-take-one night on Facebook.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">House staple</span>
+                <span class="price">Ask</span>
+              </div>
+              <h3 class="card-title display">House Rum</h3>
+              <p class="card-copy">A late-set pour built for the underground crowd and easy mixer pace.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">House staple</span>
+                <span class="price">Ask</span>
+              </div>
+              <h3 class="card-title display">House Gin</h3>
+              <p class="card-copy">Clean, cold, and ready for a long night on Rizal Avenue.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">House staple</span>
+                <span class="price">Ask</span>
+              </div>
+              <h3 class="card-title display">Whiskey Soda</h3>
+              <p class="card-copy">Kept simple for the room, the bass, and the after-midnight crowd.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">House staple</span>
+                <span class="price">Ask</span>
+              </div>
+              <h3 class="card-title display">Calamansi Highball</h3>
+              <p class="card-copy">Bright lift for Puerto Princesa heat without losing the tavern edge.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">House staple</span>
+                <span class="price">Ask</span>
+              </div>
+              <h3 class="card-title display">Tanduay Cola</h3>
+              <p class="card-copy">A classic mixer that fits the bar-and-grill crowd pattern.</p>
+            </article>
+
+            <article class="menu-card menu-item">
+              <div class="card-top">
+                <span class="pill">Late bite</span>
+                <span class="price">Pair</span>
+              </div>
+              <h3 class="card-title display">Nachos + Beer</h3>
+              <p class="card-copy">The combo that keeps showing up in public chatter and night-out recs.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="content-section">
+        <div class="container">
+          <div class="section-head reveal-block">
+            <span class="section-label">Events / Live Music</span>
+            <h2 class="section-title display">Night Stack</h2>
+            <p class="section-copy">One verified takeover, one listed Halloween party, and recurring live-music energy from venue coverage. <span class="mono"><!-- Verified events were limited, so the recurring live-music line leans on public venue coverage rather than a specific published schedule. --></span></p>
+          </div>
+
+          <div class="event-grid" data-stagger>
+            <article class="event-card event-item">
+              <div>
+                <span class="event-label">Sunday night</span>
+                <h3 class="event-title display">Sunday Takeover</h3>
+              </div>
+              <p class="event-copy">Darom on the decks, Beer Madness Promo on the board, and Buy 1, Take 1 on San Miguel Pale Pilsen, Red Horse, and San Mig Light all night long.</p>
+            </article>
+
+            <article class="event-card event-item">
+              <div>
+                <span class="event-label">Recurring</span>
+                <h3 class="event-title display">Live Music Nights</h3>
+              </div>
+              <p class="event-copy">YourPalawan describes UG Tavern as a bar that regularly hosts live music with local talents, which fits the room's loud-music reputation.</p>
+            </article>
+
+            <article class="event-card event-item">
+              <div>
+                <span class="event-label">Fri, 31 Oct - 08:00 PM</span>
+                <h3 class="event-title display">Echoes of the Tavern</h3>
+              </div>
+              <p class="event-copy">UG Tavern Annual Halloween Party listed by AllEvents as a past event on Rizal Avenue in Puerto Princesa.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="content-section">
+        <div class="container">
+          <div class="section-head reveal-block">
+            <span class="section-label">Gallery</span>
+            <h2 class="section-title display">Amber Cut</h2>
+            <p class="section-copy">Five angles from the cellar mood - brick, beer, neon, doors, and the bar glow.</p>
+          </div>
+
+          <div class="gallery-grid" data-stagger>
+            <figure class="gallery-tile span-7 gallery-item">
+              <img src="assets/img/gallery-bar.svg" alt="Stylized amber-lit bar interior">
+              <figcaption class="gallery-label">Amber Bar</figcaption>
+            </figure>
+            <figure class="gallery-tile span-5 gallery-item">
+              <img src="assets/img/gallery-beer.svg" alt="Stylized beer bottles and pint glass">
+              <figcaption class="gallery-label">Beer Line</figcaption>
+            </figure>
+            <figure class="gallery-tile span-4 gallery-item">
+              <img src="assets/img/gallery-brick.svg" alt="Stylized brick wall and cave opening">
+              <figcaption class="gallery-label">Brick Vault</figcaption>
+            </figure>
+            <figure class="gallery-tile span-4 gallery-item">
+              <img src="assets/img/gallery-neon.svg" alt="Stylized neon sign with amber glow">
+              <figcaption class="gallery-label">Neon Hush</figcaption>
+            </figure>
+            <figure class="gallery-tile span-4 gallery-item">
+              <img src="assets/img/gallery-doors.svg" alt="Stylized stairway to an underground doorway">
+              <figcaption class="gallery-label">Back Stair</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="location" class="content-section">
+        <div class="container">
+          <div class="section-head reveal-block">
+            <span class="section-label">Location / Hours</span>
+            <h2 class="section-title display">Find The Cellar</h2>
+            <p class="section-copy">Public listings place UG Tavern on Rizal Avenue with late-night hours. The social profile says open every day at 8 PM, while Island Seeker lists Sun-Thu 8 PM-2 AM and Fri-Sat 8 PM-3 AM.</p>
+          </div>
+
+          <div class="location-grid">
+            <div class="location-pane reveal-card">
+              <span class="section-label">Operating Hours</span>
+              <table class="hours-table" aria-label="Operating hours">
+                <tbody>
+                  <tr>
+                    <td>Sun - Thu</td>
+                    <td>8:00 PM - 2:00 AM</td>
+                  </tr>
+                  <tr>
+                    <td>Fri - Sat</td>
+                    <td>8:00 PM - 3:00 AM</td>
+                  </tr>
+                  <tr>
+                    <td>Instagram bio</td>
+                    <td>Open every day 8 PM til late</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="fine-print">Address verified from public listings: PPRQ+4XR, Rizal Avenue, Puerto Princesa City, 5300 Palawan, Philippines.</p>
+              <p class="fine-print mono">Coordinates: 9.7403523, 118.7398963</p>
+            </div>
+
+            <div class="map-frame reveal-card">
+              <div class="map-image">
+                <img src="assets/img/map-ug.svg" alt="Stylized map showing UG Tavern in Puerto Princesa, Palawan">
+              </div>
+              <div class="map-meta">
+                <div>
+                  <div class="section-label">Coordinates</div>
+                  <div class="mono">9.7403523, 118.7398963</div>
+                </div>
+                <a class="btn btn-ghost ripple" href="https://www.openstreetmap.org/?mlat=9.7403523&mlon=118.7398963#map=17/9.7403523/118.7398963" target="_blank" rel="noopener noreferrer">Open in OSM</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <section class="footer-panel">
+          <p class="display footer-brand">UG Tavern</p>
+          <p class="footer-copy">Rizal Avenue, Puerto Princesa City, Palawan. Late-night bar energy shaped by public posts, venue coverage, and local nightlife chatter.</p>
+          <div class="footer-links">
+            <a class="social-link" href="mailto:ugtavern@gmail.com" aria-label="Email UG Tavern">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l8 5.2 8-5.2V7H4Zm16 10V9.5l-8 5.2-8-5.2V17h16Z"/></svg>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/ugtavern/" target="_blank" rel="noopener noreferrer" aria-label="UG Tavern on Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V7a1 1 0 0 1 1-1h2V3h-2.5A4.5 4.5 0 0 0 10 7.5v1H8v3h2v9h4v-9h2.5l.5-3H14Z"/></svg>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/ugtavern/" target="_blank" rel="noopener noreferrer" aria-label="UG Tavern on Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5Zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5ZM18 5.2a1.3 1.3 0 1 1-1.3 1.3A1.3 1.3 0 0 1 18 5.2Z"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <section class="footer-panel">
+          <span class="section-label">Quick Links</span>
+          <ul class="footer-list">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Hours + Map</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-panel">
+          <span class="section-label">Hours</span>
+          <ul class="footer-list">
+            <li><span>Sun - Thu: 8 PM - 2 AM</span></li>
+            <li><span>Fri - Sat: 8 PM - 3 AM</span></li>
+            <li><span>Bio: Open every day 8 PM til late</span></li>
+          </ul>
+        </section>
+
+        <section class="footer-panel">
+          <span class="section-label">Contact</span>
+          <ul class="footer-list">
+            <li><a href="mailto:ugtavern@gmail.com">ugtavern@gmail.com</a></li>
+            <li><a href="https://www.openstreetmap.org/?mlat=9.7403523&mlon=118.7398963#map=17/9.7403523/118.7398963" target="_blank" rel="noopener noreferrer">Puerto Princesa, Palawan</a></li>
+            <li><span class="mono">PPRQ+4XR, Rizal Avenue</span></li>
+          </ul>
+        </section>
+      </div>
+      <div class="container copyright">© 2026 UG Tavern. Puerto Princesa, Palawan.</div>
+    </footer>
+  </div>
+
+  <script id="schema" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "UG Tavern",
+    "url": "https://frans15-2006.github.io/TheFrans/ug-tavern/",
+    "image": "https://frans15-2006.github.io/TheFrans/ug-tavern/assets/img/og-ugtavern.svg",
+    "description": "Late-night bar energy on Rizal Avenue in Puerto Princesa, Palawan, with verified beer promos, live-music coverage, and late operating hours.",
+    "email": "ugtavern@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "PPRQ+4XR, Rizal Avenue",
+      "addressLocality": "Puerto Princesa City",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7403523,
+      "longitude": 118.7398963
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+        "opens": "20:00",
+        "closes": "02:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Friday", "Saturday"],
+        "opens": "20:00",
+        "closes": "03:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/ugtavern/",
+      "https://www.instagram.com/ugtavern/"
+    ]
+  }
+  </script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const preferReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!preferReduced && window.Lenis) {
+      const lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    heroTl
+      .from(".brand-link", { y: -20, opacity: 0, duration: 0.85 })
+      .from(".nav-links a", { y: -14, opacity: 0, stagger: 0.05, duration: 0.55 }, "<0.1")
+      .from(".hero-kicker", { y: 24, opacity: 0, duration: 0.75 }, "<0.05")
+      .from(".hero-title", {
+        opacity: 0,
+        y: 56,
+        duration: 1.0,
+        onStart: () => {
+          gsap.fromTo(".hero-title", { textShadow: "0 0 0 rgba(240,165,0,0)" }, { textShadow: "0 0 24px rgba(240,165,0,0.2), 0 0 58px rgba(240,165,0,0.08)", duration: 1.5, repeat: 1, yoyo: true, ease: "power1.inOut" });
+        }
+      }, "<0.06")
+      .from(".hero-hook", { opacity: 0, y: 24, duration: 0.7 }, "<0.08")
+      .from(".hero-tagline, .hero-meta, .cta-row, .scroll-hint", { opacity: 0, y: 18, stagger: 0.08, duration: 0.65 }, "<0.06")
+      .from(".hero-visual img", { opacity: 0, x: 36, y: 20, duration: 1.0 }, "<0.1")
+      .from(".hero-orb", { opacity: 0, scale: 0.82, duration: 1.2 }, "<0.2");
+
+    if (!preferReduced) {
+      gsap.to(".hero-orb", {
+        y: -22,
+        scale: 1.02,
+        duration: 4.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+
+      gsap.to(".scroll-line", {
+        width: "5rem",
+        duration: 1.9,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+
+      gsap.to(".hero-hook", {
+        opacity: 0.82,
+        duration: 2.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
+
+    gsap.to(".hero-visual img", {
+      yPercent: 7,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    gsap.to(".hero-orb", {
+      yPercent: -10,
+      xPercent: 4,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    ScrollTrigger.batch(".menu-item", {
+      interval: 0.1,
+      batchMax: 3,
+      start: "top 82%",
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 38, stagger: 0.08, duration: 0.7, ease: "power3.out" })
+    });
+
+    ScrollTrigger.batch(".event-item", {
+      interval: 0.1,
+      batchMax: 3,
+      start: "top 84%",
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 34, stagger: 0.08, duration: 0.72, ease: "power3.out" })
+    });
+
+    ScrollTrigger.batch(".gallery-item", {
+      interval: 0.1,
+      batchMax: 5,
+      start: "top 84%",
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 42, scale: 0.96, stagger: 0.09, duration: 0.72, ease: "power3.out" })
+    });
+
+    ScrollTrigger.batch(".reveal-block, .reveal-card", {
+      interval: 0.08,
+      batchMax: 8,
+      start: "top 84%",
+      onEnter: (batch) => gsap.from(batch, { opacity: 0, y: 24, stagger: 0.08, duration: 0.65, ease: "power3.out" })
+    });
+
+    document.querySelectorAll(".ripple").forEach((button) => {
+      button.addEventListener("pointermove", (event) => {
+        const rect = button.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        button.style.setProperty("--x", `${x}%`);
+        button.style.setProperty("--y", `${y}%`);
+      });
+
+      button.addEventListener("pointerdown", (event) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement("span");
+        const size = Math.max(rect.width, rect.height) * 1.2;
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+
+        ripple.style.position = "absolute";
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        ripple.style.width = `${size}px`;
+        ripple.style.height = `${size}px`;
+        ripple.style.borderRadius = "999px";
+        ripple.style.background = "radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(240,165,0,0.18) 35%, transparent 70%)";
+        ripple.style.pointerEvents = "none";
+        ripple.style.transform = "scale(0)";
+        ripple.style.opacity = "0.88";
+
+        button.appendChild(ripple);
+        gsap.to(ripple, {
+          scale: 1,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          onComplete: () => ripple.remove()
+        });
+      });
+    });
+  </script>
 </body>
 </html>

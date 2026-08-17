@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 250) rotate(90) scale(300 320)">
+      <stop offset="0" stop-color="#f0a500" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#f0a500" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="900" rx="28" fill="url(#glow)"/>
+  <rect x="100" y="565" width="1000" height="170" rx="22" fill="#0d0d0d" stroke="#f0a500" stroke-opacity="0.25"/>
+  <rect x="120" y="530" width="960" height="40" rx="18" fill="#1a1a1a"/>
+  <g opacity="0.85">
+    <rect x="170" y="240" width="160" height="250" rx="18" fill="#141414" stroke="#f0a500" stroke-opacity="0.3"/>
+    <rect x="360" y="215" width="160" height="275" rx="18" fill="#161616" stroke="#f0a500" stroke-opacity="0.2"/>
+    <rect x="550" y="265" width="160" height="225" rx="18" fill="#111" stroke="#f0a500" stroke-opacity="0.24"/>
+    <rect x="740" y="190" width="160" height="300" rx="18" fill="#171717" stroke="#f0a500" stroke-opacity="0.28"/>
+    <rect x="930" y="230" width="110" height="260" rx="18" fill="#151515" stroke="#f0a500" stroke-opacity="0.18"/>
+  </g>
+  <g fill="#f0a500" fill-opacity="0.8">
+    <circle cx="250" cy="170" r="14"/>
+    <circle cx="250" cy="195" r="10"/>
+    <circle cx="440" cy="150" r="14"/>
+    <circle cx="440" cy="178" r="10"/>
+    <circle cx="630" cy="195" r="14"/>
+    <circle cx="630" cy="222" r="10"/>
+    <circle cx="820" cy="135" r="14"/>
+    <circle cx="820" cy="160" r="10"/>
+    <circle cx="982" cy="180" r="12"/>
+  </g>
+  <g opacity="0.45" stroke="#f0a500" stroke-width="2.5">
+    <path d="M120 775H1080"/>
+    <path d="M220 522V520M410 505V504M600 495V494M790 500V499M965 492V491"/>
+  </g>
+</svg>
