@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#080808"/>
+  <path d="M0 460c140-90 274-125 414-104 124 18 232 69 326 150 82 71 174 111 460 124V630H0V460z" fill="#101010"/>
+  <circle cx="950" cy="185" r="140" fill="#f0a500" fill-opacity="0.16"/>
+  <circle cx="950" cy="185" r="78" fill="#f0a500" fill-opacity="0.28"/>
+  <text x="70" y="155" fill="#f0a500" font-family="Bebas Neue, sans-serif" font-size="106" letter-spacing="3">YAMA CAVE BAR</text>
+  <text x="70" y="230" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="30" opacity="0.8">Puerto Princesa, Palawan</text>
+  <text x="70" y="285" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="22" opacity="0.72">Caniguiran, Barangay Bancao-Bancao | Tower 2, 8th floor</text>
+  <text x="70" y="330" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="22" opacity="0.72">9.7320697, 118.7710334</text>
+</svg>

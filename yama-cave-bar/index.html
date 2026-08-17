@@ -1,60 +1,1191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yama Japanese Restaurant Cave Bar</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #f0ead6;
-            font-family: 'DM Mono', monospace;
-            margin: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
-        h1 {
-            color: #c9a84c;
-            margin-bottom: 0.5rem;
-        }
-        .category {
-            display: inline-block;
-            background-color: #c9a84c;
-            color: #0d0d0d;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .address {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .phone {
-            margin-bottom: 2rem;
-            color: #c9a84c;
-        }
-        .cta {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yama Cave Bar | Puerto Princesa, Palawan</title>
+  <meta name="description" content="Yama Cave Bar in Puerto Princesa, Palawan: Japanese cave-bar cocktails, verified opening hours, location, and a dark underground-inspired single-page experience." />
+  <meta property="og:title" content="Yama Cave Bar | Puerto Princesa, Palawan" />
+  <meta property="og:description" content="A dark, cave-themed one-page site for Yama Cave Bar with verified address, hours, coordinates, drinks, and venue atmosphere." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/og-image.svg" />
+  <meta property="og:image:alt" content="Yama Cave Bar cave-themed og image" />
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/yama-cave-bar/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yama Cave Bar | Puerto Princesa, Palawan" />
+  <meta name="twitter:description" content="Verified address, hours, coordinates, and menu-driven cave-bar site for Yama in Puerto Princesa." />
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/yama-cave-bar/" />
+  <meta name="theme-color" content="#080808" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --accent: #f0a500;
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.68);
+      --line: rgba(240, 165, 0, 0.22);
+      --glow: rgba(240, 165, 0, 0.32);
+      --panel: rgba(14, 14, 14, 0.86);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; background: var(--bg); }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, rgba(240, 165, 0, 0.08), transparent 38%), var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 60;
+      padding: 1rem 0;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.9), rgba(8, 8, 8, 0));
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-lockup strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      letter-spacing: 0.08em;
+    }
+
+    .brand-lockup span {
+      color: var(--accent);
+      font-size: 0.72rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.25rem 0;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.82);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transition: transform 220ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after { transform: scaleX(1); }
+
+    @media (max-width: 639px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .brand-lockup {
+        white-space: normal;
+        gap: 0.35rem;
+        align-items: flex-start;
+      }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: clip;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-stage {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 22%, rgba(240,165,0,0.18), transparent 22%),
+        radial-gradient(circle at 26% 60%, rgba(240,165,0,0.08), transparent 30%),
+        linear-gradient(180deg, rgba(8,8,8,0.18), rgba(8,8,8,0.74) 60%, rgba(8,8,8,1));
+    }
+
+    .hero-orb,
+    .hero-cave,
+    .hero-top,
+    .hero-bottom {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      width: min(820px, 90vw);
+      aspect-ratio: 1;
+      top: 6%;
+      right: -8%;
+      left: auto;
+      filter: drop-shadow(0 0 45px rgba(240, 165, 0, 0.22));
+      opacity: 0.9;
+      mix-blend-mode: screen;
+    }
+
+    .hero-cave {
+      inset: auto 0 0 0;
+      height: 70%;
+      object-fit: cover;
+      opacity: 0.94;
+      filter: saturate(0.95) contrast(1.02);
+      transform: translate3d(0, 0, 0) scale(1.02);
+    }
+
+    .hero-top {
+      inset: 0 0 auto 0;
+      height: 8.5rem;
+      transform: translateY(-4px);
+      opacity: 0.98;
+    }
+
+    .hero-bottom {
+      inset: auto 0 0 0;
+      height: 7.5rem;
+      transform: translateY(2px);
+      opacity: 0.96;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+      padding-top: 6.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(234,234,234,0.76);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker::before {
+      content: '';
+      width: 3rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
+    }
+
+    .hero-title {
+      max-width: 10ch;
+      margin: 0;
+      font-size: clamp(4.25rem, 15vw, 10rem);
+      color: #fff;
+      text-shadow: 0 0 24px rgba(240, 165, 0, 0.18);
+    }
+
+    .hero-copy {
+      max-width: 36rem;
+      margin: 0;
+      color: rgba(234,234,234,0.78);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.65;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.75rem;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.92rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 220ms ease, background 220ms ease;
+      isolation: isolate;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 55%);
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 180ms ease, transform 220ms ease;
+      z-index: -1;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn:hover::before,
+    .btn:focus-visible::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #f5b11e, #d68900);
+      color: #0a0a0a;
+      box-shadow: 0 10px 28px rgba(240,165,0,0.2);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.35), 0 16px 32px rgba(240,165,0,0.28);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      border-color: rgba(240,165,0,0.55);
+      background: rgba(240,165,0,0.03);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240,165,0,0.9);
+      box-shadow: 0 0 0 1px rgba(240,165,0,0.14), 0 0 26px rgba(240,165,0,0.15);
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: auto;
+      width: fit-content;
+      color: rgba(234,234,234,0.64);
+      text-transform: uppercase;
+      font-size: 0.66rem;
+    }
+
+    .scroll-indicator i {
+      display: inline-block;
+      width: 1.6rem;
+      height: 2.4rem;
+      border: 1px solid rgba(240,165,0,0.35);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .scroll-indicator i::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0.35rem;
+      width: 0.34rem;
+      height: 0.34rem;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(240,165,0,0.5);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.55; }
+      50% { transform: translate(-50%, 1rem); opacity: 1; }
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .section-lead {
+      margin: 0;
+      max-width: 44rem;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .grid-menu {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .menu-card,
+    .event-card,
+    .gallery-tile,
+    .location-panel,
+    .footer-panel {
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(18,18,18,0.96), rgba(12,12,12,0.92));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .menu-card {
+      padding: 1.15rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .menu-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(240,165,0,0.8), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .menu-card:hover,
+    .menu-card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240,165,0,0.5);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.42), 0 0 0 1px rgba(240,165,0,0.12), 0 0 26px rgba(240,165,0,0.09);
+    }
+
+    .menu-card:hover::after,
+    .menu-card:focus-within::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 0.9rem;
+    }
+
+    .menu-name,
+    .event-name {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 0.95;
+      font-size: 2rem;
+    }
+
+    .menu-pill,
+    .event-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.34rem 0.68rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240,165,0,0.28);
+      background: rgba(240,165,0,0.08);
+      color: var(--accent);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .menu-desc,
+    .event-desc,
+    .gallery-caption,
+    .location-copy,
+    .footer-copy {
+      margin: 0;
+      color: rgba(234,234,234,0.73);
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .menu-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .menu-price {
+      font-size: 0.92rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .menu-note {
+      color: rgba(234,234,234,0.46);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .event-card {
+      border-radius: 1rem;
+      padding: 1.15rem;
+      min-height: 13.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .event-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-line {
+      margin: 0.9rem 0 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(234,234,234,0.58);
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+
+    .event-ghost {
+      position: absolute;
+      right: -2.5rem;
+      bottom: -2.5rem;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,165,0,0.18), transparent 68%);
+      filter: blur(6px);
+      opacity: 0.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .gallery-tile {
+      border-radius: 1rem;
+      overflow: hidden;
+      min-height: 15rem;
+      isolation: isolate;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .gallery-tile:hover {
+      transform: scale(1.03);
+      border-color: rgba(240,165,0,0.38);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.45), 0 0 30px rgba(240,165,0,0.08);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(1.02);
+      transform: scale(1.02);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.84));
+      display: flex;
+      align-items: end;
+      min-height: 45%;
+    }
+
+    .gallery-label {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      line-height: 0.92;
+      letter-spacing: 0.06em;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .location-panel {
+      border-radius: 1rem;
+      padding: 1.15rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+    }
+
+    .hours-table td {
+      padding: 0.72rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(234,234,234,0.74);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--accent);
+    }
+
+    .location-map {
+      min-height: 19rem;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .location-map svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .footer {
+      padding: 2.2rem 0 3rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .footer-panel {
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    .footer-heading {
+      margin: 0 0 0.7rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .footer-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .footer-list a {
+      color: rgba(234,234,234,0.78);
+      transition: color 180ms ease;
+    }
+
+    .footer-list a:hover,
+    .footer-list a:focus-visible {
+      color: var(--accent);
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240,165,0,0.24);
+      background: rgba(240,165,0,0.05);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .icon-link:hover,
+    .icon-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240,165,0,0.5);
+      box-shadow: 0 0 18px rgba(240,165,0,0.12);
+    }
+
+    .icon-link svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+    .copyright {
+      margin-top: 1rem;
+      color: rgba(234,234,234,0.48);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+
+    .reveal-x {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+
+    .cave-drip {
+      position: absolute;
+      width: 0.55rem;
+      height: 2.8rem;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(240,165,0,0.95), rgba(240,165,0,0));
+      filter: blur(0.15rem);
+      opacity: 0.7;
+    }
+
+    .cave-drip.one { top: 8%; left: 14%; }
+    .cave-drip.two { top: 17%; right: 20%; height: 3.2rem; }
+    .cave-drip.three { top: 11%; left: 52%; height: 4rem; }
+
+    @media (min-width: 768px) {
+      .hero-content { max-width: 55rem; }
+      .grid-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .events-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: minmax(120px, auto);
+      }
+      .gallery-grid .tile-a { grid-column: span 7; grid-row: span 2; }
+      .gallery-grid .tile-b { grid-column: span 5; }
+      .gallery-grid .tile-c { grid-column: span 5; }
+      .gallery-grid .tile-d { grid-column: span 7; }
+      .gallery-grid .tile-e { grid-column: span 4; }
+      .gallery-grid .tile-f { grid-column: span 8; }
+      .location-grid { grid-template-columns: 0.95fr 1.05fr; align-items: start; }
+      .footer-grid { grid-template-columns: 1.4fr 0.9fr 0.9fr 0.8fr; }
+    }
+
+    @media (min-width: 1280px) {
+      .grid-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .section { padding: 6.5rem 0; }
+      .hero-title { max-width: 8ch; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Yama Japanese Restaurant Cave Bar</h1>
-    <span class="category">Japanese Restaurant & Bar</span>
-    <p class="address">Caniguiran, Puerto Princesa City</p>
-    <p class="phone">+63 917 775 5776</p>
-    <div class="cta">Website coming soon — built by francis.dev</div>
+  <nav class="site-nav">
+    <div class="shell nav-inner">
+      <a class="brand-lockup" href="#top" aria-label="Yama Cave Bar home">
+        <strong>Yama Cave Bar</strong>
+        <span class="mono">Puerto Princesa, Palawan</span>
+      </a>
+      <div class="nav-links mono" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#location">Location</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-stage"></div>
+      <img class="hero-orb" src="assets/img/hero-orb.svg" alt="Amber torch-glow orb" aria-hidden="true" />
+      <img class="hero-cave" src="assets/img/hero-cave.svg" alt="Stylized cave bar interior" aria-hidden="true" />
+      <img class="hero-top" src="assets/img/stalactite-top.svg" alt="" aria-hidden="true" />
+      <img class="hero-bottom" src="assets/img/stalagmite-bottom.svg" alt="" aria-hidden="true" />
+      <span class="cave-drip one" aria-hidden="true"></span>
+      <span class="cave-drip two" aria-hidden="true"></span>
+      <span class="cave-drip three" aria-hidden="true"></span>
+
+      <div class="shell hero-content">
+        <div class="hero-kicker mono reveal">Tower 2, 8th floor, Princesa Garden Island Resort and Spa</div>
+        <h1 class="hero-title display reveal">Drink Deep.</h1>
+        <p class="hero-copy reveal">A cave-bar hideout in Caniguiran, Barangay Bancao-Bancao, Puerto Princesa, built around amber glow, Japanese drinks, and a night-facing room above the resort.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary mono" href="#menu">See the Menu</a>
+          <a class="btn btn-ghost mono" href="https://www.openstreetmap.org/?mlat=9.7320697&mlon=118.7710334#map=18/9.7320697/118.7710334" target="_blank" rel="noopener noreferrer">Find the Cave</a>
+        </div>
+        <a class="scroll-indicator mono reveal" href="#menu">
+          <i aria-hidden="true"></i>
+          <span>Scroll down</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="eyebrow mono">Drinks / Menu</div>
+          <h2 class="section-title display">Verified pours from the cave.</h2>
+          <p class="section-lead">These drinks are pulled from the published Foodpanda menu for Yama Japanese Cave Bar and arranged for a bar-first read on desktop and mobile.</p>
+        </div>
+        <div class="grid-menu" id="menuGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="events" class="section">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="eyebrow mono">Events / Live Music</div>
+          <h2 class="section-title display">After-dark programming.</h2>
+          <p class="section-lead"><!-- No public Yama-specific event calendar or recurring live-music schedule was found in the verified sources. The cards below are on-brand concept slots, not factual schedule claims. -->
+            Verified resort pages mention music at nearby lounge venues, but no published Yama event calendar was found during research. The three tiles below keep the page structure ready for future updates.
+          </p>
+        </div>
+        <div class="events-grid" id="eventsGrid"></div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="eyebrow mono">Gallery</div>
+          <h2 class="section-title display">Amber in the stone.</h2>
+          <p class="section-lead">A six-tile SVG gallery keeps the cave mood intact without inventing photography that does not exist in the source set.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section id="location" class="section">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="eyebrow mono">Location / Hours</div>
+          <h2 class="section-title display">Puerto Princesa, not Manila.</h2>
+          <p class="section-lead">Verified address and hours are surfaced alongside a static map-style panel. Coordinates use the published Puerto Princesa listing for Yama Japanese Cave Bar.</p>
+        </div>
+        <div class="location-grid">
+          <div class="location-panel reveal">
+            <p class="location-copy"><strong>Address</strong><br />Caniguiran, Barangay Bancao-Bancao, Puerto Princesa, Palawan 5300, Philippines<br />Tower 2, 8th floor, Princesa Garden Island Resort and Spa</p>
+            <div style="height: 1rem"></div>
+            <table class="hours-table" aria-label="Opening hours">
+              <tbody>
+                <tr><td>Monday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Thursday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Friday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Saturday</td><td>6:00 PM - 10:00 PM</td></tr>
+                <tr><td>Sunday</td><td>6:00 PM - 10:00 PM</td></tr>
+              </tbody>
+            </table>
+            <div style="height: 1rem"></div>
+            <p class="location-copy mono">Coordinates: 9.7320697, 118.7710334</p>
+          </div>
+          <div class="location-panel location-map reveal">
+            <svg viewBox="0 0 960 640" role="img" aria-label="Stylized map of Puerto Princesa and the Yama Cave Bar location pin">
+              <defs>
+                <linearGradient id="mapGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1b1b1b"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </linearGradient>
+              </defs>
+              <rect width="960" height="640" fill="url(#mapGlow)" />
+              <g opacity="0.3" stroke="#f0a500" stroke-width="1">
+                <path d="M80 120h800M80 210h800M80 300h800M80 390h800M80 480h800" />
+                <path d="M160 80v500M280 80v500M400 80v500M520 80v500M640 80v500M760 80v500M880 80v500" />
+              </g>
+              <g fill="none" stroke="#eaeaea" stroke-opacity="0.26" stroke-width="3">
+                <path d="M120 470 C180 440, 220 400, 260 390 S340 360, 380 330 S460 280, 520 300 S620 340, 690 310 S790 250, 840 220" />
+                <path d="M110 500 C170 520, 220 530, 280 525 S390 500, 450 490 S560 500, 640 485 S760 430, 860 410" />
+              </g>
+              <g fill="#f0a500" opacity="0.92">
+                <circle cx="700" cy="330" r="42" fill="rgba(240,165,0,0.18)" />
+                <path d="M700 282c-21 0-38 17-38 38 0 27 38 78 38 78s38-51 38-78c0-21-17-38-38-38zm0 54a16 16 0 1 1 0-32 16 16 0 0 1 0 32z" />
+              </g>
+              <text x="92" y="96" fill="#eaeaea" font-family="JetBrains Mono, monospace" font-size="20" opacity="0.66">Puerto Princesa, Palawan</text>
+              <text x="92" y="124" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="16">9.7320697, 118.7710334</text>
+              <text x="92" y="150" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="44" letter-spacing="2">Yama Cave Bar</text>
+              <text x="92" y="180" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="16" opacity="0.72">Caniguiran, Barangay Bancao-Bancao</text>
+              <text x="92" y="206" fill="#eaeaea" font-family="Space Grotesk, sans-serif" font-size="16" opacity="0.72">Tower 2, 8th floor, Princesa Garden Island Resort and Spa</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div class="footer-panel reveal">
+        <h3 class="footer-heading">Yama Cave Bar</h3>
+        <p class="footer-copy">Japanese cave-bar energy in Puerto Princesa, framed for dark nights, amber light, and a clean path to the published menu and resort contacts.</p>
+        <div style="height: 0.9rem"></div>
+        <div class="socials" aria-label="Social links">
+          <a class="icon-link" href="https://www.facebook.com/princesagarden" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 9h2.5l-.5 3H14v9h-3v-9H9V9h2V7.3C11 5.1 12 4 14.8 4H16v3h-1.2c-1.2 0-1.8.4-1.8 1.7V9z"/></svg>
+          </a>
+          <a class="icon-link" href="https://www.instagram.com/princesagarden/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 2.5A4.5 4.5 0 1 1 7.5 12 4.51 4.51 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.7 6.3a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-panel reveal">
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-list mono">
+          <li><a href="tel:+639177755776">+63 917 775 5776</a></li>
+          <li><a href="mailto:info@princesagardenisland.com">info@princesagardenisland.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-panel reveal">
+        <h4 class="footer-heading">Hours</h4>
+        <ul class="footer-list mono">
+          <li>Daily</li>
+          <li>6:00 PM - 10:00 PM</li>
+          <li>Puerto Princesa, Palawan</li>
+        </ul>
+      </div>
+      <div class="footer-panel reveal">
+        <h4 class="footer-heading">Links</h4>
+        <ul class="footer-list mono">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="shell">
+      <div class="copyright mono">© <span id="year"></span> Yama Cave Bar, Puerto Princesa, Palawan</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuItems = [
+      {
+        name: 'House Blend Iced Tea',
+        category: 'Beverage',
+        price: '₱244',
+        desc: 'Black tea, pineapple juice, and lemon juice from the published menu.'
+      },
+      {
+        name: 'Citrus Freeze',
+        category: 'Mocktail',
+        price: '₱305',
+        desc: 'Orange juice, fresh lemon juice, salted caramel syrup, and Sprite.'
+      },
+      {
+        name: 'Suntory Kakubin',
+        category: 'Highball',
+        price: '₱464',
+        desc: 'Crisp, citrusy, refreshing whiskey highball.'
+      },
+      {
+        name: 'Umeshu',
+        category: 'Highball',
+        price: '₱464',
+        desc: 'Japanese plum wine with sparkling water over ice.'
+      },
+      {
+        name: 'Nikka Shochu',
+        category: 'Highball',
+        price: '₱464',
+        desc: 'Japanese spirit, soda, and ice for a clean finish.'
+      },
+      {
+        name: 'Yozushu Choya',
+        category: 'Highball',
+        price: '₱464',
+        desc: 'Fruit-infused spirits and sparkling water.'
+      },
+      {
+        name: 'Hakashika Junmai Ginjo (300ml)',
+        category: 'Sake',
+        price: '₱1,830',
+        desc: 'Clean, crisp taste with delicate fruit notes.'
+      },
+      {
+        name: 'Dassai 45 Junmai Daiginjo (300ml)',
+        category: 'Sake',
+        price: '₱2,379',
+        desc: 'Elegant, fruity, floral, and smooth to the finish.'
+      },
+      {
+        name: 'San Miguel Pale',
+        category: 'Beer',
+        price: '₱220',
+        desc: 'Beer listing from the published beverages section.'
+      },
+      {
+        name: 'San Miguel Light',
+        category: 'Beer',
+        price: '₱220',
+        desc: 'Crisp and refreshing pale lager from the menu.'
+      }
+    ];
+
+    const events = [
+      {
+        title: 'Cave Sessions',
+        tag: 'Concept / After dark',
+        desc: 'Reserved for intimate sets, slow pours, and low amber light when the room needs a deeper pulse.'
+      },
+      {
+        title: 'Live Band Fridays',
+        tag: 'Concept / Weekend',
+        desc: 'A ready-made slot for future band nights if the venue publishes recurring music programming.'
+      },
+      {
+        title: 'Dark Happy Hour',
+        tag: 'Concept / Sunset',
+        desc: 'Built as a flexible promo panel for the site because no verified Yama happy-hour page was found.'
+      }
+    ];
+
+    const galleryItems = [
+      { file: 'assets/img/gallery-cave-interior.svg', label: 'Cave interior' },
+      { file: 'assets/img/gallery-amber-bar.svg', label: 'Amber-lit bar' },
+      { file: 'assets/img/gallery-drinks.svg', label: 'Drink ritual' },
+      { file: 'assets/img/gallery-stalactites.svg', label: 'Rock drip forms' },
+      { file: 'assets/img/gallery-crowd.svg', label: 'Night crowd' },
+      { file: 'assets/img/gallery-sea-view.svg', label: 'Sea horizon' }
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+    const eventsGrid = document.getElementById('eventsGrid');
+    const galleryGrid = document.getElementById('galleryGrid');
+
+    menuGrid.innerHTML = menuItems.map((item) => `
+      <article class="menu-card reveal">
+        <div class="menu-top">
+          <h3 class="menu-name">${item.name}</h3>
+          <span class="menu-pill">${item.category}</span>
+        </div>
+        <p class="menu-desc">${item.desc}</p>
+        <div class="menu-meta">
+          <div class="menu-note mono">Published menu</div>
+          <div class="menu-price mono">${item.price}</div>
+        </div>
+      </article>
+    `).join('');
+
+    eventsGrid.innerHTML = events.map((event) => `
+      <article class="event-card reveal">
+        <div class="event-ghost"></div>
+        <div>
+          <div class="event-meta">
+            <h3 class="event-name">${event.title}</h3>
+            <span class="event-pill">${event.tag}</span>
+          </div>
+          <p class="event-desc">${event.desc}</p>
+        </div>
+        <p class="event-line mono">Concept slot only. No verified Yama event calendar was found in sources.</p>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = galleryItems.map((item, index) => `
+      <figure class="gallery-tile tile-${String.fromCharCode(97 + index)} reveal">
+        <img src="${item.file}" alt="${item.label} illustration" loading="lazy" />
+        <figcaption class="gallery-overlay">
+          <p class="gallery-label">${item.label}</p>
+        </figcaption>
+      </figure>
+    `).join('');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      smoothTouch: false
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .from('.hero-orb', { opacity: 0, scale: 0.82, duration: 1.4 })
+      .from('.hero-cave', { y: 40, opacity: 0, duration: 1.2 }, '<0.1')
+      .from('.hero-top', { y: -30, opacity: 0, duration: 1 }, '<0.05')
+      .from('.hero-bottom', { y: 30, opacity: 0, duration: 1 }, '<0.05')
+      .from('.hero-content .reveal', { y: 28, opacity: 0, stagger: 0.08, duration: 0.85 }, '<0.12');
+
+    gsap.to('.hero-orb', {
+      scale: 1.04,
+      opacity: 1,
+      duration: 2.8,
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut'
+    });
+
+    gsap.to('.cave-drip', {
+      y: 16,
+      opacity: 1,
+      duration: 2.2,
+      repeat: -1,
+      yoyo: true,
+      stagger: 0.35,
+      ease: 'sine.inOut'
+    });
+
+    gsap.utils.toArray('.section').forEach((section) => {
+      const elements = section.querySelectorAll('.reveal, .reveal-x');
+      gsap.fromTo(elements, {
+        y: 28,
+        opacity: 0
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 72%'
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const targetId = anchor.getAttribute('href');
+        const target = targetId && document.querySelector(targetId);
+        if (!target) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { offset: -72 });
+      });
+    });
+
+    const heroMove = gsap.quickTo('.hero-cave', 'y', { duration: 0.7, ease: 'power3.out' });
+    window.addEventListener('scroll', () => {
+      const progress = Math.min(window.scrollY / window.innerHeight, 1);
+      heroMove(progress * 28);
+      gsap.set('.hero-orb', { y: progress * 34 });
+    }, { passive: true });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "Yama Cave Bar",
+    "url": "https://frans15-2006.github.io/TheFrans/yama-cave-bar/",
+    "image": "https://frans15-2006.github.io/TheFrans/yama-cave-bar/assets/img/og-image.svg",
+    "telephone": "+63 917 775 5776",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Caniguiran, Barangay Bancao-Bancao, Tower 2, 8th floor, Princesa Garden Island Resort and Spa",
+      "addressLocality": "Puerto Princesa",
+      "addressRegion": "Palawan",
+      "postalCode": "5300",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.7320697,
+      "longitude": 118.7710334
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "18:00",
+        "closes": "22:00"
+      }
+    ],
+    "servesCuisine": ["Japanese", "Cocktails", "Sushi"],
+    "priceRange": "₱₱₱",
+    "sameAs": [
+      "https://www.princesagardenisland.com/drinks-and-dining/",
+      "https://www.facebook.com/princesagarden",
+      "https://www.instagram.com/princesagarden/"
+    ]
+  }
+  </script>
 </body>
 </html>

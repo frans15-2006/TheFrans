@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" fill="none">
+  <rect width="1920" height="180" fill="#080808"/>
+  <g fill="#101010" stroke="#232323" stroke-width="2">
+    <path d="M0 0h118l46 94 40 86H0V0z"/>
+    <path d="M104 0h114l30 78 60 102H56L104 0z"/>
+    <path d="M286 0h140l48 100 36 80H238l48-180z"/>
+    <path d="M498 0h122l40 76 54 104H456L498 0z"/>
+    <path d="M660 0h138l34 86 60 94H618l42-180z"/>
+    <path d="M864 0h118l42 98 40 82H820l44-180z"/>
+    <path d="M1002 0h146l40 82 48 98H960l42-180z"/>
+    <path d="M1208 0h126l44 92 40 88h-210l40-180z"/>
+    <path d="M1378 0h138l34 72 58 108h-230l40-180z"/>
+    <path d="M1570 0h122l38 84 52 96h-212l42-180z"/>
+    <path d="M1750 0h170l0 180h-210l40-180z"/>
+  </g>
+  <g stroke="#f0a500" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round">
+    <path d="M52 152v18"/><path d="M220 156v14"/><path d="M390 150v20"/><path d="M554 152v18"/><path d="M760 156v14"/><path d="M926 150v20"/><path d="M1106 154v16"/><path d="M1290 150v20"/><path d="M1478 156v14"/><path d="M1664 152v18"/><path d="M1844 150v20"/>
+  </g>
+</svg>
