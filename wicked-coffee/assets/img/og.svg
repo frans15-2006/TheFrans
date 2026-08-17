@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Wicked Coffee social preview">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="930" cy="176" r="180" fill="#f0a500" opacity="0.16"/>
+  <circle cx="928" cy="178" r="118" fill="#111" stroke="#f0a500" stroke-width="8"/>
+  <path d="M164 178h352" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <text x="160" y="280" fill="#eaeaea" font-family="Bebas Neue, sans-serif" font-size="122" letter-spacing="6">WICKED COFFEE</text>
+  <text x="164" y="352" fill="#f0a500" font-family="JetBrains Mono, monospace" font-size="28" letter-spacing="6">SPECIALTY COFFEE WITH EDGE</text>
+  <text x="164" y="418" fill="#bdbdbd" font-family="Space Grotesk, sans-serif" font-size="30">Verified public menu highlights, daily hours, and social links.</text>
+  <path d="M800 335c0-62 48-112 108-112s108 50 108 112-48 112-108 112-108-50-108-112Z" fill="#101010" stroke="#f0a500" stroke-width="8"/>
+  <path d="M858 350h98" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M905 288c0 26-16 48-38 55 14 11 31 17 50 17s36-6 50-17c-22-7-38-29-38-55Z" fill="#f0a500" opacity="0.22"/>
+</svg>

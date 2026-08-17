@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Wicked Coffee mark">
+  <rect width="128" height="128" rx="30" fill="#080808"/>
+  <circle cx="88" cy="34" r="16" fill="#f0a500" opacity="0.18"/>
+  <path d="M34 76c0-13 10-24 24-24s24 11 24 24-10 24-24 24S34 89 34 76Z" fill="none" stroke="#f0a500" stroke-width="7"/>
+  <path d="M58 43c0 10-6 18-14 18 4 5 10 8 18 8s14-3 18-8c-8 0-14-8-14-18-2 1-6 1-8 0Z" fill="#f0a500"/>
+  <path d="M57 27h14c5 0 8 3 8 8 0 8-6 12-15 12s-15-4-15-12c0-5 3-8 8-8Z" fill="none" stroke="#eaeaea" stroke-width="5"/>
+  <path d="M62 22h4v10h-4z" fill="#eaeaea"/>
+  <path d="M64 12c6 4 9 8 9 13 0 4-3 7-9 11-6-4-9-7-9-11 0-5 3-9 9-13Z" fill="#f0a500"/>
+</svg>

@@ -1,5 +1,1472 @@
 <!DOCTYPE html>
-<title>Wicked Coffee</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wicked Coffee | Specialty Coffee with Edge</title>
+  <meta name="description" content="Wicked Coffee landing page with verified public menu highlights, hours, social links, and a transparent location note for public data discrepancies.">
+  <meta property="og:title" content="Wicked Coffee | Specialty Coffee with Edge">
+  <meta property="og:description" content="Dark, bold landing page for Wicked Coffee with verified menu highlights, daily hours, and social links.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/wicked-coffee/assets/img/og.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/wicked-coffee/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: rgba(255, 255, 255, 0.03);
+      --surface-strong: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --accent: #f0a500;
+      --accent-soft: rgba(240, 165, 0, 0.16);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(240, 165, 0, 0.12), transparent 20%),
+        radial-gradient(circle at 80% 0%, rgba(240, 165, 0, 0.08), transparent 26%),
+        linear-gradient(180deg, #090909 0%, #080808 45%, #050505 100%);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: linear-gradient(rgba(255,255,255,0.65) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.65) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wrap {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0.72));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .topbar-inner {
+      min-height: 4.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .brand-mark {
+      width: 2.25rem;
+      height: 2.25rem;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 0 18px rgba(240, 165, 0, 0.22));
+    }
+
+    .brand-name {
+      font-size: 1.55rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.88);
+      padding: 0.4rem 0;
+      transition: color 180ms ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--accent);
+      transition: transform 240ms ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: #fff;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      overflow: clip;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 38rem;
+      height: 38rem;
+      right: -9rem;
+      top: -5rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.22), rgba(240, 165, 0, 0.06) 32%, transparent 68%);
+      filter: blur(26px);
+    }
+
+    .hero::after {
+      width: 24rem;
+      height: 24rem;
+      left: -8rem;
+      bottom: -6rem;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.12), transparent 70%);
+      filter: blur(34px);
+    }
+
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      min-height: calc(100svh - 4.2rem);
+      padding: 2.6rem 0 3.2rem;
+      align-items: end;
+    }
+
+    .hero-copy {
+      max-width: 46rem;
+      padding-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.72);
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 2.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(240, 165, 0, 0.1));
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.9;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(4.2rem, 14vw, 11rem);
+      color: #fff;
+      text-shadow: 0 0 32px rgba(240, 165, 0, 0.14);
+    }
+
+    .hero-subtitle {
+      margin-top: 1rem;
+      max-width: 32rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.78);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #f6b319, #e09300);
+      color: #1a1200;
+      box-shadow: 0 18px 36px rgba(240, 165, 0, 0.16);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.65), 0 22px 48px rgba(240, 165, 0, 0.18);
+    }
+
+    .btn-ghost {
+      border-color: rgba(240, 165, 0, 0.4);
+      color: var(--text);
+      background: rgba(240, 165, 0, 0.04);
+    }
+
+    .btn-ghost:hover,
+    .btn-ghost:focus-visible {
+      border-color: rgba(240, 165, 0, 0.85);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.2), 0 18px 42px rgba(240, 165, 0, 0.08);
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.42);
+      transform: scale(0);
+      animation: ripple 650ms ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: scale(7);
+        opacity: 0;
+      }
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-orb {
+      position: absolute;
+      right: -8vw;
+      top: 5vh;
+      width: min(56vw, 46rem);
+      max-width: none;
+      opacity: 0.95;
+      filter: drop-shadow(0 24px 70px rgba(0, 0, 0, 0.55));
+      transform-origin: 60% 40%;
+    }
+
+    .hero-drip {
+      position: absolute;
+      right: 8vw;
+      bottom: 6vh;
+      width: min(36vw, 20rem);
+      max-width: none;
+      opacity: 0.88;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 18px rgba(240, 165, 0, 0.1));
+    }
+
+    .floating-badge {
+      position: absolute;
+      left: 0;
+      bottom: 5rem;
+      width: clamp(8rem, 16vw, 12rem);
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(240, 165, 0, 0.28);
+      background: rgba(8, 8, 8, 0.72);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      border-radius: 1rem;
+      z-index: 3;
+    }
+
+    .floating-badge strong {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .floating-badge span {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      right: 0;
+      bottom: 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.65);
+      z-index: 2;
+    }
+
+    .scroll-line {
+      width: 3.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240, 165, 0, 0.2), rgba(240, 165, 0, 0.9));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 1rem;
+      background: rgba(255, 255, 255, 0.78);
+      animation: scan 1.7s ease-in-out infinite;
+    }
+
+    @keyframes scan {
+      0% { transform: translateX(-1.5rem); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateX(5rem); opacity: 0; }
+    }
+
+    .section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      max-width: 42rem;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.58);
+    }
+
+    .section-title {
+      font-size: clamp(2.7rem, 6vw, 5rem);
+    }
+
+    .section-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+      max-width: 42rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.95rem;
+    }
+
+    .menu-item {
+      position: relative;
+      padding: 1.2rem 1.1rem 1rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+      border-radius: 1.1rem;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      overflow: hidden;
+    }
+
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at top right, rgba(240, 165, 0, 0.15), transparent 34%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(240, 165, 0, 0.65);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.16), 0 20px 54px rgba(0, 0, 0, 0.42);
+    }
+
+    .menu-item:hover::before,
+    .menu-item:focus-within::before {
+      opacity: 1;
+    }
+
+    .menu-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .menu-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .menu-desc {
+      color: rgba(234, 234, 234, 0.72);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      max-width: 28rem;
+    }
+
+    .menu-meta {
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.42rem 0.7rem;
+      border: 1px solid rgba(240, 165, 0, 0.35);
+      border-radius: 999px;
+      background: rgba(240, 165, 0, 0.08);
+      color: #ffd980;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+
+    .price {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .section-sidenote {
+      margin-top: 1rem;
+      color: rgba(234, 234, 234, 0.52);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .story-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.6);
+    }
+
+    .story-title {
+      font-size: clamp(3.3rem, 8vw, 7rem);
+      line-height: 0.88;
+    }
+
+    .story-paragraph {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 35rem;
+      font-size: 1rem;
+    }
+
+    .story-art {
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+      padding: 0.85rem;
+      box-shadow: var(--shadow);
+      max-width: 34rem;
+      margin-left: auto;
+    }
+
+    .story-art img {
+      width: 100%;
+      height: auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .gallery-tile {
+      position: relative;
+      min-height: 15rem;
+      border-radius: 1.15rem;
+      overflow: hidden;
+      border: 1px solid rgba(240, 165, 0, 0.24);
+      background: rgba(255,255,255,0.02);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      isolation: isolate;
+    }
+
+    .gallery-tile:hover {
+      transform: scale(1.03);
+      border-color: rgba(240, 165, 0, 0.7);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.14), 0 20px 50px rgba(0, 0, 0, 0.42);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform 260ms ease;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: end;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(8,8,8,0.02), rgba(8,8,8,0.76));
+      color: #fff;
+      z-index: 2;
+    }
+
+    .gallery-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .gallery-label::before {
+      content: '';
+      width: 1.6rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius: 1.25rem;
+      padding: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: 0;
+    }
+
+    .hours-table th,
+    .hours-table td {
+      padding: 0.82rem 0;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .hours-table th {
+      color: rgba(234, 234, 234, 0.56);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      width: 30%;
+    }
+
+    .hours-table td {
+      color: rgba(234, 234, 234, 0.88);
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .detail-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      font-size: 0.92rem;
+      color: rgba(234, 234, 234, 0.8);
+    }
+
+    .detail-item span {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      min-width: 6.5rem;
+      padding-top: 0.18rem;
+    }
+
+    .map-shell {
+      position: relative;
+      min-height: 24rem;
+      overflow: hidden;
+    }
+
+    .map-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.96;
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 53%;
+      top: 47%;
+      transform: translate(-50%, -50%);
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 8px rgba(240, 165, 0, 0.18), 0 0 0 18px rgba(240, 165, 0, 0.08);
+      z-index: 2;
+    }
+
+    .map-pin::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 1.05rem;
+      width: 1px;
+      height: 3.7rem;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      transform: translateX(-50%);
+    }
+
+    .map-copy {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      display: grid;
+      gap: 0.35rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(240, 165, 0, 0.22);
+      background: rgba(8, 8, 8, 0.68);
+      backdrop-filter: blur(16px);
+      border-radius: 1rem;
+      z-index: 3;
+    }
+
+    .map-copy strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .map-copy span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: rgba(234, 234, 234, 0.86);
+    }
+
+    .site-footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.02));
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.3rem;
+    }
+
+    .footer-title {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 22rem;
+    }
+
+    .footer-list {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(234, 234, 234, 0.82);
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.95rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.72rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.03);
+      color: rgba(234, 234, 234, 0.86);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 165, 0, 0.5);
+      box-shadow: 0 0 0 1px rgba(240, 165, 0, 0.14);
+    }
+
+    .social-link svg {
+      width: 0.95rem;
+      height: 0.95rem;
+      fill: currentColor;
+    }
+
+    .footer-footnote {
+      margin-top: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(234, 234, 234, 0.46);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .hidden-on-mobile {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .wrap {
+        width: min(calc(100% - 2.5rem), var(--max));
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: dense;
+      }
+
+      .gallery-tile:nth-child(1) {
+        grid-column: span 2;
+        min-height: 20rem;
+      }
+
+      .gallery-tile:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr 0.9fr 1fr;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero-inner {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-copy {
+        padding-bottom: 2rem;
+      }
+
+      .hero-actions {
+        margin-top: 2rem;
+      }
+
+      .floating-badge {
+        left: auto;
+        right: 7rem;
+        bottom: 8rem;
+      }
+
+      .scroll-hint {
+        bottom: 2rem;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .story-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .location-grid {
+        grid-template-columns: 0.92fr 1.08fr;
+      }
+
+      .hidden-on-mobile {
+        display: inline-flex;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .hero-orb,
+      .hero-drip,
+      .floating-badge {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <div class="shell">
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brand-lockup" href="#hero" data-scroll>
+          <img class="brand-mark" src="assets/img/favicon.svg" alt="Wicked Coffee mark">
+          <span class="brand-name">Wicked Coffee</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link" href="#menu" data-scroll>Menu</a>
+          <a class="nav-link" href="#story" data-scroll>Story</a>
+          <a class="nav-link" href="#gallery" data-scroll>Gallery</a>
+          <a class="nav-link" href="#location" data-scroll>Find Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-orb" src="assets/img/ink-drip-orb.svg" alt="">
+          <img class="hero-drip" src="assets/img/coffee-skull.svg" alt="">
+        </div>
+        <div class="wrap hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow">Specialty coffee with an edge</div>
+            <h1 class="hero-title">Wicked Coffee</h1>
+            <p class="hero-subtitle">Neighborhood slow bar energy. Verified public listings point to Project 2, Quezon City, with a menu built around espresso, signature drinks, and a very unbothered cup.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary ripple-btn cta-primary" href="#menu" data-scroll>See the Menu</a>
+              <a class="btn btn-ghost ripple-btn" href="#location" data-scroll>Find Us</a>
+            </div>
+          </div>
+          <div class="floating-badge">
+            <strong>Now serving</strong>
+            <span>Daily public hours at 8:30 AM - 7:00 PM.</span>
+          </div>
+          <div class="scroll-hint hidden-on-mobile">
+            <span class="scroll-line" aria-hidden="true"></span>
+            <span>Scroll down</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="menu">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="section-label">Menu highlights</div>
+            <h2 class="section-title">Pulled from the public menu</h2>
+            <p class="section-copy">These highlights come from Wicked Coffee's Booky menu page and verified public mentions. Prices and item notes are shown as listed.</p>
+          </div>
+          <div class="menu-grid" data-stagger="menu" id="menuGrid"></div>
+          <div class="section-sidenote">Source note: Booky menu plus public coffee mentions for Wicked Coffee Project 2.</div>
+        </div>
+      </section>
+
+      <section class="section" id="story">
+        <div class="wrap story-grid">
+          <div class="story-copy" data-reveal>
+            <div class="story-kicker">About the shop</div>
+            <h2 class="story-title">Garage roots. Slow bar discipline.</h2>
+            <p class="story-paragraph">Public coverage describes Wicked Coffee as a homegrown neighborhood cafe that started inside a garage before growing into a proper slow bar. The tone across reviews is consistent: serious coffee, a small but sharp menu, and a place built for lingering without the usual cafe noise.</p>
+            <p class="story-paragraph">Social posts from the shop read the same way, with the profile calling it a smol neighborhood coffee shop and keeping the daily rhythm tight. That attitude is what this page leans into: dark, direct, and a little wicked.</p>
+          </div>
+          <div class="story-art" data-reveal>
+            <img src="assets/img/coffee-skull.svg" alt="Bold coffee illustration with dripping detail">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="section-label">Gallery</div>
+            <h2 class="section-title">Moody frames from the counter</h2>
+            <p class="section-copy">A graphic gallery built from SVG scenes, giving the page a late-night coffee-shop feel without pretending to show photos we could not verify.</p>
+          </div>
+          <div class="gallery-grid" data-stagger="gallery" id="galleryGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <div class="section-label">Hours / Location</div>
+            <h2 class="section-title">Verified public hours and place data</h2>
+            <p class="section-copy">Public listings are not fully consistent on the unit number, but they do align on the Bignay, Project 2, Quezon City spot, daily hours, and contact channels. No verified Puerto Princesa branch surfaced in public sources.</p>
+          </div>
+          <!-- No verified Puerto Princesa branch/address surfaced in public sources; Puerto Princesa city coordinates are shown below as a fallback reference only. -->
+          <div class="location-grid">
+            <div class="panel" data-reveal>
+              <table class="hours-table" aria-label="Operating hours">
+                <tbody id="hoursTable"></tbody>
+              </table>
+              <div class="detail-list">
+                <div class="detail-item">
+                  <span>Address</span>
+                  <div>69A Bignay St, Project 2, Quezon City, Metro Manila, Philippines<br><span class="mono accent">Public profiles also show 69B in some places.</span></div>
+                </div>
+                <div class="detail-item">
+                  <span>Email</span>
+                  <div><a href="mailto:wickedcoffee.ph@gmail.com">wickedcoffee.ph@gmail.com</a></div>
+                </div>
+                <div class="detail-item">
+                  <span>Maps</span>
+                  <div><a href="https://www.openstreetmap.org/?mlat=14.6318934&mlon=121.0586486#map=17/14.6318934/121.0586486" target="_blank" rel="noopener noreferrer">OpenStreetMap pin</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="panel map-shell" data-reveal>
+              <img src="assets/img/map-frame.svg" alt="Stylized coordinate map backdrop">
+              <div class="map-pin" aria-hidden="true"></div>
+              <div class="map-copy">
+                <strong>Verified coordinates</strong>
+                <span class="mono">14.6318934, 121.0586486 - Project 2, Quezon City</span>
+                <span class="mono">Fallback reference: Puerto Princesa city center 9.73917, 118.73528</span>
+                <span class="mono">Fallback note: Puerto Princesa branch not verified in public sources.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <div class="brand-lockup" aria-label="Wicked Coffee">
+            <img class="brand-mark" src="assets/img/favicon.svg" alt="">
+            <span class="brand-name">Wicked Coffee</span>
+          </div>
+          <p class="footer-copy">Specialty coffee with a blunt edge. Verified public data points to Project 2, Quezon City, and the site keeps that distinction visible instead of filling the gaps with guesswork.</p>
+        </div>
+        <div>
+          <div class="section-label">Quick links</div>
+          <div class="footer-list">
+            <a href="#menu" data-scroll>Menu highlights</a>
+            <a href="#story" data-scroll>Story / About</a>
+            <a href="#gallery" data-scroll>Gallery</a>
+            <a href="#location" data-scroll>Hours / Location</a>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Hours</div>
+          <div class="footer-list">
+            <span>Daily</span>
+            <span>8:30 AM - 7:00 PM</span>
+            <span class="accent">Verified public listings</span>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Socials</div>
+          <div class="social-row">
+            <a class="social-link" href="https://www.facebook.com/wickedcoffeeph/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V8.1c0-.9.2-1.5 1.5-1.5H16.7V3.8c-.4-.1-1.5-.2-2.7-.2-2.6 0-4.4 1.6-4.4 4.6V11H7v3h2.6v8h3.9Z"/></svg>
+              <span>Facebook</span>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/_wickedcoffeeph/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 2.7A5.3 5.3 0 1 1 6.7 12 5.3 5.3 0 0 1 12 6.7Zm0 2A3.3 3.3 0 1 0 15.3 12 3.3 3.3 0 0 0 12 8.7Zm5.7-.9a1.2 1.2 0 1 1-1.2-1.2 1.2 1.2 0 0 1 1.2 1.2Z"/></svg>
+              <span>Instagram</span>
+            </a>
+            <a class="social-link" href="https://www.threads.com/@_wickedcoffeeph" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8 8.5c-.9-1.1-2.1-1.7-3.6-1.7-1.4 0-2.5.4-3.4 1.2-.8.7-1.3 1.7-1.4 2.9l2.3.2c.1-.6.3-1 .7-1.4.4-.4.9-.6 1.6-.6.8 0 1.4.2 1.8.7.4.4.6 1 .6 1.8v.5c-.8-.2-1.6-.4-2.4-.4-1.4 0-2.5.3-3.4 1-1 .7-1.4 1.6-1.4 2.8 0 1.1.4 1.9 1.1 2.5.8.7 1.8 1 3.1 1 1.1 0 2.1-.2 2.9-.7.7-.4 1.3-1 1.7-1.8.3-.5.5-1.1.6-1.8h-2.1c-.1.8-.4 1.4-.9 1.8-.5.5-1.2.7-2 .7-.7 0-1.2-.1-1.6-.4-.4-.3-.6-.7-.6-1.2 0-.6.3-1 .8-1.3.6-.3 1.3-.5 2.1-.5.9 0 1.8.2 2.6.5v.8c0 1.1-.3 1.9-1 2.5-.6.5-1.5.8-2.6.8-1.4 0-2.6-.4-3.6-1.1-1.2-.8-1.7-2-1.7-3.4 0-1.6.6-2.9 1.9-3.9 1.2-1 2.7-1.4 4.4-1.4 1.8 0 3.2.5 4.4 1.5 1.1.9 1.7 2.2 1.8 3.8h-2.1c-.1-1-.4-1.7-.9-2.3-.5-.5-1.2-.8-2.1-.8-.8 0-1.4.2-1.9.6-.5.4-.8.9-.9 1.5h-2.2c.1-1.5.6-2.6 1.5-3.5 1-.9 2.2-1.4 3.7-1.4 1.7 0 3.1.6 4.2 1.7 1 1 1.5 2.3 1.5 3.9v6.9h-2.2V14c0-2-.3-3.5-1.2-4.5Z"/></svg>
+              <span>Threads</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="wrap footer-footnote">© 2026 Wicked Coffee. Public data verified from Booky, Instagram, Facebook, Threads, and related coverage. Puerto Princesa branch not confirmed. City fallback reference: 9.73917, 118.73528.</div>
+    </footer>
+  </div>
+
+  <script id="structured-data" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Wicked Coffee",
+    "url": "https://frans15-2006.github.io/TheFrans/wicked-coffee/",
+    "image": "https://frans15-2006.github.io/TheFrans/wicked-coffee/assets/img/og.svg",
+    "description": "Neighborhood specialty coffee shop with verified public hours and menu highlights.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "69A Bignay St, Project 2",
+      "addressLocality": "Quezon City",
+      "addressRegion": "Metro Manila",
+      "postalCode": "1102",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.6318934,
+      "longitude": 121.0586486
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "08:30", "closes": "19:00" }
+    ],
+    "servesCuisine": ["Coffee", "Cafe"],
+    "sameAs": [
+      "https://www.facebook.com/wickedcoffeeph/",
+      "https://www.instagram.com/_wickedcoffeeph/",
+      "https://www.threads.com/@_wickedcoffeeph",
+      "https://wickedcoffee.cococart.co/"
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    const menuItems = [
+      {
+        name: 'Espresso',
+        category: 'Coffee based',
+        price: 'P135',
+        desc: 'Hot shot using the listed Sidama, Ethiopia and Tarrazu, Costa Rica profile. Taste notes: blueberry, florals, molasses.'
+      },
+      {
+        name: 'Americano',
+        category: 'Coffee based',
+        price: 'P135',
+        desc: 'Espresso shot with water. Served hot or iced.'
+      },
+      {
+        name: 'Latte / Cappuccino',
+        category: 'Coffee based',
+        price: 'P160',
+        desc: 'Espresso shot with milk. Hot or iced.'
+      },
+      {
+        name: 'Mocha',
+        category: 'Coffee based',
+        price: 'P165',
+        desc: 'Espresso shot with dark chocolate sauce and milk, served hot or iced.'
+      },
+      {
+        name: 'Spanish Latte',
+        category: 'Coffee based',
+        price: 'P165',
+        desc: 'Espresso shot with milk and condensed milk. Hot or iced.'
+      },
+      {
+        name: 'Sea Salt Latte',
+        category: 'Best seller',
+        price: 'P175',
+        desc: 'Iced only. Espresso shot with sugar syrup and milk, topped with sea salt cream.'
+      },
+      {
+        name: 'Wicked Americano',
+        category: 'Signature',
+        price: 'P190',
+        desc: 'Iced only. Espresso shot with peach syrup and soda water, garnished with peach fruit and rosemary.'
+      },
+      {
+        name: 'Slowbrew',
+        category: 'Slow bar',
+        price: 'P250+',
+        desc: 'Ask the barista about the available beans. Served hot or iced.'
+      }
+    ];
+
+    const galleryItems = [
+      { label: 'Espresso pull', asset: 'assets/img/coffee-pull.svg' },
+      { label: 'Moody interior', asset: 'assets/img/interior.svg' },
+      { label: 'Bean detail', asset: 'assets/img/beans.svg' },
+      { label: 'Barista gear', asset: 'assets/img/barista-gear.svg' },
+      { label: 'Counter mood', asset: 'assets/img/og.svg' }
+    ];
+
+    const hours = [
+      ['Monday', '8:30 AM - 7:00 PM'],
+      ['Tuesday', '8:30 AM - 7:00 PM'],
+      ['Wednesday', '8:30 AM - 7:00 PM'],
+      ['Thursday', '8:30 AM - 7:00 PM'],
+      ['Friday', '8:30 AM - 7:00 PM'],
+      ['Saturday', '8:30 AM - 7:00 PM'],
+      ['Sunday', '8:30 AM - 7:00 PM']
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const hoursTable = document.getElementById('hoursTable');
+
+    menuGrid.innerHTML = menuItems.map(item => `
+      <article class="menu-item">
+        <div class="menu-top">
+          <div>
+            <div class="pill">${item.category}</div>
+            <h3 class="menu-name">${item.name}</h3>
+            <p class="menu-desc">${item.desc}</p>
+          </div>
+          <div class="menu-meta">
+            <span class="price">${item.price}</span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    galleryGrid.innerHTML = galleryItems.map(item => `
+      <figure class="gallery-tile">
+        <img src="${item.asset}" alt="${item.label}">
+        <figcaption class="gallery-overlay">
+          <span class="gallery-label">${item.label}</span>
+        </figcaption>
+      </figure>
+    `).join('');
+
+    hoursTable.innerHTML = hours.map(([day, time]) => `
+      <tr>
+        <th>${day}</th>
+        <td>${time}</td>
+      </tr>
+    `).join('');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let lenis = null;
+
+    const scrollToSection = (selector) => {
+      const target = document.querySelector(selector);
+      if (!target) return;
+      if (lenis && !reduceMotion) {
+        lenis.scrollTo(target, { offset: -72 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    document.querySelectorAll('[data-scroll]').forEach(link => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        event.preventDefault();
+        scrollToSection(href);
+      });
+    });
+
+    document.querySelectorAll('.ripple-btn').forEach(btn => {
+      btn.addEventListener('pointerdown', (event) => {
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+        btn.appendChild(ripple);
+        window.setTimeout(() => ripple.remove(), 700);
+      });
+    });
+
+    if (!reduceMotion && window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      lenis = new Lenis({
+        duration: 1.05,
+        lerp: 0.1,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        ScrollTrigger.update();
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      gsap.ticker.lagSmoothing(0);
+
+      gsap.from('.hero-copy > *', {
+        opacity: 0,
+        y: 32,
+        duration: 0.95,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.2
+      });
+
+      gsap.from('.hero-visual img', {
+        opacity: 0,
+        y: 24,
+        scale: 0.96,
+        duration: 1.15,
+        ease: 'power4.out',
+        stagger: 0.14,
+        delay: 0.18
+      });
+
+      gsap.to('.hero-orb', {
+        yPercent: -8,
+        rotation: -3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        }
+      });
+
+      gsap.to('.hero-drip', {
+        yPercent: 12,
+        xPercent: 4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8
+        }
+      });
+
+      gsap.to('.floating-badge', {
+        y: -10,
+        duration: 2.6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.to('.cta-primary', {
+        boxShadow: '0 0 0 0 rgba(240, 165, 0, 0), 0 0 36px rgba(240, 165, 0, 0.25)',
+        duration: 1.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+
+      gsap.utils.toArray('[data-reveal]').forEach((element) => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 42,
+          duration: 0.95,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 82%'
+          }
+        });
+      });
+
+      ScrollTrigger.batch('#menuGrid .menu-item', {
+        start: 'top 78%',
+        interval: 0.08,
+        batchMax: 4,
+        onEnter: (batch) => gsap.from(batch, {
+          opacity: 0,
+          y: 30,
+          duration: 0.75,
+          stagger: 0.08,
+          ease: 'power3.out'
+        })
+      });
+
+      ScrollTrigger.batch('#galleryGrid .gallery-tile', {
+        start: 'top 80%',
+        interval: 0.09,
+        batchMax: 3,
+        onEnter: (batch) => gsap.from(batch, {
+          opacity: 0,
+          scale: 0.94,
+          y: 28,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'power3.out'
+        })
+      });
+
+      ScrollTrigger.refresh();
+    }
+
+    window.addEventListener('load', () => {
+      if (window.ScrollTrigger) {
+        ScrollTrigger.refresh();
+      }
+    });
+  </script>
 </body>
+</html>

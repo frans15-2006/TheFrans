@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Coffee skull illustration">
+  <defs>
+    <linearGradient id="s1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500"/>
+      <stop offset="100%" stop-color="#ffd27a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#080808"/>
+  <path d="M345 258c40-66 110-105 211-105 101 0 175 39 222 105 33 48 51 108 51 181 0 71-19 131-56 180-24 31-53 58-90 80v60c0 37-31 68-69 68H507c-38 0-69-31-69-68v-60c-37-22-67-49-90-80-37-49-56-109-56-180 0-73 16-133 53-181Z" fill="#101010" stroke="url(#s1)" stroke-width="8"/>
+  <circle cx="487" cy="454" r="42" fill="#f0a500" opacity="0.18"/>
+  <circle cx="711" cy="454" r="42" fill="#f0a500" opacity="0.18"/>
+  <path d="M553 569c18 15 34 22 47 22 14 0 30-7 48-22" stroke="#eaeaea" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M425 330c42-43 99-66 175-66 82 0 141 23 181 66" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.6" fill="none"/>
+  <path d="M470 215c0 36 22 64 54 71-10 18-28 31-49 34 33 18 66 28 99 28s66-10 99-28c-21-3-39-16-49-34 32-7 54-35 54-71" fill="#121212" stroke="#f0a500" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M494 775h212" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M468 812h264" stroke="#f0a500" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M343 799c26-32 54-55 84-69" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.45" fill="none"/>
+  <path d="M857 799c-26-32-54-55-84-69" stroke="#f0a500" stroke-width="7" stroke-linecap="round" opacity="0.45" fill="none"/>
+  <path d="M413 727c12-24 38-46 79-65" stroke="#eaeaea" stroke-width="5" stroke-linecap="round" opacity="0.14" fill="none"/>
+  <path d="M787 727c-12-24-38-46-79-65" stroke="#eaeaea" stroke-width="5" stroke-linecap="round" opacity="0.14" fill="none"/>
+  <path d="M445 861h310" stroke="#f0a500" stroke-width="10" stroke-linecap="round" opacity="0.16"/>
+  <path d="M451 652c48 22 109 34 149 34s101-12 149-34" stroke="#f0a500" stroke-width="6" stroke-linecap="round" opacity="0.18" fill="none"/>
+  <circle cx="601" cy="211" r="20" fill="#f0a500" opacity="0.24"/>
+</svg>

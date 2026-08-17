@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Moody interior illustration">
+  <rect width="1200" height="900" fill="#080808"/>
+  <rect x="120" y="130" width="960" height="640" rx="36" fill="#0f0f0f" stroke="#f0a500" stroke-width="6"/>
+  <rect x="175" y="190" width="850" height="520" rx="20" fill="#121212" stroke="#ffffff" stroke-opacity="0.08"/>
+  <path d="M214 603h773" stroke="#f0a500" stroke-width="7" opacity="0.26"/>
+  <rect x="258" y="295" width="120" height="220" rx="14" fill="#191919" stroke="#f0a500" stroke-width="4"/>
+  <rect x="430" y="255" width="135" height="260" rx="18" fill="#141414" stroke="#ffffff" stroke-opacity="0.12" stroke-width="4"/>
+  <rect x="648" y="268" width="205" height="245" rx="22" fill="#151515" stroke="#f0a500" stroke-width="4"/>
+  <rect x="291" y="330" width="60" height="114" rx="28" fill="#0c0c0c" stroke="#f0a500" stroke-width="4"/>
+  <circle cx="494" cy="387" r="50" fill="#f0a500" opacity="0.16"/>
+  <circle cx="749" cy="381" r="60" fill="#f0a500" opacity="0.12"/>
+  <path d="M168 206h864" stroke="#eaeaea" stroke-width="2" opacity="0.08"/>
+  <path d="M168 641h864" stroke="#eaeaea" stroke-width="2" opacity="0.08"/>
+  <path d="M608 190c0 33-24 61-57 67 17 14 39 21 63 21s46-7 63-21c-33-6-57-34-57-67Z" fill="#f0a500" opacity="0.16"/>
+  <path d="M600 190v-75" stroke="#f0a500" stroke-width="8" stroke-linecap="round"/>
+  <path d="M600 115c16 12 24 25 24 40 0 14-8 26-24 37-16-11-24-23-24-37 0-15 8-28 24-40Z" fill="#f0a500" opacity="0.8"/>
+  <path d="M874 224c-10 27-15 56-15 87v74" stroke="#f0a500" stroke-width="5" stroke-linecap="round" opacity="0.4" fill="none"/>
+</svg>

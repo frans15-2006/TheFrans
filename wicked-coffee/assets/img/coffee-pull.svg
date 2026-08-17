@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Espresso pull illustration">
+  <rect width="900" height="900" fill="#080808"/>
+  <rect x="160" y="188" width="580" height="82" rx="34" fill="#141414" stroke="#f0a500" stroke-width="6"/>
+  <rect x="258" y="260" width="384" height="330" rx="42" fill="#0f0f0f" stroke="#eaeaea" stroke-width="5"/>
+  <rect x="320" y="316" width="260" height="166" rx="26" fill="#1b1208" stroke="#f0a500" stroke-width="5"/>
+  <ellipse cx="450" cy="402" rx="112" ry="46" fill="#2c1c08"/>
+  <ellipse cx="450" cy="395" rx="100" ry="34" fill="#f0a500" opacity="0.25"/>
+  <path d="M352 521h196" stroke="#f0a500" stroke-width="9" stroke-linecap="round"/>
+  <path d="M372 548c0 26-22 48-48 48s-48-22-48-48 22-48 48-48 48 22 48 48Z" fill="none" stroke="#f0a500" stroke-width="6"/>
+  <path d="M625 548c0 26-22 48-48 48s-48-22-48-48 22-48 48-48 48 22 48 48Z" fill="none" stroke="#f0a500" stroke-width="6"/>
+  <path d="M370 605c0 34-11 69-31 101" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M531 605c0 34 11 69 31 101" stroke="#f0a500" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M290 658c30-19 73-28 128-28" stroke="#eaeaea" stroke-width="4" opacity="0.2" fill="none"/>
+  <path d="M612 658c-30-19-73-28-128-28" stroke="#eaeaea" stroke-width="4" opacity="0.2" fill="none"/>
+  <path d="M222 672c86 50 167 75 228 75s142-25 228-75" stroke="#f0a500" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.44"/>
+</svg>

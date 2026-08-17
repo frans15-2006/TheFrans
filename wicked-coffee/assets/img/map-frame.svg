@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Coordinate grid backdrop">
+  <rect width="1200" height="900" fill="#050505"/>
+  <defs>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#eaeaea" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="glow" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f0a500" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#f0a500" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <ellipse cx="430" cy="310" rx="330" ry="240" fill="url(#glow)"/>
+  <path d="M170 640c120-70 260-105 420-105s300 35 420 105" stroke="#f0a500" stroke-width="8" stroke-opacity="0.3" fill="none" stroke-linecap="round"/>
+  <path d="M224 220c96-38 202-56 320-56s224 18 320 56" stroke="#eaeaea" stroke-width="4" stroke-opacity="0.12" fill="none"/>
+  <path d="M224 760c96 38 202 56 320 56s224-18 320-56" stroke="#eaeaea" stroke-width="4" stroke-opacity="0.12" fill="none"/>
+  <circle cx="774" cy="402" r="20" fill="#f0a500" opacity="0.2"/>
+  <circle cx="774" cy="402" r="7" fill="#f0a500"/>
+  <path d="M774 280v244" stroke="#f0a500" stroke-width="2" stroke-opacity="0.18"/>
+  <path d="M630 402h288" stroke="#f0a500" stroke-width="2" stroke-opacity="0.18"/>
+  <text x="74" y="90" fill="#f0a500" fill-opacity="0.36" font-family="JetBrains Mono, monospace" font-size="30" letter-spacing="8">COORDINATE GRID</text>
+</svg>
