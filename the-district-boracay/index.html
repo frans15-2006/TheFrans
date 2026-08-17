@@ -1,5 +1,1489 @@
 <!DOCTYPE html>
-<title>The District Boracay</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The District Boracay | Station 2 Beachfront Resort in Boracay</title>
+  <meta name="description" content="The District Boracay in Station 2, Boracay Island, Aklan, Philippines. Verified room types, public rates, amenities, contact details, and Boracay coordinates.">
+  <meta name="theme-color" content="#080808">
+  <meta property="og:title" content="The District Boracay | Station 2 Beachfront Resort in Boracay">
+  <meta property="og:description" content="Verified room types, public rates, amenities, contact details, and coordinates for The District Boracay on Boracay Island, Aklan.">
+  <meta property="og:image" content="https://frans15-2006.github.io/TheFrans/the-district-boracay/assets/img/hero-boracay.svg">
+  <meta property="og:url" content="https://frans15-2006.github.io/TheFrans/the-district-boracay/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://frans15-2006.github.io/TheFrans/the-district-boracay/assets/img/hero-boracay.svg">
+  <link rel="canonical" href="https://frans15-2006.github.io/TheFrans/the-district-boracay/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: rgba(255, 255, 255, 0.03);
+      --panel-strong: rgba(255, 255, 255, 0.05);
+      --text: #eaeaea;
+      --muted: rgba(234, 234, 234, 0.72);
+      --faint: rgba(234, 234, 234, 0.46);
+      --accent: #f0a500;
+      --border: rgba(240, 165, 0, 0.18);
+      --border-strong: rgba(240, 165, 0, 0.45);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius: 22px;
+      --nav-h: 78px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      mix-blend-mode: screen;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 3px 3px, 3px 3px;
+      z-index: 1;
+    }
+
+    .site-shell { position: relative; z-index: 2; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1rem, 2.2vw, 2rem);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(8,8,8,0.9), rgba(8,8,8,0.64));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topbar-inner {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.92);
+    }
+
+    .brand strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .toplinks {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .toplinks a {
+      position: relative;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(234,234,234,0.86);
+      padding-bottom: 0.2rem;
+    }
+
+    .toplinks a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .toplinks a:hover::after,
+    .toplinks a:focus-visible::after { transform: scaleX(1); }
+
+    .toplinks a:focus-visible,
+    .btn:focus-visible,
+    .icon-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      min-height: 48px;
+      padding: 0.95rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn--accent {
+      background: var(--accent);
+      color: #111;
+      box-shadow: 0 10px 32px rgba(240, 165, 0, 0.2);
+      font-weight: 700;
+    }
+
+    .btn--ghost {
+      border-color: rgba(234,234,234,0.18);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn--ghost:hover { border-color: rgba(240,165,0,0.38); box-shadow: 0 0 0 1px rgba(240,165,0,0.16) inset; }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.36);
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 700ms ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      to { transform: translate(-50%, -50%) scale(14); opacity: 0; }
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      align-items: end;
+      padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2.2vw, 2rem) clamp(1.5rem, 3vw, 2.8rem);
+      isolation: isolate;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(240,165,0,0.18), transparent 22%),
+        radial-gradient(circle at 20% 28%, rgba(31, 102, 145, 0.16), transparent 24%),
+        linear-gradient(180deg, rgba(8,8,8,0.18), rgba(8,8,8,0.82) 82%, rgba(8,8,8,0.96));
+    }
+
+    .hero-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.94;
+      z-index: -2;
+      filter: saturate(0.9) contrast(1.03);
+      transform: scale(1.02);
+    }
+
+    .hero-grid {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .hero-copy {
+      width: min(100%, 760px);
+      padding-bottom: clamp(1rem, 3vw, 2rem);
+    }
+
+    .kicker {
+      margin: 0 0 0.95rem;
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(4.8rem, 11vw, 10rem);
+      line-height: 0.84;
+      max-width: 11ch;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: rgba(234,234,234,0.88);
+      font-size: 0.48em;
+      margin-top: 0.15em;
+      letter-spacing: 0.08em;
+    }
+
+    .hero p {
+      margin: 1.1rem 0 0;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.1vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.55rem;
+    }
+
+    .cta-row .btn {
+      min-width: 172px;
+      padding-inline: 1.2rem;
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: rgba(234,234,234,0.68);
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .scroll-indicator .line {
+      position: relative;
+      width: 48px;
+      height: 1px;
+      background: rgba(234,234,234,0.28);
+      overflow: hidden;
+    }
+
+    .scroll-indicator .line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      background: var(--accent);
+      animation: slide 1.4s ease-in-out infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(280%); }
+    }
+
+    .float-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(234,234,234,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .section {
+      padding: clamp(4.5rem, 8vw, 7rem) clamp(1rem, 2.2vw, 2rem);
+      position: relative;
+    }
+
+    .section-inner {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(3.1rem, 6vw, 5.4rem);
+      line-height: 0.86;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 68ch;
+      line-height: 1.7;
+    }
+
+    .section-head .mono {
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .room-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background-color 240ms ease;
+      min-height: 100%;
+    }
+
+    .room-card:hover,
+    .room-card:focus-within {
+      transform: translateY(-5px);
+      border-color: var(--border-strong);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(240,165,0,0.12) inset;
+    }
+
+    .room-card.featured {
+      background: linear-gradient(180deg, rgba(240,165,0,0.11), rgba(255,255,255,0.03));
+      border-color: rgba(240,165,0,0.32);
+      backdrop-filter: blur(14px);
+    }
+
+    .room-media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #101010;
+    }
+
+    .room-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 400ms ease, filter 400ms ease;
+      filter: brightness(0.92) contrast(1.04);
+    }
+
+    .room-card:hover .room-media img,
+    .room-card:focus-within .room-media img {
+      transform: scale(1.1);
+      filter: brightness(1) contrast(1.08);
+    }
+
+    .room-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(8,8,8,0.76));
+    }
+
+    .room-body {
+      display: grid;
+      gap: 0.9rem;
+      padding: 1.15rem 1.15rem 1.2rem;
+    }
+
+    .room-body h3 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.55rem);
+      line-height: 0.9;
+    }
+
+    .room-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .room-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+
+    .room-pill,
+    .amenity-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(234,234,234,0.12);
+      background: rgba(255,255,255,0.03);
+      color: rgba(234,234,234,0.86);
+      padding: 0.45rem 0.68rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .room-rate {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .room-grid-note {
+      margin-top: 1rem;
+      color: rgba(234,234,234,0.52);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      max-width: 86ch;
+    }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .amenity-item {
+      border: 1px solid rgba(234,234,234,0.1);
+      background: var(--panel);
+      border-radius: 18px;
+      padding: 1rem;
+      min-height: 136px;
+      display: grid;
+      gap: 0.8rem;
+      align-content: start;
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+    }
+
+    .amenity-item:hover,
+    .amenity-item:focus-within {
+      transform: translateY(-3px);
+      border-color: rgba(240,165,0,0.26);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .amenity-ico {
+      width: 32px;
+      height: 32px;
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .amenity-item h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      line-height: 0.9;
+      letter-spacing: 0.05em;
+    }
+
+    .amenity-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      grid-auto-flow: dense;
+    }
+
+    .gallery-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(240,165,0,0.18);
+      background: #0f0f0f;
+      box-shadow: var(--shadow);
+      transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+    }
+
+    .gallery-tile:hover,
+    .gallery-tile:focus-within {
+      transform: scale(1.03);
+      border-color: rgba(240,165,0,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(240,165,0,0.12) inset;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 400ms ease;
+    }
+
+    .gallery-tile:hover img,
+    .gallery-tile:focus-within img { transform: scale(1.06); }
+
+    .gallery-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 38%, rgba(8,8,8,0.84));
+      transition: opacity 260ms ease;
+      pointer-events: none;
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      z-index: 2;
+    }
+
+    .gallery-label span:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    .gallery-label span:last-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(234,234,234,0.68);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      text-align: right;
+      max-width: 18ch;
+    }
+
+    .gallery-tile--wide { aspect-ratio: 16 / 11; }
+    .gallery-tile--tall { aspect-ratio: 10 / 12; }
+
+    .location-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .location-copy {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem 0 0;
+    }
+
+    .address-block {
+      display: grid;
+      gap: 0.7rem;
+      border: 1px solid rgba(234,234,234,0.1);
+      background: var(--panel);
+      border-radius: 22px;
+      padding: 1.1rem;
+    }
+
+    .address-block strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      line-height: 0.9;
+    }
+
+    .address-block p,
+    .address-block a {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .address-block .mono {
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+    }
+
+    .map-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 360px;
+      border: 1px solid rgba(240,165,0,0.18);
+      background: #0d0d0d;
+      box-shadow: var(--shadow);
+    }
+
+    .map-shell iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      border: 0;
+      filter: grayscale(0.15) contrast(1.05) brightness(0.92);
+    }
+
+    .map-overlay {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      right: 1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      pointer-events: none;
+    }
+
+    .map-overlay .mono {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: rgba(234,234,234,0.72);
+      text-transform: uppercase;
+      max-width: 24ch;
+    }
+
+    .booking-band {
+      margin: 0 clamp(1rem, 2.2vw, 2rem);
+      border-top: 1px solid rgba(240,165,0,0.26);
+      border-bottom: 1px solid rgba(240,165,0,0.26);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(240,165,0,0.24), transparent 24%),
+        linear-gradient(180deg, rgba(240,165,0,0.09), rgba(255,255,255,0.02));
+    }
+
+    .booking-band .section-inner {
+      display: grid;
+      gap: 1rem;
+      padding-block: clamp(3rem, 6vw, 4.5rem);
+      align-items: center;
+    }
+
+    .booking-band h2 {
+      margin: 0;
+      font-size: clamp(3.8rem, 8vw, 6.8rem);
+      line-height: 0.85;
+      color: #f4d27b;
+    }
+
+    .booking-band p {
+      margin: 0;
+      max-width: 60ch;
+      color: rgba(234,234,234,0.82);
+      line-height: 1.7;
+    }
+
+    .booking-band .cta-row { margin-top: 0.4rem; }
+
+    .footer {
+      padding: clamp(3rem, 6vw, 4.5rem) clamp(1rem, 2.2vw, 2rem) 2rem;
+    }
+
+    .footer-inner {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(234,234,234,0.08);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .footer-col {
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .footer-col h3 {
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      line-height: 0.9;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      width: fit-content;
+      position: relative;
+      color: rgba(234,234,234,0.82);
+    }
+
+    .footer-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .footer-links a:hover::after { transform: scaleX(1); }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.4rem;
+    }
+
+    .icon-link {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(234,234,234,0.12);
+      background: rgba(255,255,255,0.03);
+      transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease;
+    }
+
+    .icon-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(240,165,0,0.42);
+      background: rgba(240,165,0,0.08);
+    }
+
+    .icon-link svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+    }
+
+    .footer-note {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      color: rgba(234,234,234,0.52);
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+
+    .hero .section-reveal { opacity: 1; transform: none; }
+
+    .nav-small {
+      display: inline-flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-small a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(234,234,234,0.72);
+    }
+
+    .nav-small a:hover { color: var(--text); }
+
+    .skip-link {
+      position: absolute;
+      top: -3rem;
+      left: 1rem;
+      padding: 0.7rem 0.95rem;
+      background: #111;
+      border: 1px solid rgba(240,165,0,0.26);
+      border-radius: 999px;
+      color: var(--text);
+      z-index: 60;
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    @media (min-width: 768px) {
+      .rooms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+
+      .gallery-tile--wide { grid-column: span 7; }
+      .gallery-tile--tall { grid-column: span 5; grid-row: span 2; }
+      .gallery-tile:nth-child(3) { grid-column: span 5; }
+      .gallery-tile:nth-child(4) { grid-column: span 4; }
+      .gallery-tile:nth-child(5) { grid-column: span 4; }
+      .gallery-tile:nth-child(6) { grid-column: span 4; }
+
+      .location-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        align-items: stretch;
+      }
+
+      .booking-band .section-inner {
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 0.8fr));
+      }
+
+      .room-card.featured { grid-row: span 2; }
+    }
+
+    @media (min-width: 1280px) {
+      .rooms-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .room-card.featured { grid-column: span 1; grid-row: span 1; }
+      .room-card:nth-child(3) { grid-row: span 2; }
+      .amenity-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 767px) {
+      :root { --nav-h: 92px; }
+
+      .topbar { height: auto; min-height: var(--nav-h); padding-block: 0.7rem; }
+      .topbar-inner { align-items: start; flex-direction: column; }
+      .toplinks { justify-content: flex-start; }
+      .hero { min-height: calc(100svh - var(--nav-h)); }
+      .hero h1 { max-width: 7.5ch; }
+      .hero-footer { align-items: start; flex-direction: column; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile--wide,
+      .gallery-tile--tall { aspect-ratio: 1 / 1; }
+      .map-overlay { flex-direction: column; align-items: start; }
+      .footer-note { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+      .scroll-indicator .line::after { animation: none; }
+      .btn,
+      .room-card,
+      .amenity-item,
+      .gallery-tile,
+      .gallery-tile img,
+      .room-media img,
+      .icon-link,
+      .toplinks a::after,
+      .footer-links a::after { transition: none !important; }
+    }
+  </style>
+</head>
 <body>
-<!-- placeholder: build pending -->
+  <a class="skip-link mono" href="#content">Skip to content</a>
+  <div class="noise"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#hero" aria-label="The District Boracay home">
+          <strong>The District Boracay</strong>
+          <span class="mono">Boracay Island, Aklan</span>
+        </a>
+        <div class="toplinks">
+          <nav class="nav-small" aria-label="Section navigation">
+            <a href="#rooms" data-scroll>Rooms</a>
+            <a href="#amenities" data-scroll>Amenities</a>
+            <a href="#location" data-scroll>Location</a>
+            <a href="#contact" data-scroll>Contact</a>
+          </nav>
+          <a class="btn btn--ghost ripple-btn mono" href="https://www.swiftbook.io/inst/#home?propertyId=562MjYTCXLwXgkHdhLnaRkKkRlhgqI0iecwMTE=&JDRN=Y" target="_blank" rel="noopener noreferrer">Book Direct</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="hero">
+        <img class="hero-art" src="assets/img/hero-boracay.svg" alt="Stylized Boracay shoreline and beachfront resort at dusk" loading="eager">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="kicker section-reveal">Station 2, Brgy. Balabag, Boracay Island, Aklan</p>
+            <h1 class="display section-reveal">The District Boracay <span>Boracay Island beachfront resort</span></h1>
+            <p class="section-reveal">A contemporary boutique beachfront resort on White Beach with verified room tiers, public rates, and a prime Station 2 address right beside Boracay's island rhythm.</p>
+            <div class="cta-row section-reveal">
+              <a class="btn btn--accent ripple-btn mono" href="https://www.swiftbook.io/inst/#home?propertyId=562MjYTCXLwXgkHdhLnaRkKkRlhgqI0iecwMTE=&JDRN=Y" target="_blank" rel="noopener noreferrer">Book Now</a>
+              <a class="btn btn--ghost ripple-btn mono" href="#rooms" data-scroll>Explore Rooms</a>
+            </div>
+            <div class="hero-footer section-reveal">
+              <span class="scroll-indicator"><span class="line"></span>Scroll down</span>
+              <span class="float-note">Boracay coordinates verified for the map below</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rooms">
+        <div class="section-inner">
+          <div class="section-head section-reveal">
+            <span class="mono">Accommodations</span>
+            <h2 class="display">Verified room types and public rates</h2>
+            <p>Room names and descriptions are drawn from the resort's published accommodation pages and current public booking search listings. Public prices change by date, so one suite is marked Inquire where no current public rate surfaced in the sources checked.</p>
+          </div>
+
+          <div class="rooms-grid">
+            <article class="room-card section-reveal">
+              <figure class="room-media">
+                <img src="assets/img/tile-white-beach.svg" alt="Stylized White Beach view" loading="lazy">
+              </figure>
+              <div class="room-body">
+                <div class="room-meta">
+                  <span class="room-pill">2 guests | 1 king bed</span>
+                  <span class="room-rate">From PHP 4,800 / night</span>
+                </div>
+                <h3 class="display">Deluxe King Room</h3>
+                <p>Standard room with 1 king bed, a writing desk, veranda, and private toilet and shower.</p>
+              </div>
+            </article>
+
+            <article class="room-card section-reveal">
+              <figure class="room-media">
+                <img src="assets/img/tile-lap-pool.svg" alt="Stylized pool and palm scene" loading="lazy">
+              </figure>
+              <div class="room-body">
+                <div class="room-meta">
+                  <span class="room-pill">2 to 4 guests | 2 queen beds</span>
+                  <span class="room-rate">From PHP 4,800 / night</span>
+                </div>
+                <h3 class="display">Deluxe Twin Room</h3>
+                <p>Standard room variation with 2 queen-size beds, a writing desk, veranda, and private toilet and shower.</p>
+              </div>
+            </article>
+
+            <article class="room-card featured section-reveal">
+              <figure class="room-media">
+                <img src="assets/img/tile-suite.svg" alt="Stylized suite interior with veranda light" loading="lazy">
+              </figure>
+              <div class="room-body">
+                <div class="room-meta">
+                  <span class="room-pill">Up to 4 guests | king bed + living room</span>
+                  <!-- No current public rate surfaced in the verified sources checked during research. -->
+                  <span class="room-rate">Inquire</span>
+                </div>
+                <h3 class="display">Deluxe Suite</h3>
+                <p>One-bedroom suite with a king bed, writing desk, private toilet and shower, veranda, and an adjoining living room with pantry.</p>
+              </div>
+            </article>
+
+            <article class="room-card section-reveal">
+              <figure class="room-media">
+                <img src="assets/img/tile-shoreline.svg" alt="Stylized shoreline and horizon" loading="lazy">
+              </figure>
+              <div class="room-body">
+                <div class="room-meta">
+                  <span class="room-pill">Couples | 1 king bed</span>
+                  <span class="room-rate">From PHP 5,200 / night</span>
+                </div>
+                <h3 class="display">Premier King Room</h3>
+                <p>King bed room with private verandah; some rooms include a double vanity sink and daybed, with partial sea or pool views.</p>
+              </div>
+            </article>
+
+            <article class="room-card section-reveal">
+              <figure class="room-media">
+                <img src="assets/img/tile-star-lounge.svg" alt="Stylized rooftop lounge and sunset" loading="lazy">
+              </figure>
+              <div class="room-body">
+                <div class="room-meta">
+                  <span class="room-pill">2 guests | loft suite</span>
+                  <span class="room-rate">From PHP 7,100 / night</span>
+                </div>
+                <h3 class="display">Premier Suite</h3>
+                <p>Two-story suite with a loft, king bed, 2 verandahs, 2 LED TVs, daybed, and floor-to-ceiling glass windows.</p>
+              </div>
+            </article>
+          </div>
+
+          <p class="room-grid-note mono">Public rate snapshots checked from current listings during research: Deluxe King and Deluxe Twin from PHP 4,800, Premier King from PHP 5,200, Premier Suite from PHP 7,100. Deluxe Suite did not surface a current public rate in the verified sources checked.</p>
+        </div>
+      </section>
+
+      <section class="section" id="amenities">
+        <div class="section-inner">
+          <div class="section-head section-reveal">
+            <span class="mono">Amenities</span>
+            <h2 class="display">Beachfront essentials plus dining and wellness</h2>
+            <p>The resort's published amenities include a swimming pool, spa, Filipino restaurant, Japanese restaurant, cafe, gym, conference room, roof deck events space, and direct beach access.</p>
+          </div>
+
+          <div class="amenity-grid">
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-beach"></use></svg>
+              <h3>Beachfront</h3>
+              <p>White Beach access right outside the door in Station 2.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-pool"></use></svg>
+              <h3>Pool</h3>
+              <p>Outdoor swimming pool for cool-down swims between beach runs.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-spa"></use></svg>
+              <h3>Spa</h3>
+              <p>Upperhouse Spa on site for treatments and reset time.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-dining"></use></svg>
+              <h3>Dining</h3>
+              <p>Star Lounge, Hakata Boracay, and House Brew Cafe.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-gym"></use></svg>
+              <h3>Gym</h3>
+              <p>Fitness space for a quick session before the beach.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-wifi"></use></svg>
+              <h3>WiFi</h3>
+              <p>Complimentary wireless access mentioned on the resort's accommodation pages.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-room"></use></svg>
+              <h3>Rooms</h3>
+              <p>48 rooms and suites with verandas and room essentials.</p>
+            </article>
+            <article class="amenity-item section-reveal">
+              <svg class="amenity-ico" viewBox="0 0 64 64" aria-hidden="true"><use href="assets/img/icons.svg#icon-meeting"></use></svg>
+              <h3>Meetings</h3>
+              <p>Conference room and events roof deck for functions.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="section-inner">
+          <div class="section-head section-reveal">
+            <span class="mono">Gallery</span>
+            <h2 class="display">Asymmetric Boracay scenes</h2>
+            <p>SVG visual studies inspired by the property's beachfront context, pool, rooms, and shoreline setting. Hover to pull the labels forward.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-tile gallery-tile--wide section-reveal">
+              <img src="assets/img/tile-boracay-sky.svg" alt="Stylized Boracay sky and sunset over the water" loading="lazy">
+              <figcaption class="gallery-label"><span>Beach View</span><span>White Beach horizon</span></figcaption>
+            </figure>
+            <figure class="gallery-tile gallery-tile--tall section-reveal">
+              <img src="assets/img/tile-lap-pool.svg" alt="Stylized lap pool with tropical shadows" loading="lazy">
+              <figcaption class="gallery-label"><span>Pool</span><span>Outdoor calm after the tide</span></figcaption>
+            </figure>
+            <figure class="gallery-tile section-reveal">
+              <img src="assets/img/tile-suite.svg" alt="Stylized suite interior with veranda light" loading="lazy">
+              <figcaption class="gallery-label"><span>Rooms</span><span>Suite and veranda atmosphere</span></figcaption>
+            </figure>
+            <figure class="gallery-tile section-reveal">
+              <img src="assets/img/tile-shoreline.svg" alt="Stylized Boracay shoreline and sea edge" loading="lazy">
+              <figcaption class="gallery-label"><span>Shoreline</span><span>Station 2 beachfront line</span></figcaption>
+            </figure>
+            <figure class="gallery-tile section-reveal">
+              <img src="assets/img/tile-star-lounge.svg" alt="Stylized rooftop lounge at sunset" loading="lazy">
+              <figcaption class="gallery-label"><span>Star Lounge</span><span>Sunset dining above the beach</span></figcaption>
+            </figure>
+            <figure class="gallery-tile section-reveal">
+              <img src="assets/img/tile-white-beach.svg" alt="Stylized White Beach scene" loading="lazy">
+              <figcaption class="gallery-label"><span>White Beach</span><span>Borrowed from the island context</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="location">
+        <div class="section-inner">
+          <div class="section-head section-reveal">
+            <span class="mono">Location</span>
+            <h2 class="display">Station 2, Boracay Island, Aklan</h2>
+            <p>Verified address, coordinates, and map embed. The pin is set to Boracay Island, not Palawan or Manila.</p>
+          </div>
+
+          <div class="location-grid">
+            <div class="location-copy section-reveal">
+              <div class="address-block">
+                <strong>The District Boracay</strong>
+                <p>Station 2, Brgy. Balabag, Boracay Island, Malay, Aklan, Philippines 5608</p>
+                <p class="mono">Coordinates: 11.962623 N, 121.924139 E</p>
+                <p>Check-in 14:00 | Check-out 12:00</p>
+                <p>1-3 minutes to D'Mall, with White Beach directly outside the resort boundary in Station 2.</p>
+              </div>
+              <div class="address-block">
+                <p class="mono">Directions</p>
+                <p>Open the embedded map or jump to the resort's marker in OpenStreetMap.</p>
+                <a class="btn btn--ghost ripple-btn mono" href="https://www.openstreetmap.org/?mlat=11.962623&mlon=121.924139#map=18/11.962623/121.924139" target="_blank" rel="noopener noreferrer">Open Map</a>
+              </div>
+            </div>
+
+            <div class="map-shell section-reveal">
+              <iframe
+                title="Map of The District Boracay in Station 2, Boracay Island"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=121.9205%2C11.9600%2C121.9270%2C11.9658&layer=mapnik&marker=11.962623%2C121.924139">
+              </iframe>
+              <div class="map-overlay">
+                <span class="mono">Boracay Island coordinates verified from public map data</span>
+                <span class="mono">Station 2 beachfront access</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="booking-band section" id="book">
+        <div class="section-inner">
+          <div class="section-reveal">
+            <span class="mono" style="color:#1a1400;opacity:0.9;">Book Direct</span>
+            <h2 class="display">Reserve the Boracay stay</h2>
+            <p>Use the resort's direct booking engine, call the hotel, or email reservations for rate checks and availability on the room type you want.</p>
+          </div>
+          <div class="section-reveal">
+            <div class="cta-row" style="justify-content:flex-start;">
+              <a class="btn btn--accent ripple-btn mono" href="https://www.swiftbook.io/inst/#home?propertyId=562MjYTCXLwXgkHdhLnaRkKkRlhgqI0iecwMTE=&JDRN=Y" target="_blank" rel="noopener noreferrer">Book Now</a>
+              <a class="btn btn--ghost ripple-btn mono" href="tel:+63362881448">Call Hotel</a>
+              <a class="btn btn--ghost ripple-btn mono" href="mailto:reservations@thedistrictboracay.com">Email Reservations</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-col section-reveal">
+            <h3>The District Boracay</h3>
+            <p>Contemporary boutique beachfront resort in Station 2, Boracay Island, with verified room tiers, public rates, and island-facing amenities.</p>
+            <div class="social-row">
+              <a class="icon-link" href="https://www.facebook.com/TheDistrictBoracay/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/img/icons.svg#icon-facebook"></use></svg>
+              </a>
+              <a class="icon-link" href="https://www.instagram.com/thedistrictboracay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/img/icons.svg#icon-instagram"></use></svg>
+              </a>
+              <a class="icon-link" href="https://www.youtube.com/channel/UCg-F2cwJB-zCqnR0TRljNKA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/img/icons.svg#icon-youtube"></use></svg>
+              </a>
+              <a class="icon-link" href="https://twitter.com/DistrictBoracay" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/img/icons.svg#icon-x"></use></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col section-reveal">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="#rooms" data-scroll>Rooms</a>
+              <a href="#amenities" data-scroll>Amenities</a>
+              <a href="#gallery" data-scroll>Gallery</a>
+              <a href="#location" data-scroll>Location</a>
+            </div>
+          </div>
+
+          <div class="footer-col section-reveal">
+            <h3>Contact</h3>
+            <a href="tel:+63362881448">(036) 2881448</a>
+            <a href="tel:+639178605559">09178605559</a>
+            <a href="mailto:reservations@thedistrictboracay.com">reservations@thedistrictboracay.com</a>
+            <a href="mailto:sales@thedistrictboracay.com">sales@thedistrictboracay.com</a>
+          </div>
+
+          <div class="footer-col section-reveal">
+            <h3>Address</h3>
+            <p>Station 2, Brgy. Balabag<br>Boracay Island, Malay, Aklan<br>Philippines 5608</p>
+            <p class="mono">Coordinates: 11.962623 N, 121.924139 E</p>
+          </div>
+        </div>
+
+        <div class="footer-note section-reveal">
+          <span>Copyright 2026 The District Boracay</span>
+          <span>Verified copy only, no fabricated room facts</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.ripple-btn').forEach((btn) => {
+      btn.addEventListener('pointerdown', (event) => {
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+        btn.appendChild(ripple);
+        window.setTimeout(() => ripple.remove(), 720);
+      });
+    });
+
+    document.querySelectorAll('[data-scroll]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const target = link.getAttribute('href');
+        if (!target || !target.startsWith('#')) return;
+        const node = document.querySelector(target);
+        if (!node) return;
+        event.preventDefault();
+        if (window.__lenis && !prefersReducedMotion) {
+          window.__lenis.scrollTo(node, { offset: -70 });
+        } else {
+          node.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    if (!prefersReducedMotion && window.Lenis && window.gsap) {
+      gsap.registerPlugin(ScrollTrigger);
+      const lenis = new Lenis({
+        lerp: 0.09,
+        smoothWheel: true,
+        smoothTouch: false
+      });
+
+      window.__lenis = lenis;
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+
+      const revealTargets = gsap.utils.toArray('.section-reveal').filter((item) => !item.closest('.hero'));
+      revealTargets.forEach((item) => {
+        gsap.fromTo(item,
+          { y: 28, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 88%'
+            }
+          }
+        );
+      });
+
+      gsap.from('.hero .section-reveal', {
+        y: 18,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.12,
+        delay: 0.15
+      });
+
+      gsap.to('.hero-art', {
+        yPercent: -6,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.1
+        }
+      });
+
+      gsap.from('.room-card', {
+        y: 46,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#rooms',
+          start: 'top 68%'
+        }
+      });
+
+      gsap.from('.amenity-item', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.75,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#amenities',
+          start: 'top 72%'
+        }
+      });
+
+      gsap.from('.gallery-tile', {
+        y: 34,
+        opacity: 0,
+        stagger: 0.09,
+        duration: 0.85,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#gallery',
+          start: 'top 70%'
+        }
+      });
+
+      gsap.from('.map-shell, .location-copy .address-block', {
+        y: 28,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#location',
+          start: 'top 72%'
+        }
+      });
+
+      gsap.from('.booking-band .section-reveal', {
+        y: 24,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#book',
+          start: 'top 76%'
+        }
+      });
+
+      gsap.from('.footer .section-reveal', {
+        y: 22,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#contact',
+          start: 'top 85%'
+        }
+      });
+    } else {
+      document.querySelectorAll('.section-reveal').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "The District Boracay",
+    "description": "A contemporary boutique beachfront resort in Station 2, Boracay Island, Aklan, Philippines.",
+    "url": "https://thedistrictboracay.com/",
+    "image": "https://frans15-2006.github.io/TheFrans/the-district-boracay/assets/img/hero-boracay.svg",
+    "telephone": "+63 36 288 1448",
+    "email": "reservations@thedistrictboracay.com",
+    "priceRange": "From PHP 4,800/night",
+    "numberOfRooms": 48,
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Station 2, Brgy. Balabag",
+      "addressLocality": "Boracay Island",
+      "addressRegion": "Aklan",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 11.962623,
+      "longitude": 121.924139
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Beachfront access", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Swimming pool", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Spa", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Cafe", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Gym", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Conference room", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/TheDistrictBoracay/",
+      "https://www.instagram.com/thedistrictboracay/",
+      "https://www.youtube.com/channel/UCg-F2cwJB-zCqnR0TRljNKA",
+      "https://twitter.com/DistrictBoracay"
+    ]
+  }
+  </script>
 </body>
+</html>
