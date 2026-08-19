@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src * data: blob:; connect-src *;">
+<title>TapKonek — Edit Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0E11;
+    --surface: #12161B;
+    --surface-2: #191F26;
+    --line: #232A32;
+    --accent: #35D0BA;
+    --text: #F4F6F5;
+    --text-muted: #8A93A0;
+    --danger: #FF5B5B;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
+  body { display: flex; align-items: flex-start; justify-content: center; padding: 32px 16px 80px; }
+  .wrap { width: 100%; max-width: 460px; }
+
+  /* --- auth gate --- */
+  .auth-box { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 36px 28px; margin-top: 60px; }
+  .auth-box h1 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: var(--accent); margin: 0 0 6px; }
+  .auth-box p { color: var(--text-muted); font-size: 14px; margin: 0 0 28px; }
+
+  /* --- form --- */
+  .topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .topbar h1 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin: 0; color: var(--accent); }
+  .logout-btn { background: none; border: 1px solid var(--line); color: var(--text-muted); font-size: 13px; padding: 6px 14px; border-radius: 8px; cursor: pointer; }
+  .logout-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+  .avatar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .avatar-preview { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--surface-2); border: 2px solid var(--line); flex-shrink: 0; }
+  .avatar-upload { display: flex; flex-direction: column; gap: 6px; }
+  .upload-btn { padding: 8px 16px; background: var(--surface-2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; }
+  .upload-btn:hover { border-color: var(--accent); }
+  .upload-hint { font-size: 11px; color: var(--text-muted); }
+
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 10px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+  .field input, .field textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+  .field input:focus, .field textarea:focus { border-color: var(--accent); }
+  .field input.err, .field textarea.err { border-color: var(--danger); }
+  .field .hint { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+  .field .err-msg { font-size: 11px; color: var(--danger); margin-top: 4px; display: none; }
+  .field.has-err .err-msg { display: block; }
+
+  .divider { border: none; border-top: 1px solid var(--line); margin: 22px 0; }
+
+  .save-btn {
+    width: 100%; padding: 15px; border: none; border-radius: var(--radius);
+    background: var(--accent); color: #06201C;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+    cursor: pointer; transition: filter 0.15s ease;
+    margin-top: 8px;
+  }
+  .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .save-btn:not(:disabled):hover { filter: brightness(1.08); }
+
+  .preview-link { display: block; text-align: center; margin-top: 14px; font-size: 13px; color: var(--accent); text-decoration: none; font-family: 'JetBrains Mono', monospace; }
+
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface-2); border: 1px solid var(--accent); color: var(--text); padding: 10px 18px; border-radius: 999px; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.err { border-color: var(--danger); }
+
+  .state { text-align: center; padding: 60px 16px; color: var(--text-muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="state">Loading…</div></div>
+<div class="toast" id="toast"></div>
+
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// ---- CONFIG ----
+const SUPABASE_URL      = "https://lyztkxqjywmjazhirykg.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_2qPKpGDLAa-a2zVGfeRlXw_FGklS2Tl";
+// ----------------
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let currentUser = null;
+let currentProfile = null;
+let pendingPhotoFile = null;
+
+// ---- Helpers ----
+function esc(s) {
+  return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function safeUrl(s) {
+  try {
+    const u = new URL(s || "");
+    if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+    return true;
+  } catch { return false; }
+}
+
+function toast(msg, isErr = false) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.toggle("err", isErr);
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2600);
+}
+
+function val(id) { return document.getElementById(id)?.value.trim() || ""; }
+function setVal(id, v) { const el = document.getElementById(id); if (el) el.value = v || ""; }
+
+// ---- Auth screen ----
+function renderAuth() {
+  document.getElementById("app").innerHTML = `
+    <div class="auth-box">
+      <h1>TapKonek</h1>
+      <p>Sign in to edit your card.</p>
+      <div class="field">
+        <label for="auth-email">Email</label>
+        <input id="auth-email" type="email" placeholder="you@email.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="auth-pass">Password</label>
+        <input id="auth-pass" type="password" placeholder="Password" autocomplete="current-password">
+      </div>
+      <button class="save-btn" id="login-btn">Sign in</button>
+      <button class="save-btn" id="signup-btn" style="margin-top:10px;background:var(--surface-2);color:var(--text);border:1px solid var(--line);">Create account</button>
+    </div>
+  `;
+  document.getElementById("login-btn").addEventListener("click", doLogin);
+  document.getElementById("signup-btn").addEventListener("click", doSignup);
+  document.getElementById("auth-pass").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
+}
+
+async function doLogin() {
+  const email = val("auth-email");
+  const pass  = val("auth-pass");
+  if (!email || !pass) return toast("Fill in email and password.", true);
+  const btn = document.getElementById("login-btn");
+  btn.disabled = true; btn.textContent = "Signing in…";
+  const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+  if (error) { toast(error.message, true); btn.disabled = false; btn.textContent = "Sign in"; }
+}
+
+async function doSignup() {
+  const email = val("auth-email");
+  const pass  = val("auth-pass");
+  if (!email || !pass) return toast("Fill in email and password.", true);
+  const btn = document.getElementById("signup-btn");
+  btn.disabled = true; btn.textContent = "Creating…";
+  const { error } = await sb.auth.signUp({ email, password: pass });
+  if (error) { toast(error.message, true); btn.disabled = false; btn.textContent = "Create account"; }
+  else toast("Check your email to confirm your account.");
+}
+
+// ---- Editor ----
+function renderEditor(profile) {
+  const p = profile || {};
+  document.getElementById("app").innerHTML = `
+    <div class="topbar">
+      <h1>Edit Card</h1>
+      <button class="logout-btn" id="logout-btn">Sign out</button>
+    </div>
+
+    <div class="avatar-row">
+      <img class="avatar-preview" id="avatar-preview" src="${p.photo_url ? esc(p.photo_url) : ''}" onerror="this.style.visibility='hidden'" alt="Photo">
+      <div class="avatar-upload">
+        <button class="upload-btn" id="upload-btn">Change photo</button>
+        <input type="file" id="photo-input" accept="image/png,image/jpeg,image/webp" style="display:none">
+        <span class="upload-hint">JPG, PNG or WebP · max 2 MB</span>
+      </div>
+    </div>
+
+    <p class="section-label">Basic info</p>
+    <div class="field">
+      <label for="f-username">Username</label>
+      <input id="f-username" type="text" placeholder="yourname" maxlength="30" value="${esc(p.username || '')}">
+      <span class="hint">tapkonek.is-a.dev/p?u=yourname</span>
+      <span class="err-msg" id="err-username"></span>
+    </div>
+    <div class="field">
+      <label for="f-name">Full name *</label>
+      <input id="f-name" type="text" placeholder="Juan dela Cruz" value="${esc(p.full_name || '')}">
+      <span class="err-msg" id="err-name">Name is required.</span>
+    </div>
+    <div class="field">
+      <label for="f-title">Job title</label>
+      <input id="f-title" type="text" placeholder="Software Developer" value="${esc(p.title || '')}">
+    </div>
+    <div class="field">
+      <label for="f-company">Company / Org</label>
+      <input id="f-company" type="text" placeholder="PTCI" value="${esc(p.company || '')}">
+    </div>
+    <div class="field">
+      <label for="f-bio">Bio</label>
+      <textarea id="f-bio" rows="3" placeholder="Short description...">${esc(p.bio || '')}</textarea>
+    </div>
+
+    <hr class="divider">
+    <p class="section-label">Contact</p>
+    <div class="field">
+      <label for="f-phone">Phone</label>
+      <input id="f-phone" type="tel" placeholder="+63 912 345 6789" value="${esc(p.phone || '')}">
+    </div>
+    <div class="field">
+      <label for="f-email">Email</label>
+      <input id="f-email" type="email" placeholder="you@email.com" value="${esc(p.email || '')}">
+    </div>
+    <div class="field">
+      <label for="f-website">Website</label>
+      <input id="f-website" type="url" placeholder="https://yoursite.com" value="${esc(p.website || '')}">
+      <span class="err-msg" id="err-website">Must be a valid https:// URL.</span>
+    </div>
+
+    <hr class="divider">
+    <p class="section-label">Socials</p>
+    <div class="field">
+      <label for="f-facebook">Facebook URL</label>
+      <input id="f-facebook" type="url" placeholder="https://facebook.com/you" value="${esc(p.facebook || '')}">
+      <span class="err-msg" id="err-facebook">Must be a valid https:// URL.</span>
+    </div>
+    <div class="field">
+      <label for="f-instagram">Instagram URL</label>
+      <input id="f-instagram" type="url" placeholder="https://instagram.com/you" value="${esc(p.instagram || '')}">
+      <span class="err-msg" id="err-instagram">Must be a valid https:// URL.</span>
+    </div>
+    <div class="field">
+      <label for="f-tiktok">TikTok URL</label>
+      <input id="f-tiktok" type="url" placeholder="https://tiktok.com/@you" value="${esc(p.tiktok || '')}">
+      <span class="err-msg" id="err-tiktok">Must be a valid https:// URL.</span>
+    </div>
+    <div class="field">
+      <label for="f-linkedin">LinkedIn URL</label>
+      <input id="f-linkedin" type="url" placeholder="https://linkedin.com/in/you" value="${esc(p.linkedin || '')}">
+      <span class="err-msg" id="err-linkedin">Must be a valid https:// URL.</span>
+    </div>
+
+    <button class="save-btn" id="save-btn">Save changes</button>
+    <a class="preview-link" id="preview-link" href="#" target="_blank" rel="noopener">View my card</a>
+  `;
+
+  // Update preview link
+  const updatePreview = () => {
+    const u = document.getElementById("f-username")?.value.trim();
+    const pid = currentProfile?.id;
+    const link = document.getElementById("preview-link");
+    if (link) link.href = pid ? `profile.html?id=${encodeURIComponent(pid)}` : (u ? `profile.html?u=${encodeURIComponent(u)}` : "#");
+  };
+  document.getElementById("f-username")?.addEventListener("input", updatePreview);
+  updatePreview();
+
+  // Photo upload
+  document.getElementById("upload-btn").addEventListener("click", () => document.getElementById("photo-input").click());
+  document.getElementById("photo-input").addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) return toast("Photo must be under 2 MB.", true);
+    pendingPhotoFile = file;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = document.getElementById("avatar-preview");
+      img.src = ev.target.result;
+      img.style.visibility = "visible";
+    };
+    reader.readAsDataURL(file);
+    toast("Photo selected — save to apply.");
+  });
+
+  document.getElementById("logout-btn").addEventListener("click", async () => {
+    await sb.auth.signOut();
+  });
+
+  document.getElementById("save-btn").addEventListener("click", doSave);
+}
+
+// ---- Validate + Save ----
+function fieldErr(id, errId, show) {
+  const field = document.getElementById(id)?.closest(".field");
+  const msg   = document.getElementById(errId);
+  if (field) field.classList.toggle("has-err", show);
+  if (msg)   msg.style.display = show ? "block" : "none";
+  if (show && document.getElementById(id)) document.getElementById(id).classList.add("err");
+  else if (document.getElementById(id)) document.getElementById(id).classList.remove("err");
+}
+
+async function doSave() {
+  const btn = document.getElementById("save-btn");
+  btn.disabled = true; btn.textContent = "Saving…";
+
+  let valid = true;
+
+  const name     = val("f-name");
+  const username = val("f-username");
+  const website  = val("f-website");
+  const facebook = val("f-facebook");
+  const instagram= val("f-instagram");
+  const tiktok   = val("f-tiktok");
+  const linkedin = val("f-linkedin");
+
+  // Validate name
+  fieldErr("f-name", "err-name", !name);
+  if (!name) valid = false;
+
+  // Validate username
+  const usernameOk = /^[a-z0-9_.]{3,30}$/.test(username);
+  fieldErr("f-username", "err-username", username && !usernameOk);
+  if (username && !usernameOk) {
+    document.getElementById("err-username").textContent = "3–30 chars, lowercase letters, numbers, . and _ only.";
+    valid = false;
+  }
+
+  // Validate URLs
+  const urlFields = [
+    { val: website,  id: "f-website",  err: "err-website" },
+    { val: facebook, id: "f-facebook", err: "err-facebook" },
+    { val: instagram,id: "f-instagram",err: "err-instagram" },
+    { val: tiktok,   id: "f-tiktok",   err: "err-tiktok" },
+    { val: linkedin, id: "f-linkedin", err: "err-linkedin" },
+  ];
+  urlFields.forEach(({ val: v, id, err }) => {
+    const bad = v && !safeUrl(v);
+    fieldErr(id, err, bad);
+    if (bad) valid = false;
+  });
+
+  if (!valid) {
+    btn.disabled = false; btn.textContent = "Save changes";
+    toast("Fix the errors above.", true);
+    return;
+  }
+
+  // Upload photo if pending
+  let photoUrl = currentProfile?.photo_url || null;
+  if (pendingPhotoFile) {
+    const ext  = pendingPhotoFile.name.split(".").pop().toLowerCase();
+    const path = `${currentUser.id}/avatar.${ext}`;
+    const { error: upErr } = await sb.storage
+      .from("profile-photos")
+      .upload(path, pendingPhotoFile, { upsert: true, contentType: pendingPhotoFile.type });
+    if (upErr) {
+      toast("Photo upload failed: " + upErr.message, true);
+      btn.disabled = false; btn.textContent = "Save changes";
+      return;
+    }
+    const { data: pubData } = sb.storage.from("profile-photos").getPublicUrl(path);
+    photoUrl = pubData?.publicUrl || null;
+    pendingPhotoFile = null;
+  }
+
+  const payload = {
+    user_id:   currentUser.id,
+    username:  username || undefined,
+    full_name: name,
+    title:     val("f-title") || null,
+    company:   val("f-company") || null,
+    bio:       val("f-bio") || null,
+    phone:     val("f-phone") || null,
+    email:     val("f-email") || null,
+    website:   website || null,
+    facebook:  facebook || null,
+    instagram: instagram || null,
+    tiktok:    tiktok || null,
+    linkedin:  linkedin || null,
+    photo_url: photoUrl,
+  };
+
+  const { error } = currentProfile
+    ? await sb.from("profiles").update(payload).eq("user_id", currentUser.id)
+    : await sb.from("profiles").insert(payload);
+
+  btn.disabled = false; btn.textContent = "Save changes";
+
+  if (error) {
+    if (error.code === "23505") toast("That username is already taken.", true);
+    else toast("Save failed: " + error.message, true);
+  } else {
+    toast("Saved.");
+    // Refresh profile state
+    const { data } = await sb.from("profiles").select("*").eq("user_id", currentUser.id).single();
+    currentProfile = data;
+  }
+}
+
+// ---- Boot ----
+async function loadEditor(user) {
+  currentUser = user;
+  const { data, error } = await sb.from("profiles").select("*").eq("user_id", user.id).maybeSingle();
+  if (error) { toast("Failed to load profile.", true); }
+  currentProfile = data || null;
+  renderEditor(currentProfile);
+}
+
+sb.auth.onAuthStateChange(async (event, session) => {
+  if (session?.user) {
+    await loadEditor(session.user);
+  } else {
+    currentUser    = null;
+    currentProfile = null;
+    pendingPhotoFile = null;
+    renderAuth();
+  }
+});
+</script>
+</body>
+</html>
