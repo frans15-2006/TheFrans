@@ -5,56 +5,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src * data: blob:; connect-src *;">
 <title>TapKonek</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0B0E11;
-    --surface: #12161B;
-    --surface-2: #191F26;
-    --line: #232A32;
+    --bg: #080B0E;
+    --surface: #0F1318;
+    --surface-2: #161C23;
+    --line: #1E262F;
     --accent: #35D0BA;
     --accent-2: #6C8CFF;
-    --text: #F4F6F5;
-    --text-muted: #8A93A0;
-    --radius: 20px;
+    --accent-glow: rgba(53,208,186,0.18);
+    --text: #F0F4F3;
+    --text-muted: #7A8694;
+    --radius: 22px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-  body { display: flex; align-items: flex-start; justify-content: center; padding: 32px 16px 64px; }
-  .wrap { width: 100%; max-width: 400px; }
-  .card { position: relative; background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px 24px; overflow: hidden; }
-  .chip { position: absolute; top: 20px; right: 20px; width: 34px; height: 34px; }
-  .chip svg { width: 100%; height: 100%; color: var(--accent); }
-  .ripple { position: absolute; top: 37px; right: 37px; width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--accent); opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
-  .ripple.animate { animation: ripple 1.6s ease-out; }
-  .ripple:nth-child(3) { animation-delay: 0.35s; }
-  @keyframes ripple { 0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.3); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(6); } }
-  .avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; background: var(--surface-2); border: 2px solid var(--line); display: block; }
-  .name { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin: 16px 0 2px; line-height: 1.15; }
-  .role { color: var(--text-muted); font-size: 14px; margin: 0 0 4px; }
-  .handle { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
-  .bio { margin-top: 14px; font-size: 14px; line-height: 1.55; color: var(--text-muted); }
-  .actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 22px; }
-  .action { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); font-size: 11px; font-weight: 500; transition: border-color 0.15s ease, transform 0.15s ease; }
-  .action:hover { border-color: var(--accent); transform: translateY(-1px); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  /* Ambient background */
+  body {
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 16px 80px;
+    position: relative; overflow-x: hidden;
+  }
+  body::before, body::after {
+    content: ''; position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+    filter: blur(80px); opacity: 0.28;
+  }
+  body::before {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, #35D0BA 0%, transparent 70%);
+    top: -120px; right: -100px;
+    animation: orb1 12s ease-in-out infinite alternate;
+  }
+  body::after {
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, #6C8CFF 0%, transparent 70%);
+    bottom: -80px; left: -80px;
+    animation: orb2 16s ease-in-out infinite alternate;
+  }
+  @keyframes orb1 { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,40px) scale(1.1); } }
+  @keyframes orb2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-20px,30px) scale(1.08); } }
+
+  .wrap { width: 100%; max-width: 400px; position: relative; z-index: 1; }
+
+  /* Card entrance */
+  .card {
+    position: relative;
+    background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px 24px;
+    overflow: hidden;
+    animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 24px 64px rgba(0,0,0,0.5);
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Subtle noise texture overlay */
+  .card::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: var(--radius);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; opacity: 0.4; z-index: 0;
+  }
+
+  /* NFC chip */
+  .chip { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; z-index: 1; }
+  .chip svg { width: 100%; height: 100%; color: var(--accent); opacity: 0.9; }
+  .ripple {
+    position: absolute; top: 36px; right: 36px;
+    width: 8px; height: 8px; border-radius: 50%;
+    border: 1.5px solid var(--accent); opacity: 0;
+    transform: translate(-50%,-50%) scale(0.3);
+  }
+  .ripple.animate { animation: ripple 2s ease-out infinite; }
+  .ripple:nth-child(3) { animation-delay: 0.7s; }
+  .ripple:nth-child(4) { animation-delay: 1.4s; }
+  @keyframes ripple {
+    0%   { opacity: 0.7; transform: translate(-50%,-50%) scale(0.3); }
+    100% { opacity: 0;   transform: translate(-50%,-50%) scale(7); }
+  }
+
+  /* Avatar */
+  .avatar-wrap {
+    position: relative; width: 88px; height: 88px;
+    animation: fadeUp 0.5s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .avatar-ring {
+    position: absolute; inset: -3px; border-radius: 50%;
+    background: conic-gradient(var(--accent), var(--accent-2), var(--accent));
+    animation: spin 6s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar-ring-bg {
+    position: absolute; inset: -1px; border-radius: 50%;
+    background: var(--surface);
+  }
+  .avatar {
+    position: relative; width: 88px; height: 88px;
+    border-radius: 50%; object-fit: cover;
+    background: var(--surface-2);
+    display: block; z-index: 1;
+  }
+
+  /* Text elements */
+  .name {
+    font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;
+    margin: 16px 0 3px; line-height: 1.15;
+    animation: fadeUp 0.5s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .role {
+    color: var(--text-muted); font-size: 13.5px; margin: 0 0 5px;
+    animation: fadeUp 0.5s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .handle {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 4px;
+    animation: fadeUp 0.5s 0.22s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .handle::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; opacity: 0.7; }
+  .bio {
+    margin-top: 14px; font-size: 14px; line-height: 1.6; color: var(--text-muted);
+    animation: fadeUp 0.5s 0.25s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  /* Action buttons */
+  .actions {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 22px;
+    animation: fadeUp 0.5s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .action {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 13px 4px 11px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 16px;
+    text-decoration: none; color: var(--text); font-size: 11px; font-weight: 500;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; overflow: hidden;
+  }
+  .action::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit;
+    background: var(--accent); opacity: 0; transition: opacity 0.2s ease;
+  }
+  .action:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(53,208,186,0.12); }
+  .action:hover::after { opacity: 0.04; }
+  .action:active { transform: translateY(0); }
   .action:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .action svg { width: 20px; height: 20px; color: var(--accent-2); }
-  .action.disabled { opacity: 0.3; pointer-events: none; }
-  .save-btn { width: 100%; margin-top: 18px; padding: 15px; border: none; border-radius: 14px; background: var(--accent); color: #06201C; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; cursor: pointer; transition: filter 0.15s ease; }
-  .save-btn:hover { filter: brightness(1.08); }
-  .save-btn:active { transform: scale(0.99); }
-  .links { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
-  .link-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--text); font-size: 13px; word-break: break-all; }
-  .link-row svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--text-muted); }
-  .footer { text-align: center; margin-top: 20px; font-size: 11px; color: var(--text-muted); }
-  .footer a { color: var(--accent); text-decoration: none; }
-  .state { text-align: center; padding: 60px 16px; color: var(--text-muted); font-size: 14px; }
-  .state strong { display: block; color: var(--text); font-size: 17px; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif; }
-  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface-2); border: 1px solid var(--accent); color: var(--text); padding: 10px 18px; border-radius: 999px; font-size: 13px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+  .action svg { width: 20px; height: 20px; color: var(--accent-2); position: relative; z-index: 1; }
+  .action span { position: relative; z-index: 1; }
+  .action.disabled { opacity: 0.25; pointer-events: none; }
+
+  /* Save to contacts */
+  .save-btn {
+    width: 100%; margin-top: 16px; padding: 15px; border: none; border-radius: 16px;
+    background: var(--accent); color: #041A16;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+    cursor: pointer; transition: filter 0.15s ease, transform 0.15s ease;
+    animation: fadeUp 0.5s 0.35s cubic-bezier(0.22,1,0.36,1) both;
+    letter-spacing: 0.01em;
+  }
+  .save-btn:hover { filter: brightness(1.1); }
+  .save-btn:active { transform: scale(0.985); }
+
+  /* Divider */
+  .divider {
+    border: none; border-top: 1px solid var(--line); margin: 20px 0;
+    animation: fadeUp 0.5s 0.37s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  /* Social links */
+  .links {
+    display: flex; flex-direction: column; gap: 8px;
+    animation: fadeUp 0.5s 0.4s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .link-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 14px; border: 1px solid var(--line); border-radius: 14px;
+    text-decoration: none; color: var(--text); font-size: 13px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .link-row:hover { border-color: var(--line); background: var(--surface-2); }
+  .link-row svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--accent-2); }
+  .link-label { font-weight: 500; flex-shrink: 0; }
+  .link-url { color: var(--text-muted); font-size: 11.5px; font-family: 'JetBrains Mono', monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Footer */
+  .footer {
+    text-align: center; margin-top: 22px; font-size: 11px; color: var(--text-muted);
+    animation: fadeUp 0.5s 0.45s cubic-bezier(0.22,1,0.36,1) both;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .footer::before, .footer::after { content: '—'; opacity: 0.3; }
+  .footer a { color: var(--accent); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; }
+
+  /* States */
+  .state { text-align: center; padding: 80px 16px; color: var(--text-muted); font-size: 14px; position: relative; z-index: 1; }
+  .state strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: var(--surface-2); border: 1px solid var(--accent);
+    color: var(--text); padding: 10px 20px; border-radius: 999px;
+    font-size: 13px; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 100; white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 </style>
 </head>
@@ -62,10 +234,8 @@
 <div class="wrap" id="app"><div class="state">Loading card…</div></div>
 <div class="toast" id="toast"></div>
 <script>
-// ---- CONFIG ----
-const SUPABASE_URL = "https://lyztkxqjywmjazhirykg.supabase.co";
+const SUPABASE_URL     = "https://lyztkxqjywmjazhirykg.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_2qPKpGDLAa-a2zVGfeRlXw_FGklS2Tl";
-// ----------------
 
 const ICONS = {
   chip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 6v12M17 6v12M3 10h4M17 10h4M3 14h4M17 14h4"/></svg>',
@@ -76,102 +246,65 @@ const ICONS = {
   fb:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
   ig:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>',
   tt:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 2v12.5a3.5 3.5 0 1 1-3-3.46V8a6 6 0 1 0 6 6V8.5a6.5 6.5 0 0 0 4 1.5V6.8A4.5 4.5 0 0 1 19.5 6 4.5 4.5 0 0 1 16 2z"/></svg>',
-  li:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2.5 2.5 0 0 1 5 0V17"/></svg>'
+  li:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2.5 2.5 0 0 1 5 0V17"/></svg>',
+  ext:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>'
 };
 
-// Escape for text content
 function esc(s) {
-  return String(s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
-
-// Escape for HTML attribute values
-function escAttr(s) {
-  return String(s || "").replace(/[&<>"'`]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","`":"&#96;"}[c]));
-}
-
-// Only allow http/https URLs, reject javascript: data: etc.
 function safeUrl(s) {
-  try {
-    const u = new URL(s || "");
-    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
-    return u.href;
-  } catch { return null; }
+  try { const u=new URL(s||""); if(u.protocol!=="http:"&&u.protocol!=="https:") return null; return u.href; }
+  catch { return null; }
 }
-
-// Safe tel: and mailto: links only
-function safeTel(s) {
-  if (!s) return null;
-  return "tel:" + encodeURIComponent(s.trim());
-}
-function safeSms(s) {
-  if (!s) return null;
-  return "sms:" + encodeURIComponent(s.trim());
-}
+function safeTel(s) { if(!s) return null; return "tel:"+encodeURIComponent(s.trim()); }
+function safeSms(s) { if(!s) return null; return "sms:"+encodeURIComponent(s.trim()); }
 function safeMail(s) {
-  if (!s) return null;
-  // basic email sanity
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)) return null;
-  return "mailto:" + encodeURIComponent(s.trim());
+  if(!s) return null;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)) return null;
+  return "mailto:"+encodeURIComponent(s.trim());
 }
-
-// vCard field escaping per RFC 2426
 function vcEsc(s) {
-  return String(s || "")
-    .replace(/\\/g, "\\\\")
-    .replace(/,/g, "\\,")
-    .replace(/;/g, "\\;")
-    .replace(/\r?\n/g, "\\n");
+  return String(s||"").replace(/\\/g,"\\\\").replace(/,/g,"\\,").replace(/;/g,"\\;").replace(/\r?\n/g,"\\n");
 }
-
 function buildVCard(p) {
-  const lines = [
-    "BEGIN:VCARD", "VERSION:3.0",
-    `N:${vcEsc(p.full_name)};;;;`,
-    `FN:${vcEsc(p.full_name)}`,
-  ];
-  if (p.company) lines.push(`ORG:${vcEsc(p.company)}`);
-  if (p.title)   lines.push(`TITLE:${vcEsc(p.title)}`);
-  if (p.phone)   lines.push(`TEL;TYPE=CELL:${vcEsc(p.phone)}`);
-  if (p.email)   lines.push(`EMAIL:${vcEsc(p.email)}`);
-  if (p.website && safeUrl(p.website)) lines.push(`URL:${vcEsc(p.website)}`);
-  if (p.photo_url && safeUrl(p.photo_url)) lines.push(`PHOTO;VALUE=uri:${vcEsc(p.photo_url)}`);
+  const lines = ["BEGIN:VCARD","VERSION:3.0",`N:${vcEsc(p.full_name)};;;;`,`FN:${vcEsc(p.full_name)}`];
+  if(p.company) lines.push(`ORG:${vcEsc(p.company)}`);
+  if(p.title)   lines.push(`TITLE:${vcEsc(p.title)}`);
+  if(p.phone)   lines.push(`TEL;TYPE=CELL:${vcEsc(p.phone)}`);
+  if(p.email)   lines.push(`EMAIL:${vcEsc(p.email)}`);
+  if(p.website&&safeUrl(p.website)) lines.push(`URL:${vcEsc(p.website)}`);
+  if(p.photo_url&&safeUrl(p.photo_url)) lines.push(`PHOTO;VALUE=uri:${vcEsc(p.photo_url)}`);
   lines.push("END:VCARD");
   return lines.join("\r\n");
 }
-
 function toast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 2200);
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2400);
 }
-
 function saveToContacts(p) {
-  const vcf = buildVCard(p);
-  const blob = new Blob([vcf], { type: "text/vcard" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = esc(p.full_name).replace(/\s+/g, "_") + ".vcf";
+  const vcf=buildVCard(p);
+  const blob=new Blob([vcf],{type:"text/vcard"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url; a.download=p.full_name.replace(/\s+/g,"_")+".vcf";
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(url);
-  toast("Contact card downloaded");
+  toast("Contact saved");
 }
-
-function makeActionLink(href, icon, label, disabled) {
-  const a = document.createElement("a");
-  a.className = "action" + (disabled ? " disabled" : "");
-  if (!disabled && href) a.href = href;
-  if (href && href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
-  a.innerHTML = icon + `<span>${esc(label)}</span>`;
+function makeActionLink(href,icon,label,disabled) {
+  const a=document.createElement("a");
+  a.className="action"+(disabled?" disabled":"");
+  if(!disabled&&href) a.href=href;
+  if(href&&href.startsWith("http")){ a.target="_blank"; a.rel="noopener noreferrer"; }
+  a.innerHTML=icon+`<span>${esc(label)}</span>`;
   return a;
 }
 
 function render(p) {
-  const app = document.getElementById("app");
-
-  // Safe resolved URLs
-  const photoUrl  = safeUrl(p.photo_url);
+  const app=document.getElementById("app");
+  const photoUrl   = safeUrl(p.photo_url);
   const websiteUrl = safeUrl(p.website);
   const fbUrl  = safeUrl(p.facebook);
   const igUrl  = safeUrl(p.instagram);
@@ -181,133 +314,129 @@ function render(p) {
   const smsHref  = safeSms(p.phone);
   const mailHref = safeMail(p.email);
 
-  // Build card DOM safely — no innerHTML for user data
-  const card = document.createElement("div");
-  card.className = "card";
+  const card=document.createElement("div");
+  card.className="card";
 
-  // Chip + ripple
-  card.innerHTML = `<div class="chip">${ICONS.chip}</div><div class="ripple animate"></div><div class="ripple animate"></div>`;
+  // Chip + ripples (3 ripple rings)
+  card.innerHTML=`<div class="chip">${ICONS.chip}</div><div class="ripple animate"></div><div class="ripple animate"></div><div class="ripple animate"></div>`;
 
-  // Avatar
-  if (photoUrl) {
-    const img = document.createElement("img");
-    img.className = "avatar";
-    img.src = photoUrl;
-    img.alt = p.full_name;
-    img.onerror = function() { this.style.visibility = "hidden"; };
-    card.appendChild(img);
+  // Avatar with ring
+  if(photoUrl) {
+    const wrap=document.createElement("div");
+    wrap.className="avatar-wrap";
+    wrap.innerHTML='<div class="avatar-ring"></div><div class="avatar-ring-bg"></div>';
+    const img=document.createElement("img");
+    img.className="avatar"; img.alt=p.full_name;
+    // Cache-buster so fresh photo always loads
+    img.src=photoUrl+"?t="+Date.now();
+    img.onerror=function(){ this.closest(".avatar-wrap").style.display="none"; };
+    wrap.appendChild(img);
+    card.appendChild(wrap);
   }
 
   // Name
-  const h1 = document.createElement("h1");
-  h1.className = "name";
-  h1.textContent = p.full_name;
+  const h1=document.createElement("h1");
+  h1.className="name"; h1.textContent=p.full_name;
   card.appendChild(h1);
 
   // Role
-  if (p.title || p.company) {
-    const role = document.createElement("p");
-    role.className = "role";
-    role.textContent = [p.title, p.company].filter(Boolean).join(" · ");
+  if(p.title||p.company) {
+    const role=document.createElement("p");
+    role.className="role";
+    role.textContent=[p.title,p.company].filter(Boolean).join(" · ");
     card.appendChild(role);
   }
 
   // Handle
-  const handle = document.createElement("span");
-  handle.className = "handle";
-  handle.textContent = "@" + p.username;
+  const handle=document.createElement("span");
+  handle.className="handle"; handle.textContent="@"+p.username;
   card.appendChild(handle);
 
   // Bio
-  if (p.bio) {
-    const bio = document.createElement("p");
-    bio.className = "bio";
-    bio.textContent = p.bio;
+  if(p.bio) {
+    const bio=document.createElement("p");
+    bio.className="bio"; bio.textContent=p.bio;
     card.appendChild(bio);
   }
 
   // Action buttons
-  const actions = document.createElement("div");
-  actions.className = "actions";
-  actions.appendChild(makeActionLink(callHref,   ICONS.call, "Call",  !callHref));
-  actions.appendChild(makeActionLink(smsHref,    ICONS.msg,  "Text",  !smsHref));
-  actions.appendChild(makeActionLink(mailHref,   ICONS.mail, "Email", !mailHref));
-  actions.appendChild(makeActionLink(websiteUrl, ICONS.site, "Site",  !websiteUrl));
+  const actions=document.createElement("div");
+  actions.className="actions";
+  actions.appendChild(makeActionLink(callHref,   ICONS.call,"Call",  !callHref));
+  actions.appendChild(makeActionLink(smsHref,    ICONS.msg, "Text",  !smsHref));
+  actions.appendChild(makeActionLink(mailHref,   ICONS.mail,"Email", !mailHref));
+  actions.appendChild(makeActionLink(websiteUrl, ICONS.site,"Site",  !websiteUrl));
   card.appendChild(actions);
 
-  // Save button
-  const btn = document.createElement("button");
-  btn.className = "save-btn";
-  btn.textContent = "Save to contacts";
-  btn.addEventListener("click", () => saveToContacts(p));
+  // Save to contacts
+  const btn=document.createElement("button");
+  btn.className="save-btn"; btn.textContent="Save to contacts";
+  btn.addEventListener("click",()=>saveToContacts(p));
   card.appendChild(btn);
 
-  // Social links
-  const socials = [
-    fbUrl && { icon: ICONS.fb, href: fbUrl, label: "Facebook" },
-    igUrl && { icon: ICONS.ig, href: igUrl, label: "Instagram" },
-    ttUrl && { icon: ICONS.tt, href: ttUrl, label: "TikTok" },
-    liUrl && { icon: ICONS.li, href: liUrl, label: "LinkedIn" },
+  // Socials
+  const socials=[
+    fbUrl&&{icon:ICONS.fb,href:fbUrl,label:"Facebook"},
+    igUrl&&{icon:ICONS.ig,href:igUrl,label:"Instagram"},
+    ttUrl&&{icon:ICONS.tt,href:ttUrl,label:"TikTok"},
+    liUrl&&{icon:ICONS.li,href:liUrl,label:"LinkedIn"},
   ].filter(Boolean);
 
-  if (socials.length) {
-    const links = document.createElement("div");
-    links.className = "links";
-    socials.forEach(s => {
-      const a = document.createElement("a");
-      a.className = "link-row";
-      a.href = s.href;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.innerHTML = s.icon;
-      const span = document.createElement("span");
-      span.textContent = s.label;
-      a.appendChild(span);
+  if(socials.length) {
+    const hr=document.createElement("hr"); hr.className="divider";
+    card.appendChild(hr);
+    const links=document.createElement("div"); links.className="links";
+    socials.forEach(s=>{
+      const a=document.createElement("a");
+      a.className="link-row"; a.href=s.href;
+      a.target="_blank"; a.rel="noopener noreferrer";
+      a.innerHTML=s.icon;
+      const labelEl=document.createElement("span");
+      labelEl.className="link-label"; labelEl.textContent=s.label;
+      const urlEl=document.createElement("span");
+      try { urlEl.className="link-url"; urlEl.textContent=new URL(s.href).hostname.replace("www.",""); } catch{}
+      a.appendChild(labelEl); a.appendChild(urlEl);
       links.appendChild(a);
     });
     card.appendChild(links);
   }
 
-  const footer = document.createElement("div");
-  footer.className = "footer";
-  footer.innerHTML = 'Powered by <a href="/" rel="noopener">TapKonek</a>';
+  const footer=document.createElement("div");
+  footer.className="footer";
+  footer.innerHTML='<a href="/" rel="noopener">TAPKONEK</a>';
 
-  app.innerHTML = "";
+  app.innerHTML="";
   app.appendChild(card);
   app.appendChild(footer);
 }
 
-function renderState(title, body) {
-  document.getElementById("app").innerHTML =
+function renderState(title,body) {
+  document.getElementById("app").innerHTML=
     `<div class="state"><strong>${esc(title)}</strong>${esc(body)}</div>`;
 }
 
 async function main() {
-  const params   = new URLSearchParams(location.search);
-  // Use immutable profile ID if present, fallback to username for legacy
-  const profileId = (params.get("id") || "").trim();
-  const username  = (params.get("u") || "").trim().toLowerCase();
+  const params=new URLSearchParams(location.search);
+  const profileId=(params.get("id")||"").trim();
+  const username=(params.get("u")||"").trim().toLowerCase();
+  if(!profileId&&!username) return renderState("No card","Add ?id=<uuid> to the URL.");
 
-  if (!profileId && !username) return renderState("No card specified", "Add ?id=<uuid> to the URL.");
-
-  const filter = profileId
-    ? `id=eq.${encodeURIComponent(profileId)}`
-    : `username=eq.${encodeURIComponent(username)}`;
-
-  // Only fetch columns needed for display — no internal fields
-  const select = "id,username,full_name,title,company,bio,phone,email,website,photo_url,facebook,instagram,tiktok,linkedin";
+  const filter=profileId
+    ?`id=eq.${encodeURIComponent(profileId)}`
+    :`username=eq.${encodeURIComponent(username)}`;
+  const select="id,username,full_name,title,company,bio,phone,email,website,photo_url,facebook,instagram,tiktok,linkedin";
 
   try {
-    const res = await fetch(
+    const res=await fetch(
       `${SUPABASE_URL}/rest/v1/profiles?${filter}&select=${select}&limit=1`,
-      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+      {headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}}
     );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const rows = await res.json();
-    if (!rows.length) return renderState("Card not found", profileId ? `No profile found.` : `No profile at @${username}.`);
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows=await res.json();
+    if(!rows.length) return renderState("Card not found",profileId?"No profile found.":`No profile at @${username}.`);
     render(rows[0]);
   } catch {
-    renderState("Couldn't load card", "Check your connection and try again.");
+    renderState("Couldn't load","Check your connection and try again.");
   }
 }
 
