@@ -39,7 +39,7 @@ const noMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const motionReady = !!(window.gsap && window.ScrollTrigger);
 const lightMotion = isMobile || noMotion || !!navigator.connection?.saveData || !motionReady;
 document.documentElement.classList.toggle('light-motion', lightMotion);
-const lenis = Portfolio.createScroller({ lightMotion, options: { duration: 1.05, wheelMultiplier: 0.82, lerp: 0.075 } });
+const lenis = Portfolio.createScroller({ lightMotion, options: { wheelMultiplier: 1, lerp: 0.11 } });
 const hamburger = document.getElementById('navHamburger');
 const navLinks = document.getElementById('navLinks');
 function setNavigationOpen(open) {
@@ -112,7 +112,7 @@ function onPreloaderReady() {
   initKineticHero();
   initHeroParallax();
   initAmbientOrb();
-  initSkewOnScroll();
+  // Keep the full page stable instead of compositing a skewed scrolling layer.
   initMagneticButtons();
   initRevealSystem();
   initBlurTextReveal();
@@ -120,10 +120,10 @@ function onPreloaderReady() {
   initDividers();
   initTypographyMorph();
   initSignatureReveal();
-  initCardTilt();
+  // Cards stay flat while the pointer moves.
   initHeroScrollExit();
   initCountUp();
-  initMarqueeVelocity();
+  // Client rows retain a steady CSS animation instead of updating every frame.
   initGhostParallax();
 
   initFlagshipStamp();
@@ -287,9 +287,9 @@ void main() {
   vec2 p = uv * 3.0;
   float t = uTime * 0.06;
   vec2 warp = vec2(fbm(p + t), fbm(p + vec2(1.7, 4.2) - t));
-  vec2 turbulence = uMouseVel * 0.02;
+  vec2 turbulence = uMouseVel * 0.8;
   float n = fbm(p + 3.0 * warp + turbulence);
-  vec3 color = mix(uColorBg, uColorAccent, smoothstep(0.2, 0.7, n) * 0.46);
+  vec3 color = mix(uColorBg, uColorAccent, smoothstep(0.2, 0.7, n) * 0.30);
   color = mix(color, uColorHighlight, smoothstep(0.75, 0.95, n) * 0.08);
   outColor = vec4(color, 1.0);
 }`;
@@ -333,11 +333,13 @@ void main() {
   resize();
   window.addEventListener('resize', resize, { passive: true });
 
-  let lastX = null, lastY = null, vx = 0, vy = 0;
+  let vx = 0, vy = 0, targetX = 0, targetY = 0;
   hero.addEventListener('mousemove', e => {
-    if (lastX !== null) { vx = e.clientX - lastX; vy = e.clientY - lastY; }
-    lastX = e.clientX; lastY = e.clientY;
+    const bounds = hero.getBoundingClientRect();
+    targetX = ((e.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    targetY = (0.5 - (e.clientY - bounds.top) / bounds.height) * 2;
   }, { passive: true });
+  hero.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; });
 
   const start = performance.now();
   const desktopViewport = window.matchMedia('(min-width:769px)');
@@ -351,7 +353,8 @@ void main() {
   function draw() {
     rafId = null;
     if (!shouldRender()) return;
-    vx *= 0.9; vy *= 0.9;
+    vx += (targetX - vx) * 0.065;
+    vy += (targetY - vy) * 0.065;
     gl.uniform2f(uResolution, canvas.width, canvas.height);
     gl.uniform1f(uTime, (performance.now() - start) / 1000);
     gl.uniform2f(uMouseVel, vx, vy);
@@ -672,33 +675,6 @@ function initSignatureReveal() {
         });
       }, isMobile ? 100 : 280);
     }
-  });
-}
-
-function initCardTilt() {
-  if (isMobile || noMotion) return;
-  const MAX_TILT = 4;
-  document.querySelectorAll('.tilt-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
-      gsap.to(card, {
-        rotateX: -ny * MAX_TILT,
-        rotateY: nx * MAX_TILT,
-        duration: 0.35,
-        ease: 'power2.out',
-        transformPerspective: 900
-      });
-    }, { passive: true });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, {
-        rotateX: 0, rotateY: 0,
-        duration: 0.8,
-        ease: 'elastic.out(1, 0.5)',
-        transformPerspective: 900
-      });
-    });
   });
 }
 
