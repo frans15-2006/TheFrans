@@ -7,7 +7,7 @@
 
 ## Flagship project
 
-- [Mix & Match Kain — case study](https://thefrans.is-a.dev/mix-match-kain-case-study.html): a local-first QR food-ordering system built with Node.js, Express, and WebSockets, deployed and operating under live load at a real restaurant.
+- [Mix & Match Kain — case study](https://thefrans.vercel.app/mix-match-kain-case-study.html): a local-first QR food-ordering system built with Node.js, Express, and WebSockets, deployed and operating under live load at a real restaurant.
 
 ## About
 

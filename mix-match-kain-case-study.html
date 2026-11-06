@@ -6,9 +6,9 @@
   <title>Mix & Match Kain — Case Study · Francis Tarectican</title>
   <meta name="description" content="How I built and deployed a local food ordering system for a real restaurant in Palawan — architecture, production failures, and lessons learned." />
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://thefrans.vercel.app/mix-match-kain-case-study.html">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/shared.css">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,8 +19,8 @@
       --bg-3: #16161a;
       --border: rgba(255,255,255,0.07);
       --text: #e8e8ed;
-      --text-2: #8a8a96;
-      --text-3: #52525e;
+      --text-2: #b0b0bc;
+      --text-3: #9b9ba7;
       --accent: #f0a500;
       --accent-dim: rgba(240,165,0,0.12);
       --radius: 12px;
@@ -131,11 +131,17 @@
     .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: var(--bg-2); }
 
     /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+    .reveal { opacity: 1; transform: none; transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .js-reveal .reveal:not(.visible) { opacity: 0; transform: translateY(24px); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .js-reveal .reveal:not(.visible) { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
 
 
     .case-header{position:relative}
@@ -177,7 +183,7 @@
   <div class="case-progress" aria-hidden="true"><span id="caseProgressFill"></span></div>
   <nav id="navbar">
     <div class="container nav-inner">
-      <a href="./index.html" class="nav-logo">francis.dev</a>
+      <a href="/" class="nav-logo">TheFrans</a>
       <a href="./index.html#projects" class="nav-back">← Back to Portfolio</a>
     </div>
   </nav>
@@ -322,25 +328,12 @@
         </div>
       </div>
 
-      <!-- SCREENSHOTS -->
+      <!-- PUBLIC INTERACTIVE DEMO -->
       <div class="case-section reveal">
-        <div class="section-tag">04 — Screenshots</div>
-        <h2 class="section-heading">System in Operation</h2>
-        <p>Screenshots from the live deployment — customer ordering flow, QR checkout, and the admin order queue.</p>
-        <div class="screenshots-grid">
-          <div class="screenshot-slot">
-            <span>Customer ordering UI</span>
-          </div>
-          <div class="screenshot-slot">
-            <span>QR checkout flow</span>
-          </div>
-          <div class="screenshot-slot">
-            <span>Admin order queue</span>
-          </div>
-          <div class="screenshot-slot">
-            <span>Live stock view</span>
-          </div>
-        </div>
+        <div class="section-tag">04 — Interactive Demo</div>
+        <h2 class="section-heading">Try the Ordering Flow</h2>
+        <p>Browse the menu, build a sample order, and preview its summary in the public demo. Demo orders are not sent to the restaurant and do not create a payment.</p>
+        <a class="btn btn-primary" href="/mix-match-kain/">Open interactive demo &rarr;</a>
       </div>
 
       <!-- PRODUCTION INCIDENTS -->
@@ -480,7 +473,7 @@
       <a href="./index.html" class="footer-link">← Back to Portfolio</a>
       <div style="display:flex;gap:12px;">
         <a href="https://github.com/frans15-2006" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
-        <a href="./mix-match-kain/" target="_blank" rel="noopener" class="btn btn-primary">Open Live Site ↗</a>
+        <a href="/mix-match-kain/" class="btn btn-primary">Open interactive demo &rarr;</a>
       </div>
     </div>
   </div>
@@ -502,20 +495,34 @@
     window.addEventListener('resize', updateUI);
     updateUI();
 
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    reveals.forEach((el, i) => {
-      el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.08}s`;
-      obs.observe(el);
-    });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if ('IntersectionObserver' in window && !reducedMotion.matches) {
+      let obs;
+      try {
+        obs = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+          el.style.transitionDelay = `${Math.min(i % 4, 3) * 0.08}s`;
+          obs.observe(el);
+        });
+        document.documentElement.classList.add('js-reveal');
+        reducedMotion.addEventListener('change', event => {
+          if (event.matches) {
+            document.documentElement.classList.remove('js-reveal');
+            obs.disconnect();
+          }
+        });
+      } catch {
+        document.documentElement.classList.remove('js-reveal');
+        if (obs) obs.disconnect();
+      }
+    }
   </script>
 </body>
 </html>

@@ -165,6 +165,11 @@ button,
 
 /* ====== CARD STYLES WITH GLASSMORPHISM ====== */
 .card {
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
   background: rgba(17, 17, 17, 0.8);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -626,7 +631,10 @@ button,
 /* ====== LANDING PAGE ====== */
 #landing-page {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
+  padding: 24px 16px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -634,8 +642,8 @@ button,
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
   position: fixed;
   z-index: 999;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition:
     transform 1.2s cubic-bezier(0.7, 0, 0.3, 1),
     opacity 1s ease;
@@ -1644,17 +1652,20 @@ header {
 }
 
 .card-description {
+  display: block;
   padding: 15px;
   text-align: center;
 }
 
 .card-name {
+  display: block;
   font-weight: 700;
   font-size: 1rem;
   margin-bottom: 5px;
 }
 
 .card-price {
+  display: block;
   color: var(--primary);
   font-family: 'Anton';
   font-size: 1.3rem;
@@ -1668,6 +1679,78 @@ header {
 
 .summary-item {
   float: right;
+}
+
+/* Demo context stays visible before the menu and at checkout. */
+.demo-notice {
+  max-width: 540px;
+  margin: 0 0 24px;
+  color: #ddd;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.demo-notice strong {
+  display: block;
+  color: var(--secondary-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demo-banner,
+.demo-checkout-notice {
+  margin-top: 12px;
+  color: #ddd;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.modal-box .demo-checkout-notice {
+  color: #444;
+}
+
+.category-tab {
+  font-family: inherit;
+}
+
+.cart-name-label {
+  display: block;
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.cart-name-label + .cart-input {
+  margin-top: 8px;
+}
+
+.demo-checkout-mark {
+  width: min(240px, 100%);
+  height: auto;
+  min-height: 88px;
+  padding: 20px;
+  border: 1px dashed var(--primary);
+  background: #1a1a1a;
+  color: var(--secondary-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--secondary-primary);
+  outline-offset: 4px;
+}
+
+@media (max-height: 650px) {
+  #landing-page {
+    justify-content: flex-start;
+  }
+  #landing-page > * {
+    flex-shrink: 0;
+  }
+  #landing-page .scroller-container {
+    margin-bottom: 24px;
+  }
 }
 
 /* ====== RESPONSIVE DESIGN ====== */

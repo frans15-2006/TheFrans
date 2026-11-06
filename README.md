@@ -1,6 +1,19 @@
 # TheFrans
 Client website portfolio by Francis Tarectican — freelance web developer based in Puerto Princesa City, Palawan, Philippines.
-Live index: [thefrans.is-a.dev](https://thefrans.is-a.dev)
+Live index: [thefrans.vercel.app](https://thefrans.vercel.app)
+
+## Development and deployment
+
+The static source remains at the repository root. Shared homepage and About styles/scripts live in `assets/`; client sites keep their existing folders.
+
+```sh
+npm test
+npm run build
+```
+
+The build produces Vercel Build Output API files in `.vercel/output/`, preserving the existing directory redirects. Vercel project `rtp10/thefrans` uses `main` for production and runs the regression tests before building. Push code changes to `main` to trigger its Git integration.
+
+The public Mix & Match Kain page is an interactive demo: its cart and order preview stay in the browser and do not create real orders or payments.
 ## Flagship Projects
 | Project | Type | Tech |
 |---|---|---|
@@ -28,7 +41,7 @@ Live index: [thefrans.is-a.dev](https://thefrans.is-a.dev)
 ## Case Studies
 - [Mix & Match Kain](./mix-match-kain-case-study.html)
 ## Stack
-Vanilla HTML/CSS/JS for the majority of client builds (93 of 96). React + Vite for select full-component builds (Summer Days Cafe, Nonoy Matt B&B, Divine Truffles). Deployed via GitHub Pages.
+Vanilla HTML/CSS/JS for the majority of client builds (93 of 96). React + Vite for select full-component builds (Summer Days Cafe, Nonoy Matt B&B, Divine Truffles). Production hosting uses Vercel; the repository also retains its GitHub Pages layout.
 ## Developer
 Francis Tarectican — BSIT student at Palawan Technological College, Inc. (PTCI), entering third year. Freelance web developer specializing in local business and institutional sites.
 GitHub: [Frans15-2006](https://github.com/Frans15-2006)

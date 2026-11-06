@@ -19,6 +19,8 @@ const drinksMenu = [
 ];
 
 let cart = [];
+let cartTotalFrame = null;
+let cartTotalVersion = 0;
 
 // ====== AUDIO CONTEXT (lazy) ======
 let audioContext = null;
@@ -98,38 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ====== PRANK SCREEN ======
-function startPrank() {
-  let timeLeft = 10;
-  const terminalBox = document.querySelector('.terminal-box');
-  const messages = [
-    { time: 2000, text: '> Initializing repair protocol...' },
-    { time: 4000, text: '> Downloading system patches...' },
-    { time: 6000, text: '> Applying hotfix...' },
-    { time: 8000, text: '> System restored. Loading interface...' },
-  ];
-  messages.forEach((msg) => {
-    setTimeout(() => {
-      terminalBox.innerHTML += `<p class="error-text">${msg.text}</p>`;
-    }, msg.time);
-  });
-  const countdown = setInterval(() => {
-    timeLeft--;
-    if (timeLeft <= 0) { clearInterval(countdown); revealSite(); }
-  }, 1000);
-}
-
-function revealSite() {
-  const errorScreen = document.getElementById('error-screen');
-  errorScreen.style.opacity = '0';
-  errorScreen.style.visibility = 'hidden';
-  const landingPage = document.getElementById('landing-page');
-  landingPage.style.visibility = 'visible';
-  landingPage.style.opacity = '1';
-  createParticles();
-  initHero();
-}
-
 // ====== HERO SCROLLER ======
 function initHero() {
   const track = document.getElementById('hero-scroller');
@@ -144,9 +114,12 @@ function initHero() {
 
 // ====== MENU NAVIGATION ======
 function goToMenu() {
-  document.getElementById('landing-page').classList.add('exit-3d');
+  const landing = document.getElementById('landing-page');
+  landing.classList.add('exit-3d');
+  landing.inert = true;
   setTimeout(() => {
     document.getElementById('main-content').classList.add('enter-3d');
+    document.getElementById('search-input').focus({ preventScroll: true });
   }, 200);
 }
 
@@ -155,16 +128,18 @@ function renderGrid(items, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
   items.forEach((item, index) => {
-    const card = document.createElement('div');
+    const card = document.createElement('button');
+    card.type = 'button';
     card.className = 'card';
+    card.setAttribute('aria-label', `Add ${item.name}, ₱${item.price}, to demo cart`);
     card.onclick = (e) => addToCart(item, e);
     const fallback = `https://placehold.co/400x300/333/white?text=${item.name}`;
     card.innerHTML = `
-      <img src="${item.img}" onerror="this.src='${fallback}'" alt="${item.name}" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:140px;">
-      <div class="card-description">
-        <div class="card-name">${item.name}</div>
-        <div class="card-price">&#8369;${item.price}</div>
-      </div>
+      <img src="${item.img}" onerror="this.src='${fallback}'" alt="" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:140px;">
+      <span class="card-description">
+        <span class="card-name">${item.name}</span>
+        <span class="card-price">&#8369;${item.price}</span>
+      </span>
     `;
     container.appendChild(card);
     setTimeout(() => card.classList.add('reveal'), index * 150);
@@ -229,6 +204,12 @@ function addToCart(item, event) {
 function updateCart() {
   const list = document.getElementById('cart-list');
   const totalEl = document.getElementById('total-price');
+  const version = ++cartTotalVersion;
+  if (cartTotalFrame !== null) {
+    cancelAnimationFrame(cartTotalFrame);
+    cartTotalFrame = null;
+  }
+  totalEl.classList.remove('updating');
 
   if (cart.length === 0) {
     list.innerHTML = '<p style="color:#555; text-align:center;">Empty bowl...</p>';
@@ -252,9 +233,9 @@ function updateCart() {
           <div class="cart-item-price">&#8369;${c.price} ea</div>
         </div>
         <div class="cart-item-controls">
-          <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+          <button type="button" class="qty-btn" aria-label="Decrease ${c.name} quantity" onclick="changeQty(${i}, -1)">-</button>
           <span>${c.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+          <button type="button" class="qty-btn" aria-label="Increase ${c.name} quantity" onclick="changeQty(${i}, 1)">+</button>
         </div>
       </div>
     `;
@@ -266,13 +247,17 @@ function updateCart() {
     const duration = 600;
     const start = Date.now();
     const step = () => {
+      if (version !== cartTotalVersion) return;
       const progress = Math.min((Date.now() - start) / duration, 1);
       const current = Math.round(oldTotal + (total - oldTotal) * progress);
       totalEl.textContent = '₱' + current;
-      if (progress < 1) requestAnimationFrame(step);
-      else totalEl.classList.remove('updating');
+      if (progress < 1) cartTotalFrame = requestAnimationFrame(step);
+      else {
+        cartTotalFrame = null;
+        totalEl.classList.remove('updating');
+      }
     };
-    requestAnimationFrame(step);
+    cartTotalFrame = requestAnimationFrame(step);
   }
 
   const badge = document.getElementById('cart-badge');
@@ -305,7 +290,7 @@ function showToast(message, type = 'info') {
   }, 3000);
 }
 
-// ====== GENERATE QR ======
+// ====== DEMO ORDER PREVIEW ======
 function generateQR() {
   const name = document.getElementById('cust-name').value.trim();
   const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
@@ -325,11 +310,17 @@ function generateQR() {
   if (typeof closeCartDrawer === 'function') closeCartDrawer();
 
   const qrBox = document.getElementById('qrcode');
-  qrBox.innerHTML = '';
-  new QRCode(qrBox, { text: '09618866276', width: 180, height: 180 });
+  qrBox.textContent = 'DEMO ONLY · NO PAYMENT';
 
-  document.getElementById('modal').style.display = 'flex';
-  setTimeout(() => document.getElementById('modal').classList.add('show'), 10);
+  const modal = document.getElementById('modal');
+  modal.style.display = 'flex';
+  document.getElementById('main-content').inert = true;
+  document.getElementById('page-wrapper').inert = true;
+  document.getElementById('fab-btn').inert = true;
+  modal.querySelector('.done-btn').focus();
+  setTimeout(() => {
+    modal.classList.add('show');
+  }, 10);
 
   // FIX BUG 2: sanitize name via textContent before injecting into innerHTML (XSS prevention)
   const sanitized = document.createElement('span');
@@ -343,49 +334,8 @@ function generateQR() {
     ${cart.map((c) => `• ${c.name} <span class="summary-item">x${c.qty}</span>`).join('<br>')}
   `;
 
-  // FIX BUG 1: blur only the QR img itself, not the wrapper
-  // Blurring the wrapper blurs all children including the overlay text — overlay becomes unreadable
-  const qrWrapper = document.getElementById('qrcode');
-  qrWrapper.style.position = 'relative';
-  qrWrapper.style.userSelect = 'none';
-  // filter stays off qrWrapper
-
-  setTimeout(() => {
-    const qrImg = qrWrapper.querySelector('img');
-    if (qrImg) {
-      qrImg.removeAttribute('title');
-      qrImg.removeAttribute('alt');
-      qrImg.title = '';
-      qrImg.alt = '';
-      qrImg.style.filter = 'blur(6px)';  // blur only the image
-      qrImg.style.display = 'block';
-    }
-
-    // Overlay is sibling-level inside qrWrapper but qrWrapper has no filter — overlay renders sharp
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.45);
-      color: #ff5e00; font-weight: bold; font-size: 13px;
-      letter-spacing: 0.08em; text-align: center;
-      border-radius: 8px;
-      pointer-events: none; z-index: 10;
-    `;
-    overlay.innerHTML = '🚫 QR UNAVAILABLE<br><span style="font-size:10px;color:#aaa;">Demo Mode Only</span>';
-    qrWrapper.appendChild(overlay);
-  }, 100);
-
   createConfetti();
   setTimeout(() => createSparkles(document.getElementById('qrcode'), 30), 500);
-
-  const orderData = {
-    customer: name,
-    total: total,
-    items: cart.map((c) => ({ name: c.name, qty: c.qty, price: c.price })),
-  };
-  sendOrderToServer(orderData);
 }
 
 // ====== CLOSE MODAL ======
@@ -403,15 +353,18 @@ function closeModal() {
     if (typeof closeCartDrawer === 'function') closeCartDrawer();
     // Reset scroll position so next order starts from top of menu
     const mc = document.getElementById('main-content');
-    if (mc) mc.scrollTop = 0;
-    document.getElementById('landing-page').classList.remove('exit-3d');
+    if (mc) {
+      mc.scrollTop = 0;
+      mc.inert = false;
+    }
+    const landing = document.getElementById('landing-page');
+    landing.classList.remove('exit-3d');
+    landing.inert = false;
+    document.getElementById('page-wrapper').inert = false;
+    document.getElementById('fab-btn').inert = false;
     document.getElementById('main-content').classList.remove('enter-3d');
+    landing.querySelector('.order-now-btn').focus();
   }, 500);
-}
-
-// ====== SEND ORDER TO SERVER ======
-// Server integration not active — orders are demo-only on GitHub Pages
-function sendOrderToServer(orderData) {
 }
 
 // ====== CONFETTI EFFECT ======
@@ -461,7 +414,16 @@ function createSparkles(element, count = 20) {
 
 // ====== INITIALIZE ======
 document.addEventListener('DOMContentLoaded', () => {
+  initHero();
+  createParticles();
   renderGrid(riceMenu, 'rice-grid');
   renderGrid(ulamMenu, 'ulam-grid');
   renderGrid(drinksMenu, 'drinks-grid');
+  document.getElementById('modal').addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      document.querySelector('#modal .done-btn').focus();
+    }
+  });
 });

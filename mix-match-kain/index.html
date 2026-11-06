@@ -5,14 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
-  <title>Mix & Match Kain</title>
+  <title>Mix & Match Kain — Interactive Demo</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;700&family=Source+Code+Pro&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
     /* ====== SEARCH BAR ====== */
@@ -256,7 +255,7 @@
   </style>
 </head>
 
-<body onload="startPrank()">
+<body>
   <!-- Aurora Background -->
   <div class="aurora-bg">
     <div class="aurora"></div>
@@ -265,7 +264,7 @@
   </div>
 
   <!-- Toast Container -->
-  <div class="toast-container" id="toast-container"></div>
+  <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
 
   <!-- Floating Action Button (scroll to top) -->
   <button class="fab" id="fab-btn" type="button" title="Scroll to top" onclick="scrollToTop()">
@@ -273,32 +272,15 @@
   </button>
 
   <div id="page-wrapper">
-    <!-- Prank Screen -->
-    <div id="error-screen">
-      <div class="terminal-box glitch-box">
-        <p class="error-text glitch-text">
-          [SYSTEM_FAILURE] Critical Dependency Missing.
-        </p>
-        <p class="error-text glitch-text">
-          Failed to load:
-          <span class="syntax-highlight">'main_logic.js'</span>
-        </p>
-        <p class="error-text error-text-faded">
-          > SyntaxError: Unexpected token 'bro' at line 420
-        </p>
-        <p class="error-text">> Attempting server-side hotfix...</p>
-      </div>
-      <p class="error-code">Error Code: 0x559_MIX_MATCH_KAIN</p>
-    </div>
-
     <!-- Landing Page -->
     <div id="landing-page">
       <h2 class="hero-title neon-text">MIX & <span>MATCH</span> KAIN</h2>
+      <p class="demo-notice" id="demo-intro"><strong>Interactive demo</strong>Try the menu and cart. No real orders or payments are sent.</p>
       <div class="scroller-container">
         <div class="scroller-track" id="hero-scroller"></div>
       </div>
-      <button class="order-now-btn btn ripple" onclick="goToMenu()">
-        ORDER NOW
+      <button type="button" class="order-now-btn btn ripple" onclick="goToMenu()" aria-describedby="demo-intro">
+        TRY DEMO MENU
       </button>
     </div>
 
@@ -311,6 +293,7 @@
         <h1 class="anton-title neon-text">
           MIX & MATCH <span class="anton-title-highlight">KAIN</span>
         </h1>
+        <p class="demo-banner">Interactive demo · No real orders or payments</p>
       </header>
 
       <div class="container">
@@ -318,25 +301,25 @@
           <!-- Search Bar -->
           <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" id="search-input" class="search-bar" placeholder="🔍 Search food items..."
+            <input type="text" id="search-input" class="search-bar" aria-label="Search demo food items" placeholder="🔍 Search food items..."
               oninput="handleSearch(this.value)" />
-            <button class="search-clear" onclick="clearSearch()">✕</button>
+            <button type="button" class="search-clear" onclick="clearSearch()" aria-label="Clear food search">✕</button>
           </div>
 
           <!-- Category Tabs -->
-          <div class="category-tabs">
-            <div class="category-tab active" data-category="all" onclick="filterCategory('all')">
+          <div class="category-tabs" role="group" aria-label="Filter demo menu by category">
+            <button type="button" class="category-tab active" data-category="all" aria-pressed="true" onclick="filterCategory('all')">
               🍽️ All
-            </div>
-            <div class="category-tab" data-category="rice" onclick="filterCategory('rice')">
+            </button>
+            <button type="button" class="category-tab" data-category="rice" aria-pressed="false" onclick="filterCategory('rice')">
               🍚 Rice
-            </div>
-            <div class="category-tab" data-category="ulam" onclick="filterCategory('ulam')">
+            </button>
+            <button type="button" class="category-tab" data-category="ulam" aria-pressed="false" onclick="filterCategory('ulam')">
               🍖 Ulam
-            </div>
-            <div class="category-tab" data-category="drinks" onclick="filterCategory('drinks')">
+            </button>
+            <button type="button" class="category-tab" data-category="drinks" aria-pressed="false" onclick="filterCategory('drinks')">
               🥤 Drinks
-            </div>
+            </button>
           </div>
 
           <!-- Rice Section -->
@@ -376,15 +359,17 @@
             <span>TOTAL</span>
             <span id="total-price" class="cart-total-price price-counter">₱0</span>
           </div>
-          <input type="text" id="cust-name" placeholder="Name for order..." class="cart-input" />
-          <button class="confirm-btn btn" onclick="generateQR()">
-            GENERATE QR CODE
+          <label class="cart-name-label" for="cust-name">Name for demo order</label>
+          <input type="text" id="cust-name" placeholder="Use a sample name" class="cart-input" aria-describedby="demo-cart-notice" />
+          <p class="demo-checkout-notice" id="demo-cart-notice">Demo preview only. Your order and name stay on this page. No payment is taken.</p>
+          <button type="button" class="confirm-btn btn" onclick="generateQR()">
+            PREVIEW DEMO ORDER
           </button>
         </aside>
       </div><!-- end .container -->
 
       <!-- Mobile Edge Tab -->
-      <button id="mobile-cart-fab" type="button" onclick="openCartDrawer()" aria-label="Open cart">
+      <button id="mobile-cart-fab" type="button" onclick="openCartDrawer()" aria-label="Open cart" aria-controls="cart-sidebar" aria-expanded="false">
         <span class="fab-icon">🛒</span>
         <span id="cart-badge">0</span>
       </button>
@@ -392,14 +377,15 @@
     </div><!-- end #main-content -->
   </div>
 
-  <!-- QR Modal -->
-  <div id="modal" class="modal">
+  <!-- Demo order preview -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="demo-preview-title" aria-describedby="demo-preview-notice">
     <div class="modal-box">
-      <h2 class="scan-title">SCAN TO PAY</h2>
-      <div id="qrcode" class="qrcode-box"></div>
+      <h2 class="scan-title" id="demo-preview-title">DEMO ORDER PREVIEW</h2>
+      <p class="demo-checkout-notice" id="demo-preview-notice">This is a sample checkout. No order is submitted and no payment is available.</p>
+      <div id="qrcode" class="qrcode-box demo-checkout-mark" aria-hidden="true"></div>
       <div id="summary" class="summary-box"></div>
-      <button class="confirm-btn done-btn btn" onclick="closeModal()">
-        DONE / NEW ORDER
+      <button type="button" class="confirm-btn done-btn btn" onclick="closeModal()">
+        DONE / RESET DEMO
       </button>
     </div>
   </div>
@@ -434,7 +420,9 @@
     function filterCategory(category) {
       currentCategory = category;
       document.querySelectorAll('.category-tab').forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === category);
+        const selected = tab.dataset.category === category;
+        tab.classList.toggle('active', selected);
+        tab.setAttribute('aria-pressed', String(selected));
       });
       const query = document.getElementById('search-input').value.toLowerCase();
       filterAndShowItems(query, category);
@@ -519,9 +507,15 @@
       // Belt + suspenders: inline styles beat everything
       cart.style.cssText += ';background:#111!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;';
       cart.classList.add('drawer-open');
+      cart.inert = false;
       overlay.classList.add('active');
       document.body.style.overflow = 'hidden';
-      if (fab) fab.classList.add('hidden');
+      if (fab) {
+        fab.classList.add('hidden');
+        fab.inert = true;
+        fab.setAttribute('aria-expanded', 'true');
+      }
+      cart.querySelector('#cart-close-btn button').focus({ preventScroll: true });
       _startAutoClose();
     }
 
@@ -529,13 +523,34 @@
       const cart = document.getElementById('cart-sidebar');
       const overlay = document.getElementById('cart-overlay');
       const fab = document.getElementById('mobile-cart-fab');
+      const returnFocus = window.innerWidth <= 768 && cart.contains(document.activeElement);
       cart.classList.remove('drawer-open');
+      cart.inert = window.innerWidth <= 768;
       overlay.classList.remove('active');
       document.body.classList.remove('drawer-open');
       document.body.style.overflow = '';
-      if (fab) fab.classList.remove('hidden');
+      if (fab) {
+        fab.classList.remove('hidden');
+        fab.inert = false;
+        fab.setAttribute('aria-expanded', 'false');
+        if (returnFocus) fab.focus({ preventScroll: true });
+      }
       _clearAutoClose();
     }
+
+    function syncCartDrawerVisibility() {
+      const cart = document.getElementById('cart-sidebar');
+      if (window.innerWidth > 768 || !cart.classList.contains('drawer-open')) {
+        closeCartDrawer();
+      } else {
+        cart.inert = false;
+      }
+    }
+    syncCartDrawerVisibility();
+    window.addEventListener('resize', syncCartDrawerVisibility);
+    document.getElementById('cart-sidebar').addEventListener('keydown', event => {
+      if (event.key === 'Escape' && window.innerWidth <= 768) closeCartDrawer();
+    });
 
     // Reset timer on any tap inside drawer
     document.getElementById('cart-sidebar').addEventListener('touchstart', () => {

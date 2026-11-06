@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://thefrans.is-a.dev/sitemap.xml
+Sitemap: https://thefrans.vercel.app/sitemap.xml

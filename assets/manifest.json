@@ -1,0 +1,156 @@
+{
+  "packages": {
+    "gsap": {
+      "version": "3.13.0",
+      "license": "Standard 'no charge' license: https://gsap.com/standard-license.",
+      "notices": "assets/licenses/gsap.txt"
+    },
+    "lenis": {
+      "version": "1.3.23",
+      "license": "MIT",
+      "notices": "assets/licenses/lenis.txt"
+    },
+    "a11y-dialog": {
+      "version": "8.1.5",
+      "license": "MIT",
+      "notices": "assets/licenses/a11y-dialog.txt"
+    },
+    "fuse.js": {
+      "version": "7.5.0",
+      "license": "Apache-2.0",
+      "notices": "assets/licenses/fuse.js.txt"
+    },
+    "@fontsource-variable/bricolage-grotesque": {
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "notices": "assets/licenses/fontsource-variable--bricolage-grotesque.txt"
+    },
+    "@fontsource-variable/public-sans": {
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "notices": "assets/licenses/fontsource-variable--public-sans.txt"
+    },
+    "@fontsource-variable/jetbrains-mono": {
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "notices": "assets/licenses/fontsource-variable--jetbrains-mono.txt"
+    },
+    "@fontsource/dm-mono": {
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "notices": "assets/licenses/fontsource--dm-mono.txt"
+    },
+    "@fontsource/bebas-neue": {
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "notices": "assets/licenses/fontsource--bebas-neue.txt"
+    },
+    "lucide-static": {
+      "version": "1.70.0",
+      "license": "ISC",
+      "notices": "assets/licenses/lucide-static.txt"
+    }
+  },
+  "files": {
+    "assets/vendor/gsap.min.js": {
+      "bytes": 72435,
+      "sha256": "96c01b81f44a3290e2b4532f55e2c9534b2adc43273a19f3756b2cb41f0fd0b6"
+    },
+    "assets/vendor/ScrollTrigger.min.js": {
+      "bytes": 44157,
+      "sha256": "308219390e5e3b84cda0c481e70caa9820883ae10bda44e6e9a149a81aac4b3f"
+    },
+    "assets/vendor/lenis.min.js": {
+      "bytes": 17722,
+      "sha256": "1375bb5f82062a5ba4ccb2ec5b420ee41578abf4ec04673a6bcfa6714b95f885"
+    },
+    "assets/vendor/lenis.css": {
+      "bytes": 513,
+      "sha256": "2f668ae84a668327f246faf8a770383a2bf69196d214290fbc4d5548910606c5"
+    },
+    "assets/vendor/a11y-dialog.min.js": {
+      "bytes": 4787,
+      "sha256": "822f50572512eca988cd0b8e6e4c6b1835246e9259e0d8403e66f1ea7fd9d0c7"
+    },
+    "assets/vendor/fuse.min.mjs": {
+      "bytes": 19308,
+      "sha256": "8d0ff71fbe94cadc319be0c559c64fe7ce2754afe47c9f0a67579d4112c6b62b"
+    },
+    "assets/fonts/bricolage-grotesque.woff2": {
+      "bytes": 131548,
+      "sha256": "a756882d8a7802ebd4663b4544a62ebedafc7227c1c159ab95eea61393af3f8e"
+    },
+    "assets/fonts/public-sans.woff2": {
+      "bytes": 26832,
+      "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68"
+    },
+    "assets/fonts/public-sans-italic.woff2": {
+      "bytes": 28292,
+      "sha256": "16dc93252adb78785ae56a6465494f73b604b39817760ea92bd4046521bb5a35"
+    },
+    "assets/fonts/jetbrains-mono.woff2": {
+      "bytes": 40404,
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
+    },
+    "assets/fonts/jetbrains-mono-italic.woff2": {
+      "bytes": 42964,
+      "sha256": "a8afa085e9ca5e53434e2ee918ba6b65c7dd4dda56509976b36591478c99d62e"
+    },
+    "assets/fonts/dm-mono-400.woff2": {
+      "bytes": 14820,
+      "sha256": "e1896b13b2b1bb112fac2f9571bd6c40e118746e77a4511edbf43fbb41bf3e1e"
+    },
+    "assets/fonts/dm-mono-500.woff2": {
+      "bytes": 14988,
+      "sha256": "9964608a849396bd00c4bfd7034afe03486469dcf20b4f6b8cbdfdd310369951"
+    },
+    "assets/fonts/bebas-neue.woff2": {
+      "bytes": 13768,
+      "sha256": "a7c90c89240c134f7fdd33d40c000ec90b79d675ea53e8cc5a6d423c073de412"
+    },
+    "assets/icons/arrow-up-right.svg": {
+      "bytes": 345,
+      "sha256": "1c647ffb1298c179ea1461bee9712a454c3394a6bcdfe0ac587e407b66dbce2b"
+    },
+    "assets/icons/arrow-left.svg": {
+      "bytes": 343,
+      "sha256": "a2da54389919145a33b20c0723710c4e1f9116bf41c6d09f3e84c1ac386dbfa3"
+    },
+    "assets/icons/arrow-right.svg": {
+      "bytes": 343,
+      "sha256": "72c4d6508ca4829271b3c1ab8bf38ca6c783de42bf73b098e1bf5cafbefd365b"
+    },
+    "assets/icons/mail.svg": {
+      "bytes": 391,
+      "sha256": "b399d35c76389da60c3746cf08dc211a1a2ce6316a55334349ae8da21faa2276"
+    },
+    "assets/icons/search.svg": {
+      "bytes": 352,
+      "sha256": "b395924bb54d8c436cb5bf6aa21899dfbf5f43a8a3b4252ed88d3391ec724aa5"
+    },
+    "assets/icons/x.svg": {
+      "bytes": 332,
+      "sha256": "4fcd3eb7104ef5e1ae949ebc9f316b72e3839bd790766d9795ee5f8d1eace91e"
+    },
+    "assets/icons/file-text.svg": {
+      "bytes": 524,
+      "sha256": "411f1e52b691e42cf958c14659a4305bcb9e15f5e5ffbb52987fbafa099d4f2c"
+    },
+    "assets/icons/rotate-ccw.svg": {
+      "bytes": 378,
+      "sha256": "7f3ba698d96e1d685aae743da04dd528c225232cc0775f20f2423f4380f04fe4"
+    },
+    "assets/icons/chevron-left.svg": {
+      "bytes": 321,
+      "sha256": "4b44625e062328fadad5aaf649d71d4f6b72b49adde7193468bfc4d669cdc427"
+    },
+    "assets/icons/chevron-right.svg": {
+      "bytes": 321,
+      "sha256": "bb612d70c6438fc1db7e3a1553ae6979a030f34f5a4486246eaef697b33395d4"
+    },
+    "assets/icons.svg": {
+      "bytes": 1347,
+      "sha256": "2cadf2721e54be00b88be00211c056369ccff659744512da9d4a27ee05d3b117"
+    }
+  }
+}
