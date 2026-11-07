@@ -73,10 +73,11 @@ test('resizing out of mobile navigation releases scroll lock', () => {
   const navLinks = { classList: classes(), querySelectorAll: () => [] };
   const mediaHandlers = {};
   const body = { style: {} };
+  const contact = { addEventListener(event, handler) { this[event] = handler; } };
   let stopped = false;
-  const document = { body, getElementById: id => id === 'navHamburger' ? hamburger : navLinks, addEventListener() {} };
+  const document = { body, getElementById: id => id === 'navHamburger' ? hamburger : navLinks, querySelector: () => contact, querySelectorAll: () => [], addEventListener() {} };
   const window = { matchMedia: () => ({ addEventListener: (name, fn) => { mediaHandlers[name] = fn; } }), addEventListener() {} };
-  vm.runInNewContext(script.slice(script.indexOf('const hamburger ='), script.indexOf('const archToggle =')), { document, window, lenis: { stop: () => { stopped = true; }, start: () => { stopped = false; } } });
+  vm.runInNewContext(script.slice(script.indexOf('const hamburger ='), script.indexOf('const archToggle =')), { document, window, IntersectionObserver: class { observe() {} }, lenis: { stop: () => { stopped = true; }, start: () => { stopped = false; } } });
   hamburger.handlers.click();
   assert.equal(body.style.overflow, 'hidden');
   assert.equal(stopped, true);
@@ -85,6 +86,65 @@ test('resizing out of mobile navigation releases scroll lock', () => {
   assert.equal(stopped, false);
   assert.equal(attributes['aria-expanded'], 'false');
   assert.equal(navLinks.classList.contains('mobile-open'), false);
+  hamburger.handlers.click();
+  contact.click();
+  assert.equal(stopped, false);
+  assert.equal(body.style.overflow, '');
+  assert.equal(attributes['aria-expanded'], 'false');
+});
+
+test('section indicators follow rendered scroll position in both directions without anticipating clicks', () => {
+  let scrollY = 0;
+  const events = {};
+  const frames = [];
+  let destination;
+  const ids = ['hero', 'about', 'skills', 'projects', 'clients', 'contact'];
+  const targets = ids.map((id, index) => ({ id, getBoundingClientRect: () => ({ top: index * 1000 - scrollY }) }));
+  const dots = ids.map(id => ({
+    dataset: { target: '#' + id }, classList: classes(), attributes: {},
+    setAttribute(key, value) { this.attributes[key] = value; },
+    removeAttribute(key) { delete this.attributes[key]; },
+    addEventListener(event, handler) { this[event] = handler; }
+  }));
+  const links = ids.map(id => ({
+    attributes: { href: '#' + id },
+    getAttribute(key) { return this.attributes[key]; },
+    setAttribute(key, value) { this.attributes[key] = value; },
+    removeAttribute(key) { delete this.attributes[key]; }
+  }));
+  const document = {
+    body: {}, documentElement: { scrollHeight: 5600 }, getElementById: () => ({ querySelectorAll: () => dots }),
+    querySelector: selector => targets.find(target => '#' + target.id === selector),
+    querySelectorAll: () => links
+  };
+  vm.runInNewContext(script.slice(script.indexOf('function initSectionRail()'), script.lastIndexOf('\n})();')) + '\ninitSectionRail();', {
+    document, window: { innerHeight: 1000, get scrollY() { return scrollY; }, addEventListener: (event, handler) => { events[event] = handler; } },
+    requestAnimationFrame: handler => frames.push(handler), ResizeObserver: class { observe() {} },
+    lenis: { scrollTo: target => { destination = target; } }
+  });
+  function active(id) {
+    assert.deepEqual(dots.filter(dot => dot.classList.contains('active')).map(dot => dot.dataset.target), ['#' + id]);
+    assert.equal(dots[ids.indexOf(id)].attributes['aria-current'], 'location');
+    assert.deepEqual(links.filter(link => link.attributes['aria-current']).map(link => link.attributes.href), ['#' + id]);
+  }
+  function scrollTo(y) { scrollY = y; events.scroll(); frames.shift()(); }
+  active('hero');
+  scrollTo(500); active('hero'); // Next section is visible, but not yet being read.
+  scrollTo(887); active('hero');
+  scrollTo(888); active('about');
+  dots[3].click();
+  assert.equal(destination, 3000);
+  active('about'); // Clicking ahead must not jump the indicator ahead of the page.
+  scrollTo(2000); active('skills');
+  scrollTo(3000); active('projects');
+  scrollTo(2887); active('skills');
+  scrollTo(4500); active('clients');
+  scrollTo(4600); active('contact'); // Short final section cannot reach the reading line.
+  scrollTo(0); active('hero');
+  events.scroll(); events.scroll();
+  assert.equal(frames.length, 1); // Coalesce scroll events and do no work when idle.
+  frames.shift()();
+  assert.equal(frames.length, 0);
 });
 
 test('architecture disclosure keeps visual and accessibility states in sync', () => {
@@ -101,7 +161,7 @@ test('architecture disclosure keeps visual and accessibility states in sync', ()
   assert.equal(attributes['aria-hidden'], 'true');
 });
 
-function heroHarness(initialTop = 0) {
+function heroHarness(initialTop = 0, pixelRatio = 1) {
   let draws = 0;
   let observer;
   let frameNumber = 0;
@@ -111,17 +171,18 @@ function heroHarness(initialTop = 0) {
   const mediaEvents = {};
   const media = { matches: true, addEventListener: (key, fn) => { mediaEvents[key] = fn; } };
   const gl = new Proxy({ drawArrays: () => draws++, getShaderParameter: () => true, getProgramParameter: () => true }, { get: (target, key) => target[key] || (() => ({})) });
-  const hero = { offsetWidth: 1200, offsetHeight: 900, getBoundingClientRect: () => ({ top: initialTop, bottom: initialTop + 900 }), addEventListener() {} };
+  const heroEvents = {};
+  const hero = { offsetWidth: 1200, offsetHeight: 900, getBoundingClientRect: () => ({ top: initialTop, bottom: initialTop + 900 }), addEventListener: (event, handler) => { heroEvents[event] = handler; } };
   const canvas = { getContext: () => gl, classList: { add() {} } };
   const document = { hidden: false, getElementById: id => id === 'hero' ? hero : canvas, addEventListener: (key, fn) => { documentEvents[key] = fn; } };
   class Observer { constructor(callback) { observer = callback; } observe() {} }
-  const window = { innerHeight: 800, devicePixelRatio: 1, IntersectionObserver: Observer, matchMedia: () => media, addEventListener: (key, fn) => { windowEvents[key] = fn; } };
+  const window = { innerHeight: 800, devicePixelRatio: pixelRatio, IntersectionObserver: Observer, matchMedia: () => media, addEventListener: (key, fn) => { windowEvents[key] = fn; } };
   const requestAnimationFrame = callback => { frames.set(++frameNumber, callback); return frameNumber; };
   const cancelAnimationFrame = id => frames.delete(id);
   const fn = script.slice(script.indexOf('function initHeroCanvas()'), script.indexOf('\nfunction initAmbientOrb()'));
   vm.runInNewContext(`${fn}; initHeroCanvas();`, { isMobile: false, noMotion: false, document, window, IntersectionObserver: Observer, performance: { now: () => 0 }, requestAnimationFrame, cancelAnimationFrame, setTimeout() {} });
   return {
-    get draws() { return draws; }, frames, document,
+    get draws() { return draws; }, frames, document, canvas, heroEvents,
     intersect: value => observer([{ target: hero, isIntersecting: value }]),
     visibility: hidden => { document.hidden = hidden; documentEvents.visibilitychange(); },
     page: event => windowEvents[event](),
@@ -129,6 +190,17 @@ function heroHarness(initialTop = 0) {
     tick() { const [id, callback] = frames.entries().next().value; frames.delete(id); callback(); },
   };
 }
+
+test('ambient waves have no pointer controls and avoid high-DPI framebuffer multiplication', () => {
+  const state = heroHarness(0, 2);
+  assert.equal(state.heroEvents.mousemove, undefined);
+  assert.equal(state.heroEvents.pointermove, undefined);
+  assert.equal(state.canvas.width, 1200);
+  assert.equal(state.canvas.height, 900);
+  assert.equal(state.draws, 1);
+  state.tick();
+  assert.equal(state.draws, 2, 'ambient motion continues without pointer events');
+});
 
 test('WebGL renders only while the hero is visible in an active desktop tab', () => {
   const state = heroHarness();

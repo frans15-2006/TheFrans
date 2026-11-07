@@ -425,3 +425,52 @@
     }
     @media(max-width:380px){:root{--hero-size:clamp(40px,11vw,56px)}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important}}
+
+.container{width:100%}.about-grid>*,.evidence-grid>*,.project-card>*,.footer-grid>*{min-width:0}
+.project-meta,.project-status,.evidence-proof{flex-wrap:wrap}.project-desc,.evidence-text,.footer-tagline,.footer-links a{overflow-wrap:anywhere}
+@media(max-width:900px){.about-grid{gap:30px}.contact-layout{gap:30px}.project-card{gap:24px}}
+@media(max-width:600px){
+  :root{--section-pad:64px;--hero-size:clamp(44px,10.5vw,64px)}
+  #hero{min-height:0;padding:120px 0 72px}
+  .hero-content{width:100%;max-width:100%}.hero-name{line-height:1.02;margin-bottom:24px}
+  .hero-eyebrow{margin-bottom:24px}.hero-sub{font-size:15px;line-height:1.8;margin-bottom:28px}
+  .hero-cta{gap:10px}.hero-cta .btn{padding:12px 18px}
+  .project-card,.evidence-card{padding:22px}.project-title{overflow-wrap:anywhere}
+  .section-desc{margin-bottom:30px}.project-status{gap:12px}
+  .footer-grid{gap:24px}.footer-bottom{gap:16px;flex-wrap:wrap}
+}
+@media(max-width:350px){.container{padding-left:16px;padding-right:16px}.project-card,.evidence-card{padding:18px}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}}
+@media(max-height:540px) and (max-width:1024px){#hero{min-height:0;padding:100px 0 48px}}
+/* Stable, readable surfaces while scrolling. Ambient waves remain in the hero. */
+html.lenis.lenis-smooth{scroll-behavior:auto!important}
+body::before,body::after,.orb-glow-2,.grid-overlay,.cur-dot,.cur-ring,.cur-label,.hero-coords,.card-glow{display:none!important}
+nav[aria-label="Primary navigation"]{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(8,8,8,.96)!important}
+.section-title{font-weight:700;transition:none}
+.evidence-card,.evidence-card.rev-right{clip-path:none!important;transform-style:flat}
+.hero-name,.btn,.hero-avail-dot,.hero-scroll-line{will-change:auto}
+.btn{transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
+
+/* The fixed bar gently narrows after the hero, without scaling its controls. */
+nav[aria-label="Primary navigation"]{top:16px;left:20px;right:20px;width:calc(100% - 40px);max-width:1024px;margin-inline:auto;padding:10px 20px;border:1px solid rgba(255,255,255,.10);border-radius:18px;animation:none;box-shadow:0 8px 28px rgba(0,0,0,.18);transition:max-width .32s cubic-bezier(.22,1,.36,1),border-color .24s ease}
+nav[aria-label="Primary navigation"].nav-scrolled{max-width:880px;border-color:rgba(240,165,0,.23)}
+nav[aria-label="Primary navigation"] .nav-inner{width:100%;max-width:none;padding:0;gap:28px}
+.nav-logo{font-family:var(--sans);font-size:20px;font-weight:750;letter-spacing:-.055em;color:var(--text);margin-right:auto;line-height:1.4;white-space:nowrap}
+.nav-logo-dot{color:var(--accent)}
+.nav-links{gap:26px;align-items:center}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:none;padding:10px 0}
+.nav-links a::after{bottom:4px;transition:width .2s}
+.nav-links a[aria-current="location"]{color:var(--accent)}
+.nav-links a[aria-current="location"]::after{width:100%}
+.nav-contact{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:42px;padding:8px 17px;border:1px solid var(--accent);border-radius:10px;background:var(--accent);color:#080808;font-size:12px;font-weight:650;text-decoration:none;line-height:1.4;white-space:nowrap;transition:background .2s,border-color .2s}
+.nav-contact:hover{background:var(--accent-hi);border-color:var(--accent-hi)}
+@media(max-width:768px){
+  nav[aria-label="Primary navigation"]{top:10px;left:12px;right:12px;width:calc(100% - 24px);padding:8px 10px 8px 16px;border-radius:15px}
+  nav[aria-label="Primary navigation"] .nav-inner{gap:10px}
+  .nav-logo{font-size:19px}
+  .nav-contact{min-height:40px;padding:8px 12px;gap:10px;font-size:12px}
+  .nav-links{position:absolute;inset:auto 0 auto;top:calc(100% + 10px);padding:12px;gap:0;align-items:stretch;max-height:calc(100dvh - 108px);background:#101010;border:1px solid rgba(255,255,255,.10);border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.25)}
+  .nav-links.mobile-open a{padding:12px 16px;font-size:14px;letter-spacing:.02em;min-height:48px}
+  .nav-links a::after{left:16px;right:16px;width:auto;opacity:0}
+  .nav-links a:hover::after,.nav-links a[aria-current="location"]::after{width:auto;opacity:1}
+}
+@media(prefers-reduced-motion:reduce){nav[aria-label="Primary navigation"]{transition:none}}

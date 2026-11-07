@@ -424,13 +424,40 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
 ];
 
     const FIELD_WORK = [
-      { name: 'Mix & Match Kain', type: 'FULL-STACK — Node.js / Express / WebSockets QR Ordering', url: '/mix-match-kain-case-study.html' },
-      { name: 'JARVIS AI Council', type: 'FULL-STACK — Multi-Agent Anthropic API Interface', url: '#' },
-      { name: 'Client websites', type: 'VIEW FULL PORTFOLIO', url: '/' },
-    ];
+  {
+    "type": "Live",
+    "url": "/mix-match-kain-case-study.html",
+    "name": "Mix & Match Kain",
+    "description": "A food ordering system for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs on a local machine over LAN &mdash; serving customer devices through restaurant WiFi with no internet dependency. Built to keep working through connectivity loss."
+  },
+  {
+    "type": "Completed",
+    "url": "#",
+    "name": "VOLT",
+    "description": "A smart home energy operations platform for Android. Monitor, control, and automate every electrical outlet in a home from one interface &mdash; room-based dashboards, real-time wattage tracking, fire/overheat detection with emergency shutdown, and an interactive floor plan built for smooth 120&ndash;144&nbsp;Hz motion. Six screens (Dashboard, Automation, Insights, Outlet Detail, Copilot, Settings) run on an MVVM architecture with a Room-backed local database as the single source of truth."
+  },
+  {
+    "type": "Completed",
+    "url": "#",
+    "name": "FluentFlyout",
+    "description": "Contributed to unchihugo/FluentFlyout, an open-source Fluent 2 Design flyout utility for Windows 11. Refactored duplicated taskbar and marquee update logic scattered across property change handlers into two shared helper methods, and hardened the saved-language restore path so a missing or invalid language tag falls back gracefully instead of crashing the app on launch."
+  },
+  {
+    "type": "Web · Android · Windows",
+    "url": "https://red-tide-ppc.vercel.app/",
+    "name": "RTP — Red Tide PPC",
+    "description": "A community observation and reporting platform for Puerto Princesa, Palawan. Explore coastal zones, submit observations with photos, and follow reviewed community warnings and report history. Available on the web with Android and Windows companion apps. Community observations are distinct from official laboratory-confirmed advisories."
+  },
+  {
+    "type": "Built",
+    "url": "#",
+    "name": "MedFinder PH",
+    "description": "A medicine search and pharmacy reservation system for Puerto Princesa. Includes typo-tolerant medicine search, pharmacy stock listings, reservation tracking, and an admin dashboard for stock management and payment-proof review. Built with vanilla HTML, CSS, and JavaScript, backed by Supabase authentication, PostgreSQL, and storage."
+  }
+];
 
     const EFFECTS = [
-      { tag: 'RIG-01', label: 'Lenovo LOQ 15IRX10', detail: 'RTX 5070 · Primary Build Machine' },
+      { tag: 'RIG-01', label: 'Lenovo LOQ 17IRX10', detail: 'Main Build Machine' },
       { tag: 'RIG-02', label: 'ASUS TUF A15', detail: 'Secondary Machine' },
       { tag: 'COMMS', label: 'Tecno Camon 40 Pro 5G', detail: 'Field Device' },
       { tag: 'DOWNTIME', label: 'Wuthering Waves', detail: 'Active Since v1.0' },
@@ -648,17 +675,14 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
 
     function renderFieldwork() {
       document.getElementById('fw-list').innerHTML = FIELD_WORK.map((f, i) => `
-        <${f.url === '#' ? 'div' : `a href="${f.url}"`} class="fw-row spotlight js-up" ${f.url === '#' ? '' : 'data-cursor="OPEN"'}>
-          <div class="fw-idx">${String(i + 1).padStart(2,'0')}</div>
-          <div>
-            <div class="fw-name">${f.name}</div>
-            <div class="fw-type">${f.type}</div>
-          </div>
-          ${f.url === '#' ? '' : '<div class="fw-arrow" aria-hidden="true">&#x2192;</div>'}
-        </${f.url === '#' ? 'div' : 'a'}>
+        <article class="fw-project">
+          <div class="fw-project-top"><span class="fw-idx">${String(i + 1).padStart(2,'0')}</span><span class="fw-project-status">${f.type}</span></div>
+          <h3 class="fw-project-name">${f.name}</h3>
+          <p class="fw-project-description">${f.description}</p>
+          ${f.url === '#' ? '' : `<a class="fw-project-link" href="${f.url}">View project &rarr;</a>`}
+        </article>
       `).join('');
     }
-
     function renderEffects() {
       document.getElementById('effects-grid').innerHTML = EFFECTS.map((e, i) => `
         <div class="effect-tag js-up spotlight">

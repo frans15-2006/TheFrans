@@ -27,8 +27,7 @@
     setTimeout(finish,650);
   }
   setTimeout(finish, 1400);
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) finish();
-  else requestAnimationFrame(tick);
+  finish();
 })();
 
 
@@ -39,7 +38,7 @@ const noMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const motionReady = !!(window.gsap && window.ScrollTrigger);
 const lightMotion = isMobile || noMotion || !!navigator.connection?.saveData || !motionReady;
 document.documentElement.classList.toggle('light-motion', lightMotion);
-const lenis = Portfolio.createScroller({ lightMotion, options: { wheelMultiplier: 1, lerp: 0.11 } });
+const lenis = Portfolio.createScroller({ lightMotion, options: { smoothWheel: true, wheelMultiplier: 1, lerp: 0.14 } });
 const hamburger = document.getElementById('navHamburger');
 const navLinks = document.getElementById('navLinks');
 function setNavigationOpen(open) {
@@ -51,6 +50,7 @@ function setNavigationOpen(open) {
 }
 hamburger.addEventListener('click', () => setNavigationOpen(hamburger.getAttribute('aria-expanded') !== 'true'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNavigationOpen(false)));
+document.querySelector('.nav-contact').addEventListener('click', () => setNavigationOpen(false));
 const navigationViewport = window.matchMedia('(max-width:768px)');
 navigationViewport.addEventListener('change', event => {
   if (!event.matches) setNavigationOpen(false);
@@ -78,6 +78,19 @@ if (archToggle && archDiagram) {
 
 initSectionRail();
 initMarqueeControls();
+initHeaderScroll();
+
+function initHeaderScroll() {
+  const header = document.querySelector('nav[aria-label="Primary navigation"]');
+  const hero = document.getElementById('hero');
+  if (!header || !hero) return;
+  // Only switch at the hero boundary; no per-frame scroll measurements.
+  const observer = new IntersectionObserver(([entry]) => {
+    const pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom <= (entry.rootBounds?.top ?? 96);
+    header.classList.toggle('nav-scrolled', pastHero);
+  }, { rootMargin: '-96px 0px 0px 0px', threshold: 0 });
+  observer.observe(hero);
+}
 
 function initMarqueeControls() {
   const clients = document.getElementById('clients');
@@ -110,21 +123,13 @@ function onPreloaderReady() {
   initScanline();
   initHeroCanvas();
   initKineticHero();
-  initHeroParallax();
-  initAmbientOrb();
   // Keep the full page stable instead of compositing a skewed scrolling layer.
-  initMagneticButtons();
   initRevealSystem();
-  initBlurTextReveal();
-  initEvidenceReveals();
   initDividers();
-  initTypographyMorph();
   initSignatureReveal();
   // Cards stay flat while the pointer moves.
-  initHeroScrollExit();
   initCountUp();
   // Client rows retain a steady CSS animation instead of updating every frame.
-  initGhostParallax();
 
   initFlagshipStamp();
 }
@@ -144,108 +149,10 @@ function initScanline() {
 }
 
 function initKineticHero() {
-  const el = document.getElementById('heroName');
-  const line1El = el.querySelector('.hero-line-1');
-  const line2El = el.querySelector('.hero-line-2');
-  const coordsText = document.getElementById('heroCoordsText');
-  if (lightMotion) {
-    const elements = ['.hero-eyebrow', '.hero-sub', '.hero-cta', '.hero-scroll-indicator'];
-    gsap.set(elements, { opacity: 1, y: 0 });
-    if (!noMotion) gsap.fromTo([line1El, line2El], { y: 8 }, {
-      y: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform'
-    });
-    return;
-  }
-
-  function wrapChars(container, text, lineNum) {
-    container.textContent = '';
-    const spans = [];
-    [...text].forEach(ch => {
-      const s = document.createElement('span');
-      s.className = 'ch';
-      s.textContent = ch;
-      s.dataset.ln = lineNum;
-      container.appendChild(s);
-      spans.push(s);
-    });
-    return spans;
-  }
-  const chars1 = wrapChars(line1El, 'Francis', 1);
-  const chars2 = wrapChars(line2El, 'Tarectican', 2);
-  const allChars = chars1.concat(chars2);
-  const cascade = ['.hero-eyebrow', '.hero-sub', '.hero-cta', '.hero-scroll-indicator', '.hero-coords'];
-
-  if (noMotion) {
-    cascade.forEach(sel => gsap.set(sel, { opacity: 1, y: 0 }));
-    return;
-  }
-
-  const STAGGER = isMobile ? 22 : 28;
-  allChars.forEach(s => {
-    s.style.setProperty('--bl', '6px');
-    s.style.setProperty('--op', '0');
-    s.style.setProperty('--ty', '8px');
-    s.style.setProperty('--w', s.dataset.ln === '2' ? '560' : '260');
-    s.style.setProperty('--o', '14');
-  });
-  const totalDelay = allChars.length * STAGGER + 260;
-  allChars.forEach((s, i) => {
-    setTimeout(() => {
-      s.style.transition = 'filter .5s var(--easing-premium), opacity .5s var(--easing-premium), transform .5s var(--easing-premium)';
-      s.style.setProperty('--bl', '0px');
-      s.style.setProperty('--op', '1');
-      s.style.setProperty('--ty', '0px');
-    }, i * STAGGER);
-  });
-
-  cascade.forEach((sel, i) => {
-    setTimeout(() => {
-      gsap.to(sel, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' });
-    }, totalDelay * 0.55 + i * 130);
-  });
-
-  if (isMobile) return;
-
-  let centers = [];
-  function measure() {
-    const r = el.getBoundingClientRect();
-    centers = allChars.map(s => {
-      const cr = s.getBoundingClientRect();
-      return cr.left - r.left + cr.width / 2;
-    });
-  }
-  setTimeout(measure, totalDelay + 550);
-  window.addEventListener('resize', measure, { passive: true });
-
-  const hero = document.getElementById('hero');
-  let targetX = null, smoothX = null;
-  const MAXDIST = 260;
-  hero.addEventListener('mousemove', e => {
-    const r = el.getBoundingClientRect();
-    targetX = e.clientX - r.left;
-  }, { passive: true });
-  hero.addEventListener('mouseleave', () => { targetX = null; });
-
-  function tick() {
-    smoothX = targetX === null ? null : (smoothX === null ? targetX : smoothX + (targetX - smoothX) * 0.16);
-    if (coordsText) {
-      coordsText.textContent = targetX !== null
-        ? 'X ' + String(Math.max(0, Math.round(targetX))).padStart(3, '0') + ' \u00b7 tracking'
-        : 'X 000 \u00b7 resting';
-    }
-    allChars.forEach((s, i) => {
-      const isLine2 = s.dataset.ln === '2';
-      const farW = isLine2 ? 560 : 260;
-      const nearW = isLine2 ? 850 : 780;
-      const t = smoothX === null ? 1 : Math.min(Math.abs(smoothX - (centers[i] || 0)) / MAXDIST, 1);
-      s.style.setProperty('--w', Math.round(nearW - t * (nearW - farW)));
-      s.style.setProperty('--o', (96 - t * (96 - (isLine2 ? 26 : 12))).toFixed(0));
-    });
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+  const name = document.getElementById('heroName');
+  gsap.set(['.hero-eyebrow', '.hero-sub', '.hero-cta', '.hero-scroll-indicator'], { opacity: 1, y: 0 });
+  if (!noMotion) gsap.fromTo(name, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, clearProps: 'transform,opacity' });
 }
-
 function initHeroCanvas() {
   if (isMobile || noMotion) return; // CSS hides #heroCanvas on mobile anyway — skip the GPU work
   const canvas = document.getElementById('heroCanvas');
@@ -264,7 +171,6 @@ void main() {
 precision highp float;
 uniform vec2 uResolution;
 uniform float uTime;
-uniform vec2 uMouseVel;
 uniform vec3 uColorBg;
 uniform vec3 uColorAccent;
 uniform vec3 uColorHighlight;
@@ -287,8 +193,7 @@ void main() {
   vec2 p = uv * 3.0;
   float t = uTime * 0.06;
   vec2 warp = vec2(fbm(p + t), fbm(p + vec2(1.7, 4.2) - t));
-  vec2 turbulence = uMouseVel * 0.8;
-  float n = fbm(p + 3.0 * warp + turbulence);
+  float n = fbm(p + 3.0 * warp);
   vec3 color = mix(uColorBg, uColorAccent, smoothstep(0.2, 0.7, n) * 0.30);
   color = mix(color, uColorHighlight, smoothstep(0.75, 0.95, n) * 0.08);
   outColor = vec4(color, 1.0);
@@ -322,9 +227,9 @@ void main() {
   gl.uniform3fv(gl.getUniformLocation(program, 'uColorHighlight'), hexToRgb01('#eaeaea'));
   const uResolution = gl.getUniformLocation(program, 'uResolution');
   const uTime = gl.getUniformLocation(program, 'uTime');
-  const uMouseVel = gl.getUniformLocation(program, 'uMouseVel');
 
-  const dprCap = Math.min(window.devicePixelRatio || 1, 2);
+  // Slow ambient waves do not need a high-DPI framebuffer.
+  const dprCap = Math.min(window.devicePixelRatio || 1, 1);
   function resize() {
     canvas.width = Math.round(hero.offsetWidth * dprCap);
     canvas.height = Math.round(hero.offsetHeight * dprCap);
@@ -332,14 +237,6 @@ void main() {
   }
   resize();
   window.addEventListener('resize', resize, { passive: true });
-
-  let vx = 0, vy = 0, targetX = 0, targetY = 0;
-  hero.addEventListener('mousemove', e => {
-    const bounds = hero.getBoundingClientRect();
-    targetX = ((e.clientX - bounds.left) / bounds.width - 0.5) * 2;
-    targetY = (0.5 - (e.clientY - bounds.top) / bounds.height) * 2;
-  }, { passive: true });
-  hero.addEventListener('mouseleave', () => { targetX = 0; targetY = 0; });
 
   const start = performance.now();
   const desktopViewport = window.matchMedia('(min-width:769px)');
@@ -353,11 +250,8 @@ void main() {
   function draw() {
     rafId = null;
     if (!shouldRender()) return;
-    vx += (targetX - vx) * 0.065;
-    vy += (targetY - vy) * 0.065;
     gl.uniform2f(uResolution, canvas.width, canvas.height);
     gl.uniform1f(uTime, (performance.now() - start) / 1000);
-    gl.uniform2f(uMouseVel, vx, vy);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     rafId = requestAnimationFrame(draw);
   }
@@ -743,117 +637,61 @@ function initGhostParallax() {
 function initSectionRail() {
   const rail = document.getElementById('sectionRail');
   if (!rail) return;
-  const dots = Array.from(rail.querySelectorAll('.rail-dot'));
-  function setActive(activeDot) {
-    dots.forEach(d => { d.classList.toggle('active', d === activeDot); d.setAttribute('aria-current', d === activeDot ? 'location' : 'false'); });
-  }
-  dots.forEach(dot => {
-    const target = document.querySelector(dot.dataset.target);
-    if (!target) return;
-    dot.addEventListener('click', () => {
-      lenis.scrollTo(target, { offset: -60, duration: 1.1 });
+  const sections = Array.from(rail.querySelectorAll('.rail-dot'), dot => ({
+    dot, target: document.querySelector(dot.dataset.target)
+  })).filter(section => section.target);
+  const links = Array.from(document.querySelectorAll('nav[aria-label="Primary navigation"] a[href^="#"]'));
+  let activeTarget;
+  let queued = false;
+  function update() {
+    queued = false;
+    // Use the rendered page, including smooth-scroll movement and layout changes.
+    // Read all bounds before changing classes, and keep the previous section in gaps.
+    const positions = sections.map(section => ({ ...section, top: section.target.getBoundingClientRect().top }));
+    let current = positions[0];
+    for (const section of positions) {
+      if (section.top > 112) break;
+      current = section;
+    }
+    // A short final section cannot always reach the reading line before scrolling ends.
+    if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      current = positions[positions.length - 1];
+    }
+    if (!current || current.target === activeTarget) return;
+    activeTarget = current.target;
+    sections.forEach(({ dot, target }) => {
+      const active = target === activeTarget;
+      dot.classList.toggle('active', active);
+      if (active) dot.setAttribute('aria-current', 'location');
+      else dot.removeAttribute('aria-current');
     });
-    if (motionReady && !lightMotion) ScrollTrigger.create({
-      trigger: target,
-      start: 'top center',
-      end: 'bottom center',
-      onEnter: () => setActive(dot),
-      onEnterBack: () => setActive(dot)
+    links.forEach(link => {
+      if (link.getAttribute('href') === '#' + activeTarget.id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  function scheduleUpdate() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }
+  sections.forEach(({ dot, target }) => {
+    dot.addEventListener('click', () => {
+      // A numeric destination avoids Lenis adding CSS scroll-padding a second time.
+      const top = target.getBoundingClientRect().top + window.scrollY;
+      lenis.scrollTo(top, { offset: -96, duration: 1.1 });
     });
   });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('pageshow', scheduleUpdate);
+  new ResizeObserver(scheduleUpdate).observe(document.body);
+  document.fonts?.ready.then(scheduleUpdate);
+  update();
 }
 
-(function() {
-  const isDesktop = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-  const dot = document.getElementById('curDot');
-  const ring = document.getElementById('curRing');
-  const label = document.getElementById('curLabel');
-  if (!isDesktop || lightMotion) {
-    [dot, ring, label].forEach(el => el && (el.style.display = 'none'));
-    return;
-  }
-  document.documentElement.classList.add('custom-cursor');
-  let mx = -300, my = -300, rx = -300, ry = -300, rafId = null;
-  window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-  function loop() {
-    dot.style.transform = `translate3d(calc(${mx}px - 50%),calc(${my}px - 50%),0)`;
-    rx += (mx - rx) * 0.15;
-    ry += (my - ry) * 0.15;
-    ring.style.transform = `translate3d(calc(${rx}px - 50%),calc(${ry}px - 50%),0)`;
-    label.style.transform = `translate3d(calc(${rx}px + 14px),calc(${ry}px - 10px),0)`;
-    rafId = requestAnimationFrame(loop);
-  }
-  loop();
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { cancelAnimationFrame(rafId); rafId = null; }
-    else if (!rafId) loop();
-  });
-  document.addEventListener('mousedown', () => document.documentElement.classList.add('cursor-click'));
-  document.addEventListener('mouseup', () => document.documentElement.classList.remove('cursor-click'));
-  const hoverMap = [
-    { sel: '.stamp', text: 'VERIFIED' },
-    { sel: '.project-card', text: 'VIEW' },
-    { sel: 'a[target="_blank"]', text: 'OPEN ↗' },
-    { sel: '.arch-toggle', text: 'EXPAND' },
-  ];
-  const genericHov = 'a,button,[role="button"],.btn,.stat-card,.evidence-card';
-  document.addEventListener('mouseover', e => {
-    let matched = false;
-    for (const { sel, text } of hoverMap) {
-      if (e.target.closest(sel)) {
-        label.textContent = text;
-        document.documentElement.classList.add('cursor-hover', 'cursor-label');
-        matched = true; break;
-      }
-    }
-    if (!matched && e.target.closest(genericHov)) {
-      label.textContent = '';
-      document.documentElement.classList.add('cursor-hover');
-      document.documentElement.classList.remove('cursor-label');
-    }
-  });
-  document.addEventListener('mouseout', e => {
-    const t = e.target;
-    if (t.closest(genericHov) || hoverMap.some(h => t.closest(h.sel))) {
-      document.documentElement.classList.remove('cursor-hover', 'cursor-label');
-    }
-  });
-})();
 
-if (!lightMotion) document.querySelectorAll('.evidence-card, .project-card').forEach(card => {
-  const glow = card.querySelector('.card-glow');
-  if (!glow) return;
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    glow.style.left = (e.clientX - r.left) + 'px';
-    glow.style.top  = (e.clientY - r.top) + 'px';
-  }, { passive: true });
-});
 
-(function() {
-  if (lightMotion) return;
-  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&';
-  const FRAMES = 10;
-  document.querySelectorAll('.nav-links a[data-scramble]').forEach(a => {
-    let rafId = null;
-    a.addEventListener('mouseenter', () => {
-      const orig = a.dataset.scramble;
-      let frame = 0;
-      if (rafId) cancelAnimationFrame(rafId);
-      function tick() {
-        a.textContent = orig.split('').map((c, i) => {
-          if (c === ' ' || c === '↗') return c;
-          const alpha = orig.replace(/[↗ ]/g, '');
-          if (frame / FRAMES > i / alpha.length) return c;
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        }).join('');
-        frame++;
-        if (frame <= FRAMES) { rafId = requestAnimationFrame(tick); }
-        else { a.textContent = orig + (orig === 'GitHub' ? ' ↗' : ''); rafId = null; }
-      }
-      tick();
-    });
-  });
-})();
+
 
 })();
