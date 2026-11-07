@@ -65,6 +65,7 @@ document.documentElement.classList.toggle('light-motion', lightMotion);
 const lenis = Portfolio.createScroller({ lightMotion, options: { smoothWheel: true, wheelMultiplier: 1, lerp: 0.14 } });
 const hamburger = document.getElementById('navHamburger');
 const navLinks = document.getElementById('navLinks');
+const navigation = navLinks.closest('nav');
 function setNavigationOpen(open) {
   hamburger.classList.toggle('open', open);
   navLinks.classList.toggle('mobile-open', open);
@@ -75,6 +76,12 @@ function setNavigationOpen(open) {
 hamburger.addEventListener('click', () => setNavigationOpen(hamburger.getAttribute('aria-expanded') !== 'true'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNavigationOpen(false)));
 document.querySelector('.nav-contact').addEventListener('click', () => setNavigationOpen(false));
+navigation.addEventListener('focusout', event => {
+  if (hamburger.getAttribute('aria-expanded') === 'true' && event.relatedTarget && !navigation.contains(event.relatedTarget)) setNavigationOpen(false);
+});
+document.addEventListener('pointerdown', event => {
+  if (hamburger.getAttribute('aria-expanded') === 'true' && !navigation.contains(event.target)) setNavigationOpen(false);
+});
 const navigationViewport = window.matchMedia('(max-width:768px)');
 navigationViewport.addEventListener('change', event => {
   if (!event.matches) setNavigationOpen(false);
@@ -92,17 +99,50 @@ window.addEventListener('pageshow', event => {
 const archToggle = document.getElementById('archToggle');
 const archDiagram = document.getElementById('archDiagram');
 if (archToggle && archDiagram) {
-  archToggle.addEventListener('click', () => {
-    const open = archDiagram.classList.toggle('open');
+  function setArchitectureOpen(open) {
+    archDiagram.classList.toggle('open', open);
     archToggle.classList.toggle('open', open);
-    archToggle.setAttribute('aria-expanded', open);
+    archToggle.setAttribute('aria-expanded', String(open));
     archDiagram.setAttribute('aria-hidden', String(!open));
+  }
+  archToggle.addEventListener('click', () => {
+    setArchitectureOpen(!archDiagram.classList.contains('open'));
   });
+  document.querySelectorAll('a[href="#archDiagram"]').forEach(link => link.addEventListener('click', () => setArchitectureOpen(true)));
+  function revealLinkedArchitecture() {
+    if (window.location.hash === '#archDiagram') setArchitectureOpen(true);
+  }
+  window.addEventListener('hashchange', revealLinkedArchitecture);
+  revealLinkedArchitecture();
 }
 
 initSectionRail();
 initMarqueeControls();
 initHeaderScroll();
+initHeaderMedia();
+
+function initHeaderMedia() {
+  const slot = document.getElementById('headerMedia');
+  const image = document.getElementById('headerMediaImage');
+  if (!slot || !image) return;
+  const preference = window.matchMedia('(prefers-reduced-motion:reduce)');
+  let paused = preference.matches;
+  function render() {
+    const source = paused || document.hidden ? image.dataset.poster : image.dataset.animation;
+    if (image.getAttribute('src') !== source) image.setAttribute('src', source);
+    const label = paused ? 'Play header animation' : 'Pause header animation';
+    slot.setAttribute('aria-label', label);
+    slot.setAttribute('title', label);
+    slot.setAttribute('aria-pressed', String(paused));
+    slot.querySelector('.header-media-icon').textContent = paused ? '▶' : 'Ⅱ';
+  }
+  slot.addEventListener('click', () => { paused = !paused; render(); });
+  for (const event of ['contextmenu', 'dragstart', 'selectstart']) slot.addEventListener(event, event => event.preventDefault());
+  document.addEventListener('visibilitychange', render);
+  window.addEventListener('pageshow', render);
+  preference.addEventListener('change', event => { if (event.matches) paused = true; render(); });
+  render();
+}
 
 function initHeaderScroll() {
   const header = document.querySelector('nav[aria-label="Primary navigation"]');

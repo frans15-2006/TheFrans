@@ -453,10 +453,16 @@ nav[aria-label="Primary navigation"]{backdrop-filter:none;-webkit-backdrop-filte
 /* The fixed bar gently narrows after the hero, without scaling its controls. */
 nav[aria-label="Primary navigation"]{top:16px;left:20px;right:20px;width:calc(100% - 40px);max-width:1024px;margin-inline:auto;padding:10px 20px;border:1px solid rgba(255,255,255,.10);border-radius:18px;animation:none;box-shadow:0 8px 28px rgba(0,0,0,.18);transition:max-width .32s cubic-bezier(.22,1,.36,1),border-color .24s ease}
 nav[aria-label="Primary navigation"].nav-scrolled{max-width:880px;border-color:rgba(240,165,0,.23)}
-nav[aria-label="Primary navigation"] .nav-inner{width:100%;max-width:none;padding:0;gap:28px}
-.nav-logo{font-family:var(--sans);font-size:20px;font-weight:750;letter-spacing:-.055em;color:var(--text);margin-right:auto;line-height:1.4;white-space:nowrap}
+nav[aria-label="Primary navigation"] .nav-inner{width:100%;max-width:none;padding:0;gap:24px}
+.nav-logo{font-family:var(--sans);font-size:20px;font-weight:750;letter-spacing:-.055em;color:var(--text);line-height:1.4;white-space:nowrap;flex-shrink:0}
 .nav-logo-dot{color:var(--accent)}
-.nav-links{gap:26px;align-items:center}
+.nav-links{gap:26px;align-items:center;order:2}
+.nav-contact{order:3}.nav-hamburger{order:4}
+.header-media{order:1;flex:1 1 455px;min-width:48px;height:42px;position:relative;overflow:hidden;border:1px solid #ffffff12;border-radius:7px;background:#0d0d0c;isolation:isolate;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer}
+.header-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.8;pointer-events:none;-webkit-user-drag:none}
+.header-media-icon{position:absolute;right:5px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:28px;height:28px;border:1px solid #ffffff18;border-radius:5px;background:#080808db;color:#ddd;font:12px var(--mono);opacity:0;transition:opacity .15s;pointer-events:none}
+.header-media:hover .header-media-icon,.header-media:focus-visible .header-media-icon{opacity:1}
+@media(min-width:769px) and (max-width:1000px){nav[aria-label="Primary navigation"] .nav-inner{gap:16px}.nav-links{gap:22px}}
 .nav-links a{font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:none;padding:10px 0}
 .nav-links a::after{bottom:4px;transition:width .2s}
 .nav-links a[aria-current="location"]{color:var(--accent)}
@@ -467,10 +473,12 @@ nav[aria-label="Primary navigation"] .nav-inner{width:100%;max-width:none;paddin
   nav[aria-label="Primary navigation"]{top:10px;left:12px;right:12px;width:calc(100% - 24px);padding:8px 10px 8px 16px;border-radius:15px}
   nav[aria-label="Primary navigation"] .nav-inner{gap:10px}
   .nav-logo{font-size:19px}
+  .header-media{min-width:0;flex-basis:0;height:38px}
   .nav-contact{min-height:40px;padding:8px 12px;gap:10px;font-size:12px}
   .nav-links{position:absolute;inset:auto 0 auto;top:calc(100% + 10px);padding:12px;gap:0;align-items:stretch;max-height:calc(100dvh - 108px);background:#101010;border:1px solid rgba(255,255,255,.10);border-radius:15px;box-shadow:0 12px 28px rgba(0,0,0,.25)}
   .nav-links.mobile-open a{padding:12px 16px;font-size:14px;letter-spacing:.02em;min-height:48px}
   .nav-links a::after{left:16px;right:16px;width:auto;opacity:0}
   .nav-links a:hover::after,.nav-links a[aria-current="location"]::after{width:auto;opacity:1}
 }
+@media(max-width:380px){nav[aria-label="Primary navigation"] .nav-inner{gap:8px}.nav-logo{font-size:18px}.nav-contact{padding-inline:10px;font-size:11px;gap:6px}}
 @media(prefers-reduced-motion:reduce){nav[aria-label="Primary navigation"]{transition:none}}

@@ -104,16 +104,20 @@
 <nav aria-label="Primary navigation">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">TheFrans<span class="nav-logo-dot" aria-hidden="true">.</span></a>
+    <button class="header-media" id="headerMedia" type="button" aria-label="Pause header animation" aria-pressed="false" title="Pause header animation">
+      <img id="headerMediaImage" src="/assets/media/amber-signal-still.png" data-animation="/assets/media/amber-signal.gif" data-poster="/assets/media/amber-signal-still.png" width="960" height="96" alt="" draggable="false">
+      <span class="header-media-icon" aria-hidden="true">Ⅱ</span>
+    </button>
+    <a href="#contact" class="nav-contact">Contact <span aria-hidden="true">↗</span></a>
+    <button class="nav-hamburger" id="navHamburger" type="button" aria-controls="navLinks" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links" id="navLinks" role="list">
       <li><a href="/About/" data-scramble="About">About</a></li>
       <li><a href="#skills" data-scramble="Evidence">Evidence</a></li>
       <li><a href="#projects" data-scramble="Work">Work</a></li>
       <li><a href="#clients" data-scramble="Clients">Clients</a></li>
     </ul>
-    <a href="#contact" class="nav-contact">Contact <span aria-hidden="true">↗</span></a>
-    <button class="nav-hamburger" id="navHamburger" type="button" aria-controls="navLinks" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
@@ -218,7 +222,7 @@
           <span class="evidence-tag">Schema / State</span>
         </div>
         <p class="evidence-text">Designed the data model for carts, orders, payments, and stock under concurrent write pressure in a live restaurant environment.</p>
-        <div class="evidence-proof"><span class="proof-left"><svg class="mini-stamp" width="13" height="13" viewBox="0 0 24 24" style="transform:rotate(5deg)" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 9h6M12 9v6M9 15h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Schedule B</span><a href="#projects">Architecture diagram &rarr;</a></div>
+        <div class="evidence-proof"><span class="proof-left"><svg class="mini-stamp" width="13" height="13" viewBox="0 0 24 24" style="transform:rotate(5deg)" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 9h6M12 9v6M9 15h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Schedule B</span><a href="#archDiagram">Architecture diagram &rarr;</a></div>
       </article>
 
       <article class="evidence-card tilt-card">

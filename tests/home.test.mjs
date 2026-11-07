@@ -132,15 +132,17 @@ test('persistent marquee control toggles pause and resume; keyboard focus has a 
   assert.match(css, /\.marquee-row:focus-within \.marquee-track[^}]*animation:none/);
 });
 
-test('resizing out of mobile navigation releases scroll lock', () => {
+test('mobile navigation releases scroll lock on resize, contact, and leaving the header', () => {
   const attributes = { 'aria-expanded': 'false' };
   const hamburger = { classList: classes(), handlers: {}, getAttribute: k => attributes[k], setAttribute: (k, v) => { attributes[k] = String(v); }, addEventListener(k, fn) { this.handlers[k] = fn; }, focus() {} };
-  const navLinks = { classList: classes(), querySelectorAll: () => [] };
+  const navigation = { handlers: {}, addEventListener(event, fn) { this.handlers[event] = fn; }, contains: node => !!node.inside };
+  const navLinks = { classList: classes(), querySelectorAll: () => [], closest: () => navigation };
+  const documentHandlers = {};
   const mediaHandlers = {};
   const body = { style: {} };
   const contact = { addEventListener(event, handler) { this[event] = handler; } };
   let stopped = false;
-  const document = { body, getElementById: id => id === 'navHamburger' ? hamburger : navLinks, querySelector: () => contact, querySelectorAll: () => [], addEventListener() {} };
+  const document = { body, getElementById: id => id === 'navHamburger' ? hamburger : navLinks, querySelector: () => contact, querySelectorAll: () => [], addEventListener: (event, fn) => { documentHandlers[event] = fn; } };
   const window = { matchMedia: () => ({ addEventListener: (name, fn) => { mediaHandlers[name] = fn; } }), addEventListener() {} };
   vm.runInNewContext(script.slice(script.indexOf('const hamburger ='), script.indexOf('const archToggle =')), { document, window, IntersectionObserver: class { observe() {} }, lenis: { stop: () => { stopped = true; }, start: () => { stopped = false; } } });
   hamburger.handlers.click();
@@ -156,6 +158,53 @@ test('resizing out of mobile navigation releases scroll lock', () => {
   assert.equal(stopped, false);
   assert.equal(body.style.overflow, '');
   assert.equal(attributes['aria-expanded'], 'false');
+  hamburger.handlers.click();
+  navigation.handlers.focusout({ relatedTarget: { inside: true } });
+  assert.equal(attributes['aria-expanded'], 'true');
+  navigation.handlers.focusout({ relatedTarget: { inside: false } });
+  assert.equal(body.style.overflow, '');
+  assert.equal(stopped, false);
+  hamburger.handlers.click();
+  documentHandlers.pointerdown({ target: { inside: false } });
+  assert.equal(attributes['aria-expanded'], 'false');
+  assert.equal(stopped, false);
+});
+
+test('header GIF respects reduced motion and pause state without reloading on unrelated updates', () => {
+  const fn = script.slice(script.indexOf('function initHeaderMedia()'), script.indexOf('function initHeaderScroll()'));
+  function setup(reduced = false) {
+    const events = {}, attributes = {}, imageAttributes = { src: '/still.png' };
+    let changes = 0;
+    const image = { dataset: { poster: '/still.png', animation: '/loop.gif' }, getAttribute: key => imageAttributes[key], setAttribute(key, value) { changes++; imageAttributes[key] = value; } };
+    const slot = { setAttribute: (key, value) => { attributes[key] = value; }, querySelector: () => ({}), addEventListener: (event, fn) => { events[event] = fn; } };
+    const document = { hidden: false, getElementById: id => id === 'headerMedia' ? slot : image, addEventListener: (event, fn) => { events[event] = fn; } };
+    const preference = { matches: reduced, addEventListener: (event, fn) => { events.preference = fn; } };
+    vm.runInNewContext(fn + '\ninitHeaderMedia();', { document, window: { matchMedia: () => preference, addEventListener: (event, fn) => { events[event] = fn; } } });
+    return { events, attributes, document, imageAttributes, get changes() { return changes; } };
+  }
+  const h = setup();
+  assert.equal(h.imageAttributes.src, '/loop.gif');
+  h.events.pageshow();
+  assert.equal(h.changes, 1);
+  h.document.hidden = true; h.events.visibilitychange();
+  assert.equal(h.imageAttributes.src, '/still.png');
+  h.document.hidden = false; h.events.visibilitychange();
+  assert.equal(h.imageAttributes.src, '/loop.gif');
+  h.events.click();
+  assert.equal(h.attributes['aria-pressed'], 'true');
+  assert.equal(h.imageAttributes.src, '/still.png');
+  h.events.pageshow();
+  assert.equal(h.imageAttributes.src, '/still.png');
+  h.events.click(); h.events.preference({ matches: true });
+  assert.equal(h.imageAttributes.src, '/still.png');
+  for (const event of ['contextmenu', 'dragstart', 'selectstart']) {
+    let blocked = false;
+    h.events[event]({ preventDefault() { blocked = true; } });
+    assert.equal(blocked, true);
+  }
+  const reduced = setup(true);
+  assert.equal(reduced.imageAttributes.src, '/still.png');
+  assert.equal(reduced.changes, 0);
 });
 
 test('section indicators follow rendered scroll position in both directions without anticipating clicks', () => {
@@ -212,18 +261,32 @@ test('section indicators follow rendered scroll position in both directions with
   assert.equal(frames.length, 0);
 });
 
-test('architecture disclosure keeps visual and accessibility states in sync', () => {
+test('architecture disclosure opens from evidence links and URL fragments', () => {
   assert.match(html, /id="archDiagram" aria-hidden="true"/);
   const attributes = {};
   const diagram = { classList: classes(), setAttribute: (key, value) => { attributes[key] = value; } };
   const toggle = { classList: classes(), addEventListener(event, fn) { this.click = fn; }, setAttribute: (key, value) => { attributes[key] = value; } };
-  vm.runInNewContext(script.slice(script.indexOf('const archToggle ='), script.indexOf('\ninitSectionRail();')), { document: { getElementById: id => id === 'archToggle' ? toggle : diagram } });
+  const evidence = { addEventListener(event, fn) { this.click = fn; } };
+  const events = {};
+  const window = { location: { hash: '' }, addEventListener: (event, fn) => { events[event] = fn; } };
+  const context = { document: { getElementById: id => id === 'archToggle' ? toggle : diagram, querySelectorAll: () => [evidence] }, window };
+  const disclosure = script.slice(script.indexOf('const archToggle ='), script.indexOf('\ninitSectionRail();'));
+  vm.runInNewContext(disclosure, context);
   toggle.click();
-  assert.equal(attributes['aria-expanded'], true);
+  assert.equal(attributes['aria-expanded'], 'true');
   assert.equal(attributes['aria-hidden'], 'false');
   toggle.click();
-  assert.equal(attributes['aria-expanded'], false);
+  assert.equal(attributes['aria-expanded'], 'false');
   assert.equal(attributes['aria-hidden'], 'true');
+  evidence.click();
+  assert.equal(attributes['aria-hidden'], 'false');
+  toggle.click();
+  window.location.hash = '#archDiagram';
+  events.hashchange();
+  assert.equal(attributes['aria-hidden'], 'false');
+  toggle.click();
+  vm.runInNewContext(disclosure, { ...context });
+  assert.equal(attributes['aria-hidden'], 'false');
 });
 
 function heroHarness(initialTop = 0, pixelRatio = 1) {

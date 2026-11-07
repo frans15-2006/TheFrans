@@ -824,6 +824,7 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     }
 
     function resolveActiveSection() {
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) return sectionIds[sectionIds.length - 1];
       const line = window.innerHeight * 0.42;
       let fallback = sectionIds[0];
       let current = null;
@@ -867,6 +868,7 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     });
 
     ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, requestTabUpdate, { passive: true }));
+    new ResizeObserver(requestTabUpdate).observe(document.body);
     if (lenis && typeof lenis.on === 'function') lenis.on('scroll', requestTabUpdate);
     requestTabUpdate();
 
