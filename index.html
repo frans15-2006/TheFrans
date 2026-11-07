@@ -25,10 +25,6 @@
         "alternateName": "TheFrans",
         "url": "https://thefrans.vercel.app/",
         "jobTitle": "Backend Systems Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Bureau of Internal Revenue \u2014 RDO 036"
-        },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Puerto Princesa City",
@@ -67,6 +63,10 @@
     ]
   }
   </script>
+  <!-- Employment details are retained for later restoration, outside active structured data. -->
+  <template id="profile-employment-schema">
+    <script type="application/json">{"worksFor":{"@type":"Organization","name":"Bureau of Internal Revenue \u2014 RDO 036"}}</script>
+  </template>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/fonts.css" />
   <link rel="stylesheet" href="/assets/vendor/lenis.css" />
@@ -126,14 +126,14 @@
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="container hero-content">
     <div class="hero-eyebrow">
-      <div class="hero-avail"><div class="hero-avail-dot"></div><span>IT Specialist @ BIR RDO 036</span></div>
+      <div class="hero-avail" hidden data-profile-employment><div class="hero-avail-dot"></div><span>IT Specialist @ BIR RDO 036</span></div>
       <span class="hero-role-tag">Backend Systems Developer</span>
     </div>
     <h1 class="hero-name" id="heroName" aria-label="Francis Tarectican">
       <span class="hero-line-1">Francis</span>
       <span class="bold hero-line-2">Tarectican</span>
     </h1>
-    <p class="hero-sub">Backend developer from Palawan. One production system built, deployed, and debugged under live load. Now IT Specialist at Bureau of Internal Revenue &mdash; RDO 036, Puerto Princesa City.</p>
+    <p class="hero-sub">Backend developer from Palawan. One production system built, deployed, and debugged under live load.<span hidden data-profile-employment> Now IT Specialist at Bureau of Internal Revenue &mdash; RDO 036, Puerto Princesa City.</span> Learning, building, and improving with every project.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary magnetic">View Work</a>
       <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -160,7 +160,7 @@
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p class="blur-words">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc. Currently serving as <strong>IT Specialist at Bureau of Internal Revenue &mdash; RDO 036</strong>, Puerto Princesa City. I build web applications with a focus on the backend &mdash; how data flows, how systems hold up, and how things work when real people are using them.</p>
+        <p class="blur-words">I'm a <strong>BSIT student</strong> from Palawan, Philippines, studying at Palawan Technological College, Inc.<span hidden data-profile-employment> Currently serving as <strong>IT Specialist at Bureau of Internal Revenue &mdash; RDO 036</strong>, Puerto Princesa City.</span> I build web applications with a focus on the backend &mdash; how data flows, how systems hold up, and how things work when real people are using them.</p>
         <p class="blur-words">I built Mix &amp; Match Kain for a real client, deployed it to a real restaurant, and debugged concurrent-write failures during live service without taking the system offline. That's the standard I hold work to.</p>
         <p class="blur-words">Daily development runs a local 30B-parameter coding model on-device via Ollama &mdash; GPU-accelerated, no cloud dependency, no data leaving the machine.</p>
       </div>
@@ -265,7 +265,7 @@
         <div class="evidence-proof"><span class="proof-left"><svg class="mini-stamp" width="13" height="13" viewBox="0 0 24 24" style="transform:rotate(4deg)" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 9h6M12 9v6M9 15h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Schedule F</span><a href="#clients">View all clients &rarr;</a></div>
       </article>
 
-      <article class="evidence-card tilt-card">
+      <article class="evidence-card tilt-card" hidden data-profile-employment>
         <div class="card-glow" aria-hidden="true"></div>
         <div class="evidence-head">
           <span class="evidence-capability">Government Systems</span>
@@ -659,10 +659,12 @@
       <h2 class="section-title reveal" id="contact-heading">Get in Touch</h2>
     </div>
     <div class="contact-layout">
-      <div class="contact-tagline reveal"><strong>IT Specialist</strong><br>BIR RDO 036.<br>FD Building.</div>
+      <div class="contact-tagline reveal" hidden data-profile-employment><strong>IT Specialist</strong><br>BIR RDO 036.<br>FD Building.</div>
+      <div class="contact-tagline reveal"><strong>Always learning.</strong><br>Always building.</div>
       <div class="contact-info">
         <div class="contact-item reveal"><div class="contact-label">Location</div><div class="contact-value">Puerto Princesa City, Palawan, PH</div></div>
-        <div class="contact-item reveal"><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036</div></div>
+        <div class="contact-item reveal" hidden data-profile-employment><div class="contact-label">Status</div><div class="contact-value" style="color:var(--green);">IT Specialist @ BIR RDO 036</div></div>
+        <div class="contact-item reveal"><div class="contact-label">Focus</div><div class="contact-value">Learning, building, and improving</div></div>
         <div class="contact-item reveal"><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:francistarectican47@gmail.com">francistarectican47@gmail.com</a></div></div>
         <div class="contact-item reveal"><div class="contact-label">Facebook</div><div class="contact-value"><a href="https://www.facebook.com/franshessss" target="_blank" rel="noopener">facebook.com/franshessss &#8599;</a></div></div>
       </div>

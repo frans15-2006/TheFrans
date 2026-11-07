@@ -305,12 +305,13 @@ void main() {
 
   const start = performance.now();
   const desktopViewport = window.matchMedia('(min-width:769px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const initialBounds = hero.getBoundingClientRect();
   let heroInView = initialBounds.bottom > 0 && initialBounds.top < window.innerHeight;
   let pageActive = true;
   let rafId = null;
   function shouldRender() {
-    return pageActive && heroInView && !document.hidden && desktopViewport.matches;
+    return pageActive && heroInView && !document.hidden && desktopViewport.matches && !reducedMotion.matches;
   }
   function draw() {
     rafId = null;
@@ -345,6 +346,7 @@ void main() {
   }
   document.addEventListener('visibilitychange', syncRendering);
   desktopViewport.addEventListener('change', syncRendering);
+  reducedMotion.addEventListener('change', syncRendering);
   window.addEventListener('pagehide', () => { pageActive = false; syncRendering(); });
   window.addEventListener('pageshow', () => { pageActive = true; syncRendering(); });
   syncRendering();

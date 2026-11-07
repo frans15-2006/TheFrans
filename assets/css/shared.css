@@ -1,4 +1,5 @@
 :root{color-scheme:dark;--focus-color:#f0a500}
+[data-profile-employment][hidden]{display:none!important}
 html.phone-welcome-open,html.phone-welcome-open body{overflow:hidden!important}
 .phone-welcome{position:fixed;inset:0;margin:auto;width:calc(100% - 32px);max-width:400px;max-height:calc(100dvh - 32px);padding:28px;overflow-y:auto;border:1px solid #4b3b1c;border-radius:24px;background:radial-gradient(ellipse at 100% 0%,#b3801512,transparent 65%),#10100e;color:#eaeaea;font-family:'Bricolage Grotesque',system-ui,sans-serif;box-shadow:0 24px 80px #0005}
 .phone-welcome::backdrop{background:#080808}

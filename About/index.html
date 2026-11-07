@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Francis Tarectican — TheFrans</title>
   <link rel="canonical" href="https://thefrans.vercel.app/About/" />
-  <meta name="description" content="Francis A. Tarectican — Backend Systems Developer. FD Building. Puerto Princesa, Palawan PH." />
+  <meta name="description" content="Francis A. Tarectican — Backend Systems Developer. Learning and building in Puerto Princesa, Palawan PH." data-original-content="Francis A. Tarectican — Backend Systems Developer. FD Building. Puerto Princesa, Palawan PH." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
 
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/assets/css/about.css" />
   <link rel="stylesheet" href="/assets/css/shared.css" />
   <script defer src="/assets/js/phone-welcome.js"></script>
-<link rel="preload" href="/assets/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin />
   <noscript><style>#preloader{display:none!important}.reveal,.js-up,.js-left{opacity:1!important;transform:none!important}.redact-bar{display:none!important}.cur-dot,.cur-ring,.cursor-dot,.cursor-ring{display:none!important}</style></noscript>
 </head>
 <body data-page="about">
@@ -66,7 +66,7 @@
         <circle class="seal-ring" cx="110" cy="110" r="96" stroke-width="2.5" />
         <circle class="seal-ring" cx="110" cy="110" r="83" stroke-width="1" />
         <text class="seal-arc-text" font-size="10.5"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">VERIFIED · FIELD AGENT</textPath></text>
-        <text class="seal-arc-text" font-size="10.5"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FD BUILDING · PALAWAN PH</textPath></text>
+        <text class="seal-arc-text" font-size="10.5" hidden data-profile-employment><textPath href="#arcBot" startOffset="50%" text-anchor="middle">FD BUILDING · PALAWAN PH</textPath></text>
         <text class="seal-core" x="110" y="104" font-size="34">FAT</text>
         <text class="seal-sub" x="110" y="130" font-size="9">CLEARED</text>
       </svg>
@@ -91,7 +91,7 @@
           <span class="meta-label">Designation</span>
           <span class="meta-value">Backend Systems Developer</span>
         </div>
-        <div class="meta-field">
+        <div class="meta-field" hidden data-profile-employment>
           <span class="meta-label">Operation</span>
           <span class="meta-value">FD Building</span>
         </div>
@@ -172,8 +172,12 @@
         <div class="id-cell-value">Frans</div>
       </div>
       <div class="id-cell js-up spotlight">
-        <div class="id-cell-label">Current Role</div>
-        <div class="id-cell-value">IT Specialist — BIR RDO 036</div>
+        <div hidden data-profile-employment>
+          <div class="id-cell-label">Current Role</div>
+          <div class="id-cell-value">IT Specialist — BIR RDO 036</div>
+        </div>
+        <div class="id-cell-label">Current Focus</div>
+        <div class="id-cell-value">Learning and building</div>
       </div>
       <div class="id-cell js-up spotlight">
         <div class="id-cell-label">Academic</div>
@@ -344,7 +348,7 @@
   </div>
 
   <footer>
-    <div class="ft-id">DOSSIER / FAT-2006 / FD BUILDING &copy; 2026</div>
+    <div class="ft-id">DOSSIER / FAT-2006<span hidden data-profile-employment> / FD BUILDING</span> &copy; 2026</div>
     <div class="ft-links">
       <a href="mailto:francistarectican47@gmail.com" class="ft-link" data-cursor="MAIL">EMAIL</a>
       <a href="https://github.com/Frans15-2006" target="_blank" rel="noopener" class="ft-link" data-cursor="OPEN">GITHUB</a>

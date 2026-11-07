@@ -302,13 +302,15 @@ function heroHarness(initialTop = 0, pixelRatio = 1) {
   const windowEvents = {};
   const mediaEvents = {};
   const media = { matches: true, addEventListener: (key, fn) => { mediaEvents[key] = fn; } };
+  const motionEvents = {};
+  const motion = { matches: false, addEventListener: (key, fn) => { motionEvents[key] = fn; } };
   const gl = new Proxy({ drawArrays: () => draws++, getShaderParameter: () => true, getProgramParameter: () => true }, { get: (target, key) => target[key] || (() => ({})) });
   const heroEvents = {};
   const hero = { offsetWidth: 1200, offsetHeight: 900, getBoundingClientRect: () => ({ top: initialTop, bottom: initialTop + 900 }), addEventListener: (event, handler) => { heroEvents[event] = handler; } };
   const canvas = { getContext: () => gl, classList: { add() {} } };
   const document = { hidden: false, getElementById: id => id === 'hero' ? hero : canvas, addEventListener: (key, fn) => { documentEvents[key] = fn; } };
   class Observer { constructor(callback) { observer = callback; } observe() {} }
-  const window = { innerHeight: 800, devicePixelRatio: pixelRatio, IntersectionObserver: Observer, matchMedia: () => media, addEventListener: (key, fn) => { windowEvents[key] = fn; } };
+  const window = { innerHeight: 800, devicePixelRatio: pixelRatio, IntersectionObserver: Observer, matchMedia: query => query.includes('reduced-motion') ? motion : media, addEventListener: (key, fn) => { windowEvents[key] = fn; } };
   const requestAnimationFrame = callback => { frames.set(++frameNumber, callback); return frameNumber; };
   const cancelAnimationFrame = id => frames.delete(id);
   const fn = script.slice(script.indexOf('function initHeroCanvas()'), script.indexOf('\nfunction initAmbientOrb()'));
@@ -319,6 +321,7 @@ function heroHarness(initialTop = 0, pixelRatio = 1) {
     visibility: hidden => { document.hidden = hidden; documentEvents.visibilitychange(); },
     page: event => windowEvents[event](),
     viewport: matches => { media.matches = matches; mediaEvents.change(); },
+    reducedMotion: matches => { motion.matches = matches; motionEvents.change(); },
     tick() { const [id, callback] = frames.entries().next().value; frames.delete(id); callback(); },
   };
 }
@@ -371,6 +374,22 @@ test('loading directly below the hero does not start WebGL until it enters the v
   assert.equal(state.frames.size, 0);
   state.intersect(true);
   assert.equal(state.draws, 1);
+});
+
+test('changing motion preference stops GPU work immediately and resumes only in a visible hero', () => {
+  const state = heroHarness();
+  const staleFrame = [...state.frames.values()][0];
+  state.reducedMotion(true);
+  assert.equal(state.frames.size, 0);
+  staleFrame();
+  assert.equal(state.draws, 1);
+  state.visibility(true);
+  state.reducedMotion(false);
+  assert.equal(state.frames.size, 0);
+  state.visibility(false);
+  assert.equal(state.draws, 2);
+  state.reducedMotion(false);
+  assert.equal(state.frames.size, 1);
 });
 
 test('the brightest shader output behind the scrim preserves readable hero contrast', () => {

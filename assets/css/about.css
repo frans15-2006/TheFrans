@@ -1267,7 +1267,7 @@
       .js-up, .js-left { opacity: 1; transform: none; }
       .redact-bar { display: none; }
       .cursor-dot, .cursor-ring { display: none !important; }
-      body.has-cursor { cursor: auto; }
+      body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: auto; }
       .hero-case .caret { animation: none; opacity: 1; }
       .pulse-bar { animation: none; }
       .ticker-track { animation: none; }

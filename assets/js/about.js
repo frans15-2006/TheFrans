@@ -469,7 +469,7 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
 
     const ARCHIVE = [
       { year: '2026', title: 'Live client work across Palawan', detail: 'Production systems, ordering flows, and deployed interfaces that already exist in the wild.' },
-      { year: '2026', title: 'BIR RDO 036', detail: 'Current professional track with a systems-focused day job and practical delivery constraints.' },
+      { year: '2026', title: 'BIR RDO 036', detail: 'Current professional track with a systems-focused day job and practical delivery constraints.', hidden: true },
       { year: '2026', title: 'BSIT — PTCI', detail: 'Academic track aligned with the build pipeline, not separated from it.' },
     ];
 
@@ -496,7 +496,7 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
 
     function renderArchive() {
       document.getElementById('archive-grid').innerHTML = ARCHIVE.map(item => `
-        <div class="archive-card js-up spotlight">
+        <div class="archive-card js-up spotlight"${item.hidden ? ' hidden data-profile-employment' : ''}>
           <div class="archive-year">${item.year}</div>
           <div class="archive-title">${item.title}</div>
           <div class="archive-detail">${item.detail}</div>
@@ -693,7 +693,8 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
       `).join('');
     }
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reduceMotion = motionPreference.matches;
     const finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
     const motionReady = !!(window.gsap && window.ScrollTrigger);
     const lightMotion = !finePointer || window.matchMedia('(max-width:768px)').matches || reduceMotion || !!navigator.connection?.saveData || !motionReady;
@@ -787,6 +788,7 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     }
 
     if (!lightMotion) document.addEventListener('mousemove', (e) => {
+      if (document.hidden || motionPreference.matches) return;
       const card = e.target.closest('.spotlight');
       if (!card) return;
       const rect = card.getBoundingClientRect();
@@ -872,16 +874,58 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     if (lenis && typeof lenis.on === 'function') lenis.on('scroll', requestTabUpdate);
     requestTabUpdate();
 
-    if (finePointer && !lightMotion) {
-      document.body.classList.add('has-cursor');
+    function initAboutCursor() {
       const dot = document.getElementById('cursor-dot');
       const ring = document.getElementById('cursor-ring');
       const label = document.getElementById('cursor-label');
+      const pointer = window.matchMedia('(hover:hover) and (pointer:fine)');
+      const magnets = document.querySelectorAll('.nav-return');
 
       let mx = window.innerWidth / 2, my = window.innerHeight / 2;
       let rx = mx, ry = my;
+      let rafId = null;
+      let pageActive = true;
+      let pointerInside = false;
+      const enabled = () => pageActive && pointerInside && !document.hidden && !motionPreference.matches && pointer.matches;
+      const placeRing = () => { ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`; };
+      function stop() {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      function tick() {
+        rafId = null;
+        if (!enabled()) return;
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        if (Math.hypot(mx - rx, my - ry) < 0.1) {
+          rx = mx; ry = my;
+          placeRing();
+          return;
+        }
+        placeRing();
+        rafId = requestAnimationFrame(tick);
+      }
+      function syncCursor() {
+        const active = enabled();
+        document.body.classList.toggle('has-cursor', active);
+        dot.style.display = ring.style.display = active ? '' : 'none';
+        if (!active) {
+          stop();
+          ring.classList.remove('is-active');
+          label.textContent = '';
+          gsap.killTweensOf(magnets);
+          gsap.set(magnets, { x: 0, y: 0 });
+        }
+      }
 
       window.addEventListener('mousemove', (e) => {
+        if (!pointerInside) {
+          pointerInside = true;
+          rx = e.clientX; ry = e.clientY;
+          placeRing();
+          syncCursor();
+        }
+        if (!enabled()) return;
         mx = e.clientX; my = e.clientY;
         dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
 
@@ -893,17 +937,19 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
           ring.classList.remove('is-active');
           label.textContent = '';
         }
+        if (rafId === null) rafId = requestAnimationFrame(tick);
       });
 
-      const raf = () => {
-        rx += (mx - rx) * 0.18;
-        ry += (my - ry) * 0.18;
-        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-        requestAnimationFrame(raf);
-      };
-      requestAnimationFrame(raf);
+      document.documentElement.addEventListener('mouseleave', () => { pointerInside = false; syncCursor(); });
+      document.addEventListener('visibilitychange', () => { pointerInside = false; syncCursor(); });
+      motionPreference.addEventListener('change', syncCursor);
+      pointer.addEventListener('change', syncCursor);
+      window.addEventListener('pagehide', () => { pageActive = false; pointerInside = false; syncCursor(); });
+      window.addEventListener('pageshow', () => { pageActive = true; syncCursor(); });
+      syncCursor();
 
       document.addEventListener('mousemove', (e) => {
+        if (!enabled()) return;
         const magnet = e.target.closest('.nav-return');
         if (!magnet) return;
         const rect = magnet.getBoundingClientRect();
@@ -912,9 +958,15 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
         gsap.to(magnet, { x: relX * 0.28, y: relY * 0.28, duration: 0.35, ease: 'power2.out' });
       });
 
-      document.querySelectorAll('.nav-return').forEach(el => {
-        el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' }));
+      magnets.forEach(el => {
+        el.addEventListener('mouseleave', () => {
+          if (enabled()) gsap.to(el, { x: 0, y: 0, duration: 0.45, ease: 'elastic.out(1, 0.5)' });
+        });
       });
+    }
+
+    if (finePointer && !lightMotion) {
+      initAboutCursor();
     } else {
       document.getElementById('cursor-dot').style.display = 'none';
       document.getElementById('cursor-ring').style.display = 'none';
