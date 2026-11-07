@@ -795,6 +795,19 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     });
 
     const tabs = Array.from(document.querySelectorAll('.dossier-tab'));
+    const tabStrip = document.getElementById('dossier-tabs');
+    const aboutHeader = document.getElementById('about-header');
+    const compactNavigation = window.matchMedia('(max-width:1099px)');
+    function navigationOffset() {
+      const header = compactNavigation.matches ? aboutHeader : document.getElementById('nav');
+      return Math.ceil(header.getBoundingClientRect().height) + 16;
+    }
+    function updateHeaderSpacing() {
+      document.documentElement.style.setProperty('--about-scroll-offset', navigationOffset() + 'px');
+    }
+    new ResizeObserver(updateHeaderSpacing).observe(aboutHeader);
+    window.addEventListener('resize', updateHeaderSpacing, { passive: true });
+    updateHeaderSpacing();
     const sectionIds = ['hero', 's-identity', 's-profile', 's-arsenal', 's-archive', 's-credentials', 's-fieldwork', 's-fieldkit'];
     const tabByTarget = new Map(tabs.map(tab => [tab.dataset.target, tab]));
     let activeSectionId = null;
@@ -804,6 +817,10 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
       if (activeSectionId === targetId) return;
       activeSectionId = targetId;
       tabs.forEach(tab => { const active = tab.dataset.target === targetId; tab.classList.toggle('is-active', active); tab.setAttribute('aria-current', active ? 'location' : 'false'); });
+      if (compactNavigation.matches) {
+        const activeTab = tabByTarget.get(targetId);
+        if (activeTab) tabStrip.scrollTo({ left: activeTab.offsetLeft - (tabStrip.clientWidth - activeTab.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
     }
 
     function resolveActiveSection() {
@@ -841,7 +858,8 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
         const target = document.getElementById(tab.dataset.target);
         if (!target) return;
         if (lenis && typeof lenis.scrollTo === 'function') {
-          lenis.scrollTo(target, { offset: -20 });
+          const top = target.getBoundingClientRect().top + window.scrollY;
+          lenis.scrollTo(top, { offset: -navigationOffset() });
         } else {
           target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         }

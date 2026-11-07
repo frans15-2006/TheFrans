@@ -1,33 +1,57 @@
 (function(){
   'use strict';
-  var el=document.getElementById('preloader');
-  var ctr=document.getElementById('plCounter');
-  var bar=document.getElementById('plBar');
-  var DURATION=420,start=null;
-  window.__preloaderDone=false;
-  function pad(n){return n<10?'0'+n:''+n}
-  function tick(ts){
-    if(!start)start=ts;
-    var p=Math.min((ts-start)/DURATION,1);
-    var e=1-Math.pow(1-p,3);
-    ctr.textContent=pad(Math.round(e*100));
-    bar.style.width=(e*100)+'%';
-    if(p<1){requestAnimationFrame(tick);}
-    else{ctr.textContent='100';bar.style.width='100%';setTimeout(exit,100);}
-  }
+  const el = document.getElementById('preloader');
+  const counter = document.getElementById('plCounter');
+  const bar = document.getElementById('plBar');
+  const duration = 760;
+  const start = performance.now();
+  let frame, holdTimer, exitTimer, safetyTimer;
+  window.__preloaderDone = false;
   function finish(){
-    if(window.__preloaderDone)return;
-    el.style.display='none';
-    window.__preloaderDone=true;
-    if(typeof window.__onPreloaderDone==='function')window.__onPreloaderDone();
+    if (window.__preloaderDone) return;
+    window.__preloaderDone = true;
+    cancelAnimationFrame(frame);
+    clearTimeout(holdTimer);
+    clearTimeout(exitTimer);
+    clearTimeout(safetyTimer);
+    document.removeEventListener('visibilitychange', onVisibility);
+    document.removeEventListener('keydown', finish);
+    window.removeEventListener('pagehide', finish);
+    el.removeEventListener('transitionend', onTransitionEnd);
+    el.hidden = true;
+    el.style.display = 'none';
+    if (typeof window.__onPreloaderDone === 'function') window.__onPreloaderDone();
   }
-  function exit(){
+  function onVisibility() { if (document.hidden) finish(); }
+  function onTransitionEnd(event) {
+    if (event.target === el && event.propertyName === 'opacity') finish();
+  }
+  function exit() {
+    if (window.__preloaderDone) return;
+    el.addEventListener('transitionend', onTransitionEnd);
     el.classList.add('exiting');
-    el.addEventListener('transitionend',finish,{once:true});
-    setTimeout(finish,650);
+    exitTimer = setTimeout(finish, 280);
   }
-  setTimeout(finish, 1400);
-  finish();
+  function tick(now) {
+    if (window.__preloaderDone) return;
+    const progress = Math.min(Math.max((now - start) / duration, 0), 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = String(progress === 1 ? 100 : Math.floor(eased * 100)).padStart(2, '0');
+    if (counter.textContent !== value) counter.textContent = value;
+    bar.style.transform = 'scaleX(' + eased + ')';
+    if (progress < 1) frame = requestAnimationFrame(tick);
+    else holdTimer = setTimeout(exit, 80);
+  }
+  // This is a brief brand intro, independent of network or asset loading.
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches || document.hidden) {
+    finish();
+    return;
+  }
+  document.addEventListener('visibilitychange', onVisibility);
+  document.addEventListener('keydown', finish);
+  window.addEventListener('pagehide', finish);
+  safetyTimer = setTimeout(finish, 1600);
+  frame = requestAnimationFrame(tick);
 })();
 
 

@@ -75,13 +75,13 @@
     #preloader{
       position:fixed;inset:0;z-index:10000;background:var(--bg);
       display:flex;align-items:center;justify-content:center;flex-direction:column;
-      clip-path:inset(0 0 0% 0)
+      opacity:1
     }
-    #preloader.exiting{clip-path:inset(0 0 100% 0);transition:clip-path .55s var(--easing-cinema)}
+    #preloader.exiting{opacity:0;pointer-events:none;transition:opacity .22s ease-out}
     .pl-logo{position:absolute;top:28px;left:28px;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;opacity:.6}
     .pl-counter{font-family:var(--mono);font-size:clamp(64px,14vw,160px);font-weight:300;color:var(--accent);letter-spacing:-.06em;line-height:1;opacity:.85;min-width:3ch;text-align:center}
     .pl-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3);margin-top:14px}
-    .pl-bar{position:absolute;bottom:0;left:0;height:1px;background:var(--accent);width:0;opacity:.4}
+    .pl-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--accent);width:100%;opacity:.6;transform:scaleX(0);transform-origin:left}
     html.custom-cursor *{cursor:none!important}
     .cur-dot{position:fixed;z-index:9999;pointer-events:none;width:4px;height:4px;border-radius:50%;background:var(--accent);top:0;left:0;will-change:transform;opacity:.9;mix-blend-mode:difference}
     .cur-ring{position:fixed;z-index:9998;pointer-events:none;width:26px;height:26px;border-radius:50%;border:1px solid rgba(240,165,0,.22);top:0;left:0;will-change:transform;transition:width .2s,height .2s,border-color .2s,background .2s}

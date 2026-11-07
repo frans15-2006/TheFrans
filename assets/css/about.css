@@ -1352,3 +1352,15 @@ nav{padding:22px max(24px,calc((100vw - 1180px)/2));background:rgba(8,8,8,.96)!i
   .ch-title{overflow-wrap:anywhere}.cred-modal-title{font-size:clamp(24px,7vw,38px);overflow-wrap:anywhere}
 }
 @media(min-width:480px) and (max-width:900px){.effects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Keep both navigation rows in one measured stack on phones and tablets. */
+html{scroll-padding-top:var(--about-scroll-offset,96px)}
+@media(max-width:1099px){
+  .about-header{position:sticky;top:0;z-index:200;padding-top:env(safe-area-inset-top,0px);background:#080808}
+  #nav{position:relative;inset:auto;min-height:56px;padding:6px 16px;gap:12px;background:#080808!important;transition:none}
+  #nav .nav-logo{font-size:10px;letter-spacing:.1em;white-space:nowrap}
+  #nav .nav-return{min-height:44px;padding:8px 12px;letter-spacing:.1em;white-space:nowrap;will-change:auto}
+  #dossier-tabs{position:relative;inset:auto;transform:none;width:100%;max-width:none;max-height:none;margin:0;gap:6px;padding:4px 12px 6px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:#10100f;z-index:auto;overflow-x:auto;overflow-y:hidden;scroll-padding-inline:12px;overscroll-behavior-x:contain}
+  #dossier-tabs .dossier-tab{flex:0 0 auto;min-height:44px;padding:10px 12px}
+  #hero{padding-top:40px}
+}

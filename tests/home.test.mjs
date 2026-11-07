@@ -23,6 +23,71 @@ function classes() {
   };
 }
 
+function introHarness({ reduced = false, hidden = false } = {}) {
+  const frames = new Map();
+  const timers = new Map();
+  const events = {};
+  let nextId = 0;
+  let readyCalls = 0;
+  const intro = { style: {}, hidden: false, classList: { add() {} }, addEventListener: (event, fn) => { events[event] = fn; }, removeEventListener: event => { delete events[event]; } };
+  const counter = { textContent: '00' };
+  const bar = { style: {} };
+  const document = { hidden, getElementById: id => ({ preloader: intro, plCounter: counter, plBar: bar })[id], addEventListener: (event, fn) => { events[event] = fn; }, removeEventListener: event => { delete events[event]; } };
+  const window = { matchMedia: () => ({ matches: reduced }), __onPreloaderDone: () => { readyCalls++; }, addEventListener: (event, fn) => { events[event] = fn; }, removeEventListener: event => { delete events[event]; } };
+  vm.runInNewContext(script.slice(0, script.indexOf('\n(() => {')), {
+    document, window, performance: { now: () => 0 },
+    requestAnimationFrame: fn => { const id = ++nextId; frames.set(id, fn); return id; },
+    cancelAnimationFrame: id => frames.delete(id),
+    setTimeout: (fn, delay) => { const id = ++nextId; timers.set(id, { fn, delay }); return id; },
+    clearTimeout: id => timers.delete(id)
+  });
+  return { intro, counter, bar, document, window, events, frames, timers, get readyCalls() { return readyCalls; },
+    frame(time) { const pending = [...frames.values()]; frames.clear(); pending.forEach(fn => fn(time)); },
+    timer(delay) { const match = [...timers].find(([, value]) => value.delay === delay); assert.ok(match, `Missing ${delay}ms timer`); timers.delete(match[0]); match[1].fn(); }
+  };
+}
+
+test('intro counts monotonically to 100, then releases the page and stops all temporary work', () => {
+  const h = introHarness();
+  const counts = [Number(h.counter.textContent)];
+  for (const time of [0, 120, 300, 500, 800]) { h.frame(time); counts.push(Number(h.counter.textContent)); }
+  assert.equal(counts[0], 0);
+  assert.equal(counts.at(-1), 100);
+  assert.deepEqual(counts, [...counts].sort((a, b) => a - b));
+  assert.equal(h.bar.style.transform, 'scaleX(1)');
+  assert.equal(h.window.__preloaderDone, false);
+  assert.equal(h.frames.size, 0);
+  h.timer(80);
+  const end = h.events.transitionend;
+  end({ target: h.intro, propertyName: 'opacity' });
+  end({ target: h.intro, propertyName: 'opacity' });
+  assert.equal(h.readyCalls, 1);
+  assert.equal(h.intro.style.display, 'none');
+  assert.equal(h.frames.size + h.timers.size, 0);
+  assert.deepEqual(Object.keys(h.events), []);
+});
+
+test('intro cannot strand the page when frames stall, the tab hides, or a user presses a key', () => {
+  for (const action of ['timeout', 'hidden', 'keyboard']) {
+    const h = introHarness();
+    if (action === 'timeout') h.timer(1600);
+    if (action === 'hidden') { h.document.hidden = true; h.events.visibilitychange(); }
+    if (action === 'keyboard') h.events.keydown();
+    assert.equal(h.window.__preloaderDone, true);
+    assert.equal(h.readyCalls, 1);
+    assert.equal(h.frames.size + h.timers.size, 0);
+  }
+});
+
+test('reduced-motion and initially hidden pages bypass the animated intro', () => {
+  for (const options of [{ reduced: true }, { hidden: true }]) {
+    const h = introHarness(options);
+    assert.equal(h.window.__preloaderDone, true);
+    assert.equal(h.intro.hidden, true);
+    assert.equal(h.frames.size + h.timers.size, 0);
+  }
+});
+
 test('every displayed client links to an existing route, and clones stay out of tab order', () => {
   const cards = [...html.matchAll(/<a class="mq-card"([^>]*)>.*?<span class="mq-name">(.*?)<\/span><\/a>/g)];
   assert.equal(cards.length, 146);
