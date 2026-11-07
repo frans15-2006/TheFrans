@@ -1,4 +1,18 @@
 :root{color-scheme:dark;--focus-color:#f0a500}
+html.phone-welcome-open,html.phone-welcome-open body{overflow:hidden!important}
+.phone-welcome{position:fixed;inset:0;margin:auto;width:calc(100% - 32px);max-width:400px;max-height:calc(100dvh - 32px);padding:28px;overflow-y:auto;border:1px solid #4b3b1c;border-radius:24px;background:radial-gradient(ellipse at 100% 0%,#b3801512,transparent 65%),#10100e;color:#eaeaea;font-family:'Bricolage Grotesque',system-ui,sans-serif;box-shadow:0 24px 80px #0005}
+.phone-welcome::backdrop{background:#080808}
+.phone-welcome-brand{font-size:20px;font-weight:750;letter-spacing:-.055em}.phone-welcome-brand span{color:#f0a500}
+.phone-welcome-icon{display:block;width:64px;height:56px;margin:30px 0 24px;stroke:#dca326;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.phone-welcome-kicker{margin-bottom:12px;color:#bfa56c;font:10px/1.6 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.phone-welcome h2{margin:0;color:#eaeaea;font-size:clamp(28px,8.5vw,36px);font-weight:600;line-height:1.06;letter-spacing:-.045em}
+.phone-welcome #phone-welcome-description{margin:18px 0 26px;color:#b5b2aa;font-size:15px;line-height:1.75}
+.phone-welcome-actions{display:grid;gap:10px}.phone-welcome-actions button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:13px 16px;border:1px solid #39352b;border-radius:10px;font:550 13px 'Bricolage Grotesque',system-ui,sans-serif;cursor:pointer}
+.phone-welcome-copy{background:#f0a500;color:#080808!important;border-color:#f0a500!important}.phone-welcome-continue{background:transparent;color:#eaeaea}
+.phone-welcome-status{min-height:20px;margin:16px 0 0;color:#bfa56c;font-size:12px;line-height:1.6}
+.phone-welcome-fallback{display:block;margin-top:14px;color:#b5b2aa;font-size:12px}.phone-welcome-fallback[hidden]{display:none}.phone-welcome-fallback input{display:block;width:100%;min-height:44px;margin-top:8px;padding:10px;border:1px solid #39352b;border-radius:7px;background:#080808;color:#eaeaea;font-size:12px}
+@media(max-height:580px){.phone-welcome{padding:20px}.phone-welcome-brand{margin-bottom:16px}.phone-welcome-icon{display:none}.phone-welcome h2{font-size:28px}.phone-welcome #phone-welcome-description{margin:12px 0 18px}.phone-welcome-status{margin-top:10px}}
+@media(max-height:580px) and (min-width:600px){.phone-welcome-actions{grid-template-columns:1fr 1fr}.phone-welcome-actions button{padding:12px;font-size:12px}}
 @media(prefers-reduced-motion:no-preference){@view-transition{navigation:auto}::view-transition-old(root),::view-transition-new(root){animation-duration:.16s}}
 .pl-logo{opacity:.85}
 .nav-logo{opacity:1}

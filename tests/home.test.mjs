@@ -177,7 +177,7 @@ test('header GIF respects reduced motion and pause state without reloading on un
     let changes = 0;
     const image = { dataset: { poster: '/still.png', animation: '/loop.gif' }, getAttribute: key => imageAttributes[key], setAttribute(key, value) { changes++; imageAttributes[key] = value; } };
     const slot = { setAttribute: (key, value) => { attributes[key] = value; }, querySelector: () => ({}), addEventListener: (event, fn) => { events[event] = fn; } };
-    const document = { hidden: false, getElementById: id => id === 'headerMedia' ? slot : image, addEventListener: (event, fn) => { events[event] = fn; } };
+    const document = { hidden: false, documentElement: { classList: classes() }, getElementById: id => id === 'headerMedia' ? slot : image, addEventListener: (event, fn) => { events[event] = fn; } };
     const preference = { matches: reduced, addEventListener: (event, fn) => { events.preference = fn; } };
     vm.runInNewContext(fn + '\ninitHeaderMedia();', { document, window: { matchMedia: () => preference, addEventListener: (event, fn) => { events[event] = fn; } } });
     return { events, attributes, document, imageAttributes, get changes() { return changes; } };
@@ -186,6 +186,10 @@ test('header GIF respects reduced motion and pause state without reloading on un
   assert.equal(h.imageAttributes.src, '/loop.gif');
   h.events.pageshow();
   assert.equal(h.changes, 1);
+  h.document.documentElement.classList.toggle('phone-welcome-open', true); h.events.pageshow();
+  assert.equal(h.imageAttributes.src, '/still.png');
+  h.document.documentElement.classList.toggle('phone-welcome-open', false); h.events['portfolio-welcome-close']();
+  assert.equal(h.imageAttributes.src, '/loop.gif');
   h.document.hidden = true; h.events.visibilitychange();
   assert.equal(h.imageAttributes.src, '/still.png');
   h.document.hidden = false; h.events.visibilitychange();

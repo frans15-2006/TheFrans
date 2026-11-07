@@ -128,7 +128,7 @@ function initHeaderMedia() {
   const preference = window.matchMedia('(prefers-reduced-motion:reduce)');
   let paused = preference.matches;
   function render() {
-    const source = paused || document.hidden ? image.dataset.poster : image.dataset.animation;
+    const source = paused || document.hidden || document.documentElement.classList.contains('phone-welcome-open') ? image.dataset.poster : image.dataset.animation;
     if (image.getAttribute('src') !== source) image.setAttribute('src', source);
     const label = paused ? 'Play header animation' : 'Pause header animation';
     slot.setAttribute('aria-label', label);
@@ -139,6 +139,7 @@ function initHeaderMedia() {
   slot.addEventListener('click', () => { paused = !paused; render(); });
   for (const event of ['contextmenu', 'dragstart', 'selectstart']) slot.addEventListener(event, event => event.preventDefault());
   document.addEventListener('visibilitychange', render);
+  document.addEventListener('portfolio-welcome-close', render);
   window.addEventListener('pageshow', render);
   preference.addEventListener('change', event => { if (event.matches) paused = true; render(); });
   render();
