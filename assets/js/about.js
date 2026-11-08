@@ -814,14 +814,18 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     const tabByTarget = new Map(tabs.map(tab => [tab.dataset.target, tab]));
     let activeSectionId = null;
     let scrollTicking = false;
+    let tabLayoutChanged = false;
 
-    function setActiveTab(targetId) {
-      if (activeSectionId === targetId) return;
-      activeSectionId = targetId;
-      tabs.forEach(tab => { const active = tab.dataset.target === targetId; tab.classList.toggle('is-active', active); tab.setAttribute('aria-current', active ? 'location' : 'false'); });
+    function setActiveTab(targetId, realign = false) {
+      const changed = activeSectionId !== targetId;
+      if (!changed && !realign) return;
+      if (changed) {
+        activeSectionId = targetId;
+        tabs.forEach(tab => { const active = tab.dataset.target === targetId; tab.classList.toggle('is-active', active); tab.setAttribute('aria-current', active ? 'location' : 'false'); });
+      }
       if (compactNavigation.matches) {
         const activeTab = tabByTarget.get(targetId);
-        if (activeTab) tabStrip.scrollTo({ left: activeTab.offsetLeft - (tabStrip.clientWidth - activeTab.offsetWidth) / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+        if (activeTab) tabStrip.scrollTo({ left: activeTab.offsetLeft - (tabStrip.clientWidth - activeTab.offsetWidth) / 2, behavior: realign || motionPreference.matches ? 'auto' : 'smooth' });
       }
     }
 
@@ -846,7 +850,8 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
     }
 
     function updateActiveTab() {
-      setActiveTab(resolveActiveSection());
+      setActiveTab(resolveActiveSection(), tabLayoutChanged);
+      tabLayoutChanged = false;
       scrollTicking = false;
     }
 
@@ -864,12 +869,13 @@ import Fuse from '/assets/vendor/fuse.min.mjs';
           const top = target.getBoundingClientRect().top + window.scrollY;
           lenis.scrollTo(top, { offset: -navigationOffset() });
         } else {
-          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+          target.scrollIntoView({ behavior: motionPreference.matches ? 'auto' : 'smooth' });
         }
       });
     });
 
-    ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, requestTabUpdate, { passive: true }));
+    window.addEventListener('scroll', requestTabUpdate, { passive: true });
+    window.addEventListener('resize', () => { tabLayoutChanged = true; requestTabUpdate(); }, { passive: true });
     new ResizeObserver(requestTabUpdate).observe(document.body);
     if (lenis && typeof lenis.on === 'function') lenis.on('scroll', requestTabUpdate);
     requestTabUpdate();

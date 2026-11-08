@@ -16,6 +16,7 @@
   <style>
     /* ====== SEARCH BAR ====== */
     .search-container { position: relative; margin-bottom: 18px; }
+    .menu-results { color: #aaa; font-size: 0.9rem; line-height: 1.6; margin: 0 0 20px; }
     .search-bar {
       width: 100%; padding: 14px 20px 14px 50px;
       background: #1a1a1a; border: 2px solid #333;
@@ -118,6 +119,8 @@
         width: 88vw !important;
         max-width: 360px !important;
         max-height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
         overflow-y: auto !important;
         border-radius: 0 !important;
         border-top: none !important;
@@ -136,6 +139,8 @@
         box-shadow: -6px 0 40px rgba(0,0,0,0.8) !important;
       }
       .cart-area.drawer-open { transform: translateX(0) !important; }
+      body.drawer-open header { z-index: 100 !important; }
+      body.drawer-open #fab-btn { visibility: hidden; }
 
       /* Countdown number shown in close button */
       #cart-countdown {
@@ -307,6 +312,7 @@
           </div>
 
           <!-- Category Tabs -->
+          <p class="menu-results" id="menu-results" role="status" aria-live="polite" aria-atomic="true">10 menu items available.</p>
           <div class="category-tabs" role="group" aria-label="Filter demo menu by category">
             <button type="button" class="category-tab active" data-category="all" aria-pressed="true" onclick="filterCategory('all')">
               🍽️ All
@@ -415,6 +421,7 @@
       searchInput.value = '';
       document.querySelector('.search-clear').classList.remove('show');
       filterAndShowItems('', currentCategory);
+      searchInput.focus({ preventScroll: true });
     }
 
     function filterCategory(category) {
@@ -429,30 +436,28 @@
     }
 
     function filterAndShowItems(searchQuery, category) {
-      const riceSection = document.getElementById('rice-section');
-      const ulamSection = document.getElementById('ulam-section');
-      const drinksSection = document.getElementById('drinks-section');
-
-      const showRice = category === 'all' || category === 'rice';
-      const showUlam = category === 'all' || category === 'ulam';
-      const showDrinks = category === 'all' || category === 'drinks';
-
-      riceSection.style.display = showRice ? 'block' : 'none';
-      ulamSection.style.display = showUlam ? 'block' : 'none';
-      drinksSection.style.display = showDrinks ? 'block' : 'none';
-
-      filterGridItems('rice-grid', riceMenu, searchQuery);
-      filterGridItems('ulam-grid', ulamMenu, searchQuery);
-      filterGridItems('drinks-grid', drinksMenu, searchQuery);
+      searchQuery = searchQuery.trim();
+      let count = 0;
+      for (const [key, menu] of [['rice', riceMenu], ['ulam', ulamMenu], ['drinks', drinksMenu]]) {
+        const matches = filterGridItems(`${key}-grid`, menu, searchQuery);
+        const visible = (category === 'all' || category === key) && matches > 0;
+        document.getElementById(`${key}-section`).style.display = visible ? 'block' : 'none';
+        if (visible) count += matches;
+      }
+      document.getElementById('menu-results').textContent = count
+        ? `${count} menu item${count === 1 ? '' : 's'} ${searchQuery ? 'match your search' : 'available'}.`
+        : 'No matching items. Clear the search or try another category.';
     }
 
     function filterGridItems(gridId, menuItems, searchQuery) {
       const container = document.getElementById(gridId);
       const cards = container.querySelectorAll('.card');
+      let matches = 0;
       cards.forEach((card, index) => {
         const itemName = menuItems[index]?.name.toLowerCase() || '';
         const matchesSearch = !searchQuery || itemName.includes(searchQuery);
         if (matchesSearch) {
+          matches++;
           card.style.display = '';
           card.classList.add('reveal');
         } else {
@@ -460,6 +465,7 @@
           card.classList.remove('reveal');
         }
       });
+      return matches;
     }
 
     // ====== MOBILE CART DRAWER ======
@@ -550,6 +556,7 @@
     window.addEventListener('resize', syncCartDrawerVisibility);
     document.getElementById('cart-sidebar').addEventListener('keydown', event => {
       if (event.key === 'Escape' && window.innerWidth <= 768) closeCartDrawer();
+      else _clearAutoClose(); // Keep the drawer open while someone uses its keyboard controls.
     });
 
     // Reset timer on any tap inside drawer

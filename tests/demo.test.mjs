@@ -50,12 +50,13 @@ function harness() {
   const ids = ['cart-list', 'total-price', 'cart-badge', 'mobile-cart-fab', 'cart-sidebar',
     'main-content', 'landing-page', 'hero-scroller', 'rice-grid', 'ulam-grid', 'drinks-grid',
     'modal', 'cust-name', 'qrcode', 'summary', 'search-input', 'page-wrapper', 'fab-btn',
-    'cart-overlay', 'cart-countdown'];
+    'cart-overlay', 'cart-countdown', 'rice-section', 'ulam-section', 'drinks-section', 'menu-results'];
   const elements = Object.fromEntries(ids.map(id => [id, element()]));
   elements['total-price'].textContent = '₱0';
   const done = element('button');
   const entry = element('button');
   const cartClose = element('button');
+  const searchClear = element('button');
   elements['cart-sidebar'].children.push(cartClose, elements['cust-name']);
   elements['cart-sidebar'].querySelector = selector => selector === '#cart-close-btn button' ? cartClose : null;
   elements.modal.querySelector = selector => selector === '.done-btn' ? done : null;
@@ -66,7 +67,7 @@ function harness() {
       body: element('body'),
       getElementById(id) { assert.ok(elements[id], `Unexpected element ${id}`); return elements[id]; },
       createElement: element,
-      querySelector: selector => selector === '#modal .done-btn' ? done : null,
+      querySelector: selector => selector === '#modal .done-btn' ? done : selector === '.search-clear' ? searchClear : null,
       addEventListener(name, callback) {
         if (!listeners.has(name)) listeners.set(name, []);
         listeners.get(name).push(callback);
@@ -138,6 +139,41 @@ test('rapid quantity changes settle on the current cart total', () => {
   assert.equal(page.frames.size, 0);
 });
 
+test('quantity controls retain keyboard focus after rebuilding or removing a cart row', () => {
+  const page = harness();
+  const requested = [];
+  const replacement = page.cartClose;
+  page.elements['cart-list'].querySelector = selector => { requested.push(selector); return replacement; };
+  page.run('cart.push({ ...riceMenu[0], qty: 1 }, { ...drinksMenu[0], qty: 1 }); const quantityControl = document.createElement("button"); quantityControl.focus(); changeQty(0, 1, quantityControl);');
+  assert.equal(page.activeElement, replacement);
+  assert.match(requested.at(-1), /data-item-id="1".*data-qty-delta="1"/);
+  page.run('quantityControl.focus(); changeQty(0, -1, quantityControl); quantityControl.focus(); changeQty(0, -1, quantityControl);');
+  assert.match(requested.at(-1), /data-item-id="10"/);
+  assert.equal(page.activeElement, replacement);
+  page.run('quantityControl.focus(); changeQty(0, -1, quantityControl);');
+  assert.equal(page.activeElement, page.elements['cust-name']);
+  assert.equal(page.run('cart.length'), 0);
+});
+
+test('cart updates do not steal focus from another input', () => {
+  const page = harness();
+  page.elements['cust-name'].focus();
+  page.elements['cart-list'].querySelector = () => assert.fail('Unfocused updates must not move keyboard focus');
+  page.run('cart.push({ ...riceMenu[0], qty: 1 }); changeQty(0, 1, document.createElement("button"));');
+  assert.equal(page.activeElement, page.elements['cust-name']);
+});
+
+test('keyboard interaction cancels the mobile cart auto-close countdown', () => {
+  const page = harness();
+  page.inline();
+  page.run('openCartDrawer();');
+  assert.notEqual(page.run('_autoCloseTimer'), null);
+  page.elements['cart-sidebar'].dispatch('keydown', { key: 'Tab' });
+  assert.equal(page.run('_autoCloseTimer'), null);
+  assert.equal(page.run('_timerAnimation'), null);
+  assert.equal(page.elements['cart-sidebar'].classList.contains('drawer-open'), true);
+});
+
 test('menu initialization renders named native food buttons immediately', () => {
   const page = harness();
   page.ready();
@@ -160,6 +196,28 @@ test('categories use native toggle buttons and disclose demo before entry', () =
   }
   assert.ok(html.indexOf('No real orders or payments are sent.') < html.indexOf('TRY DEMO MENU'));
   assert.match(html, /tab\.setAttribute\('aria-pressed', String\(selected\)\)/);
+});
+
+test('menu search announces empty and filtered results and clear restores the selected category', () => {
+  const page = harness();
+  page.ready();
+  for (const id of ['rice-grid', 'ulam-grid', 'drinks-grid']) {
+    const grid = page.elements[id];
+    grid.querySelectorAll = () => grid.children;
+  }
+  page.inline();
+  page.run('handleSearch("zzzzzz");');
+  assert.match(page.elements['menu-results'].textContent, /No matching items/);
+  for (const id of ['rice-section', 'ulam-section', 'drinks-section']) assert.equal(page.elements[id].style.display, 'none');
+  page.run('handleSearch("  water  ");');
+  assert.match(page.elements['menu-results'].textContent, /^1 menu item /);
+  assert.equal(page.elements['drinks-section'].style.display, 'block');
+  assert.equal(page.elements['rice-section'].style.display, 'none');
+  page.run('currentCategory = "rice"; clearSearch();');
+  assert.equal(page.elements['menu-results'].textContent, '2 menu items available.');
+  assert.equal(page.elements['rice-section'].style.display, 'block');
+  assert.equal(page.elements['drinks-section'].style.display, 'none');
+  assert.equal(page.activeElement, page.elements['search-input']);
 });
 
 test('checkout creates a local demo summary without a QR dependency or submission', () => {

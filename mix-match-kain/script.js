@@ -233,9 +233,9 @@ function updateCart() {
           <div class="cart-item-price">&#8369;${c.price} ea</div>
         </div>
         <div class="cart-item-controls">
-          <button type="button" class="qty-btn" aria-label="Decrease ${c.name} quantity" onclick="changeQty(${i}, -1)">-</button>
+          <button type="button" class="qty-btn" data-item-id="${c.id}" data-qty-delta="-1" aria-label="Decrease ${c.name} quantity" onclick="changeQty(${i}, -1, this)">-</button>
           <span>${c.qty}</span>
-          <button type="button" class="qty-btn" aria-label="Increase ${c.name} quantity" onclick="changeQty(${i}, 1)">+</button>
+          <button type="button" class="qty-btn" data-item-id="${c.id}" data-qty-delta="1" aria-label="Increase ${c.name} quantity" onclick="changeQty(${i}, 1, this)">+</button>
         </div>
       </div>
     `;
@@ -271,10 +271,17 @@ function updateCart() {
   }
 }
 
-function changeQty(idx, delta) {
+function changeQty(idx, delta, control) {
+  const restoreFocus = control && document.activeElement === control;
+  const itemId = cart[idx].id;
   cart[idx].qty += delta;
   if (cart[idx].qty <= 0) cart.splice(idx, 1);
   updateCart();
+  if (restoreFocus) {
+    const nextItem = cart.find(item => item.id === itemId) || cart[Math.min(idx, cart.length - 1)];
+    const nextControl = nextItem && document.getElementById('cart-list').querySelector(`.qty-btn[data-item-id="${nextItem.id}"][data-qty-delta="${delta}"]`);
+    (nextControl || document.getElementById('cust-name')).focus({ preventScroll: true });
+  }
 }
 
 // ====== TOAST NOTIFICATIONS ======

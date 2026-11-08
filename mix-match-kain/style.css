@@ -30,6 +30,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow: hidden;
+  height: 100%;
 }
 
 /* ====== CUSTOM CURSOR ====== */
@@ -1079,7 +1081,7 @@ main {
 }
 
 .exit-3d {
-  transform: translateZ(1200px) scale(2.5) !important;
+  transform: none !important;
   opacity: 0 !important;
   pointer-events: none;
 }
@@ -1087,7 +1089,8 @@ main {
 .enter-3d {
   display: block !important;
   opacity: 1 !important;
-  transform: translateZ(0) rotateX(0deg) !important;
+  /* An identity transform still traps fixed cart controls inside this scroller. */
+  transform: none !important;
 }
 
 header {

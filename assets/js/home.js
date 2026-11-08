@@ -188,12 +188,9 @@ function onPreloaderReady() {
   initScanline();
   initHeroCanvas();
   initKineticHero();
-  // Keep the full page stable instead of compositing a skewed scrolling layer.
-  initRevealSystem();
+  // Reading content stays fully visible, including during fast or reverse scrolling.
   initDividers();
-  initSignatureReveal();
   // Cards stay flat while the pointer moves.
-  initCountUp();
   // Client rows retain a steady CSS animation instead of updating every frame.
 
   initFlagshipStamp();
@@ -460,18 +457,6 @@ function initMagneticButtons() {
   });
 }
 
-function initRevealSystem() {
-  document.querySelectorAll('.reveal').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 24 },
-      {
-        opacity: 1, y: 0, duration: 0.75, ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 91%', toggleActions: 'play none none none' }
-      }
-    );
-  });
-}
-
 function wrapWordsInNode(node) {
   Array.from(node.childNodes).forEach(child => {
     if (child.nodeType === Node.TEXT_NODE) {
@@ -600,41 +585,6 @@ function initFlagshipStamp() {
         { opacity: 0.4, scale: 0.3 },
         { opacity: 0, scale: 2, duration: 0.7, delay: 0.62, ease: 'power2.out' }
       );
-    }
-  });
-}
-
-function initSignatureReveal() {
-  if (noMotion) return;
-  const card = document.getElementById('flagshipCard');
-  const line = document.getElementById('cinemaLine');
-  if (!card || !line) return;
-  gsap.set(card, {
-    rotateX: isMobile ? 0 : 14,
-    scale: isMobile ? 1 : 0.93,
-    filter: isMobile ? 'none' : 'blur(5px)',
-    opacity: 0,
-    transformOrigin: 'center top'
-  });
-  ScrollTrigger.create({
-    trigger: '#projects',
-    start: 'top 72%',
-    onEnter: () => {
-      line.classList.add('drawn');
-      setTimeout(() => {
-        gsap.to(card, {
-          rotateX: 0,
-          scale: 1,
-          filter: 'blur(0px)',
-          opacity: 1,
-          duration: isMobile ? 0.5 : 1.15,
-          ease: 'power4.out',
-          onComplete: () => {
-            card.classList.add('sweep');
-            setTimeout(() => card.classList.remove('sweep'), 1000);
-          }
-        });
-      }, isMobile ? 100 : 280);
     }
   });
 }

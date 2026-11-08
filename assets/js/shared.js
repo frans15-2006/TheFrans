@@ -1,9 +1,19 @@
 (() => {
   'use strict';
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   function createScroller({ lightMotion, options = {} }) {
     if (!lightMotion && window.Lenis && window.gsap && window.ScrollTrigger) {
       const instance = new window.Lenis({ autoRaf: false, syncTouch: false, ...options });
+      const smoothWheel = instance.options.smoothWheel;
+      const scrollTo = instance.scrollTo.bind(instance);
+      instance.scrollTo = (target, settings = {}) => scrollTo(target, motionPreference.matches ? { ...settings, immediate: true } : settings);
+      function syncMotionPreference() {
+        instance.options.smoothWheel = smoothWheel && !motionPreference.matches;
+        // Stop any existing easing at the current native position without restarting a locked menu.
+        if (motionPreference.matches) instance.reset();
+      }
+      motionPreference.addEventListener('change', syncMotionPreference);
+      syncMotionPreference();
       const tick = time => instance.raf(time * 1000);
       instance.on('scroll', window.ScrollTrigger.update);
       window.gsap.ticker.add(tick);
@@ -19,7 +29,7 @@
         const node = typeof target === 'string' ? document.querySelector(target) : target;
         if (node === null || node === undefined) return;
         const top = typeof node === 'number' ? node : node.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: top + (options.offset || 0), behavior: reduced ? 'auto' : 'smooth' });
+        window.scrollTo({ top: top + (options.offset || 0), behavior: motionPreference.matches ? 'auto' : 'smooth' });
       }
     };
   }

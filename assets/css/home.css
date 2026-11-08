@@ -114,9 +114,8 @@
       .nav-links.mobile-open{display:flex}
       .nav-links a{font-size:10px;letter-spacing:.14em;padding:7px 0}
     }
-    .reveal,.reveal-clip{opacity:0}
-    .reveal{transform:translateY(22px)}
-    .blur-words .bw-word{display:inline-block;filter:blur(6px);opacity:0;transform:translateY(6px);will-change:filter,opacity,transform}
+    .reveal,.reveal-clip{opacity:1;transform:none;filter:none}
+    .blur-words .bw-word{display:inline-block;filter:none;opacity:1;transform:none}
     .container{max-width:940px;margin:0 auto;padding:0 32px}
     .divider{width:100%;height:1px;background:var(--border);transform-origin:left;transform:scaleX(0);opacity:0}
     section{padding:var(--section-pad) 0;contain:layout style}
@@ -227,7 +226,7 @@
     .stamp{position:relative;width:64px;height:64px;opacity:0;pointer-events:none;color:var(--official)}
     .stamp-svg{width:100%;height:100%;display:block}
     .stamp-pulse{position:absolute!important;inset:0;border-radius:50%;background:radial-gradient(circle,var(--official-dim) 0%,transparent 72%);opacity:0;pointer-events:none!important;z-index:1}
-    .project-reveal-stage{perspective:1200px;perspective-origin:50% 30%}
+    .project-reveal-stage{perspective:none}
     .projects-list{display:flex;flex-direction:column;gap:14px}
     .project-card{
       background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-lg);
@@ -352,12 +351,6 @@
     .rail-dot.active{background:var(--accent);transform:scale(1.6)}
     .rail-label{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;background:rgba(8,8,8,.94);padding:4px 9px;border-radius:5px;border:1px solid var(--border)}
     .rail-dot:hover .rail-label{opacity:1}
-    @supports (animation-timeline:view()){
-      @media (prefers-reduced-motion:no-preference){
-        .feature-tag,.tech-tag{animation:_chip-in linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
-        @keyframes _chip-in{from{opacity:0;transform:translateY(10px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
-      }
-    }
     @media(max-width:900px){
       .section-rail{display:none}
     }
