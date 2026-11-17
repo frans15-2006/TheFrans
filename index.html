@@ -305,13 +305,13 @@
     <div class="cinema-line" id="cinemaLine" aria-hidden="true"></div>
     <div class="project-reveal-stage">
       <div class="projects-list">
-        <article class="project-card flagship tilt-card reveal" id="flagshipCard">
+        <article class="project-card image-project-card flagship tilt-card reveal" id="flagshipCard">
           <div class="card-glow" aria-hidden="true"></div>
           <a class="project-preview" href="/mix-match-kain/" aria-label="Open the Mix & Match Kain interactive demo">
             <img src="/assets/media/mix-match-kain-demo.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Mix & Match Kain interactive demo welcome screen, with food photos and a Try Demo Menu button">
-            <span class="project-preview-caption" aria-hidden="true">Interactive demo <span>↗</span></span>
+            <span class="project-preview-caption" aria-hidden="true">Demo <span>↗</span></span>
           </a>
-          <div>
+          <div class="image-project-details">
             <div class="project-meta">
               <span class="project-cat">Full-Stack Web App</span>
               <span class="project-dot" aria-hidden="true"></span>
@@ -319,12 +319,7 @@
             </div>
             <h3 class="project-title">Mix &amp; Match Kain</h3>
             <p class="project-desc">A food ordering system for a real restaurant in Palawan. Customers order from their own phones via QR code. The Node.js/Express backend runs on a local machine over LAN &mdash; serving customer devices through restaurant WiFi with no internet dependency. Built to keep working through connectivity loss.</p>
-            <div class="incident-block">
-              <div class="incident-label">Production Incidents</div>
-              <div class="incident-item">Duplicate order writes caused by simultaneous stock updates under peak load &mdash; fixed live without downtime.</div>
-              <div class="incident-item">Full internet outage mid-event &mdash; local architecture continued processing orders uninterrupted.</div>
-            </div>
-            <div class="project-features" style="margin-top:16px;">
+            <div class="project-features">
               <span class="feature-tag">Local-First Architecture</span>
               <span class="feature-tag">QR Checkout Flow</span>
               <span class="feature-tag">Real-Time Order Management</span>
@@ -336,6 +331,17 @@
               <span class="tech-tag">WebSockets</span>
               <span class="tech-tag">Vanilla JS</span>
               <span class="tech-tag">HTML/CSS</span>
+            </div>
+            <div class="project-status">
+              <span class="status-badge">Live</span>
+              <a href="/mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:11px;padding:7px 13px;">Read case study &rarr;</a>
+            </div>
+          </div>
+          <div class="flagship-extra">
+            <div class="incident-block">
+              <div class="incident-label">Production Incidents</div>
+              <div class="incident-item">Duplicate order writes caused by simultaneous stock updates under peak load &mdash; fixed live without downtime.</div>
+              <div class="incident-item">Full internet outage mid-event &mdash; local architecture continued processing orders uninterrupted.</div>
             </div>
             <button class="arch-toggle" id="archToggle" aria-expanded="false" aria-controls="archDiagram">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -372,11 +378,6 @@
                 <text x="548" y="442" text-anchor="middle" dominant-baseline="central" fill="rgb(206,203,246)" font-size="14" font-weight="500" font-family="system-ui,sans-serif">Stock</text>
               </svg>
             </div>
-          </div>
-          <div class="project-status">
-            <span class="status-badge">Live</span>
-
-            <a href="/mix-match-kain-case-study.html" class="btn btn-ghost" style="font-size:11px;padding:7px 13px;">Read case study &rarr;</a>
           </div>
         </article>
 
