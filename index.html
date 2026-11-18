@@ -412,6 +412,38 @@
           </div>
         </article>
 
+        <article class="project-card image-project-card reveal" id="fluentFlyoutCard">
+          <a class="project-preview" href="https://github.com/unchihugo/FluentFlyout" target="_blank" rel="noopener noreferrer" aria-label="View the FluentFlyout repository on GitHub">
+            <img src="/assets/media/fluentflyout-project.webp" width="1440" height="900" loading="lazy" decoding="async" alt="FluentFlyout media controls and lock-key flyouts shown over a Windows 11-inspired blue background">
+            <span class="project-preview-caption" aria-hidden="true">Open-source contribution <span>↗</span></span>
+          </a>
+          <div class="image-project-details">
+            <div class="project-meta">
+              <span class="project-cat">Co-Developer &amp; Contributor</span>
+              <span class="project-dot" aria-hidden="true"></span>
+              <span class="project-date">August 2026</span>
+            </div>
+            <h3 class="project-title">FluentFlyout</h3>
+            <p class="project-desc">Co-developed and contributed to FluentFlyout, an open-source Windows 11 utility built with Fluent 2 design. My merged PR fixed a race condition in the taskbar media flyout’s auto-hide timer.</p>
+            <div class="project-features">
+              <span class="feature-tag">Media Flyouts</span>
+              <span class="feature-tag">Taskbar Widgets</span>
+              <span class="feature-tag">Windows 11</span>
+              <span class="feature-tag">Timer Reliability Fix</span>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">WPF</span>
+              <span class="tech-tag">.NET</span>
+              <span class="tech-tag">GitHub</span>
+            </div>
+            <div class="project-status">
+              <span class="status-badge">PR #995 Merged</span>
+              <a class="btn btn-ghost" href="https://github.com/unchihugo/FluentFlyout/pull/995" target="_blank" rel="noopener noreferrer">View my PR ↗</a>
+            </div>
+          </div>
+        </article>
+
         <article class="project-card tilt-card reveal" id="voltCard">
           <div class="card-glow" aria-hidden="true"></div>
           <div>
@@ -453,36 +485,6 @@
           </div>
         </article>
 
-        <article class="project-card tilt-card reveal" id="fluentflyoutCard">
-          <div class="card-glow" aria-hidden="true"></div>
-          <div>
-            <div class="project-meta">
-              <span class="project-cat">Open Source Contribution &middot; WPF</span>
-              <span class="project-dot" aria-hidden="true"></span>
-              <span class="project-date">2026</span>
-            </div>
-            <h3 class="project-title">FluentFlyout</h3>
-            <p class="project-desc">Contributed to unchihugo/FluentFlyout, an open-source Fluent 2 Design flyout utility for Windows 11. Refactored duplicated taskbar and marquee update logic scattered across property change handlers into two shared helper methods, and hardened the saved-language restore path so a missing or invalid language tag falls back gracefully instead of crashing the app on launch.</p>
-            <div class="incident-block">
-              <div class="incident-label">Under the Hood</div>
-              <div class="incident-item">Consolidated repeated taskbar/marquee state updates into <code>UpdateTaskbar()</code> and <code>UpdateTaskbarMarquees()</code> helpers, with null-safe access to <code>MainWindow</code> and widget instances &mdash; no behavior change, no new user-facing features.</div>
-              <div class="incident-item">Replaced a throwing <code>.First()</code> lookup in the app-language restore path with a cascading fallback (exact match &rarr; system default &rarr; first available), logging a warning whenever a fallback occurs.</div>
-            </div>
-            <div class="project-features" style="margin-top:16px;">
-              <span class="feature-tag">Code Refactor</span>
-              <span class="feature-tag">Crash Fix</span>
-              <span class="feature-tag">Settings Restore Logic</span>
-            </div>
-            <div class="tech-stack">
-              <span class="tech-tag">C#</span>
-              <span class="tech-tag">WPF</span>
-              <span class="tech-tag">.NET</span>
-            </div>
-          </div>
-          <div class="project-status">
-            <span class="status-badge done">Completed</span>
-          </div>
-        </article>
         <article class="project-card image-project-card reveal" id="rtpCard">
           <div class="card-glow" aria-hidden="true"></div>
           <a class="project-preview" href="https://red-tide-ppc.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Red Tide PPC">
